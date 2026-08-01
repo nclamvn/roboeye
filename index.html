@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoboEye · mắt robot trong trình duyệt</title>
+  <meta name="description" content="Webcam sang depth sang point cloud sang BEV occupancy, chạy toàn bộ client-side qua WebGPU." />
+  <script type="module" crossorigin src="/assets/index-DmjH7aHX.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-TMXui_p9.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar HIVE: đen fixed 192px -->
+    <aside id="sidebar">
+      <div class="brand">
+        <div class="brand-name">RoboEye</div>
+        <div class="brand-sub">Mắt robot trong trình duyệt</div>
+      </div>
+
+      <nav class="modes" aria-label="Chế độ hiển thị">
+        <button class="mode-btn" data-mode="rgb" data-key="1">
+          <span class="mode-key">1</span><span class="mode-label">RGB</span>
+        </button>
+        <button class="mode-btn" data-mode="depth" data-key="2">
+          <span class="mode-key">2</span><span class="mode-label">Depth</span>
+        </button>
+        <button class="mode-btn" data-mode="cloud" data-key="3">
+          <span class="mode-key">3</span><span class="mode-label">Point Cloud</span>
+        </button>
+        <button class="mode-btn" data-mode="bev" data-key="4">
+          <span class="mode-key">4</span><span class="mode-label">BEV Grid</span>
+        </button>
+      </nav>
+
+      <div class="controls">
+        <label class="ctl">
+          <span class="ctl-label">Camera</span>
+          <select id="camera-select" aria-label="Chọn camera"></select>
+        </label>
+        <label class="ctl">
+          <span class="ctl-label">Inference size <span id="size-value" class="ctl-value">252</span></span>
+          <input id="size-slider" type="range" min="140" max="504" step="28" value="252" />
+        </label>
+        <label class="ctl">
+          <span class="ctl-label">Point size <span id="point-value" class="ctl-value">1.0</span></span>
+          <input id="point-slider" type="range" min="0.3" max="3" step="0.1" value="1" />
+        </label>
+        <label class="ctl">
+          <span class="ctl-label">Model dtype</span>
+          <select id="dtype-select" aria-label="Chọn dtype">
+            <option value="fp16" selected>fp16 · ~50MB</option>
+            <option value="q4f16">q4f16 · ~18MB</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="meters">
+        <div class="meter"><span class="meter-label">Inference</span><span id="fps-infer" class="meter-value">–</span><span class="meter-unit">fps</span></div>
+        <div class="meter"><span class="meter-label">Render</span><span id="fps-render" class="meter-value">–</span><span class="meter-unit">fps</span></div>
+      </div>
+
+      <div class="badges">
+        <span id="badge-infer" class="badge" data-state="loading">INFER · …</span>
+        <span id="badge-render" class="badge" data-state="loading">RENDER · …</span>
+      </div>
+
+      <div class="sidebar-foot">
+        <button id="freeze-btn" class="foot-btn">Freeze <span class="mode-key">F</span></button>
+        <button id="panel-btn" class="foot-btn">Giải thích <span class="mode-key">?</span></button>
+        <div class="honesty">Relative depth. Tỷ lệ ước lượng, không phải mét thật.</div>
+      </div>
+    </aside>
+
+    <!-- Viewport 3D chiếm trọn -->
+    <main id="viewport">
+      <canvas id="gl"></canvas>
+      <div id="frozen-tag" hidden>FROZEN · nhấn F để tiếp tục</div>
+      <div id="alert-chip" hidden>VẬT CẢN GẦN</div>
+
+      <!-- Overlay khởi động -->
+      <div id="boot">
+        <div class="boot-card">
+          <div class="boot-title">RoboEye</div>
+          <div class="boot-sub">Pipeline perception của robot di động, chạy trong tab này. Khuyến nghị Chrome hoặc Edge bản mới. Camera không rời máy anh, không có server.</div>
+          <div id="boot-status" class="boot-status">Đang chờ khởi động…</div>
+          <div class="boot-bar"><div id="boot-progress" class="boot-fill"></div></div>
+          <button id="start-btn" class="boot-btn">Mở camera</button>
+          <div id="boot-error" class="boot-error" hidden></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Panel giải thích trượt từ phải -->
+    <aside id="panel" aria-hidden="true">
+      <div class="panel-head">
+        <div class="panel-title">Pipeline perception</div>
+        <button id="panel-close" class="panel-close" aria-label="Đóng panel">Đóng</button>
+      </div>
+      <div class="panel-body">
+        <section class="panel-sec" data-mode="rgb">
+          <h3><span class="mode-key">1</span> RGB</h3>
+          <p>Đây là thứ camera thấy, cũng là thứ duy nhất robot nhận được từ một camera thường. Mọi tầng phía sau đều phải suy ra từ khung hình phẳng này.</p>
+        </section>
+        <section class="panel-sec" data-mode="depth">
+          <h3><span class="mode-key">2</span> Depth</h3>
+          <p>Mạng neural Depth Anything V2 đoán khoảng cách cho từng pixel. Gần thì sáng, xa thì tối. Đây là depth tương đối, nghĩa là máy biết vật nào gần hơn vật nào nhưng không biết chính xác bao nhiêu mét.</p>
+        </section>
+        <section class="panel-sec" data-mode="cloud">
+          <h3><span class="mode-key">3</span> Point Cloud</h3>
+          <p>Mỗi pixel kèm depth được chiếu ngược qua mô hình pinhole camera thành một điểm trong không gian 3D. Kéo chuột để bay ra khỏi vị trí webcam. Khung hình phẳng vừa trở thành một khối không gian.</p>
+        </section>
+        <section class="panel-sec" data-mode="bev">
+          <h3><span class="mode-key">4</span> BEV Grid</h3>
+          <p>Đám mây điểm được ép xuống sàn thành lưới ô vuông nhìn từ trên cao. Ô trắng là có vật cản. Đây chính là bản đồ mà thuật toán tránh vật cản và path planning của robot chạy trên đó.</p>
+          <p>Click lên grid để đặt đích: một robot ảo sẽ chạy A* tìm đường né các ô vật cản và replan theo thời gian thực. Anh đứng chắn đường là nó tự vòng qua. Vật cản lọt vào vùng gần camera thì góc phải trên hiện cảnh báo.</p>
+        </section>
+        <section class="panel-sec">
+          <h3>Tinh chỉnh</h3>
+          <label class="ctl">
+            <span class="ctl-label">FOV giả định <span id="fov-value" class="ctl-value">60°</span></span>
+            <input id="fov-slider" type="range" min="40" max="90" step="1" value="60" />
+          </label>
+          <p class="panel-note">Toàn bộ inference lẫn render chạy ngay trên máy này, backend thật hiển thị ở badge góc trái (WebGPU, hoặc WebGL/WASM khi fallback). Không server. Không lưu trữ. Depth là tương đối nên tỷ lệ point cloud và BEV là ước lượng.</p>
+        </section>
+      </div>
+    </aside>
+  </div>
+</body>
+</html>
