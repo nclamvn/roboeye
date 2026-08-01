@@ -18,16 +18,19 @@ const createPipeline = pipeline as unknown as (
 // Mặc định lấy model từ HF Hub (có cache trình duyệt). ?localmodels=1 → load từ /models/
 env.allowLocalModels = false;
 
-// Tự host runtime WASM của onnxruntime (copy vào /ort/ qua scripts/copy-ort.mjs),
-// không gọi CDN jsdelivr lúc chạy
-if (env.backends?.onnx?.wasm) {
-  env.backends.onnx.wasm.wasmPaths = '/ort/';
+// Bản BUILD tự host runtime WASM của onnxruntime (copy vào /ort/ qua scripts/copy-ort.mjs),
+// không gọi CDN jsdelivr lúc chạy. Dùng BASE_URL để sống được cả dưới sub-path
+// (ví dụ GitHub Pages /roboeye/).
+// Riêng DEV SERVER phải để mặc định (CDN): Vite dev chặn dynamic import module từ /public.
+const BASE = new URL(import.meta.env.BASE_URL, self.location.href).href;
+if (import.meta.env.PROD && env.backends?.onnx?.wasm) {
+  env.backends.onnx.wasm.wasmPaths = `${BASE}ort/`;
 }
 
 function useLocalModels() {
   env.allowLocalModels = true;
   env.allowRemoteModels = false;
-  env.localModelPath = '/models/';
+  env.localModelPath = `${BASE}models/`;
 }
 
 let estimator: DepthEstimationPipeline | null = null;

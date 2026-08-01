@@ -24,7 +24,7 @@ Webcam chỉ mở được trên localhost hoặc https. Muốn chia sẻ link c
 
 ## Phím và điều khiển
 
-Phím 1 2 3 4 chuyển bốn chế độ RGB, Depth, Point Cloud, BEV Grid. Phím F đóng băng khung hình để bay quanh, phím ? mở panel giải thích từng tầng pipeline. Ở chế độ Point Cloud, kéo chuột để orbit, lăn để zoom. Sidebar có slider Inference size (đánh đổi tốc độ với chi tiết), Point size, chọn camera và chọn dtype model (fp16 khoảng 50MB, q4f16 khoảng 18MB cho mạng yếu).
+Phím 1 2 3 4 chuyển bốn chế độ RGB, Depth, Point Cloud, BEV Grid. Phím F đóng băng khung hình để bay quanh, phím ? mở panel giải thích từng tầng pipeline. Ở chế độ Point Cloud, kéo chuột để orbit, lăn để zoom. Ở chế độ BEV, click lên grid để đặt đích: robot ảo chạy A* tìm đường né vật cản và replan theo thời gian thực; vật cản lọt vùng gần camera thì chip cảnh báo hiện góc phải trên ở mọi chế độ. Sidebar có slider Inference size (đánh đổi tốc độ với chi tiết), Point size, chọn camera và chọn dtype model (fp16 khoảng 50MB, q4f16 khoảng 18MB cho mạng yếu).
 
 Hai đồng hồ fps độc lập là hành vi đúng: render chạy 60fps trong khi inference chậm hơn, point cloud nội suy giữa hai depth frame nên chuyển động vẫn mềm.
 
@@ -38,7 +38,7 @@ Runtime WASM của onnxruntime được tự host trong `/ort/` (script `scripts
 
 ## Kịch bản demo 5 phút
 
-Mở RGB thường và nói đây là tất cả những gì robot có. Bật Depth để khán giả thấy máy hiểu xa gần. Bật Point Cloud rồi kéo chuột ra khỏi vị trí webcam, đây là khoảnh khắc chính khi khung hình phẳng thành khối không gian. Nhấn F để đóng băng và bay quanh khung hình đông cứng. Lật BEV và kết bằng câu: đây chính là thứ robot của các bạn dùng để tránh vật cản và nó vừa chạy trong một tab trình duyệt.
+Mở RGB thường và nói đây là tất cả những gì robot có. Bật Depth để khán giả thấy máy hiểu xa gần. Bật Point Cloud rồi kéo chuột ra khỏi vị trí webcam, đây là khoảnh khắc chính khi khung hình phẳng thành khối không gian. Nhấn F để đóng băng và bay quanh khung hình đông cứng. Lật BEV, click đặt đích cho robot ảo rồi bước ra chắn đường nó: con đường A* tự bẻ cong vòng qua người thật ngay trên màn hình. Kết bằng câu: perception, mapping và planning của robot vừa chạy trọn vẹn trong một tab trình duyệt.
 
 Chạy trước khi share screen Zoom để đèn camera bật sẵn và model đã cache.
 

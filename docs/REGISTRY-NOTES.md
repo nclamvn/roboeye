@@ -10,15 +10,17 @@ F10 trong PRD đang là **honest-null**: chưa có benchmark công bố cho DA-v
 4. Lặp lại ở 504. Ghi thêm fps RENDER ở chế độ Point Cloud.
 5. Muốn đo thêm q4f16 thì đổi Model dtype rồi lặp lại.
 
-## Kết quả đo (Chủ nhà điền)
+## Kết quả đo
 
-| Điều kiện | fps inference | fps render (cloud) | Ghi chú |
+**F10 ĐÃ ĐÓNG 01/08/2026** tại nghiệm thu M1 trên máy Chủ nhà (MacBook Apple Silicon, Chrome, cả hai badge WEBGPU). Bằng chứng: 4 screenshot nghiệm thu trong session Cowork.
+
+| Điều kiện | fps inference | fps render | Ghi chú |
 |---|---|---|---|
-| M1 · Chrome [phiên bản] · fp16 · 252px | [ĐIỀN CỤ THỂ] | [ĐIỀN CỤ THỂ] | |
-| M1 · Chrome [phiên bản] · fp16 · 504px | [ĐIỀN CỤ THỂ] | [ĐIỀN CỤ THỂ] | |
-| M1 · Chrome [phiên bản] · q4f16 · 252px | [ĐIỀN CỤ THỂ] | [ĐIỀN CỤ THỂ] | tuỳ chọn |
+| MacBook Apple Silicon · Chrome · fp16 · 336px | 14.1 đến 15.2 | 30 | đo qua 4 chế độ, cảnh thật 2 người |
+| fp16 · 252px | [ĐIỀN CỤ THỂ] | [ĐIỀN CỤ THỂ] | tuỳ chọn, kỳ vọng cao hơn 336px |
+| fp16 · 504px | [ĐIỀN CỤ THỂ] | [ĐIỀN CỤ THỂ] | tuỳ chọn |
 
-Ngưỡng chấp nhận demo Chủ nhà đã đặt: tối thiểu 5fps inference ở 252px.
+Ngưỡng chấp nhận demo: tối thiểu 5fps inference ở 252px. Kết quả 14 đến 15fps ở 336px vượt ngưỡng khoảng 3 lần ở độ phân giải cao hơn yêu cầu. Render 30fps thay vì 60 nhiều khả năng do Chrome/macOS giới hạn rAF khi tiết kiệm pin; cắm sạc và tắt Low Power Mode nếu muốn kiểm 60fps.
 
 ## Số đo được trong container build (chỉ để tham chiếu, KHÔNG đại diện máy thật)
 

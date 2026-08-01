@@ -234,6 +234,20 @@ button, select, input { font-family: var(--font-ui); }
   background: rgba(11, 11, 10, 0.82);
 }
 
+#alert-chip {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: 1px dashed var(--hive-ink-inv);
+  border-radius: var(--radius-pill);
+  padding: 5px 14px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--hive-ink-inv);
+  background: rgba(11, 11, 10, 0.82);
+}
+
 /* ── Boot overlay ────────────────────────────────── */
 
 #boot {

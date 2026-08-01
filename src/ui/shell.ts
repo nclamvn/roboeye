@@ -26,6 +26,7 @@ export interface ShellAPI {
   hideBoot(): void;
   setCameras(cams: { id: string; label: string }[]): void;
   setSizeValue(px: number): void;
+  setAlert(nearest: number | null): void;
   isFrozen(): boolean;
   currentMode(): Mode;
 }
@@ -55,6 +56,7 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
   const badgeRender = $('#badge-render');
   const freezeBtn = $<HTMLButtonElement>('#freeze-btn');
   const frozenTag = $('#frozen-tag');
+  const alertChip = $('#alert-chip');
   const panel = $('#panel');
   const panelBtn = $<HTMLButtonElement>('#panel-btn');
   const panelClose = $<HTMLButtonElement>('#panel-close');
@@ -172,6 +174,14 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
     setSizeValue(px) {
       sizeSlider.value = String(px);
       sizeValue.textContent = String(px);
+    },
+    setAlert(nearest) {
+      if (nearest == null) {
+        alertChip.hidden = true;
+      } else {
+        alertChip.hidden = false;
+        alertChip.textContent = `VẬT CẢN GẦN · ${nearest.toFixed(1)} đv`;
+      }
     },
     isFrozen: () => frozen,
     currentMode: () => mode

@@ -184,6 +184,19 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   let viewW = 1;
   let viewH = 1;
 
+  // Click lên BEV plane để đặt đích cho robot ảo (TIP-06)
+  canvas.addEventListener('click', (e) => {
+    if (mode !== 'bev') return;
+    const s = bevPlane.scale.x; // plane vuông nên scale x = y
+    if (s <= 0) return;
+    const a = viewW / Math.max(1, viewH);
+    const xo = ((e.offsetX / viewW) * 2 - 1) * a;
+    const yo = 1 - (e.offsetY / viewH) * 2;
+    const u = (xo + s) / (2 * s);
+    const vTop = (s - yo) / (2 * s);
+    if (u >= 0 && u <= 1 && vTop >= 0 && vTop <= 1) bev.setGoalFromUv(u, vTop);
+  });
+
   function fitPlane(plane: THREE.Mesh, imgAspect: number) {
     const viewAspect = viewW / Math.max(1, viewH);
     // Plane gốc 2x2. Contain-fit vào ortho frustum [-A..A] x [-1..1]
@@ -309,6 +322,11 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
     render(dtMs: number) {
       if (!frozen) {
         uMix.value = Math.min(1, (uMix.value as number) + dtMs / Math.max(30, inferInterval));
+      }
+      if (mode === 'bev') {
+        // robot ảo di chuyển mượt theo render frame, độc lập nhịp inference
+        bev.compose(Math.min(dtMs, 100) / 1000);
+        bevTex.needsUpdate = true;
       }
       if (mode === 'cloud') controls.update();
       const cam = mode === 'cloud' ? perspCam : orthoCam;

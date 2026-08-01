@@ -73,6 +73,7 @@
     <main id="viewport">
       <canvas id="gl"></canvas>
       <div id="frozen-tag" hidden>FROZEN · nhấn F để tiếp tục</div>
+      <div id="alert-chip" hidden>VẬT CẢN GẦN</div>
 
       <!-- Overlay khởi động -->
       <div id="boot">
@@ -109,6 +110,7 @@
         <section class="panel-sec" data-mode="bev">
           <h3><span class="mode-key">4</span> BEV Grid</h3>
           <p>Đám mây điểm được ép xuống sàn thành lưới ô vuông nhìn từ trên cao. Ô trắng là có vật cản. Đây chính là bản đồ mà thuật toán tránh vật cản và path planning của robot chạy trên đó.</p>
+          <p>Click lên grid để đặt đích: một robot ảo sẽ chạy A* tìm đường né các ô vật cản và replan theo thời gian thực. Anh đứng chắn đường là nó tự vòng qua. Vật cản lọt vào vùng gần camera thì góc phải trên hiện cảnh báo.</p>
         </section>
         <section class="panel-sec">
           <h3>Tinh chỉnh</h3>
