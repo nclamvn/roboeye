@@ -1,10 +1,10 @@
 // Product-release contract: onboarding, local diagnostics, responsive layout
 // and service-worker offline shell. Worker mocks do not prove model quality.
 
-import { spawn } from 'node:child_process';
 import { chromium } from 'playwright-core';
 import { browserLaunchOptions, resolveBrowserExecutable } from './helpers/browser.mjs';
 import { installMockWorkers } from './helpers/mock-workers.mjs';
+import { startPreview, stopPreview, waitForPreview } from './helpers/preview-server.mjs';
 
 const PORT = 4182;
 const BASE = `http://localhost:${PORT}`;
@@ -20,25 +20,7 @@ function check(name, condition, extra = '') {
   }
 }
 
-function waitForPreview(server) {
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error('vite preview không lên sau 20s')), 20_000);
-    const ready = (data) => {
-      if (String(data).includes('localhost')) {
-        clearTimeout(timer);
-        resolve();
-      }
-    };
-    server.stdout.on('data', ready);
-    server.stderr.on('data', ready);
-    server.on('exit', (code) => reject(new Error(`vite preview thoát sớm, code ${code}`)));
-  });
-}
-
-const server = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], {
-  cwd: ROOT,
-  stdio: 'pipe'
-});
+const server = startPreview(ROOT, PORT);
 
 let browser;
 try {
@@ -109,14 +91,7 @@ try {
     return (await cache.keys()).map((request) => new URL(request.url).pathname);
   });
   check('service worker đã cache JS/CSS app shell', cachedAssets.some((path) => /\/assets\/index-.*\.js$/.test(path)) && cachedAssets.some((path) => /\/assets\/index-.*\.css$/.test(path)), cachedAssets.slice(-5).join(', '));
-  server.kill();
-  await new Promise((resolve) => {
-    if (server.exitCode != null) resolve();
-    else {
-      const timer = setTimeout(resolve, 2_000);
-      server.once('exit', () => { clearTimeout(timer); resolve(); });
-    }
-  });
+  await stopPreview(server);
   const cachedFetchWorks = await page.evaluate(async () => {
     const script = [...document.scripts].find((item) => item.src.includes('/assets/index-'))?.src;
     if (!script) return false;
@@ -145,7 +120,7 @@ try {
   log('EXCEPTION', error);
 } finally {
   await browser?.close();
-  server.kill();
+  await stopPreview(server);
 }
 
 log('──────────────────────────────');

@@ -2,10 +2,10 @@
 // Workers are deterministic mocks: this test does NOT prove model quality,
 // model compatibility, backend support or inference latency.
 
-import { spawn } from 'node:child_process';
 import { chromium } from 'playwright-core';
 import { browserLaunchOptions, resolveBrowserExecutable } from './helpers/browser.mjs';
 import { installMockWorkers } from './helpers/mock-workers.mjs';
+import { startPreview, stopPreview, waitForPreview } from './helpers/preview-server.mjs';
 
 const PORT = 4181;
 const BASE = `http://localhost:${PORT}`;
@@ -13,24 +13,6 @@ const ROOT = new URL('..', import.meta.url).pathname;
 
 function log(...args) {
   console.log('[detect-e2e:mock]', ...args);
-}
-
-function waitForPreview(server) {
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error('vite preview không lên sau 20s')), 20_000);
-    const onData = (data) => {
-      if (String(data).includes('localhost')) {
-        clearTimeout(timer);
-        resolve();
-      }
-    };
-    server.stdout.on('data', onData);
-    server.stderr.on('data', onData);
-    server.on('exit', (code) => {
-      clearTimeout(timer);
-      reject(new Error(`vite preview thoát sớm, code ${code}`));
-    });
-  });
 }
 
 const failures = [];
@@ -42,10 +24,7 @@ const check = (name, condition, extra = '') => {
   }
 };
 
-const server = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], {
-  cwd: ROOT,
-  stdio: 'pipe'
-});
+const server = startPreview(ROOT, PORT);
 
 let browser;
 try {
@@ -118,7 +97,7 @@ try {
   log('EXCEPTION', error);
 } finally {
   await browser?.close();
-  server.kill();
+  await stopPreview(server);
 }
 
 log('──────────────────────────────');

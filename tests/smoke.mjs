@@ -5,9 +5,9 @@
 // Chạy: npm run build && node tests/smoke.mjs
 
 import { chromium } from 'playwright-core';
-import { spawn } from 'node:child_process';
 import { mkdirSync, cpSync, existsSync } from 'node:fs';
 import { browserLaunchOptions, resolveBrowserExecutable } from './helpers/browser.mjs';
+import { startPreview, stopPreview, waitForPreview } from './helpers/preview-server.mjs';
 
 const PORT = 4173;
 const BASE = `http://localhost:${PORT}`;
@@ -30,20 +30,8 @@ cpSync(cacheDir, modelDir, { recursive: true });
 log('đã copy model q8 local vào dist/models');
 
 // 1. Serve dist
-const server = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], {
-  cwd: new URL('..', import.meta.url).pathname,
-  stdio: 'pipe'
-});
-await new Promise((resolve, reject) => {
-  const t = setTimeout(() => reject(new Error('vite preview không lên sau 20s')), 20000);
-  server.stdout.on('data', (d) => {
-    if (String(d).includes('localhost')) {
-      clearTimeout(t);
-      resolve();
-    }
-  });
-  server.on('exit', (code) => reject(new Error(`vite preview thoát sớm, code ${code}`)));
-});
+const server = startPreview(new URL('..', import.meta.url).pathname, PORT);
+await waitForPreview(server);
 log('vite preview đang chạy ở', BASE);
 
 const failures = [];
@@ -179,7 +167,7 @@ try {
   log('EXCEPTION', e);
 } finally {
   await browser?.close();
-  server.kill();
+  await stopPreview(server);
 }
 
 log('──────────────────────────────');
