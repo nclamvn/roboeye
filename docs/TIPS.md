@@ -38,3 +38,17 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 
 - **Task:** A* 8 hướng có binary heap trên grid 96×96, occupied inflate 1 ô thành blocked, ngoài FOV là unknown đi được với phạt nhẹ, chặn lách chéo qua khe. Robot ảo xuất phát tại camera, click lên grid đặt đích, di chuyển mượt theo render frame (1.5 đv/s), replan mỗi depth frame nên người thật bước vào là đường tự vòng qua. HUD chữ mono ghi số bước hoặc KHÔNG CÓ ĐƯỜNG. Đích mặc định tự chọn ô free xa nhất giữa FOV.
 - **Acceptance:** click đặt đích thấy đường và robot chạy; đứng chắn đường thấy path bẻ cong theo thời gian thực.
+
+## TIP-12 · Production hardening
+
+- **Dependencies:** TIP-09, TIP-10. **Priority:** P0.
+- **Task:** CI quality + real-depth lanes; CSP/Permissions-Policy; versioned service worker; local-only bounded diagnostics; explicit depth load/inference recovery.
+- **Acceptance:** 7/7 REQ-P implemented; app shell assets work with the static server stopped; load retry and infer recovery are machine-tested.
+- **Detail:** `docs/TIP-12-PRODUCTION-HARDENING.md`.
+
+## TIP-13 · Product packaging and release 1.2
+
+- **Dependencies:** TIP-12. **Priority:** P0.
+- **Task:** 60-second Camera → Depth → Point Cloud → BEV tour; responsive instrument shell; version metadata; verified offline q8 build; GitHub Pages/tag release workflow.
+- **Acceptance:** 7/7 REQ-R implemented; release E2E covers 375/768/1440, diagnostics export and offline cold tab; normal/offline artifacts pass verifier.
+- **Detail:** `docs/TIP-13-RELEASE-PACKAGING.md`.

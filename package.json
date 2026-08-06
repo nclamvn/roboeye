@@ -1,9 +1,12 @@
 {
   "name": "roboeye",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "RoboEye — biến camera laptop thành mắt robot, chạy toàn bộ trong trình duyệt",
   "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "predev": "node scripts/copy-ort.mjs",
     "dev": "vite",
@@ -13,12 +16,17 @@
     "typecheck": "tsc --noEmit",
     "test:unit": "tsx --test tests/unit/*.test.ts",
     "security:audit": "node scripts/security-audit.mjs",
+    "qa": "npm run typecheck && npm run test:unit && npm run build && npm run security:audit && npm run test:detection-e2e && npm run test:release-e2e",
     "fixtures:prepare": "node scripts/prepare-test-models.mjs",
     "fixtures:verify": "node scripts/prepare-test-models.mjs --verify-only",
     "pretest:detection-e2e": "npm run build",
     "test:detection-e2e": "node tests/detection-e2e.mjs",
+    "pretest:release-e2e": "npm run build",
+    "test:release-e2e": "node tests/release-e2e.mjs",
     "presmoke": "npm run fixtures:prepare && npm run build",
-    "smoke": "node tests/smoke.mjs"
+    "smoke": "node tests/smoke.mjs",
+    "build:offline": "npm run fixtures:prepare && ROBOEYE_OFFLINE=1 npm run build && node scripts/stage-offline-release.mjs && node scripts/verify-release.mjs --offline",
+    "release:verify": "npm run build && node scripts/verify-release.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.5",

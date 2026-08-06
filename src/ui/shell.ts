@@ -20,6 +20,15 @@ export interface ShellCallbacks {
   onDeleteObject(idx: number): void;
   onRelabelObject(idx: number, label: string): void;
   onStart(): void;
+  onDemoStart(): void;
+  onRetryDepth(): void;
+  onDiagnostics(): void;
+}
+
+export interface ShellOptions {
+  version: string;
+  demoMode: boolean;
+  offlineMode: boolean;
 }
 
 export interface ShellAPI {
@@ -39,6 +48,10 @@ export interface ShellAPI {
   showLabelTools(on: boolean): void;
   renderObjects(objs: DetBox[], selected: number): void;
   setObjStatus(text: string): void;
+  setNetwork(online: boolean): void;
+  showRuntimeNotice(text: string, retry: boolean): void;
+  hideRuntimeNotice(): void;
+  startTour(): void;
   isFrozen(): boolean;
   currentMode(): Mode;
 }
@@ -49,7 +62,7 @@ const $ = <T extends HTMLElement>(sel: string): T => {
   return el;
 };
 
-export function createShell(cb: ShellCallbacks): ShellAPI {
+export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI {
   let mode: Mode = 'rgb';
   let frozen = false;
 
@@ -66,6 +79,7 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
   const fpsRender = $('#fps-render');
   const badgeInfer = $('#badge-infer');
   const badgeRender = $('#badge-render');
+  const badgeNetwork = $('#badge-network');
   const freezeBtn = $<HTMLButtonElement>('#freeze-btn');
   const frozenTag = $('#frozen-tag');
   const alertChip = $('#alert-chip');
@@ -80,6 +94,29 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
   const objPanel = $('#obj-panel');
   const objList = $('#obj-list');
   const objStatus = $('#obj-status');
+  const sidebar = $('#sidebar');
+  const mobileControlsBtn = $<HTMLButtonElement>('#mobile-controls-btn');
+  const diagnosticsBtn = $<HTMLButtonElement>('#diagnostics-btn');
+  const runtimeNotice = $('#runtime-notice');
+  const runtimeNoticeText = $('#runtime-notice-text');
+  const runtimeRetryBtn = $<HTMLButtonElement>('#runtime-retry-btn');
+  const runtimeDismissBtn = $<HTMLButtonElement>('#runtime-dismiss-btn');
+  const tour = $('#tour');
+  const tourIndex = $('#tour-index');
+  const tourTitle = $('#tour-title');
+  const tourCopy = $('#tour-copy');
+  const tourNext = $<HTMLButtonElement>('#tour-next');
+  const tourSkip = $<HTMLButtonElement>('#tour-skip');
+
+  $('#app-version').textContent = `v${options.version}`;
+  $('#boot-version').textContent = `v${options.version}`;
+  if (options.offlineMode) {
+    $('#boot-sub').textContent = 'Bản offline dùng model depth q8 đã đóng gói. Camera và dữ liệu luôn ở lại trên máy này.';
+    dtypeSelect.selectedOptions[0].textContent = 'q8 · offline';
+    dtypeSelect.disabled = true;
+    detToggle.disabled = true;
+    detToggle.parentElement?.setAttribute('title', 'Bản offline depth không đóng gói model detection');
+  }
 
   engineSelect.addEventListener('change', () => {
     const e = engineSelect.value as DetectionEngine;
@@ -104,6 +141,15 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
   const bootProgress = $('#boot-progress');
   const bootError = $('#boot-error');
   const startBtn = $<HTMLButtonElement>('#start-btn');
+  const demoStartBtn = $<HTMLButtonElement>('#demo-start-btn');
+
+  const tourSteps: Array<{ mode: Mode; title: string; copy: string }> = [
+    { mode: 'rgb', title: 'Camera là điểm xuất phát', copy: 'Đây là tín hiệu thô duy nhất robot nhận được. Camera không rời khỏi thiết bị này.' },
+    { mode: 'depth', title: 'Mỗi pixel có xa và gần', copy: 'Depth Anything biến ảnh phẳng thành độ sâu tương đối: sáng gần, tối xa.' },
+    { mode: 'cloud', title: 'Ảnh phẳng trở thành không gian', copy: 'Point cloud chiếu màu và depth thành các điểm 3D. Kéo chuột để nhìn khỏi vị trí camera.' },
+    { mode: 'bev', title: 'Không gian trở thành đường đi', copy: 'BEV ép point cloud xuống mặt sàn. Click lên lưới để robot ảo tìm đường A* tránh vật cản.' }
+  ];
+  let tourStep = 0;
 
   function applyMode(m: Mode) {
     mode = m;
@@ -153,10 +199,50 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
   panelBtn.addEventListener('click', () => togglePanel());
   panelClose.addEventListener('click', () => togglePanel(false));
 
+  mobileControlsBtn.addEventListener('click', () => {
+    const open = sidebar.classList.toggle('mobile-open');
+    mobileControlsBtn.setAttribute('aria-expanded', String(open));
+  });
+  diagnosticsBtn.addEventListener('click', () => cb.onDiagnostics());
+  runtimeRetryBtn.addEventListener('click', () => cb.onRetryDepth());
+  runtimeDismissBtn.addEventListener('click', () => { runtimeNotice.hidden = true; });
+
+  function renderTour() {
+    const step = tourSteps[tourStep];
+    tourIndex.textContent = `${String(tourStep + 1).padStart(2, '0')} / ${String(tourSteps.length).padStart(2, '0')}`;
+    tourTitle.textContent = step.title;
+    tourCopy.textContent = step.copy;
+    tourNext.textContent = tourStep === tourSteps.length - 1 ? 'Hoàn tất' : 'Tiếp tục';
+    applyMode(step.mode);
+  }
+
+  function closeTour() {
+    tour.hidden = true;
+  }
+
+  tourNext.addEventListener('click', () => {
+    if (tourStep === tourSteps.length - 1) closeTour();
+    else {
+      tourStep++;
+      renderTour();
+    }
+  });
+  tourSkip.addEventListener('click', closeTour);
+
   startBtn.addEventListener('click', () => {
     startBtn.disabled = true;
+    demoStartBtn.disabled = true;
     cb.onStart();
   });
+  demoStartBtn.addEventListener('click', () => {
+    startBtn.disabled = true;
+    demoStartBtn.disabled = true;
+    cb.onDemoStart();
+  });
+  if (options.demoMode) {
+    demoStartBtn.classList.add('recommended');
+    startBtn.classList.add('boot-btn-secondary');
+  }
 
   window.addEventListener('keydown', (e) => {
     // Chỉ chặn phím tắt khi focus ở ô nhập chữ hoặc dropdown, cho phép ở checkbox/range/button
@@ -201,6 +287,7 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
       bootError.hidden = text.length === 0;
       bootError.textContent = text;
       if (text) startBtn.disabled = false;
+      if (text) demoStartBtn.disabled = false;
     },
     hideBoot() {
       boot.classList.add('hidden');
@@ -268,6 +355,24 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
     },
     setObjStatus(text) {
       objStatus.textContent = text;
+    },
+    setNetwork(online) {
+      badgeNetwork.textContent = online ? 'MẠNG · ONLINE' : 'MẠNG · OFFLINE';
+      badgeNetwork.dataset.state = online ? 'good' : 'fallback';
+    },
+    showRuntimeNotice(text, retry) {
+      runtimeNoticeText.textContent = text;
+      runtimeRetryBtn.hidden = !retry;
+      runtimeNotice.hidden = false;
+    },
+    hideRuntimeNotice() {
+      runtimeNotice.hidden = true;
+    },
+    startTour() {
+      tourStep = 0;
+      tour.hidden = false;
+      renderTour();
+      tourNext.focus();
     },
     renderObjects(objs, selected) {
       while (objList.firstChild) objList.removeChild(objList.firstChild);

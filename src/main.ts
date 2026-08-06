@@ -13,6 +13,8 @@ import { createShell } from './ui/shell';
 import { createScene, type SceneAPI } from './render/scene';
 import { createCocoExport, createRelative3dExport, createYoloExport } from './annotations';
 import { recoverDetectionError } from './detection-state';
+import { recoverDepthError } from './depth-state';
+import { createRuntimeDiagnostics } from './runtime-diagnostics';
 import type { WorkerToMain, Dtype } from './types';
 import type { DetBox, DetectionEngine, DetectionWorkerToMain } from './detection-types';
 
@@ -81,8 +83,21 @@ function exportAnnotations(fmt: 'coco' | 'yolo' | '3d') {
 // Cần thử fallback (mục 9 PRD): ?webgl=1 ép render WebGL2, ?wasm=1 ép inference WASM
 const urlParams = new URLSearchParams(location.search);
 const forceWebGL = urlParams.has('webgl');
-const forceWasm = urlParams.has('wasm');
-const localModels = urlParams.has('localmodels');
+const forceWasm = urlParams.has('wasm') || __ROBOEYE_OFFLINE__;
+const localModels = urlParams.has('localmodels') || __ROBOEYE_OFFLINE__;
+const demoMode = urlParams.has('demo');
+let demoRequested = demoMode;
+
+let diagnosticsStorage: Storage | undefined;
+try { diagnosticsStorage = window.localStorage; } catch { diagnosticsStorage = undefined; }
+const diagnostics = createRuntimeDiagnostics({
+  version: __ROBOEYE_VERSION__,
+  commit: __ROBOEYE_COMMIT__,
+  storage: diagnosticsStorage,
+  userAgent: () => navigator.userAgent,
+  online: () => navigator.onLine
+});
+diagnostics.record('app.open', { demoMode, localModels, forceWebGL, forceWasm });
 
 let lastDepthAt = 0;
 let inferIntervalEma = 0;
@@ -90,7 +105,10 @@ let renderDtEma = 16.7;
 let lastMeterUpdate = 0;
 
 const shell = createShell({
-  onMode: (m) => sceneApi?.setMode(m),
+  onMode: (m) => {
+    sceneApi?.setMode(m);
+    diagnostics.record('mode.change', { mode: m });
+  },
   onSize: (px) => {
     captureW = px;
   },
@@ -116,6 +134,7 @@ const shell = createShell({
       selectedObj = -1;
       refreshAnnotations();
     }
+    diagnostics.record('detection.toggle', { on });
   },
   onEngine: (e) => {
     engine = e;
@@ -149,9 +168,26 @@ const shell = createShell({
     refreshAnnotations();
   },
   onStart: () => {
+    demoRequested = false;
     void start();
+  },
+  onDemoStart: () => {
+    demoRequested = true;
+    diagnostics.record('tour.request');
+    void start();
+  },
+  onRetryDepth: () => {
+    retryDepthWorker();
+  },
+  onDiagnostics: () => {
+    diagnostics.record('diagnostics.export');
+    downloadFile(
+      `roboeye-diagnostics-v${__ROBOEYE_VERSION__}.json`,
+      JSON.stringify(diagnostics.snapshot(), null, 2),
+      'application/json'
+    );
   }
-});
+}, { version: __ROBOEYE_VERSION__, demoMode, offlineMode: __ROBOEYE_OFFLINE__ });
 
 function spawnDetectWorker() {
   detectWorker = new Worker(new URL('./worker/detect-worker.ts', import.meta.url), { type: 'module' });
@@ -168,6 +204,7 @@ function spawnDetectWorker() {
       detectReady = true;
       detectBusy = false;
       shell.setObjStatus(engine === 'owlvit' ? 'OWL-ViT · gõ chữ ra lớp' : 'RT-DETR · COCO');
+      diagnostics.record('detection.ready', { engine, device: m.device });
     } else if (m.type === 'det') {
       detectBusy = false;
       if (!frozen) {
@@ -182,6 +219,7 @@ function spawnDetectWorker() {
       detectReady = recovery.ready;
       console.error('[roboeye-detect]', m.message);
       shell.setObjStatus(recovery.status);
+      diagnostics.record('detection.error', { engine, stage: m.stage, message: m.message });
     }
   };
   detectWorker.onerror = (event) => {
@@ -191,6 +229,7 @@ function spawnDetectWorker() {
     detectWorker = null;
     console.error('[roboeye-detect-worker]', event.message || 'worker crash');
     shell.setObjStatus('worker lỗi · tắt/bật để thử lại');
+    diagnostics.record('detection.crash', { message: event.message || 'worker crash' });
   };
   detectWorker.postMessage({ type: 'init', forceWasm, localModels, engine, queries });
 }
@@ -215,6 +254,8 @@ function spawnWorker() {
         shell.setInferBadge(msg.device);
         shell.setBootStatus('Model sẵn sàng. Đang chờ depth frame đầu tiên…');
         shell.setBootProgress(100);
+        shell.hideRuntimeNotice();
+        diagnostics.record('depth.ready', { device: msg.device, dtype: msg.dtype });
         // PRD mục 9: rơi về WASM thì hạ inference size còn 140 và nói thật trên badge
         if (msg.device === 'wasm' && captureW > 140) {
           captureW = 140;
@@ -234,18 +275,37 @@ function spawnWorker() {
         if (!firstDepthSeen) {
           firstDepthSeen = true;
           shell.hideBoot();
+          diagnostics.record('depth.first-frame', { width: msg.width, height: msg.height });
+          if (demoRequested) shell.startTour();
         }
         break;
       }
       case 'error': {
+        const recovery = recoverDepthError(msg.stage);
+        workerBusy = recovery.busy;
+        workerReady = recovery.ready;
         console.error('[roboeye]', msg.message);
-        shell.setBootError(msg.message);
+        diagnostics.record('depth.error', { stage: msg.stage, message: msg.message });
+        if (msg.stage === 'load') {
+          if (firstDepthSeen) shell.showRuntimeNotice(`${recovery.status}. Kiểm tra mạng rồi thử lại.`, true);
+          else shell.setBootError(`${msg.message}. Kiểm tra mạng rồi thử lại.`);
+        } else {
+          shell.setBootStatus(recovery.status);
+          if (firstDepthSeen) shell.showRuntimeNotice(recovery.status, false);
+        }
         break;
       }
     }
   };
   worker.onerror = (e) => {
-    shell.setBootError(`Worker lỗi: ${e.message ?? 'không rõ'}`);
+    workerBusy = false;
+    workerReady = false;
+    worker?.terminate();
+    worker = null;
+    const message = `Worker depth lỗi: ${e.message ?? 'không rõ'}`;
+    diagnostics.record('depth.crash', { message });
+    if (firstDepthSeen) shell.showRuntimeNotice(message, true);
+    else shell.setBootError(message);
   };
   worker.postMessage({ type: 'init', dtype, forceWasm, localModels });
 }
@@ -255,6 +315,17 @@ function restartWorker() {
   lastDepthAt = 0;
   inferIntervalEma = 0;
   spawnWorker();
+}
+
+function retryDepthWorker() {
+  shell.hideRuntimeNotice();
+  diagnostics.record('depth.retry');
+  worker?.terminate();
+  worker = null;
+  workerBusy = false;
+  workerReady = false;
+  if (video?.srcObject) spawnWorker();
+  else void start();
 }
 
 async function openCamera(deviceId?: string) {
@@ -275,6 +346,7 @@ async function openCamera(deviceId?: string) {
   video.srcObject = stream;
   await video.play();
   sceneApi?.attachVideo(video);
+  diagnostics.record('camera.ready', { width: video.videoWidth, height: video.videoHeight });
 }
 
 async function refreshCameraList() {
@@ -301,10 +373,17 @@ function captureFrame(): ImageData | null {
 
 async function start() {
   shell.setBootStatus('Đang xin quyền camera…');
+  shell.setBootError('');
+  shell.hideRuntimeNotice();
+  worker?.terminate();
+  worker = null;
+  workerReady = false;
+  workerBusy = false;
   try {
     await openCamera();
     await refreshCameraList();
   } catch (e) {
+    diagnostics.record('camera.error', { message: e instanceof Error ? e.message : String(e) });
     shell.setBootError(
       `Không mở được camera: ${e instanceof Error ? e.message : String(e)}. RoboEye cần chạy trên localhost hoặc https và cần quyền camera.`
     );
@@ -323,6 +402,7 @@ async function boot() {
     return;
   }
   shell.setRenderBadge(sceneApi.isWebGPU);
+  diagnostics.record('renderer.ready', { backend: sceneApi.isWebGPU ? 'webgpu' : 'webgl2' });
   // TIP-05: obstacle alert từ BEV, hiện ở mọi chế độ
   sceneApi.bev.onStatus = (s) => shell.setAlert(s.alert ? s.nearest : null);
   shell.setBootStatus(
@@ -384,4 +464,24 @@ async function boot() {
   });
 }
 
+function syncNetwork() {
+  shell.setNetwork(navigator.onLine);
+  diagnostics.record('network.change', { online: navigator.onLine });
+}
+
+async function registerServiceWorker() {
+  if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return;
+  try {
+    const base = new URL(import.meta.env.BASE_URL, location.href);
+    const registration = await navigator.serviceWorker.register(new URL('sw.js', base));
+    diagnostics.record('service-worker.ready', { scope: registration.scope });
+  } catch (error) {
+    diagnostics.record('service-worker.error', { message: error instanceof Error ? error.message : String(error) });
+  }
+}
+
+window.addEventListener('online', syncNetwork);
+window.addEventListener('offline', syncNetwork);
+syncNetwork();
+void registerServiceWorker();
 void boot();

@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; child-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://huggingface.co https://*.huggingface.co https://*.hf.co https://*.xethub.hf.co" />
+  <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
+  <link rel="icon" href="%BASE_URL%icons/roboeye.svg" type="image/svg+xml" />
   <title>RoboEye · mắt robot trong trình duyệt</title>
   <meta name="description" content="Webcam sang depth sang point cloud sang BEV occupancy, chạy toàn bộ client-side qua WebGPU." />
 </head>
@@ -11,9 +16,11 @@
     <!-- Sidebar HIVE: đen fixed 192px -->
     <aside id="sidebar">
       <div class="brand">
-        <div class="brand-name">RoboEye</div>
+        <div class="brand-line"><div class="brand-name">RoboEye</div><span id="app-version" class="app-version">v…</span></div>
         <div class="brand-sub">Mắt robot trong trình duyệt</div>
       </div>
+
+      <button id="mobile-controls-btn" class="mobile-controls-btn" aria-expanded="false" aria-controls="sidebar-controls">Điều khiển</button>
 
       <nav class="modes" aria-label="Chế độ hiển thị">
         <button class="mode-btn" data-mode="rgb" data-key="1">
@@ -30,7 +37,7 @@
         </button>
       </nav>
 
-      <div class="controls">
+      <div id="sidebar-controls" class="controls">
         <label class="ctl">
           <span class="ctl-label">Camera</span>
           <select id="camera-select" aria-label="Chọn camera"></select>
@@ -83,11 +90,13 @@
       <div class="badges">
         <span id="badge-infer" class="badge" data-state="loading">INFER · …</span>
         <span id="badge-render" class="badge" data-state="loading">RENDER · …</span>
+        <span id="badge-network" class="badge" data-state="good">MẠNG · ONLINE</span>
       </div>
 
       <div class="sidebar-foot">
         <button id="freeze-btn" class="foot-btn">Freeze <span class="mode-key">F</span></button>
         <button id="panel-btn" class="foot-btn">Giải thích <span class="mode-key">?</span></button>
+        <button id="diagnostics-btn" class="foot-btn">Xuất chẩn đoán <span class="mode-key">JSON</span></button>
         <div class="honesty">Relative depth. Tỷ lệ ước lượng, không phải mét thật.</div>
       </div>
     </aside>
@@ -99,6 +108,24 @@
       <div id="frozen-tag" hidden>FROZEN · nhấn F để tiếp tục</div>
       <div id="alert-chip" hidden>VẬT CẢN GẦN</div>
       <div id="det-count" hidden>0 vật</div>
+
+      <section id="runtime-notice" class="runtime-notice" role="status" aria-live="polite" hidden>
+        <span id="runtime-notice-text"></span>
+        <div class="runtime-notice-actions">
+          <button id="runtime-retry-btn" class="notice-btn" hidden>Thử lại</button>
+          <button id="runtime-dismiss-btn" class="notice-btn">Ẩn</button>
+        </div>
+      </section>
+
+      <section id="tour" class="tour-card" aria-live="polite" hidden>
+        <div id="tour-index" class="tour-index">01 / 04</div>
+        <h2 id="tour-title">Camera là điểm xuất phát</h2>
+        <p id="tour-copy"></p>
+        <div class="tour-actions">
+          <button id="tour-skip" class="tour-skip">Thoát hướng dẫn</button>
+          <button id="tour-next" class="tour-next">Tiếp tục</button>
+        </div>
+      </section>
 
       <!-- Panel review vật thể để gán nhãn (P1-B) -->
       <aside id="obj-panel" hidden>
@@ -112,11 +139,21 @@
       <!-- Overlay khởi động -->
       <div id="boot">
         <div class="boot-card">
-          <div class="boot-title">RoboEye</div>
-          <div class="boot-sub">Pipeline perception của robot di động, chạy trong tab này. Khuyến nghị Chrome hoặc Edge bản mới. Camera không rời máy anh, không có server.</div>
+          <div class="boot-kicker">EDGE PERCEPTION · <span id="boot-version">v…</span></div>
+          <div class="boot-title">Từ camera<br />đến không gian.</div>
+          <div id="boot-sub" class="boot-sub">Camera ở lại trên máy. Lần đầu, trình duyệt chuẩn bị model; các lần sau dùng cache cục bộ.</div>
+          <ol class="perception-rail" aria-label="Bốn tầng perception">
+            <li><span>01</span><strong>Camera</strong><small>khung hình thật</small></li>
+            <li><span>02</span><strong>Depth</strong><small>xa gần tương đối</small></li>
+            <li><span>03</span><strong>Không gian</strong><small>point cloud 3D</small></li>
+            <li><span>04</span><strong>Di chuyển</strong><small>BEV và A*</small></li>
+          </ol>
           <div id="boot-status" class="boot-status">Đang chờ khởi động…</div>
           <div class="boot-bar"><div id="boot-progress" class="boot-fill"></div></div>
-          <button id="start-btn" class="boot-btn">Mở camera</button>
+          <div class="boot-actions">
+            <button id="start-btn" class="boot-btn">Mở camera</button>
+            <button id="demo-start-btn" class="boot-btn boot-btn-secondary">Demo 60 giây</button>
+          </div>
           <div id="boot-error" class="boot-error" hidden></div>
         </div>
       </div>

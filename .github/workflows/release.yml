@@ -1,0 +1,64 @@
+name: Release and Pages
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Verify tag matches package version
+        if: github.ref_type == 'tag'
+        run: test "$GITHUB_REF_NAME" = "v$(node -p "require('./package.json').version")"
+      - run: npm run qa
+      - run: npm run smoke
+      - name: Build Pages artifact
+        env:
+          ROBOEYE_BASE: /${{ github.event.repository.name }}/
+          ROBOEYE_COMMIT: ${{ github.sha }}
+        run: npm run build
+      - run: node scripts/verify-release.mjs
+      - run: tar -czf roboeye-v$(node -p "require('./package.json').version").tar.gz -C dist .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roboeye-static-v${{ github.run_number }}
+          path: roboeye-v*.tar.gz
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Publish GitHub release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" roboeye-v*.tar.gz --generate-notes --verify-tag
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy HTTPS Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

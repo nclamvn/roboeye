@@ -24,6 +24,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
 
 html, body { height: 100%; }
 
@@ -65,6 +66,11 @@ button, select, input { font-family: var(--font-ui); }
   letter-spacing: -0.02em;
   color: #ffffff;
 }
+
+.brand-line { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.app-version { font-family: var(--font-mono); font-size: 9px; color: var(--hive-subtle-inv); }
+
+.mobile-controls-btn { display: none; }
 
 .brand-sub {
   margin-top: 4px;
@@ -386,6 +392,66 @@ button, select, input { font-family: var(--font-ui); }
   background: rgba(11, 11, 10, 0.82);
 }
 
+/* ── Runtime recovery + guided tour ─────────────── */
+
+.runtime-notice {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 26;
+  width: min(560px, calc(100% - 32px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 12px;
+  border: 1px dashed var(--hive-border-inv);
+  border-radius: var(--radius-control);
+  background: rgba(20, 20, 19, 0.96);
+  color: var(--hive-muted-inv);
+  font-size: 11.5px;
+}
+
+.runtime-notice-actions, .tour-actions, .boot-actions { display: flex; align-items: center; gap: 8px; }
+
+.notice-btn, .tour-skip, .tour-next {
+  border: 1px solid var(--hive-border-inv);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--hive-ink-inv);
+  padding: 6px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.tour-card {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 25;
+  width: min(360px, calc(100% - 36px));
+  padding: 16px;
+  border: 1px solid var(--hive-border-inv);
+  border-radius: var(--radius-control);
+  background: rgba(20, 20, 19, 0.96);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+.tour-index, .boot-kicker {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.11em;
+  color: var(--hive-subtle-inv);
+}
+
+.tour-card h2 { margin-top: 8px; font-family: var(--font-display); font-size: 20px; font-weight: 400; }
+.tour-card p { min-height: 54px; margin: 7px 0 14px; color: var(--hive-muted-inv); font-size: 12px; line-height: 1.6; }
+.tour-actions { justify-content: space-between; }
+.tour-skip { color: var(--hive-subtle-inv); }
+.tour-next { background: var(--hive-ink-inv); color: var(--hive-sidebar); border-color: var(--hive-ink-inv); font-weight: 600; }
+
 /* ── Boot overlay ────────────────────────────────── */
 
 #boot {
@@ -401,11 +467,25 @@ button, select, input { font-family: var(--font-ui); }
 
 #boot.hidden { opacity: 0; pointer-events: none; }
 
-.boot-card { width: min(430px, 84%); display: flex; flex-direction: column; gap: 14px; }
+.boot-card { width: min(700px, 88%); display: flex; flex-direction: column; gap: 14px; }
 
-.boot-title { font-family: var(--font-display); font-size: 44px; letter-spacing: -0.02em; color: #ffffff; }
+.boot-title { font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; color: #ffffff; }
 
-.boot-sub { color: var(--hive-muted-inv); font-size: 13px; line-height: 1.6; }
+.boot-sub { max-width: 540px; color: var(--hive-muted-inv); font-size: 13px; line-height: 1.6; }
+
+.perception-rail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  list-style: none;
+  border-top: 1px solid var(--hive-border-inv);
+  border-bottom: 1px solid var(--hive-border-inv);
+}
+
+.perception-rail li { position: relative; display: grid; gap: 2px; padding: 12px 12px 12px 0; }
+.perception-rail li:not(:last-child)::after { content: ''; position: absolute; top: 12px; right: 10px; bottom: 12px; width: 1px; background: var(--hive-hairline-inv); }
+.perception-rail span { font-family: var(--font-mono); font-size: 9px; color: var(--hive-subtle-inv); }
+.perception-rail strong { font-family: var(--font-display); font-size: 14px; font-weight: 400; }
+.perception-rail small { font-size: 9.5px; color: var(--hive-subtle-inv); }
 
 .boot-status { font-family: var(--font-mono); font-size: 11px; color: var(--hive-subtle-inv); min-height: 15px; }
 
@@ -428,6 +508,8 @@ button, select, input { font-family: var(--font-ui); }
 
 .boot-btn:hover { transform: translateY(-1px); }
 .boot-btn:disabled { opacity: 0.4; cursor: default; transform: none; }
+.boot-btn-secondary { color: var(--hive-ink-inv); background: transparent; border: 1px solid var(--hive-border-inv); }
+.boot-btn-secondary.recommended { color: var(--hive-sidebar); background: var(--hive-ink-inv); border-color: var(--hive-ink-inv); border-style: solid; }
 
 .boot-error { font-size: 12px; color: var(--hive-ink-inv); border: 1px dashed var(--hive-border-inv); border-radius: var(--radius-control); padding: 10px 12px; }
 
@@ -492,3 +574,66 @@ button, select, input { font-family: var(--font-ui); }
 .panel-sec.current h3 { text-decoration: underline; text-underline-offset: 4px; }
 
 .panel-note { margin-top: 10px; }
+
+@media (max-width: 700px) {
+  body { overflow: hidden; }
+  #app { flex-direction: column; }
+  #sidebar {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    max-height: 142px;
+    padding: 10px 10px 8px;
+    gap: 8px;
+    border-right: none;
+    border-bottom: 1px solid var(--hive-border-inv);
+    overflow: hidden;
+    z-index: 28;
+  }
+  #sidebar.mobile-open { max-height: min(72vh, 620px); overflow-y: auto; }
+  .brand-sub { display: none; }
+  .mobile-controls-btn {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid var(--hive-border-inv);
+    border-radius: var(--radius-control);
+    background: var(--hive-plate-2);
+    color: var(--hive-muted-inv);
+    padding: 5px 9px;
+    font-size: 10px;
+  }
+  .modes { flex-direction: row; gap: 3px; padding-right: 0; }
+  .mode-btn { flex: 1; justify-content: center; padding: 6px 4px; gap: 5px; }
+  .controls, .meters, .badges { display: none; }
+  #sidebar.mobile-open .controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #sidebar.mobile-open .meters { display: grid; grid-template-columns: 1fr 1fr; }
+  #sidebar.mobile-open .badges { display: flex; }
+  .sidebar-foot { margin-top: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sidebar-foot .foot-btn { justify-content: center; font-size: 10px; padding: 6px 4px; }
+  .sidebar-foot .mode-key, .honesty { display: none; }
+  #viewport { min-height: 0; }
+  #obj-panel { top: 10px; right: 10px; width: min(210px, calc(100% - 20px)); max-height: 48%; }
+  .boot-card { width: min(92%, 560px); gap: 10px; }
+  .boot-title { font-size: clamp(36px, 12vw, 54px); }
+  .perception-rail { grid-template-columns: 1fr 1fr; }
+  .perception-rail li:nth-child(2)::after { display: none; }
+  .perception-rail li { padding: 8px 8px 8px 0; }
+  .tour-card { right: 10px; bottom: 10px; width: calc(100% - 20px); }
+  .runtime-notice { bottom: 10px; width: calc(100% - 20px); }
+}
+
+@media (max-width: 420px) {
+  #sidebar { max-height: 132px; }
+  .brand-name { font-size: 18px; }
+  .mode-label { font-size: 10px; }
+  .boot-sub { font-size: 11.5px; }
+  .perception-rail small { display: none; }
+  .boot-actions { align-items: stretch; }
+  .boot-btn { flex: 1; justify-content: center; padding: 9px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

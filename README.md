@@ -6,7 +6,7 @@ Model: Depth Anything V2 Small (apache-2.0, bản ONNX của onnx-community) qua
 
 ## Chạy
 
-Yêu cầu Node 18+ và Chrome hoặc Edge bản mới. Lần chạy đầu cần mạng để tải model khoảng 50MB từ Hugging Face, sau đó trình duyệt cache lại.
+Yêu cầu Node 20.19+ và Chrome hoặc Edge bản mới. Lần chạy đầu cần mạng để tải model khoảng 50MB từ Hugging Face, sau đó trình duyệt cache lại.
 
 ```bash
 npm install
@@ -21,6 +21,10 @@ npm run preview    # mở http://localhost:4173
 ```
 
 Webcam chỉ mở được trên localhost hoặc https. Muốn chia sẻ link cho các team, deploy thư mục `dist/` lên bất kỳ static host https nào (Netlify, Vercel, GitHub Pages).
+
+Màn hình đầu tiên có hai đường vào: **Mở camera** để dùng trực tiếp, hoặc
+**Demo 60 giây** để được dẫn qua RGB → Depth → Point Cloud → BEV. Thêm
+`?demo=1` vào URL nếu muốn CTA demo là hành động mặc định khi trình chiếu.
 
 ## Phím và điều khiển
 
@@ -49,6 +53,18 @@ Các định dạng xuất:
 - `?wasm=1` ép inference WASM (tự hạ inference size về 140, badge nói thật)
 - `?localmodels=1` chỉ load model từ `/models/` trên chính origin thay vì Hugging Face, dùng cho demo offline.
 
+Bản offline depth chuẩn được tạo tự động, không cần chép model bằng tay:
+
+```bash
+npm run build:offline
+npm run preview
+```
+
+Lệnh này kiểm revision + SHA-256, đóng model depth q8 vào `dist/models/` và
+đặt ứng dụng sang WASM/local model ngay từ build. Detection bị khóa trong artifact
+offline vì RT-DETR/OWL-ViT chưa có manifest được phê duyệt. Model sinh ra chỉ nằm
+trong `dist/` và cache bị ignore, không được commit.
+
 Với demo offline, giữ nguyên cấu trúc snapshot của từng model dưới `public/models/`:
 
 ```text
@@ -71,14 +87,29 @@ Chạy trước khi share screen Zoom để đèn camera bật sẵn và model �
 
 Depth Anything trả về relative depth, nghĩa là xa gần tương đối chứ không phải mét thật. Ghi chú này hiển thị cố định trên UI. FOV camera là giả định 60 độ, tinh chỉnh được trong panel. Badge góc trái luôn hiển thị backend thật đang chạy.
 
+Nút **Xuất chẩn đoán** tạo JSON gồm version, trạng thái mạng và tối đa 80 sự
+kiện vận hành. Log nằm trong trình duyệt, không chứa frame camera/query/annotation
+và không tự gửi đi đâu.
+
+## Phát hành và deploy
+
+- `npm run release:verify`: build và kiểm version, CSP, headers, manifest, service worker.
+- `npm run build:offline`: tạo artifact depth q8 tự chứa.
+- Workflow CI chạy browser contract trên pull request; real-depth smoke chạy trên main/lịch tuần.
+- Workflow release deploy `dist/` lên GitHub Pages HTTPS và tạo archive khi push tag `v1.2.0`.
+
+Quy trình bật Pages, rollback và giới hạn security header được ghi tại
+`docs/DEPLOYMENT.md`. Codex không tự push/tag hay bật Pages trong tài khoản GitHub.
+
 ## Kiểm thử
 
 ```bash
 npm run typecheck
 npm run test:unit
-npm run security:audit
 npm run build
+npm run security:audit
 npm run test:detection-e2e  # contract/UI detection bằng mock Worker, không đo chất lượng model
+npm run test:release-e2e    # onboarding, responsive, diagnostics và app shell offline
 npm run smoke               # tự chuẩn bị fixture + build, chạy depth q8 thật qua WASM
 ```
 
@@ -99,6 +130,8 @@ Nghiệm thu hiệu năng trên máy thật theo `docs/REGISTRY-NOTES.md` (đón
 ```
 src/main.ts              orchestration, latest-frame-wins capture loop
 src/annotations.ts       bộ chuyển đổi thuần COCO, YOLO và 3D JSON
+src/depth-state.ts       recovery contract cho lỗi load/inference depth
+src/runtime-diagnostics.ts local-only bounded operational events
 src/detection-state.ts   quy tắc phục hồi trạng thái detection
 src/detection-types.ts   contract message/box dùng chung cho detection
 src/worker/depth-worker.ts   transformers.js pipeline trong Web Worker

@@ -90,7 +90,7 @@ async function init(dtype: 'fp16' | 'q4f16', forceWasm = false, localModels = fa
     });
     post({ type: 'ready', device: 'wasm', dtype: 'q8' });
   } catch (e) {
-    post({ type: 'error', message: `Không load được model: ${e instanceof Error ? e.message : String(e)}` });
+    post({ type: 'error', stage: 'load', message: `Không load được model: ${e instanceof Error ? e.message : String(e)}` });
   }
 }
 
@@ -109,7 +109,7 @@ async function inferFrame(rgba: ArrayBuffer, width: number, height: number) {
       [out.buffer]
     );
   } catch (e) {
-    post({ type: 'error', message: `Inference lỗi: ${e instanceof Error ? e.message : String(e)}` });
+    post({ type: 'error', stage: 'infer', message: `Inference lỗi: ${e instanceof Error ? e.message : String(e)}` });
   } finally {
     busy = false;
   }

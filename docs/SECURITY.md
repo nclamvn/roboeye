@@ -55,3 +55,12 @@ The gate fails when:
 - sharp/libvips/native markers enter the deployed JavaScript.
 
 The gate prints `PASS` only when all conditions remain true. It continues to print the accepted advisory and its review deadline.
+
+## Browser and release controls (v1.2.0)
+
+- `index.html` carries a CSP that limits scripts/workers/assets to the static app plus the approved Hugging Face model origins.
+- `_headers` and `vercel.json` define CSP, `camera=(self)`, disabled microphone/geolocation/payment/USB, no sniffing and frame denial for supporting static hosts.
+- GitHub Pages does not apply repository `_headers`; the HTML CSP remains active there, while `frame-ancestors` and `Permissions-Policy` require a host with response-header support.
+- The service worker only intercepts GET requests on RoboEye's own origin. It does not proxy or cache remote telemetry.
+- Runtime diagnostics are bounded to 80 local events, sanitize values to primitives and exclude camera buffers, object labels and detection query text. Export requires a user click.
+- Offline release contains the pinned depth q8 model only. Detection remains disabled because no approved offline detection manifest exists.
