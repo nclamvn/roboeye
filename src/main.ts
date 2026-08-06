@@ -11,8 +11,10 @@ import './styles.css';
 
 import { createShell } from './ui/shell';
 import { createScene, type SceneAPI } from './render/scene';
+import { createCocoExport, createRelative3dExport, createYoloExport } from './annotations';
+import { recoverDetectionError } from './detection-state';
 import type { WorkerToMain, Dtype } from './types';
-import type { DetBox } from './worker/detect-worker';
+import type { DetBox, DetectionEngine, DetectionWorkerToMain } from './detection-types';
 
 let sceneApi: SceneAPI | null = null;
 let worker: Worker | null = null;
@@ -37,7 +39,7 @@ let detectBusy = false;
 let detectOn = false;
 let lastBoxes: DetBox[] = []; // cũng là tập annotation khi frozen
 let selectedObj = -1;
-let engine: 'rtdetr' | 'owlvit' = 'rtdetr';
+let engine: DetectionEngine = 'rtdetr';
 let queries: string[] = ['person', 'chair', 'laptop', 'cup'];
 let detW = 0;
 let detH = 0;
@@ -63,50 +65,15 @@ function exportAnnotations(fmt: 'coco' | 'yolo' | '3d') {
   const H = detH || 720;
   if (lastBoxes.length === 0) return;
   if (fmt === 'yolo') {
-    const classes = [...new Set(lastBoxes.map((b) => b.label))];
-    const lines = lastBoxes.map((b) => {
-      const cx = (b.x0 + b.x1) / 2;
-      const cy = (b.y0 + b.y1) / 2;
-      const w = b.x1 - b.x0;
-      const h = b.y1 - b.y0;
-      return `${classes.indexOf(b.label)} ${cx.toFixed(6)} ${cy.toFixed(6)} ${w.toFixed(6)} ${h.toFixed(6)}`;
-    });
-    downloadFile('roboeye-labels.txt', lines.join('\n') + '\n');
-    downloadFile('classes.txt', classes.join('\n') + '\n');
+    const yolo = createYoloExport(lastBoxes);
+    downloadFile('roboeye-labels.txt', yolo.labelsText);
+    downloadFile('classes.txt', yolo.classesText);
   } else if (fmt === 'coco') {
-    const classes = [...new Set(lastBoxes.map((b) => b.label))];
-    const coco = {
-      images: [{ id: 1, width: W, height: H, file_name: 'frame.jpg' }],
-      categories: classes.map((c, i) => ({ id: i + 1, name: c })),
-      annotations: lastBoxes.map((b, i) => ({
-        id: i + 1,
-        image_id: 1,
-        category_id: classes.indexOf(b.label) + 1,
-        bbox: [b.x0 * W, b.y0 * H, (b.x1 - b.x0) * W, (b.y1 - b.y0) * H].map((v) => +v.toFixed(1)),
-        area: +((b.x1 - b.x0) * W * (b.y1 - b.y0) * H).toFixed(1),
-        score: +b.score.toFixed(3),
-        iscrowd: 0
-      }))
-    };
+    const coco = createCocoExport(lastBoxes, { width: W, height: H });
     downloadFile('roboeye-coco.json', JSON.stringify(coco, null, 2), 'application/json');
   } else {
     const d3 = sceneApi?.getDetections3D() ?? [];
-    const out = {
-      note: 'RoboEye 3D annotations. box3d ở không gian view, tỷ lệ TƯƠNG ĐỐI (chưa metric). Bật Depth Pro metric mode để ra mét thật.',
-      scale: 'relative',
-      image: { width: W, height: H },
-      objects: lastBoxes.map((b, i) => ({
-        label: b.label,
-        score: +b.score.toFixed(3),
-        box2d: { x0: +b.x0.toFixed(4), y0: +b.y0.toFixed(4), x1: +b.x1.toFixed(4), y1: +b.y1.toFixed(4) },
-        box3d: d3[i]
-          ? {
-              center: [+d3[i]!.cx.toFixed(3), +d3[i]!.cy.toFixed(3), +d3[i]!.cz.toFixed(3)],
-              half_extents: [+d3[i]!.hx.toFixed(3), +d3[i]!.hy.toFixed(3), +d3[i]!.hz.toFixed(3)]
-            }
-          : null
-      }))
-    };
+    const out = createRelative3dExport(lastBoxes, { width: W, height: H }, d3);
     downloadFile('roboeye-3d.json', JSON.stringify(out, null, 2), 'application/json');
   }
 }
@@ -191,24 +158,39 @@ function spawnDetectWorker() {
   detectReady = false;
   detectBusy = false;
   shell.setObjStatus('đang tải model…');
-  detectWorker.onmessage = (ev: MessageEvent) => {
+  detectWorker.onmessage = (ev: MessageEvent<DetectionWorkerToMain>) => {
     const m = ev.data;
-    if (m.type === 'loading') shell.setObjStatus('đang tải model…');
-    else if (m.type === 'ready') {
+    if (m.type === 'loading') {
+      detectReady = false;
+      detectBusy = false;
+      shell.setObjStatus('đang tải model…');
+    } else if (m.type === 'ready') {
       detectReady = true;
+      detectBusy = false;
       shell.setObjStatus(engine === 'owlvit' ? 'OWL-ViT · gõ chữ ra lớp' : 'RT-DETR · COCO');
     } else if (m.type === 'det') {
       detectBusy = false;
       if (!frozen) {
-        lastBoxes = m.boxes as DetBox[];
+        lastBoxes = m.boxes;
         selectedObj = -1;
         refreshAnnotations();
         shell.setObjStatus(`${lastBoxes.length} vật · ${engine === 'owlvit' ? 'OWL-ViT' : 'RT-DETR'}`);
       }
     } else if (m.type === 'error') {
+      const recovery = recoverDetectionError(m.stage);
+      detectBusy = recovery.busy;
+      detectReady = recovery.ready;
       console.error('[roboeye-detect]', m.message);
-      shell.setObjStatus('lỗi model');
+      shell.setObjStatus(recovery.status);
     }
+  };
+  detectWorker.onerror = (event) => {
+    detectBusy = false;
+    detectReady = false;
+    detectWorker?.terminate();
+    detectWorker = null;
+    console.error('[roboeye-detect-worker]', event.message || 'worker crash');
+    shell.setObjStatus('worker lỗi · tắt/bật để thử lại');
   };
   detectWorker.postMessage({ type: 'init', forceWasm, localModels, engine, queries });
 }

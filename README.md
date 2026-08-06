@@ -28,11 +28,36 @@ Phím 1 2 3 4 chuyển bốn chế độ RGB, Depth, Point Cloud, BEV Grid. Phí
 
 Hai đồng hồ fps độc lập là hành vi đúng: render chạy 60fps trong khi inference chậm hơn, point cloud nội suy giữa hai depth frame nên chuyển động vẫn mềm.
 
+## Nhận diện và gán nhãn
+
+Bật **Nhận diện vật thể** trong sidebar để chạy worker detection độc lập với depth:
+
+- **RT-DETR** nhận diện nhanh các lớp COCO có sẵn.
+- **OWL-ViT** tìm lớp open-vocabulary; nhập các tên cần tìm, cách nhau bằng dấu phẩy.
+
+Box 2D hiện trên RGB/Depth. Trong Point Cloud, RoboEye ghép box với relative depth để dựng box 3D tương đối. Nhấn F để đóng băng tập detection hiện tại, sau đó chọn vật thể, sửa nhãn hoặc xóa box trong panel. Annotation chỉ nằm trong bộ nhớ của tab cho đến khi xuất file.
+
+Các định dạng xuất:
+
+- **COCO:** một image record và annotation `bbox` pixel dạng `x, y, width, height`.
+- **YOLO:** `class cx cy width height` đã chuẩn hóa, kèm `classes.txt`.
+- **3D JSON:** box 2D và box 3D trong không gian view theo tỷ lệ tương đối. Đây không phải tọa độ mét thật.
+
 ## Switch fallback và demo offline
 
 - `?webgl=1` ép render WebGL2 (demo "tắt WebGPU vẫn sống")
 - `?wasm=1` ép inference WASM (tự hạ inference size về 140, badge nói thật)
-- `?localmodels=1` load model từ `/models/` trên chính origin thay vì Hugging Face, dùng cho demo offline. Cách chuẩn bị: tải `config.json`, `preprocessor_config.json` và `onnx/model_quantized.onnx` (hoặc `model_fp16.onnx`) từ repo `onnx-community/depth-anything-v2-small` vào `public/models/onnx-community/depth-anything-v2-small/` rồi build lại.
+- `?localmodels=1` chỉ load model từ `/models/` trên chính origin thay vì Hugging Face, dùng cho demo offline.
+
+Với demo offline, giữ nguyên cấu trúc snapshot của từng model dưới `public/models/`:
+
+```text
+public/models/onnx-community/depth-anything-v2-small/
+public/models/onnx-community/rtdetr_v2_r18vd-ONNX/
+public/models/Xenova/owlvit-base-patch32/
+```
+
+Mỗi snapshot phải gồm config, preprocessor/tokenizer liên quan và các file ONNX mà Transformers.js chọn theo dtype/device. Nếu chỉ chuẩn bị model depth, bốn chế độ perception vẫn chạy nhưng không bật được detection offline. Mặc định không có `?localmodels=1`, trình duyệt tải model cần dùng từ Hugging Face và cache lại.
 
 Runtime WASM của onnxruntime được tự host trong `/ort/` (script `scripts/copy-ort.mjs` chạy tự động trước dev và build), không phụ thuộc CDN lúc chạy.
 
@@ -49,6 +74,8 @@ Depth Anything trả về relative depth, nghĩa là xa gần tương đối ch�
 ## Kiểm thử
 
 ```bash
+npm run typecheck
+npm run test:unit
 npm run build
 npm run smoke      # E2E headless với fake webcam, cần model cache local (xem tests/smoke.mjs)
 ```
@@ -59,7 +86,11 @@ Nghiệm thu hiệu năng trên máy thật theo `docs/REGISTRY-NOTES.md` (đón
 
 ```
 src/main.ts              orchestration, latest-frame-wins capture loop
+src/annotations.ts       bộ chuyển đổi thuần COCO, YOLO và 3D JSON
+src/detection-state.ts   quy tắc phục hồi trạng thái detection
+src/detection-types.ts   contract message/box dùng chung cho detection
 src/worker/depth-worker.ts   transformers.js pipeline trong Web Worker
+src/worker/detect-worker.ts  RT-DETR và OWL-ViT trong Web Worker riêng
 src/render/scene.ts      WebGPURenderer, 4 chế độ, point cloud TSL
 src/render/bev.ts        BEV occupancy: bin CPU, EMA, hysteresis
 src/ui/shell.ts          sidebar HIVE, phím tắt, meters, badges

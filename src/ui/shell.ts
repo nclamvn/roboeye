@@ -2,7 +2,7 @@
 // DOM thuần, không framework (mục 7 PRD).
 
 import type { Mode, InferDevice } from '../types';
-import type { DetBox } from '../worker/detect-worker';
+import type { DetBox, DetectionEngine } from '../detection-types';
 
 export interface ShellCallbacks {
   onMode(mode: Mode): void;
@@ -13,7 +13,7 @@ export interface ShellCallbacks {
   onFov(deg: number): void;
   onFreeze(frozen: boolean): void;
   onDetect(on: boolean): void;
-  onEngine(engine: 'rtdetr' | 'owlvit'): void;
+  onEngine(engine: DetectionEngine): void;
   onQueries(list: string[]): void;
   onExport(fmt: 'coco' | 'yolo' | '3d'): void;
   onSelectObject(idx: number): void;
@@ -82,7 +82,7 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
   const objStatus = $('#obj-status');
 
   engineSelect.addEventListener('change', () => {
-    const e = engineSelect.value as 'rtdetr' | 'owlvit';
+    const e = engineSelect.value as DetectionEngine;
     queryCtl.hidden = e !== 'owlvit';
     cb.onEngine(e);
   });

@@ -7,7 +7,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { texture, uniform, uv, float, vec2, vec3, mix, floor as tslFloor, instanceIndex, varying } from 'three/tsl';
 import { BevBuilder } from './bev';
 import type { Mode } from '../types';
-import type { DetBox } from '../worker/detect-worker';
+import type { DetBox, RelativeBox3D } from '../detection-types';
 
 // Ánh xạ relative depth (0..1, 1 = gần) sang khoảng cách tương đối qua inverse depth
 const Z_NEAR = 0.5;
@@ -35,7 +35,7 @@ export interface SceneAPI {
   setFrozen(frozen: boolean): void;
   setDetections(boxes: DetBox[]): void;
   setSelectedBox(idx: number): void;
-  getDetections3D(): Array<{ cx: number; cy: number; cz: number; hx: number; hy: number; hz: number } | null>;
+  getDetections3D(): Array<RelativeBox3D | null>;
   resize(): void;
   render(dtMs: number): void;
   dispose(): void;
