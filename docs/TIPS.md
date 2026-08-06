@@ -28,3 +28,13 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - **Dependencies:** TIP-03. **Priority:** P2 (bỏ đầu tiên nếu thiếu giờ).
 - **Task:** panel giải thích tiếng Việt trượt từ phải, phím ?, mỗi chế độ một đoạn cho người không chuyên (R9), FOV slider trong panel; switch fallback tường minh `?webgl=1` `?wasm=1` để demo "tắt WebGPU vẫn sống"; README kèm demo script 5 phút và mục ghi số đo F10; smoke test E2E fake webcam.
 - **Acceptance:** chạy trọn kịch bản demo PRD mục 5 không vấp; làn fallback render được point cloud và inference WASM tự hạ 140px, badge nói thật.
+
+## TIP-05 · Obstacle alert (phase 2)
+
+- **Task:** từ BEV grid tính vật cản gần nhất trong quạt FOV, dưới ngưỡng 1.15 đơn vị thì hiện chip cảnh báo dashed góc phải trên ở mọi chế độ, kèm khoảng cách tương đối. Monochrome, không màu đỏ (HIVE: status không phụ thuộc màu).
+- **Acceptance:** người bước lại gần camera thì chip hiện kèm số, lùi ra thì tắt.
+
+## TIP-06 · Robot ảo A* trên BEV (phase 2, nối đề tài 011)
+
+- **Task:** A* 8 hướng có binary heap trên grid 96×96, occupied inflate 1 ô thành blocked, ngoài FOV là unknown đi được với phạt nhẹ, chặn lách chéo qua khe. Robot ảo xuất phát tại camera, click lên grid đặt đích, di chuyển mượt theo render frame (1.5 đv/s), replan mỗi depth frame nên người thật bước vào là đường tự vòng qua. HUD chữ mono ghi số bước hoặc KHÔNG CÓ ĐƯỜNG. Đích mặc định tự chọn ô free xa nhất giữa FOV.
+- **Acceptance:** click đặt đích thấy đường và robot chạy; đứng chắn đường thấy path bẻ cong theo thời gian thực.

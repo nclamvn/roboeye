@@ -156,6 +156,20 @@ try {
   await page.screenshot({ path: `${OUT}05-frozen.png` });
   await page.keyboard.press('f');
 
+  // 8b. TIP-05/06: alert chip tồn tại, click đặt đích trên BEV không gây lỗi
+  await page.keyboard.press('4');
+  await page.waitForTimeout(1200);
+  const chipExists = (await page.locator('#alert-chip').count()) === 1;
+  check('TIP-05 alert chip có trong DOM', chipExists);
+  const vp = await page.evaluate(() => {
+    const r = document.getElementById('viewport').getBoundingClientRect();
+    return { x: r.x + r.width / 2, y: r.y + r.height * 0.3 };
+  });
+  await page.mouse.click(vp.x, vp.y);
+  await page.waitForTimeout(1500);
+  await page.screenshot({ path: `${OUT}07-bev-goal.png` });
+  log('TIP-06 đã click đặt đích trên BEV, chụp 07-bev-goal.png');
+
   // 9. Panel giải thích (R9)
   await page.keyboard.press('?');
   await page.waitForTimeout(400);

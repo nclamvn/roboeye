@@ -56,3 +56,15 @@ Thợ nộp 01/08/2026. Môi trường build: container cloud Cowork, Node 22, C
 **SUGGESTIONS cho Chủ thầu:**
 1. Container dùng Chromium bản cũ thiếu API `swizzle` mà three r185 WebGPU cần, nên làn WebGPU thật chỉ kiểm được trên máy Chủ nhà với Chrome/Edge mới. Đã ghi vào checklist nghiệm thu.
 2. Phase 2 có thể thêm nút "Chụp PNG point cloud" một dòng code, hữu ích cho slide bài giảng của các team.
+
+## REPORT TIP-05 + TIP-06 (phase 2)
+
+**STATUS:** DONE
+
+**FILES:** `src/render/astar.ts` (mới), `src/render/bev.ts` (viết lại: tách grid layer offscreen + compose mỗi frame), `src/render/scene.ts` (click đặt đích, compose theo render loop), `src/ui/shell.ts` + `index.html` + `src/styles.css` (alert chip, panel), `src/main.ts` (nối status), `README.md` (demo script v2), `tests/smoke.mjs` (+2 check).
+
+**TEST:** smoke 15/15 PASS. Screenshot `07-bev-goal.png`: path A* 50 bước vòng qua cụm occupied, robot + đích + chip cảnh báo 0.9 đv hiển thị đúng.
+
+**DEVIATIONS:** khoảng cách cảnh báo hiển thị bằng "đv" (đơn vị tương đối) thay vì mét vì depth là relative (F11), giữ kỷ luật trung thực thay vì quy đổi giả. (L1)
+
+**ISSUES:** không.
