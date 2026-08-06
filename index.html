@@ -50,6 +50,29 @@
             <option value="q4f16">q4f16 · ~18MB</option>
           </select>
         </label>
+        <label class="ctl ctl-check">
+          <input id="detect-toggle" type="checkbox" />
+          <span class="ctl-label">Nhận diện vật thể</span>
+        </label>
+        <div id="label-tools" hidden>
+          <label class="ctl">
+            <span class="ctl-label">Engine</span>
+            <select id="engine-select" aria-label="Chọn engine nhận diện">
+              <option value="rtdetr">RT-DETR · COCO nhanh</option>
+              <option value="owlvit">OWL-ViT · gõ chữ ra lớp</option>
+            </select>
+          </label>
+          <label class="ctl" id="query-ctl" hidden>
+            <span class="ctl-label">Lớp cần tìm <span class="ctl-value">phẩy ngăn</span></span>
+            <input id="query-input" type="text" value="person, chair, laptop, cup" spellcheck="false" />
+          </label>
+          <div class="label-hint">Nhấn <span class="mode-key">F</span> để chụp khung và gán nhãn. Xuất:</div>
+          <div class="export-row">
+            <button id="exp-coco" class="foot-btn export-btn">COCO</button>
+            <button id="exp-yolo" class="foot-btn export-btn">YOLO</button>
+            <button id="exp-3d" class="foot-btn export-btn">3D JSON</button>
+          </div>
+        </div>
       </div>
 
       <div class="meters">
@@ -72,8 +95,19 @@
     <!-- Viewport 3D chiếm trọn -->
     <main id="viewport">
       <canvas id="gl"></canvas>
+      <svg id="det-overlay" hidden></svg>
       <div id="frozen-tag" hidden>FROZEN · nhấn F để tiếp tục</div>
       <div id="alert-chip" hidden>VẬT CẢN GẦN</div>
+      <div id="det-count" hidden>0 vật</div>
+
+      <!-- Panel review vật thể để gán nhãn (P1-B) -->
+      <aside id="obj-panel" hidden>
+        <div class="obj-head">
+          <span class="obj-title">Vật thể</span>
+          <span id="obj-status" class="obj-status">đang nhận diện…</span>
+        </div>
+        <div id="obj-list" class="obj-list"></div>
+      </aside>
 
       <!-- Overlay khởi động -->
       <div id="boot">

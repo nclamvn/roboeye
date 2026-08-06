@@ -7,6 +7,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { texture, uniform, uv, float, vec2, vec3, mix, floor as tslFloor, instanceIndex, varying } from 'three/tsl';
 import { BevBuilder } from './bev';
 import type { Mode } from '../types';
+import type { DetBox } from '../worker/detect-worker';
 
 // Ánh xạ relative depth (0..1, 1 = gần) sang khoảng cách tương đối qua inverse depth
 const Z_NEAR = 0.5;
@@ -24,6 +25,7 @@ export interface SceneAPI {
   cloudCount: number;
   bev: BevBuilder;
   unprojectParams(): { tanH: number; aspect: number; invNear: number; invFar: number; signX: number };
+  imageRectPx(): { x: number; y: number; w: number; h: number };
   attachVideo(video: HTMLVideoElement): void;
   setMode(mode: Mode): void;
   uploadColor(img: ImageData): void;
@@ -31,6 +33,9 @@ export interface SceneAPI {
   setFov(deg: number): void;
   setPointScale(mult: number): void;
   setFrozen(frozen: boolean): void;
+  setDetections(boxes: DetBox[]): void;
+  setSelectedBox(idx: number): void;
+  getDetections3D(): Array<{ cx: number; cy: number; cz: number; hx: number; hy: number; hz: number } | null>;
   resize(): void;
   render(dtMs: number): void;
   dispose(): void;
@@ -167,6 +172,104 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   gridHelper.visible = false;
   scene.add(gridHelper);
 
+  // ── Fusion: 3D box wireframe nâng từ detection + depth (engine v2) ──
+  const boxGroup = new THREE.Group();
+  boxGroup.visible = false;
+  scene.add(boxGroup);
+  const boxMat = new THREE.LineBasicMaterial({ color: 0x8c8c8c }); // vật thường: xám
+  const boxMatSel = new THREE.LineBasicMaterial({ color: 0xffffff }); // vật đang chọn: trắng
+  let detBoxes: DetBox[] = [];
+  let selectedBox = -1;
+  // Tham số 3D box (không gian view, tỷ lệ tương đối) để export
+  const det3d: Array<{ cx: number; cy: number; cz: number; hx: number; hy: number; hz: number } | null> = [];
+
+  // Nâng một điểm ảnh (u,vTop raw, 0..1) + depth d → toạ độ world khớp point cloud
+  function liftPoint(u: number, vTop: number, d: number): [number, number, number] {
+    const tanH = uTanH.value as number;
+    const aspect = uAspect.value as number;
+    const invNear = uInvNear.value as number;
+    const invFar = uInvFar.value as number;
+    const signX = uSignX.value as number;
+    const z = 1 / (invFar + (invNear - invFar) * d);
+    const x = (u - 0.5) * 2 * tanH * z * signX;
+    const y = (0.5 - vTop) * 2 * tanH * z / aspect;
+    return [x, y, -z];
+  }
+
+  function rebuildBoxes() {
+    boxGroup.clear();
+    det3d.length = 0;
+    const data = depthCurrTex.image.data as Uint8Array;
+    const dw = depthCurrTex.image.width;
+    const dh = depthCurrTex.image.height;
+    if (dw < 2 || dh < 2) return;
+    detBoxes.forEach((b, idx) => {
+      // Lấy mẫu depth trong box, dùng percentile để bỏ nền xa lọt vào khung
+      const samples: number[] = [];
+      const SN = 9;
+      for (let iy = 1; iy < SN; iy++) {
+        for (let ix = 1; ix < SN; ix++) {
+          const u = b.x0 + (b.x1 - b.x0) * (ix / SN);
+          const v = b.y0 + (b.y1 - b.y0) * (iy / SN);
+          const px = Math.min(dw - 1, Math.max(0, Math.round(u * dw)));
+          const py = Math.min(dh - 1, Math.max(0, Math.round(v * dh)));
+          samples.push(data[py * dw + px] / 255);
+        }
+      }
+      if (samples.length === 0) {
+        det3d.push(null);
+        return;
+      }
+      samples.sort((a, c) => a - c);
+      // vật thường gần hơn nền: lấy dải depth gần (percentile cao vì 1 = gần)
+      const dNear = samples[Math.floor(samples.length * 0.85)];
+      const dFar = samples[Math.floor(samples.length * 0.5)];
+      if (dNear <= 0.02) {
+        det3d.push(null);
+        return;
+      }
+      // 8 góc: 4 góc box ở dNear và dFar
+      const corners: Array<[number, number, number]> = [];
+      for (const d of [dNear, dFar]) {
+        corners.push(liftPoint(b.x0, b.y0, d));
+        corners.push(liftPoint(b.x1, b.y0, d));
+        corners.push(liftPoint(b.x1, b.y1, d));
+        corners.push(liftPoint(b.x0, b.y1, d));
+      }
+      const geo = boxWireframe(corners);
+      boxGroup.add(new THREE.LineSegments(geo, idx === selectedBox ? boxMatSel : boxMat));
+      // AABB cho export
+      let minX = Infinity, minY = Infinity, minZ = Infinity, maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
+      for (const c of corners) {
+        minX = Math.min(minX, c[0]); maxX = Math.max(maxX, c[0]);
+        minY = Math.min(minY, c[1]); maxY = Math.max(maxY, c[1]);
+        minZ = Math.min(minZ, c[2]); maxZ = Math.max(maxZ, c[2]);
+      }
+      det3d.push({
+        cx: (minX + maxX) / 2, cy: (minY + maxY) / 2, cz: (minZ + maxZ) / 2,
+        hx: (maxX - minX) / 2, hy: (maxY - minY) / 2, hz: (maxZ - minZ) / 2
+      });
+    });
+  }
+
+  function boxWireframe(c: Array<[number, number, number]>): THREE.BufferGeometry {
+    // c[0..3] mặt gần, c[4..7] mặt xa, thứ tự vòng
+    const edges = [
+      [0, 1], [1, 2], [2, 3], [3, 0],
+      [4, 5], [5, 6], [6, 7], [7, 4],
+      [0, 4], [1, 5], [2, 6], [3, 7]
+    ];
+    const pos = new Float32Array(edges.length * 2 * 3);
+    let k = 0;
+    for (const [a, b] of edges) {
+      pos[k++] = c[a][0]; pos[k++] = c[a][1]; pos[k++] = c[a][2];
+      pos[k++] = c[b][0]; pos[k++] = c[b][1]; pos[k++] = c[b][2];
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    return g;
+  }
+
   // ── Chế độ BEV: quad canvas texture ────────────────────────
   const bev = new BevBuilder();
   const bevTex = new THREE.CanvasTexture(bev.canvas);
@@ -233,6 +336,19 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
       };
     },
 
+    imageRectPx() {
+      // Vùng ảnh RGB/Depth hiển thị trên màn (CSS px), khớp contain-fit của ortho plane
+      const a = viewW / Math.max(1, viewH);
+      const sx = rgbPlane.scale.x;
+      const sy = rgbPlane.scale.y;
+      return {
+        x: ((a - sx) / (2 * a)) * viewW,
+        y: ((1 - sy) / 2) * viewH,
+        w: (sx / a) * viewW,
+        h: sy * viewH
+      };
+    },
+
     attachVideo(video: HTMLVideoElement) {
       videoTex = new THREE.VideoTexture(video);
       videoTex.colorSpace = THREE.SRGBColorSpace;
@@ -250,8 +366,23 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
       depthPlane.visible = m === 'depth';
       cloud.visible = m === 'cloud';
       gridHelper.visible = m === 'cloud';
+      boxGroup.visible = m === 'cloud';
       bevPlane.visible = m === 'bev';
       controls.enabled = m === 'cloud';
+    },
+
+    setDetections(boxes: DetBox[]) {
+      detBoxes = boxes;
+      rebuildBoxes();
+    },
+
+    setSelectedBox(idx: number) {
+      selectedBox = idx;
+      rebuildBoxes();
+    },
+
+    getDetections3D() {
+      return det3d;
     },
 
     uploadColor(img: ImageData) {

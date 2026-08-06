@@ -12,6 +12,7 @@ import './styles.css';
 import { createShell } from './ui/shell';
 import { createScene, type SceneAPI } from './render/scene';
 import type { WorkerToMain, Dtype } from './types';
+import type { DetBox } from './worker/detect-worker';
 
 let sceneApi: SceneAPI | null = null;
 let worker: Worker | null = null;
@@ -28,6 +29,87 @@ let captureCtx: OffscreenCanvasRenderingContext2D | null = null;
 
 let dtype: Dtype = 'fp16';
 let frozen = false;
+
+// Engine v2: detection worker, fusion 2D→3D, gán nhãn (P1-B)
+let detectWorker: Worker | null = null;
+let detectReady = false;
+let detectBusy = false;
+let detectOn = false;
+let lastBoxes: DetBox[] = []; // cũng là tập annotation khi frozen
+let selectedObj = -1;
+let engine: 'rtdetr' | 'owlvit' = 'rtdetr';
+let queries: string[] = ['person', 'chair', 'laptop', 'cup'];
+let detW = 0;
+let detH = 0;
+
+function refreshAnnotations() {
+  sceneApi?.setDetections(lastBoxes);
+  sceneApi?.setSelectedBox(selectedObj);
+  shell.renderObjects(lastBoxes, selectedObj);
+}
+
+function downloadFile(name: string, text: string, mime = 'text/plain') {
+  const blob = new Blob([text], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+function exportAnnotations(fmt: 'coco' | 'yolo' | '3d') {
+  const W = detW || 1280;
+  const H = detH || 720;
+  if (lastBoxes.length === 0) return;
+  if (fmt === 'yolo') {
+    const classes = [...new Set(lastBoxes.map((b) => b.label))];
+    const lines = lastBoxes.map((b) => {
+      const cx = (b.x0 + b.x1) / 2;
+      const cy = (b.y0 + b.y1) / 2;
+      const w = b.x1 - b.x0;
+      const h = b.y1 - b.y0;
+      return `${classes.indexOf(b.label)} ${cx.toFixed(6)} ${cy.toFixed(6)} ${w.toFixed(6)} ${h.toFixed(6)}`;
+    });
+    downloadFile('roboeye-labels.txt', lines.join('\n') + '\n');
+    downloadFile('classes.txt', classes.join('\n') + '\n');
+  } else if (fmt === 'coco') {
+    const classes = [...new Set(lastBoxes.map((b) => b.label))];
+    const coco = {
+      images: [{ id: 1, width: W, height: H, file_name: 'frame.jpg' }],
+      categories: classes.map((c, i) => ({ id: i + 1, name: c })),
+      annotations: lastBoxes.map((b, i) => ({
+        id: i + 1,
+        image_id: 1,
+        category_id: classes.indexOf(b.label) + 1,
+        bbox: [b.x0 * W, b.y0 * H, (b.x1 - b.x0) * W, (b.y1 - b.y0) * H].map((v) => +v.toFixed(1)),
+        area: +((b.x1 - b.x0) * W * (b.y1 - b.y0) * H).toFixed(1),
+        score: +b.score.toFixed(3),
+        iscrowd: 0
+      }))
+    };
+    downloadFile('roboeye-coco.json', JSON.stringify(coco, null, 2), 'application/json');
+  } else {
+    const d3 = sceneApi?.getDetections3D() ?? [];
+    const out = {
+      note: 'RoboEye 3D annotations. box3d ở không gian view, tỷ lệ TƯƠNG ĐỐI (chưa metric). Bật Depth Pro metric mode để ra mét thật.',
+      scale: 'relative',
+      image: { width: W, height: H },
+      objects: lastBoxes.map((b, i) => ({
+        label: b.label,
+        score: +b.score.toFixed(3),
+        box2d: { x0: +b.x0.toFixed(4), y0: +b.y0.toFixed(4), x1: +b.x1.toFixed(4), y1: +b.y1.toFixed(4) },
+        box3d: d3[i]
+          ? {
+              center: [+d3[i]!.cx.toFixed(3), +d3[i]!.cy.toFixed(3), +d3[i]!.cz.toFixed(3)],
+              half_extents: [+d3[i]!.hx.toFixed(3), +d3[i]!.hy.toFixed(3), +d3[i]!.hz.toFixed(3)]
+            }
+          : null
+      }))
+    };
+    downloadFile('roboeye-3d.json', JSON.stringify(out, null, 2), 'application/json');
+  }
+}
 
 // Cần thử fallback (mục 9 PRD): ?webgl=1 ép render WebGL2, ?wasm=1 ép inference WASM
 const urlParams = new URLSearchParams(location.search);
@@ -58,10 +140,78 @@ const shell = createShell({
     frozen = f;
     sceneApi?.setFrozen(f);
   },
+  onDetect: (on) => {
+    detectOn = on;
+    shell.showLabelTools(on);
+    if (on && !detectWorker) spawnDetectWorker();
+    if (!on) {
+      lastBoxes = [];
+      selectedObj = -1;
+      refreshAnnotations();
+    }
+  },
+  onEngine: (e) => {
+    engine = e;
+    selectedObj = -1;
+    lastBoxes = []; // xoá box của engine cũ khỏi overlay
+    refreshAnnotations();
+    if (detectWorker) {
+      detectReady = false;
+      shell.setObjStatus('đang tải model…');
+      if (e === 'owlvit') detectWorker.postMessage({ type: 'queries', value: queries });
+      detectWorker.postMessage({ type: 'engine', engine: e });
+    }
+  },
+  onQueries: (list) => {
+    queries = list;
+    detectWorker?.postMessage({ type: 'queries', value: list });
+  },
+  onExport: (fmt) => exportAnnotations(fmt),
+  onSelectObject: (i) => {
+    selectedObj = selectedObj === i ? -1 : i;
+    refreshAnnotations();
+  },
+  onDeleteObject: (i) => {
+    lastBoxes.splice(i, 1);
+    if (selectedObj === i) selectedObj = -1;
+    else if (selectedObj > i) selectedObj--;
+    refreshAnnotations();
+  },
+  onRelabelObject: (i, label) => {
+    if (lastBoxes[i]) lastBoxes[i].label = label;
+    refreshAnnotations();
+  },
   onStart: () => {
     void start();
   }
 });
+
+function spawnDetectWorker() {
+  detectWorker = new Worker(new URL('./worker/detect-worker.ts', import.meta.url), { type: 'module' });
+  detectReady = false;
+  detectBusy = false;
+  shell.setObjStatus('đang tải model…');
+  detectWorker.onmessage = (ev: MessageEvent) => {
+    const m = ev.data;
+    if (m.type === 'loading') shell.setObjStatus('đang tải model…');
+    else if (m.type === 'ready') {
+      detectReady = true;
+      shell.setObjStatus(engine === 'owlvit' ? 'OWL-ViT · gõ chữ ra lớp' : 'RT-DETR · COCO');
+    } else if (m.type === 'det') {
+      detectBusy = false;
+      if (!frozen) {
+        lastBoxes = m.boxes as DetBox[];
+        selectedObj = -1;
+        refreshAnnotations();
+        shell.setObjStatus(`${lastBoxes.length} vật · ${engine === 'owlvit' ? 'OWL-ViT' : 'RT-DETR'}`);
+      }
+    } else if (m.type === 'error') {
+      console.error('[roboeye-detect]', m.message);
+      shell.setObjStatus('lỗi model');
+    }
+  };
+  detectWorker.postMessage({ type: 'init', forceWasm, localModels, engine, queries });
+}
 
 function spawnWorker() {
   worker = new Worker(new URL('./worker/depth-worker.ts', import.meta.url), { type: 'module' });
@@ -221,7 +371,28 @@ async function boot() {
       }
     }
 
+    // Detection chạy nhịp riêng, cũng latest-frame-wins
+    if (detectOn && detectReady && !detectBusy && !frozen && detectWorker) {
+      const dimg = captureFrame();
+      if (dimg) {
+        detectBusy = true;
+        detW = dimg.width;
+        detH = dimg.height;
+        detectWorker.postMessage(
+          { type: 'frame', rgba: dimg.data.buffer, width: dimg.width, height: dimg.height },
+          [dimg.data.buffer]
+        );
+      }
+    }
+
     sceneApi?.render(dt);
+
+    // Overlay 2D box: chỉ ở chế độ RGB và Depth (cloud dùng 3D box, BEV ẩn)
+    if (sceneApi) {
+      const m = shell.currentMode();
+      const show2d = detectOn && (m === 'rgb' || m === 'depth');
+      shell.drawDetections(lastBoxes, sceneApi.imageRectPx(), show2d, selectedObj);
+    }
 
     if (now - lastMeterUpdate > 250) {
       lastMeterUpdate = now;
