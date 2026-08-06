@@ -7,6 +7,10 @@ import { startPreview, stopPreview, waitForPreview } from './helpers/preview-ser
 
 const PORT = 4185;
 const ROOT = new URL('..', import.meta.url).pathname;
+const HAND_P95_MAX_MS = Number(process.env.AIRSKETCH_HAND_P95_MAX_MS ?? 80);
+if (!Number.isFinite(HAND_P95_MAX_MS) || HAND_P95_MAX_MS <= 0) {
+  throw new Error(`AIRSKETCH_HAND_P95_MAX_MS không hợp lệ: ${process.env.AIRSKETCH_HAND_P95_MAX_MS}`);
+}
 const server = startPreview(ROOT, PORT);
 let browser;
 
@@ -110,14 +114,17 @@ try {
   );
   const handSnapshot = await handPage.evaluate(() => window.__roboeyeAirSketchBenchmark?.snapshot());
   if (!handSnapshot?.ready.hand || handSnapshot.hand.p95 == null) throw new Error(`Hand inference không chạy: ${JSON.stringify(handSnapshot)}`);
-  if (handSnapshot.hand.p95 >= 80) throw new Error(`Hand p95 vượt 80 ms: ${JSON.stringify(handSnapshot.hand)}`);
+  if (handSnapshot.hand.p95 >= HAND_P95_MAX_MS) {
+    throw new Error(`Hand p95 vượt ${HAND_P95_MAX_MS} ms: ${JSON.stringify(handSnapshot.hand)}`);
+  }
   const fatalHandErrors = handErrors.filter((message) => !message.includes('Created TensorFlow Lite XNNPACK delegate'));
   if (fatalHandErrors.length) throw new Error(`Hand page console errors: ${fatalHandErrors.slice(0, 3).join(' | ')}`);
   await handPage.close();
 
   console.log('[airsketch-model-smoke] PASS', JSON.stringify({
     quickDraw: { labels, latency: classifySnapshot.classify },
-    hand: handSnapshot.hand
+    hand: handSnapshot.hand,
+    handP95BudgetMs: HAND_P95_MAX_MS
   }));
 } finally {
   await browser?.close();

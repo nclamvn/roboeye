@@ -21,7 +21,7 @@
 - Given tracking is unavailable, when the user drags mouse/touch, then the same ink/classification path works.
 - Given at least eight ink points and 650 ms idle, when classifier is ready, then exactly top-3 guesses appear.
 - Given a guess, when selected and “Nói câu này” is pressed, then the localized phrase is read via `vi-VN` speech synthesis.
-- Given a cold real-model run, then both pinned models load; hand steady-state p95 is below 80 ms and classification p95 below 300 ms on the test host.
+- Given a cold real-model run, then both pinned models load; hand steady-state p95 is below 80 ms on the controlled test host and classification p95 is below 300 ms. Shared CI uses an explicit 250 ms smoke ceiling because runner hardware is variable; measured p50/p95 remains visible in the log.
 - Given model load failure, then drawing remains usable; classifier retries once with a clean worker.
 
 ## Constraints

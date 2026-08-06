@@ -71,5 +71,5 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 
 - **Dependencies:** TIP-13, TIP-14, TIP-15. **Priority:** P0 demo/product.
 - **Task:** MediaPipe hand tracking + pinch air ink; QuickDraw top-3; reserved responsive sidecar; phrase composition and Vietnamese TTS; deterministic/real-model benchmark.
-- **Acceptance:** 8/8 AIR requirements; 10/10 browser contract; pinned models load; hand p95 <80 ms and sketch inference <300 ms on test host.
+- **Acceptance:** 8/8 AIR requirements; 10/10 browser contract; pinned models load; hand p95 <80 ms trên test host kiểm soát. Shared CI dùng smoke ceiling 250 ms để bắt treo/hồi quy lớn và luôn xuất p50/p95 thực đo.
 - **Detail:** `docs/TIP-16-AIRSKETCH.md`.

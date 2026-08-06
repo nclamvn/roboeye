@@ -76,6 +76,8 @@ npm run test:airsketch-e2e     # contract bằng worker fixture
 npm run test:airsketch-models  # model thật + latency p50/p95
 ```
 
+Smoke local giữ ngân sách hand p95 mặc định 80 ms. Shared CI dùng trần 250 ms để phát hiện treo/hồi quy lớn mà không biến độ nhiễu phần cứng runner thành lỗi tương thích model; có thể ghi đè bằng `AIRSKETCH_HAND_P95_MAX_MS`.
+
 ## Switch fallback và demo offline
 
 - `?webgl=1` ép render WebGL2 (demo "tắt WebGPU vẫn sống")

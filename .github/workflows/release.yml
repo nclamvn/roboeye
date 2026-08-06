@@ -32,6 +32,8 @@ jobs:
       - run: npm run qa
       - run: npm run test:detection-models
       - run: npm run test:airsketch-models
+        env:
+          AIRSKETCH_HAND_P95_MAX_MS: 250
       - run: npm run smoke
       - name: Build Pages artifact
         env:
