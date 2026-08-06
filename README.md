@@ -101,7 +101,7 @@ và không tự gửi đi đâu.
 - `npm run release:verify`: build và kiểm version, CSP, headers, manifest, service worker.
 - `npm run build:offline`: tạo artifact depth q8 tự chứa.
 - Workflow CI chạy browser contract trên pull request; real-depth smoke chạy trên main/lịch tuần.
-- Workflow release deploy `dist/` lên GitHub Pages HTTPS và tạo archive khi push tag `v1.2.0`.
+- Workflow release deploy `dist/` lên GitHub Pages HTTPS và tạo archive khi push tag `v1.2.1`.
 
 Quy trình bật Pages, rollback và giới hạn security header được ghi tại
 `docs/DEPLOYMENT.md`. Codex không tự push/tag hay bật Pages trong tài khoản GitHub.

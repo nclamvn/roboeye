@@ -45,7 +45,7 @@ Serve the folder from localhost or HTTPS; opening `index.html` directly with `fi
 
 1. Push the repository and open **Settings → Pages**.
 2. Choose **GitHub Actions** as the source.
-3. Run **Release and Pages** manually for a candidate, or push a matching tag such as `v1.2.0`.
+3. Run **Release and Pages** manually for a candidate, or push a matching tag such as `v1.2.1`.
 4. The workflow validates QA and real-depth smoke, builds with `/<repository>/` base, uploads the Pages artifact and deploys it.
 5. A `v*` tag also creates a GitHub Release containing the versioned static archive.
 

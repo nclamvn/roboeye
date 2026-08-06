@@ -1,7 +1,7 @@
 {
   "name": "roboeye",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "RoboEye — biến camera laptop thành mắt robot, chạy toàn bộ trong trình duyệt",
   "type": "module",
   "engines": {

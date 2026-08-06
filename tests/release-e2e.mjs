@@ -2,6 +2,7 @@
 // and service-worker offline shell. Worker mocks do not prove model quality.
 
 import { chromium } from 'playwright-core';
+import { readFile } from 'node:fs/promises';
 import { browserLaunchOptions, resolveBrowserExecutable } from './helpers/browser.mjs';
 import { installMockWorkers } from './helpers/mock-workers.mjs';
 import { startPreview, stopPreview, waitForPreview } from './helpers/preview-server.mjs';
@@ -9,6 +10,7 @@ import { startPreview, stopPreview, waitForPreview } from './helpers/preview-ser
 const PORT = 4182;
 const BASE = `http://localhost:${PORT}`;
 const ROOT = new URL('..', import.meta.url).pathname;
+const { version: VERSION } = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 const failures = [];
 
 function log(...args) { console.log('[release-e2e:mock]', ...args); }
@@ -38,7 +40,7 @@ try {
   page.on('requestfailed', (request) => failedRequests.push(`${request.url()} · ${request.failure()?.errorText ?? 'failed'}`));
   await page.goto(`${BASE}/?webgl=1&demo=1`, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => document.querySelector('#badge-render')?.textContent?.includes('RENDER · WEB'));
-  check('UI hiển thị version 1.2.0', (await page.textContent('#app-version')) === 'v1.2.0');
+  check(`UI hiển thị version ${VERSION}`, (await page.textContent('#app-version')) === `v${VERSION}`);
   check('boot rail có bốn tầng thật', (await page.locator('.perception-rail li').count()) === 4);
   check('demo mode đánh dấu CTA khuyến nghị', (await page.getAttribute('#demo-start-btn', 'class'))?.includes('recommended'));
   if (process.env.ROBOEYE_RELEASE_SHOT) {
@@ -79,7 +81,7 @@ try {
   const chunks = [];
   for await (const chunk of stream) chunks.push(chunk);
   const diagnostic = JSON.parse(Buffer.concat(chunks).toString('utf8'));
-  check('diagnostics ghi localOnly và version', diagnostic.localOnly === true && diagnostic.app?.version === '1.2.0');
+  check('diagnostics ghi localOnly và version', diagnostic.localOnly === true && diagnostic.app?.version === VERSION);
   check('diagnostics có sự kiện tour/runtime', diagnostic.events?.length > 3);
 
   for (const viewport of [
@@ -98,10 +100,10 @@ try {
 
   await page.evaluate(() => navigator.serviceWorker.ready.then(() => undefined));
   await page.waitForFunction(() => navigator.serviceWorker.controller != null);
-  const cachedAssets = await page.evaluate(async () => {
-    const cache = await caches.open('roboeye-app-1.2.0');
+  const cachedAssets = await page.evaluate(async (version) => {
+    const cache = await caches.open(`roboeye-app-${version}`);
     return (await cache.keys()).map((request) => new URL(request.url).pathname);
-  });
+  }, VERSION);
   check('service worker đã cache JS/CSS app shell', cachedAssets.some((path) => /\/assets\/index-.*\.js$/.test(path)) && cachedAssets.some((path) => /\/assets\/index-.*\.css$/.test(path)), cachedAssets.slice(-5).join(', '));
   await stopPreview(server);
   const cachedFetchWorks = await page.evaluate(async () => {
@@ -118,7 +120,7 @@ try {
     version: document.querySelector('#app-version')?.textContent,
     controller: navigator.serviceWorker.controller?.scriptURL ?? null
   }));
-  check('app shell mở được trong tab mới khi offline', offlineState.version === 'v1.2.0', JSON.stringify(offlineState));
+  check('app shell mở được trong tab mới khi offline', offlineState.version === `v${VERSION}`, JSON.stringify(offlineState));
   await offlinePage.close();
 
   const fatal = consoleErrors.filter((error) =>
