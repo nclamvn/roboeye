@@ -30,6 +30,7 @@ jobs:
         if: github.ref_type == 'tag'
         run: test "$GITHUB_REF_NAME" = "v$(node -p "require('./package.json').version")"
       - run: npm run qa
+      - run: npm run test:detection-models
       - run: npm run smoke
       - name: Build Pages artifact
         env:

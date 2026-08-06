@@ -1,6 +1,9 @@
 export function installMockWorkers() {
   window.__allowMockDetection = false;
   window.__failMockDepthLoadOnce = false;
+  window.__failMockDetectionLoadOnce = false;
+  window.__lastDetectionInit = null;
+  window.__detectionInitCount = 0;
 
   class MockWorker {
     constructor(url) {
@@ -42,8 +45,15 @@ export function installMockWorkers() {
       }
 
       if (message.type === 'init') {
+        window.__lastDetectionInit = message;
+        window.__detectionInitCount++;
         this.engine = message.engine;
         this.emit({ type: 'loading', engine: this.engine });
+        if (window.__failMockDetectionLoadOnce) {
+          window.__failMockDetectionLoadOnce = false;
+          this.emit({ type: 'error', stage: 'load', message: 'fixture detection load error' }, 5);
+          return;
+        }
         this.emit({ type: 'ready', engine: this.engine, device: 'wasm' }, 5);
       } else if (message.type === 'engine') {
         this.engine = message.engine;

@@ -39,6 +39,8 @@ let detectWorker: Worker | null = null;
 let detectReady = false;
 let detectBusy = false;
 let detectOn = false;
+let detectLoadRetries = 0;
+let detectRetryTimer: ReturnType<typeof setTimeout> | null = null;
 let lastBoxes: DetBox[] = []; // cũng là tập annotation khi frozen
 let selectedObj = -1;
 let engine: DetectionEngine = 'rtdetr';
@@ -84,6 +86,10 @@ function exportAnnotations(fmt: 'coco' | 'yolo' | '3d') {
 const urlParams = new URLSearchParams(location.search);
 const forceWebGL = urlParams.has('webgl');
 const forceWasm = urlParams.has('wasm') || __ROBOEYE_OFFLINE__;
+// Detection ưu tiên WASM ổn định. WebGPU detection vẫn có thể thử nghiệm bằng
+// ?detectwebgpu=1; nếu init lỗi, worker mới sẽ retry sạch bằng WASM.
+const detectWebGPU = urlParams.has('detectwebgpu') && !forceWasm;
+let detectForceWasm = !detectWebGPU;
 const localModels = urlParams.has('localmodels') || __ROBOEYE_OFFLINE__;
 const demoMode = urlParams.has('demo');
 let demoRequested = demoMode;
@@ -97,7 +103,7 @@ const diagnostics = createRuntimeDiagnostics({
   userAgent: () => navigator.userAgent,
   online: () => navigator.onLine
 });
-diagnostics.record('app.open', { demoMode, localModels, forceWebGL, forceWasm });
+diagnostics.record('app.open', { demoMode, localModels, forceWebGL, forceWasm, detectWebGPU });
 
 let lastDepthAt = 0;
 let inferIntervalEma = 0;
@@ -128,8 +134,13 @@ const shell = createShell({
   onDetect: (on) => {
     detectOn = on;
     shell.showLabelTools(on);
-    if (on && !detectWorker) spawnDetectWorker();
+    if (on) {
+      detectLoadRetries = 0;
+      detectForceWasm = !detectWebGPU;
+      if (!detectWorker) spawnDetectWorker();
+    }
     if (!on) {
+      stopDetectWorker();
       lastBoxes = [];
       selectedObj = -1;
       refreshAnnotations();
@@ -138,6 +149,8 @@ const shell = createShell({
   },
   onEngine: (e) => {
     engine = e;
+    detectLoadRetries = 0;
+    detectForceWasm = !detectWebGPU;
     selectedObj = -1;
     lastBoxes = []; // xoá box của engine cũ khỏi overlay
     refreshAnnotations();
@@ -146,6 +159,8 @@ const shell = createShell({
       shell.setObjStatus('đang tải model…');
       if (e === 'owlvit') detectWorker.postMessage({ type: 'queries', value: queries });
       detectWorker.postMessage({ type: 'engine', engine: e });
+    } else if (detectOn) {
+      spawnDetectWorker();
     }
   },
   onQueries: (list) => {
@@ -190,20 +205,23 @@ const shell = createShell({
 }, { version: __ROBOEYE_VERSION__, demoMode, offlineMode: __ROBOEYE_OFFLINE__ });
 
 function spawnDetectWorker() {
-  detectWorker = new Worker(new URL('./worker/detect-worker.ts', import.meta.url), { type: 'module' });
+  const instance = new Worker(new URL('./worker/detect-worker.ts', import.meta.url), { type: 'module' });
+  detectWorker = instance;
   detectReady = false;
   detectBusy = false;
   shell.setObjStatus('đang tải model…');
-  detectWorker.onmessage = (ev: MessageEvent<DetectionWorkerToMain>) => {
+  instance.onmessage = (ev: MessageEvent<DetectionWorkerToMain>) => {
+    if (detectWorker !== instance) return;
     const m = ev.data;
     if (m.type === 'loading') {
       detectReady = false;
       detectBusy = false;
       shell.setObjStatus('đang tải model…');
     } else if (m.type === 'ready') {
+      detectLoadRetries = 0;
       detectReady = true;
       detectBusy = false;
-      shell.setObjStatus(engine === 'owlvit' ? 'OWL-ViT · gõ chữ ra lớp' : 'RT-DETR · COCO');
+      shell.setObjStatus(engine === 'owlvit' ? `OWL-ViT · ${m.device.toUpperCase()}` : `RT-DETR · ${m.device.toUpperCase()} · COCO`);
       diagnostics.record('detection.ready', { engine, device: m.device });
     } else if (m.type === 'det') {
       detectBusy = false;
@@ -218,20 +236,46 @@ function spawnDetectWorker() {
       detectBusy = recovery.busy;
       detectReady = recovery.ready;
       console.error('[roboeye-detect]', m.message);
-      shell.setObjStatus(recovery.status);
       diagnostics.record('detection.error', { engine, stage: m.stage, message: m.message });
+      if (m.stage === 'load') {
+        instance.terminate();
+        if (detectWorker === instance) detectWorker = null;
+        if (detectOn && detectLoadRetries < 1) {
+          detectLoadRetries++;
+          detectForceWasm = true;
+          shell.setObjStatus('tải lỗi · đang thử lại WASM…');
+          detectRetryTimer = setTimeout(() => {
+            detectRetryTimer = null;
+            if (detectOn && !detectWorker) spawnDetectWorker();
+          }, 600);
+          return;
+        }
+        shell.setObjStatus('lỗi tải · tắt/bật để thử lại');
+      } else {
+        shell.setObjStatus(recovery.status);
+      }
     }
   };
-  detectWorker.onerror = (event) => {
+  instance.onerror = (event) => {
+    if (detectWorker !== instance) return;
     detectBusy = false;
     detectReady = false;
-    detectWorker?.terminate();
+    instance.terminate();
     detectWorker = null;
     console.error('[roboeye-detect-worker]', event.message || 'worker crash');
     shell.setObjStatus('worker lỗi · tắt/bật để thử lại');
     diagnostics.record('detection.crash', { message: event.message || 'worker crash' });
   };
-  detectWorker.postMessage({ type: 'init', forceWasm, localModels, engine, queries });
+  instance.postMessage({ type: 'init', forceWasm: detectForceWasm, localModels, engine, queries });
+}
+
+function stopDetectWorker() {
+  if (detectRetryTimer != null) clearTimeout(detectRetryTimer);
+  detectRetryTimer = null;
+  detectWorker?.terminate();
+  detectWorker = null;
+  detectReady = false;
+  detectBusy = false;
 }
 
 function spawnWorker() {

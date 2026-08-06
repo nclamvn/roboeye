@@ -21,6 +21,8 @@
     "fixtures:verify": "node scripts/prepare-test-models.mjs --verify-only",
     "pretest:detection-e2e": "npm run build",
     "test:detection-e2e": "node tests/detection-e2e.mjs",
+    "pretest:detection-models": "npm run build",
+    "test:detection-models": "node tests/detection-model-smoke.mjs",
     "pretest:release-e2e": "npm run build",
     "test:release-e2e": "node tests/release-e2e.mjs",
     "presmoke": "npm run fixtures:prepare && npm run build",

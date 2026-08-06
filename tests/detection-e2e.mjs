@@ -46,11 +46,15 @@ try {
   check('detection là opt-in', !(await page.isChecked('#detect-toggle')));
   check('label tools ẩn trước opt-in', await page.isHidden('#label-tools'));
 
+  await page.evaluate(() => { window.__failMockDetectionLoadOnce = true; });
   await page.click('#start-btn');
   await page.waitForFunction(() => document.querySelector('#boot')?.classList.contains('hidden'), null, { timeout: 30_000 });
   check('mock depth mở được luồng camera/UI', await page.locator('#boot').evaluate((element) => element.classList.contains('hidden')));
 
   await page.check('#detect-toggle');
+  await page.waitForFunction(() => window.__detectionInitCount >= 2);
+  check('lỗi tải model tự retry bằng worker WASM sạch', await page.evaluate(() => window.__detectionInitCount === 2));
+  check('detection mặc định ép WASM ổn định', await page.evaluate(() => window.__lastDetectionInit?.forceWasm === true));
   await page.waitForFunction(() => document.querySelector('#obj-status')?.textContent?.includes('lỗi frame'));
   check('infer error phục hồi về trạng thái sẵn sàng', (await page.textContent('#obj-status'))?.includes('lỗi frame'));
 
@@ -88,6 +92,7 @@ try {
 
   const fatal = consoleErrors.filter((error) =>
     !error.includes('[roboeye-detect] fixture infer error') &&
+    !error.includes('[roboeye-detect] fixture detection load error') &&
     !error.includes('favicon') &&
     !error.includes('404')
   );

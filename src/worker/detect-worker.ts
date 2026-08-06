@@ -12,9 +12,15 @@ import type {
   DetectionWorkerToMain
 } from '../detection-types';
 
-const MODELS: Record<DetectionEngine, string> = {
-  rtdetr: 'onnx-community/rtdetr_v2_r18vd-ONNX',
-  owlvit: 'Xenova/owlvit-base-patch32'
+const MODELS: Record<DetectionEngine, { id: string; revision: string }> = {
+  rtdetr: {
+    id: 'onnx-community/rtdetr_v2_r18vd-ONNX',
+    revision: '936f90b6a476c6da4dfe053fc521af55285976ba'
+  },
+  owlvit: {
+    id: 'Xenova/owlvit-base-patch32',
+    revision: 'b75f4e52949639c3bb0b96546ea4149482f6e7ef'
+  }
 };
 
 env.allowLocalModels = false;
@@ -32,7 +38,7 @@ function useLocalModels() {
 const makePipe = pipeline as unknown as (
   task: string,
   model: string,
-  opts: { device: string; dtype: string; progress_callback: (item: unknown) => void }
+  opts: { device: string; dtype: string; revision: string; progress_callback: (item: unknown) => void }
 ) => Promise<(input: unknown, ...rest: unknown[]) => Promise<unknown>>;
 
 let engine: DetectionEngine = 'rtdetr';
@@ -69,6 +75,7 @@ async function loadEngine(e: DetectionEngine) {
   detector = null;
   post({ type: 'loading', engine: e });
   const task = e === 'rtdetr' ? 'object-detection' : 'zero-shot-object-detection';
+  const model = MODELS[e];
   const webgpu = !forceWasmFlag && (await hasWebGPU());
   const tries: Array<{ device: DetectionDevice; dtype: string }> = webgpu
     ? [{ device: 'webgpu', dtype: e === 'rtdetr' ? 'fp16' : 'q4f16' }, { device: 'wasm', dtype: 'q8' }]
@@ -76,7 +83,12 @@ async function loadEngine(e: DetectionEngine) {
   let lastErr = '';
   for (const t of tries) {
     try {
-      const candidate = await makePipe(task, MODELS[e], { device: t.device, dtype: t.dtype, progress_callback: progress });
+      const candidate = await makePipe(task, model.id, {
+        device: t.device,
+        dtype: t.dtype,
+        revision: model.revision,
+        progress_callback: progress
+      });
       if (version !== loadVersion) return;
       detector = candidate;
       post({ type: 'ready', engine: e, device: t.device });

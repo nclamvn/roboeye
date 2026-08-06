@@ -39,6 +39,10 @@ Bật **Nhận diện vật thể** trong sidebar để chạy worker detection 
 - **RT-DETR** nhận diện nhanh các lớp COCO có sẵn.
 - **OWL-ViT** tìm lớp open-vocabulary; nhập các tên cần tìm, cách nhau bằng dấu phẩy.
 
+Detection mặc định dùng ONNX WASM q8 ổn định và hiển thị backend ngay trong panel.
+Mỗi model được pin theo revision Hugging Face; nếu tải lỗi, RoboEye tạo worker sạch
+và tự thử lại một lần. Tắt rồi bật lại checkbox sẽ khởi tạo lại hoàn toàn worker.
+
 Box 2D hiện trên RGB/Depth. Trong Point Cloud, RoboEye ghép box với relative depth để dựng box 3D tương đối. Nhấn F để đóng băng tập detection hiện tại, sau đó chọn vật thể, sửa nhãn hoặc xóa box trong panel. Annotation chỉ nằm trong bộ nhớ của tab cho đến khi xuất file.
 
 Các định dạng xuất:
@@ -51,6 +55,7 @@ Các định dạng xuất:
 
 - `?webgl=1` ép render WebGL2 (demo "tắt WebGPU vẫn sống")
 - `?wasm=1` ép inference WASM (tự hạ inference size về 140, badge nói thật)
+- `?detectwebgpu=1` thử nghiệm detection WebGPU; nếu khởi tạo lỗi sẽ retry bằng worker WASM sạch.
 - `?localmodels=1` chỉ load model từ `/models/` trên chính origin thay vì Hugging Face, dùng cho demo offline.
 
 Bản offline depth chuẩn được tạo tự động, không cần chép model bằng tay:
@@ -111,6 +116,7 @@ npm run security:audit
 npm run test:detection-e2e  # contract/UI detection bằng mock Worker, không đo chất lượng model
 npm run test:release-e2e    # onboarding, responsive, diagnostics và app shell offline
 npm run smoke               # tự chuẩn bị fixture + build, chạy depth q8 thật qua WASM
+npm run test:detection-models # tải model pin + chạy inference thật RT-DETR và OWL-ViT
 ```
 
 `npm run fixtures:prepare` tải model depth q8 theo revision và SHA-256 trong
