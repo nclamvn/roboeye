@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test:unit": "tsx --test tests/unit/*.test.ts",
+    "security:audit": "node scripts/security-audit.mjs",
     "smoke": "node tests/smoke.mjs"
   },
   "dependencies": {

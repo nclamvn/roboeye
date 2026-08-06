@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "risks": [
+    {
+      "id": "GHSA-f88m-g3jw-g9cj",
+      "package": "sharp",
+      "severity": "high",
+      "reviewBy": "2026-09-06",
+      "reason": "RoboEye deploys the Transformers.js browser export; the static bundle contains no sharp/libvips implementation and no Node image-processing service handles untrusted input."
+    }
+  ]
+}
