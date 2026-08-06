@@ -11,17 +11,13 @@ import type {
   DetectionMainToWorker,
   DetectionWorkerToMain
 } from '../detection-types';
-
-const MODELS: Record<DetectionEngine, { id: string; revision: string }> = {
-  rtdetr: {
-    id: 'onnx-community/rtdetr_v2_r18vd-ONNX',
-    revision: '936f90b6a476c6da4dfe053fc521af55285976ba'
-  },
-  owlvit: {
-    id: 'Xenova/owlvit-base-patch32',
-    revision: 'b75f4e52949639c3bb0b96546ea4149482f6e7ef'
-  }
-};
+import { DETECTION_CONFIG } from '../detection-config';
+import {
+  OWLVIT_POSTPROCESS,
+  RTDETR_POSTPROCESS,
+  postprocessDetections
+} from '../detection-postprocess';
+import { createOwlPromptPlan, OWL_QUERY_PRESETS } from '../detection-presets';
 
 env.allowLocalModels = false;
 const BASE = new URL(import.meta.env.BASE_URL, self.location.href).href;
@@ -45,7 +41,7 @@ let engine: DetectionEngine = 'rtdetr';
 let detector: ((input: unknown, ...rest: unknown[]) => Promise<unknown>) | null = null;
 let busy = false;
 let loadVersion = 0;
-let queries: string[] = ['person', 'car', 'chair'];
+let queries: string[] = [...OWL_QUERY_PRESETS.everyday.queries];
 let forceWasmFlag = false;
 let localFlag = false;
 
@@ -75,7 +71,7 @@ async function loadEngine(e: DetectionEngine) {
   detector = null;
   post({ type: 'loading', engine: e });
   const task = e === 'rtdetr' ? 'object-detection' : 'zero-shot-object-detection';
-  const model = MODELS[e];
+  const config = DETECTION_CONFIG[e];
   const webgpu = !forceWasmFlag && (await hasWebGPU());
   const tries: Array<{ device: DetectionDevice; dtype: string }> = webgpu
     ? [{ device: 'webgpu', dtype: e === 'rtdetr' ? 'fp16' : 'q4f16' }, { device: 'wasm', dtype: 'q8' }]
@@ -83,10 +79,10 @@ async function loadEngine(e: DetectionEngine) {
   let lastErr = '';
   for (const t of tries) {
     try {
-      const candidate = await makePipe(task, model.id, {
+      const candidate = await makePipe(task, config.model, {
         device: t.device,
         dtype: t.dtype,
-        revision: model.revision,
+        revision: config.revision,
         progress_callback: progress
       });
       if (version !== loadVersion) return;
@@ -112,24 +108,28 @@ async function detect(rgba: ArrayBuffer, width: number, height: number) {
   const t0 = performance.now();
   try {
     const image = new RawImage(new Uint8ClampedArray(rgba), width, height, 4);
+    const promptPlan = createOwlPromptPlan(queries);
     let raw: Array<{ score: number; label: string; box: { xmin: number; ymin: number; xmax: number; ymax: number } }>;
     if (activeEngine === 'owlvit') {
-      // 0.10 là ngưỡng chuẩn của pipeline: lọc bớt box nhiễu nhưng vẫn giữ
-      // các dự đoán zero-shot vốn có confidence thấp hơn detector closed-set.
-      const th = 0.10;
-      raw = (await activeDetector(image, queries, { threshold: th, percentage: false })) as typeof raw;
+      raw = (await activeDetector(image, promptPlan.prompts, {
+        threshold: DETECTION_CONFIG.owlvit.threshold,
+        percentage: false
+      })) as typeof raw;
     } else {
-      raw = (await activeDetector(image, { threshold: 0.45, percentage: false })) as typeof raw;
+      raw = (await activeDetector(image, {
+        threshold: DETECTION_CONFIG.rtdetr.threshold,
+        percentage: false
+      })) as typeof raw;
     }
     if (activeEngine !== engine || activeDetector !== detector) return;
-    const boxes: DetBox[] = raw.map((r) => ({
-      label: r.label,
+    const boxes: DetBox[] = postprocessDetections(raw.map((r) => ({
+      label: activeEngine === 'owlvit' ? (promptPlan.labelByPrompt.get(r.label) ?? r.label) : r.label,
       score: r.score,
       x0: r.box.xmin / width,
       y0: r.box.ymin / height,
       x1: r.box.xmax / width,
       y1: r.box.ymax / height
-    }));
+    })), activeEngine === 'rtdetr' ? RTDETR_POSTPROCESS : OWLVIT_POSTPROCESS);
     post({ type: 'det', boxes, detMs: performance.now() - t0 });
   } catch (e) {
     post({ type: 'error', stage: 'infer', message: `Detect lỗi: ${e instanceof Error ? e.message : String(e)}` });
@@ -151,7 +151,8 @@ self.onmessage = (ev: MessageEvent<DetectionMainToWorker>) => {
     engine = m.engine;
     void loadEngine(engine);
   } else if (m.type === 'queries') {
-    queries = m.value.filter((value) => value.trim().length > 0);
+    const nextQueries = m.value.filter((value) => value.trim().length > 0);
+    if (nextQueries.length > 0) queries = nextQueries;
   } else if (m.type === 'frame') {
     void detect(m.rgba, m.width, m.height);
   }

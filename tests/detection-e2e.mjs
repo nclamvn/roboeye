@@ -76,6 +76,14 @@ try {
   await page.waitForFunction(() => document.querySelector('#obj-status')?.textContent?.includes('OWL-ViT'));
   check('chuyển engine bật query control', await page.isVisible('#query-ctl'));
   check('worker contract nhận engine OWL-ViT', (await page.textContent('#obj-status'))?.includes('OWL-ViT'));
+  await page.selectOption('#query-preset', 'mobility');
+  await page.waitForFunction(() => window.__lastDetectionQueries?.includes('bus'));
+  check('preset mobility cấp query canonical cho worker', await page.evaluate(() =>
+    JSON.stringify(window.__lastDetectionQueries) === JSON.stringify(['person', 'car', 'bus', 'bicycle', 'motorcycle'])
+  ));
+  check('preset đồng bộ lại ô query', (await page.inputValue('#query-input')) === 'person, car, bus, bicycle, motorcycle');
+  await page.fill('#query-input', 'dog, person');
+  check('sửa query tay chuyển preset sang tuỳ chỉnh', (await page.inputValue('#query-preset')) === 'custom');
 
   await page.waitForFunction(() => document.querySelectorAll('.obj-row').length === 2);
   await page.click('#freeze-btn');

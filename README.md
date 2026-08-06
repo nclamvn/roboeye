@@ -45,6 +45,8 @@ và tự thử lại một lần. Tắt rồi bật lại checkbox sẽ khởi t
 
 Box 2D hiện trên RGB/Depth. Trong Point Cloud, RoboEye ghép box với relative depth để dựng box 3D tương đối. Nhấn F để đóng băng tập detection hiện tại, sau đó chọn vật thể, sửa nhãn hoặc xóa box trong panel. Annotation chỉ nằm trong bộ nhớ của tab cho đến khi xuất file.
 
+OWL-ViT có preset Hằng ngày, Di chuyển, Bàn làm việc và Kho vận. Người dùng nhập nhãn ngắn như `person, bus`; worker tự tạo prompt zero-shot tự nhiên và map kết quả về nhãn ngắn để overlay/export sạch. RT-DETR và OWL-ViT đều có class-aware post-processing để giảm box trùng.
+
 Các định dạng xuất:
 
 - **COCO:** một image record và annotation `bbox` pixel dạng `x, y, width, height`.
@@ -117,6 +119,7 @@ npm run test:detection-e2e  # contract/UI detection bằng mock Worker, không �
 npm run test:release-e2e    # onboarding, responsive, diagnostics và app shell offline
 npm run smoke               # tự chuẩn bị fixture + build, chạy depth q8 thật qua WASM
 npm run test:detection-models # tải model pin + chạy inference thật RT-DETR và OWL-ViT
+npm run benchmark:detection # quality P/R/F1 + model-ready/inference p50/p95 trên browser/WASM
 ```
 
 `npm run fixtures:prepare` tải model depth q8 theo revision và SHA-256 trong
@@ -128,6 +131,8 @@ thông dụng của macOS/Linux.
 Làn `test:detection-e2e` kiểm opt-in, phục hồi lỗi inference, overlay/list,
 đổi RT-DETR sang OWL-ViT, relabel, delete và xuất COCO bằng dữ liệu cố định. Nó
 không phải bằng chứng cho accuracy, latency hay khả năng chạy model detection thật.
+Benchmark T14 dùng regression corpus có SHA-256/ground truth và xuất JSON theo máy;
+phương pháp, baseline và giới hạn được ghi tại `docs/TIP-14-DETECTION-BENCHMARK.md`.
 
 Nghiệm thu hiệu năng trên máy thật theo `docs/REGISTRY-NOTES.md` (đóng fact F10 của PRD). Audit trail đầy đủ trong `docs/`: TIPS, COMPLETION-REPORTS, VERIFY.
 

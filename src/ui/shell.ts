@@ -3,6 +3,7 @@
 
 import type { Mode, InferDevice } from '../types';
 import type { DetBox, DetectionEngine } from '../detection-types';
+import { OWL_QUERY_PRESETS, type OwlQueryPresetId } from '../detection-presets';
 
 export interface ShellCallbacks {
   onMode(mode: Mode): void;
@@ -93,6 +94,7 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   const labelTools = $('#label-tools');
   const engineSelect = $<HTMLSelectElement>('#engine-select');
   const queryCtl = $('#query-ctl');
+  const queryPreset = $<HTMLSelectElement>('#query-preset');
   const queryInput = $<HTMLInputElement>('#query-input');
   const objPanel = $('#obj-panel');
   const objList = $('#obj-list');
@@ -127,7 +129,14 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
     cb.onEngine(e);
   });
   let queryTimer = 0;
+  queryPreset.addEventListener('change', () => {
+    if (queryPreset.value === 'custom') return;
+    const preset = OWL_QUERY_PRESETS[queryPreset.value as OwlQueryPresetId];
+    queryInput.value = preset.queries.join(', ');
+    cb.onQueries([...preset.queries]);
+  });
   queryInput.addEventListener('input', () => {
+    queryPreset.value = 'custom';
     window.clearTimeout(queryTimer);
     queryTimer = window.setTimeout(() => {
       cb.onQueries(queryInput.value.split(',').map((s) => s.trim()).filter((s) => s.length > 0));
