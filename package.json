@@ -1,7 +1,7 @@
 {
   "name": "roboeye",
   "private": true,
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "RoboEye — biến camera laptop thành mắt robot, chạy toàn bộ trong trình duyệt",
   "type": "module",
   "engines": {
@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit",
     "test:unit": "tsx --test tests/unit/*.test.ts",
     "security:audit": "node scripts/security-audit.mjs",
-    "qa": "npm run typecheck && npm run test:unit && npm run build && npm run security:audit && npm run test:detection-e2e && npm run test:release-e2e",
+    "qa": "npm run typecheck && npm run test:unit && npm run build && npm run security:audit && npm run test:detection-e2e && npm run test:airsketch-e2e && npm run test:release-e2e",
     "fixtures:prepare": "node scripts/prepare-test-models.mjs",
     "fixtures:verify": "node scripts/prepare-test-models.mjs --verify-only",
     "fixtures:detection-benchmark": "node scripts/prepare-detection-benchmark.mjs",
@@ -27,6 +27,10 @@
     "test:detection-e2e": "node tests/detection-e2e.mjs",
     "pretest:detection-models": "npm run build",
     "test:detection-models": "node tests/detection-model-smoke.mjs",
+    "pretest:airsketch-e2e": "npm run build",
+    "test:airsketch-e2e": "node tests/airsketch-e2e.mjs",
+    "pretest:airsketch-models": "npm run build",
+    "test:airsketch-models": "node tests/airsketch-model-smoke.mjs",
     "pretest:release-e2e": "npm run build",
     "test:release-e2e": "node tests/release-e2e.mjs",
     "presmoke": "npm run fixtures:prepare && npm run build",
@@ -38,6 +42,7 @@
     "@fontsource/inter": "^5.2.5",
     "@fontsource/noto-serif": "^5.2.5",
     "@huggingface/transformers": "^3.8.1",
+    "@mediapipe/tasks-vision": "1.0.1",
     "three": "^0.185.1"
   },
   "devDependencies": {

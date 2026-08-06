@@ -53,6 +53,29 @@ Các định dạng xuất:
 - **YOLO:** `class cx cy width height` đã chuẩn hóa, kèm `classes.txt`.
 - **3D JSON:** box 2D và box 3D trong không gian view theo tỷ lệ tương đối. Đây không phải tọa độ mét thật.
 
+## AirSketch — Vẽ · Đoán · Nói
+
+Nhấn **AirSketch** sau khi mở camera. Chụm ngón cái và ngón trỏ để hạ bút,
+di chuyển ngón trỏ để vẽ, thả chụm để nhấc bút. Giữ hai ngón để hoàn tác;
+giữ bàn tay mở để xóa. Chuột và cảm ứng dùng cùng đường nét vẽ khi tracking
+chưa sẵn sàng.
+
+Sau 650 ms dừng nét, QuickDraw MobileViT trả top-3 dự đoán. Chạm một dự đoán
+để ghép vào câu, rồi chọn **Nói câu này** để trình duyệt đọc bằng giọng Việt.
+Sidecar dự đoán nằm ngoài vùng camera trên desktop và xuống dưới stage trên
+mobile, nên chữ không che nét vẽ/vật thể.
+
+MediaPipe Hand Landmarker và QuickDraw đều chạy local trong worker; frame camera
+không được upload. Đây là hỗ trợ giao tiếp tăng cường (AAC), không phải trình dịch
+ngôn ngữ ký hiệu và không đảm bảo đoán đúng mọi kiểu vẽ.
+
+Kiểm thử riêng:
+
+```bash
+npm run test:airsketch-e2e     # contract bằng worker fixture
+npm run test:airsketch-models  # model thật + latency p50/p95
+```
+
 ## Switch fallback và demo offline
 
 - `?webgl=1` ép render WebGL2 (demo "tắt WebGPU vẫn sống")
@@ -82,7 +105,9 @@ public/models/Xenova/owlvit-base-patch32/
 
 Mỗi snapshot phải gồm config, preprocessor/tokenizer liên quan và các file ONNX mà Transformers.js chọn theo dtype/device. Nếu chỉ chuẩn bị model depth, bốn chế độ perception vẫn chạy nhưng không bật được detection offline. Mặc định không có `?localmodels=1`, trình duyệt tải model cần dùng từ Hugging Face và cache lại.
 
-Runtime WASM của onnxruntime được tự host trong `/ort/` (script `scripts/copy-ort.mjs` chạy tự động trước dev và build), không phụ thuộc CDN lúc chạy.
+Runtime WASM của onnxruntime và MediaPipe được tự host trong `/ort/` và
+`/mediapipe/` (`scripts/copy-ort.mjs` chạy tự động trước dev/build), không phụ
+thuộc CDN runtime. Hai model AirSketch vẫn tải từ nguồn đã pin trong bản online.
 
 ## Kịch bản demo 5 phút
 

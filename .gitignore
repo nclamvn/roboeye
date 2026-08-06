@@ -1,6 +1,7 @@
 node_modules/
 dist/
 public/ort/
+public/mediapipe/
 public/models/
 tests/.model-cache/
 tests/.detection-benchmark-cache/

@@ -66,3 +66,10 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - **Task:** class-aware NMS + containment suppression cho RT-DETR; prompt template, canonical label, threshold tuning và 4 query preset cho OWL-ViT; benchmark before/after trên cùng corpus.
 - **Acceptance:** RT FP 2→0 không mất TP; OWL F1 0,400→0,833 trên regression corpus; unit, E2E và real benchmark PASS.
 - **Detail:** `docs/TIP-15-DETECTION-TUNING.md`.
+
+## TIP-16 · AirSketch — Vẽ · Đoán · Nói
+
+- **Dependencies:** TIP-13, TIP-14, TIP-15. **Priority:** P0 demo/product.
+- **Task:** MediaPipe hand tracking + pinch air ink; QuickDraw top-3; reserved responsive sidecar; phrase composition and Vietnamese TTS; deterministic/real-model benchmark.
+- **Acceptance:** 8/8 AIR requirements; 10/10 browser contract; pinned models load; hand p95 <80 ms and sketch inference <300 ms on test host.
+- **Detail:** `docs/TIP-16-AIRSKETCH.md`.

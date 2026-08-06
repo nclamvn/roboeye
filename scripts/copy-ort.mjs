@@ -1,4 +1,4 @@
-// Copy runtime WASM của onnxruntime-web vào public/ort/ để app tự host,
+// Copy runtime WASM của ONNX Runtime và MediaPipe vào public/ để app tự host,
 // không phụ thuộc CDN jsdelivr lúc chạy (PRD mục 9: sinh viên mạng yếu vẫn chạy).
 import { cpSync, mkdirSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -15,3 +15,15 @@ for (const f of readdirSync(src)) {
   }
 }
 console.log(`[copy-ort] đã copy ${n} file ORT runtime vào public/ort/`);
+
+const mpSrc = `${root}node_modules/@mediapipe/tasks-vision/wasm/`;
+const mpDst = `${root}public/mediapipe/wasm/`;
+mkdirSync(mpDst, { recursive: true });
+let mpCount = 0;
+for (const f of readdirSync(mpSrc)) {
+  cpSync(mpSrc + f, mpDst + f);
+  mpCount++;
+}
+cpSync(`${root}node_modules/@mediapipe/tasks-vision/vision_bundle.js`, `${root}public/mediapipe/vision_bundle.js`);
+mpCount++;
+console.log(`[copy-ort] đã copy ${mpCount} file MediaPipe runtime vào public/mediapipe/`);

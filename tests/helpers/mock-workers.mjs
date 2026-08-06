@@ -5,10 +5,15 @@ export function installMockWorkers() {
   window.__lastDetectionInit = null;
   window.__lastDetectionFrame = null;
   window.__detectionInitCount = 0;
+  window.__lastAirClassify = null;
 
   class MockWorker {
     constructor(url) {
-      this.kind = String(url).includes('detect-worker') ? 'detection' : 'depth';
+      const workerUrl = String(url);
+      this.kind = workerUrl.includes('detect-worker') ? 'detection'
+        : workerUrl.includes('air-hand-worker') ? 'air-hand'
+          : workerUrl.includes('air-classifier-worker') ? 'air-classifier'
+            : 'depth';
       this.onmessage = null;
       this.onerror = null;
       this.terminated = false;
@@ -23,6 +28,28 @@ export function installMockWorkers() {
 
     postMessage(message) {
       if (this.terminated) return;
+      if (this.kind === 'air-hand') {
+        if (message.type === 'init') this.emit({ type: 'ready' });
+        else if (message.type === 'frame') this.emit({ type: 'landmarks', landmarks: null, handedness: null, inferMs: 9 });
+        return;
+      }
+      if (this.kind === 'air-classifier') {
+        if (message.type === 'init') this.emit({ type: 'ready', device: 'wasm' }, 5);
+        else if (message.type === 'classify') {
+          window.__lastAirClassify = { width: message.width, height: message.height, bytes: message.rgba.byteLength };
+          this.emit({
+            type: 'prediction',
+            revision: message.revision,
+            inferMs: 42,
+            predictions: [
+              { label: 'house', score: 0.91 },
+              { label: 'tree', score: 0.06 },
+              { label: 'car', score: 0.03 }
+            ]
+          }, 8);
+        }
+        return;
+      }
       if (this.kind === 'depth') {
         if (message.type === 'init') {
           if (window.__failMockDepthLoadOnce) {

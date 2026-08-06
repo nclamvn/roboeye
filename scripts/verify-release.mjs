@@ -11,6 +11,9 @@ const required = [
   'manifest.webmanifest',
   'icons/roboeye.svg',
   '_headers',
+  'workers/air-hand-worker.js',
+  'mediapipe/vision_bundle.js',
+  'mediapipe/wasm/vision_wasm_internal.wasm',
   'sw.js',
   'release.json'
 ];

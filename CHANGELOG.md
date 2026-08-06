@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.0 — 06/08/2026
+
+### AirSketch
+
+- Added realtime index-finger tracking and pinch-to-draw air ink with held undo/clear gestures.
+- Added a pinned QuickDraw MobileViT classifier with top-3 guesses after a short drawing pause.
+- Added AAC phrase composition and Vietnamese browser TTS, with explicit non-sign-language scope.
+- Added mouse/touch fallback and a reserved responsive sidecar so prediction text never covers camera graphics.
+
+### Reliability and verification
+
+- Self-hosted MediaPipe runtime, exact-pinned the package, and validates the remote hand model with SHA-256 before use.
+- Added clean one-time classifier load retry and sequential WASM cold start.
+- Added 4 unit tests, 10 AirSketch browser checks and a real hand/classifier model smoke with p50/p95 metrics.
+
 ## 1.2.1 — 06/08/2026
 
 ### Product

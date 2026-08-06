@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#050505" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; child-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://huggingface.co https://*.huggingface.co https://*.hf.co https://*.xethub.hf.co" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; child-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://storage.googleapis.com https://huggingface.co https://*.huggingface.co https://*.hf.co https://*.xethub.hf.co" />
   <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
   <link rel="icon" href="%BASE_URL%icons/roboeye.svg" type="image/svg+xml" />
   <title>RoboEye · mắt robot trong trình duyệt</title>
@@ -107,6 +107,7 @@
       </div>
 
       <div class="sidebar-foot">
+        <button id="airsketch-btn" class="foot-btn airsketch-launch">AirSketch <span class="mode-key">WOW</span></button>
         <button id="freeze-btn" class="foot-btn">Freeze <span class="mode-key">F</span></button>
         <button id="panel-btn" class="foot-btn">Giải thích <span class="mode-key">?</span></button>
         <button id="diagnostics-btn" class="foot-btn">Xuất chẩn đoán <span class="mode-key">JSON</span></button>
@@ -116,8 +117,11 @@
 
     <!-- Viewport 3D chiếm trọn -->
     <main id="viewport">
+      <div id="stage">
       <canvas id="gl"></canvas>
       <svg id="det-overlay" hidden></svg>
+      <canvas id="airsketch-overlay" aria-label="Nét vẽ AirSketch trên camera"></canvas>
+      <div id="airsketch-cursor" data-gesture="hover" hidden><span></span></div>
       <div id="frozen-tag" hidden>FROZEN · nhấn F để tiếp tục</div>
       <div id="alert-chip" hidden>VẬT CẢN GẦN</div>
       <div id="det-count" hidden>0 vật</div>
@@ -170,6 +174,36 @@
           <div id="boot-error" class="boot-error" hidden></div>
         </div>
       </div>
+      </div>
+
+      <aside id="airsketch-dock" aria-label="Điều khiển AirSketch" hidden>
+        <header class="air-head">
+          <div>
+            <div class="air-kicker">VẼ · ĐOÁN · NÓI</div>
+            <h2>AirSketch</h2>
+          </div>
+          <button id="air-close-btn" class="air-icon-btn" aria-label="Đóng AirSketch">×</button>
+        </header>
+        <div id="air-status" class="air-status" role="status" aria-live="polite">Đang chuẩn bị bút trong không khí…</div>
+        <div class="air-guess-block">
+          <span class="air-guess-label">Tôi đoán</span>
+          <strong id="air-guess" class="air-guess">Vẽ một vật thể</strong>
+          <div id="air-predictions" class="air-predictions" aria-label="Ba dự đoán gần nhất"></div>
+        </div>
+        <div class="air-phrase-block">
+          <span class="air-guess-label">Câu của bạn</span>
+          <div id="air-phrase" class="air-phrase" aria-live="polite">Chưa có từ nào</div>
+        </div>
+        <div class="air-actions">
+          <button id="air-undo-btn">Hoàn tác</button>
+          <button id="air-clear-btn">Vẽ lại</button>
+          <button id="air-add-btn">Thêm từ đoán</button>
+          <button id="air-speak-btn" class="air-primary">Nói câu này</button>
+          <button id="air-clear-phrase-btn">Xóa câu</button>
+        </div>
+        <p class="air-hint"><b>Chụm ngón cái + trỏ</b> để vẽ · giữ hai ngón để hoàn tác · giữ bàn tay mở để xóa. Chuột và cảm ứng luôn dùng được.</p>
+        <p class="air-honesty">Hỗ trợ giao tiếp tăng cường (AAC), không phải trình dịch ngôn ngữ ký hiệu. Khung hình không rời thiết bị.</p>
+      </aside>
     </main>
 
     <!-- Panel giải thích trượt từ phải -->

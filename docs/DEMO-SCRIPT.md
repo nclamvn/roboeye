@@ -48,7 +48,19 @@ Giờ là cú chốt. Đứng dậy, bước ra chắn ngang đường đi của
 
 Bước qua lại vài lần cho đường đổi theo. Đây là hình ảnh khán giả sẽ nhớ nhất.
 
-## Beat 5 · Kết · 30 giây
+## Beat 5 · AirSketch · 90 giây · khoảnh khắc chính thứ ba
+
+Quay về RGB, nhấn **AirSketch**. Đưa bàn tay lên và chụm ngón cái với ngón trỏ.
+
+*Bây giờ camera không chỉ nhìn thấy tôi; nó biến ngón tay thành một cây bút. Tôi không chạm màn hình và cũng không cầm thiết bị điều khiển nào.*
+
+Vẽ chậm một ngôi nhà hoặc chiếc xe. Nhấc bút bằng cách thả hai ngón, chờ một nhịp cho top-3 hiện trong sidecar. Chạm dự đoán gần nhất, rồi bấm **Nói câu này**.
+
+*Nét vẽ vừa được đoán ngay trên máy, ghép thành một câu và đọc thành tiếng. Đây chưa phải dịch ngôn ngữ ký hiệu; nó là một công cụ AAC — một kênh giao tiếp bổ sung cho người khó nói, lớp học, robot không chạm hoặc phục hồi vận động.*
+
+Nếu tracking tay khó trong ánh sáng phòng, dùng chuột vẽ ngay trên camera để chứng minh cùng pipeline vẫn hoạt động. Phần dự đoán nằm ở sidecar riêng nên không che vật thể hoặc nét vẽ.
+
+## Beat 6 · Kết · 30 giây
 
 Quay về phím 1 cho màn hình sạch.
 

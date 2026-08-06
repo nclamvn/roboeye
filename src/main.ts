@@ -16,7 +16,17 @@ import { recoverDetectionError } from './detection-state';
 import { recoverDepthError } from './depth-state';
 import { createRuntimeDiagnostics } from './runtime-diagnostics';
 import { OWL_QUERY_PRESETS } from './detection-presets';
+import { AIRSKETCH_CONFIG } from './airsketch-config';
+import { AirGestureController, AirInkDocument, drawAirStrokes, rasterizeAirStrokes } from './airsketch-ink';
+import { AirSketchMetrics } from './airsketch-metrics';
+import { localizeSketchLabel } from './airsketch-labels';
 import type { WorkerToMain, Dtype } from './types';
+import type {
+  AirPoint,
+  AirSketchClassifierWorkerToMain,
+  AirSketchHandWorkerToMain,
+  SketchPrediction
+} from './airsketch-types';
 import type {
   DetBox,
   DetectionBenchmarkAPI,
@@ -63,6 +73,30 @@ let engine: DetectionEngine = 'rtdetr';
 let queries: string[] = [...OWL_QUERY_PRESETS.everyday.queries];
 let detW = 0;
 let detH = 0;
+
+// T16: hand tracking → air ink → sketch classifier → AAC/TTS.
+const airGesture = new AirGestureController();
+const airInk = new AirInkDocument();
+const airMetrics = new AirSketchMetrics();
+let airSketchOn = false;
+let airHandWorker: Worker | null = null;
+let airHandReady = false;
+let airHandStage = 'idle';
+let airHandBusy = false;
+let airHandWarmupRemaining = 3;
+let airClassifierWorker: Worker | null = null;
+let airClassifierReady = false;
+let airClassifierBusy = false;
+let airClassifierLoading = false;
+let airClassifierLoadRetries = 0;
+let airClassifierRetryTimer: ReturnType<typeof setTimeout> | null = null;
+let airPredictions: SketchPrediction[] = [];
+let airPhrase: string[] = [];
+let airLastCaptureAt = 0;
+let airLastInkAt = 0;
+let airLastClassifiedRevision = -1;
+let airPointerActive = false;
+let airPenWasDown = false;
 
 interface BenchmarkPending<T> {
   resolve: (value: T) => void;
@@ -230,8 +264,324 @@ const shell = createShell({
       JSON.stringify(diagnostics.snapshot(), null, 2),
       'application/json'
     );
+  },
+  onAirSketch: (on) => setAirSketch(on),
+  onAirUndo: () => undoAirStroke(),
+  onAirClear: () => clearAirDrawing(),
+  onAirAddPrediction: (index) => addAirPrediction(index),
+  onAirSpeak: () => speakAirPhrase(),
+  onAirClearPhrase: () => {
+    airPhrase = [];
+    shell.setAirSketchPhrase(airPhrase);
   }
 }, { version: __ROBOEYE_VERSION__, demoMode, offlineMode: __ROBOEYE_OFFLINE__ });
+
+const airCanvas = document.getElementById('airsketch-overlay') as HTMLCanvasElement;
+const airStage = document.getElementById('stage') as HTMLElement;
+const airCtx = airCanvas.getContext('2d');
+
+function resizeAirCanvas() {
+  const dpr = Math.min(window.devicePixelRatio, 2);
+  const width = Math.max(1, Math.round(airStage.clientWidth * dpr));
+  const height = Math.max(1, Math.round(airStage.clientHeight * dpr));
+  if (airCanvas.width === width && airCanvas.height === height) return;
+  airCanvas.width = width;
+  airCanvas.height = height;
+  renderAirInk();
+}
+
+function renderAirInk() {
+  if (!airCtx) return;
+  airCtx.clearRect(0, 0, airCanvas.width, airCanvas.height);
+  if (!airSketchOn) return;
+  drawAirStrokes(airCtx, airInk.snapshot(), airCanvas.width, airCanvas.height, {
+    color: '#ffffff',
+    width: Math.max(5, airCanvas.width / Math.max(280, airStage.clientWidth) * 4.2),
+    shadow: 'rgba(255, 255, 255, 0.55)'
+  });
+}
+
+function noteAirInkChanged() {
+  airLastInkAt = performance.now();
+  renderAirInk();
+}
+
+function undoAirStroke() {
+  airInk.undo();
+  airPenWasDown = false;
+  noteAirInkChanged();
+  shell.setAirSketchStatus('Đã hoàn tác nét gần nhất');
+}
+
+function clearAirDrawing() {
+  airInk.clear();
+  airGesture.reset();
+  airPenWasDown = false;
+  airPredictions = [];
+  airLastClassifiedRevision = -1;
+  renderAirInk();
+  shell.setAirSketchPredictions([]);
+  shell.setAirSketchStatus('Khung vẽ đã sạch · chụm ngón để bắt đầu');
+}
+
+function addAirPrediction(index: number) {
+  const prediction = airPredictions[index];
+  if (!prediction) return;
+  airPhrase.push(localizeSketchLabel(prediction.label));
+  shell.setAirSketchPhrase(airPhrase);
+  diagnostics.record('airsketch.word.add', { label: prediction.label });
+}
+
+function speakAirPhrase() {
+  const fallback = airPredictions[0] ? localizeSketchLabel(airPredictions[0].label) : '';
+  const text = airPhrase.length ? airPhrase.join(' ') : fallback;
+  if (!text) {
+    shell.setAirSketchStatus('Hãy vẽ và chọn ít nhất một từ trước khi nói');
+    return;
+  }
+  if (!('speechSynthesis' in window)) {
+    shell.setAirSketchStatus('Trình duyệt này chưa hỗ trợ đọc thành tiếng');
+    return;
+  }
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'vi-VN';
+  utterance.rate = 0.92;
+  speechSynthesis.speak(utterance);
+  shell.setAirSketchStatus(`Đang nói: “${text}”`);
+  diagnostics.record('airsketch.speak', { words: text.split(/\s+/).length });
+}
+
+function spawnAirWorkers() {
+  // Cold start tuần tự: ONNX classifier hoàn tất trước khi MediaPipe dựng graph,
+  // tránh hai runtime WASM tranh bộ nhớ/compile rồi báo network error giả.
+  const classifierSettled = airClassifierReady || (airClassifierWorker != null && !airClassifierLoading);
+  if (!airHandWorker && !__ROBOEYE_OFFLINE__ && classifierSettled) {
+    const runtimeBase = new URL(import.meta.env.BASE_URL, location.href);
+    // MediaPipe loader vẫn dùng importScripts nội bộ; classic worker là contract
+    // tương thích chính thức, đồng thời giữ inference khỏi main thread.
+    const instance = new Worker(new URL('workers/air-hand-worker.js', runtimeBase));
+    airHandWorker = instance;
+    airHandReady = false;
+    airHandWarmupRemaining = 3;
+    instance.onmessage = (event: MessageEvent<AirSketchHandWorkerToMain>) => {
+      if (airHandWorker !== instance) return;
+      const message = event.data;
+      if (message.type === 'loading') {
+        airHandStage = message.stage;
+        const label = message.stage === 'runtime' ? 'runtime WASM' : message.stage === 'model' ? 'model bàn tay' : 'đồ thị tracking';
+        shell.setAirSketchStatus(`Đang chuẩn bị ${label}…`);
+      } else if (message.type === 'ready') {
+        airHandStage = 'ready';
+        airHandReady = true;
+        shell.setAirSketchStatus('Bút không khí sẵn sàng · chụm ngón cái và ngón trỏ để vẽ');
+        diagnostics.record('airsketch.hand.ready', { model: AIRSKETCH_CONFIG.handModel.version });
+      } else if (message.type === 'landmarks') {
+        airHandBusy = false;
+        if (airHandWarmupRemaining > 0) airHandWarmupRemaining--;
+        else airMetrics.addHand(message.inferMs);
+        handleAirLandmarks(message.landmarks);
+      } else {
+        airHandBusy = false;
+        if (message.stage === 'load') airHandReady = false;
+        airHandStage = `error:${message.stage}:${message.message}`;
+        shell.setAirSketchStatus(`Tracking tay chưa sẵn sàng · dùng chuột/chạm (${message.message})`);
+        diagnostics.record('airsketch.hand.error', { stage: message.stage, message: message.message });
+      }
+    };
+    instance.onerror = (event) => {
+      airHandBusy = false;
+      airHandReady = false;
+      airHandStage = 'crash';
+      shell.setAirSketchStatus('Tracking tay gặp lỗi · chuột/chạm vẫn dùng được');
+      diagnostics.record('airsketch.hand.crash', { message: event.message });
+    };
+    instance.postMessage({
+      type: 'init',
+      modelUrl: AIRSKETCH_CONFIG.handModel.url,
+      expectedBytes: AIRSKETCH_CONFIG.handModel.bytes,
+      expectedSha256: AIRSKETCH_CONFIG.handModel.sha256,
+      visionBundleUrl: new URL('mediapipe/vision_bundle.js', runtimeBase).href,
+      wasmBase: new URL('mediapipe/wasm', runtimeBase).href
+    });
+  }
+
+  if (!airClassifierWorker) {
+    const instance = new Worker(new URL('./worker/air-classifier-worker.ts', import.meta.url), { type: 'module' });
+    airClassifierWorker = instance;
+    airClassifierReady = false;
+    airClassifierLoading = true;
+    instance.onmessage = (event: MessageEvent<AirSketchClassifierWorkerToMain>) => {
+      if (airClassifierWorker !== instance) return;
+      const message = event.data;
+      if (message.type === 'progress') {
+        shell.setAirSketchStatus(`Đang chuẩn bị bộ não đoán hình · ${Math.round(message.progress)}%`);
+      } else if (message.type === 'ready') {
+        airClassifierLoadRetries = 0;
+        airClassifierReady = true;
+        airClassifierLoading = false;
+        if (!airHandReady) shell.setAirSketchStatus(`Bộ đoán hình sẵn sàng · tracking tay: ${airHandStage}…`);
+        diagnostics.record('airsketch.classifier.ready', { model: AIRSKETCH_CONFIG.classifier.model });
+        spawnAirWorkers();
+      } else if (message.type === 'prediction') {
+        airClassifierBusy = false;
+        airMetrics.addClassify(message.inferMs);
+        if (message.revision !== airInk.revision) return;
+        airPredictions = message.predictions;
+        shell.setAirSketchPredictions(airPredictions);
+        const top = airPredictions[0];
+        shell.setAirSketchStatus(top
+          ? `Đoán trong ${Math.round(message.inferMs)} ms · chạm một dự đoán để thêm vào câu`
+          : 'Chưa nhận ra · thử thêm vài nét');
+        diagnostics.record('airsketch.prediction', { inferMs: Math.round(message.inferMs), top: top?.label ?? null });
+      } else {
+        airClassifierBusy = false;
+        if (message.stage === 'load') {
+          airClassifierReady = false;
+          if (!__ROBOEYE_OFFLINE__ && airSketchOn && airClassifierLoadRetries < 1) {
+            airClassifierLoadRetries++;
+            instance.terminate();
+            if (airClassifierWorker === instance) airClassifierWorker = null;
+            shell.setAirSketchStatus('Tải bộ đoán hình lỗi · đang thử lại một lần…');
+            airClassifierRetryTimer = setTimeout(() => {
+              airClassifierRetryTimer = null;
+              if (airSketchOn && !airClassifierWorker) spawnAirWorkers();
+            }, 800);
+            return;
+          }
+          airClassifierLoading = false;
+          spawnAirWorkers();
+        }
+        if (message.revision != null) airLastClassifiedRevision = -1;
+        shell.setAirSketchStatus(`Chưa thể đoán hình · nét vẽ vẫn hoạt động (${message.message})`);
+        diagnostics.record('airsketch.classifier.error', { stage: message.stage, message: message.message });
+      }
+    };
+    instance.onerror = (event) => {
+      airClassifierBusy = false;
+      airClassifierReady = false;
+      airClassifierLoading = false;
+      spawnAirWorkers();
+      shell.setAirSketchStatus('Bộ đoán hình gặp lỗi · nét vẽ vẫn hoạt động');
+      diagnostics.record('airsketch.classifier.crash', { message: event.message });
+    };
+    instance.postMessage({ type: 'init', localModels });
+  }
+}
+
+function setAirSketch(on: boolean) {
+  airSketchOn = on;
+  shell.setAirSketchActive(on);
+  airCanvas.classList.toggle('active', on);
+  if (on) {
+    if (!airClassifierWorker && airClassifierRetryTimer == null) airClassifierLoadRetries = 0;
+    shell.setMode('rgb');
+    resizeAirCanvas();
+    spawnAirWorkers();
+    shell.setAirSketchStatus(__ROBOEYE_OFFLINE__
+      ? 'Bản offline: dùng chuột/chạm để vẽ; model AirSketch chưa đóng gói'
+      : 'Đang chuẩn bị tracking tay và bộ đoán hình…');
+  } else {
+    if (airClassifierRetryTimer != null) clearTimeout(airClassifierRetryTimer);
+    airClassifierRetryTimer = null;
+    airPenWasDown = false;
+    airPointerActive = false;
+    airGesture.release();
+    airInk.end();
+    shell.setAirSketchCursor(null);
+  }
+  diagnostics.record('airsketch.toggle', { on });
+  requestAnimationFrame(() => {
+    sceneApi?.resize();
+    resizeAirCanvas();
+  });
+}
+
+function applyAirPen(point: AirPoint, down: boolean) {
+  if (down) {
+    if (!airPenWasDown) airInk.begin(point);
+    else airInk.move(point);
+    airPenWasDown = true;
+    noteAirInkChanged();
+  } else if (airPenWasDown) {
+    airInk.end();
+    airPenWasDown = false;
+    noteAirInkChanged();
+  }
+}
+
+function handleAirLandmarks(landmarks: import('./airsketch-types').HandLandmark[] | null) {
+  if (!airSketchOn || airPointerActive) return;
+  if (!landmarks) {
+    applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
+    airGesture.release();
+    shell.setAirSketchCursor(null);
+    return;
+  }
+  const sample = airGesture.update(landmarks, performance.now());
+  if (!sample || !sceneApi) return;
+  const rect = sceneApi.imageRectPx();
+  const point = {
+    x: (rect.x + sample.cursor.x * rect.w) / Math.max(1, airStage.clientWidth),
+    y: (rect.y + sample.cursor.y * rect.h) / Math.max(1, airStage.clientHeight),
+    t: sample.cursor.t
+  };
+  shell.setAirSketchCursor(point, sample.gesture, sample.holdProgress);
+  if (sample.command === 'undo') undoAirStroke();
+  else if (sample.command === 'clear') clearAirDrawing();
+  else applyAirPen(point, sample.penDown);
+  if (sample.gesture === 'draw') shell.setAirSketchStatus('Đang vẽ · thả chụm để nhấc bút');
+  else if (sample.gesture === 'undo-hold') shell.setAirSketchStatus(`Giữ hai ngón để hoàn tác · ${Math.round(sample.holdProgress * 100)}%`);
+  else if (sample.gesture === 'clear-hold') shell.setAirSketchStatus(`Giữ bàn tay mở để xóa · ${Math.round(sample.holdProgress * 100)}%`);
+}
+
+function pointerPoint(event: PointerEvent): AirPoint {
+  const rect = airCanvas.getBoundingClientRect();
+  return {
+    x: Math.min(1, Math.max(0, (event.clientX - rect.left) / Math.max(1, rect.width))),
+    y: Math.min(1, Math.max(0, (event.clientY - rect.top) / Math.max(1, rect.height))),
+    t: performance.now()
+  };
+}
+
+airCanvas.addEventListener('pointerdown', (event) => {
+  if (!airSketchOn) return;
+  airPointerActive = true;
+  airCanvas.setPointerCapture(event.pointerId);
+  applyAirPen(pointerPoint(event), true);
+});
+airCanvas.addEventListener('pointermove', (event) => {
+  if (airPointerActive) applyAirPen(pointerPoint(event), true);
+});
+const endPointer = (event: PointerEvent) => {
+  if (!airPointerActive) return;
+  applyAirPen(pointerPoint(event), false);
+  airPointerActive = false;
+};
+airCanvas.addEventListener('pointerup', endPointer);
+airCanvas.addEventListener('pointercancel', endPointer);
+
+function maybeClassifyAirSketch(now: number) {
+  if (!airSketchOn || !airClassifierReady || airClassifierBusy || airInk.isDrawing() || !airInk.hasInk()) return;
+  if (airLastClassifiedRevision === airInk.revision || now - airLastInkAt < AIRSKETCH_CONFIG.recognition.idleMs) return;
+  const image = rasterizeAirStrokes(airInk.snapshot());
+  if (!image) return;
+  airClassifierBusy = true;
+  airLastClassifiedRevision = airInk.revision;
+  shell.setAirSketchStatus('Đang đoán hình bạn vừa vẽ…');
+  const rgba = image.data.slice().buffer;
+  airClassifierWorker?.postMessage({
+    type: 'classify', rgba, width: image.width, height: image.height, revision: airInk.revision
+  }, [rgba]);
+}
+
+window.__roboeyeAirSketchBenchmark = {
+  snapshot: () => airMetrics.snapshot(
+    airInk.strokeCount(),
+    airInk.pointCount(),
+    { hand: airHandReady, classifier: airClassifierReady, handStage: airHandStage }
+  )
+};
 
 function spawnDetectWorker() {
   const instance = new Worker(new URL('./worker/detect-worker.ts', import.meta.url), { type: 'module' });
@@ -588,7 +938,10 @@ async function boot() {
       : `Renderer WebGL2 (fallback) · point cloud ${sceneApi.cloudCount.toLocaleString('vi-VN')} điểm. Nhấn "Mở camera".`
   );
   shell.setMode('rgb');
-  window.addEventListener('resize', () => sceneApi?.resize());
+  window.addEventListener('resize', () => {
+    sceneApi?.resize();
+    resizeAirCanvas();
+  });
 
   let lastT = performance.now();
   sceneApi.renderer.setAnimationLoop(() => {
@@ -624,7 +977,33 @@ async function boot() {
       }
     }
 
+    // Hand tracking chạy nhịp riêng tối đa 24 fps. ImageBitmap được transfer sang
+    // worker nên main thread không đọc lại pixel và không xếp hàng frame.
+    const airFrameInterval = 1000 / AIRSKETCH_CONFIG.tracking.maxFps;
+    if (airSketchOn && airHandReady && !airClassifierLoading && !airHandBusy && !frozen && airHandWorker && video &&
+        video.readyState >= 2 && now - airLastCaptureAt >= airFrameInterval) {
+      airHandBusy = true;
+      airLastCaptureAt = now;
+      const aspect = video.videoWidth / Math.max(1, video.videoHeight);
+      const width = AIRSKETCH_CONFIG.tracking.captureWidth;
+      const height = Math.max(2, Math.round(width / Math.max(0.1, aspect)));
+      void createImageBitmap(video, { resizeWidth: width, resizeHeight: height, resizeQuality: 'medium' })
+        .then((bitmap) => {
+          if (!airSketchOn || !airHandWorker) {
+            bitmap.close();
+            airHandBusy = false;
+            return;
+          }
+          airHandWorker.postMessage({ type: 'frame', bitmap, timestamp: now }, [bitmap]);
+        })
+        .catch((error) => {
+          airHandBusy = false;
+          diagnostics.record('airsketch.capture.error', { message: error instanceof Error ? error.message : String(error) });
+        });
+    }
+
     sceneApi?.render(dt);
+    maybeClassifyAirSketch(now);
 
     // Overlay 2D box: chỉ ở chế độ RGB và Depth (cloud dùng 3D box, BEV ẩn)
     if (sceneApi) {
