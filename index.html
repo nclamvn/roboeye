@@ -74,10 +74,18 @@
               <option value="owlvit">OWL-ViT · gõ chữ ra lớp</option>
             </select>
           </label>
-          <label class="ctl" id="query-ctl" hidden>
-            <span class="ctl-label">Lớp cần tìm <span class="ctl-value">phẩy ngăn</span></span>
-            <input id="query-input" type="text" value="person, chair, laptop, cup" spellcheck="false" />
-          </label>
+          <div class="ctl" id="query-ctl" hidden>
+            <span class="ctl-label">Preset truy vấn</span>
+            <select id="query-preset" aria-label="Chọn preset truy vấn OWL-ViT">
+              <option value="everyday">Hằng ngày</option>
+              <option value="mobility">Di chuyển</option>
+              <option value="workspace">Bàn làm việc</option>
+              <option value="logistics">Kho vận</option>
+              <option value="custom">Tuỳ chỉnh</option>
+            </select>
+            <span class="ctl-label query-label">Lớp cần tìm <span class="ctl-value">tối đa 8 · phẩy ngăn</span></span>
+            <input id="query-input" aria-label="Các lớp OWL-ViT cần tìm" type="text" value="person, chair, laptop, cup" spellcheck="false" />
+          </div>
           <div class="label-hint">Nhấn <span class="mode-key">F</span> để chụp khung và gán nhãn. Xuất:</div>
           <div class="export-row">
             <button id="exp-coco" class="foot-btn export-btn">COCO</button>

@@ -11,6 +11,30 @@ export interface DetBox {
   y1: number;
 }
 
+export interface DetectionBenchmarkReady {
+  engine: DetectionEngine;
+  device: DetectionDevice;
+  readyMs: number;
+}
+
+export interface DetectionBenchmarkResult {
+  boxes: DetBox[];
+  detMs: number;
+}
+
+export interface DetectionBenchmarkAPI {
+  start(engine: DetectionEngine): Promise<DetectionBenchmarkReady>;
+  setQueries(value: string[]): void;
+  infer(rgba: ArrayBuffer, width: number, height: number): Promise<DetectionBenchmarkResult>;
+  stop(): void;
+}
+
+declare global {
+  interface Window {
+    __roboeyeDetectionBenchmark?: DetectionBenchmarkAPI;
+  }
+}
+
 export interface RelativeBox3D {
   cx: number;
   cy: number;

@@ -52,3 +52,17 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - **Task:** 60-second Camera → Depth → Point Cloud → BEV tour; responsive instrument shell; version metadata; verified offline q8 build; GitHub Pages/tag release workflow.
 - **Acceptance:** 7/7 REQ-R implemented; release E2E covers 375/768/1440, diagnostics export and offline cold tab; normal/offline artifacts pass verifier.
 - **Detail:** `docs/TIP-13-RELEASE-PACKAGING.md`.
+
+## TIP-14 · Detection quality and speed benchmark
+
+- **Dependencies:** TIP-10, TIP-13. **Priority:** P0 observability.
+- **Task:** regression corpus có checksum/ground truth; class-aware precision/recall/F1 tại IoU 0,5; model-ready time và inference p50/p95 trên production worker; JSON artifact theo môi trường; CI tuần/thủ công.
+- **Acceptance:** 8/8 REQ-B implemented; metric unit tests, fixture integrity và real browser/WASM benchmark PASS; báo rõ corpus nhỏ không phải representative mAP.
+- **Detail:** `docs/TIP-14-DETECTION-BENCHMARK.md`.
+
+## TIP-15 · Detection post-processing and OWL-ViT query tuning
+
+- **Dependencies:** TIP-14. **Priority:** P0 quality.
+- **Task:** class-aware NMS + containment suppression cho RT-DETR; prompt template, canonical label, threshold tuning và 4 query preset cho OWL-ViT; benchmark before/after trên cùng corpus.
+- **Acceptance:** RT FP 2→0 không mất TP; OWL F1 0,400→0,833 trên regression corpus; unit, E2E và real benchmark PASS.
+- **Detail:** `docs/TIP-15-DETECTION-TUNING.md`.

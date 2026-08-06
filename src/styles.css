@@ -311,6 +311,8 @@ button, select, input { font-family: var(--font-ui); }
 #label-tools { display: flex; flex-direction: column; gap: 10px; padding-top: 6px; border-top: 1px solid var(--hive-hairline-inv); }
 #label-tools[hidden] { display: none; }
 
+.query-label { margin-top: 3px; }
+
 .ctl input[type='text'] {
   background: var(--hive-plate-2);
   color: var(--hive-ink-inv);

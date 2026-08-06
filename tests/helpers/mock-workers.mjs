@@ -60,6 +60,8 @@ export function installMockWorkers() {
         this.engine = message.engine;
         this.emit({ type: 'loading', engine: this.engine });
         this.emit({ type: 'ready', engine: this.engine, device: 'wasm' }, 5);
+      } else if (message.type === 'queries') {
+        window.__lastDetectionQueries = message.value;
       } else if (message.type === 'frame') {
         window.__lastDetectionFrame = { width: message.width, height: message.height };
         if (!window.__allowMockDetection) {

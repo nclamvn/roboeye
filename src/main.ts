@@ -15,8 +15,16 @@ import { createCocoExport, createRelative3dExport, createYoloExport } from './an
 import { recoverDetectionError } from './detection-state';
 import { recoverDepthError } from './depth-state';
 import { createRuntimeDiagnostics } from './runtime-diagnostics';
+import { OWL_QUERY_PRESETS } from './detection-presets';
 import type { WorkerToMain, Dtype } from './types';
-import type { DetBox, DetectionEngine, DetectionWorkerToMain } from './detection-types';
+import type {
+  DetBox,
+  DetectionBenchmarkAPI,
+  DetectionBenchmarkReady,
+  DetectionBenchmarkResult,
+  DetectionEngine,
+  DetectionWorkerToMain
+} from './detection-types';
 
 let sceneApi: SceneAPI | null = null;
 let worker: Worker | null = null;
@@ -52,9 +60,21 @@ let detectRetryTimer: ReturnType<typeof setTimeout> | null = null;
 let lastBoxes: DetBox[] = []; // cũng là tập annotation khi frozen
 let selectedObj = -1;
 let engine: DetectionEngine = 'rtdetr';
-let queries: string[] = ['person', 'chair', 'laptop', 'cup'];
+let queries: string[] = [...OWL_QUERY_PRESETS.everyday.queries];
 let detW = 0;
 let detH = 0;
+
+interface BenchmarkPending<T> {
+  resolve: (value: T) => void;
+  reject: (reason: Error) => void;
+  timer: ReturnType<typeof setTimeout>;
+}
+
+let benchmarkReadyPending: (BenchmarkPending<DetectionBenchmarkReady> & {
+  engine: DetectionEngine;
+  startedAt: number;
+}) | null = null;
+let benchmarkInferPending: BenchmarkPending<DetectionBenchmarkResult> | null = null;
 
 function refreshAnnotations() {
   sceneApi?.setDetections(lastBoxes);
@@ -100,6 +120,7 @@ const detectWebGPU = urlParams.has('detectwebgpu') && !forceWasm;
 let detectForceWasm = !detectWebGPU;
 const localModels = urlParams.has('localmodels') || __ROBOEYE_OFFLINE__;
 const demoMode = urlParams.has('demo');
+const detectionBenchmarkMode = urlParams.has('detection-benchmark');
 let demoRequested = demoMode;
 
 let diagnosticsStorage: Storage | undefined;
@@ -231,8 +252,20 @@ function spawnDetectWorker() {
       detectBusy = false;
       shell.setObjStatus(engine === 'owlvit' ? `OWL-ViT · ${m.device.toUpperCase()}` : `RT-DETR · ${m.device.toUpperCase()} · COCO`);
       diagnostics.record('detection.ready', { engine, device: m.device });
+      if (benchmarkReadyPending?.engine === m.engine) {
+        const pending = benchmarkReadyPending;
+        benchmarkReadyPending = null;
+        clearTimeout(pending.timer);
+        pending.resolve({ engine: m.engine, device: m.device, readyMs: performance.now() - pending.startedAt });
+      }
     } else if (m.type === 'det') {
       detectBusy = false;
+      if (benchmarkInferPending) {
+        const pending = benchmarkInferPending;
+        benchmarkInferPending = null;
+        clearTimeout(pending.timer);
+        pending.resolve({ boxes: m.boxes, detMs: m.detMs });
+      }
       if (!frozen) {
         lastBoxes = m.boxes;
         selectedObj = -1;
@@ -245,10 +278,12 @@ function spawnDetectWorker() {
       detectReady = recovery.ready;
       console.error('[roboeye-detect]', m.message);
       diagnostics.record('detection.error', { engine, stage: m.stage, message: m.message });
+      if (m.stage === 'load') rejectBenchmarkReady(m.message);
+      else rejectBenchmarkInfer(m.message);
       if (m.stage === 'load') {
         instance.terminate();
         if (detectWorker === instance) detectWorker = null;
-        if (detectOn && detectLoadRetries < 1) {
+        if (detectOn && !detectionBenchmarkMode && detectLoadRetries < 1) {
           detectLoadRetries++;
           detectForceWasm = true;
           shell.setObjStatus('tải lỗi · đang thử lại WASM…');
@@ -273,8 +308,26 @@ function spawnDetectWorker() {
     console.error('[roboeye-detect-worker]', event.message || 'worker crash');
     shell.setObjStatus('worker lỗi · tắt/bật để thử lại');
     diagnostics.record('detection.crash', { message: event.message || 'worker crash' });
+    rejectBenchmarkReady(event.message || 'Detection worker crash');
+    rejectBenchmarkInfer(event.message || 'Detection worker crash');
   };
   instance.postMessage({ type: 'init', forceWasm: detectForceWasm, localModels, engine, queries });
+}
+
+function rejectBenchmarkReady(message: string) {
+  if (!benchmarkReadyPending) return;
+  const pending = benchmarkReadyPending;
+  benchmarkReadyPending = null;
+  clearTimeout(pending.timer);
+  pending.reject(new Error(message));
+}
+
+function rejectBenchmarkInfer(message: string) {
+  if (!benchmarkInferPending) return;
+  const pending = benchmarkInferPending;
+  benchmarkInferPending = null;
+  clearTimeout(pending.timer);
+  pending.reject(new Error(message));
 }
 
 function stopDetectWorker() {
@@ -284,6 +337,75 @@ function stopDetectWorker() {
   detectWorker = null;
   detectReady = false;
   detectBusy = false;
+  rejectBenchmarkReady('Detection benchmark đã dừng');
+  rejectBenchmarkInfer('Detection benchmark đã dừng');
+}
+
+function startDetectionBenchmark(nextEngine: DetectionEngine): Promise<DetectionBenchmarkReady> {
+  stopDetectWorker();
+  detectOn = true;
+  detectForceWasm = true;
+  detectLoadRetries = 0;
+  engine = nextEngine;
+  queries = [...OWL_QUERY_PRESETS.everyday.queries];
+  lastBoxes = [];
+  selectedObj = -1;
+  refreshAnnotations();
+  shell.showLabelTools(true);
+
+  return new Promise((resolve, reject) => {
+    const startedAt = performance.now();
+    const timer = setTimeout(() => {
+      rejectBenchmarkReady(`Quá thời gian tải model ${nextEngine}`);
+    }, 300_000);
+    benchmarkReadyPending = { engine: nextEngine, startedAt, resolve, reject, timer };
+    spawnDetectWorker();
+  });
+}
+
+function inferDetectionBenchmark(
+  rgba: ArrayBuffer,
+  width: number,
+  height: number
+): Promise<DetectionBenchmarkResult> {
+  if (!detectWorker || !detectReady) return Promise.reject(new Error('Detection model chưa sẵn sàng'));
+  if (detectBusy || benchmarkInferPending) return Promise.reject(new Error('Detection worker đang bận'));
+  if (!Number.isInteger(width) || !Number.isInteger(height) || width <= 0 || height <= 0) {
+    return Promise.reject(new Error('Kích thước benchmark không hợp lệ'));
+  }
+  if (rgba.byteLength !== width * height * 4) {
+    return Promise.reject(new Error('RGBA buffer không khớp kích thước benchmark'));
+  }
+
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      detectBusy = false;
+      rejectBenchmarkInfer('Quá thời gian inference detection');
+    }, 120_000);
+    benchmarkInferPending = { resolve, reject, timer };
+    detectBusy = true;
+    detW = width;
+    detH = height;
+    detectWorker?.postMessage({ type: 'frame', rgba, width, height }, [rgba]);
+  });
+}
+
+if (detectionBenchmarkMode) {
+  const benchmarkApi: DetectionBenchmarkAPI = {
+    start: startDetectionBenchmark,
+    setQueries(value) {
+      const normalized = value.map((item) => item.trim()).filter(Boolean);
+      if (normalized.length === 0) throw new Error('Benchmark cần ít nhất một query');
+      queries = normalized;
+      detectWorker?.postMessage({ type: 'queries', value: normalized });
+    },
+    infer: inferDetectionBenchmark,
+    stop() {
+      detectOn = false;
+      stopDetectWorker();
+    }
+  };
+  window.__roboeyeDetectionBenchmark = benchmarkApi;
 }
 
 function spawnWorker() {

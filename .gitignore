@@ -3,6 +3,8 @@ dist/
 public/ort/
 public/models/
 tests/.model-cache/
+tests/.detection-benchmark-cache/
+tests/.benchmark-results/
 release/
 *.log
 .DS_Store

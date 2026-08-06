@@ -44,3 +44,25 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run smoke
+
+  detection-benchmark:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run benchmark:detection
+      - name: Upload detection benchmark result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: detection-benchmark-${{ runner.os }}-${{ runner.arch }}
+          path: tests/.benchmark-results/detection-benchmark-latest.json
+          if-no-files-found: warn
+          retention-days: 30
