@@ -28,8 +28,16 @@ let video: HTMLVideoElement | null = null;
 let stream: MediaStream | null = null;
 
 let captureW = 252;
-let captureCanvas: OffscreenCanvas | null = null;
-let captureCtx: OffscreenCanvasRenderingContext2D | null = null;
+
+interface CaptureSurface {
+  canvas: OffscreenCanvas | null;
+  ctx: OffscreenCanvasRenderingContext2D | null;
+}
+
+const depthCapture: CaptureSurface = { canvas: null, ctx: null };
+const detectionCapture: CaptureSurface = { canvas: null, ctx: null };
+// Detection giữ nguồn riêng đủ chi tiết, không bị hạ theo depth khi WASM dùng 140 px.
+const DETECTION_CAPTURE_W = 384;
 
 let dtype: Dtype = 'fp16';
 let frozen = false;
@@ -401,18 +409,18 @@ async function refreshCameraList() {
   shell.setCameras(cams);
 }
 
-function captureFrame(): ImageData | null {
+function captureFrame(width: number, surface: CaptureSurface): ImageData | null {
   if (!video || video.readyState < 2 || video.videoWidth === 0) return null;
   const aspect = video.videoWidth / video.videoHeight;
-  const w = captureW;
+  const w = width;
   const h = Math.max(2, Math.round(w / aspect / 2) * 2);
-  if (!captureCanvas || captureCanvas.width !== w || captureCanvas.height !== h) {
-    captureCanvas = new OffscreenCanvas(w, h);
-    captureCtx = captureCanvas.getContext('2d', { willReadFrequently: true });
+  if (!surface.canvas || surface.canvas.width !== w || surface.canvas.height !== h) {
+    surface.canvas = new OffscreenCanvas(w, h);
+    surface.ctx = surface.canvas.getContext('2d', { willReadFrequently: true });
   }
-  if (!captureCtx) return null;
-  captureCtx.drawImage(video, 0, 0, w, h);
-  return captureCtx.getImageData(0, 0, w, h);
+  if (!surface.ctx) return null;
+  surface.ctx.drawImage(video, 0, 0, w, h);
+  return surface.ctx.getImageData(0, 0, w, h);
 }
 
 async function start() {
@@ -469,7 +477,7 @@ async function boot() {
 
     // Latest-frame-wins: chỉ capture + gửi khi worker rảnh
     if (workerReady && !workerBusy && !frozen && worker) {
-      const img = captureFrame();
+      const img = captureFrame(captureW, depthCapture);
       if (img) {
         sceneApi?.uploadColor(img);
         workerBusy = true;
@@ -482,7 +490,7 @@ async function boot() {
 
     // Detection chạy nhịp riêng, cũng latest-frame-wins
     if (detectOn && detectReady && !detectBusy && !frozen && detectWorker) {
-      const dimg = captureFrame();
+      const dimg = captureFrame(DETECTION_CAPTURE_W, detectionCapture);
       if (dimg) {
         detectBusy = true;
         detW = dimg.width;

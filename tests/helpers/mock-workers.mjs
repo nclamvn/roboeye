@@ -3,6 +3,7 @@ export function installMockWorkers() {
   window.__failMockDepthLoadOnce = false;
   window.__failMockDetectionLoadOnce = false;
   window.__lastDetectionInit = null;
+  window.__lastDetectionFrame = null;
   window.__detectionInitCount = 0;
 
   class MockWorker {
@@ -60,6 +61,7 @@ export function installMockWorkers() {
         this.emit({ type: 'loading', engine: this.engine });
         this.emit({ type: 'ready', engine: this.engine, device: 'wasm' }, 5);
       } else if (message.type === 'frame') {
+        window.__lastDetectionFrame = { width: message.width, height: message.height };
         if (!window.__allowMockDetection) {
           this.emit({ type: 'error', stage: 'infer', message: 'fixture infer error' });
         } else {

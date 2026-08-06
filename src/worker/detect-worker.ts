@@ -114,7 +114,9 @@ async function detect(rgba: ArrayBuffer, width: number, height: number) {
     const image = new RawImage(new Uint8ClampedArray(rgba), width, height, 4);
     let raw: Array<{ score: number; label: string; box: { xmin: number; ymin: number; xmax: number; ymax: number } }>;
     if (activeEngine === 'owlvit') {
-      const th = 0.08; // OWL-ViT ngưỡng thấp
+      // 0.10 là ngưỡng chuẩn của pipeline: lọc bớt box nhiễu nhưng vẫn giữ
+      // các dự đoán zero-shot vốn có confidence thấp hơn detector closed-set.
+      const th = 0.10;
       raw = (await activeDetector(image, queries, { threshold: th, percentage: false })) as typeof raw;
     } else {
       raw = (await activeDetector(image, { threshold: 0.45, percentage: false })) as typeof raw;

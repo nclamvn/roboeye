@@ -62,6 +62,14 @@ try {
   await page.waitForFunction(() => document.querySelectorAll('.obj-row').length === 2);
   check('hiển thị hai detection cố định', (await page.locator('.obj-row').count()) === 2);
   check('overlay có hai bounding box', (await page.locator('#det-overlay > rect:not(.det-label-bg)').count()) === 2);
+  check('detection giữ nguồn 384 px độc lập với depth WASM 140 px', await page.evaluate(() => window.__lastDetectionFrame?.width === 384));
+  const panelCenterDelta = await page.evaluate(() => {
+    const panel = document.querySelector('#obj-panel')?.getBoundingClientRect();
+    const viewport = document.querySelector('#viewport')?.getBoundingClientRect();
+    if (!panel || !viewport) return Number.POSITIVE_INFINITY;
+    return Math.abs(panel.y + panel.height / 2 - (viewport.y + viewport.height / 2));
+  });
+  check('panel vật thể căn giữa theo trục Y', panelCenterDelta < 1, `lệch ${panelCenterDelta.toFixed(2)} px`);
 
   await page.selectOption('#engine-select', 'owlvit');
   await page.waitForFunction(() => !document.querySelector('#query-ctl')?.hidden);
