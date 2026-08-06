@@ -120,6 +120,34 @@ button, select, input { font-family: var(--font-ui); }
 
 .mode-btn.active .mode-key { color: var(--hive-muted-inv); }
 
+.bev-status {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+  padding: 7px 8px 0;
+  border-top: 1px solid var(--hive-hairline-inv);
+  color: var(--hive-subtle-inv);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  line-height: 1.3;
+}
+
+.bev-status-key {
+  color: var(--hive-ink-inv);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+#bev-status-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ── Controls ────────────────────────────────────── */
 
 .controls { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--hive-hairline-inv); padding-top: 14px; }

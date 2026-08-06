@@ -56,6 +56,18 @@ try {
   for (let i = 0; i < expectedModes.length; i++) {
     const active = await page.getAttribute(`.mode-btn[data-mode="${expectedModes[i]}"]`, 'class');
     check(`tour bước ${i + 1} mở ${expectedModes[i]}`, active?.includes('active'));
+    if (expectedModes[i] === 'bev') {
+      const bevTelemetry = await page.evaluate(() => {
+        const status = document.querySelector('#bev-status');
+        return {
+          visible: status instanceof HTMLElement && !status.hidden,
+          inSidebar: status?.parentElement?.id === 'sidebar',
+          fontSize: status ? Number.parseFloat(getComputedStyle(status).fontSize) : 99
+        };
+      });
+      check('telemetry A* nằm ngoài canvas trong sidebar', bevTelemetry.visible && bevTelemetry.inSidebar);
+      check('telemetry A* dùng cỡ chữ nhỏ', bevTelemetry.fontSize <= 9, `${bevTelemetry.fontSize}px`);
+    }
     await page.click('#tour-next');
   }
   check('tour hoàn tất và đóng', await page.isHidden('#tour'));

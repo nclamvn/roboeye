@@ -44,6 +44,7 @@ export interface ShellAPI {
   setCameras(cams: { id: string; label: string }[]): void;
   setSizeValue(px: number): void;
   setAlert(nearest: number | null): void;
+  setBevStatus(route: 'idle' | 'blocked' | 'arrived' | 'moving', pathSteps: number | null): void;
   drawDetections(boxes: DetBox[], rect: { x: number; y: number; w: number; h: number }, show: boolean, selected: number): void;
   showLabelTools(on: boolean): void;
   renderObjects(objs: DetBox[], selected: number): void;
@@ -83,6 +84,8 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   const freezeBtn = $<HTMLButtonElement>('#freeze-btn');
   const frozenTag = $('#frozen-tag');
   const alertChip = $('#alert-chip');
+  const bevStatus = $('#bev-status');
+  const bevStatusText = $('#bev-status-text');
   const detToggle = $<HTMLInputElement>('#detect-toggle');
   const detOverlay = document.getElementById('det-overlay') as unknown as SVGSVGElement;
   const detCount = $('#det-count');
@@ -154,6 +157,7 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   function applyMode(m: Mode) {
     mode = m;
     for (const btn of modeButtons) btn.classList.toggle('active', btn.dataset.mode === m);
+    bevStatus.hidden = m !== 'bev';
     for (const sec of document.querySelectorAll('.panel-sec')) {
       sec.classList.toggle('current', (sec as HTMLElement).dataset.mode === m);
     }
@@ -312,6 +316,12 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
         alertChip.hidden = false;
         alertChip.textContent = `VẬT CẢN GẦN · ${nearest.toFixed(1)} đv`;
       }
+    },
+    setBevStatus(route, pathSteps) {
+      if (route === 'idle') bevStatusText.textContent = 'Chạm lưới để đặt đích';
+      else if (route === 'blocked') bevStatusText.textContent = 'Không có đường tới đích';
+      else if (route === 'arrived') bevStatusText.textContent = 'Đã tới đích';
+      else bevStatusText.textContent = `${pathSteps ?? '–'} bước · đang replan`;
     },
     drawDetections(boxes, rect, show, selected) {
       detOverlay.style.display = show ? 'block' : 'none';

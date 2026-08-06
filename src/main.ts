@@ -404,7 +404,10 @@ async function boot() {
   shell.setRenderBadge(sceneApi.isWebGPU);
   diagnostics.record('renderer.ready', { backend: sceneApi.isWebGPU ? 'webgpu' : 'webgl2' });
   // TIP-05: obstacle alert từ BEV, hiện ở mọi chế độ
-  sceneApi.bev.onStatus = (s) => shell.setAlert(s.alert ? s.nearest : null);
+  sceneApi.bev.onStatus = (s) => {
+    shell.setAlert(s.alert ? s.nearest : null);
+    shell.setBevStatus(s.route, s.pathSteps);
+  };
   shell.setBootStatus(
     sceneApi.isWebGPU
       ? `Renderer WebGPU sẵn sàng · point cloud ${sceneApi.cloudCount.toLocaleString('vi-VN')} điểm. Nhấn "Mở camera".`

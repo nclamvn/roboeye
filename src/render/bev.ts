@@ -18,6 +18,7 @@ export interface BevStatus {
   alert: boolean; // nearest < ngưỡng NEAR_ALERT
   pathSteps: number | null; // số bước A*, null khi không có đường
   hasGoal: boolean;
+  route: 'idle' | 'blocked' | 'arrived' | 'moving';
 }
 
 const N = 96; // số ô mỗi cạnh
@@ -169,7 +170,6 @@ export class BevBuilder {
     this.drawPath(ctx);
     this.drawGoal(ctx);
     this.drawRobot(ctx);
-    this.drawHud(ctx);
   }
 
   // ── nội bộ ─────────────────────────────────────────────
@@ -383,24 +383,21 @@ export class BevBuilder {
     ctx.restore();
   }
 
-  private drawHud(ctx: CanvasRenderingContext2D) {
-    ctx.font = '11px SFMono-Regular, Consolas, monospace';
-    ctx.fillStyle = '#9a9a95';
-    let text: string;
-    if (!this.goal) text = 'Click lên grid để đặt đích cho robot ảo';
-    else if (!this.path) text = 'A* · KHÔNG CÓ ĐƯỜNG TỚI ĐÍCH';
-    else if (this.waypoint >= this.path.length) text = 'A* · ĐÃ TỚI ĐÍCH · click đặt đích mới';
-    else text = `A* · ${this.path.length} bước · replan theo thời gian thực`;
-    ctx.fillText(text, 10, CANVAS - 10);
-  }
-
   private emitStatus() {
     if (!this.onStatus) return;
+    const route = !this.goal
+      ? 'idle'
+      : !this.path
+        ? 'blocked'
+        : this.waypoint >= this.path.length
+          ? 'arrived'
+          : 'moving';
     this.onStatus({
       nearest: this.nearest,
       alert: this.nearest != null && this.nearest < NEAR_ALERT,
       pathSteps: this.path ? this.path.length : null,
-      hasGoal: this.goal != null
+      hasGoal: this.goal != null,
+      route
     });
   }
 }
