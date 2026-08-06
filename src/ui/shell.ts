@@ -281,6 +281,9 @@ export function createShell(cb: ShellCallbacks): ShellAPI {
         const name = document.createElement('span');
         name.className = 'obj-name';
         name.textContent = o.label;
+        // Giữ nguyên node giữa hai click để sự kiện dblclick không bị renderObjects
+        // thay thế sau click đầu tiên. Chọn object vẫn thực hiện ở phần còn lại của row.
+        name.addEventListener('click', (e) => e.stopPropagation());
         // Double click tên → sửa lớp
         name.addEventListener('dblclick', (e) => {
           e.stopPropagation();

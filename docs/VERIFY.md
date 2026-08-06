@@ -3,6 +3,19 @@
 Chủ thầu kiểm ngược 01/08/2026, sau khi nhận đủ 4 Completion Report.
 Bằng chứng: `npm run build` log, `tests/smoke.mjs` output, 7 screenshot trong `tests/shots/`.
 
+## LỆNH TÁI LẬP HIỆN TẠI (TIP-10)
+
+```bash
+npm run fixtures:prepare       # tải/verify fixture pin revision + SHA-256
+npm run fixtures:verify        # chỉ verify, cache sai thì fail
+npm run test:detection-e2e     # detection contract/UI bằng mock Worker
+npm run smoke                  # tự prepare + build rồi chạy depth q8 thật
+```
+
+Smoke không còn phụ thuộc cache tải tay. Manifest chuẩn nằm tại
+`tests/fixtures/depth-q8.manifest.json`; báo cáo lane mới nằm trong
+`docs/QA-TIP-10.md` và `docs/VERIFY-TIP-10.md`.
+
 ## REQUIREMENT COVERAGE
 
 **9/9 REQ implemented (100%)**, trong đó 7 kiểm máy được trong container, 2 kiểm một phần (phần còn lại cần máy thật).

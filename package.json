@@ -13,6 +13,11 @@
     "typecheck": "tsc --noEmit",
     "test:unit": "tsx --test tests/unit/*.test.ts",
     "security:audit": "node scripts/security-audit.mjs",
+    "fixtures:prepare": "node scripts/prepare-test-models.mjs",
+    "fixtures:verify": "node scripts/prepare-test-models.mjs --verify-only",
+    "pretest:detection-e2e": "npm run build",
+    "test:detection-e2e": "node tests/detection-e2e.mjs",
+    "presmoke": "npm run fixtures:prepare && npm run build",
     "smoke": "node tests/smoke.mjs"
   },
   "dependencies": {

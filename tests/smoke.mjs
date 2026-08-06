@@ -7,6 +7,7 @@
 import { chromium } from 'playwright-core';
 import { spawn } from 'node:child_process';
 import { mkdirSync, cpSync, existsSync } from 'node:fs';
+import { browserLaunchOptions, resolveBrowserExecutable } from './helpers/browser.mjs';
 
 const PORT = 4173;
 const BASE = `http://localhost:${PORT}`;
@@ -17,12 +18,12 @@ function log(...args) {
   console.log('[smoke]', ...args);
 }
 
-// 0. Container chặn trình duyệt ra internet nên serve model local (tests/.model-cache
-//    tải sẵn bằng curl). Người dùng thật vẫn tải từ HF Hub như mặc định.
+// 0. Serve fixture đã được presmoke tải và kiểm SHA-256 từ manifest.
+//    Người dùng thật vẫn tải từ HF Hub như mặc định.
 const cacheDir = new URL('./.model-cache/', import.meta.url).pathname;
 const modelDir = new URL('../dist/models/onnx-community/depth-anything-v2-small/', import.meta.url).pathname;
 if (!existsSync(cacheDir)) {
-  console.error('Thiếu tests/.model-cache — tải model bằng curl trước (xem docs/VERIFY.md)');
+  console.error('Thiếu tests/.model-cache — chạy npm run fixtures:prepare trước');
   process.exit(1);
 }
 cpSync(cacheDir, modelDir, { recursive: true });
@@ -57,19 +58,9 @@ const check = (name, cond, extra = '') => {
 let browser;
 try {
   // 2. Chromium với fake webcam
-  // Container đi mạng qua HTTP proxy (env https_proxy); Chromium cần flag tường minh
-  const proxy = process.env.https_proxy || process.env.HTTPS_PROXY;
-  browser = await chromium.launch({
-    headless: true,
-    executablePath: process.env.ROBOEYE_CHROME || '/opt/pw-browsers/chromium',
-    args: [
-      '--use-fake-ui-for-media-stream',
-      '--use-fake-device-for-media-stream',
-      '--enable-unsafe-webgpu',
-      '--no-sandbox'
-    ],
-    ...(proxy ? { proxy: { server: proxy, bypass: 'localhost,127.0.0.1' } } : {})
-  });
+  const executablePath = await resolveBrowserExecutable();
+  log('browser:', executablePath);
+  browser = await chromium.launch(browserLaunchOptions(executablePath));
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   const consoleErrors = [];
   page.on('console', (m) => {

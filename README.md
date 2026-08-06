@@ -76,9 +76,21 @@ Depth Anything trả về relative depth, nghĩa là xa gần tương đối ch�
 ```bash
 npm run typecheck
 npm run test:unit
+npm run security:audit
 npm run build
-npm run smoke      # E2E headless với fake webcam, cần model cache local (xem tests/smoke.mjs)
+npm run test:detection-e2e  # contract/UI detection bằng mock Worker, không đo chất lượng model
+npm run smoke               # tự chuẩn bị fixture + build, chạy depth q8 thật qua WASM
 ```
+
+`npm run fixtures:prepare` tải model depth q8 theo revision và SHA-256 trong
+`tests/fixtures/depth-q8.manifest.json`; chạy lại chỉ xác minh cache. Dùng
+`npm run fixtures:verify` khi cần kiểm cache mà không cho phép tải lại. Có thể đặt
+`ROBOEYE_CHROME` nếu Chrome/Chromium không nằm trong cache Playwright hoặc vị trí
+thông dụng của macOS/Linux.
+
+Làn `test:detection-e2e` kiểm opt-in, phục hồi lỗi inference, overlay/list,
+đổi RT-DETR sang OWL-ViT, relabel, delete và xuất COCO bằng dữ liệu cố định. Nó
+không phải bằng chứng cho accuracy, latency hay khả năng chạy model detection thật.
 
 Nghiệm thu hiệu năng trên máy thật theo `docs/REGISTRY-NOTES.md` (đóng fact F10 của PRD). Audit trail đầy đủ trong `docs/`: TIPS, COMPLETION-REPORTS, VERIFY.
 
