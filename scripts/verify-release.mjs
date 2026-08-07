@@ -12,8 +12,10 @@ const required = [
   'icons/roboeye.svg',
   '_headers',
   'workers/air-hand-worker.js',
+  'workers/air-classifier-worker.js',
   'mediapipe/vision_bundle.js',
   'mediapipe/wasm/vision_wasm_internal.wasm',
+  'tflite/tflite_web_api_cc_simd.wasm',
   'sw.js',
   'release.json'
 ];
@@ -39,12 +41,18 @@ const checks = [
 if (offline) {
   await access(join(DIST, 'offline.json'));
   const manifest = JSON.parse(await readFile(join(ROOT, 'tests', 'fixtures', 'depth-q8.manifest.json'), 'utf8'));
+  const airManifest = JSON.parse(await readFile(join(ROOT, 'tests', 'fixtures', 'airsketch.manifest.json'), 'utf8'));
   for (const file of manifest.files) {
     const path = join(DIST, 'models', manifest.repository, file.path);
     const info = await stat(path);
     checks.push([`offline ${file.path}`, info.size === file.bytes]);
   }
+  for (const file of airManifest.files) {
+    const info = await stat(join(DIST, 'models', 'airsketch', file.path));
+    checks.push([`offline AirSketch ${file.path}`, info.size === file.bytes]);
+  }
   checks.push(['offline release flag', release.offlineDepth === true]);
+  checks.push(['offline AirSketch flag', release.offlineAirSketch === true]);
 }
 
 const failed = checks.filter(([, ok]) => !ok);

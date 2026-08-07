@@ -28,16 +28,18 @@ async function waitForModels(page, timeoutMs = 300_000) {
   throw new Error(`Model load timeout: ${JSON.stringify(state)}`);
 }
 
-async function drawHouse(page) {
-  const canvas = await page.locator('#airsketch-overlay').boundingBox();
-  if (!canvas) throw new Error('Không tìm thấy canvas AirSketch');
-  const path = [[0.30, 0.70], [0.30, 0.38], [0.50, 0.22], [0.70, 0.38], [0.70, 0.70], [0.30, 0.70], [0.50, 0.70], [0.50, 0.52], [0.60, 0.52]];
-  await page.mouse.move(canvas.x + path[0][0] * canvas.width, canvas.y + path[0][1] * canvas.height);
-  await page.mouse.down();
-  for (const [x, y] of path.slice(1)) {
-    await page.mouse.move(canvas.x + x * canvas.width, canvas.y + y * canvas.height, { steps: 4 });
-  }
-  await page.mouse.up();
+async function officialHouseBitmap() {
+  const response = await fetch('https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/house.npy', {
+    headers: { Range: 'bytes=0-65535' }
+  });
+  if (!response.ok && response.status !== 206) throw new Error(`Không tải được house.npy: HTTP ${response.status}`);
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  const version = bytes[6];
+  const headerLength = version === 1
+    ? new DataView(bytes.buffer, bytes.byteOffset + 8, 2).getUint16(0, true)
+    : new DataView(bytes.buffer, bytes.byteOffset + 8, 4).getUint32(0, true);
+  const offset = (version === 1 ? 10 : 12) + headerLength;
+  return bytes.slice(offset, offset + 784);
 }
 
 try {
@@ -46,7 +48,7 @@ try {
   browser = await chromium.launch(browserLaunchOptions(executablePath));
 
   // Phase 1: no Worker override. This proves both pinned runtimes load together
-  // exactly as production does, and the real QuickDraw classifier returns top-3.
+  // exactly as production does, and the real QuickDraw classifier returns top-5.
   const modelPage = await browser.newPage({ viewport: { width: 1280, height: 800 } });
   const modelErrors = [];
   modelPage.on('pageerror', (error) => modelErrors.push(String(error)));
@@ -57,18 +59,21 @@ try {
     document.querySelector('#airsketch-btn')?.click();
   });
   await waitForModels(modelPage);
-  await drawHouse(modelPage);
-  await modelPage.waitForFunction(
-    () => document.querySelectorAll('#air-predictions button').length === 3,
-    undefined,
-    { timeout: 120_000 }
-  );
+  const housePixels = await officialHouseBitmap();
+  const predictions = await modelPage.evaluate(async (values) => {
+    const rgba = new Uint8Array(28 * 28 * 4);
+    for (let i = 0; i < values.length; i++) {
+      rgba[i * 4] = values[i]; rgba[i * 4 + 1] = values[i]; rgba[i * 4 + 2] = values[i]; rgba[i * 4 + 3] = 255;
+    }
+    return window.__roboeyeAirSketchBenchmark?.classifyImage(rgba, 28, 28);
+  }, Array.from(housePixels));
   const classifySnapshot = await modelPage.evaluate(() => window.__roboeyeAirSketchBenchmark?.snapshot());
-  const labels = await modelPage.locator('#air-predictions button span').allTextContents();
+  const labels = predictions?.map((prediction) => prediction.label) ?? [];
   if ((classifySnapshot?.classify.samples ?? 0) < 1 || classifySnapshot?.classify.p95 == null) {
     throw new Error(`QuickDraw inference không chạy: ${JSON.stringify(classifySnapshot)}`);
   }
-  if (labels.length !== 3 || labels.some((label) => !label.trim())) throw new Error(`Top-3 không hợp lệ: ${JSON.stringify(labels)}`);
+  if (labels.length !== 5 || labels.some((label) => !label.trim())) throw new Error(`Top-5 không hợp lệ: ${JSON.stringify(labels)}`);
+  if (labels[0] !== 'house') throw new Error(`Model thật không nhận đúng house top-1: ${JSON.stringify(labels)}`);
   if (modelErrors.length) throw new Error(`Model page console errors: ${modelErrors.slice(0, 3).join(' | ')}`);
   await modelPage.close();
 

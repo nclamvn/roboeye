@@ -6,6 +6,10 @@ export function installMockWorkers() {
   window.__lastDetectionFrame = null;
   window.__detectionInitCount = 0;
   window.__lastAirClassify = null;
+  // E2E can queue deterministic MediaPipe-shaped hand landmarks.  A frame is
+  // consumed only when the application asks the hand worker to infer, so this
+  // exercises the real main-thread landmark integration rather than a helper.
+  window.__mockAirHandFrames = [];
 
   class MockWorker {
     constructor(url) {
@@ -30,7 +34,10 @@ export function installMockWorkers() {
       if (this.terminated) return;
       if (this.kind === 'air-hand') {
         if (message.type === 'init') this.emit({ type: 'ready' });
-        else if (message.type === 'frame') this.emit({ type: 'landmarks', landmarks: null, handedness: null, inferMs: 9 });
+        else if (message.type === 'frame') {
+          const landmarks = window.__mockAirHandFrames.shift() ?? null;
+          this.emit({ type: 'landmarks', landmarks, handedness: landmarks ? 'Right' : null, inferMs: 9 });
+        }
         return;
       }
       if (this.kind === 'air-classifier') {

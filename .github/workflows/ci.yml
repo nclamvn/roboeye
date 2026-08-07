@@ -60,6 +60,7 @@ jobs:
       - run: npm run test:airsketch-models
         env:
           AIRSKETCH_HAND_P95_MAX_MS: 250
+      - run: npm run test:airsketch-quality
 
   detection-benchmark:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'

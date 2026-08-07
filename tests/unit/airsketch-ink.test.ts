@@ -50,7 +50,7 @@ test('tài liệu nét vẽ bỏ tap rỗng, hỗ trợ undo và clear', () => {
   ink.move({ x: 0.2, y: 0.2, t: 2 });
   ink.end();
   assert.equal(ink.strokeCount(), 1);
-  assert.equal(ink.pointCount(), 2);
+  assert.ok(ink.pointCount() > 2, 'đoạn dài được nội suy để render mượt');
   ink.undo();
   assert.equal(ink.strokeCount(), 0);
   ink.begin({ x: 0.2, y: 0.2, t: 3 });

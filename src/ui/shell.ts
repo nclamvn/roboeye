@@ -6,6 +6,7 @@ import type { DetBox, DetectionEngine } from '../detection-types';
 import { OWL_QUERY_PRESETS, type OwlQueryPresetId } from '../detection-presets';
 import type { AirGesture, SketchPrediction } from '../airsketch-types';
 import { localizeSketchLabel } from '../airsketch-labels';
+import { assessSketchConfidence } from '../airsketch-confidence';
 
 export interface ShellCallbacks {
   onMode(mode: Mode): void;
@@ -481,10 +482,18 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
     },
     setAirSketchPredictions(predictions) {
       airPredictions.replaceChildren();
-      airGuess.textContent = predictions[0] ? localizeSketchLabel(predictions[0].label) : 'Vẽ một vật thể';
+      const confidence = assessSketchConfidence(predictions);
+      airGuess.dataset.confidence = confidence;
+      airGuess.textContent = !predictions[0]
+        ? 'Vẽ một vật thể'
+        : confidence === 'uncertain'
+          ? 'Chưa đủ chắc chắn'
+          : localizeSketchLabel(predictions[0].label);
       predictions.forEach((prediction, index) => {
         const button = document.createElement('button');
         button.type = 'button';
+        button.dataset.label = prediction.label;
+        button.dataset.score = String(prediction.score);
         const name = document.createElement('span');
         name.textContent = localizeSketchLabel(prediction.label);
         const score = document.createElement('small');

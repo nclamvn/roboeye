@@ -14,7 +14,7 @@ export interface HandLandmark {
   z: number;
 }
 
-export type AirGesture = 'hover' | 'draw' | 'undo-hold' | 'clear-hold';
+export type AirGesture = 'hover' | 'draw' | 'undo-hold' | 'clear-hold' | 'armed' | 'manipulate' | 'grab';
 
 export interface AirHandSample {
   cursor: AirPoint;
@@ -40,7 +40,10 @@ export type AirSketchHandWorkerToMain =
   | { type: 'error'; stage: 'load' | 'infer'; message: string };
 
 export type AirSketchMainToClassifierWorker =
-  | { type: 'init'; localModels: boolean }
+  | {
+      type: 'init'; localModels: boolean; modelUrl: string; expectedBytes: number; expectedSha256: string;
+      labelsUrl: string; expectedLabelsBytes: number; expectedLabelsSha256: string; tfliteBase: string; topK: number;
+    }
   | { type: 'classify'; rgba: ArrayBuffer; width: number; height: number; revision: number };
 
 export type AirSketchClassifierWorkerToMain =

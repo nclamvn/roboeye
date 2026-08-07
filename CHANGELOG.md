@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.4.0 — 07/08/2026
+
+### AirSketch interaction (T18)
+
+- Added deliberate double-flick arming so ordinary hand movement cannot paint accidentally.
+- Added index-only drawing, open-palm manipulation, pinch grab/release and bounded palm-depth scaling.
+- Promoted completed strokes to independent 2.5D scene objects with hit-test, selection and placement feedback.
+- Added state-machine/scene unit coverage and T18 QA/completion artifacts.
+
+### AirSketch recognition quality
+
+- Replaced the low-performing QuickDraw MobileViT path with a pinned 345-class SE-ResNet TFLite model running off-main-thread; model and labels are verified by byte length and SHA-256 before load.
+- Matched the official QuickDraw 28×28 raster contract: centered content, black background, white antialiased strokes and the official-equivalent 1.47 px line width.
+- Raised the measured 20-sample vector benchmark from 15%/25% to 85%/100% top-1/top-3 and made 75%/90% a CI/release gate.
+- Expanded display from top-3 to top-5, localized all 345 classes to Vietnamese, and added confidence/margin handling so ambiguous results are never presented as certain.
+- Removed unconfirmed top-1 speech fallback: users must explicitly select a suggestion before Vietnamese TTS can speak it.
+- Added an on-device heart pictogram fallback because `heart` is not one of the pinned model's 345 classes; the shape is surfaced as `trái tim` only when the two-lobe/pointed-tip geometry gate passes.
+
+### Safety and verification
+
+- Added explicit notice that AirSketch is AAC, not a sign-language translator or a sole rescue/life-safety channel.
+- Bundled verified hand-tracking, classifier and label artifacts into `build:offline`; both workers cold-started with all external requests blocked.
+- Added full-label coverage and confidence unit tests, production-pipeline quality benchmark, updated mock E2E and real-model smoke.
+
 ## 1.3.0 — 06/08/2026
 
 ### AirSketch

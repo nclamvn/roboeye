@@ -7,5 +7,6 @@ declare const __ROBOEYE_OFFLINE__: boolean;
 interface Window {
   __roboeyeAirSketchBenchmark?: {
     snapshot(): import('./airsketch-types').AirSketchBenchmarkSnapshot;
+    classifyImage(rgba: Uint8Array, width: number, height: number): Promise<import('./airsketch-types').SketchPrediction[]>;
   };
 }

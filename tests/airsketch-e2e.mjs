@@ -16,6 +16,22 @@ function check(name, condition, extra = '') {
   if (!condition) failures.push(`${name}${extra ? ` · ${extra}` : ''}`);
 }
 
+function handLandmarks(x, pose) {
+  const points = Array.from({ length: 21 }, () => ({ x: 0.5, y: 0.7, z: 0 }));
+  points[0] = { x: 0.5, y: 0.82, z: 0 };
+  points[5] = { x: 0.42, y: 0.62, z: 0 };
+  points[17] = { x: 0.62, y: 0.63, z: 0 };
+  for (const [pip, tip, fingerX] of [[6, 8, x], [10, 12, 0.49], [14, 16, 0.56], [18, 20, 0.63]]) {
+    points[pip] = { x: fingerX, y: 0.49, z: 0 };
+    points[tip] = { x: fingerX, y: pose === 'open' ? 0.25 : 0.72, z: 0 };
+  }
+  if (pose === 'index' || pose === 'pinch') points[8] = { x, y: 0.25, z: 0 };
+  points[4] = pose === 'pinch' ? { x: x + 0.01, y: 0.255, z: 0 }
+    : pose === 'fist' ? { x: 0.1, y: 0.7, z: 0 }
+      : { x: 0.28, y: 0.52, z: 0 };
+  return points;
+}
+
 try {
   await waitForPreview(server);
   const executablePath = await resolveBrowserExecutable();
@@ -42,6 +58,41 @@ try {
   check('AirSketch ép về RGB để nét khớp camera', (await page.getAttribute('.mode-btn[data-mode="rgb"]', 'class'))?.includes('active'));
   check('canvas pointer fallback được bật', (await page.getAttribute('#airsketch-overlay', 'class'))?.includes('active'));
 
+  // Regression contract T21: a fist is safe transport. Only a deliberate
+  // two-flick index activation may begin a new stroke through the real worker
+  // → main thread → controller → AirInkDocument path.
+  await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); }, [
+    handLandmarks(0.30, 'fist'),
+    handLandmarks(0.30, 'index'), handLandmarks(0.27, 'index'), handLandmarks(0.24, 'index'),
+    handLandmarks(0.21, 'index'), handLandmarks(0.24, 'index'), handLandmarks(0.27, 'index'),
+    handLandmarks(0.30, 'index'), handLandmarks(0.32, 'index'), handLandmarks(0.40, 'index'),
+    handLandmarks(0.48, 'index'), handLandmarks(0.48, 'fist')
+  ]);
+  await page.waitForFunction(() => {
+    const snapshot = window.__roboeyeAirSketchBenchmark?.snapshot();
+    return Boolean(snapshot && snapshot.strokes === 1 && snapshot.points >= 3);
+  });
+  const handStrokeVisible = await page.evaluate(() => {
+    const canvas = document.querySelector('#airsketch-overlay');
+    const ctx = canvas?.getContext('2d');
+    if (!canvas || !ctx) return false;
+    const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    for (let index = 3; index < pixels.length; index += 4) if (pixels[index] !== 0) return true;
+    return false;
+  });
+  check('nắm tay → double-flick → landmark tạo stroke thật trên canvas', handStrokeVisible);
+  await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); }, [
+    handLandmarks(0.40, 'open'),
+    handLandmarks(0.40, 'pinch'),
+    handLandmarks(0.37, 'pinch'),
+    handLandmarks(0.37, 'open')
+  ]);
+  await page.waitForFunction(() => document.querySelector('#air-status')?.textContent?.includes('Đã đặt vật thể'));
+  check('object đã đặt có thể xòe tay, pinch để cầm và thả để đặt lại',
+    (await page.textContent('#air-status'))?.includes('Đã đặt vật thể'));
+  await page.click('#air-clear-btn');
+  await page.waitForFunction(() => window.__roboeyeAirSketchBenchmark?.snapshot().strokes === 0);
+
   const canvas = await page.locator('#airsketch-overlay').boundingBox();
   if (!canvas) throw new Error('Không tìm thấy canvas AirSketch');
   const path = [[0.25, 0.72], [0.25, 0.38], [0.50, 0.20], [0.75, 0.38], [0.75, 0.72], [0.25, 0.72], [0.50, 0.72], [0.50, 0.50], [0.62, 0.50]];
@@ -53,7 +104,7 @@ try {
   await page.mouse.up();
   await page.waitForFunction(() => document.querySelector('#air-guess')?.textContent === 'ngôi nhà');
   const classify = await page.evaluate(() => window.__lastAirClassify);
-  check('classifier nhận raster chuẩn 224×224 RGBA', classify?.width === 224 && classify?.height === 224 && classify?.bytes === 224 * 224 * 4, JSON.stringify(classify));
+  check('classifier nhận raster QuickDraw chuẩn 28×28 RGBA', classify?.width === 28 && classify?.height === 28 && classify?.bytes === 28 * 28 * 4, JSON.stringify(classify));
   check('top-3 dự đoán được hiển thị', await page.locator('#air-predictions button').count() === 3);
   if (process.env.ROBOEYE_AIRSKETCH_SHOT) {
     await page.screenshot({ path: process.env.ROBOEYE_AIRSKETCH_SHOT, fullPage: true });
@@ -68,6 +119,19 @@ try {
     const value = window.__roboeyeAirSketchBenchmark?.snapshot();
     return value?.strokes === 0 && value.points === 0;
   }));
+
+  const heart = [[0.50, 0.18], [0.38, 0.08], [0.23, 0.08], [0.10, 0.20], [0.10, 0.38],
+    [0.22, 0.62], [0.50, 0.92], [0.78, 0.62], [0.90, 0.38], [0.90, 0.20],
+    [0.77, 0.08], [0.68, 0.12], [0.62, 0.08], [0.50, 0.18]];
+  await page.mouse.move(canvas.x + heart[0][0] * canvas.width, canvas.y + heart[0][1] * canvas.height);
+  await page.mouse.down();
+  for (const [x, y] of heart.slice(1)) {
+    await page.mouse.move(canvas.x + x * canvas.width, canvas.y + y * canvas.height, { steps: 3 });
+  }
+  await page.mouse.up();
+  await page.waitForFunction(() => document.querySelector('#air-guess')?.textContent === 'trái tim');
+  check('geometry fallback nâng trái tim lên đầu dù model không có lớp heart', await page.textContent('#air-guess') === 'trái tim');
+  await page.click('#air-clear-btn');
 
   await page.setViewportSize({ width: 375, height: 667 });
   const mobile = await page.evaluate(() => {

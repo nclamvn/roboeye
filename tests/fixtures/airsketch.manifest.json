@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "hand_landmarker.task",
+      "url": "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task",
+      "bytes": 7819105,
+      "sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1"
+    },
+    {
+      "path": "quickdraw_model.tflite",
+      "url": "https://huggingface.co/zarqankhn/quickdraw-345-tflite/resolve/f978d83cfc41fa3c76435a4c96417e055220c735/quickdraw_model.tflite",
+      "bytes": 8851924,
+      "sha256": "22bb3d3c131aeeee551a1880930910e2ebff8efad8d5cd0c942c97c2dee0993c"
+    },
+    {
+      "path": "labels.txt",
+      "url": "https://huggingface.co/zarqankhn/quickdraw-345-tflite/resolve/f978d83cfc41fa3c76435a4c96417e055220c735/labels.txt",
+      "bytes": 2791,
+      "sha256": "2ed0dac4ba018854a3e3166f9862e5529bc5f58a80d157d57eee22ca731895d5"
+    }
+  ]
+}

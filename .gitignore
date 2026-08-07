@@ -2,8 +2,10 @@ node_modules/
 dist/
 public/ort/
 public/mediapipe/
+public/tflite/
 public/models/
 tests/.model-cache/
+tests/.airsketch-model-cache/
 tests/.detection-benchmark-cache/
 tests/.benchmark-results/
 release/

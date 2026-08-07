@@ -290,6 +290,9 @@ button, select, input { font-family: var(--font-ui); }
 #airsketch-cursor::before { content: ''; position: absolute; inset: 3px; border-radius: inherit; background: rgba(11,11,10,0.84); }
 #airsketch-cursor span { position: absolute; inset: 10px; z-index: 1; border-radius: inherit; background: #fff; transition: inset 100ms var(--ease-quiet); }
 #airsketch-cursor[data-gesture='draw'] span { inset: 7px; }
+#airsketch-cursor[data-gesture='armed'] { background: conic-gradient(#9ee6c0 var(--hold-progress), rgba(255,255,255,0.14) 0); }
+#airsketch-cursor[data-gesture='manipulate'] { background: conic-gradient(#f4c98d var(--hold-progress), rgba(255,255,255,0.14) 0); }
+#airsketch-cursor[data-gesture='grab'] { background: conic-gradient(#ffb36b var(--hold-progress), rgba(255,255,255,0.14) 0); }
 #airsketch-cursor[data-gesture='undo-hold'] span { border-radius: 2px; }
 #airsketch-cursor[data-gesture='clear-hold'] span { inset: 12px; }
 
@@ -313,7 +316,8 @@ button, select, input { font-family: var(--font-ui); }
 .air-status { min-height: 34px; padding: 8px 0; border-top: 1px solid var(--hive-hairline-inv); border-bottom: 1px solid var(--hive-hairline-inv); font-size: 10.5px; line-height: 1.55; color: var(--hive-muted-inv); }
 .air-guess-block, .air-phrase-block { display: grid; gap: 7px; }
 .air-guess { font-family: var(--font-display); font-size: 31px; font-weight: 400; line-height: 1.05; color: #fff; overflow-wrap: anywhere; }
-.air-predictions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+.air-guess[data-confidence='uncertain'] { color: #d6b68a; font-size: 23px; }
+.air-predictions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
 .air-predictions button { min-width: 0; display: grid; gap: 2px; padding: 7px 6px; border: 1px solid var(--hive-border-inv); background: var(--hive-plate-2); color: var(--hive-muted-inv); text-align: left; cursor: pointer; }
 .air-predictions button:first-child { color: #fff; border-color: #4a4a46; }
 .air-predictions span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
@@ -325,6 +329,7 @@ button, select, input { font-family: var(--font-ui); }
 .air-actions .air-primary { background: var(--hive-ink-inv); color: var(--hive-sidebar); border-color: var(--hive-ink-inv); font-weight: 600; }
 .air-hint, .air-honesty { color: var(--hive-subtle-inv); font-size: 9.5px; line-height: 1.55; }
 .air-hint b { color: var(--hive-muted-inv); font-weight: 500; }
+.air-honesty b { color: #d6b68a; font-weight: 600; }
 .air-honesty { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--hive-hairline-inv); }
 
 #frozen-tag {

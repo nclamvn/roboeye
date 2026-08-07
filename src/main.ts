@@ -17,9 +17,13 @@ import { recoverDepthError } from './depth-state';
 import { createRuntimeDiagnostics } from './runtime-diagnostics';
 import { OWL_QUERY_PRESETS } from './detection-presets';
 import { AIRSKETCH_CONFIG } from './airsketch-config';
-import { AirGestureController, AirInkDocument, drawAirStrokes, rasterizeAirStrokes } from './airsketch-ink';
+import { AirInkDocument, drawAirStrokes, rasterizeAirStrokes } from './airsketch-ink';
+import { AirInteractionController } from './airsketch-interaction';
+import { AirSketchScene } from './airsketch-scene';
 import { AirSketchMetrics } from './airsketch-metrics';
 import { localizeSketchLabel } from './airsketch-labels';
+import { assessSketchConfidence } from './airsketch-confidence';
+import { detectHeartSketch, mergeSpecialSketchPrediction } from './airsketch-shapes';
 import type { WorkerToMain, Dtype } from './types';
 import type {
   AirPoint,
@@ -75,8 +79,9 @@ let detW = 0;
 let detH = 0;
 
 // T16: hand tracking → air ink → sketch classifier → AAC/TTS.
-const airGesture = new AirGestureController();
+const airInteraction = new AirInteractionController();
 const airInk = new AirInkDocument();
+const airScene = new AirSketchScene();
 const airMetrics = new AirSketchMetrics();
 let airSketchOn = false;
 let airHandWorker: Worker | null = null;
@@ -97,6 +102,12 @@ let airLastInkAt = 0;
 let airLastClassifiedRevision = -1;
 let airPointerActive = false;
 let airPenWasDown = false;
+let airBenchmarkRevision = -1_000;
+const airBenchmarkClassifications = new Map<number, {
+  resolve: (predictions: SketchPrediction[]) => void;
+  reject: (error: Error) => void;
+  timer: ReturnType<typeof setTimeout>;
+}>();
 
 interface BenchmarkPending<T> {
   resolve: (value: T) => void;
@@ -294,7 +305,8 @@ function renderAirInk() {
   if (!airCtx) return;
   airCtx.clearRect(0, 0, airCanvas.width, airCanvas.height);
   if (!airSketchOn) return;
-  drawAirStrokes(airCtx, airInk.snapshot(), airCanvas.width, airCanvas.height, {
+  airScene.render(airCtx, airCanvas.width, airCanvas.height);
+  drawAirStrokes(airCtx, airInk.currentSnapshot(), airCanvas.width, airCanvas.height, {
     color: '#ffffff',
     width: Math.max(5, airCanvas.width / Math.max(280, airStage.clientWidth) * 4.2),
     shadow: 'rgba(255, 255, 255, 0.55)'
@@ -307,7 +319,9 @@ function noteAirInkChanged() {
 }
 
 function undoAirStroke() {
+  const wasDrawing = airInk.isDrawing();
   airInk.undo();
+  if (!wasDrawing) airScene.undo();
   airPenWasDown = false;
   noteAirInkChanged();
   shell.setAirSketchStatus('Đã hoàn tác nét gần nhất');
@@ -315,13 +329,14 @@ function undoAirStroke() {
 
 function clearAirDrawing() {
   airInk.clear();
-  airGesture.reset();
+  airScene.clear();
+  airInteraction.reset();
   airPenWasDown = false;
   airPredictions = [];
   airLastClassifiedRevision = -1;
   renderAirInk();
   shell.setAirSketchPredictions([]);
-  shell.setAirSketchStatus('Khung vẽ đã sạch · chụm ngón để bắt đầu');
+  shell.setAirSketchStatus('Khung vẽ đã sạch · vẩy nhanh ngón trỏ 2 lần để bật bút');
 }
 
 function addAirPrediction(index: number) {
@@ -333,8 +348,7 @@ function addAirPrediction(index: number) {
 }
 
 function speakAirPhrase() {
-  const fallback = airPredictions[0] ? localizeSketchLabel(airPredictions[0].label) : '';
-  const text = airPhrase.length ? airPhrase.join(' ') : fallback;
+  const text = airPhrase.join(' ');
   if (!text) {
     shell.setAirSketchStatus('Hãy vẽ và chọn ít nhất một từ trước khi nói');
     return;
@@ -356,7 +370,7 @@ function spawnAirWorkers() {
   // Cold start tuần tự: ONNX classifier hoàn tất trước khi MediaPipe dựng graph,
   // tránh hai runtime WASM tranh bộ nhớ/compile rồi báo network error giả.
   const classifierSettled = airClassifierReady || (airClassifierWorker != null && !airClassifierLoading);
-  if (!airHandWorker && !__ROBOEYE_OFFLINE__ && classifierSettled) {
+  if (!airHandWorker && classifierSettled) {
     const runtimeBase = new URL(import.meta.env.BASE_URL, location.href);
     // MediaPipe loader vẫn dùng importScripts nội bộ; classic worker là contract
     // tương thích chính thức, đồng thời giữ inference khỏi main thread.
@@ -374,7 +388,7 @@ function spawnAirWorkers() {
       } else if (message.type === 'ready') {
         airHandStage = 'ready';
         airHandReady = true;
-        shell.setAirSketchStatus('Bút không khí sẵn sàng · chụm ngón cái và ngón trỏ để vẽ');
+        shell.setAirSketchStatus('Tracking tay sẵn sàng · vẩy nhanh ngón trỏ 2 lần để bật bút');
         diagnostics.record('airsketch.hand.ready', { model: AIRSKETCH_CONFIG.handModel.version });
       } else if (message.type === 'landmarks') {
         airHandBusy = false;
@@ -398,7 +412,9 @@ function spawnAirWorkers() {
     };
     instance.postMessage({
       type: 'init',
-      modelUrl: AIRSKETCH_CONFIG.handModel.url,
+      modelUrl: localModels
+        ? new URL('models/airsketch/hand_landmarker.task', runtimeBase).href
+        : AIRSKETCH_CONFIG.handModel.url,
       expectedBytes: AIRSKETCH_CONFIG.handModel.bytes,
       expectedSha256: AIRSKETCH_CONFIG.handModel.sha256,
       visionBundleUrl: new URL('mediapipe/vision_bundle.js', runtimeBase).href,
@@ -407,7 +423,8 @@ function spawnAirWorkers() {
   }
 
   if (!airClassifierWorker) {
-    const instance = new Worker(new URL('./worker/air-classifier-worker.ts', import.meta.url), { type: 'module' });
+    const runtimeBase = new URL(import.meta.env.BASE_URL, location.href);
+    const instance = new Worker(new URL('workers/air-classifier-worker.js', runtimeBase));
     airClassifierWorker = instance;
     airClassifierReady = false;
     airClassifierLoading = true;
@@ -426,19 +443,43 @@ function spawnAirWorkers() {
       } else if (message.type === 'prediction') {
         airClassifierBusy = false;
         airMetrics.addClassify(message.inferMs);
+        const benchmark = airBenchmarkClassifications.get(message.revision);
+        if (benchmark) {
+          clearTimeout(benchmark.timer);
+          airBenchmarkClassifications.delete(message.revision);
+          benchmark.resolve(message.predictions);
+          return;
+        }
         if (message.revision !== airInk.revision) return;
-        airPredictions = message.predictions;
+        const specialHeart = detectHeartSketch(airInk.snapshot());
+        airPredictions = mergeSpecialSketchPrediction(message.predictions, specialHeart == null
+          ? null
+          : { label: 'heart', score: specialHeart }, AIRSKETCH_CONFIG.classifier.topK);
         shell.setAirSketchPredictions(airPredictions);
         const top = airPredictions[0];
-        shell.setAirSketchStatus(top
-          ? `Đoán trong ${Math.round(message.inferMs)} ms · chạm một dự đoán để thêm vào câu`
-          : 'Chưa nhận ra · thử thêm vài nét');
+        const confidence = assessSketchConfidence(airPredictions);
+        shell.setAirSketchStatus(!top
+          ? 'Chưa nhận ra · thử thêm vài nét'
+          : confidence === 'confident'
+            ? `Gợi ý rõ trong ${Math.round(message.inferMs)} ms · hãy chạm để xác nhận`
+            : confidence === 'possible'
+              ? `Kết quả còn gần nhau · chọn đúng trong 5 gợi ý hoặc vẽ thêm chi tiết`
+              : 'Không đủ chắc chắn · không dùng kết quả này nếu chưa xác nhận');
         diagnostics.record('airsketch.prediction', { inferMs: Math.round(message.inferMs), top: top?.label ?? null });
       } else {
         airClassifierBusy = false;
+        console.error('[roboeye-airsketch-classifier]', message.stage, message.message);
+        if (message.revision != null) {
+          const benchmark = airBenchmarkClassifications.get(message.revision);
+          if (benchmark) {
+            clearTimeout(benchmark.timer);
+            airBenchmarkClassifications.delete(message.revision);
+            benchmark.reject(new Error(message.message));
+          }
+        }
         if (message.stage === 'load') {
           airClassifierReady = false;
-          if (!__ROBOEYE_OFFLINE__ && airSketchOn && airClassifierLoadRetries < 1) {
+          if (airSketchOn && airClassifierLoadRetries < 1) {
             airClassifierLoadRetries++;
             instance.terminate();
             if (airClassifierWorker === instance) airClassifierWorker = null;
@@ -465,7 +506,22 @@ function spawnAirWorkers() {
       shell.setAirSketchStatus('Bộ đoán hình gặp lỗi · nét vẽ vẫn hoạt động');
       diagnostics.record('airsketch.classifier.crash', { message: event.message });
     };
-    instance.postMessage({ type: 'init', localModels });
+    instance.postMessage({
+      type: 'init',
+      localModels,
+      modelUrl: localModels
+        ? new URL('models/airsketch/quickdraw_model.tflite', runtimeBase).href
+        : AIRSKETCH_CONFIG.classifier.url,
+      expectedBytes: AIRSKETCH_CONFIG.classifier.bytes,
+      expectedSha256: AIRSKETCH_CONFIG.classifier.sha256,
+      labelsUrl: localModels
+        ? new URL('models/airsketch/labels.txt', runtimeBase).href
+        : AIRSKETCH_CONFIG.classifier.labelsUrl,
+      expectedLabelsBytes: AIRSKETCH_CONFIG.classifier.labelsBytes,
+      expectedLabelsSha256: AIRSKETCH_CONFIG.classifier.labelsSha256,
+      tfliteBase: new URL('tflite/', runtimeBase).href,
+      topK: AIRSKETCH_CONFIG.classifier.topK
+    });
   }
 }
 
@@ -479,15 +535,14 @@ function setAirSketch(on: boolean) {
     resizeAirCanvas();
     spawnAirWorkers();
     shell.setAirSketchStatus(__ROBOEYE_OFFLINE__
-      ? 'Bản offline: dùng chuột/chạm để vẽ; model AirSketch chưa đóng gói'
+      ? 'Bản offline: đang mở tracking tay và bộ đoán hình tại thiết bị…'
       : 'Đang chuẩn bị tracking tay và bộ đoán hình…');
   } else {
     if (airClassifierRetryTimer != null) clearTimeout(airClassifierRetryTimer);
     airClassifierRetryTimer = null;
-    airPenWasDown = false;
+    applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
     airPointerActive = false;
-    airGesture.release();
-    airInk.end();
+    airInteraction.release();
     shell.setAirSketchCursor(null);
   }
   diagnostics.record('airsketch.toggle', { on });
@@ -504,7 +559,9 @@ function applyAirPen(point: AirPoint, down: boolean) {
     airPenWasDown = true;
     noteAirInkChanged();
   } else if (airPenWasDown) {
+    const completed = airInk.currentSnapshot()[0];
     airInk.end();
+    if (completed && completed.points.length >= 2) airScene.addStroke(completed);
     airPenWasDown = false;
     noteAirInkChanged();
   }
@@ -514,11 +571,11 @@ function handleAirLandmarks(landmarks: import('./airsketch-types').HandLandmark[
   if (!airSketchOn || airPointerActive) return;
   if (!landmarks) {
     applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
-    airGesture.release();
+    airInteraction.release();
     shell.setAirSketchCursor(null);
     return;
   }
-  const sample = airGesture.update(landmarks, performance.now());
+  const sample = airInteraction.update(landmarks, performance.now());
   if (!sample || !sceneApi) return;
   const rect = sceneApi.imageRectPx();
   const point = {
@@ -526,13 +583,32 @@ function handleAirLandmarks(landmarks: import('./airsketch-types').HandLandmark[
     y: (rect.y + sample.cursor.y * rect.h) / Math.max(1, airStage.clientHeight),
     t: sample.cursor.t
   };
-  shell.setAirSketchCursor(point, sample.gesture, sample.holdProgress);
-  if (sample.command === 'undo') undoAirStroke();
-  else if (sample.command === 'clear') clearAirDrawing();
-  else applyAirPen(point, sample.penDown);
-  if (sample.gesture === 'draw') shell.setAirSketchStatus('Đang vẽ · thả chụm để nhấc bút');
-  else if (sample.gesture === 'undo-hold') shell.setAirSketchStatus(`Giữ hai ngón để hoàn tác · ${Math.round(sample.holdProgress * 100)}%`);
-  else if (sample.gesture === 'clear-hold') shell.setAirSketchStatus(`Giữ bàn tay mở để xóa · ${Math.round(sample.holdProgress * 100)}%`);
+  // The interaction controller decides whether the pen is down; this bridge
+  // is the sole path that turns a tracked hand sample into an ink stroke.
+  // Keep it before scene manipulation so releasing a stroke first commits it
+  // as a selectable object.
+  applyAirPen(point, sample.penDown);
+  const cursorGesture = sample.mode === 'drawing' ? 'draw' : sample.mode === 'grabbing' ? 'grab' : sample.mode === 'manipulating' ? 'manipulate' : sample.mode === 'armed' ? 'armed' : 'hover';
+  shell.setAirSketchCursor(sample.fist ? null : point, cursorGesture);
+  if (sample.justGrabbed) {
+    const object = airScene.beginGrab(point, sample.palmSpan);
+    shell.setAirSketchStatus(object ? 'Đang cầm vật thể · đưa tay gần/xa để đổi kích thước' : 'Không có vật thể trong vùng nhón');
+  }
+  if (sample.mode === 'grabbing') airScene.moveGrab(point, sample.palmSpan);
+  if (sample.justReleased) {
+    airScene.release();
+    shell.setAirSketchStatus('Đã đặt vật thể · xòe bàn tay để cầm vật khác');
+  }
+  if (sample.justArmed) shell.setAirSketchStatus('Đã kích hoạt bút · giơ ngón trỏ để vẽ');
+  else if (sample.mode === 'drawing') shell.setAirSketchStatus('Đang vẽ · nắm tay để hạ bút');
+  else if (sample.mode === 'manipulating') shell.setAirSketchStatus('Xòe bàn tay · nhón ngón cái + trỏ để cầm');
+  else if (sample.mode === 'armed') shell.setAirSketchStatus('Bút đã sẵn sàng · giơ ngón trỏ để vẽ');
+  else if (sample.mode === 'idle') shell.setAirSketchStatus(sample.fist
+    ? 'Bút đã hạ · di chuyển nắm tay, giơ trỏ rồi vẩy 2 lần để vẽ'
+    : sample.flickCount > 0
+    ? `Đã nhận ${sample.flickCount}/2 lần vẩy · vẩy thêm một lần`
+    : 'Vẩy nhanh ngón trỏ 2 lần để kích hoạt bút');
+  renderAirInk();
 }
 
 function pointerPoint(event: PointerEvent): AirPoint {
@@ -580,7 +656,21 @@ window.__roboeyeAirSketchBenchmark = {
     airInk.strokeCount(),
     airInk.pointCount(),
     { hand: airHandReady, classifier: airClassifierReady, handStage: airHandStage }
-  )
+  ),
+  classifyImage: (rgba, width, height) => new Promise((resolve, reject) => {
+    if (!airClassifierWorker || !airClassifierReady) {
+      reject(new Error('AirSketch classifier chưa sẵn sàng'));
+      return;
+    }
+    const revision = airBenchmarkRevision--;
+    const buffer = rgba.slice().buffer;
+    const timer = setTimeout(() => {
+      airBenchmarkClassifications.delete(revision);
+      reject(new Error('AirSketch benchmark inference timeout'));
+    }, 30_000);
+    airBenchmarkClassifications.set(revision, { resolve, reject, timer });
+    airClassifierWorker.postMessage({ type: 'classify', rgba: buffer, width, height, revision }, [buffer]);
+  })
 };
 
 function spawnDetectWorker() {

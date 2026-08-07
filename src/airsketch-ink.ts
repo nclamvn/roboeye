@@ -1,6 +1,9 @@
 import { AIRSKETCH_CONFIG } from './airsketch-config';
 import type { AirGesture, AirHandSample, AirPoint, AirStroke, HandLandmark } from './airsketch-types';
 
+const MIN_POINT_DISTANCE = 0.0025;
+const MAX_SEGMENT_LENGTH = 0.018;
+
 function distance(a: Pick<HandLandmark, 'x' | 'y'>, b: Pick<HandLandmark, 'x' | 'y'>): number {
   return Math.hypot(a.x - b.x, a.y - b.y);
 }
@@ -105,8 +108,20 @@ export class AirInkDocument {
   move(point: AirPoint): void {
     if (!this.current) return;
     const previous = this.current.points.at(-1);
-    if (previous && Math.hypot(point.x - previous.x, point.y - previous.y) < 0.0025) return;
-    this.current.points.push(point);
+    if (!previous) return;
+    const length = Math.hypot(point.x - previous.x, point.y - previous.y);
+    if (length < MIN_POINT_DISTANCE) return;
+    // Hand tracking is typically 24 FPS. Split long frame-to-frame jumps so
+    // the quadratic renderer receives a stable curve instead of sparse kinks.
+    const segments = Math.ceil(length / MAX_SEGMENT_LENGTH);
+    for (let segment = 1; segment <= segments; segment++) {
+      const ratio = segment / segments;
+      this.current.points.push({
+        x: previous.x + (point.x - previous.x) * ratio,
+        y: previous.y + (point.y - previous.y) * ratio,
+        t: previous.t + (point.t - previous.t) * ratio
+      });
+    }
     this.revision++;
   }
 
@@ -135,6 +150,9 @@ export class AirInkDocument {
   pointCount(): number { return this.strokes.reduce((sum, stroke) => sum + stroke.points.length, 0); }
   strokeCount(): number { return this.strokes.filter((stroke) => stroke.points.length >= 2).length; }
   snapshot(): AirStroke[] { return this.strokes.map((stroke) => ({ points: stroke.points.map((point) => ({ ...point })) })); }
+  currentSnapshot(): AirStroke[] {
+    return this.current ? [{ points: this.current.points.map((point) => ({ ...point })) }] : [];
+  }
 }
 
 export function drawAirStrokes(
@@ -188,8 +206,10 @@ export function rasterizeAirStrokes(strokes: AirStroke[], size = AIRSKETCH_CONFI
   const canvas = new OffscreenCanvas(size, size);
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
   if (!ctx) return null;
-  ctx.fillStyle = '#ffffff';
+  ctx.fillStyle = '#000000';
   ctx.fillRect(0, 0, size, size);
-  drawAirStrokes(ctx, normalized, size, size, { color: '#000000', width: 10 });
+  // QuickDraw's official renderer uses a 16 px line on a padded 304 px
+  // coordinate space, equivalent to ~1.47 px on the 28×28 bitmap.
+  drawAirStrokes(ctx, normalized, size, size, { color: '#ffffff', width: size * (16 / 304) });
   return ctx.getImageData(0, 0, size, size);
 }

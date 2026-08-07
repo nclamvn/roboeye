@@ -73,3 +73,45 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - **Task:** MediaPipe hand tracking + pinch air ink; QuickDraw top-3; reserved responsive sidecar; phrase composition and Vietnamese TTS; deterministic/real-model benchmark.
 - **Acceptance:** 8/8 AIR requirements; 10/10 browser contract; pinned models load; hand p95 <80 ms trên test host kiểm soát. Shared CI dùng smoke ceiling 250 ms để bắt treo/hồi quy lớn và luôn xuất p50/p95 thực đo.
 - **Detail:** `docs/TIP-16-AIRSKETCH.md`.
+
+## TIP-17 · AirSketch recognition hardening
+
+- **Dependencies:** TIP-16. **Priority:** P0 quality/safety.
+- **Task:** replace the failing sketch classifier path; reproduce official 28×28 rasterization; cover all 345 labels in Vietnamese; add top-5, uncertainty and explicit confirmation; gate CI/release on a real official-data benchmark.
+- **Acceptance:** vector pipeline top-1 ≥75% and top-3 ≥90% on the locked 20-sample corpus; 345/345 Vietnamese labels; no unconfirmed TTS; mock E2E and real-model smoke PASS.
+- **Detail:** `docs/TIP-17-AIRSKETCH-RECOGNITION.md`.
+
+## TIP-18 · AirSketch manipulation
+
+- **Dependencies:** TIP-16, TIP-17. **Priority:** P0 demo interaction.
+- **Task:** deliberate double-flick arming; index-only drawing; open-palm manipulation; pinch grab/release; bounded palm-span scaling and 2.5D scene objects.
+- **Acceptance:** `idle → armed → drawing → manipulating → grabbing` is covered by unit tests; completed strokes can be selected, moved, scaled and placed without breaking classifier or pointer fallback.
+- **Detail:** `docs/TIP-18-AIRSKETCH-MANIPULATION.md`.
+
+## TIP-19 · AirSketch pen bridge regression repair
+
+- **Dependencies:** TIP-18. **Priority:** P0 correctness.
+- **Task:** restore the hand-landmark-to-ink bridge removed during T18, and guard the real worker → main thread → canvas path with browser E2E.
+- **Acceptance:** deterministic pinch landmarks create one visible completed stroke; no recognition, threshold, or gesture-contract tuning is included.
+- **Detail:** `docs/TIP-19-AIRSKETCH-PEN-BRIDGE.md`.
+
+## TIP-20 · AirSketch manipulation smoothness
+
+- **Dependencies:** TIP-18, TIP-19. **Priority:** P0 demo interaction.
+- **Task:** stabilize pinch with hysteresis, adaptively filter cursor/palm span and add a bounded pickup halo for small objects.
+- **Acceptance:** controlled jitter/fast-motion/hit-area unit contracts plus the existing browser path pass without changing model or gesture semantics.
+- **Detail:** `docs/TIP-20-AIRSKETCH-MANIPULATION-SMOOTHNESS.md`.
+
+## TIP-21 · AirSketch neutral hand loop and continuous composition
+
+- **Dependencies:** TIP-18, TIP-19, TIP-20. **Priority:** P0 interaction safety.
+- **Task:** make fist the explicit pen-up/transport state; require a fresh two-flick arm after every fist; preserve unlimited sequential drawings; interpolate sparse hand samples for smoother ink.
+- **Acceptance:** state, multi-stroke and worker-to-canvas browser contracts pass without restoring implicit pinch drawing.
+- **Detail:** `docs/TIP-21-AIRSKETCH-NEUTRAL-LOOP.md`.
+
+## TIP-22 · AirSketch idle-to-grab entry repair
+
+- **Dependencies:** TIP-21. **Priority:** P0 interaction correctness.
+- **Task:** permit explicit open-palm entry from idle to manipulation so previously placed objects can be picked up again.
+- **Acceptance:** controller and browser draw → idle → grab → place contracts pass.
+- **Detail:** `docs/TIP-22-AIRSKETCH-IDLE-GRAB-ENTRY.md`.

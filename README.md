@@ -60,20 +60,23 @@ di chuyển ngón trỏ để vẽ, thả chụm để nhấc bút. Giữ hai ng
 giữ bàn tay mở để xóa. Chuột và cảm ứng dùng cùng đường nét vẽ khi tracking
 chưa sẵn sàng.
 
-Sau 650 ms dừng nét, QuickDraw MobileViT trả top-3 dự đoán. Chạm một dự đoán
-để ghép vào câu, rồi chọn **Nói câu này** để trình duyệt đọc bằng giọng Việt.
+Sau 650 ms dừng nét, QuickDraw SE-ResNet trả năm gợi ý tiếng Việt. Chạm một gợi ý
+để xác nhận và ghép vào câu, rồi chọn **Nói câu này** để trình duyệt đọc bằng giọng Việt.
 Sidecar dự đoán nằm ngoài vùng camera trên desktop và xuống dưới stage trên
 mobile, nên chữ không che nét vẽ/vật thể.
 
 MediaPipe Hand Landmarker và QuickDraw đều chạy local trong worker; frame camera
-không được upload. Đây là hỗ trợ giao tiếp tăng cường (AAC), không phải trình dịch
-ngôn ngữ ký hiệu và không đảm bảo đoán đúng mọi kiểu vẽ.
+không được upload. Bộ đoán dùng raster 28×28 đúng pipeline QuickDraw và phủ tiếng
+Việt cho đủ 345 lớp. Kết quả mơ hồ được báo “chưa đủ chắc chắn”; hệ thống không tự
+đọc gợi ý chưa được chọn. Đây là AAC, không phải trình dịch ngôn ngữ ký hiệu, không
+phải kênh cứu hộ duy nhất và không đảm bảo đoán đúng mọi kiểu vẽ.
 
 Kiểm thử riêng:
 
 ```bash
 npm run test:airsketch-e2e     # contract bằng worker fixture
 npm run test:airsketch-models  # model thật + latency p50/p95
+npm run test:airsketch-quality # top-1/top-3 trên mẫu QuickDraw chính thức
 ```
 
 Smoke local giữ ngân sách hand p95 mặc định 80 ms. Shared CI dùng trần 250 ms để phát hiện treo/hồi quy lớn mà không biến độ nhiễu phần cứng runner thành lỗi tương thích model; có thể ghi đè bằng `AIRSKETCH_HAND_P95_MAX_MS`.
@@ -92,10 +95,12 @@ npm run build:offline
 npm run preview
 ```
 
-Lệnh này kiểm revision + SHA-256, đóng model depth q8 vào `dist/models/` và
-đặt ứng dụng sang WASM/local model ngay từ build. Detection bị khóa trong artifact
-offline vì RT-DETR/OWL-ViT chưa có manifest được phê duyệt. Model sinh ra chỉ nằm
-trong `dist/` và cache bị ignore, không được commit.
+Lệnh này kiểm revision + SHA-256, đóng model depth q8 cùng Hand Landmarker,
+QuickDraw TFLite và 345 nhãn vào `dist/models/`, rồi đặt ứng dụng sang WASM/local
+model ngay từ build. Vì vậy tracking ngón tay và nhận diện AirSketch vẫn cold-start
+khi không có Internet. Detection bị khóa trong artifact offline vì RT-DETR/OWL-ViT
+chưa có manifest được phê duyệt. Model sinh ra chỉ nằm trong `dist/` và cache bị
+ignore, không được commit.
 
 Với demo offline, giữ nguyên cấu trúc snapshot của từng model dưới `public/models/`:
 
@@ -107,9 +112,10 @@ public/models/Xenova/owlvit-base-patch32/
 
 Mỗi snapshot phải gồm config, preprocessor/tokenizer liên quan và các file ONNX mà Transformers.js chọn theo dtype/device. Nếu chỉ chuẩn bị model depth, bốn chế độ perception vẫn chạy nhưng không bật được detection offline. Mặc định không có `?localmodels=1`, trình duyệt tải model cần dùng từ Hugging Face và cache lại.
 
-Runtime WASM của onnxruntime và MediaPipe được tự host trong `/ort/` và
-`/mediapipe/` (`scripts/copy-ort.mjs` chạy tự động trước dev/build), không phụ
-thuộc CDN runtime. Hai model AirSketch vẫn tải từ nguồn đã pin trong bản online.
+Runtime WASM của onnxruntime, MediaPipe và TFLite được tự host trong `/ort/`,
+`/mediapipe/` và `/tflite/` (`scripts/copy-ort.mjs` chạy tự động trước dev/build),
+không phụ thuộc CDN runtime. Bản online tải hai model AirSketch từ nguồn đã pin;
+bản `build:offline` mang model đã kiểm checksum theo artifact.
 
 ## Kịch bản demo 5 phút
 
