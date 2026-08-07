@@ -58,15 +58,12 @@ try {
   check('AirSketch ép về RGB để nét khớp camera', (await page.getAttribute('.mode-btn[data-mode="rgb"]', 'class'))?.includes('active'));
   check('canvas pointer fallback được bật', (await page.getAttribute('#airsketch-overlay', 'class'))?.includes('active'));
 
-  // Regression contract T21: a fist is safe transport. Only a deliberate
-  // two-flick index activation may begin a new stroke through the real worker
-  // → main thread → controller → AirInkDocument path.
+  // Regression contract T23: a fist is safe transport; a thumb-index pinch
+  // is the static draw clutch through worker → controller → AirInkDocument.
   await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); }, [
     handLandmarks(0.30, 'fist'),
-    handLandmarks(0.30, 'index'), handLandmarks(0.27, 'index'), handLandmarks(0.24, 'index'),
-    handLandmarks(0.21, 'index'), handLandmarks(0.24, 'index'), handLandmarks(0.27, 'index'),
-    handLandmarks(0.30, 'index'), handLandmarks(0.32, 'index'), handLandmarks(0.40, 'index'),
-    handLandmarks(0.48, 'index'), handLandmarks(0.48, 'fist')
+    handLandmarks(0.30, 'index'), handLandmarks(0.30, 'pinch'), handLandmarks(0.36, 'pinch'),
+    handLandmarks(0.42, 'pinch'), handLandmarks(0.48, 'pinch'), handLandmarks(0.48, 'index')
   ]);
   await page.waitForFunction(() => {
     const snapshot = window.__roboeyeAirSketchBenchmark?.snapshot();
@@ -80,12 +77,14 @@ try {
     for (let index = 3; index < pixels.length; index += 4) if (pixels[index] !== 0) return true;
     return false;
   });
-  check('nắm tay → double-flick → landmark tạo stroke thật trên canvas', handStrokeVisible);
+  check('nắm tay → chụm cái + trỏ → landmark tạo stroke thật trên canvas', handStrokeVisible);
   await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); }, [
-    handLandmarks(0.40, 'open'),
+    handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
+    handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
+    handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
     handLandmarks(0.40, 'pinch'),
     handLandmarks(0.37, 'pinch'),
-    handLandmarks(0.37, 'open')
+    handLandmarks(0.37, 'index')
   ]);
   await page.waitForFunction(() => document.querySelector('#air-status')?.textContent?.includes('Đã đặt vật thể'));
   check('object đã đặt có thể xòe tay, pinch để cầm và thả để đặt lại',

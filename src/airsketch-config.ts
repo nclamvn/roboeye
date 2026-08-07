@@ -22,10 +22,9 @@ export const AIRSKETCH_CONFIG = {
     captureWidth: 480,
     pinchDownRatio: 0.38,
     pinchUpRatio: 0.52,
-    calibrationFlickDistance: 0.075,
-    calibrationFlickMaxMs: 220,
-    calibrationFlickDebounceMs: 90,
-    doubleFlickGapMs: 900,
+    // An open palm is held briefly before entering object manipulation. It
+    // keeps the draw clutch (thumb-index pinch) free from timing gestures.
+    manipulationHoldMs: 350,
     // Adaptive low-pass filters remove landmark jitter while preserving quick
     // intentional motion for drawing and object manipulation.
     cursorMinAlpha: 0.24,

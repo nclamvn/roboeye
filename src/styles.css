@@ -355,13 +355,20 @@ button, select, input { font-family: var(--font-ui); }
   overflow: visible;
 }
 
-#det-overlay rect {
-  fill: none;
+#det-overlay .det-lock {
+  fill: rgba(11, 11, 10, 0.05);
   stroke: #f2f2ef;
-  stroke-width: 1.5;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
 }
 
-#det-overlay text {
+#det-overlay .det-lock-selected {
+  fill: rgba(255, 244, 220, 0.12);
+  stroke: var(--amber);
+  stroke-width: 3;
+}
+
+#det-overlay .det-lock-label {
   fill: #0b0b0a;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -371,6 +378,10 @@ button, select, input { font-family: var(--font-ui); }
 #det-overlay .det-label-bg {
   fill: #f2f2ef;
   stroke: none;
+}
+
+#det-overlay .det-lock-selected + .det-lock-badge {
+  fill: var(--amber);
 }
 
 #det-count {

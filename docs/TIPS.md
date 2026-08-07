@@ -115,3 +115,17 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - **Task:** permit explicit open-palm entry from idle to manipulation so previously placed objects can be picked up again.
 - **Acceptance:** controller and browser draw → idle → grab → place contracts pass.
 - **Detail:** `docs/TIP-22-AIRSKETCH-IDLE-GRAB-ENTRY.md`.
+
+## TIP-23 · AirSketch static-clutch grammar
+
+- **Dependencies:** TIP-22. **Priority:** P0 interaction correctness.
+- **Task:** replace double-flick arming with thumb–index pinch drawing; use fist as safe transport; require a 350 ms open-palm dwell before manipulation; retain pinch-to-grab, release-to-drop, scaling and unlimited sequential objects.
+- **Acceptance:** hover never inks; pinch creates/continues a stroke; fist ends a stroke; open-palm dwell enters manipulation; grab/place contracts pass in deterministic unit and browser tests.
+- **Detail:** `docs/TIP-23-AIRSKETCH-STATIC-CLUTCH.md`.
+
+## TIP-24 · Detection lock frames and label badges
+
+- **Dependencies:** TIP-15. **Priority:** P1 demo legibility.
+- **Task:** render each live detection as an explicit mirrored rectangular lock frame with a confidence badge attached to the frame's top edge; retain selected-object emphasis and top-edge clipping safety.
+- **Acceptance:** deterministic detection E2E observes one badge and one label for every lock frame, with no regression to panel or depth-source contracts.
+- **Detail:** `docs/TIP-24-DETECTION-LOCK-BADGES.md`.

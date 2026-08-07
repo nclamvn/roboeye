@@ -27,22 +27,23 @@ function setPinchRatio(points: HandLandmark[], ratio: number): HandLandmark[] {
   return points;
 }
 
-test('double flick arm, index draw, open palm manipulate, pinch grab', () => {
+test('static clutch: pinch draws, open palm held enters manipulation, pinch grabs', () => {
   const controller = new AirInteractionController();
-  controller.update(hand(0.3, 'index'), 0);
-  controller.update(hand(0.18, 'index'), 100);
-  const armed = controller.update(hand(0.3, 'index'), 260);
-  assert.equal(armed?.justArmed, true);
-  assert.equal(armed?.mode, 'armed');
-  const drawing = controller.update(hand(0.31, 'index'), 300);
+  const hover = controller.update(hand(0.3, 'index'), 0);
+  assert.equal(hover?.penDown, false);
+  const drawing = controller.update(hand(0.31, 'pinch'), 40);
   assert.equal(drawing?.penDown, true);
   assert.equal(drawing?.mode, 'drawing');
-  const manipulating = controller.update(hand(0.31, 'open'), 340);
+  const waiting = controller.update(hand(0.31, 'open'), 80);
+  assert.equal(waiting?.mode, 'idle');
+  assert.equal(waiting?.penDown, false);
+  assert.equal(waiting?.manipulationProgress, 0);
+  const manipulating = controller.update(hand(0.31, 'open'), 430);
   assert.equal(manipulating?.mode, 'manipulating');
-  const grabbing = controller.update(hand(0.31, 'pinch'), 380);
+  const grabbing = controller.update(hand(0.31, 'pinch'), 470);
   assert.equal(grabbing?.justGrabbed, true);
   assert.equal(grabbing?.mode, 'grabbing');
-  const released = controller.update(hand(0.31, 'open'), 420);
+  const released = controller.update(hand(0.31, 'index'), 510);
   assert.equal(released?.justReleased, true);
   assert.equal(released?.mode, 'manipulating');
 });
@@ -50,10 +51,12 @@ test('double flick arm, index draw, open palm manipulate, pinch grab', () => {
 test('từ nắm tay/idle vẫn xòe tay để cầm rồi đặt object đã vẽ', () => {
   const controller = new AirInteractionController();
   const idle = controller.update(hand(0.31, 'fist'), 0);
-  const manipulating = controller.update(hand(0.31, 'open'), 40);
-  const grabbing = controller.update(hand(0.31, 'pinch'), 80);
-  const placed = controller.update(hand(0.31, 'open'), 120);
+  const waiting = controller.update(hand(0.31, 'open'), 40);
+  const manipulating = controller.update(hand(0.31, 'open'), 390);
+  const grabbing = controller.update(hand(0.31, 'pinch'), 430);
+  const placed = controller.update(hand(0.31, 'index'), 470);
   assert.equal(idle?.mode, 'idle');
+  assert.equal(waiting?.mode, 'idle');
   assert.equal(manipulating?.mode, 'manipulating');
   assert.equal(manipulating?.penDown, false);
   assert.equal(grabbing?.justGrabbed, true);
@@ -62,45 +65,40 @@ test('từ nắm tay/idle vẫn xòe tay để cầm rồi đặt object đã v�
   assert.equal(placed?.mode, 'manipulating');
 });
 
-test('tích lũy chuyển động giữa các frame 24 fps để không bỏ lỡ flick thật', () => {
+test('open-palm dwell resets when the hand changes pose', () => {
   const controller = new AirInteractionController();
-  controller.update(hand(0.30, 'index'), 0);
-  controller.update(hand(0.27, 'index'), 42);
-  controller.update(hand(0.24, 'index'), 84);
-  controller.update(hand(0.21, 'index'), 126);
-  controller.update(hand(0.24, 'index'), 168);
-  controller.update(hand(0.27, 'index'), 210);
-  const armed = controller.update(hand(0.30, 'index'), 252);
-  assert.equal(armed?.justArmed, true);
+  controller.update(hand(0.30, 'open'), 0);
+  const interrupted = controller.update(hand(0.30, 'index'), 200);
+  const restarted = controller.update(hand(0.30, 'open'), 260);
+  const ready = controller.update(hand(0.30, 'open'), 610);
+  assert.equal(interrupted?.manipulationProgress, 0);
+  assert.equal(restarted?.manipulationProgress, 0);
+  assert.equal(ready?.mode, 'manipulating');
 });
 
-test('nắm tay hạ bút, hủy pinch và bắt buộc double-flick trước nét mới', () => {
+test('nắm tay hạ bút; index hover không vẽ, pinch mới bắt đầu nét mới', () => {
   const controller = new AirInteractionController();
   const pinchIdle = controller.update(hand(0.30, 'pinch'), 0);
-  assert.equal(pinchIdle?.penDown, false, 'pinch không còn tự bật bút');
-  controller.update(hand(0.30, 'index'), 100);
-  controller.update(hand(0.18, 'index'), 200);
-  controller.update(hand(0.30, 'index'), 360);
-  const drawing = controller.update(hand(0.31, 'index'), 400);
+  assert.equal(pinchIdle?.penDown, true, 'pinch là clutch duy nhất để bật bút');
+  const drawing = controller.update(hand(0.31, 'pinch'), 100);
   assert.equal(drawing?.penDown, true);
-  const fist = controller.update(hand(0.31, 'fist'), 440);
+  const fist = controller.update(hand(0.31, 'fist'), 140);
   assert.equal(fist?.fist, true);
   assert.equal(fist?.penDown, false);
   assert.equal(fist?.mode, 'idle');
-  const pointAgain = controller.update(hand(0.31, 'index'), 480);
-  assert.equal(pointAgain?.penDown, false, 'giơ trỏ lại chưa được vẽ nếu chưa flick');
+  const pointAgain = controller.update(hand(0.31, 'index'), 180);
+  assert.equal(pointAgain?.penDown, false, 'giơ trỏ chỉ định vị, không tự vẽ');
+  const drawAgain = controller.update(hand(0.31, 'pinch'), 220);
+  assert.equal(drawAgain?.penDown, true, 'chụm lại bắt đầu nét mới');
 });
 
 test('pinch hysteresis giữ nét ổn định và adaptive filter triệt jitter mà vẫn bám chuyển động nhanh', () => {
   const controller = new AirInteractionController();
-  controller.update(hand(0.30, 'index'), 0);
-  controller.update(hand(0.18, 'index'), 100);
-  controller.update(hand(0.30, 'index'), 260);
-  controller.update(hand(0.30, 'index'), 300);
-  controller.update(hand(0.30, 'open'), 340);
-  const started = controller.update(hand(0.30, 'pinch'), 380);
-  const heldNearThreshold = controller.update(setPinchRatio(hand(0.31, 'pinch'), 0.45), 420);
-  const released = controller.update(setPinchRatio(hand(0.31, 'pinch'), 0.56), 460);
+  controller.update(hand(0.30, 'open'), 0);
+  controller.update(hand(0.30, 'open'), 350);
+  const started = controller.update(hand(0.30, 'pinch'), 390);
+  const heldNearThreshold = controller.update(setPinchRatio(hand(0.31, 'pinch'), 0.45), 430);
+  const released = controller.update(setPinchRatio(hand(0.31, 'pinch'), 0.56), 470);
   assert.equal(started?.mode, 'grabbing');
   assert.equal(heldNearThreshold?.mode, 'grabbing');
   assert.equal(released?.mode, 'manipulating');
@@ -114,10 +112,10 @@ test('pinch hysteresis giữ nét ổn định và adaptive filter triệt jitte
   assert.ok(Math.abs(rapid.cursor.x - jitter.cursor.x) > 0.12, 'vẫn bám thao tác nhanh');
 });
 
-test('có thể vẽ và đặt nhiều object liên tiếp, mỗi lần phải qua nắm tay rồi arm lại', () => {
+test('có thể vẽ và đặt nhiều object liên tiếp bằng clutch, không cần double-flick', () => {
   const controller = new AirInteractionController();
   const ink = new AirInkDocument();
-  const feed = (x: number, pose: 'index' | 'fist', at: number) => {
+  const feed = (x: number, pose: 'index' | 'pinch' | 'fist', at: number) => {
     const sample = controller.update(hand(x, pose), at)!;
     if (sample.penDown) {
       if (!ink.isDrawing()) ink.begin(sample.cursor);
@@ -128,11 +126,10 @@ test('có thể vẽ và đặt nhiều object liên tiếp, mỗi lần phải 
   const drawRound = (start: number, x: number) => {
     feed(x, 'fist', start);
     feed(x, 'index', start + 40);
-    feed(x - 0.12, 'index', start + 140);
-    feed(x, 'index', start + 300);
-    feed(x + 0.02, 'index', start + 340);
-    feed(x + 0.10, 'index', start + 380);
-    return feed(x + 0.10, 'fist', start + 420);
+    feed(x, 'pinch', start + 80);
+    feed(x + 0.04, 'pinch', start + 120);
+    feed(x + 0.10, 'pinch', start + 160);
+    return feed(x + 0.10, 'index', start + 200);
   };
   assert.equal(drawRound(0, 0.30).mode, 'idle');
   assert.equal(drawRound(600, 0.45).mode, 'idle');

@@ -1,10 +1,10 @@
-// T18: deliberate hand interaction state machine.
-// Drawing is armed by a double flick, so ordinary hand movement cannot
-// accidentally paint over the camera feed.
+// T23: deliberate static-clutch interaction state machine.
+// Pinching the thumb and index finger is the only way to put ink down. This
+// removes timing-sensitive flick recognition from the critical drawing path.
 import { AIRSKETCH_CONFIG } from './airsketch-config';
 import type { AirPoint, HandLandmark } from './airsketch-types';
 
-export type AirInteractionMode = 'idle' | 'armed' | 'drawing' | 'manipulating' | 'grabbing';
+export type AirInteractionMode = 'idle' | 'drawing' | 'manipulating' | 'grabbing';
 
 export interface AirInteractionSample {
   cursor: AirPoint;
@@ -13,11 +13,10 @@ export interface AirInteractionSample {
   openPalm: boolean;
   pinch: boolean;
   palmSpan: number;
-  justArmed: boolean;
   justGrabbed: boolean;
   justReleased: boolean;
   fist: boolean;
-  flickCount: number;
+  manipulationProgress: number;
 }
 
 function distance(a: Pick<HandLandmark, 'x' | 'y'>, b: Pick<HandLandmark, 'x' | 'y'>): number {
@@ -43,29 +42,17 @@ function pointerPose(points: HandLandmark[]): boolean {
 
 export class AirInteractionController {
   private mode: AirInteractionMode = 'idle';
-  private previous: { point: AirPoint; at: number } | null = null;
   private smoothedCursor: AirPoint | null = null;
   private smoothedPalmSpan: number | null = null;
   private pinchActive = false;
-  private flickCount = 0;
-  private lastFlickAt = -Infinity;
-  private flickStartedAt = -Infinity;
-  private flickTravel = 0;
-  private flickCooldownUntil = 0;
-  private grabPinch = false;
+  private openPalmStartedAt: number | null = null;
 
   reset(): void {
     this.mode = 'idle';
-    this.previous = null;
     this.smoothedCursor = null;
     this.smoothedPalmSpan = null;
     this.pinchActive = false;
-    this.flickCount = 0;
-    this.lastFlickAt = -Infinity;
-    this.flickStartedAt = -Infinity;
-    this.flickTravel = 0;
-    this.flickCooldownUntil = 0;
-    this.grabPinch = false;
+    this.openPalmStartedAt = null;
   }
 
   release(): void { this.reset(); }
@@ -129,89 +116,64 @@ export class AirInteractionController {
     const rawCursor = pinch
       ? { x: 1 - (points[4].x + points[8].x) * 0.5, y: (points[4].y + points[8].y) * 0.5, t: now }
       : indexPoint;
-    let justArmed = false;
     let justGrabbed = false;
     let justReleased = false;
-
     const modeBeforeUpdate = this.mode;
     const pointer = pointerPose(points);
 
-    if (this.previous && pointer && this.mode === 'idle') {
-      const dt = now - this.previous.at;
-      const step = distance(rawCursor, this.previous.point);
-      if (dt <= 0 || dt > AIRSKETCH_CONFIG.tracking.calibrationFlickMaxMs) {
-        this.flickStartedAt = now;
-        this.flickTravel = 0;
-      } else {
-        if (!Number.isFinite(this.flickStartedAt) || now - this.flickStartedAt > AIRSKETCH_CONFIG.tracking.calibrationFlickMaxMs) {
-          this.flickStartedAt = this.previous.at;
-          this.flickTravel = 0;
-        }
-        this.flickTravel += step;
-      }
-      const flickReady = this.flickTravel >= AIRSKETCH_CONFIG.tracking.calibrationFlickDistance;
-      if (flickReady && now >= this.flickCooldownUntil) {
-        if (now - this.lastFlickAt > AIRSKETCH_CONFIG.tracking.doubleFlickGapMs) this.flickCount = 0;
-        this.flickCount++;
-        this.lastFlickAt = now;
-        this.flickCooldownUntil = now + AIRSKETCH_CONFIG.tracking.calibrationFlickDebounceMs;
-        this.flickStartedAt = now;
-        this.flickTravel = 0;
-        if (this.flickCount >= 2) {
-          this.mode = 'armed';
-          this.flickCount = 0;
-          justArmed = true;
-        }
-      }
-    } else if (!pointer) {
-      this.flickStartedAt = -Infinity;
-      this.flickTravel = 0;
+    // An open palm is intentionally a slow gesture: it must be held long
+    // enough to be distinguishable from a momentary hand pose while drawing.
+    if (openPalm) {
+      if (this.openPalmStartedAt == null) this.openPalmStartedAt = now;
+    } else {
+      this.openPalmStartedAt = null;
     }
+    const manipulationProgress = this.openPalmStartedAt == null
+      ? 0
+      : Math.min(1, Math.max(0, (now - this.openPalmStartedAt) / AIRSKETCH_CONFIG.tracking.manipulationHoldMs));
 
-    // A placed object must remain reachable after the user has returned to
-    // the safe fist/idle pose. Open palm is the explicit entry to the grab
-    // workspace and deliberately does not arm the pen.
-    if (this.mode === 'idle' && openPalm) {
-      this.mode = 'manipulating';
-      this.flickCount = 0;
-    }
-
-    if (this.mode === 'armed' || this.mode === 'drawing') {
-      if (fist) this.mode = 'idle';
-      else if (openPalm) this.mode = 'manipulating';
-      else if (this.mode === 'armed' && !justArmed && pointer) this.mode = 'drawing';
-      else if (this.mode === 'drawing' && !pointer) this.mode = 'armed';
-    } else if (this.mode === 'manipulating' || this.mode === 'grabbing') {
-      if (fist) {
-        if (this.grabPinch) justReleased = true;
+    if (fist) {
+      if (this.mode === 'grabbing') justReleased = true;
+      this.mode = 'idle';
+      this.openPalmStartedAt = null;
+    } else if (this.mode === 'idle') {
+      if (openPalm && manipulationProgress >= 1) {
+        this.mode = 'manipulating';
+      } else if (!openPalm && pointer && pinch) {
+        // Static clutch: point to aim, then pinch to put the pen down.
+        this.mode = 'drawing';
+      }
+    } else if (this.mode === 'drawing') {
+      if (openPalm) {
+        // Lift the pen immediately; holding the palm then enters the object
+        // workspace without an additional, ambiguous activation gesture.
+        this.mode = manipulationProgress >= 1 ? 'manipulating' : 'idle';
+      } else if (!pointer || !pinch) {
         this.mode = 'idle';
-      } else if (pinch && !this.grabPinch) {
+      }
+    } else if (this.mode === 'manipulating') {
+      if (pinch && !openPalm) {
         this.mode = 'grabbing';
         justGrabbed = true;
-      } else if (!pinch && this.grabPinch) {
-        this.mode = 'manipulating';
-        justReleased = true;
       }
+    } else if (this.mode === 'grabbing' && !pinch) {
+      this.mode = 'manipulating';
+      justReleased = true;
     }
 
     const startedDrawing = this.mode === 'drawing' && modeBeforeUpdate !== 'drawing';
     const cursor = this.smoothCursor(rawCursor, startedDrawing);
-    this.grabPinch = pinch;
-    // Re-extending the index after a fist begins a fresh gesture; it must not
-    // be counted as the first activation flick.
-    this.previous = fist ? null : { point: rawCursor, at: now };
     return {
       cursor,
       mode: this.mode,
-      penDown: this.mode === 'drawing' && !justArmed,
+      penDown: this.mode === 'drawing',
       openPalm,
       pinch,
       palmSpan,
-      justArmed,
       justGrabbed,
       justReleased,
       fist,
-      flickCount: this.flickCount
+      manipulationProgress
     };
   }
 }

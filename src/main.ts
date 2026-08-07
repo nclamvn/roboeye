@@ -588,26 +588,26 @@ function handleAirLandmarks(landmarks: import('./airsketch-types').HandLandmark[
   // Keep it before scene manipulation so releasing a stroke first commits it
   // as a selectable object.
   applyAirPen(point, sample.penDown);
-  const cursorGesture = sample.mode === 'drawing' ? 'draw' : sample.mode === 'grabbing' ? 'grab' : sample.mode === 'manipulating' ? 'manipulate' : sample.mode === 'armed' ? 'armed' : 'hover';
+  const cursorGesture = sample.mode === 'drawing' ? 'draw' : sample.mode === 'grabbing' ? 'grab' : sample.mode === 'manipulating' ? 'manipulate' : 'hover';
   shell.setAirSketchCursor(sample.fist ? null : point, cursorGesture);
+  let interactionNotice: string | null = null;
   if (sample.justGrabbed) {
     const object = airScene.beginGrab(point, sample.palmSpan);
-    shell.setAirSketchStatus(object ? 'Đang cầm vật thể · đưa tay gần/xa để đổi kích thước' : 'Không có vật thể trong vùng nhón');
+    interactionNotice = object ? 'Đang cầm vật thể · đưa tay gần/xa để đổi kích thước' : 'Không có vật thể trong vùng nhón';
   }
   if (sample.mode === 'grabbing') airScene.moveGrab(point, sample.palmSpan);
   if (sample.justReleased) {
     airScene.release();
-    shell.setAirSketchStatus('Đã đặt vật thể · xòe bàn tay để cầm vật khác');
+    interactionNotice = 'Đã đặt vật thể · xòe bàn tay để cầm vật khác';
   }
-  if (sample.justArmed) shell.setAirSketchStatus('Đã kích hoạt bút · giơ ngón trỏ để vẽ');
-  else if (sample.mode === 'drawing') shell.setAirSketchStatus('Đang vẽ · nắm tay để hạ bút');
-  else if (sample.mode === 'manipulating') shell.setAirSketchStatus('Xòe bàn tay · nhón ngón cái + trỏ để cầm');
-  else if (sample.mode === 'armed') shell.setAirSketchStatus('Bút đã sẵn sàng · giơ ngón trỏ để vẽ');
+  if (interactionNotice) shell.setAirSketchStatus(interactionNotice);
+  else if (sample.mode === 'drawing') shell.setAirSketchStatus('Đang vẽ · nới ngón cái + trỏ để nhấc bút');
+  else if (sample.mode === 'manipulating') shell.setAirSketchStatus('Chế độ cầm · chụm ngón cái + trỏ gần vật thể để cầm');
   else if (sample.mode === 'idle') shell.setAirSketchStatus(sample.fist
-    ? 'Bút đã hạ · di chuyển nắm tay, giơ trỏ rồi vẩy 2 lần để vẽ'
-    : sample.flickCount > 0
-    ? `Đã nhận ${sample.flickCount}/2 lần vẩy · vẩy thêm một lần`
-    : 'Vẩy nhanh ngón trỏ 2 lần để kích hoạt bút');
+    ? 'Bút đã hạ · giơ trỏ để định vị, chụm cái + trỏ để vẽ'
+    : sample.openPalm
+      ? `Giữ bàn tay mở để vào chế độ cầm · ${Math.round(sample.manipulationProgress * 100)}%`
+      : 'Giơ trỏ để định vị · chụm cái + trỏ để vẽ');
   renderAirInk();
 }
 

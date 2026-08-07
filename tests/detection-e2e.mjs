@@ -62,6 +62,14 @@ try {
   await page.waitForFunction(() => document.querySelectorAll('.obj-row').length === 2);
   check('hiển thị hai detection cố định', (await page.locator('.obj-row').count()) === 2);
   check('overlay có hai bounding box', (await page.locator('#det-overlay > rect:not(.det-label-bg)').count()) === 2);
+  check('mỗi khung khóa có một badge nhãn bám cạnh trên', await page.evaluate(() => {
+    const locks = [...document.querySelectorAll('#det-overlay .det-lock')];
+    const badges = [...document.querySelectorAll('#det-overlay .det-lock-badge')];
+    const labels = [...document.querySelectorAll('#det-overlay .det-lock-label')];
+    return locks.length === 2 && badges.length === locks.length && labels.length === locks.length
+      && badges.every((badge, index) => Number(badge.getAttribute('y')) <= Number(locks[index].getAttribute('y')))
+      && labels.every((label) => (label.textContent ?? '').includes('·'));
+  }));
   check('detection giữ nguồn 384 px độc lập với depth WASM 140 px', await page.evaluate(() => window.__lastDetectionFrame?.width === 384));
   const panelCenterDelta = await page.evaluate(() => {
     const panel = document.querySelector('#obj-panel')?.getBoundingClientRect();

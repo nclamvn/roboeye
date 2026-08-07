@@ -378,23 +378,33 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
         const w = Math.max(1, sx1 - sx0);
         const h = Math.max(1, sy1 - sy0);
         const r = document.createElementNS(SVGNS, 'rect');
+        r.setAttribute('class', i === selected ? 'det-lock det-lock-selected' : 'det-lock');
         r.setAttribute('x', sx0.toFixed(1));
         r.setAttribute('y', sy0.toFixed(1));
         r.setAttribute('width', w.toFixed(1));
         r.setAttribute('height', h.toFixed(1));
-        if (i === selected) r.setAttribute('stroke-width', '3');
         detOverlay.appendChild(r);
-        const label = `${b.label} ${(b.score * 100).toFixed(0)}`;
+        const label = `${b.label.toUpperCase()} · ${(b.score * 100).toFixed(0)}%`;
+        const badgeHeight = 20;
+        // A small object can still have a long Vietnamese label. Let the
+        // badge extend from its frame edge, bounded by the video viewport,
+        // rather than clipping the label to the box width.
+        const badgeWidth = Math.min(rect.x + rect.w - sx0, Math.max(66, label.length * 6.7 + 16));
+        // The badge sits on the top edge of its own lock frame. If a box is
+        // close to the camera's top edge, keep it inside rather than clipping.
+        const badgeY = Math.max(rect.y, sy0 - badgeHeight);
         const bg = document.createElementNS(SVGNS, 'rect');
-        bg.setAttribute('class', 'det-label-bg');
+        bg.setAttribute('class', 'det-label-bg det-lock-badge');
         bg.setAttribute('x', sx0.toFixed(1));
-        bg.setAttribute('y', (sy0 - 14).toFixed(1));
-        bg.setAttribute('width', (label.length * 6.5 + 6).toFixed(1));
-        bg.setAttribute('height', '14');
+        bg.setAttribute('y', badgeY.toFixed(1));
+        bg.setAttribute('width', badgeWidth.toFixed(1));
+        bg.setAttribute('height', String(badgeHeight));
+        bg.setAttribute('rx', '2');
         detOverlay.appendChild(bg);
         const t = document.createElementNS(SVGNS, 'text');
-        t.setAttribute('x', (sx0 + 3).toFixed(1));
-        t.setAttribute('y', (sy0 - 3).toFixed(1));
+        t.setAttribute('class', 'det-lock-label');
+        t.setAttribute('x', (sx0 + 8).toFixed(1));
+        t.setAttribute('y', (badgeY + 13.5).toFixed(1));
         t.textContent = label;
         detOverlay.appendChild(t);
       });
