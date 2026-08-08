@@ -1,0 +1,18 @@
+{
+  "name": "RoboEye Edge Perception Studio",
+  "short_name": "RoboEye",
+  "description": "Biến camera thành depth, point cloud và BEV ngay trong trình duyệt.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0b0a",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "icons/roboeye.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
