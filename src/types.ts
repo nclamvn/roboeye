@@ -3,7 +3,6 @@
 export type Dtype = 'fp16' | 'q4f16';
 export type InferDevice = 'webgpu' | 'wasm';
 export type Mode = 'rgb' | 'depth' | 'cloud' | 'bev';
-export type DepthErrorStage = 'load' | 'infer';
 
 export interface MsgInit {
   type: 'init';
@@ -47,7 +46,6 @@ export interface MsgDepth {
 
 export interface MsgError {
   type: 'error';
-  stage: DepthErrorStage;
   message: string;
 }
 
