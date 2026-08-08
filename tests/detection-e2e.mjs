@@ -62,6 +62,14 @@ try {
   await page.waitForFunction(() => document.querySelectorAll('.obj-row').length === 2);
   check('hiển thị hai detection cố định', (await page.locator('.obj-row').count()) === 2);
   check('overlay có hai bounding box', (await page.locator('#det-overlay > rect:not(.det-label-bg)').count()) === 2);
+  check('overlay thực sự nhìn thấy được trên camera', await page.evaluate(() => {
+    const overlay = document.querySelector('#det-overlay');
+    if (!(overlay instanceof SVGSVGElement)) return false;
+    const style = getComputedStyle(overlay);
+    const bounds = overlay.getBoundingClientRect();
+    return !overlay.hasAttribute('hidden') && style.display !== 'none' && style.visibility !== 'hidden'
+      && bounds.width > 0 && bounds.height > 0;
+  }));
   check('mỗi khung khóa có một badge nhãn bám cạnh trên', await page.evaluate(() => {
     const locks = [...document.querySelectorAll('#det-overlay .det-lock')];
     const badges = [...document.querySelectorAll('#det-overlay .det-lock-badge')];
