@@ -41,6 +41,7 @@ import type {
 } from './detection-types';
 import { metricLift, toKittiLines, focalFromFov, type MetricBox3D } from './render/lift-metric';
 import type { MetricWorkerToMain } from './metric-types';
+import { DetectionSmoother } from './detection-smooth';
 
 let sceneApi: SceneAPI | null = null;
 let worker: Worker | null = null;
@@ -73,7 +74,8 @@ let detectBusy = false;
 let detectOn = false;
 let detectLoadRetries = 0;
 let detectRetryTimer: ReturnType<typeof setTimeout> | null = null;
-let lastBoxes: DetBox[] = []; // cũng là tập annotation khi frozen
+let lastBoxes: DetBox[] = []; // cũng là tập annotation khi frozen (thô, cho panel/export/3D)
+const detSmoother = new DetectionSmoother(); // bám mượt + xác nhận khung cho overlay 2D
 let selectedObj = -1;
 let engine: DetectionEngine = 'rtdetr';
 let queries: string[] = [...OWL_QUERY_PRESETS.everyday.queries];
@@ -261,6 +263,7 @@ const shell = createShell({
     if (!on) {
       stopDetectWorker();
       lastBoxes = [];
+      detSmoother.reset();
       selectedObj = -1;
       refreshAnnotations();
     }
@@ -272,6 +275,7 @@ const shell = createShell({
     detectForceWasm = !detectWebGPU;
     selectedObj = -1;
     lastBoxes = []; // xoá box của engine cũ khỏi overlay
+    detSmoother.reset();
     refreshAnnotations();
     if (detectWorker) {
       detectReady = false;
@@ -766,6 +770,7 @@ function spawnDetectWorker() {
       }
       if (!frozen) {
         lastBoxes = m.boxes;
+        detSmoother.observe(m.boxes);
         selectedObj = -1;
         refreshAnnotations();
         shell.setObjStatus(`${lastBoxes.length} vật · ${engine === 'owlvit' ? 'OWL-ViT' : 'RT-DETR'}`);
@@ -1209,7 +1214,10 @@ async function boot() {
     if (sceneApi) {
       const m = shell.currentMode();
       const show2d = detectOn && (m === 'rgb' || m === 'depth');
-      shell.drawDetections(lastBoxes, sceneApi.imageRectPx(), show2d, selectedObj);
+      // Không đông cứng: vẽ khung ĐÃ MƯỢT (bám vật + đã xác nhận, bớt box rác).
+      // Đông cứng: vẽ đúng khung thô đang review + highlight vật đang chọn.
+      const overlayBoxes = frozen ? lastBoxes : detSmoother.advance(dt);
+      shell.drawDetections(overlayBoxes, sceneApi.imageRectPx(), show2d, frozen ? selectedObj : -1);
     }
 
     if (now - lastMeterUpdate > 250) {

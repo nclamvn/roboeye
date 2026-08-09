@@ -373,6 +373,9 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
       else bevStatusText.textContent = `${pathSteps ?? '–'} bước · đang replan`;
     },
     drawDetections(boxes, rect, show, selected) {
+      // #det-overlay mang sẵn thuộc tính [hidden]; CSS reset có [hidden]{display:none!important}
+      // thắng cả inline display:block, nên phải GỠ thuộc tính hidden thì khung mới hiện được.
+      detOverlay.toggleAttribute('hidden', !show);
       detOverlay.style.display = show ? 'block' : 'none';
       detCount.hidden = !show;
       while (detOverlay.firstChild) detOverlay.removeChild(detOverlay.firstChild);
