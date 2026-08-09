@@ -6,6 +6,16 @@ Method: Vibecode Kit v6.1 · X-Ray Protocol
 
 Canonical repository: `/Users/os/Downloads/roboeye`
 
+## Cập nhật 09/08/2026 — v1.5.0
+
+Ba thay đổi sau snapshot gốc, đã commit và push `main` (`f191578`, `b8dd9f0`):
+
+- **Metric depth + KITTI (P1-B-2).** Thêm Metric mode (Depth Pro, opt-in ~600MB) đo mét thật trên khung đông cứng, nâng 2D box thành 3D box đơn vị mét (toạ độ camera/KITTI), xuất KITTI txt và 3D JSON metric. Điều này **đóng Gap "P1 data honesty"** ở mục 13: export 3D trước đây nhắc "Depth Pro metric mode" mà chưa có mode — nay đã có thật (`src/worker/metric-worker.ts`, `src/render/lift-metric.ts`, `src/metric-types.ts`).
+- **Fix overlay nhận diện.** SVG `#det-overlay` giữ thuộc tính `hidden`, bị luật reset `[hidden]{display:none!important}` đè cả inline `display:block`, nên khung được vẽ nhưng luôn ẩn. Đã gỡ thuộc tính `hidden` khi hiện (`src/ui/shell.ts`).
+- **Tối ưu nhận diện.** Nâng ngưỡng (RT-DETR 0.45→0.55, OWL-ViT 0.08→0.20) chặn dương tính giả; thêm `src/detection-smooth.ts` bám mượt khung (khớp IoU + khoảng cách tâm, nội suy EMA mỗi frame) và xác nhận ≥2 nhịp mới vẽ. Toán bám mượt verify bằng unit test synthetic.
+
+Các mục stale khác của snapshot 06/08 (số LOC/file ở mục 4, "package 1.0.0 / không CHANGELOG" ở mục 13 — thực tế nay là 1.4.0 và đã có CHANGELOG) chưa rà lại toàn bộ; cần một lần X-Ray mới nếu muốn snapshot đầy đủ.
+
 ## 1. Overview
 
 RoboEye biến webcam laptop thành một pipeline perception và planning chạy hoàn toàn trong trình duyệt:

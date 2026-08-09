@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.5.0 — 09/08/2026
+
+### Metric depth and KITTI export (P1-B-2)
+
+- Added opt-in Depth Pro metric mode: on a frozen frame it estimates real-world metres and lifts each 2D detection into a metric 3D box in camera/KITTI coordinates.
+- Added KITTI label export (15-field lines in metres) and a metric variant of the 3D JSON export (`scale: metric`, `dims_m`, per-object `distance_m`), plus a nearest-object distance readout.
+- Depth Pro runs on demand in its own worker (~600 MB, loaded only when metric mode is enabled); the relative-depth realtime pipeline is untouched.
+- Resolves the prior data-honesty gap: the 3D export copy referenced a "Depth Pro metric mode" that did not exist — it now exists.
+
+### Detection overlay fix
+
+- Fixed detection boxes never being visible. The `#det-overlay` SVG kept its `hidden` attribute and the global `[hidden]{display:none!important}` reset overrode the inline `display:block`, so boxes were drawn into a permanently hidden container. The attribute is now cleared whenever detections are shown.
+
+### Detection accuracy and smoothing
+
+- Raised confidence thresholds (RT-DETR 0.45 → 0.55, OWL-ViT 0.08 → 0.20) to cut false positives such as a raised hand becoming a second `person`.
+- Added a temporal box smoother (`src/detection-smooth.ts`): boxes are matched across inference frames by IoU and centre distance, then interpolated every render frame so they glide with moving objects instead of jumping.
+- Added confirmation and persistence: a box must appear in at least two consecutive inferences before it is drawn, and is kept for two missed inferences, removing flickering false positives.
+
+### Verification
+
+- tsc strict clean, full vite build green. Metric maths, KITTI formatting and the box smoother are covered by synthetic unit checks (transient false positive suppressed, real object confirmed, boxes glide without teleporting, fast motion matched by centre distance).
+
 ## 1.4.0 — 07/08/2026
 
 ### AirSketch interaction (T18)
