@@ -39,6 +39,8 @@ import type {
   DetectionEngine,
   DetectionWorkerToMain
 } from './detection-types';
+import { metricLift, toKittiLines, focalFromFov, type MetricBox3D } from './render/lift-metric';
+import type { MetricWorkerToMain } from './metric-types';
 
 let sceneApi: SceneAPI | null = null;
 let worker: Worker | null = null;
@@ -77,6 +79,14 @@ let engine: DetectionEngine = 'rtdetr';
 let queries: string[] = [...OWL_QUERY_PRESETS.everyday.queries];
 let detW = 0;
 let detH = 0;
+
+// P1-B-2 metric: Depth Pro chạy trên khung đông cứng (opt-in ~600MB)
+let metricMode = false;
+let metricWorker: Worker | null = null;
+let metricBoxes: Array<MetricBox3D | null> = [];
+let fovDeg = 60;
+// Test hook: verify toán metric lift bằng synthetic depth (dùng trong smoke, vô hại)
+(window as unknown as { __roboeyeMetric?: unknown }).__roboeyeMetric = { metricLift, toKittiLines, focalFromFov };
 
 // T16: hand tracking → air ink → sketch classifier → AAC/TTS.
 const airInteraction = new AirInteractionController();
@@ -137,11 +147,14 @@ function downloadFile(name: string, text: string, mime = 'text/plain') {
   setTimeout(() => URL.revokeObjectURL(url), 2000);
 }
 
-function exportAnnotations(fmt: 'coco' | 'yolo' | '3d') {
+function exportAnnotations(fmt: 'coco' | 'yolo' | '3d' | 'kitti') {
   const W = detW || 1280;
   const H = detH || 720;
   if (lastBoxes.length === 0) return;
-  if (fmt === 'yolo') {
+  if (fmt === 'kitti') {
+    if (!metricBoxes.some(Boolean)) return; // KITTI cần metric mét thật (bật Metric mode + F)
+    downloadFile('roboeye-kitti.txt', toKittiLines(lastBoxes, metricBoxes, W, H));
+  } else if (fmt === 'yolo') {
     const yolo = createYoloExport(lastBoxes);
     downloadFile('roboeye-labels.txt', yolo.labelsText);
     downloadFile('classes.txt', yolo.classesText);
@@ -149,9 +162,33 @@ function exportAnnotations(fmt: 'coco' | 'yolo' | '3d') {
     const coco = createCocoExport(lastBoxes, { width: W, height: H });
     downloadFile('roboeye-coco.json', JSON.stringify(coco, null, 2), 'application/json');
   } else {
-    const d3 = sceneApi?.getDetections3D() ?? [];
-    const out = createRelative3dExport(lastBoxes, { width: W, height: H }, d3);
-    downloadFile('roboeye-3d.json', JSON.stringify(out, null, 2), 'application/json');
+    // 3D JSON: có metric (Depth Pro) thì xuất MÉT thật, không thì view-space tương đối
+    const hasMetric = metricMode && metricBoxes.some(Boolean);
+    if (hasMetric) {
+      const out = {
+        note: 'RoboEye 3D annotations, đơn vị MÉT (Depth Pro). center/dims camera coords KITTI (X phải, Y xuống, Z tới).',
+        scale: 'metric',
+        unit: 'meter',
+        image: { width: W, height: H },
+        objects: lastBoxes.map((b, i) => ({
+          label: b.label,
+          score: +b.score.toFixed(3),
+          box2d: { x0: +b.x0.toFixed(4), y0: +b.y0.toFixed(4), x1: +b.x1.toFixed(4), y1: +b.y1.toFixed(4) },
+          box3d: metricBoxes[i]
+            ? {
+                center_m: metricBoxes[i]!.center.map((v) => +v.toFixed(3)),
+                dims_m: metricBoxes[i]!.dims.map((v) => +v.toFixed(3)),
+                distance_m: +metricBoxes[i]!.distance.toFixed(3)
+              }
+            : null
+        }))
+      };
+      downloadFile('roboeye-3d-metric.json', JSON.stringify(out, null, 2), 'application/json');
+    } else {
+      const d3 = sceneApi?.getDetections3D() ?? [];
+      const out = createRelative3dExport(lastBoxes, { width: W, height: H }, d3);
+      downloadFile('roboeye-3d.json', JSON.stringify(out, null, 2), 'application/json');
+    }
   }
 }
 
@@ -200,10 +237,18 @@ const shell = createShell({
   onCamera: (deviceId) => {
     void openCamera(deviceId);
   },
-  onFov: (deg) => sceneApi?.setFov(deg),
+  onFov: (deg) => {
+    fovDeg = deg;
+    sceneApi?.setFov(deg);
+  },
   onFreeze: (f) => {
     frozen = f;
     sceneApi?.setFrozen(f);
+    if (f) computeMetricOnFreeze();
+    else if (metricMode) {
+      metricBoxes = [];
+      shell.setMetricStatus('nhấn F trên khung để đo mét');
+    }
   },
   onDetect: (on) => {
     detectOn = on;
@@ -242,6 +287,19 @@ const shell = createShell({
     detectWorker?.postMessage({ type: 'queries', value: list });
   },
   onExport: (fmt) => exportAnnotations(fmt),
+  onMetric: (on) => {
+    metricMode = on;
+    shell.showMetric(on);
+    if (on) {
+      if (!metricWorker) spawnMetricWorker();
+      else metricWorker.postMessage({ type: 'preload' });
+      shell.setMetricStatus('nhấn F trên khung để đo mét');
+    } else {
+      metricBoxes = [];
+    }
+    diagnostics.record('metric.toggle', { on });
+  },
+  onMetricExport: () => exportAnnotations('kitti'),
   onSelectObject: (i) => {
     selectedObj = selectedObj === i ? -1 : i;
     refreshAnnotations();
@@ -779,6 +837,58 @@ function stopDetectWorker() {
   detectBusy = false;
   rejectBenchmarkReady('Detection benchmark đã dừng');
   rejectBenchmarkInfer('Detection benchmark đã dừng');
+}
+
+// P1-B-2: Depth Pro on-demand đo mét thật trên khung đông cứng, mở khoá KITTI.
+function spawnMetricWorker() {
+  const instance = new Worker(new URL('./worker/metric-worker.ts', import.meta.url), { type: 'module' });
+  metricWorker = instance;
+  instance.onmessage = (ev: MessageEvent<MetricWorkerToMain>) => {
+    if (metricWorker !== instance) return;
+    const m = ev.data;
+    if (m.type === 'loading') {
+      shell.setMetricStatus('đang tải Depth Pro (~600MB, chỉ lần đầu)…');
+    } else if (m.type === 'progress') {
+      if (m.file.endsWith('.onnx')) {
+        shell.setMetricStatus(`tải Depth Pro · ${(m.loaded / 1e6).toFixed(0)}/${(m.total / 1e6).toFixed(0)} MB`);
+      }
+    } else if (m.type === 'ready') {
+      shell.setMetricStatus('Depth Pro sẵn sàng · nhấn F trên khung để đo');
+      diagnostics.record('metric.ready', { device: m.device });
+    } else if (m.type === 'metric') {
+      const depth = new Float32Array(m.depth);
+      const focal = m.focal > 0 ? m.focal : focalFromFov(fovDeg, m.width);
+      metricBoxes = metricLift(depth, m.width, m.height, focal, lastBoxes);
+      const n = metricBoxes.filter(Boolean).length;
+      const near = metricBoxes.filter(Boolean).map((b) => b!.distance).sort((a, b) => a - b)[0];
+      shell.setMetricStatus(`metric ✓ ${n} vật${near != null ? ` · gần nhất ${near.toFixed(2)} m` : ''}`);
+      diagnostics.record('metric.done', { objects: n, ms: Math.round(m.ms) });
+    } else if (m.type === 'error') {
+      console.error('[roboeye-metric]', m.message);
+      shell.setMetricStatus(`metric lỗi · ${m.message}`);
+      diagnostics.record('metric.error', { message: m.message });
+    }
+  };
+  instance.onerror = (event) => {
+    if (metricWorker !== instance) return;
+    console.error('[roboeye-metric-worker]', event.message || 'worker crash');
+    shell.setMetricStatus('metric worker lỗi · tắt/bật Metric mode để thử lại');
+    diagnostics.record('metric.crash', { message: event.message || 'worker crash' });
+  };
+  instance.postMessage({ type: 'init', forceWasm, localModels });
+}
+
+function computeMetricOnFreeze() {
+  if (!metricMode || !metricWorker) return;
+  const img = captureFrame(DETECTION_CAPTURE_W, detectionCapture);
+  if (!img) return;
+  detW = img.width;
+  detH = img.height;
+  shell.setMetricStatus('đang đo Depth Pro trên khung đông cứng…');
+  metricWorker.postMessage(
+    { type: 'compute', rgba: img.data.buffer, width: img.width, height: img.height },
+    [img.data.buffer]
+  );
 }
 
 function startDetectionBenchmark(nextEngine: DetectionEngine): Promise<DetectionBenchmarkReady> {

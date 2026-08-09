@@ -20,6 +20,8 @@ export interface ShellCallbacks {
   onEngine(engine: DetectionEngine): void;
   onQueries(list: string[]): void;
   onExport(fmt: 'coco' | 'yolo' | '3d'): void;
+  onMetric(on: boolean): void;
+  onMetricExport(): void;
   onSelectObject(idx: number): void;
   onDeleteObject(idx: number): void;
   onRelabelObject(idx: number, label: string): void;
@@ -59,6 +61,8 @@ export interface ShellAPI {
   showLabelTools(on: boolean): void;
   renderObjects(objs: DetBox[], selected: number): void;
   setObjStatus(text: string): void;
+  showMetric(on: boolean): void;
+  setMetricStatus(text: string): void;
   setNetwork(online: boolean): void;
   showRuntimeNotice(text: string, retry: boolean): void;
   hideRuntimeNotice(): void;
@@ -113,6 +117,9 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   const objPanel = $('#obj-panel');
   const objList = $('#obj-list');
   const objStatus = $('#obj-status');
+  const metricToggle = $<HTMLInputElement>('#metric-toggle');
+  const metricStatus = $('#metric-status');
+  const kittiBtn = $<HTMLButtonElement>('#exp-kitti');
   const sidebar = $('#sidebar');
   const mobileControlsBtn = $<HTMLButtonElement>('#mobile-controls-btn');
   const diagnosticsBtn = $<HTMLButtonElement>('#diagnostics-btn');
@@ -159,6 +166,8 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   $<HTMLButtonElement>('#exp-coco').addEventListener('click', () => cb.onExport('coco'));
   $<HTMLButtonElement>('#exp-yolo').addEventListener('click', () => cb.onExport('yolo'));
   $<HTMLButtonElement>('#exp-3d').addEventListener('click', () => cb.onExport('3d'));
+  metricToggle.addEventListener('change', () => cb.onMetric(metricToggle.checked));
+  kittiBtn.addEventListener('click', () => cb.onMetricExport());
   const panel = $('#panel');
   const panelBtn = $<HTMLButtonElement>('#panel-btn');
   const panelClose = $<HTMLButtonElement>('#panel-close');
@@ -415,6 +424,14 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
     },
     setObjStatus(text) {
       objStatus.textContent = text;
+    },
+    showMetric(on) {
+      metricStatus.hidden = !on;
+      kittiBtn.hidden = !on;
+    },
+    setMetricStatus(text) {
+      metricStatus.hidden = false;
+      metricStatus.textContent = text;
     },
     setNetwork(online) {
       badgeNetwork.textContent = online ? 'MẠNG · ONLINE' : 'MẠNG · OFFLINE';
