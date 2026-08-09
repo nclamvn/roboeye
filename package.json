@@ -1,9 +1,12 @@
 {
   "name": "roboeye",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.4.0",
   "description": "RoboEye — biến camera laptop thành mắt robot, chạy toàn bộ trong trình duyệt",
   "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "predev": "node scripts/copy-ort.mjs",
     "dev": "vite",
@@ -11,18 +14,47 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "smoke:prep": "node scripts/prep-fixtures.mjs",
-    "smoke": "node tests/smoke.mjs"
+    "test:unit": "tsx --test tests/unit/*.test.ts",
+    "security:audit": "node scripts/security-audit.mjs",
+    "qa": "npm run typecheck && npm run test:unit && npm run build && npm run security:audit && npm run test:detection-e2e && npm run test:airsketch-e2e && npm run test:release-e2e",
+    "fixtures:prepare": "node scripts/prepare-test-models.mjs",
+    "fixtures:verify": "node scripts/prepare-test-models.mjs --verify-only",
+    "fixtures:airsketch": "node scripts/prepare-airsketch-models.mjs",
+    "fixtures:airsketch:verify": "node scripts/prepare-airsketch-models.mjs --verify-only",
+    "fixtures:detection-benchmark": "node scripts/prepare-detection-benchmark.mjs",
+    "fixtures:detection-benchmark:verify": "node scripts/prepare-detection-benchmark.mjs --verify-only",
+    "prebenchmark:detection": "npm run build && npm run fixtures:detection-benchmark -- --stage",
+    "benchmark:detection": "tsx tests/detection-benchmark.ts",
+    "pretest:detection-e2e": "npm run build",
+    "test:detection-e2e": "node tests/detection-e2e.mjs",
+    "pretest:detection-models": "npm run build",
+    "test:detection-models": "node tests/detection-model-smoke.mjs",
+    "pretest:airsketch-e2e": "npm run build",
+    "test:airsketch-e2e": "node tests/airsketch-e2e.mjs",
+    "pretest:airsketch-models": "npm run build",
+    "test:airsketch-models": "node tests/airsketch-model-smoke.mjs",
+    "test:airsketch-quality": "npm run build && node tests/airsketch-quality.mjs",
+    "pretest:release-e2e": "npm run build",
+    "test:release-e2e": "node tests/release-e2e.mjs",
+    "presmoke": "npm run fixtures:prepare && npm run build",
+    "smoke": "node tests/smoke.mjs",
+    "build:offline": "npm run fixtures:prepare && npm run fixtures:airsketch && ROBOEYE_OFFLINE=1 npm run build && node scripts/stage-offline-release.mjs && node scripts/verify-release.mjs --offline",
+    "release:verify": "npm run build && node scripts/verify-release.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.5",
     "@fontsource/noto-serif": "^5.2.5",
     "@huggingface/transformers": "^3.8.1",
+    "@mediapipe/tasks-vision": "1.0.1",
+    "@tensorflow/tfjs-backend-cpu": "4.9.0",
+    "@tensorflow/tfjs-core": "4.9.0",
+    "@tensorflow/tfjs-tflite": "0.0.1-alpha.10",
     "three": "^0.185.1"
   },
   "devDependencies": {
     "@types/three": "^0.185.0",
     "playwright-core": "^1.55.0",
+    "tsx": "^4.23.8",
     "typescript": "~5.9.2",
     "vite": "^7.0.2"
   }
