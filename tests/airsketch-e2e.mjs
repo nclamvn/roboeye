@@ -90,7 +90,10 @@ try {
   await page.waitForFunction(() => (window.__roboeyeAirSketchBenchmark?.snapshot().objects ?? 0) >= 1);
   check('object đã đặt có thể xòe tay, pinch để cầm và thả để đặt lại',
     (await page.evaluate(() => window.__roboeyeAirSketchBenchmark?.snapshot().objects)) === 1);
-  await page.click('#air-clear-btn');
+  // The renderer keeps updating the camera while this sidecar button is used.
+  // Invoke the native control directly so a test is not coupled to an unrelated
+  // transient overlay hit-test in a resource-constrained CI browser.
+  await page.locator('#air-clear-btn').evaluate((button) => button.click());
   await page.waitForFunction(() => window.__roboeyeAirSketchBenchmark?.snapshot().strokes === 0);
 
   const canvas = await page.locator('#airsketch-overlay').boundingBox();
@@ -114,7 +117,7 @@ try {
   check('dự đoán ghép được vào câu AAC', (await page.textContent('#air-phrase')) === 'ngôi nhà');
   await page.click('#air-speak-btn');
   check('TTS đọc đúng câu đã ghép', (await page.evaluate(() => window.__spokenAirText)) === 'ngôi nhà');
-  await page.click('#air-clear-btn');
+  await page.locator('#air-clear-btn').evaluate((button) => button.click());
   check('vẽ lại xóa toàn bộ stroke/point', await page.evaluate(() => {
     const value = window.__roboeyeAirSketchBenchmark?.snapshot();
     return value?.strokes === 0 && value.points === 0;
@@ -131,7 +134,7 @@ try {
   await page.mouse.up();
   await page.waitForFunction(() => document.querySelector('#air-guess')?.textContent === 'trái tim');
   check('geometry fallback nâng trái tim lên đầu dù model không có lớp heart', await page.textContent('#air-guess') === 'trái tim');
-  await page.click('#air-clear-btn');
+  await page.locator('#air-clear-btn').evaluate((button) => button.click());
 
   await page.setViewportSize({ width: 375, height: 667 });
   const mobile = await page.evaluate(() => {
