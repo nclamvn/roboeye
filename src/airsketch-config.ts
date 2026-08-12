@@ -18,7 +18,10 @@ export const AIRSKETCH_CONFIG = {
     topK: 5
   },
   tracking: {
-    maxFps: 24,
+    // 24 fps leaves a 42 ms gap before inference latency is even counted.
+    // 30 fps is the highest sustainable target for the pinned CPU hand model;
+    // latest-frame-wins prevents any queue buildup.
+    maxFps: 30,
     captureWidth: 480,
     pinchDownRatio: 0.38,
     pinchUpRatio: 0.52,
@@ -27,9 +30,14 @@ export const AIRSKETCH_CONFIG = {
     manipulationHoldMs: 350,
     // Adaptive low-pass filters remove landmark jitter while preserving quick
     // intentional motion for drawing and object manipulation.
-    cursorMinAlpha: 0.24,
-    cursorMaxAlpha: 0.82,
-    cursorVelocityGain: 0.48,
+    cursorMinAlpha: 0.34,
+    cursorMaxAlpha: 0.88,
+    cursorVelocityGain: 0.55,
+    // A worker result describes a frame captured slightly before the display.
+    // Predict only a bounded short horizon so the cursor catches up without
+    // leaping past a hand that suddenly stops.
+    cursorLatencyMaxMs: 55,
+    cursorMaxPrediction: 0.075,
     palmSpanMinAlpha: 0.28,
     palmSpanMaxAlpha: 0.76,
     palmSpanDeltaGain: 0.96,

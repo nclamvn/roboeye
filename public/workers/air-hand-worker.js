@@ -52,7 +52,15 @@ function infer(message) {
     const result = landmarker.detectForVideo(bitmap, message.timestamp);
     const landmarks = result.landmarks[0]?.map((point) => ({ x: point.x, y: point.y, z: point.z })) ?? null;
     const handedness = result.handedness[0]?.[0]?.categoryName ?? null;
-    postMessage({ type: 'landmarks', landmarks, handedness, inferMs: performance.now() - startedAt });
+    postMessage({
+      type: 'landmarks',
+      landmarks,
+      handedness,
+      inferMs: performance.now() - startedAt,
+      // Preserve the frame time so the main thread can compensate the worker
+      // transit/inference gap before drawing the cursor and ink.
+      capturedAt: message.timestamp
+    });
   } catch (error) {
     postMessage({ type: 'error', stage: 'infer', message: error instanceof Error ? error.message : String(error) });
   } finally {

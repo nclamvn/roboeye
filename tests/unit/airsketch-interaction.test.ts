@@ -112,6 +112,19 @@ test('pinch hysteresis giữ nét ổn định và adaptive filter triệt jitte
   assert.ok(Math.abs(rapid.cursor.x - jitter.cursor.x) > 0.12, 'vẫn bám thao tác nhanh');
 });
 
+test('bù timestamp worker làm con trỏ đuổi kịp khung hình trễ nhưng không vượt biên', () => {
+  const controller = new AirInteractionController();
+  const first = controller.update(hand(0.30, 'index'), 0, 0)!;
+  const delayed = controller.update(hand(0.40, 'index'), 40, 95)!;
+  // Camera mirror means moving hand x=0.30 → 0.40 moves cursor 0.70 → 0.60.
+  // With the 55 ms bounded prediction, cursor must advance beyond the raw 0.60
+  // position but must remain within the normalized stage.
+  assert.ok(delayed.cursor.x < 0.60, `cursor prediction = ${delayed.cursor.x}`);
+  assert.ok(delayed.cursor.x >= 0 && delayed.cursor.x <= 1);
+  assert.equal(first.cursor.t, 0);
+  assert.equal(delayed.cursor.t, 95, 'render timestamp is the worker reply time');
+});
+
 test('có thể vẽ và đặt nhiều object liên tiếp bằng clutch, không cần double-flick', () => {
   const controller = new AirInteractionController();
   const ink = new AirInkDocument();

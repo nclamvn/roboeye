@@ -54,7 +54,9 @@ try {
   await page.check('#detect-toggle');
   await page.waitForFunction(() => window.__detectionInitCount >= 2);
   check('lỗi tải model tự retry bằng worker WASM sạch', await page.evaluate(() => window.__detectionInitCount === 2));
-  check('detection mặc định ép WASM ổn định', await page.evaluate(() => window.__lastDetectionInit?.forceWasm === true));
+  check('detection mặc định ưu tiên WebGPU và giữ fallback sạch', await page.evaluate(() =>
+    window.__detectionInits?.[0]?.forceWasm === false && window.__lastDetectionInit?.forceWasm === true
+  ));
   await page.waitForFunction(() => document.querySelector('#obj-status')?.textContent?.includes('lỗi frame'));
   check('infer error phục hồi về trạng thái sẵn sàng', (await page.textContent('#obj-status'))?.includes('lỗi frame'));
 

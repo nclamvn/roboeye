@@ -43,6 +43,8 @@ function pointerPose(points: HandLandmark[]): boolean {
 export class AirInteractionController {
   private mode: AirInteractionMode = 'idle';
   private smoothedCursor: AirPoint | null = null;
+  private previousRawCursor: AirPoint | null = null;
+  private cursorVelocity = { x: 0, y: 0 };
   private smoothedPalmSpan: number | null = null;
   private pinchActive = false;
   private openPalmStartedAt: number | null = null;
@@ -50,6 +52,8 @@ export class AirInteractionController {
   reset(): void {
     this.mode = 'idle';
     this.smoothedCursor = null;
+    this.previousRawCursor = null;
+    this.cursorVelocity = { x: 0, y: 0 };
     this.smoothedPalmSpan = null;
     this.pinchActive = false;
     this.openPalmStartedAt = null;
@@ -79,6 +83,35 @@ export class AirInteractionController {
     return this.smoothedCursor;
   }
 
+  private compensateCursor(raw: AirPoint, capturedAt: number, receivedAt: number): AirPoint {
+    const previous = this.previousRawCursor;
+    if (previous) {
+      const elapsed = Math.max(8, capturedAt - previous.t);
+      const measuredVelocity = {
+        x: (raw.x - previous.x) / elapsed,
+        y: (raw.y - previous.y) / elapsed
+      };
+      // Velocity EMA limits a single jittery landmark from launching the pen.
+      this.cursorVelocity = {
+        x: this.cursorVelocity.x + (measuredVelocity.x - this.cursorVelocity.x) * 0.62,
+        y: this.cursorVelocity.y + (measuredVelocity.y - this.cursorVelocity.y) * 0.62
+      };
+    }
+    this.previousRawCursor = { ...raw, t: capturedAt };
+    const latency = Math.min(
+      AIRSKETCH_CONFIG.tracking.cursorLatencyMaxMs,
+      Math.max(0, receivedAt - capturedAt)
+    );
+    const maxShift = AIRSKETCH_CONFIG.tracking.cursorMaxPrediction;
+    const dx = Math.max(-maxShift, Math.min(maxShift, this.cursorVelocity.x * latency));
+    const dy = Math.max(-maxShift, Math.min(maxShift, this.cursorVelocity.y * latency));
+    return {
+      x: Math.min(1, Math.max(0, raw.x + dx)),
+      y: Math.min(1, Math.max(0, raw.y + dy)),
+      t: receivedAt
+    };
+  }
+
   private smoothPalmSpan(raw: number): number {
     if (this.smoothedPalmSpan == null) {
       this.smoothedPalmSpan = raw;
@@ -94,7 +127,7 @@ export class AirInteractionController {
     return this.smoothedPalmSpan;
   }
 
-  update(points: HandLandmark[], now: number): AirInteractionSample | null {
+  update(points: HandLandmark[], capturedAt: number, receivedAt = capturedAt): AirInteractionSample | null {
     if (points.length < 21) return null;
     const rawPalmSpan = Math.max(0.001, distance(points[5], points[17]));
     const index = extended(points, 8, 6);
@@ -112,9 +145,9 @@ export class AirInteractionController {
     const pinch = this.pinchActive;
     const palmSpan = this.smoothPalmSpan(rawPalmSpan);
     const openPalm = index && middle && ring && pinky;
-    const indexPoint = { x: 1 - points[8].x, y: points[8].y, t: now };
+    const indexPoint = { x: 1 - points[8].x, y: points[8].y, t: capturedAt };
     const rawCursor = pinch
-      ? { x: 1 - (points[4].x + points[8].x) * 0.5, y: (points[4].y + points[8].y) * 0.5, t: now }
+      ? { x: 1 - (points[4].x + points[8].x) * 0.5, y: (points[4].y + points[8].y) * 0.5, t: capturedAt }
       : indexPoint;
     let justGrabbed = false;
     let justReleased = false;
@@ -124,13 +157,13 @@ export class AirInteractionController {
     // An open palm is intentionally a slow gesture: it must be held long
     // enough to be distinguishable from a momentary hand pose while drawing.
     if (openPalm) {
-      if (this.openPalmStartedAt == null) this.openPalmStartedAt = now;
+      if (this.openPalmStartedAt == null) this.openPalmStartedAt = receivedAt;
     } else {
       this.openPalmStartedAt = null;
     }
     const manipulationProgress = this.openPalmStartedAt == null
       ? 0
-      : Math.min(1, Math.max(0, (now - this.openPalmStartedAt) / AIRSKETCH_CONFIG.tracking.manipulationHoldMs));
+      : Math.min(1, Math.max(0, (receivedAt - this.openPalmStartedAt) / AIRSKETCH_CONFIG.tracking.manipulationHoldMs));
 
     if (fist) {
       if (this.mode === 'grabbing') justReleased = true;
@@ -162,7 +195,10 @@ export class AirInteractionController {
     }
 
     const startedDrawing = this.mode === 'drawing' && modeBeforeUpdate !== 'drawing';
-    const cursor = this.smoothCursor(rawCursor, startedDrawing);
+    const cursor = this.smoothCursor(
+      this.compensateCursor(rawCursor, capturedAt, receivedAt),
+      startedDrawing
+    );
     return {
       cursor,
       mode: this.mode,

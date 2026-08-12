@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+### Real-time perception recovery (TIP-27)
+
+- Detection now tries WebGPU by default and clearly retries on WASM only when
+  the GPU path cannot initialize; the active backend, inference time and cadence
+  are visible in the object status.
+- RGB detection and AirSketch now take priority over depth-frame processing,
+  eliminating a competing pixel-read/inference job during direct interaction.
+- AirSketch hand samples preserve camera-frame timestamps, apply bounded latency
+  prediction before smoothing, run at 30 fps latest-frame-wins, and retain denser
+  curved ink samples.
+- Replaced stale double-flick copy with the implemented thumb–index clutch,
+  fist pen-up and open-palm manipulation grammar.
+
 ### Motion-aware detection tracking (TIP-26)
 
 - Detection boxes now carry the source camera timestamp through the worker and

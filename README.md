@@ -85,7 +85,7 @@ Smoke local giữ ngân sách hand p95 mặc định 80 ms. Shared CI dùng tr�
 
 - `?webgl=1` ép render WebGL2 (demo "tắt WebGPU vẫn sống")
 - `?wasm=1` ép inference WASM (tự hạ inference size về 140, badge nói thật)
-- `?detectwebgpu=1` thử nghiệm detection WebGPU; nếu khởi tạo lỗi sẽ retry bằng worker WASM sạch.
+- Detection mặc định ưu tiên WebGPU; nếu khởi tạo lỗi sẽ retry bằng worker WASM sạch. Dùng `?detectwasm=1` để chẩn đoán đường CPU/WASM.
 - `?localmodels=1` chỉ load model từ `/models/` trên chính origin thay vì Hugging Face, dùng cho demo offline.
 
 Bản offline depth chuẩn được tạo tự động, không cần chép model bằng tay:

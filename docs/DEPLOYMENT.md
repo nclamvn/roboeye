@@ -18,10 +18,10 @@ npm run release:verify
 
 Deploy the resulting `dist/` directory. Online mode downloads requested depth or detection models from Hugging Face and uses browser-local cache afterward.
 
-Detection uses pinned q8 model revisions on WASM by default. The release workflow
-must initialize and run one real inference for both RT-DETR and OWL-ViT before it
-may upload the Pages artifact. `?detectwebgpu=1` is an explicit experimental path,
-not the production default.
+Detection defaults to WebGPU and retries cleanly on pinned q8 WASM when the device
+cannot initialize. The release workflow must initialize and run one real inference
+for both RT-DETR and OWL-ViT before it may upload the Pages artifact. `?detectwasm=1`
+is the explicit CPU diagnostic path.
 
 For a sub-path host, set the public base before building:
 

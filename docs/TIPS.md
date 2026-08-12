@@ -141,3 +141,17 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   same-label motion remains one track, one-frame low-confidence noise is not
   rendered, and audit/benchmark preflight are green.
 - **Detail:** `docs/TIP-26-MOTION-AWARE-DETECTION-TRACKING.md`.
+
+## TIP-27 · Real-time perception recovery
+
+- **Dependencies:** TIP-23, TIP-26. **Priority:** P0 demo reliability.
+- **Task:** make detection WebGPU-first with clean WASM retry; pause depth while
+  RGB detection/AirSketch need the interactive budget; propagate hand-frame
+  timestamps for bounded cursor prediction; run latest-frame hand capture at
+  30 fps; align visual instructions with the static-clutch grammar and expose
+  detector backend/latency/cadence.
+- **Acceptance:** default worker tries GPU then retries CPU if necessary;
+  worker-to-ink timestamp compensation is unit-covered; deterministic browser
+  contracts cover drawing, grab/place and detection locks; no stale double-flick
+  instruction remains.
+- **Detail:** `docs/TIP-27-REALTIME-PERCEPTION-RECOVERY.md`.

@@ -36,11 +36,11 @@ try {
   await page.goto(`${BASE}/?webgl=1&detection-model-smoke=1`, { waitUntil: 'domcontentloaded' });
   await page.check('#detect-toggle');
   await page.waitForFunction(
-    () => document.querySelector('#obj-status')?.textContent?.includes('RT-DETR · WASM'),
+    () => /RT-DETR · (WEBGPU|WASM)/.test(document.querySelector('#obj-status')?.textContent ?? ''),
     null,
     { timeout: 180_000 }
   );
-  check('RT-DETR pinned q8 khởi tạo bằng WASM', (await page.textContent('#obj-status'))?.includes('RT-DETR · WASM'));
+  check('RT-DETR pinned khởi tạo bằng WebGPU hoặc fallback WASM', /RT-DETR · (WEBGPU|WASM)/.test((await page.textContent('#obj-status')) ?? ''));
 
   await page.click('#start-btn');
   await page.waitForFunction(
@@ -52,11 +52,11 @@ try {
 
   await page.selectOption('#engine-select', 'owlvit');
   await page.waitForFunction(
-    () => document.querySelector('#obj-status')?.textContent?.includes('OWL-ViT · WASM'),
+    () => /OWL-ViT · (WEBGPU|WASM)/.test(document.querySelector('#obj-status')?.textContent ?? ''),
     null,
     { timeout: 300_000 }
   );
-  check('OWL-ViT pinned q8 khởi tạo bằng WASM', (await page.textContent('#obj-status'))?.includes('OWL-ViT · WASM'));
+  check('OWL-ViT pinned khởi tạo bằng WebGPU hoặc fallback WASM', /OWL-ViT · (WEBGPU|WASM)/.test((await page.textContent('#obj-status')) ?? ''));
   await page.waitForFunction(
     () => /^\d+ vật · OWL-ViT/.test(document.querySelector('#obj-status')?.textContent ?? ''),
     null,

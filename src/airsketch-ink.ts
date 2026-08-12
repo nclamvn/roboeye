@@ -1,8 +1,11 @@
 import { AIRSKETCH_CONFIG } from './airsketch-config';
 import type { AirGesture, AirHandSample, AirPoint, AirStroke, HandLandmark } from './airsketch-types';
 
-const MIN_POINT_DISTANCE = 0.0025;
-const MAX_SEGMENT_LENGTH = 0.018;
+// Hand landmarks now arrive at 30 fps with latency compensation. Retain more
+// deliberate low-speed points and interpolate less distance per segment so a
+// circle/heart does not turn into a few angular chords.
+const MIN_POINT_DISTANCE = 0.0015;
+const MAX_SEGMENT_LENGTH = 0.014;
 
 function distance(a: Pick<HandLandmark, 'x' | 'y'>, b: Pick<HandLandmark, 'x' | 'y'>): number {
   return Math.hypot(a.x - b.x, a.y - b.y);

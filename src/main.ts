@@ -36,6 +36,7 @@ import type {
   DetectionBenchmarkAPI,
   DetectionBenchmarkReady,
   DetectionBenchmarkResult,
+  DetectionDevice,
   DetectionEngine,
   DetectionWorkerToMain
 } from './detection-types';
@@ -74,6 +75,9 @@ let detectBusy = false;
 let detectOn = false;
 let detectLoadRetries = 0;
 let detectRetryTimer: ReturnType<typeof setTimeout> | null = null;
+let detectDevice: DetectionDevice | null = null;
+let lastDetectionResultAt = 0;
+let detectionFpsEma = 0;
 let lastBoxes: DetBox[] = []; // cũng là tập annotation khi frozen (thô, cho panel/export/3D)
 const detSmoother = new DetectionSmoother(); // bám mượt + xác nhận khung cho overlay 2D
 let selectedObj = -1;
@@ -198,9 +202,10 @@ function exportAnnotations(fmt: 'coco' | 'yolo' | '3d' | 'kitti') {
 const urlParams = new URLSearchParams(location.search);
 const forceWebGL = urlParams.has('webgl');
 const forceWasm = urlParams.has('wasm') || __ROBOEYE_OFFLINE__;
-// Detection ưu tiên WASM ổn định. WebGPU detection vẫn có thể thử nghiệm bằng
-// ?detectwebgpu=1; nếu init lỗi, worker mới sẽ retry sạch bằng WASM.
-const detectWebGPU = urlParams.has('detectwebgpu') && !forceWasm;
+// Detection mặc định ưu tiên WebGPU để tránh độ trễ nhiều giây trên WASM/CPU.
+// ?detectwasm=1 giữ đường chẩn đoán CPU; nếu GPU không sẵn sàng, worker tự retry
+// sạch bằng WASM thay vì làm hỏng luồng camera.
+const detectWebGPU = !forceWasm && !urlParams.has('detectwasm');
 let detectForceWasm = !detectWebGPU;
 const localModels = urlParams.has('localmodels') || __ROBOEYE_OFFLINE__;
 const demoMode = urlParams.has('demo');
@@ -398,7 +403,7 @@ function clearAirDrawing() {
   airLastClassifiedRevision = -1;
   renderAirInk();
   shell.setAirSketchPredictions([]);
-  shell.setAirSketchStatus('Khung vẽ đã sạch · vẩy nhanh ngón trỏ 2 lần để bật bút');
+  shell.setAirSketchStatus('Khung vẽ đã sạch · giơ trỏ để định vị, chụm cái + trỏ để vẽ');
 }
 
 function addAirPrediction(index: number) {
@@ -450,13 +455,13 @@ function spawnAirWorkers() {
       } else if (message.type === 'ready') {
         airHandStage = 'ready';
         airHandReady = true;
-        shell.setAirSketchStatus('Tracking tay sẵn sàng · vẩy nhanh ngón trỏ 2 lần để bật bút');
+        shell.setAirSketchStatus('Tracking tay sẵn sàng · giơ trỏ để định vị, chụm cái + trỏ để vẽ');
         diagnostics.record('airsketch.hand.ready', { model: AIRSKETCH_CONFIG.handModel.version });
       } else if (message.type === 'landmarks') {
         airHandBusy = false;
         if (airHandWarmupRemaining > 0) airHandWarmupRemaining--;
         else airMetrics.addHand(message.inferMs);
-        handleAirLandmarks(message.landmarks);
+        handleAirLandmarks(message.landmarks, message.capturedAt);
       } else {
         airHandBusy = false;
         if (message.stage === 'load') airHandReady = false;
@@ -629,7 +634,10 @@ function applyAirPen(point: AirPoint, down: boolean) {
   }
 }
 
-function handleAirLandmarks(landmarks: import('./airsketch-types').HandLandmark[] | null) {
+function handleAirLandmarks(
+  landmarks: import('./airsketch-types').HandLandmark[] | null,
+  capturedAt = performance.now()
+) {
   if (!airSketchOn || airPointerActive) return;
   if (!landmarks) {
     applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
@@ -637,7 +645,7 @@ function handleAirLandmarks(landmarks: import('./airsketch-types').HandLandmark[
     shell.setAirSketchCursor(null);
     return;
   }
-  const sample = airInteraction.update(landmarks, performance.now());
+  const sample = airInteraction.update(landmarks, capturedAt, performance.now());
   if (!sample || !sceneApi) return;
   const rect = sceneApi.imageRectPx();
   const point = {
@@ -717,7 +725,8 @@ window.__roboeyeAirSketchBenchmark = {
   snapshot: () => airMetrics.snapshot(
     airInk.strokeCount(),
     airInk.pointCount(),
-    { hand: airHandReady, classifier: airClassifierReady, handStage: airHandStage }
+    { hand: airHandReady, classifier: airClassifierReady, handStage: airHandStage },
+    airScene.snapshot().length
   ),
   classifyImage: (rgba, width, height) => new Promise((resolve, reject) => {
     if (!airClassifierWorker || !airClassifierReady) {
@@ -740,6 +749,9 @@ function spawnDetectWorker() {
   detectWorker = instance;
   detectReady = false;
   detectBusy = false;
+  detectDevice = null;
+  lastDetectionResultAt = 0;
+  detectionFpsEma = 0;
   shell.setObjStatus('đang tải model…');
   instance.onmessage = (ev: MessageEvent<DetectionWorkerToMain>) => {
     if (detectWorker !== instance) return;
@@ -752,6 +764,7 @@ function spawnDetectWorker() {
       detectLoadRetries = 0;
       detectReady = true;
       detectBusy = false;
+      detectDevice = m.device;
       shell.setObjStatus(engine === 'owlvit' ? `OWL-ViT · ${m.device.toUpperCase()}` : `RT-DETR · ${m.device.toUpperCase()} · COCO`);
       diagnostics.record('detection.ready', { engine, device: m.device });
       if (benchmarkReadyPending?.engine === m.engine) {
@@ -769,26 +782,39 @@ function spawnDetectWorker() {
         pending.resolve({ boxes: m.boxes, detMs: m.detMs });
       }
       if (!frozen) {
+        const resultAt = performance.now();
+        if (lastDetectionResultAt > 0) {
+          const instantaneousFps = 1_000 / Math.max(1, resultAt - lastDetectionResultAt);
+          detectionFpsEma = detectionFpsEma === 0 ? instantaneousFps : detectionFpsEma * 0.72 + instantaneousFps * 0.28;
+        }
+        lastDetectionResultAt = resultAt;
         lastBoxes = m.boxes;
         // `m.capturedAt` belongs to the camera frame that produced these boxes,
         // not the later frame now on screen. The tracker projects that gap.
-        detSmoother.observe(m.boxes, m.capturedAt, performance.now());
+        detSmoother.observe(m.boxes, m.capturedAt, resultAt);
         selectedObj = -1;
         refreshAnnotations();
-        shell.setObjStatus(`${lastBoxes.length} vật · ${engine === 'owlvit' ? 'OWL-ViT' : 'RT-DETR'}`);
+        const backend = detectDevice?.toUpperCase() ?? '…';
+        const cadence = detectionFpsEma > 0 ? ` · ${detectionFpsEma.toFixed(1)} fps` : '';
+        shell.setObjStatus(`${lastBoxes.length} vật · ${engine === 'owlvit' ? 'OWL-ViT' : 'RT-DETR'} · ${backend} · ${Math.round(m.detMs)} ms${cadence}`);
       }
     } else if (m.type === 'error') {
       const recovery = recoverDetectionError(m.stage);
+      const retryingGpuLoad = m.stage === 'load' && detectOn && !detectionBenchmarkMode && detectLoadRetries < 1;
       detectBusy = recovery.busy;
       detectReady = recovery.ready;
-      console.error('[roboeye-detect]', m.message);
+      // GPU init failure followed by the documented WASM retry is recoverable.
+      // Keep it visible to a developer without flagging a successful fallback
+      // as a browser-console application error.
+      if (retryingGpuLoad) console.warn('[roboeye-detect] WebGPU không sẵn sàng, thử WASM:', m.message);
+      else console.error('[roboeye-detect]', m.message);
       diagnostics.record('detection.error', { engine, stage: m.stage, message: m.message });
       if (m.stage === 'load') rejectBenchmarkReady(m.message);
       else rejectBenchmarkInfer(m.message);
       if (m.stage === 'load') {
         instance.terminate();
         if (detectWorker === instance) detectWorker = null;
-        if (detectOn && !detectionBenchmarkMode && detectLoadRetries < 1) {
+        if (retryingGpuLoad) {
           detectLoadRetries++;
           detectForceWasm = true;
           shell.setObjStatus('tải lỗi · đang thử lại WASM…');
@@ -1157,8 +1183,11 @@ async function boot() {
     lastT = now;
     renderDtEma = renderDtEma * 0.9 + dt * 0.1;
 
-    // Latest-frame-wins: chỉ capture + gửi khi worker rảnh
-    if (workerReady && !workerBusy && !frozen && worker) {
+    // Depth đọc pixel rất tốn tài nguyên. Khi người dùng đang xem RGB với
+    // detection hoặc AirSketch, video texture vẫn cập nhật trực tiếp còn depth
+    // được nhường tài nguyên cho model tương tác thời gian thực.
+    if (workerReady && !workerBusy && !frozen && worker && !airSketchOn &&
+        (!detectOn || shell.currentMode() !== 'rgb')) {
       const img = captureFrame(captureW, depthCapture);
       if (img) {
         sceneApi?.uploadColor(img);
@@ -1184,7 +1213,7 @@ async function boot() {
       }
     }
 
-    // Hand tracking chạy nhịp riêng tối đa 24 fps. ImageBitmap được transfer sang
+    // Hand tracking chạy nhịp riêng tối đa 30 fps. ImageBitmap được transfer sang
     // worker nên main thread không đọc lại pixel và không xếp hàng frame.
     const airFrameInterval = 1000 / AIRSKETCH_CONFIG.tracking.maxFps;
     if (airSketchOn && airHandReady && !airClassifierLoading && !airHandBusy && !frozen && airHandWorker && video &&

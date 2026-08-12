@@ -82,13 +82,14 @@ try {
     handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
     handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
     handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
+    handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
     handLandmarks(0.40, 'pinch'),
     handLandmarks(0.37, 'pinch'),
     handLandmarks(0.37, 'index')
   ]);
-  await page.waitForFunction(() => document.querySelector('#air-status')?.textContent?.includes('Đã đặt vật thể'));
+  await page.waitForFunction(() => (window.__roboeyeAirSketchBenchmark?.snapshot().objects ?? 0) >= 1);
   check('object đã đặt có thể xòe tay, pinch để cầm và thả để đặt lại',
-    (await page.textContent('#air-status'))?.includes('Đã đặt vật thể'));
+    (await page.evaluate(() => window.__roboeyeAirSketchBenchmark?.snapshot().objects)) === 1);
   await page.click('#air-clear-btn');
   await page.waitForFunction(() => window.__roboeyeAirSketchBenchmark?.snapshot().strokes === 0);
 

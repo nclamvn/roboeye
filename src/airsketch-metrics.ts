@@ -16,9 +16,10 @@ export class AirSketchMetrics {
   snapshot(
     strokes: number,
     points: number,
-    ready: AirSketchBenchmarkSnapshot['ready'] = { hand: false, classifier: false }
+    ready: AirSketchBenchmarkSnapshot['ready'] = { hand: false, classifier: false },
+    objects = 0
   ): AirSketchBenchmarkSnapshot {
     const summarize = (values: number[]) => ({ samples: values.length, p50: percentile(values, 0.5), p95: percentile(values, 0.95) });
-    return { ready, hand: summarize(this.hand), classify: summarize(this.classify), strokes, points };
+    return { ready, hand: summarize(this.hand), classify: summarize(this.classify), strokes, points, objects };
   }
 }

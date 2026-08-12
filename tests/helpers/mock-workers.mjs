@@ -3,6 +3,7 @@ export function installMockWorkers() {
   window.__failMockDepthLoadOnce = false;
   window.__failMockDetectionLoadOnce = false;
   window.__lastDetectionInit = null;
+  window.__detectionInits = [];
   window.__lastDetectionFrame = null;
   window.__detectionInitCount = 0;
   window.__lastAirClassify = null;
@@ -36,7 +37,13 @@ export function installMockWorkers() {
         if (message.type === 'init') this.emit({ type: 'ready' });
         else if (message.type === 'frame') {
           const landmarks = window.__mockAirHandFrames.shift() ?? null;
-          this.emit({ type: 'landmarks', landmarks, handedness: landmarks ? 'Right' : null, inferMs: 9 });
+          this.emit({
+            type: 'landmarks',
+            landmarks,
+            handedness: landmarks ? 'Right' : null,
+            inferMs: 9,
+            capturedAt: message.timestamp
+          });
         }
         return;
       }
@@ -81,6 +88,7 @@ export function installMockWorkers() {
 
       if (message.type === 'init') {
         window.__lastDetectionInit = message;
+        window.__detectionInits.push(message);
         window.__detectionInitCount++;
         this.engine = message.engine;
         this.emit({ type: 'loading', engine: this.engine });

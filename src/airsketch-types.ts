@@ -36,7 +36,11 @@ export type AirSketchMainToHandWorker =
 export type AirSketchHandWorkerToMain =
   | { type: 'loading'; stage: 'runtime' | 'model' | 'graph' }
   | { type: 'ready' }
-  | { type: 'landmarks'; landmarks: HandLandmark[] | null; handedness: string | null; inferMs: number }
+  | {
+      type: 'landmarks'; landmarks: HandLandmark[] | null; handedness: string | null; inferMs: number;
+      // Timestamp of the video frame, not the later worker reply.
+      capturedAt: number;
+    }
   | { type: 'error'; stage: 'load' | 'infer'; message: string };
 
 export type AirSketchMainToClassifierWorker =
@@ -58,4 +62,5 @@ export interface AirSketchBenchmarkSnapshot {
   classify: { samples: number; p50: number | null; p95: number | null };
   strokes: number;
   points: number;
+  objects: number;
 }

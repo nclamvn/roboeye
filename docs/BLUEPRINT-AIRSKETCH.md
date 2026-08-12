@@ -31,7 +31,7 @@ camera → ImageBitmap 480 px → classic Hand Worker → 21 landmarks
 
 | REQ-ID | Requirement | Priority |
 |---|---|---|
-| AIR-01 | Track index fingertip locally with a 24 fps cap | P0 |
+| AIR-01 | Track index fingertip locally with a 30 fps cap | P0 |
 | AIR-02 | Pinch draw; held two-finger undo; held open-palm clear | P0 |
 | AIR-03 | Smooth mirrored ink plus mouse/touch fallback | P0 |
 | AIR-04 | Rasterize after 650 ms idle and return top-3 sketch guesses | P0 |
