@@ -104,6 +104,7 @@ export function installMockWorkers() {
           this.emit({
             type: 'det',
             detMs: 12,
+            capturedAt: message.capturedAt,
             boxes: [
               { label: 'person', score: 0.97, x0: 0.10, y0: 0.12, x1: 0.42, y1: 0.88 },
               { label: 'chair', score: 0.86, x0: 0.55, y0: 0.35, x1: 0.91, y1: 0.90 }

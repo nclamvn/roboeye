@@ -129,3 +129,15 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - **Task:** render each live detection as an explicit mirrored rectangular lock frame with a confidence badge attached to the frame's top edge; retain selected-object emphasis and top-edge clipping safety.
 - **Acceptance:** deterministic detection E2E observes one badge and one label for every lock frame, with no regression to panel or depth-source contracts.
 - **Detail:** `docs/TIP-24-DETECTION-LOCK-BADGES.md`.
+
+## TIP-26 · Motion-aware detection tracking
+
+- **Dependencies:** TIP-14, TIP-15, TIP-24. **Priority:** P0 visual correctness.
+- **Task:** carry camera capture time across the worker boundary; predict and
+  latency-compensate live detection boxes before render; keep confidence-aware
+  confirmation/persistence; restore T14 benchmark-locked thresholds and patch
+  the available `nanoid` advisory.
+- **Acceptance:** a delayed result is corrected to current display time, fast
+  same-label motion remains one track, one-frame low-confidence noise is not
+  rendered, and audit/benchmark preflight are green.
+- **Detail:** `docs/TIP-26-MOTION-AWARE-DETECTION-TRACKING.md`.

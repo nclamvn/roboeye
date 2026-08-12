@@ -100,7 +100,7 @@ async function loadEngine(e: DetectionEngine) {
   }
 }
 
-async function detect(rgba: ArrayBuffer, width: number, height: number) {
+async function detect(rgba: ArrayBuffer, width: number, height: number, capturedAt: number) {
   const activeDetector = detector;
   const activeEngine = engine;
   if (!activeDetector || busy) return;
@@ -130,7 +130,7 @@ async function detect(rgba: ArrayBuffer, width: number, height: number) {
       x1: r.box.xmax / width,
       y1: r.box.ymax / height
     })), activeEngine === 'rtdetr' ? RTDETR_POSTPROCESS : OWLVIT_POSTPROCESS);
-    post({ type: 'det', boxes, detMs: performance.now() - t0 });
+    post({ type: 'det', boxes, detMs: performance.now() - t0, capturedAt });
   } catch (e) {
     post({ type: 'error', stage: 'infer', message: `Detect lỗi: ${e instanceof Error ? e.message : String(e)}` });
   } finally {
@@ -154,6 +154,6 @@ self.onmessage = (ev: MessageEvent<DetectionMainToWorker>) => {
     const nextQueries = m.value.filter((value) => value.trim().length > 0);
     if (nextQueries.length > 0) queries = nextQueries;
   } else if (m.type === 'frame') {
-    void detect(m.rgba, m.width, m.height);
+    void detect(m.rgba, m.width, m.height, m.capturedAt);
   }
 };

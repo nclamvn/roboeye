@@ -54,11 +54,13 @@ export type DetectionMainToWorker =
     }
   | { type: 'engine'; engine: DetectionEngine }
   | { type: 'queries'; value: string[] }
-  | { type: 'frame'; rgba: ArrayBuffer; width: number; height: number };
+  // The capture timestamp lets the main thread compensate for detector latency
+  // before drawing a result over the newer camera frame.
+  | { type: 'frame'; rgba: ArrayBuffer; width: number; height: number; capturedAt: number };
 
 export type DetectionWorkerToMain =
   | { type: 'loading'; engine: DetectionEngine }
   | { type: 'progress'; file: string; progress: number; loaded: number; total: number }
   | { type: 'ready'; engine: DetectionEngine; device: DetectionDevice }
-  | { type: 'det'; boxes: DetBox[]; detMs: number }
+  | { type: 'det'; boxes: DetBox[]; detMs: number; capturedAt: number }
   | { type: 'error'; stage: DetectionErrorStage; message: string };

@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased
+
+### Motion-aware detection tracking (TIP-26)
+
+- Detection boxes now carry the source camera timestamp through the worker and
+  are projected across inference latency before the overlay is corrected. This
+  reduces the visible lag and jump of a moving object without drawing a stale
+  box over a newer video frame.
+- Matching uses both IoU and a speed-aware centre gate, retains a confirmed box
+  through short detector misses, and preserves confidence-aware filtering for
+  one-frame noise.
+- Restored the T14 benchmark-locked thresholds (RT-DETR 0.45, OWL-ViT 0.08);
+  temporal confirmation now handles transient noise rather than sacrificing
+  recall at the model boundary.
+- Patched the transitive `nanoid` advisory in the lockfile; security audit is
+  green without accepting that finding as a policy exception.
+
 ## 1.5.0 — 09/08/2026
 
 ### Metric depth and KITTI export (P1-B-2)

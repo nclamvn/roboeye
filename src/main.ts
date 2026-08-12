@@ -770,7 +770,9 @@ function spawnDetectWorker() {
       }
       if (!frozen) {
         lastBoxes = m.boxes;
-        detSmoother.observe(m.boxes);
+        // `m.capturedAt` belongs to the camera frame that produced these boxes,
+        // not the later frame now on screen. The tracker projects that gap.
+        detSmoother.observe(m.boxes, m.capturedAt, performance.now());
         selectedObj = -1;
         refreshAnnotations();
         shell.setObjStatus(`${lastBoxes.length} vật · ${engine === 'owlvit' ? 'OWL-ViT' : 'RT-DETR'}`);
@@ -941,7 +943,7 @@ function inferDetectionBenchmark(
     detectBusy = true;
     detW = width;
     detH = height;
-    detectWorker?.postMessage({ type: 'frame', rgba, width, height }, [rgba]);
+    detectWorker?.postMessage({ type: 'frame', rgba, width, height, capturedAt: performance.now() }, [rgba]);
   });
 }
 
@@ -1176,7 +1178,7 @@ async function boot() {
         detW = dimg.width;
         detH = dimg.height;
         detectWorker.postMessage(
-          { type: 'frame', rgba: dimg.data.buffer, width: dimg.width, height: dimg.height },
+          { type: 'frame', rgba: dimg.data.buffer, width: dimg.width, height: dimg.height, capturedAt: now },
           [dimg.data.buffer]
         );
       }
