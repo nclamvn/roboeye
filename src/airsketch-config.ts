@@ -30,14 +30,22 @@ export const AIRSKETCH_CONFIG = {
     manipulationHoldMs: 350,
     // Adaptive low-pass filters remove landmark jitter while preserving quick
     // intentional motion for drawing and object manipulation.
-    cursorMinAlpha: 0.34,
-    cursorMaxAlpha: 0.88,
-    cursorVelocityGain: 0.55,
+    // The pen needs to be visually tied to the fingertip.  A 0.34 minimum
+    // alpha looked calm in synthetic samples but introduced a visible second
+    // follower on a 30 fps camera.  The higher floor is paired with an
+    // explicit missing-hand grace window below, rather than smoothing away
+    // real motion.
+    cursorMinAlpha: 0.38,
+    cursorMaxAlpha: 0.92,
+    cursorVelocityGain: 0.8,
     // A worker result describes a frame captured slightly before the display.
     // Predict only a bounded short horizon so the cursor catches up without
     // leaping past a hand that suddenly stops.
-    cursorLatencyMaxMs: 55,
-    cursorMaxPrediction: 0.075,
+    cursorLatencyMaxMs: 35,
+    cursorMaxPrediction: 0.035,
+    // One missed MediaPipe observation must not split a stroke or drop an
+    // object.  A longer loss still releases safely.
+    lostHandGraceMs: 120,
     palmSpanMinAlpha: 0.28,
     palmSpanMaxAlpha: 0.76,
     palmSpanDeltaGain: 0.96,

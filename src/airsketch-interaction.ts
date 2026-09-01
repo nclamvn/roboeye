@@ -7,7 +7,13 @@ import type { AirPoint, HandLandmark } from './airsketch-types';
 export type AirInteractionMode = 'idle' | 'drawing' | 'manipulating' | 'grabbing';
 
 export interface AirInteractionSample {
+  // Predicted display/ink position. This is deliberately the index fingertip
+  // in every state, including when the thumb pinches it.
   cursor: AirPoint;
+  // Stable, non-predicted position for hit-testing and moving an object.
+  // Prediction makes ink feel responsive but makes a grasp overshoot small
+  // objects, so object manipulation must use this separate coordinate.
+  grabCursor: AirPoint;
   mode: AirInteractionMode;
   penDown: boolean;
   openPalm: boolean;
@@ -145,10 +151,10 @@ export class AirInteractionController {
     const pinch = this.pinchActive;
     const palmSpan = this.smoothPalmSpan(rawPalmSpan);
     const openPalm = index && middle && ring && pinky;
-    const indexPoint = { x: 1 - points[8].x, y: points[8].y, t: capturedAt };
-    const rawCursor = pinch
-      ? { x: 1 - (points[4].x + points[8].x) * 0.5, y: (points[4].y + points[8].y) * 0.5, t: capturedAt }
-      : indexPoint;
+    // Do not swap from the index tip to the thumb-index midpoint on pinch.
+    // That old switch moved the pen by half the finger gap at the moment the
+    // user started drawing and also made a target impossible to grab reliably.
+    const rawCursor = { x: 1 - points[8].x, y: points[8].y, t: capturedAt };
     let justGrabbed = false;
     let justReleased = false;
     const modeBeforeUpdate = this.mode;
@@ -185,7 +191,11 @@ export class AirInteractionController {
         this.mode = 'idle';
       }
     } else if (this.mode === 'manipulating') {
-      if (pinch && !openPalm) {
+      // Once a deliberate open-palm dwell has entered manipulation, an open
+      // hand may keep its other fingers extended while thumb and index pinch.
+      // Requiring those fingers to fold made the advertised two-finger grab
+      // silently fail for a natural hand pose.
+      if (pinch) {
         this.mode = 'grabbing';
         justGrabbed = true;
       }
@@ -195,12 +205,11 @@ export class AirInteractionController {
     }
 
     const startedDrawing = this.mode === 'drawing' && modeBeforeUpdate !== 'drawing';
-    const cursor = this.smoothCursor(
-      this.compensateCursor(rawCursor, capturedAt, receivedAt),
-      startedDrawing
-    );
+    const grabCursor = this.smoothCursor(rawCursor, startedDrawing);
+    const cursor = this.compensateCursor(grabCursor, capturedAt, receivedAt);
     return {
       cursor,
+      grabCursor,
       mode: this.mode,
       penDown: this.mode === 'drawing',
       openPalm,

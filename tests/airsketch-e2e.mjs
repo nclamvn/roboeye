@@ -23,10 +23,10 @@ function handLandmarks(x, pose) {
   points[17] = { x: 0.62, y: 0.63, z: 0 };
   for (const [pip, tip, fingerX] of [[6, 8, x], [10, 12, 0.49], [14, 16, 0.56], [18, 20, 0.63]]) {
     points[pip] = { x: fingerX, y: 0.49, z: 0 };
-    points[tip] = { x: fingerX, y: pose === 'open' ? 0.25 : 0.72, z: 0 };
+    points[tip] = { x: fingerX, y: pose === 'open' || pose === 'open-pinch' ? 0.25 : 0.72, z: 0 };
   }
-  if (pose === 'index' || pose === 'pinch') points[8] = { x, y: 0.25, z: 0 };
-  points[4] = pose === 'pinch' ? { x: x + 0.01, y: 0.255, z: 0 }
+  if (pose === 'index' || pose === 'pinch' || pose === 'open-pinch') points[8] = { x, y: 0.25, z: 0 };
+  points[4] = pose === 'pinch' || pose === 'open-pinch' ? { x: x + 0.01, y: 0.255, z: 0 }
     : pose === 'fist' ? { x: 0.1, y: 0.7, z: 0 }
       : { x: 0.28, y: 0.52, z: 0 };
   return points;
@@ -83,13 +83,18 @@ try {
     handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
     handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
     handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
-    handLandmarks(0.40, 'pinch'),
-    handLandmarks(0.37, 'pinch'),
+    // Natural two-finger grab: the remaining fingers stay open. This
+    // regresses the former !openPalm guard that made the visible gesture
+    // impossible to activate.
+    handLandmarks(0.40, 'open-pinch'),
+    handLandmarks(0.37, 'open-pinch'),
     handLandmarks(0.37, 'index')
   ]);
   await page.waitForFunction(() => (window.__roboeyeAirSketchBenchmark?.snapshot().objects ?? 0) >= 1);
   check('object đã đặt có thể xòe tay, pinch để cầm và thả để đặt lại',
     (await page.evaluate(() => window.__roboeyeAirSketchBenchmark?.snapshot().objects)) === 1);
+  check('pipeline hand đo toàn tuyến capture → worker → UI',
+    (await page.evaluate(() => window.__roboeyeAirSketchBenchmark?.snapshot().pipeline.samples ?? 0)) > 0);
   // The renderer keeps updating the camera while this sidecar button is used.
   // Invoke the native control directly so a test is not coupled to an unrelated
   // transient overlay hit-test in a resource-constrained CI browser.

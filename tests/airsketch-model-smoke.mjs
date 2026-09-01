@@ -118,7 +118,9 @@ try {
     { timeout: 120_000 }
   );
   const handSnapshot = await handPage.evaluate(() => window.__roboeyeAirSketchBenchmark?.snapshot());
-  if (!handSnapshot?.ready.hand || handSnapshot.hand.p95 == null) throw new Error(`Hand inference không chạy: ${JSON.stringify(handSnapshot)}`);
+  if (!handSnapshot?.ready.hand || handSnapshot.hand.p95 == null || handSnapshot.pipeline.p95 == null) {
+    throw new Error(`Hand inference hoặc toàn tuyến không chạy: ${JSON.stringify(handSnapshot)}`);
+  }
   if (handSnapshot.hand.p95 >= HAND_P95_MAX_MS) {
     throw new Error(`Hand p95 vượt ${HAND_P95_MAX_MS} ms: ${JSON.stringify(handSnapshot.hand)}`);
   }
@@ -129,6 +131,7 @@ try {
   console.log('[airsketch-model-smoke] PASS', JSON.stringify({
     quickDraw: { labels, latency: classifySnapshot.classify },
     hand: handSnapshot.hand,
+    pipeline: handSnapshot.pipeline,
     handP95BudgetMs: HAND_P95_MAX_MS
   }));
 } finally {

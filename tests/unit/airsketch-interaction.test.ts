@@ -27,6 +27,12 @@ function setPinchRatio(points: HandLandmark[], ratio: number): HandLandmark[] {
   return points;
 }
 
+function openPinchHand(x: number): HandLandmark[] {
+  const points = hand(x, 'open');
+  points[4] = { x: x + 0.01, y: 0.255, z: 0 };
+  return points;
+}
+
 test('static clutch: pinch draws, open palm held enters manipulation, pinch grabs', () => {
   const controller = new AirInteractionController();
   const hover = controller.update(hand(0.3, 'index'), 0);
@@ -63,6 +69,20 @@ test('từ nắm tay/idle vẫn xòe tay để cầm rồi đặt object đã v�
   assert.equal(grabbing?.mode, 'grabbing');
   assert.equal(placed?.justReleased, true);
   assert.equal(placed?.mode, 'manipulating');
+});
+
+test('pinch giữ nguyên điểm điều khiển ở đầu ngón trỏ và nắm được khi bàn tay vẫn mở', () => {
+  const controller = new AirInteractionController();
+  const hover = controller.update(hand(0.34, 'index'), 0)!;
+  const draw = controller.update(hand(0.34, 'pinch'), 40)!;
+  assert.ok(Math.abs(hover.cursor.x - draw.cursor.x) < 0.001, 'pinch không làm bút nhảy sang ngón cái');
+  controller.reset();
+  controller.update(hand(0.34, 'open'), 0);
+  const ready = controller.update(hand(0.34, 'open'), 350)!;
+  const grabbing = controller.update(openPinchHand(0.34), 390)!;
+  assert.equal(ready.mode, 'manipulating');
+  assert.equal(grabbing.mode, 'grabbing');
+  assert.equal(grabbing.justGrabbed, true, 'chụm hai ngón vẫn cầm được khi các ngón còn lại mở');
 });
 
 test('open-palm dwell resets when the hand changes pose', () => {

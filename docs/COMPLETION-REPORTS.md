@@ -1,5 +1,22 @@
 # Completion Reports · TIP-01 → TIP-04
 
+## REPORT TIP-28 · AirSketch direct-manipulation recovery
+
+**STATUS:** FIXED
+
+**ROOT CAUSE:** the pinch transition moved the cursor reference from index tip
+to the thumb-index midpoint, the grab state rejected a natural open-hand pinch,
+and one missed landmark immediately ended an active interaction.
+
+**FIX:** split predicted pen/display and stable grab coordinates, preserve the
+index tip through pinch, permit open-pinch after workspace entry, retain state
+for one bounded tracking miss, and record full capture-to-main latency.
+
+**TEST:** typecheck/build PASS; unit 45/45 PASS; AirSketch E2E 14/14 PASS;
+real-model hand p95 34.0 ms and full pipeline p95 34.1 ms on controlled host.
+Human physical-camera ergonomics remains a release acceptance step; see
+`VERIFY-TIP-28.md`.
+
 Thợ nộp 01/08/2026. Môi trường build: container cloud Cowork, Node 22, Chromium headless (không GPU thật).
 
 ## REPORT TIP-01 · M1

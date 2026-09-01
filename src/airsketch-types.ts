@@ -59,6 +59,7 @@ export type AirSketchClassifierWorkerToMain =
 export interface AirSketchBenchmarkSnapshot {
   ready: { hand: boolean; classifier: boolean; handStage?: string };
   hand: { samples: number; p50: number | null; p95: number | null };
+  pipeline: { samples: number; p50: number | null; p95: number | null };
   classify: { samples: number; p50: number | null; p95: number | null };
   strokes: number;
   points: number;

@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+### AirSketch direct-manipulation recovery (TIP-28)
+
+- Fixed the pen/object coordinate discontinuity: thumb-index pinch now keeps
+  the index fingertip as its reference instead of jumping to the midpoint.
+- Split responsive predicted ink/cursor coordinates from stable non-predicted
+  object pickup/move coordinates, preventing a small object from being missed
+  or overshot while the pen remains responsive.
+- A deliberate open-palm workspace now accepts a natural two-finger pinch even
+  while the other fingers remain extended; a short landmark loss no longer
+  breaks an active stroke or releases an object.
+- Added complete capture-to-main hand-pipeline p50/p95 telemetry and covered
+  the natural open-pinch grab in deterministic unit and browser E2E tests.
+
 ### Real-time perception recovery (TIP-27)
 
 - Detection now tries WebGPU by default and clearly retries on WASM only when

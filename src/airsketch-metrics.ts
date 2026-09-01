@@ -8,9 +8,11 @@ function percentile(values: number[], p: number): number | null {
 
 export class AirSketchMetrics {
   private hand: number[] = [];
+  private pipeline: number[] = [];
   private classify: number[] = [];
 
   addHand(ms: number): void { if (Number.isFinite(ms) && ms >= 0) this.hand.push(ms); }
+  addPipeline(ms: number): void { if (Number.isFinite(ms) && ms >= 0) this.pipeline.push(ms); }
   addClassify(ms: number): void { if (Number.isFinite(ms) && ms >= 0) this.classify.push(ms); }
 
   snapshot(
@@ -20,6 +22,14 @@ export class AirSketchMetrics {
     objects = 0
   ): AirSketchBenchmarkSnapshot {
     const summarize = (values: number[]) => ({ samples: values.length, p50: percentile(values, 0.5), p95: percentile(values, 0.95) });
-    return { ready, hand: summarize(this.hand), classify: summarize(this.classify), strokes, points, objects };
+    return {
+      ready,
+      hand: summarize(this.hand),
+      pipeline: summarize(this.pipeline),
+      classify: summarize(this.classify),
+      strokes,
+      points,
+      objects
+    };
   }
 }

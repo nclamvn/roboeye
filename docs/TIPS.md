@@ -155,3 +155,17 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   contracts cover drawing, grab/place and detection locks; no stale double-flick
   instruction remains.
 - **Detail:** `docs/TIP-27-REALTIME-PERCEPTION-RECOVERY.md`.
+
+## TIP-28 · AirSketch direct-manipulation recovery
+
+- **Dependencies:** TIP-23, TIP-27. **Priority:** P0 interaction correctness.
+- **Task:** remove the coordinate discontinuity caused by changing from index
+  tip to thumb-index midpoint on pinch; separate predicted ink/display from
+  stable object hit-test/move coordinates; permit a natural open-hand pinch
+  after deliberate manipulation entry; tolerate a brief tracking miss; and
+  expose full capture-to-main pipeline latency alongside worker inference.
+- **Acceptance:** pinch starts without a cursor jump; open-palm → open-pinch
+  grabs an existing object; one missing landmark result does not split a
+  stroke; unit/E2E contracts and build pass; benchmark exports p50/p95 for
+  the complete hand pipeline.
+- **Detail:** `docs/TIP-28-AIRSKETCH-DIRECT-MANIPULATION.md`.

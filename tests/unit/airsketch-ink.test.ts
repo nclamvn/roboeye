@@ -62,11 +62,15 @@ test('tài liệu nét vẽ bỏ tap rỗng, hỗ trợ undo và clear', () => {
 test('benchmark báo p50/p95 định lượng và readiness', () => {
   const metrics = new AirSketchMetrics();
   [10, 20, 30, 40].forEach((value) => metrics.addHand(value));
+  [20, 30, 40, 50].forEach((value) => metrics.addPipeline(value));
   [80, 120].forEach((value) => metrics.addClassify(value));
   const snapshot = metrics.snapshot(2, 30, { hand: true, classifier: true });
   assert.equal(snapshot.ready.hand, true);
   assert.equal(snapshot.ready.classifier, true);
   assert.equal(snapshot.hand.p50, 20);
   assert.equal(snapshot.hand.p95, 40);
+  assert.equal(snapshot.pipeline.samples, 4);
+  assert.equal(snapshot.pipeline.p50, 30);
+  assert.equal(snapshot.pipeline.p95, 50);
   assert.equal(snapshot.classify.p95, 120);
 });

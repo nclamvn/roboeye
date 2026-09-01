@@ -114,6 +114,7 @@ let airClassifierRetryTimer: ReturnType<typeof setTimeout> | null = null;
 let airPredictions: SketchPrediction[] = [];
 let airPhrase: string[] = [];
 let airLastCaptureAt = 0;
+let airLastLandmarkAt = -Infinity;
 let airLastInkAt = 0;
 let airLastClassifiedRevision = -1;
 let airPointerActive = false;
@@ -460,8 +461,13 @@ function spawnAirWorkers() {
       } else if (message.type === 'landmarks') {
         airHandBusy = false;
         if (airHandWarmupRemaining > 0) airHandWarmupRemaining--;
-        else airMetrics.addHand(message.inferMs);
-        handleAirLandmarks(message.landmarks, message.capturedAt);
+        else {
+          airMetrics.addHand(message.inferMs);
+          // This is the user-visible cost, not just MediaPipe inference:
+          // bitmap transfer + worker queue + inference + reply to main.
+          airMetrics.addPipeline(performance.now() - message.capturedAt);
+        }
+        handleAirLandmarks(message.landmarks, message.capturedAt, performance.now());
       } else {
         airHandBusy = false;
         if (message.stage === 'load') airHandReady = false;
@@ -609,6 +615,7 @@ function setAirSketch(on: boolean) {
     airClassifierRetryTimer = null;
     applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
     airPointerActive = false;
+    airLastLandmarkAt = -Infinity;
     airInteraction.release();
     shell.setAirSketchCursor(null);
   }
@@ -636,22 +643,32 @@ function applyAirPen(point: AirPoint, down: boolean) {
 
 function handleAirLandmarks(
   landmarks: import('./airsketch-types').HandLandmark[] | null,
-  capturedAt = performance.now()
+  capturedAt = performance.now(),
+  receivedAt = performance.now()
 ) {
   if (!airSketchOn || airPointerActive) return;
   if (!landmarks) {
+    // Tracker confidence can briefly disappear during fast movement or motion
+    // blur. Do not end the active stroke/object on one missing observation.
+    if (receivedAt - airLastLandmarkAt < AIRSKETCH_CONFIG.tracking.lostHandGraceMs) return;
     applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
     airInteraction.release();
     shell.setAirSketchCursor(null);
     return;
   }
-  const sample = airInteraction.update(landmarks, capturedAt, performance.now());
+  airLastLandmarkAt = receivedAt;
+  const sample = airInteraction.update(landmarks, capturedAt, receivedAt);
   if (!sample || !sceneApi) return;
   const rect = sceneApi.imageRectPx();
   const point = {
     x: (rect.x + sample.cursor.x * rect.w) / Math.max(1, airStage.clientWidth),
     y: (rect.y + sample.cursor.y * rect.h) / Math.max(1, airStage.clientHeight),
     t: sample.cursor.t
+  };
+  const grabPoint = {
+    x: (rect.x + sample.grabCursor.x * rect.w) / Math.max(1, airStage.clientWidth),
+    y: (rect.y + sample.grabCursor.y * rect.h) / Math.max(1, airStage.clientHeight),
+    t: sample.grabCursor.t
   };
   // The interaction controller decides whether the pen is down; this bridge
   // is the sole path that turns a tracked hand sample into an ink stroke.
@@ -662,10 +679,10 @@ function handleAirLandmarks(
   shell.setAirSketchCursor(sample.fist ? null : point, cursorGesture);
   let interactionNotice: string | null = null;
   if (sample.justGrabbed) {
-    const object = airScene.beginGrab(point, sample.palmSpan);
+    const object = airScene.beginGrab(grabPoint, sample.palmSpan);
     interactionNotice = object ? 'Đang cầm vật thể · đưa tay gần/xa để đổi kích thước' : 'Không có vật thể trong vùng nhón';
   }
-  if (sample.mode === 'grabbing') airScene.moveGrab(point, sample.palmSpan);
+  if (sample.mode === 'grabbing') airScene.moveGrab(grabPoint, sample.palmSpan);
   if (sample.justReleased) {
     airScene.release();
     interactionNotice = 'Đã đặt vật thể · xòe bàn tay để cầm vật khác';
@@ -1230,7 +1247,10 @@ async function boot() {
             airHandBusy = false;
             return;
           }
-          airHandWorker.postMessage({ type: 'frame', bitmap, timestamp: now }, [bitmap]);
+          // Timestamp the actual hand-off after the video image has become a
+          // bitmap. Using the older render-loop time inflated compensation
+          // whenever bitmap conversion had to wait behind a frame.
+          airHandWorker.postMessage({ type: 'frame', bitmap, timestamp: performance.now() }, [bitmap]);
         })
         .catch((error) => {
           airHandBusy = false;
