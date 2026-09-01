@@ -43,9 +43,10 @@ export const AIRSKETCH_CONFIG = {
     // leaping past a hand that suddenly stops.
     cursorLatencyMaxMs: 35,
     cursorMaxPrediction: 0.035,
-    // One missed MediaPipe observation must not split a stroke or drop an
-    // object.  A longer loss still releases safely.
-    lostHandGraceMs: 120,
+    // MediaPipe can lose the hand for several 30 fps samples during a fast
+    // turn, partial occlusion or motion blur. Preserve the active clutch for
+    // a bounded continuity window; a genuinely absent hand still releases.
+    lostHandGraceMs: 240,
     palmSpanMinAlpha: 0.28,
     palmSpanMaxAlpha: 0.76,
     palmSpanDeltaGain: 0.96,

@@ -76,11 +76,19 @@ export class AirSketchScene {
     return null;
   }
 
-  beginGrab(point: Pick<AirPoint, 'x' | 'y'>, palmSpan: number): AirSketchObject | null {
-    const object = this.hitTest(point);
+  beginGrab(
+    hitPoint: Pick<AirPoint, 'x' | 'y'>,
+    anchorPoint: Pick<AirPoint, 'x' | 'y'>,
+    palmSpan: number
+  ): AirSketchObject | null {
+    // The user targets what is visibly rendered (latency-compensated cursor),
+    // but movement must be anchored to the stable coordinate. Mixing those
+    // responsibilities either misses the visible object or jumps it on the
+    // first movement sample.
+    const object = this.hitTest(hitPoint);
     if (!object) return null;
     for (const item of this.objects) item.selected = item === object;
-    this.grabbed = { object, dx: object.x - point.x, dy: object.y - point.y, baseScale: object.scale, baseSpan: Math.max(0.001, palmSpan) };
+    this.grabbed = { object, dx: object.x - anchorPoint.x, dy: object.y - anchorPoint.y, baseScale: object.scale, baseSpan: Math.max(0.001, palmSpan) };
     return object;
   }
 

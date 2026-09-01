@@ -85,6 +85,29 @@ test('pinch giữ nguyên điểm điều khiển ở đầu ngón trỏ và n�
   assert.equal(grabbing.justGrabbed, true, 'chụm hai ngón vẫn cầm được khi các ngón còn lại mở');
 });
 
+test('đang vẽ chỉ nhấc bút khi nhả pinch, không đứt nét vì pose các ngón khác chớp sai', () => {
+  const controller = new AirInteractionController();
+  const started = controller.update(hand(0.34, 'pinch'), 0)!;
+  // MediaPipe can transiently classify the three folded fingers as extended
+  // while thumb and index remain physically pinched.
+  const noisyOpenPinch = controller.update(openPinchHand(0.35), 40)!;
+  const continued = controller.update(hand(0.38, 'pinch'), 80)!;
+  const released = controller.update(hand(0.38, 'index'), 120)!;
+  assert.equal(started.mode, 'drawing');
+  assert.equal(noisyOpenPinch.mode, 'drawing');
+  assert.equal(noisyOpenPinch.penDown, true);
+  assert.equal(continued.mode, 'drawing');
+  assert.equal(released.mode, 'idle');
+  assert.equal(released.penDown, false);
+});
+
+test('mất landmark ngắn được giữ nhưng mất quá cửa sổ liên tục thì nhả an toàn', () => {
+  const controller = new AirInteractionController();
+  controller.update(hand(0.34, 'pinch'), 1_000);
+  assert.equal(controller.shouldReleaseAfterMissing(1_180), false);
+  assert.equal(controller.shouldReleaseAfterMissing(1_240), true);
+});
+
 test('open-palm dwell resets when the hand changes pose', () => {
   const controller = new AirInteractionController();
   controller.update(hand(0.30, 'open'), 0);
@@ -179,7 +202,12 @@ test('scene hit-test, move and depth scale preserve the completed stroke', () =>
   const object = scene.addStroke(stroke)!;
   assert.ok(object);
   assert.equal(scene.hitTest({ x: 0.3, y: 0.35 })?.id, object.id);
-  assert.equal(scene.beginGrab({ x: 0.3, y: 0.35 }, 0.2)?.id, object.id);
+  assert.equal(scene.beginGrab({ x: 0.3, y: 0.35 }, { x: 0.27, y: 0.33 }, 0.2)?.id, object.id);
+  // The next stable movement sample is the same anchor; selection by the
+  // visible predicted cursor must not make the object teleport backwards.
+  scene.moveGrab({ x: 0.27, y: 0.33 }, 0.2);
+  const anchored = scene.snapshot()[0];
+  assert.ok(Math.abs(anchored.x - object.x) < 0.0001 && Math.abs(anchored.y - object.y) < 0.0001);
   scene.moveGrab({ x: 0.7, y: 0.65 }, 0.4);
   const moved = scene.snapshot()[0];
   assert.ok(moved.x > 0.6 && moved.y > 0.5);

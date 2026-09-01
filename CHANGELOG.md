@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+### AirSketch continuity and visible-cursor pickup (TIP-29)
+
+- Made thumb–index pinch the sole continuous drawing condition after a stroke
+  starts. Temporary folded-finger/open-palm classification noise can no longer
+  cut an otherwise held stroke.
+- Moved the bounded tracking-loss contract into the interaction controller and
+  extended it to 240 ms, covering several 30 fps missed observations while
+  still releasing a genuinely absent hand.
+- Object selection now tests against the responsive cursor that the user sees,
+  then anchors movement to the stable cursor. This eliminates the visible
+  cursor/hidden hit-test offset and its first-frame grab jump.
+
 ### AirSketch direct-manipulation recovery (TIP-28)
 
 - Fixed the pen/object coordinate discontinuity: thumb-index pinch now keeps

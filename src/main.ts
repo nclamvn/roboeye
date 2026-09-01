@@ -114,7 +114,6 @@ let airClassifierRetryTimer: ReturnType<typeof setTimeout> | null = null;
 let airPredictions: SketchPrediction[] = [];
 let airPhrase: string[] = [];
 let airLastCaptureAt = 0;
-let airLastLandmarkAt = -Infinity;
 let airLastInkAt = 0;
 let airLastClassifiedRevision = -1;
 let airPointerActive = false;
@@ -615,7 +614,6 @@ function setAirSketch(on: boolean) {
     airClassifierRetryTimer = null;
     applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
     airPointerActive = false;
-    airLastLandmarkAt = -Infinity;
     airInteraction.release();
     shell.setAirSketchCursor(null);
   }
@@ -650,13 +648,12 @@ function handleAirLandmarks(
   if (!landmarks) {
     // Tracker confidence can briefly disappear during fast movement or motion
     // blur. Do not end the active stroke/object on one missing observation.
-    if (receivedAt - airLastLandmarkAt < AIRSKETCH_CONFIG.tracking.lostHandGraceMs) return;
+    if (!airInteraction.shouldReleaseAfterMissing(receivedAt)) return;
     applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
     airInteraction.release();
     shell.setAirSketchCursor(null);
     return;
   }
-  airLastLandmarkAt = receivedAt;
   const sample = airInteraction.update(landmarks, capturedAt, receivedAt);
   if (!sample || !sceneApi) return;
   const rect = sceneApi.imageRectPx();
@@ -679,7 +676,7 @@ function handleAirLandmarks(
   shell.setAirSketchCursor(sample.fist ? null : point, cursorGesture);
   let interactionNotice: string | null = null;
   if (sample.justGrabbed) {
-    const object = airScene.beginGrab(grabPoint, sample.palmSpan);
+    const object = airScene.beginGrab(point, grabPoint, sample.palmSpan);
     interactionNotice = object ? 'Đang cầm vật thể · đưa tay gần/xa để đổi kích thước' : 'Không có vật thể trong vùng nhón';
   }
   if (sample.mode === 'grabbing') airScene.moveGrab(grabPoint, sample.palmSpan);

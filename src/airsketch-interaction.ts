@@ -54,6 +54,7 @@ export class AirInteractionController {
   private smoothedPalmSpan: number | null = null;
   private pinchActive = false;
   private openPalmStartedAt: number | null = null;
+  private lastObservedAt = -Infinity;
 
   reset(): void {
     this.mode = 'idle';
@@ -63,10 +64,17 @@ export class AirInteractionController {
     this.smoothedPalmSpan = null;
     this.pinchActive = false;
     this.openPalmStartedAt = null;
+    this.lastObservedAt = -Infinity;
   }
 
   release(): void { this.reset(); }
   currentMode(): AirInteractionMode { return this.mode; }
+
+  // Kept here (rather than as an ad-hoc main-thread timestamp comparison) so
+  // the continuity contract is deterministic and regression-testable.
+  shouldReleaseAfterMissing(receivedAt: number): boolean {
+    return receivedAt - this.lastObservedAt >= AIRSKETCH_CONFIG.tracking.lostHandGraceMs;
+  }
 
   private smoothCursor(raw: AirPoint, reset = false): AirPoint {
     if (reset || !this.smoothedCursor) {
@@ -135,6 +143,7 @@ export class AirInteractionController {
 
   update(points: HandLandmark[], capturedAt: number, receivedAt = capturedAt): AirInteractionSample | null {
     if (points.length < 21) return null;
+    this.lastObservedAt = receivedAt;
     const rawPalmSpan = Math.max(0.001, distance(points[5], points[17]));
     const index = extended(points, 8, 6);
     const middle = extended(points, 12, 10);
@@ -160,9 +169,11 @@ export class AirInteractionController {
     const modeBeforeUpdate = this.mode;
     const pointer = pointerPose(points);
 
-    // An open palm is intentionally a slow gesture: it must be held long
-    // enough to be distinguishable from a momentary hand pose while drawing.
-    if (openPalm) {
+    // An open palm is intentionally a slow gesture.  While a pen pinch is
+    // already down, do not arm manipulation: landmark jitter can make folded
+    // fingers look extended for a sample and used to sever the active stroke.
+    const canArmManipulation = this.mode !== 'drawing' || !pinch;
+    if (openPalm && canArmManipulation) {
       if (this.openPalmStartedAt == null) this.openPalmStartedAt = receivedAt;
     } else {
       this.openPalmStartedAt = null;
@@ -183,11 +194,11 @@ export class AirInteractionController {
         this.mode = 'drawing';
       }
     } else if (this.mode === 'drawing') {
-      if (openPalm) {
-        // Lift the pen immediately; holding the palm then enters the object
-        // workspace without an additional, ambiguous activation gesture.
-        this.mode = manipulationProgress >= 1 ? 'manipulating' : 'idle';
-      } else if (!pointer || !pinch) {
+      // Pointer-pose classification is needed only to enter drawing. Once
+      // clutched, the physical pinch is the durable pen contract. Requiring
+      // three other fingers to remain folded made ordinary pose jitter split
+      // strokes even though thumb and index were still touching.
+      if (!pinch) {
         this.mode = 'idle';
       }
     } else if (this.mode === 'manipulating') {

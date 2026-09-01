@@ -169,3 +169,15 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   stroke; unit/E2E contracts and build pass; benchmark exports p50/p95 for
   the complete hand pipeline.
 - **Detail:** `docs/TIP-28-AIRSKETCH-DIRECT-MANIPULATION.md`.
+
+## TIP-29 · AirSketch continuity and visible-cursor pickup
+
+- **Dependencies:** TIP-28. **Priority:** P0 interaction correctness.
+- **Task:** preserve an active draw while thumb–index remains pinched despite
+  noisy classifications of the other fingers; centralize bounded tracking-loss
+  release; and align object hit-testing with the cursor the user can see while
+  retaining a stable motion anchor.
+- **Acceptance:** a transient open-palm classification does not split a
+  pinched stroke; 180 ms tracking loss is held while 240 ms releases; selecting
+  via the visible cursor does not teleport the object on its first stable move.
+- **Detail:** `docs/TIP-29-AIRSKETCH-CONTINUITY-PICKUP.md`.

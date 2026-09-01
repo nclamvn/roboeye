@@ -63,7 +63,9 @@ try {
   await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); }, [
     handLandmarks(0.30, 'fist'),
     handLandmarks(0.30, 'index'), handLandmarks(0.30, 'pinch'), handLandmarks(0.36, 'pinch'),
-    handLandmarks(0.42, 'pinch'), handLandmarks(0.48, 'pinch'), handLandmarks(0.48, 'index')
+    // A real tracker can momentarily report the other fingers as open while
+    // thumb/index stay pinched. This must remain one continuous stroke.
+    handLandmarks(0.42, 'open-pinch'), handLandmarks(0.48, 'pinch'), handLandmarks(0.48, 'index')
   ]);
   await page.waitForFunction(() => {
     const snapshot = window.__roboeyeAirSketchBenchmark?.snapshot();
@@ -77,7 +79,7 @@ try {
     for (let index = 3; index < pixels.length; index += 4) if (pixels[index] !== 0) return true;
     return false;
   });
-  check('nắm tay → chụm cái + trỏ → landmark tạo stroke thật trên canvas', handStrokeVisible);
+  check('pinch liên tục không bị pose các ngón khác chớp sai làm đứt nét', handStrokeVisible);
   await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); }, [
     handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
     handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'), handLandmarks(0.40, 'open'),
