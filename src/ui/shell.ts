@@ -30,6 +30,7 @@ export interface ShellCallbacks {
   onRetryDepth(): void;
   onDiagnostics(): void;
   onAirSketch(on: boolean): void;
+  onAirDesk(on: boolean): void;
   onAirUndo(): void;
   onAirClear(): void;
   onAirAddPrediction(index: number): void;
@@ -70,6 +71,8 @@ export interface ShellAPI {
   isFrozen(): boolean;
   currentMode(): Mode;
   setAirSketchActive(on: boolean): void;
+  setAirDeskActive(on: boolean): void;
+  setAirDeskStatus(text: string): void;
   setAirSketchStatus(text: string): void;
   setAirSketchPredictions(predictions: SketchPrediction[]): void;
   setAirSketchPhrase(words: string[]): void;
@@ -179,13 +182,17 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   const demoStartBtn = $<HTMLButtonElement>('#demo-start-btn');
   const viewport = $('#viewport');
   const airSketchBtn = $<HTMLButtonElement>('#airsketch-btn');
+  const airDeskBtn = $<HTMLButtonElement>('#airdesk-btn');
   const airDock = $('#airsketch-dock');
+  const airDesk = $('#airdesk');
+  const airDeskStatus = $('#airdesk-status');
   const airStatus = $('#air-status');
   const airGuess = $('#air-guess');
   const airPredictions = $('#air-predictions');
   const airPhrase = $('#air-phrase');
   const airCursor = $('#airsketch-cursor');
   let airSketchActive = false;
+  let airDeskActive = false;
 
   const tourSteps: Array<{ mode: Mode; title: string; copy: string }> = [
     { mode: 'rgb', title: 'Camera là điểm xuất phát', copy: 'Đây là tín hiệu thô duy nhất robot nhận được. Camera không rời khỏi thiết bị này.' },
@@ -250,6 +257,8 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   });
   diagnosticsBtn.addEventListener('click', () => cb.onDiagnostics());
   airSketchBtn.addEventListener('click', () => cb.onAirSketch(!airSketchActive));
+  airDeskBtn.addEventListener('click', () => cb.onAirDesk(!airDeskActive));
+  $<HTMLButtonElement>('#airdesk-close-btn').addEventListener('click', () => cb.onAirDesk(false));
   $<HTMLButtonElement>('#air-close-btn').addEventListener('click', () => cb.onAirSketch(false));
   $<HTMLButtonElement>('#air-undo-btn').addEventListener('click', () => cb.onAirUndo());
   $<HTMLButtonElement>('#air-clear-btn').addEventListener('click', () => cb.onAirClear());
@@ -506,6 +515,16 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
       airDock.hidden = !on;
       viewport.classList.toggle('airsketch-active', on);
       airCursor.hidden = true;
+    },
+    setAirDeskActive(on) {
+      airDeskActive = on;
+      airDeskBtn.classList.toggle('active', on);
+      airDeskBtn.setAttribute('aria-pressed', String(on));
+      airDesk.hidden = !on;
+      viewport.classList.toggle('airdesk-active', on);
+    },
+    setAirDeskStatus(text) {
+      airDeskStatus.textContent = text;
     },
     setAirSketchStatus(text) {
       airStatus.textContent = text;

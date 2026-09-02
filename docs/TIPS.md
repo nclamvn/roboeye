@@ -181,3 +181,14 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   pinched stroke; 180 ms tracking loss is held while 240 ms releases; selecting
   via the visible cursor does not teleport the object on its first stable move.
 - **Detail:** `docs/TIP-29-AIRSKETCH-CONTINUITY-PICKUP.md`.
+
+## TIP-30 · AirDesk direct content manipulation
+
+- **Dependencies:** TIP-29. **Priority:** P0 demo interaction.
+- **Task:** expose all five fingertips as visible yellow affordances; create a
+  separate pinch-driven desk for moving, scaling, rotating, flipping and
+  annotating an image, plus selecting and editing an internal text note.
+- **Acceptance:** five landmarks render while a hand is detected, extended
+  fingers have a halo, pinch acts as press/drag, image actions and text
+  copy/cut/delete/spelling proposal work without entering AirSketch.
+- **Detail:** `docs/TIP-30-AIRDESK-DIRECT-MANIPULATION.md`.

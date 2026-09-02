@@ -114,6 +114,7 @@
 
       <div class="sidebar-foot">
         <button id="airsketch-btn" class="foot-btn airsketch-launch">AirSketch <span class="mode-key">WOW</span></button>
+        <button id="airdesk-btn" class="foot-btn airdesk-launch">AirDesk <span class="mode-key">HAND</span></button>
         <button id="freeze-btn" class="foot-btn">Freeze <span class="mode-key">F</span></button>
         <button id="panel-btn" class="foot-btn">Giải thích <span class="mode-key">?</span></button>
         <button id="diagnostics-btn" class="foot-btn">Xuất chẩn đoán <span class="mode-key">JSON</span></button>
@@ -128,6 +129,49 @@
       <svg id="det-overlay" hidden></svg>
       <canvas id="airsketch-overlay" aria-label="Nét vẽ AirSketch trên camera"></canvas>
       <div id="airsketch-cursor" data-gesture="hover" hidden><span></span></div>
+      <div id="airdesk-fingers" aria-hidden="true" hidden></div>
+      <section id="airdesk" aria-label="AirDesk: chỉnh ảnh và văn bản bằng ngón tay" hidden>
+        <header class="airdesk-head">
+          <div>
+            <p>Đầu ngón · chụm để chạm</p>
+            <h2>AirDesk</h2>
+          </div>
+          <button id="airdesk-close-btn" aria-label="Đóng AirDesk">×</button>
+        </header>
+        <p id="airdesk-status" class="airdesk-status" role="status">Giơ ngón tay trước camera để hiện các điểm vàng.</p>
+        <div class="airdesk-grid">
+          <section class="airdesk-card airdesk-image-card" aria-label="Ảnh để thao tác">
+            <div class="airdesk-card-head"><span>Ảnh</span><small>chụm và kéo để di chuyển</small></div>
+            <div id="airdesk-image-stage" class="airdesk-image-stage">
+              <div id="airdesk-image" class="airdesk-image" data-airdesk-target="image" tabindex="0" aria-label="Ảnh mẫu có thể di chuyển">
+                <svg viewBox="0 0 320 210" role="img" aria-label="Minh hoạ địa hình và tín hiệu cứu hộ">
+                  <defs><linearGradient id="airdesk-sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#e8d088"/><stop offset="1" stop-color="#9bb6ae"/></linearGradient></defs>
+                  <rect width="320" height="210" fill="url(#airdesk-sky)"/><path d="M0 154 77 76l51 52 62-79 130 119v42H0Z" fill="#263d3b"/><path d="m0 172 83-56 48 35 58-43 131 59v43H0Z" fill="#162626"/>
+                  <circle cx="240" cy="67" r="13" fill="#f2c94c"/><path d="M236 67h8m-4-4v8" stroke="#15211f" stroke-width="2"/>
+                  <text x="18" y="34" fill="#14201e" font-family="Inter, sans-serif" font-size="12" font-weight="600">FIELD NOTE / 04</text>
+                </svg>
+                <svg id="airdesk-drawings" class="airdesk-drawings" viewBox="0 0 320 210" aria-hidden="true"></svg>
+                <i class="airdesk-handle airdesk-scale" data-airdesk-handle="scale" aria-label="Kéo để phóng to thu nhỏ"></i>
+                <i class="airdesk-handle airdesk-rotate" data-airdesk-handle="rotate" aria-label="Kéo để xoay ảnh"></i>
+              </div>
+            </div>
+            <div class="airdesk-tools">
+              <button data-airdesk-action="rotate-left">↶ Xoay</button><button data-airdesk-action="rotate-right">↷ Xoay</button>
+              <button data-airdesk-action="flip-x">Lật ngang</button><button data-airdesk-action="flip-y">Lật dọc</button>
+              <button data-airdesk-action="toggle-draw" id="airdesk-draw-btn">Vẽ lên ảnh</button><button data-airdesk-action="reset-image">Đặt lại</button>
+            </div>
+          </section>
+          <section class="airdesk-card airdesk-text-card" aria-label="Văn bản để chỉnh sửa">
+            <div class="airdesk-card-head"><span>Ghi chú</span><small>chụm-kéo để chọn chữ</small></div>
+            <div id="airdesk-editor" class="airdesk-editor" contenteditable="true" spellcheck="true" aria-label="Văn bản có thể chỉnh sửa">Đội cứu hộ đã đến điểm tập kêt. Hãy giữ liên lạc và báo vị trí an toàn.</div>
+            <div class="airdesk-tools airdesk-text-tools">
+              <button data-airdesk-text-action="copy">Sao chép</button><button data-airdesk-text-action="cut">Cắt</button>
+              <button data-airdesk-text-action="delete">Xóa</button><button data-airdesk-text-action="spell">Sửa “tập kêt”</button>
+            </div>
+          </section>
+        </div>
+        <p class="airdesk-hint">Mỗi đầu ngón là một chấm vàng. Ngón duỗi có vòng vàng; chụm cái + trỏ là chạm/kéo. Chuột và bàn phím luôn là phương án dự phòng.</p>
+      </section>
       <div id="frozen-tag" hidden>FROZEN · nhấn F để tiếp tục</div>
       <div id="alert-chip" hidden>VẬT CẢN GẦN</div>
       <div id="det-count" hidden>0 vật</div>

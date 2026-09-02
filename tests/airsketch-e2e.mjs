@@ -130,6 +130,24 @@ try {
     return value?.strokes === 0 && value.points === 0;
   }));
 
+  // T30: AirDesk is deliberately a separate hand workspace. It exposes every
+  // fingertip and leaves AirSketch's canvas/state machine out of the path.
+  await page.click('#air-close-btn');
+  await page.click('#airdesk-btn');
+  await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); }, [handLandmarks(0.35, 'open')]);
+  await page.waitForFunction(() => document.querySelectorAll('.airdesk-finger').length === 5);
+  check('AirDesk hiện đủ năm điểm đầu ngón, ngón duỗi có halo vàng', await page.evaluate(() =>
+    document.querySelectorAll('.airdesk-finger').length === 5 && document.querySelectorAll('.airdesk-finger.extended').length >= 4
+  ));
+  await page.click('[data-airdesk-action="rotate-right"]');
+  check('AirDesk có canvas ảnh để xoay/lật/vẽ độc lập', await page.evaluate(() => {
+    const image = document.querySelector('#airdesk-image');
+    return !document.querySelector('#airdesk')?.hasAttribute('hidden') && image?.getAttribute('style')?.includes('--image-rotation: 15deg');
+  }));
+  await page.click('[data-airdesk-text-action="spell"]');
+  check('AirDesk có đề xuất sửa chính tả trong editor nội bộ', await page.textContent('#airdesk-editor')?.then((text) => text?.includes('tập kết') ?? false));
+  await page.click('#airdesk-close-btn');
+
   const heart = [[0.50, 0.18], [0.38, 0.08], [0.23, 0.08], [0.10, 0.20], [0.10, 0.38],
     [0.22, 0.62], [0.50, 0.92], [0.78, 0.62], [0.90, 0.38], [0.90, 0.20],
     [0.77, 0.08], [0.68, 0.12], [0.62, 0.08], [0.50, 0.18]];

@@ -261,6 +261,8 @@ button, select, input { font-family: var(--font-ui); }
 .airsketch-launch { border-style: dashed; }
 .airsketch-launch.active { border-style: solid; background: var(--hive-ink-inv); color: var(--hive-sidebar); }
 .airsketch-launch.active .mode-key { color: #575752; border-color: #aaa9a3; }
+.airdesk-launch { border-color: rgba(242, 201, 76, .42); color: #e8d088; }
+.airdesk-launch.active { background: #f2c94c; color: #171812; border-color: #f2c94c; }
 
 #airsketch-overlay {
   position: absolute;
@@ -295,6 +297,45 @@ button, select, input { font-family: var(--font-ui); }
 #airsketch-cursor[data-gesture='grab'] { background: conic-gradient(#ffb36b var(--hold-progress), rgba(255,255,255,0.14) 0); }
 #airsketch-cursor[data-gesture='undo-hold'] span { border-radius: 2px; }
 #airsketch-cursor[data-gesture='clear-hold'] span { inset: 12px; }
+
+#airdesk-fingers { position: absolute; inset: 0; z-index: 22; pointer-events: none; }
+.airdesk-finger {
+  position: absolute; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%; background: #f2c94c; box-shadow: 0 0 0 2px rgba(33, 32, 18, .78), 0 0 13px rgba(242, 201, 76, .82);
+  transition: left 45ms linear, top 45ms linear, transform 100ms var(--ease-quiet);
+}
+.airdesk-finger.extended { width: 17px; height: 17px; margin: -8.5px 0 0 -8.5px; background: rgba(242, 201, 76, .18); border: 2px solid #f7d75e; box-shadow: 0 0 0 2px rgba(33, 32, 18, .8), 0 0 18px rgba(242, 201, 76, .9); }
+.airdesk-finger.extended::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: #f2c94c; }
+
+#airdesk {
+  position: absolute; z-index: 20; top: 50%; left: 50%; width: min(760px, calc(100% - 42px));
+  transform: translate(-50%, -50%); color: #f6f4ed; background: rgba(15, 17, 15, .94);
+  border: 1px solid rgba(242, 201, 76, .42); box-shadow: 0 24px 80px rgba(0,0,0,.5); backdrop-filter: blur(16px);
+  padding: 16px; display: grid; gap: 12px;
+}
+.airdesk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.airdesk-head p, .airdesk-card-head small, .airdesk-hint { margin: 0; color: #a8aaa0; font-size: 10px; line-height: 1.45; }
+.airdesk-head h2 { margin: 2px 0 0; font: 400 28px/1 var(--font-display); letter-spacing: -.03em; }
+.airdesk-head button { width: 28px; height: 28px; border: 1px solid #4c4e45; background: transparent; color: #d9d8cf; font-size: 19px; cursor: pointer; }
+.airdesk-status { margin: 0; padding: 8px 10px; border-left: 2px solid #f2c94c; background: rgba(242, 201, 76, .08); color: #d7d7cd; font-size: 11px; }
+.airdesk-grid { display: grid; grid-template-columns: 1.16fr .84fr; gap: 10px; }
+.airdesk-card { min-width: 0; border: 1px solid #34362f; background: rgba(255,255,255,.025); padding: 10px; display: grid; gap: 9px; }
+.airdesk-card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.airdesk-card-head span { color: #f2c94c; font-size: 12px; font-weight: 600; }
+.airdesk-card-head small { text-align: right; }
+.airdesk-image-stage { position: relative; min-height: 234px; overflow: hidden; border: 1px solid #35372f; background: #131814; }
+.airdesk-image { --image-x: 0; --image-y: 0; --image-scale: 1; --image-rotation: 0deg; --image-flip-x: 1; --image-flip-y: 1; position: absolute; left: 50%; top: 50%; width: 76%; transform: translate(calc(-50% + var(--image-x) * 100%), calc(-50% + var(--image-y) * 100%)) rotate(var(--image-rotation)) scale(calc(var(--image-scale) * var(--image-flip-x)), calc(var(--image-scale) * var(--image-flip-y))); transform-origin: center; touch-action: none; }
+.airdesk-image > svg:first-child { display: block; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.24); }
+.airdesk-drawings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.airdesk-handle { position: absolute; width: 14px; height: 14px; border: 2px solid #f2c94c; background: #151712; border-radius: 50%; box-shadow: 0 0 0 2px rgba(0,0,0,.45); }
+.airdesk-scale { right: -8px; bottom: -8px; cursor: nwse-resize; }
+.airdesk-rotate { top: -8px; right: -8px; cursor: ew-resize; }
+.airdesk-tools { display: flex; flex-wrap: wrap; gap: 5px; }
+.airdesk-tools button { border: 1px solid #45473f; background: transparent; color: #dcddd5; padding: 6px 7px; font-size: 10px; cursor: pointer; }
+.airdesk-tools button:hover, .airdesk-tools button.active { border-color: #f2c94c; color: #f2c94c; background: rgba(242,201,76,.08); }
+.airdesk-editor { min-height: 174px; padding: 12px; border: 1px solid #35372f; background: #141613; color: #eeeee8; font: 14px/1.65 var(--font-ui); outline: none; }
+.airdesk-editor:focus { border-color: #f2c94c; box-shadow: inset 0 0 0 1px rgba(242,201,76,.28); }
+.airdesk-hint { border-top: 1px solid #34362f; padding-top: 9px; }
 
 #airsketch-dock {
   width: 318px;
@@ -748,6 +789,8 @@ button, select, input { font-family: var(--font-ui); }
     grid-template-rows: auto auto 1fr;
     gap: 8px 12px;
   }
+  #airdesk { top: 14px; transform: translateX(-50%); width: min(680px, calc(100% - 24px)); }
+  .airdesk-image-stage { min-height: 190px; }
   .air-head { grid-column: 1; grid-row: 1; }
   .air-head h2 { font-size: 21px; }
   .air-status { grid-column: 1; grid-row: 2 / 4; border-bottom: none; }
@@ -788,6 +831,9 @@ button, select, input { font-family: var(--font-ui); }
     grid-template-columns: 0.72fr 1.28fr;
     grid-template-rows: auto 1fr auto auto;
   }
+  #airdesk { position: fixed; top: 8px; max-height: calc(100dvh - 16px); overflow: auto; padding: 12px; }
+  .airdesk-grid { grid-template-columns: 1fr; }
+  .airdesk-image-stage { min-height: 180px; }
   .air-head { grid-column: 1; grid-row: 1; }
   .air-status { grid-column: 1; grid-row: 2; }
   .air-guess-block { grid-column: 2; grid-row: 1 / 3; }

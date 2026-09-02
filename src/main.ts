@@ -21,6 +21,7 @@ import { AirInkDocument, drawAirStrokes, rasterizeAirStrokes } from './airsketch
 import { AirInteractionController } from './airsketch-interaction';
 import { AirSketchScene } from './airsketch-scene';
 import { AirSketchMetrics } from './airsketch-metrics';
+import { AirDeskController, type AirDeskAction, type AirDeskHandSample } from './airdesk';
 import { localizeSketchLabel } from './airsketch-labels';
 import { assessSketchConfidence } from './airsketch-confidence';
 import { detectHeartSketch, mergeSpecialSketchPrediction } from './airsketch-shapes';
@@ -99,7 +100,9 @@ const airInteraction = new AirInteractionController();
 const airInk = new AirInkDocument();
 const airScene = new AirSketchScene();
 const airMetrics = new AirSketchMetrics();
+const airDesk = new AirDeskController();
 let airSketchOn = false;
+let airDeskOn = false;
 let airHandWorker: Worker | null = null;
 let airHandReady = false;
 let airHandStage = 'idle';
@@ -344,6 +347,7 @@ const shell = createShell({
     );
   },
   onAirSketch: (on) => setAirSketch(on),
+  onAirDesk: (on) => setAirDesk(on),
   onAirUndo: () => undoAirStroke(),
   onAirClear: () => clearAirDrawing(),
   onAirAddPrediction: (index) => addAirPrediction(index),
@@ -357,6 +361,10 @@ const shell = createShell({
 const airCanvas = document.getElementById('airsketch-overlay') as HTMLCanvasElement;
 const airStage = document.getElementById('stage') as HTMLElement;
 const airCtx = airCanvas.getContext('2d');
+const airDeskFingerLayer = document.getElementById('airdesk-fingers') as HTMLElement;
+const airDeskImage = document.getElementById('airdesk-image') as HTMLElement;
+const airDeskDrawings = document.getElementById('airdesk-drawings') as unknown as SVGSVGElement;
+const airDeskEditor = document.getElementById('airdesk-editor') as HTMLElement;
 
 function resizeAirCanvas() {
   const dpr = Math.min(window.devicePixelRatio, 2);
@@ -452,10 +460,12 @@ function spawnAirWorkers() {
         airHandStage = message.stage;
         const label = message.stage === 'runtime' ? 'runtime WASM' : message.stage === 'model' ? 'model bàn tay' : 'đồ thị tracking';
         shell.setAirSketchStatus(`Đang chuẩn bị ${label}…`);
+        if (airDeskOn) shell.setAirDeskStatus(`Đang chuẩn bị ${label}…`);
       } else if (message.type === 'ready') {
         airHandStage = 'ready';
         airHandReady = true;
         shell.setAirSketchStatus('Tracking tay sẵn sàng · giơ trỏ để định vị, chụm cái + trỏ để vẽ');
+        if (airDeskOn) shell.setAirDeskStatus('Tracking tay sẵn sàng · các đầu ngón vàng đã hoạt động.');
         diagnostics.record('airsketch.hand.ready', { model: AIRSKETCH_CONFIG.handModel.version });
       } else if (message.type === 'landmarks') {
         airHandBusy = false;
@@ -466,12 +476,14 @@ function spawnAirWorkers() {
           // bitmap transfer + worker queue + inference + reply to main.
           airMetrics.addPipeline(performance.now() - message.capturedAt);
         }
-        handleAirLandmarks(message.landmarks, message.capturedAt, performance.now());
+        if (airSketchOn) handleAirLandmarks(message.landmarks, message.capturedAt, performance.now());
+        else if (airDeskOn) handleAirDeskLandmarks(message.landmarks, message.capturedAt);
       } else {
         airHandBusy = false;
         if (message.stage === 'load') airHandReady = false;
         airHandStage = `error:${message.stage}:${message.message}`;
         shell.setAirSketchStatus(`Tracking tay chưa sẵn sàng · dùng chuột/chạm (${message.message})`);
+        if (airDeskOn) shell.setAirDeskStatus(`Tracking tay chưa sẵn sàng · dùng chuột/chạm (${message.message})`);
         diagnostics.record('airsketch.hand.error', { stage: message.stage, message: message.message });
       }
     };
@@ -480,6 +492,7 @@ function spawnAirWorkers() {
       airHandReady = false;
       airHandStage = 'crash';
       shell.setAirSketchStatus('Tracking tay gặp lỗi · chuột/chạm vẫn dùng được');
+      if (airDeskOn) shell.setAirDeskStatus('Tracking tay gặp lỗi · chuột/chạm vẫn dùng được');
       diagnostics.record('airsketch.hand.crash', { message: event.message });
     };
     instance.postMessage({
@@ -598,6 +611,7 @@ function spawnAirWorkers() {
 }
 
 function setAirSketch(on: boolean) {
+  if (on && airDeskOn) setAirDesk(false);
   airSketchOn = on;
   shell.setAirSketchActive(on);
   airCanvas.classList.toggle('active', on);
@@ -622,6 +636,205 @@ function setAirSketch(on: boolean) {
     sceneApi?.resize();
     resizeAirCanvas();
   });
+}
+
+let airDeskGesture: 'move' | 'scale' | 'rotate' | 'draw' | 'text' | null = null;
+let airDeskTextAnchor: Range | null = null;
+
+function airDeskClientPoint(point: Pick<AirPoint, 'x' | 'y'>): { x: number; y: number } {
+  const rect = airStage.getBoundingClientRect();
+  return { x: rect.left + point.x * rect.width, y: rect.top + point.y * rect.height };
+}
+
+function airDeskImagePoint(client: { x: number; y: number }, at: number): AirPoint | null {
+  const rect = airDeskImage.getBoundingClientRect();
+  if (client.x < rect.left || client.x > rect.right || client.y < rect.top || client.y > rect.bottom) return null;
+  return { x: (client.x - rect.left) / rect.width, y: (client.y - rect.top) / rect.height, t: at };
+}
+
+function renderAirDeskImage(): void {
+  const transform = airDesk.getTransform();
+  airDeskImage.style.setProperty('--image-x', String(transform.x));
+  airDeskImage.style.setProperty('--image-y', String(transform.y));
+  airDeskImage.style.setProperty('--image-scale', String(transform.scale));
+  airDeskImage.style.setProperty('--image-rotation', `${transform.rotation}deg`);
+  airDeskImage.style.setProperty('--image-flip-x', transform.flipX ? '-1' : '1');
+  airDeskImage.style.setProperty('--image-flip-y', transform.flipY ? '-1' : '1');
+  airDeskDrawings.replaceChildren();
+  const svgNs = 'http://www.w3.org/2000/svg';
+  for (const path of airDesk.getPaths()) {
+    if (path.length < 2) continue;
+    const line = document.createElementNS(svgNs, 'polyline');
+    line.setAttribute('points', path.map((point) => `${point.x * 320},${point.y * 210}`).join(' '));
+    line.setAttribute('fill', 'none');
+    line.setAttribute('stroke', '#f2c94c');
+    line.setAttribute('stroke-width', '3');
+    line.setAttribute('stroke-linecap', 'round');
+    line.setAttribute('stroke-linejoin', 'round');
+    airDeskDrawings.appendChild(line);
+  }
+  document.getElementById('airdesk-draw-btn')?.classList.toggle('active', airDesk.getTool() === 'draw');
+}
+
+function renderAirDeskFingers(fingertips: AirDeskHandSample['fingertips']): void {
+  airDeskFingerLayer.hidden = false;
+  airDeskFingerLayer.replaceChildren();
+  for (const finger of fingertips) {
+    const dot = document.createElement('i');
+    dot.className = `airdesk-finger${finger.extended ? ' extended' : ''}`;
+    dot.style.left = `${finger.point.x * 100}%`;
+    dot.style.top = `${finger.point.y * 100}%`;
+    dot.dataset.finger = String(finger.index);
+    airDeskFingerLayer.appendChild(dot);
+  }
+}
+
+function clearAirDeskFingers(): void {
+  airDeskFingerLayer.replaceChildren();
+  airDeskFingerLayer.hidden = true;
+}
+
+function pointRangeAt(client: { x: number; y: number }): Range | null {
+  const documentWithCaret = document as Document & { caretRangeFromPoint?: (x: number, y: number) => Range | null };
+  return documentWithCaret.caretRangeFromPoint?.(client.x, client.y) ?? null;
+}
+
+function updateAirDeskTextSelection(client: { x: number; y: number }): void {
+  if (!airDeskTextAnchor) return;
+  const focus = pointRangeAt(client);
+  if (!focus || !airDeskEditor.contains(focus.startContainer)) return;
+  const selection = window.getSelection();
+  if (!selection) return;
+  selection.setBaseAndExtent(
+    airDeskTextAnchor.startContainer, airDeskTextAnchor.startOffset,
+    focus.startContainer, focus.startOffset
+  );
+}
+
+function performAirDeskTextAction(action: string): void {
+  airDeskEditor.focus();
+  const selection = window.getSelection();
+  if (action === 'spell') {
+    airDeskEditor.textContent = (airDeskEditor.textContent ?? '').replace(/tập kêt/g, 'tập kết');
+    shell.setAirDeskStatus('Đã áp dụng đề xuất: “tập kết”.');
+    return;
+  }
+  if (!selection?.toString()) {
+    const range = document.createRange();
+    range.selectNodeContents(airDeskEditor);
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+  }
+  if (action === 'copy') {
+    const text = selection?.toString() ?? '';
+    void navigator.clipboard?.writeText(text).catch(() => undefined);
+    document.execCommand('copy');
+    shell.setAirDeskStatus('Đã sao chép phần chữ đang chọn.');
+  } else if (action === 'cut') {
+    document.execCommand('cut');
+    shell.setAirDeskStatus('Đã cắt phần chữ đang chọn.');
+  } else if (action === 'delete') {
+    document.execCommand('delete');
+    shell.setAirDeskStatus('Đã xóa phần chữ đang chọn.');
+  }
+}
+
+function handleAirDeskLandmarks(
+  landmarks: import('./airsketch-types').HandLandmark[] | null,
+  capturedAt = performance.now()
+): void {
+  if (!airDeskOn) return;
+  if (!landmarks) {
+    clearAirDeskFingers();
+    airDesk.end();
+    airDeskGesture = null;
+    return;
+  }
+  const sample = airDesk.hand(landmarks, capturedAt);
+  if (!sample) return;
+  renderAirDeskFingers(sample.fingertips);
+  const client = airDeskClientPoint(sample.pointer);
+  const target = document.elementFromPoint(client.x, client.y) as HTMLElement | null;
+  if (sample.justPinched) {
+    const imageAction = target?.closest<HTMLElement>('[data-airdesk-action]')?.dataset.airdeskAction as AirDeskAction | undefined;
+    const textAction = target?.closest<HTMLElement>('[data-airdesk-text-action]')?.dataset.airdeskTextAction;
+    if (imageAction) {
+      airDesk.perform(imageAction);
+      renderAirDeskImage();
+      shell.setAirDeskStatus(imageAction === 'toggle-draw' ? (airDesk.getTool() === 'draw' ? 'Chế độ vẽ trên ảnh đã bật.' : 'Chế độ di chuyển ảnh đã bật.') : 'Đã cập nhật ảnh.');
+    } else if (textAction) {
+      performAirDeskTextAction(textAction);
+    } else if (target?.closest('[data-airdesk-handle="scale"]')) {
+      airDesk.begin(sample.pointer, 'scale');
+      airDeskGesture = 'scale';
+      shell.setAirDeskStatus('Đang phóng to / thu nhỏ ảnh…');
+    } else if (target?.closest('[data-airdesk-handle="rotate"]')) {
+      airDesk.begin(sample.pointer, 'rotate');
+      airDeskGesture = 'rotate';
+      shell.setAirDeskStatus('Đang xoay ảnh…');
+    } else if (target?.closest('#airdesk-image')) {
+      const imagePoint = airDeskImagePoint(client, capturedAt);
+      if (airDesk.getTool() === 'draw' && imagePoint) {
+        airDesk.beginDrawing(imagePoint);
+        airDeskGesture = 'draw';
+        shell.setAirDeskStatus('Đang vẽ trực tiếp lên ảnh…');
+      } else {
+        airDesk.begin(sample.pointer, 'move');
+        airDeskGesture = 'move';
+        shell.setAirDeskStatus('Đang kéo ảnh…');
+      }
+    } else if (target?.closest('#airdesk-editor')) {
+      airDeskTextAnchor = pointRangeAt(client);
+      airDeskGesture = 'text';
+      updateAirDeskTextSelection(client);
+      shell.setAirDeskStatus('Đang chọn văn bản…');
+    }
+  }
+  if (sample.pinch) {
+    if (airDeskGesture === 'draw') {
+      const imagePoint = airDeskImagePoint(client, capturedAt);
+      if (imagePoint) airDesk.draw(imagePoint);
+    } else if (airDeskGesture === 'move' || airDeskGesture === 'scale' || airDeskGesture === 'rotate') {
+      airDesk.move(sample.pointer);
+    } else if (airDeskGesture === 'text') {
+      updateAirDeskTextSelection(client);
+    }
+    renderAirDeskImage();
+  }
+  if (sample.justReleased) {
+    airDesk.end();
+    airDeskGesture = null;
+    airDeskTextAnchor = null;
+    shell.setAirDeskStatus('Đã đặt. Chụm lại để thao tác tiếp.');
+  }
+}
+
+function setAirDesk(on: boolean): void {
+  if (on && airSketchOn) setAirSketch(false);
+  airDeskOn = on;
+  shell.setAirDeskActive(on);
+  if (on) {
+    shell.setMode('rgb');
+    renderAirDeskImage();
+    spawnAirWorkers();
+    shell.setAirDeskStatus('Đang chuẩn bị tracking tay · các đầu ngón sẽ hiện màu vàng.');
+  } else {
+    airDesk.reset();
+    airDeskGesture = null;
+    airDeskTextAnchor = null;
+    clearAirDeskFingers();
+  }
+  diagnostics.record('airdesk.toggle', { on });
+}
+
+for (const control of document.querySelectorAll<HTMLButtonElement>('[data-airdesk-action]')) {
+  control.addEventListener('click', () => {
+    airDesk.perform(control.dataset.airdeskAction as AirDeskAction);
+    renderAirDeskImage();
+  });
+}
+for (const control of document.querySelectorAll<HTMLButtonElement>('[data-airdesk-text-action]')) {
+  control.addEventListener('click', () => performAirDeskTextAction(control.dataset.airdeskTextAction ?? ''));
 }
 
 function applyAirPen(point: AirPoint, down: boolean) {
@@ -1230,7 +1443,7 @@ async function boot() {
     // Hand tracking chạy nhịp riêng tối đa 30 fps. ImageBitmap được transfer sang
     // worker nên main thread không đọc lại pixel và không xếp hàng frame.
     const airFrameInterval = 1000 / AIRSKETCH_CONFIG.tracking.maxFps;
-    if (airSketchOn && airHandReady && !airClassifierLoading && !airHandBusy && !frozen && airHandWorker && video &&
+    if ((airSketchOn || airDeskOn) && airHandReady && !airClassifierLoading && !airHandBusy && !frozen && airHandWorker && video &&
         video.readyState >= 2 && now - airLastCaptureAt >= airFrameInterval) {
       airHandBusy = true;
       airLastCaptureAt = now;
@@ -1239,7 +1452,7 @@ async function boot() {
       const height = Math.max(2, Math.round(width / Math.max(0.1, aspect)));
       void createImageBitmap(video, { resizeWidth: width, resizeHeight: height, resizeQuality: 'medium' })
         .then((bitmap) => {
-          if (!airSketchOn || !airHandWorker) {
+          if ((!airSketchOn && !airDeskOn) || !airHandWorker) {
             bitmap.close();
             airHandBusy = false;
             return;

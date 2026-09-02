@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### AirDesk direct content manipulation (TIP-30)
+
+- Added a separate camera-first AirDesk workspace: five visible yellow
+  fingertip markers, extended-finger halos and pinch press/drag interaction.
+- Added a local image canvas with move, scale, rotation, horizontal/vertical
+  flip and air-ink annotation; image manipulation remains independent of
+  AirSketch strokes and objects.
+- Added a local editable Vietnamese note with pinch-drag text selection plus
+  copy, cut, delete and an explicit spelling-correction proposal.
+
 ### AirSketch continuity and visible-cursor pickup (TIP-29)
 
 - Made thumb–index pinch the sole continuous drawing condition after a stroke
