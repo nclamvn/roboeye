@@ -299,8 +299,9 @@ button, select, input { font-family: var(--font-ui); }
 #airsketch-cursor[data-gesture='clear-hold'] span { inset: 12px; }
 
 #airdesk-fingers { position: absolute; inset: 0; z-index: 22; pointer-events: none; }
+#airdesk-pinch-line { position: absolute; left: 0; top: 0; z-index: 0; height: 2px; transform-origin: 0 50%; background: rgba(247,215,94,.82); box-shadow: 0 0 12px rgba(242,201,76,.72); will-change: transform, width; }
 .airdesk-finger {
-  position: absolute; left: 0; top: 0; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+  position: absolute; left: 0; top: 0; z-index: 1; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
   border-radius: 50%; background: #f2c94c; box-shadow: 0 0 0 2px rgba(33, 32, 18, .78), 0 0 13px rgba(242, 201, 76, .82);
   will-change: transform;
   transition: width 100ms var(--ease-quiet), height 100ms var(--ease-quiet), margin 100ms var(--ease-quiet), background 100ms var(--ease-quiet);
@@ -317,6 +318,9 @@ button, select, input { font-family: var(--font-ui); }
 .airdesk-head h2 { margin: 2px 0 0; font: 400 28px/1 var(--font-display); letter-spacing: -.03em; }
 .airdesk-head button { position: fixed; top: 20px; right: 22px; width: 28px; height: 28px; border: 1px solid rgba(246,244,237,.54); background: rgba(10,12,9,.12); color: #f6f4ed; font-size: 19px; cursor: pointer; text-shadow: 0 2px 8px rgba(0,0,0,.94); }
 .airdesk-status { position: absolute; top: 70px; left: 22px; max-width: 290px; margin: 0; padding: 4px 0 4px 10px; border-left: 2px solid #f2c94c; background: transparent; color: #f6f4ed; font-size: 11px; text-shadow: 0 2px 8px rgba(0,0,0,.94); }
+.airdesk-gesture-hud { position: absolute; top: 112px; left: 22px; display: flex; flex-direction: column; gap: 3px; padding: 7px 9px; border: 1px solid rgba(247,215,94,.48); background: rgba(8,10,8,.3); backdrop-filter: blur(4px); font: 9px/1.35 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .06em; text-shadow: 0 2px 6px #000; pointer-events: none; }
+.airdesk-gesture-hud b { color: #f7d75e; font-size: 11px; }
+.airdesk-gesture-hud[data-active='true'] { border-color: #f7d75e; box-shadow: 0 0 18px rgba(242,201,76,.18); }
 .airdesk-grid { position: absolute; inset: 0; display: block; pointer-events: none; }
 .airdesk-card { position: absolute; min-width: 0; border: 0; background: transparent; padding: 0; display: grid; gap: 7px; pointer-events: auto; }
 .airdesk-image-card { left: 5%; bottom: 8%; width: clamp(250px, 34vw, 490px); }
@@ -325,7 +329,8 @@ button, select, input { font-family: var(--font-ui); }
 .airdesk-card-head span { color: #f7d75e; font-size: 12px; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,.94); }
 .airdesk-card-head small { text-align: right; }
 .airdesk-image-stage { position: relative; min-height: 0; aspect-ratio: 1.45; overflow: visible; border: 0; background: transparent; }
-.airdesk-image { --image-x: 0; --image-y: 0; --image-scale: 1; --image-rotation: 0deg; --image-flip-x: 1; --image-flip-y: 1; position: absolute; left: 50%; top: 50%; width: 86%; transform: translate(calc(-50% + var(--image-x) * 100%), calc(-50% + var(--image-y) * 100%)) rotate(var(--image-rotation)) scale(calc(var(--image-scale) * var(--image-flip-x)), calc(var(--image-scale) * var(--image-flip-y))); transform-origin: center; touch-action: none; filter: drop-shadow(0 8px 18px rgba(0,0,0,.4)); }
+.airdesk-image { --image-x: 0px; --image-y: 0px; --image-scale: 1; --image-rotation: 0deg; --image-flip-x: 1; --image-flip-y: 1; position: absolute; left: 50%; top: 50%; width: 86%; transform: translate(calc(-50% + var(--image-x)), calc(-50% + var(--image-y))) rotate(var(--image-rotation)) scale(calc(var(--image-scale) * var(--image-flip-x)), calc(var(--image-scale) * var(--image-flip-y))); transform-origin: center; touch-action: none; will-change: transform; filter: drop-shadow(0 8px 18px rgba(0,0,0,.4)); }
+.airdesk-image.gesture-held { filter: drop-shadow(0 0 5px rgba(247,215,94,.9)) drop-shadow(0 12px 24px rgba(0,0,0,.55)); }
 .airdesk-image > svg:first-child { display: block; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.42); }
 .airdesk-drawings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .airdesk-handle { position: absolute; width: 14px; height: 14px; border: 2px solid #f2c94c; background: rgba(21,23,18,.42); border-radius: 50%; box-shadow: 0 0 0 2px rgba(0,0,0,.45); }
@@ -837,6 +842,7 @@ button, select, input { font-family: var(--font-ui); }
   .airdesk-head h2 { font-size: 22px; }
   .airdesk-head button { top: 12px; right: 12px; }
   .airdesk-status { top: 58px; left: 12px; max-width: 230px; font-size: 10px; }
+  .airdesk-gesture-hud { top: 96px; left: 12px; max-width: 240px; }
   .airdesk-image-card { left: 5%; bottom: 9%; width: 57vw; }
   .airdesk-text-card { top: 21%; right: 5%; width: 52vw; }
   .airdesk-editor { font-size: 13px; line-height: 1.5; }

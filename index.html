@@ -129,7 +129,7 @@
       <svg id="det-overlay" hidden></svg>
       <canvas id="airsketch-overlay" aria-label="Nét vẽ AirSketch trên camera"></canvas>
       <div id="airsketch-cursor" data-gesture="hover" hidden><span></span></div>
-      <div id="airdesk-fingers" aria-hidden="true" hidden></div>
+      <div id="airdesk-fingers" aria-hidden="true" hidden><i id="airdesk-pinch-line" hidden></i></div>
       <section id="airdesk" aria-label="AirDesk: chỉnh ảnh và văn bản bằng ngón tay" hidden>
         <header class="airdesk-head">
           <div>
@@ -139,9 +139,13 @@
           <button id="airdesk-close-btn" aria-label="Đóng AirDesk">×</button>
         </header>
         <p id="airdesk-status" class="airdesk-status" role="status">Giơ ngón tay trước camera để hiện các điểm vàng.</p>
+        <div id="airdesk-gesture-hud" class="airdesk-gesture-hud" aria-live="polite">
+          <b id="airdesk-gesture-mode">CHỜ TAY</b>
+          <span id="airdesk-gesture-values">TÂM — · MỞ — · GÓC — · MẶT —</span>
+        </div>
         <div class="airdesk-grid">
           <section class="airdesk-card airdesk-image-card" aria-label="Ảnh để thao tác">
-            <div class="airdesk-card-head"><span>Ảnh</span><small>chụm và kéo để di chuyển</small></div>
+            <div class="airdesk-card-head"><span>Ảnh</span><small>chụm giữ · mở hai ngón để zoom · xoay/lật bàn tay</small></div>
             <div id="airdesk-image-stage" class="airdesk-image-stage">
               <div id="airdesk-image" class="airdesk-image" data-airdesk-target="image" tabindex="0" aria-label="Ảnh mẫu có thể di chuyển">
                 <svg viewBox="0 0 320 210" role="img" aria-label="Minh hoạ địa hình và tín hiệu cứu hộ">
@@ -170,7 +174,7 @@
             </div>
           </section>
         </div>
-        <p class="airdesk-hint">Mỗi đầu ngón là một chấm vàng. Ngón duỗi có vòng vàng; chụm cái + trỏ là chạm/kéo. Chuột và bàn phím luôn là phương án dự phòng.</p>
+        <p class="airdesk-hint">Chụm cái + trỏ trên ảnh để cầm. Giữ hai ngón: di chuyển tâm để kéo, đổi khoảng cách để zoom, xoay bàn tay để xoay ảnh, lật lòng/mu để lật ngang. Xòe cả bàn tay để đặt.</p>
       </section>
       <div id="frozen-tag" hidden>FROZEN · nhấn F để tiếp tục</div>
       <div id="alert-chip" hidden>VẬT CẢN GẦN</div>

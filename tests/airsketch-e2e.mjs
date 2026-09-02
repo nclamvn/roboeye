@@ -32,6 +32,35 @@ function handLandmarks(x, pose) {
   return points;
 }
 
+function airDeskTransformLandmarks({ x, y, ratio, angle, flipped = false, open = false }) {
+  const points = handLandmarks(x, 'pinch');
+  const span = Math.hypot(points[5].x - points[17].x, points[5].y - points[17].y);
+  points[8] = { x, y, z: 0 };
+  points[4] = { x: x + span * ratio, y, z: 0 };
+  for (const tip of [12, 16, 20]) points[tip] = { ...points[tip], y: open ? y : 0.72 };
+  if (open) {
+    // Translate the synthetic palm with the pointer. Extension is measured
+    // relative to the wrist, so a bottom-stage open hand cannot keep the
+    // fixture's original top-stage wrist/pip coordinates.
+    points[0] = { ...points[0], y: y + 0.28 };
+    points[5] = { ...points[5], y: y + 0.18 };
+    points[17] = { ...points[17], y: y + 0.18 };
+    for (const pip of [6, 10, 14, 18]) points[pip] = { ...points[pip], y: y + 0.14 };
+  }
+  const radius = 0.14;
+  points[9] = {
+    x: points[0].x - Math.cos(angle) * radius,
+    y: points[0].y + Math.sin(angle) * radius,
+    z: 0
+  };
+  if (flipped) {
+    const indexX = points[5].x;
+    points[5] = { ...points[5], x: points[17].x };
+    points[17] = { ...points[17], x: indexX };
+  }
+  return points;
+}
+
 try {
   await waitForPreview(server);
   const executablePath = await resolveBrowserExecutable();
@@ -139,6 +168,70 @@ try {
   check('AirDesk hiện đủ năm điểm đầu ngón, ngón duỗi có halo vàng', await page.evaluate(() =>
     document.querySelectorAll('.airdesk-finger').length === 5 && document.querySelectorAll('.airdesk-finger.extended').length >= 4
   ));
+  const imageTarget = await page.evaluate(() => {
+    const stage = document.querySelector('#stage')?.getBoundingClientRect();
+    const image = document.querySelector('#airdesk-image')?.getBoundingClientRect();
+    if (!stage || !image) return null;
+    return {
+      x: 1 - ((image.left + image.width / 2 - stage.left) / stage.width),
+      y: (image.top + image.height / 2 - stage.top) / stage.height
+    };
+  });
+  if (!imageTarget) throw new Error('Không tìm thấy vùng ảnh AirDesk');
+  // Let the adaptive pointer settle over the image before closing the clutch.
+  await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); },
+    Array.from({ length: 20 }, () => airDeskTransformLandmarks({
+      x: imageTarget.x, y: imageTarget.y, ratio: 1.2, angle: -Math.PI / 2
+    }))
+  );
+  await page.waitForFunction(() => {
+    const pointer = document.querySelector('.airdesk-finger[data-finger="8"]')?.getBoundingClientRect();
+    const image = document.querySelector('#airdesk-image')?.getBoundingClientRect();
+    if (!pointer || !image) return false;
+    const x = pointer.left + pointer.width / 2;
+    const y = pointer.top + pointer.height / 2;
+    return x >= image.left && x <= image.right && y >= image.top && y <= image.bottom;
+  });
+  await page.evaluate((frame) => { window.__mockAirHandFrames.push(frame); }, airDeskTransformLandmarks({
+    x: imageTarget.x, y: imageTarget.y, ratio: 0.25, angle: -Math.PI / 2
+  }));
+  await page.waitForFunction(() => document.querySelector('#airdesk-gesture-mode')?.textContent === 'BIẾN ĐỔI 2 NGÓN');
+  const destinationX = Math.max(0.08, imageTarget.x - 0.52);
+  const transformFrames = [];
+  for (let frame = 1; frame <= 10; frame++) {
+    transformFrames.push(airDeskTransformLandmarks({
+      x: imageTarget.x + (destinationX - imageTarget.x) * frame / 10,
+      y: imageTarget.y,
+      ratio: 0.25 + 0.55 * frame / 10,
+      angle: -Math.PI / 2 + Math.PI * 0.62 * frame / 10
+    }));
+  }
+  for (let frame = 0; frame < 10; frame++) {
+    transformFrames.push(airDeskTransformLandmarks({
+      x: destinationX, y: imageTarget.y, ratio: 0.80, angle: Math.PI * 0.12, flipped: true
+    }));
+  }
+  await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); }, transformFrames);
+  await page.waitForFunction(() => document.querySelector('#airdesk-image')?.dataset.transformFlipX === 'true');
+  const spatialGesture = await page.evaluate(() => {
+    const image = document.querySelector('#airdesk-image');
+    return {
+      x: Number(image?.dataset.transformX),
+      scale: Number(image?.dataset.transformScale),
+      rotation: Number(image?.dataset.transformRotation),
+      flip: image?.dataset.transformFlipX,
+      held: image?.classList.contains('gesture-held')
+    };
+  });
+  check('hai ngón kéo ảnh theo biên độ lớn trên toàn stage', spatialGesture.x > 0.38, JSON.stringify(spatialGesture));
+  check('khoảng cách hai ngón zoom liên tục mà không làm rơi ảnh', spatialGesture.scale > 1.65 && spatialGesture.held, JSON.stringify(spatialGesture));
+  check('góc bàn tay xoay ảnh và đổi mặt lật ảnh', spatialGesture.rotation > 50 && spatialGesture.flip === 'true', JSON.stringify(spatialGesture));
+  await page.evaluate((frames) => { window.__mockAirHandFrames.push(...frames); }, Array.from({ length: 4 }, () =>
+    airDeskTransformLandmarks({ x: destinationX, y: imageTarget.y, ratio: 0.9, angle: Math.PI * 0.12, flipped: true, open: true })
+  ));
+  await page.waitForFunction(() => !document.querySelector('#airdesk-image')?.classList.contains('gesture-held'));
+  check('xòe cả bàn tay có xác nhận mới đặt ảnh', await page.textContent('#airdesk-status') === 'Đã đặt · chụm trên ảnh để cầm lại.');
+  await page.click('[data-airdesk-action="reset-image"]');
   await page.click('[data-airdesk-action="rotate-right"]');
   check('AirDesk có canvas ảnh để xoay/lật/vẽ độc lập', await page.evaluate(() => {
     const image = document.querySelector('#airdesk-image');

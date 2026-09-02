@@ -56,6 +56,19 @@ export const AIRSKETCH_CONFIG = {
     undoHoldMs: 650,
     clearHoldMs: 1_050
   },
+  airDesk: {
+    // Thumb/index distance belongs exclusively to zoom once an image is held.
+    // Release therefore requires a confirmed open palm as well as separation;
+    // otherwise zooming out and dropping the image would be the same gesture.
+    transformReleaseRatio: 0.72,
+    transformReleaseSamples: 3,
+    scaleBias: 0.12,
+    minScale: 0.25,
+    maxScale: 4.5,
+    maxTranslation: 1.2,
+    flipFacingMin: 0.14,
+    flipConfirmSamples: 3
+  },
   recognition: {
     idleMs: 650,
     rasterSize: 28,

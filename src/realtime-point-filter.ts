@@ -68,6 +68,18 @@ class OneEuroScalar {
   }
 }
 
+/** Timestamp-aware scalar variant for gesture geometry such as angle/facing. */
+export class RealtimeValueFilter {
+  private readonly scalar: OneEuroScalar;
+
+  constructor(options: Partial<RealtimePointFilterOptions> = {}) {
+    this.scalar = new OneEuroScalar({ ...DEFAULT_OPTIONS, ...options });
+  }
+
+  reset(): void { this.scalar.reset(); }
+  update(value: number, timestamp: number): number { return this.scalar.update(value, timestamp); }
+}
+
 /**
  * Timestamp-aware 1€ filtering plus bounded motion prediction.
  *

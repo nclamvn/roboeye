@@ -16,6 +16,32 @@ function hand(pinch = false): HandLandmark[] {
   return points;
 }
 
+function handTransform(options: { x: number; ratio: number; angle?: number; flipped?: boolean; open?: boolean }): HandLandmark[] {
+  const points = hand(true);
+  const span = Math.hypot(points[5].x - points[17].x, points[5].y - points[17].y);
+  points[8] = { x: options.x, y: 0.24, z: 0 };
+  points[4] = { x: options.x + span * options.ratio, y: 0.24, z: 0 };
+  if (!options.open) {
+    // A held object uses thumb + index while the other fingers stay curled.
+    for (const tip of [12, 16, 20]) points[tip] = { ...points[tip], y: 0.72 };
+  }
+  if (options.angle != null) {
+    const radius = 0.14;
+    // Controller measures the mirrored wrist → middle-MCP vector.
+    points[9] = {
+      x: points[0].x - Math.cos(options.angle) * radius,
+      y: points[0].y + Math.sin(options.angle) * radius,
+      z: 0
+    };
+  }
+  if (options.flipped) {
+    const indexX = points[5].x;
+    points[5] = { ...points[5], x: points[17].x };
+    points[17] = { ...points[17], x: indexX };
+  }
+  return points;
+}
+
 test('AirDesk exposes five fingertip affordances and pinch edges', () => {
   const desk = new AirDeskController();
   const hover = desk.hand(hand(false), 10)!;
@@ -47,4 +73,43 @@ test('AirDesk keeps image drag, scale, rotation, flip and annotation independent
   desk.draw({ x: 0.3, y: 0.4, t: 20 });
   desk.end();
   assert.equal(desk.getPaths()[0].length, 2);
+});
+
+test('AirDesk two-finger transform moves across the stage, scales, rotates and flips naturally', () => {
+  const desk = new AirDeskController();
+  const start = desk.hand(handTransform({ x: 0.32, ratio: 0.30, angle: -Math.PI / 2 }), 0)!;
+  assert.equal(start.justPinched, true);
+  desk.beginSpatialTransform(start);
+
+  let changed = start;
+  for (let frame = 1; frame <= 8; frame++) {
+    changed = desk.hand(handTransform({
+      x: 0.32 + (0.84 - 0.32) * frame / 8,
+      ratio: 0.30 + (0.66 - 0.30) * frame / 8,
+      angle: -Math.PI / 2 + Math.PI / 2 * frame / 8
+    }), frame * 33)!;
+    desk.moveSpatialTransform(changed);
+  }
+  const transformed = desk.getTransform();
+  assert.ok(transformed.x < -0.45, `translation=${transformed.x}`);
+  assert.ok(transformed.scale > 1.6, `scale=${transformed.scale}`);
+  assert.ok(transformed.rotation > 45, `rotation=${transformed.rotation}`);
+
+  for (let index = 0; index < 8; index++) {
+    const flipped = desk.hand(handTransform({ x: 0.84, ratio: 0.66, angle: 0, flipped: true }), 66 + index * 33)!;
+    desk.moveSpatialTransform(flipped);
+  }
+  assert.equal(desk.getTransform().flipX, true, 'đổi mặt bàn tay được xác nhận trước khi lật ảnh');
+
+  // Separating only the two control fingers remains zoom; it cannot drop.
+  const wide = desk.hand(handTransform({ x: 0.84, ratio: 1.10, angle: 0, flipped: true }), 350)!;
+  assert.equal(wide.pinch, true, 'tách hai ngón vẫn giữ ảnh để zoom');
+  const release1 = desk.hand(handTransform({ x: 0.84, ratio: 1.10, angle: 0, flipped: true, open: true }), 383)!;
+  const release2 = desk.hand(handTransform({ x: 0.84, ratio: 1.10, angle: 0, flipped: true, open: true }), 416)!;
+  const release3 = desk.hand(handTransform({ x: 0.84, ratio: 1.10, angle: 0, flipped: true, open: true }), 449)!;
+  assert.equal(release1.pinch, true, 'một frame xòe tay chưa làm rơi ảnh');
+  assert.equal(release2.pinch, true, 'hai frame xòe tay vẫn chờ xác nhận');
+  assert.equal(release3.justReleased, true, 'ba frame xòe tay xác nhận thao tác đặt');
+  desk.end();
+  assert.equal(desk.isSpatialTransforming(), false);
 });

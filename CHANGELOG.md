@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### AirDesk spatial hand gestures (TIP-32)
+
+- Added a unified two-finger image transaction: midpoint movement translates,
+  normalized thumb–index distance scales, palm angle rotates and a sustained
+  palm-facing reversal flips the image.
+- Removed the conflicting “separate fingers to release” rule. Two-finger
+  separation is now exclusively zoom; a three-sample open palm places the
+  image without accidental drops.
+- Expanded motion from image-relative percentages to stage-relative pixels,
+  added responsive predicted gesture centering and adaptive scalar filtering,
+  and exposed a live `TÂM / MỞ / GÓC / MẶT` recognition HUD.
+- Added unit and full worker-to-DOM E2E contracts for pickup, large-range move,
+  zoom, rotation, flip and deliberate release.
+
 ### Zero-lag hand interaction pipeline (TIP-31)
 
 - Replaced render-loop hand sampling with video-frame-synchronous capture and

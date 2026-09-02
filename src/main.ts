@@ -367,6 +367,10 @@ const airCanvas = document.getElementById('airsketch-overlay') as HTMLCanvasElem
 const airStage = document.getElementById('stage') as HTMLElement;
 const airCtx = airCanvas.getContext('2d');
 const airDeskFingerLayer = document.getElementById('airdesk-fingers') as HTMLElement;
+const airDeskPinchLine = document.getElementById('airdesk-pinch-line') as HTMLElement;
+const airDeskGestureHud = document.getElementById('airdesk-gesture-hud') as HTMLElement;
+const airDeskGestureMode = document.getElementById('airdesk-gesture-mode') as HTMLElement;
+const airDeskGestureValues = document.getElementById('airdesk-gesture-values') as HTMLElement;
 const airDeskImage = document.getElementById('airdesk-image') as HTMLElement;
 const airDeskDrawings = document.getElementById('airdesk-drawings') as unknown as SVGSVGElement;
 const airDeskEditor = document.getElementById('airdesk-editor') as HTMLElement;
@@ -653,7 +657,7 @@ function setAirSketch(on: boolean) {
   });
 }
 
-let airDeskGesture: 'move' | 'scale' | 'rotate' | 'draw' | 'text' | null = null;
+let airDeskGesture: 'transform' | 'move' | 'scale' | 'rotate' | 'draw' | 'text' | null = null;
 let airDeskTextAnchor: Range | null = null;
 let airDeskLastSeenAt = -Infinity;
 let airDeskLossTimer: ReturnType<typeof setTimeout> | null = null;
@@ -692,16 +696,22 @@ function pickAirDeskTarget(client: { x: number; y: number }): HTMLElement | null
 
 function renderAirDeskImage(): void {
   const transform = airDesk.getTransform();
-  const transformKey = `${transform.x}|${transform.y}|${transform.scale}|${transform.rotation}|${transform.flipX}|${transform.flipY}`;
+  const transformKey = `${transform.x}|${transform.y}|${transform.scale}|${transform.rotation}|${transform.flipX}|${transform.flipY}|${airStage.clientWidth}|${airStage.clientHeight}`;
   if (transformKey !== airDeskRenderedTransform) {
     airDeskRenderedTransform = transformKey;
-    airDeskImage.style.setProperty('--image-x', String(transform.x));
-    airDeskImage.style.setProperty('--image-y', String(transform.y));
+    airDeskImage.style.setProperty('--image-x', `${transform.x * airStage.clientWidth}px`);
+    airDeskImage.style.setProperty('--image-y', `${transform.y * airStage.clientHeight}px`);
     airDeskImage.style.setProperty('--image-scale', String(transform.scale));
     airDeskImage.style.setProperty('--image-rotation', `${transform.rotation}deg`);
     airDeskImage.style.setProperty('--image-flip-x', transform.flipX ? '-1' : '1');
     airDeskImage.style.setProperty('--image-flip-y', transform.flipY ? '-1' : '1');
+    airDeskImage.dataset.transformX = transform.x.toFixed(4);
+    airDeskImage.dataset.transformY = transform.y.toFixed(4);
+    airDeskImage.dataset.transformScale = transform.scale.toFixed(4);
+    airDeskImage.dataset.transformRotation = transform.rotation.toFixed(2);
+    airDeskImage.dataset.transformFlipX = String(transform.flipX);
   }
+  airDeskImage.classList.toggle('gesture-held', airDesk.isSpatialTransforming());
   const drawingRevision = airDesk.getDrawingRevision();
   if (drawingRevision !== airDeskRenderedDrawingRevision) {
     airDeskRenderedDrawingRevision = drawingRevision;
@@ -749,8 +759,39 @@ function renderAirDeskFingers(fingertips: AirDeskHandSample['fingertips']): void
   }
 }
 
+function renderAirDeskGesture(sample: AirDeskHandSample): void {
+  const labels = { hover: 'THEO DÕI', open: 'BÀN TAY MỞ', pinch: 'CHỤM', transform: 'BIẾN ĐỔI 2 NGÓN' } as const;
+  const mode = airDesk.isSpatialTransforming() && sample.pinch ? 'transform' : sample.gesture;
+  airDeskGestureMode.textContent = labels[mode];
+  airDeskGestureHud.dataset.active = String(mode === 'transform');
+  // Absolute palm/back naming depends on camera mirroring and handedness.
+  // Expose the measured face as A/B; the transform recognizer uses a relative
+  // face transition, which is the reliable signal for a natural flip.
+  const facing = sample.transformPose.palmFacing < 0 ? 'A' : 'B';
+  airDeskGestureValues.textContent = `TÂM ${Math.round(sample.transformPose.center.x * 100)},${Math.round(sample.transformPose.center.y * 100)} · MỞ ${sample.transformPose.pinchRatio.toFixed(2)} · GÓC ${Math.round(sample.transformPose.palmAngle * 180 / Math.PI)}° · MẶT ${facing}`;
+  const thumb = sample.fingertips.find((finger) => finger.index === 4)?.point;
+  const index = sample.fingertips.find((finger) => finger.index === 8)?.point;
+  if (!thumb || !index || (!sample.pinch && !airDesk.isSpatialTransforming())) {
+    airDeskPinchLine.hidden = true;
+    return;
+  }
+  const width = airDeskFingerLayer.clientWidth;
+  const height = airDeskFingerLayer.clientHeight;
+  const x1 = thumb.x * width;
+  const y1 = thumb.y * height;
+  const dx = index.x * width - x1;
+  const dy = index.y * height - y1;
+  airDeskPinchLine.hidden = false;
+  airDeskPinchLine.style.width = `${Math.hypot(dx, dy)}px`;
+  airDeskPinchLine.style.transform = `translate3d(${x1}px, ${y1}px, 0) rotate(${Math.atan2(dy, dx)}rad)`;
+}
+
 function clearAirDeskFingers(): void {
   airDeskFingerLayer.hidden = true;
+  airDeskPinchLine.hidden = true;
+  airDeskGestureMode.textContent = 'MẤT TAY';
+  airDeskGestureValues.textContent = 'TÂM — · MỞ — · GÓC — · MẶT —';
+  airDeskGestureHud.dataset.active = 'false';
 }
 
 function pointRangeAt(client: { x: number; y: number }): Range | null {
@@ -834,6 +875,7 @@ function handleAirDeskLandmarks(
   const sample = airDesk.hand(landmarks, capturedAt, receivedAt);
   if (!sample) return;
   renderAirDeskFingers(sample.fingertips);
+  renderAirDeskGesture(sample);
   const client = airDeskClientPoint(sample.pointer);
   const target = pickAirDeskTarget(client);
   if (sample.justPinched) {
@@ -860,9 +902,12 @@ function handleAirDeskLandmarks(
         airDeskGesture = 'draw';
         shell.setAirDeskStatus('Đang vẽ trực tiếp lên ảnh…');
       } else {
-        airDesk.begin(sample.controlPointer, 'move');
-        airDeskGesture = 'move';
-        shell.setAirDeskStatus('Đang kéo ảnh…');
+        airDesk.beginSpatialTransform(sample);
+        airDeskGesture = 'transform';
+        // Reflect pickup in the same camera result. Waiting for the next
+        // inference frame makes a successful clutch feel one frame late.
+        renderAirDeskGesture(sample);
+        shell.setAirDeskStatus('Đã cầm · tâm=kéo · mở hai ngón=zoom · xoay/lật bàn tay');
       }
     } else if (target?.closest('#airdesk-editor')) {
       airDeskTextAnchor = pointRangeAt(client);
@@ -875,6 +920,8 @@ function handleAirDeskLandmarks(
     if (airDeskGesture === 'draw') {
       const imagePoint = airDeskImagePoint(client, capturedAt);
       if (imagePoint) airDesk.draw(imagePoint);
+    } else if (airDeskGesture === 'transform') {
+      airDesk.moveSpatialTransform(sample);
     } else if (airDeskGesture === 'move' || airDeskGesture === 'scale' || airDeskGesture === 'rotate') {
       airDesk.move(sample.controlPointer);
     } else if (airDeskGesture === 'text') {
@@ -886,7 +933,8 @@ function handleAirDeskLandmarks(
     airDesk.end();
     airDeskGesture = null;
     airDeskTextAnchor = null;
-    shell.setAirDeskStatus('Đã đặt. Chụm lại để thao tác tiếp.');
+    renderAirDeskImage();
+    shell.setAirDeskStatus('Đã đặt · chụm trên ảnh để cầm lại.');
   }
 }
 

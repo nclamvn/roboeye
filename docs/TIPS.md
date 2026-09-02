@@ -204,3 +204,15 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   direct pickup; real-model smoke gates capture/hand/pipeline p95; full release
   verification remains green.
 - **Detail:** `docs/TIP-31-ZERO-LAG-HAND-INTERACTION.md`.
+
+## TIP-32 · AirDesk spatial hand gestures
+
+- **Dependencies:** TIP-30, TIP-31. **Priority:** P0 gesture-recognition proof.
+- **Task:** replace the index-only image workflow with one continuous
+  thumb–index transform transaction: pair midpoint moves, normalized separation
+  scales, palm angle rotates and a confirmed palm-face transition flips; use a
+  fully open palm to place so zoom and release are not the same gesture.
+- **Acceptance:** unit and worker-to-DOM browser contracts prove large-range
+  translation, continuous zoom, rotation, relative face flip and deliberate
+  release; a visible HUD reports the recognized geometry on every hand sample.
+- **Detail:** `docs/TIP-32-AIRDESK-SPATIAL-GESTURES.md`.
