@@ -2,8 +2,10 @@
 
 ## Product contract
 
-AirDesk is a visual, camera-first interaction surface rather than an invisible
-gesture shortcut. All five visible fingertips are rendered as yellow points.
+AirDesk is a visual, camera-first AR layer rather than an invisible gesture
+shortcut or a modal. Its image and note are placed directly over the live
+camera stream; no opaque workspace panel obscures the scene. All five visible
+fingertips are rendered as yellow points.
 Extended fingers receive a larger yellow ring, while a fist or a lost hand
 removes the affordance. Thumb–index pinch is the sole press/hold/release input.
 
@@ -18,6 +20,10 @@ accidentally creating an AAC stroke while choosing text or moving an image.
 - **Text:** pinch-drag inside the editable note to select text, then pinch the
   Copy, Cut or Delete controls. The spelling control explicitly applies the
   displayed Vietnamese correction; it never silently rewrites user text.
+- **Legibility:** text has a dark shadow and a narrow yellow focus rail instead
+  of a filled background. Compact controls use only a faint translucent hit
+  target, so the live scene remains visible while preserving accessible click
+  and pinch targets.
 - **Fallback:** regular mouse, touch, keyboard and browser spellchecking remain
   available. Clipboard failure never destroys the selected text.
 

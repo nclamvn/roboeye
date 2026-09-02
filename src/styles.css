@@ -308,34 +308,34 @@ button, select, input { font-family: var(--font-ui); }
 .airdesk-finger.extended::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: #f2c94c; }
 
 #airdesk {
-  position: absolute; z-index: 20; top: 50%; left: 50%; width: min(760px, calc(100% - 42px));
-  transform: translate(-50%, -50%); color: #f6f4ed; background: rgba(15, 17, 15, .94);
-  border: 1px solid rgba(242, 201, 76, .42); box-shadow: 0 24px 80px rgba(0,0,0,.5); backdrop-filter: blur(16px);
-  padding: 16px; display: grid; gap: 12px;
+  position: absolute; inset: 0; z-index: 20; color: #f6f4ed;
+  background: transparent; border: 0; box-shadow: none; padding: 0; pointer-events: none;
 }
-.airdesk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.airdesk-head p, .airdesk-card-head small, .airdesk-hint { margin: 0; color: #a8aaa0; font-size: 10px; line-height: 1.45; }
+.airdesk-head { position: absolute; top: 18px; left: 22px; display: flex; align-items: flex-start; gap: 12px; pointer-events: auto; text-shadow: 0 2px 8px rgba(0,0,0,.94); }
+.airdesk-head p, .airdesk-card-head small, .airdesk-hint { margin: 0; color: #e5e6de; font-size: 10px; line-height: 1.45; text-shadow: 0 2px 8px rgba(0,0,0,.94); }
 .airdesk-head h2 { margin: 2px 0 0; font: 400 28px/1 var(--font-display); letter-spacing: -.03em; }
-.airdesk-head button { width: 28px; height: 28px; border: 1px solid #4c4e45; background: transparent; color: #d9d8cf; font-size: 19px; cursor: pointer; }
-.airdesk-status { margin: 0; padding: 8px 10px; border-left: 2px solid #f2c94c; background: rgba(242, 201, 76, .08); color: #d7d7cd; font-size: 11px; }
-.airdesk-grid { display: grid; grid-template-columns: 1.16fr .84fr; gap: 10px; }
-.airdesk-card { min-width: 0; border: 1px solid #34362f; background: rgba(255,255,255,.025); padding: 10px; display: grid; gap: 9px; }
+.airdesk-head button { position: fixed; top: 20px; right: 22px; width: 28px; height: 28px; border: 1px solid rgba(246,244,237,.54); background: rgba(10,12,9,.12); color: #f6f4ed; font-size: 19px; cursor: pointer; text-shadow: 0 2px 8px rgba(0,0,0,.94); }
+.airdesk-status { position: absolute; top: 70px; left: 22px; max-width: 290px; margin: 0; padding: 4px 0 4px 10px; border-left: 2px solid #f2c94c; background: transparent; color: #f6f4ed; font-size: 11px; text-shadow: 0 2px 8px rgba(0,0,0,.94); }
+.airdesk-grid { position: absolute; inset: 0; display: block; pointer-events: none; }
+.airdesk-card { position: absolute; min-width: 0; border: 0; background: transparent; padding: 0; display: grid; gap: 7px; pointer-events: auto; }
+.airdesk-image-card { left: 5%; bottom: 8%; width: clamp(250px, 34vw, 490px); }
+.airdesk-text-card { top: 23%; right: 5%; width: min(29vw, 400px); }
 .airdesk-card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.airdesk-card-head span { color: #f2c94c; font-size: 12px; font-weight: 600; }
+.airdesk-card-head span { color: #f7d75e; font-size: 12px; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,.94); }
 .airdesk-card-head small { text-align: right; }
-.airdesk-image-stage { position: relative; min-height: 234px; overflow: hidden; border: 1px solid #35372f; background: #131814; }
-.airdesk-image { --image-x: 0; --image-y: 0; --image-scale: 1; --image-rotation: 0deg; --image-flip-x: 1; --image-flip-y: 1; position: absolute; left: 50%; top: 50%; width: 76%; transform: translate(calc(-50% + var(--image-x) * 100%), calc(-50% + var(--image-y) * 100%)) rotate(var(--image-rotation)) scale(calc(var(--image-scale) * var(--image-flip-x)), calc(var(--image-scale) * var(--image-flip-y))); transform-origin: center; touch-action: none; }
-.airdesk-image > svg:first-child { display: block; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.24); }
+.airdesk-image-stage { position: relative; min-height: 0; aspect-ratio: 1.45; overflow: visible; border: 0; background: transparent; }
+.airdesk-image { --image-x: 0; --image-y: 0; --image-scale: 1; --image-rotation: 0deg; --image-flip-x: 1; --image-flip-y: 1; position: absolute; left: 50%; top: 50%; width: 86%; transform: translate(calc(-50% + var(--image-x) * 100%), calc(-50% + var(--image-y) * 100%)) rotate(var(--image-rotation)) scale(calc(var(--image-scale) * var(--image-flip-x)), calc(var(--image-scale) * var(--image-flip-y))); transform-origin: center; touch-action: none; filter: drop-shadow(0 8px 18px rgba(0,0,0,.4)); }
+.airdesk-image > svg:first-child { display: block; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.42); }
 .airdesk-drawings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.airdesk-handle { position: absolute; width: 14px; height: 14px; border: 2px solid #f2c94c; background: #151712; border-radius: 50%; box-shadow: 0 0 0 2px rgba(0,0,0,.45); }
+.airdesk-handle { position: absolute; width: 14px; height: 14px; border: 2px solid #f2c94c; background: rgba(21,23,18,.42); border-radius: 50%; box-shadow: 0 0 0 2px rgba(0,0,0,.45); }
 .airdesk-scale { right: -8px; bottom: -8px; cursor: nwse-resize; }
 .airdesk-rotate { top: -8px; right: -8px; cursor: ew-resize; }
 .airdesk-tools { display: flex; flex-wrap: wrap; gap: 5px; }
-.airdesk-tools button { border: 1px solid #45473f; background: transparent; color: #dcddd5; padding: 6px 7px; font-size: 10px; cursor: pointer; }
-.airdesk-tools button:hover, .airdesk-tools button.active { border-color: #f2c94c; color: #f2c94c; background: rgba(242,201,76,.08); }
-.airdesk-editor { min-height: 174px; padding: 12px; border: 1px solid #35372f; background: #141613; color: #eeeee8; font: 14px/1.65 var(--font-ui); outline: none; }
-.airdesk-editor:focus { border-color: #f2c94c; box-shadow: inset 0 0 0 1px rgba(242,201,76,.28); }
-.airdesk-hint { border-top: 1px solid #34362f; padding-top: 9px; }
+.airdesk-tools button { border: 1px solid rgba(246,244,237,.42); background: rgba(10,12,9,.12); color: #f6f4ed; padding: 5px 7px; font-size: 10px; cursor: pointer; text-shadow: 0 2px 8px rgba(0,0,0,.94); }
+.airdesk-tools button:hover, .airdesk-tools button.active { border-color: #f2c94c; color: #f7d75e; background: rgba(242,201,76,.12); }
+.airdesk-editor { min-height: 0; padding: 2px 0 2px 12px; border: 0; border-left: 2px solid #f2c94c; background: transparent; color: #fff; font: 16px/1.6 var(--font-ui); outline: none; text-shadow: 0 2px 8px rgba(0,0,0,.96); }
+.airdesk-editor:focus { border-left-color: #fff3a5; box-shadow: -6px 0 12px -10px #f2c94c; }
+.airdesk-hint { position: absolute; left: 22px; bottom: 16px; max-width: min(600px, calc(100% - 44px)); padding: 0; border: 0; pointer-events: none; }
 
 #airsketch-dock {
   width: 318px;
@@ -789,8 +789,8 @@ button, select, input { font-family: var(--font-ui); }
     grid-template-rows: auto auto 1fr;
     gap: 8px 12px;
   }
-  #airdesk { top: 14px; transform: translateX(-50%); width: min(680px, calc(100% - 24px)); }
-  .airdesk-image-stage { min-height: 190px; }
+  .airdesk-image-card { left: 4%; bottom: 7%; width: clamp(220px, 42vw, 390px); }
+  .airdesk-text-card { top: 20%; right: 4%; width: min(38vw, 330px); }
   .air-head { grid-column: 1; grid-row: 1; }
   .air-head h2 { font-size: 21px; }
   .air-status { grid-column: 1; grid-row: 2 / 4; border-bottom: none; }
@@ -831,9 +831,17 @@ button, select, input { font-family: var(--font-ui); }
     grid-template-columns: 0.72fr 1.28fr;
     grid-template-rows: auto 1fr auto auto;
   }
-  #airdesk { position: fixed; top: 8px; max-height: calc(100dvh - 16px); overflow: auto; padding: 12px; }
-  .airdesk-grid { grid-template-columns: 1fr; }
-  .airdesk-image-stage { min-height: 180px; }
+  #airdesk { position: absolute; inset: 0; overflow: visible; padding: 0; }
+  .airdesk-head { top: 10px; left: 12px; }
+  .airdesk-head h2 { font-size: 22px; }
+  .airdesk-head button { top: 12px; right: 12px; }
+  .airdesk-status { top: 58px; left: 12px; max-width: 230px; font-size: 10px; }
+  .airdesk-image-card { left: 5%; bottom: 9%; width: 57vw; }
+  .airdesk-text-card { top: 21%; right: 5%; width: 52vw; }
+  .airdesk-editor { font-size: 13px; line-height: 1.5; }
+  .airdesk-tools { gap: 3px; }
+  .airdesk-tools button { padding: 4px 5px; font-size: 9px; }
+  .airdesk-hint { display: none; }
   .air-head { grid-column: 1; grid-row: 1; }
   .air-status { grid-column: 1; grid-row: 2; }
   .air-guess-block { grid-column: 2; grid-row: 1 / 3; }

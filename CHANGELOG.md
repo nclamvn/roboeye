@@ -4,6 +4,11 @@
 
 ### AirDesk direct content manipulation (TIP-30)
 
+- Reworked AirDesk into a transparent AR layer: image, editable Vietnamese
+  note, fingertip affordances and compact controls now sit directly over the
+  camera stream. Text uses a high-contrast shadow and a slim yellow focus rail
+  instead of an opaque editor panel, preserving both readability and scene
+  awareness.
 - Added a separate camera-first AirDesk workspace: five visible yellow
   fingertip markers, extended-finger halos and pinch press/drag interaction.
 - Added a local image canvas with move, scale, rotation, horizontal/vertical
