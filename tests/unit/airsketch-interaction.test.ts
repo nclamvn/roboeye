@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { AIRSKETCH_CONFIG } from '../../src/airsketch-config';
 import { AirInteractionController } from '../../src/airsketch-interaction';
 import { AirInkDocument } from '../../src/airsketch-ink';
 import { AirSketchScene } from '../../src/airsketch-scene';
@@ -160,9 +161,11 @@ test('bù timestamp worker làm con trỏ đuổi kịp khung hình trễ nhưng
   const first = controller.update(hand(0.30, 'index'), 0, 0)!;
   const delayed = controller.update(hand(0.40, 'index'), 40, 95)!;
   // Camera mirror means moving hand x=0.30 → 0.40 moves cursor 0.70 → 0.60.
-  // With the 55 ms bounded prediction, cursor must advance beyond the raw 0.60
-  // position but must remain within the normalized stage.
-  assert.ok(delayed.cursor.x < 0.60, `cursor prediction = ${delayed.cursor.x}`);
+  // The stable 1€ point intentionally trails the raw 0.60 sample. Prediction
+  // must move the visible point ahead of that stable control anchor in the
+  // same direction, while remaining bounded and inside the stage.
+  assert.ok(delayed.cursor.x < delayed.grabCursor.x, `cursor=${delayed.cursor.x}, stable=${delayed.grabCursor.x}`);
+  assert.ok(delayed.grabCursor.x - delayed.cursor.x <= AIRSKETCH_CONFIG.tracking.cursorMaxPrediction + 0.000001);
   assert.ok(delayed.cursor.x >= 0 && delayed.cursor.x <= 1);
   assert.equal(first.cursor.t, 0);
   assert.equal(delayed.cursor.t, 95, 'render timestamp is the worker reply time');
@@ -223,4 +226,16 @@ test('scene có pickup halo cho hình nhỏ nhưng vẫn giới hạn', () => {
   ] });
   assert.ok(scene.hitTest({ x: 0.54, y: 0.505 }), 'bắt được hình nhỏ trong halo');
   assert.equal(scene.hitTest({ x: 0.60, y: 0.505 }), null, 'không mở rộng hit area vô hạn');
+});
+
+test('pinch bắt đầu trên object được nâng trực tiếp thành grab rồi trả về idle', () => {
+  const controller = new AirInteractionController();
+  const pinch = controller.update(hand(0.34, 'pinch'), 0)!;
+  assert.equal(pinch.mode, 'drawing');
+  assert.equal(pinch.justPinched, true);
+  assert.equal(controller.promotePinchToGrab(), true);
+  assert.equal(controller.currentMode(), 'grabbing');
+  const placed = controller.update(hand(0.34, 'index'), 40)!;
+  assert.equal(placed.justReleased, true);
+  assert.equal(placed.mode, 'idle');
 });

@@ -300,9 +300,10 @@ button, select, input { font-family: var(--font-ui); }
 
 #airdesk-fingers { position: absolute; inset: 0; z-index: 22; pointer-events: none; }
 .airdesk-finger {
-  position: absolute; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+  position: absolute; left: 0; top: 0; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
   border-radius: 50%; background: #f2c94c; box-shadow: 0 0 0 2px rgba(33, 32, 18, .78), 0 0 13px rgba(242, 201, 76, .82);
-  transition: left 45ms linear, top 45ms linear, transform 100ms var(--ease-quiet);
+  will-change: transform;
+  transition: width 100ms var(--ease-quiet), height 100ms var(--ease-quiet), margin 100ms var(--ease-quiet), background 100ms var(--ease-quiet);
 }
 .airdesk-finger.extended { width: 17px; height: 17px; margin: -8.5px 0 0 -8.5px; background: rgba(242, 201, 76, .18); border: 2px solid #f7d75e; box-shadow: 0 0 0 2px rgba(33, 32, 18, .8), 0 0 18px rgba(242, 201, 76, .9); }
 .airdesk-finger.extended::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: #f2c94c; }

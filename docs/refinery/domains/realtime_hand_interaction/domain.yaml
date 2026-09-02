@@ -1,0 +1,24 @@
+domain: realtime_hand_interaction
+entity_label: "giải pháp tương tác tay thời gian thực"
+
+schema:
+  type_field: null
+  fields:
+    - ten
+    - problem
+    - mechanism
+    - recommendation
+    - limitation
+    - applicability
+
+rollup_field: applicability
+
+universe:
+  estimate: 4
+  basis: "Bốn lớp nguyên nhân trong pipeline RoboEye: capture, inference, signal filtering và target acquisition"
+
+refresh_days:
+  default: 180
+
+alias_map: {}
+ambiguous_clusters: []

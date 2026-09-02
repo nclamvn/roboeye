@@ -1,0 +1,3 @@
+# Refinery snapshots are immutable raw HTTP captures; preserve source bytes and
+# do not treat the publisher's whitespace as repository formatting errors.
+docs/refinery/**/snapshots/* -whitespace

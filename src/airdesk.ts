@@ -1,6 +1,7 @@
 // AirDesk: visible fingertip affordances and direct content manipulation.
 // This deliberately stays separate from AirSketch's drawing grammar.
 import { AIRSKETCH_CONFIG } from './airsketch-config';
+import { RealtimePointFilter } from './realtime-point-filter';
 import type { AirPoint, HandLandmark } from './airsketch-types';
 
 export type AirDeskTool = 'move' | 'draw';
@@ -16,7 +17,10 @@ export interface AirDeskTransform {
 }
 
 export interface AirDeskHandSample {
+  // Predicted point follows the visible hand; controlPointer stays stable for
+  // drag anchors so an object does not overshoot when motion changes direction.
   pointer: AirPoint;
+  controlPointer: AirPoint;
   pinch: boolean;
   justPinched: boolean;
   justReleased: boolean;
@@ -40,19 +44,31 @@ function clamp(value: number, min: number, max: number): number {
 
 export class AirDeskController {
   private pinchActive = false;
+  private readonly pointerFilter = new RealtimePointFilter({
+    minCutoff: AIRSKETCH_CONFIG.tracking.cursorMinCutoff,
+    beta: AIRSKETCH_CONFIG.tracking.cursorBeta,
+    derivativeCutoff: AIRSKETCH_CONFIG.tracking.cursorDerivativeCutoff,
+    velocityAlpha: AIRSKETCH_CONFIG.tracking.cursorVelocityAlpha,
+    maxPredictionMs: AIRSKETCH_CONFIG.tracking.cursorLatencyMaxMs,
+    maxPredictionDistance: AIRSKETCH_CONFIG.tracking.cursorMaxPrediction
+  });
+  private readonly fingertipFilters = new Map<number, RealtimePointFilter>();
   private tool: AirDeskTool = 'move';
   private transform: AirDeskTransform = { x: 0, y: 0, scale: 1, rotation: 0, flipX: false, flipY: false };
   private drag: { point: AirPoint; transform: AirDeskTransform; kind: 'move' | 'scale' | 'rotate' } | null = null;
   private paths: AirPoint[][] = [];
   private activePath: AirPoint[] | null = null;
+  private drawingRevision = 0;
 
   reset(): void {
     this.pinchActive = false;
+    this.pointerFilter.reset();
+    for (const filter of this.fingertipFilters.values()) filter.reset();
     this.drag = null;
     this.activePath = null;
   }
 
-  hand(points: HandLandmark[], at: number): AirDeskHandSample | null {
+  hand(points: HandLandmark[], at: number, receivedAt = at): AirDeskHandSample | null {
     if (points.length < 21) return null;
     const span = Math.max(0.001, distance(points[5], points[17]));
     const ratio = distance(points[4], points[8]) / span;
@@ -60,26 +76,46 @@ export class AirDeskController {
     this.pinchActive = this.pinchActive
       ? ratio < AIRSKETCH_CONFIG.tracking.pinchUpRatio
       : ratio <= AIRSKETCH_CONFIG.tracking.pinchDownRatio;
-    const pointer = { x: 1 - points[8].x, y: points[8].y, t: at };
+    const filteredPointer = this.pointerFilter.update({ x: 1 - points[8].x, y: points[8].y }, at, receivedAt);
     const extendedByTip = new Map<number, boolean>();
     FINGER_PAIRS.forEach(([tip, pip]) => extendedByTip.set(tip, isExtended(points, tip, pip)));
     return {
-      pointer,
+      pointer: filteredPointer.display,
+      controlPointer: filteredPointer.stable,
       pinch: this.pinchActive,
       justPinched: !previous && this.pinchActive,
       justReleased: previous && !this.pinchActive,
-      fingertips: TIP_INDICES.map((index) => ({
-        point: { x: 1 - points[index].x, y: points[index].y, t: at },
-        // Thumb does not have the same PIP geometry; it remains a dot.
-        extended: extendedByTip.get(index) ?? false,
-        index
-      }))
+      fingertips: TIP_INDICES.map((index) => {
+        if (index === 8) {
+          return { point: filteredPointer.display, extended: extendedByTip.get(index) ?? false, index };
+        }
+        let filter = this.fingertipFilters.get(index);
+        if (!filter) {
+          filter = new RealtimePointFilter({
+            minCutoff: AIRSKETCH_CONFIG.tracking.cursorMinCutoff,
+            beta: AIRSKETCH_CONFIG.tracking.cursorBeta,
+            derivativeCutoff: AIRSKETCH_CONFIG.tracking.cursorDerivativeCutoff,
+            velocityAlpha: AIRSKETCH_CONFIG.tracking.cursorVelocityAlpha,
+            maxPredictionMs: AIRSKETCH_CONFIG.tracking.cursorLatencyMaxMs,
+            maxPredictionDistance: AIRSKETCH_CONFIG.tracking.cursorMaxPrediction
+          });
+          this.fingertipFilters.set(index, filter);
+        }
+        return {
+          point: filter.update({ x: 1 - points[index].x, y: points[index].y }, at, receivedAt).display,
+          // Thumb does not have the same PIP geometry; it remains a dot.
+          extended: extendedByTip.get(index) ?? false,
+          index
+        };
+      })
     };
   }
 
   getTool(): AirDeskTool { return this.tool; }
   getTransform(): AirDeskTransform { return { ...this.transform }; }
   getPaths(): AirPoint[][] { return this.paths.map((path) => path.map((point) => ({ ...point }))); }
+  getRenderablePaths(): readonly (readonly AirPoint[])[] { return this.paths; }
+  getDrawingRevision(): number { return this.drawingRevision; }
 
   perform(action: AirDeskAction): void {
     if (action === 'rotate-left') this.transform.rotation -= 15;
@@ -111,12 +147,16 @@ export class AirDeskController {
   beginDrawing(pointer: AirPoint): void {
     this.activePath = [{ ...pointer }];
     this.paths.push(this.activePath);
+    this.drawingRevision++;
   }
 
   draw(pointer: AirPoint): void {
     if (!this.activePath) return;
     const last = this.activePath[this.activePath.length - 1];
-    if (Math.hypot(pointer.x - last.x, pointer.y - last.y) >= 0.003) this.activePath.push({ ...pointer });
+    if (Math.hypot(pointer.x - last.x, pointer.y - last.y) >= 0.003) {
+      this.activePath.push({ ...pointer });
+      this.drawingRevision++;
+    }
   }
 
   end(): void {

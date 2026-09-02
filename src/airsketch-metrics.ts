@@ -9,11 +9,17 @@ function percentile(values: number[], p: number): number | null {
 export class AirSketchMetrics {
   private hand: number[] = [];
   private pipeline: number[] = [];
+  private capture: number[] = [];
   private classify: number[] = [];
+  private droppedVideoFrames = 0;
 
   addHand(ms: number): void { if (Number.isFinite(ms) && ms >= 0) this.hand.push(ms); }
   addPipeline(ms: number): void { if (Number.isFinite(ms) && ms >= 0) this.pipeline.push(ms); }
+  addCapture(ms: number): void { if (Number.isFinite(ms) && ms >= 0) this.capture.push(ms); }
   addClassify(ms: number): void { if (Number.isFinite(ms) && ms >= 0) this.classify.push(ms); }
+  addDroppedVideoFrames(count: number): void {
+    if (Number.isFinite(count) && count > 0) this.droppedVideoFrames += Math.floor(count);
+  }
 
   snapshot(
     strokes: number,
@@ -26,6 +32,8 @@ export class AirSketchMetrics {
       ready,
       hand: summarize(this.hand),
       pipeline: summarize(this.pipeline),
+      capture: summarize(this.capture),
+      droppedVideoFrames: this.droppedVideoFrames,
       classify: summarize(this.classify),
       strokes,
       points,

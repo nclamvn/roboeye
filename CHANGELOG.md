@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Zero-lag hand interaction pipeline (TIP-31)
+
+- Replaced render-loop hand sampling with video-frame-synchronous capture and
+  honest capture/inference/source-frame-age telemetry, including dropped video
+  frames and real-model latency gates.
+- Made MediaPipe GPU-first with an explicit CPU fallback and introduced a
+  timestamp-aware 1€ filter with separate responsive display and stable drag
+  coordinates across AirSketch and AirDesk.
+- Added direct pinch-on-object pickup and bounded nearest-target acquisition,
+  while removing duplicate canvas paints, fingertip DOM reconstruction,
+  positional CSS delay and full SVG reconstruction per hand sample.
+- Added a provenance-backed refinery registry and adversarial verification for
+  the four selected real-time interaction techniques.
+
 ### AirDesk direct content manipulation (TIP-30)
 
 - Reworked AirDesk into a transparent AR layer: image, editable Vietnamese

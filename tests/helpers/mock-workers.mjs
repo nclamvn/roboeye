@@ -34,7 +34,7 @@ export function installMockWorkers() {
     postMessage(message) {
       if (this.terminated) return;
       if (this.kind === 'air-hand') {
-        if (message.type === 'init') this.emit({ type: 'ready' });
+        if (message.type === 'init') this.emit({ type: 'ready', delegate: 'CPU' });
         else if (message.type === 'frame') {
           const landmarks = window.__mockAirHandFrames.shift() ?? null;
           this.emit({
@@ -42,7 +42,10 @@ export function installMockWorkers() {
             landmarks,
             handedness: landmarks ? 'Right' : null,
             inferMs: 9,
-            capturedAt: message.timestamp
+            capturedAt: message.capturedAt ?? message.timestamp,
+            captureStartedAt: message.captureStartedAt,
+            sentAt: message.sentAt,
+            delegate: 'CPU'
           });
         }
         return;

@@ -192,3 +192,15 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   fingers have a halo, pinch acts as press/drag, image actions and text
   copy/cut/delete/spelling proposal work without entering AirSketch.
 - **Detail:** `docs/TIP-30-AIRDESK-DIRECT-MANIPULATION.md`.
+
+## TIP-31 · Zero-lag hand interaction pipeline
+
+- **Dependencies:** TIP-29, TIP-30. **Priority:** P0 product viability.
+- **Task:** schedule capture on real video frames; measure honest capture and
+  source-frame age; use GPU-first MediaPipe with CPU fallback; apply a
+  timestamp-aware 1€ filter; enlarge noisy hand target acquisition; eliminate
+  redundant canvas/DOM/SVG work; and allow direct spatial pinch-to-grab.
+- **Acceptance:** unit contracts cover filtering, prediction, targeting and
+  direct pickup; real-model smoke gates capture/hand/pipeline p95; full release
+  verification remains green.
+- **Detail:** `docs/TIP-31-ZERO-LAG-HAND-INTERACTION.md`.

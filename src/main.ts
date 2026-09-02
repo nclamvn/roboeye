@@ -22,6 +22,7 @@ import { AirInteractionController } from './airsketch-interaction';
 import { AirSketchScene } from './airsketch-scene';
 import { AirSketchMetrics } from './airsketch-metrics';
 import { AirDeskController, type AirDeskAction, type AirDeskHandSample } from './airdesk';
+import { nearestTargetWithin, type TargetRect } from './airdesk-targeting';
 import { localizeSketchLabel } from './airsketch-labels';
 import { assessSketchConfidence } from './airsketch-confidence';
 import { detectHeartSketch, mergeSpecialSketchPrediction } from './airsketch-shapes';
@@ -117,6 +118,10 @@ let airClassifierRetryTimer: ReturnType<typeof setTimeout> | null = null;
 let airPredictions: SketchPrediction[] = [];
 let airPhrase: string[] = [];
 let airLastCaptureAt = 0;
+let airVideoFrameCallbackId: number | null = null;
+let airVideoFrameGeneration = 0;
+let airLastPresentedFrame = 0;
+let airUsesVideoFrameCallback = false;
 let airLastInkAt = 0;
 let airLastClassifiedRevision = -1;
 let airPointerActive = false;
@@ -464,20 +469,26 @@ function spawnAirWorkers() {
       } else if (message.type === 'ready') {
         airHandStage = 'ready';
         airHandReady = true;
-        shell.setAirSketchStatus('Tracking tay sẵn sàng · giơ trỏ để định vị, chụm cái + trỏ để vẽ');
-        if (airDeskOn) shell.setAirDeskStatus('Tracking tay sẵn sàng · các đầu ngón vàng đã hoạt động.');
-        diagnostics.record('airsketch.hand.ready', { model: AIRSKETCH_CONFIG.handModel.version });
+        const delegate = message.delegate ?? 'CPU';
+        shell.setAirSketchStatus(`Tracking tay ${delegate} sẵn sàng · chụm lên vật thể để cầm, chụm vùng trống để vẽ`);
+        if (airDeskOn) shell.setAirDeskStatus(`Tracking tay ${delegate} sẵn sàng · các đầu ngón vàng đã hoạt động.`);
+        diagnostics.record('airsketch.hand.ready', { model: AIRSKETCH_CONFIG.handModel.version, delegate });
       } else if (message.type === 'landmarks') {
         airHandBusy = false;
+        const resultAt = performance.now();
         if (airHandWarmupRemaining > 0) airHandWarmupRemaining--;
         else {
           airMetrics.addHand(message.inferMs);
-          // This is the user-visible cost, not just MediaPipe inference:
-          // bitmap transfer + worker queue + inference + reply to main.
-          airMetrics.addPipeline(performance.now() - message.capturedAt);
+          if (message.captureStartedAt != null && message.sentAt != null) {
+            airMetrics.addCapture(message.sentAt - message.captureStartedAt);
+          }
+          // Source-frame age includes bitmap conversion, worker transit,
+          // inference and reply. The previous timestamp started only after
+          // conversion and therefore materially under-reported felt latency.
+          airMetrics.addPipeline(resultAt - message.capturedAt);
         }
-        if (airSketchOn) handleAirLandmarks(message.landmarks, message.capturedAt, performance.now());
-        else if (airDeskOn) handleAirDeskLandmarks(message.landmarks, message.capturedAt);
+        if (airSketchOn) handleAirLandmarks(message.landmarks, message.capturedAt, resultAt);
+        else if (airDeskOn) handleAirDeskLandmarks(message.landmarks, message.capturedAt, resultAt);
       } else {
         airHandBusy = false;
         if (message.stage === 'load') airHandReady = false;
@@ -503,7 +514,8 @@ function spawnAirWorkers() {
       expectedBytes: AIRSKETCH_CONFIG.handModel.bytes,
       expectedSha256: AIRSKETCH_CONFIG.handModel.sha256,
       visionBundleUrl: new URL('mediapipe/vision_bundle.js', runtimeBase).href,
-      wasmBase: new URL('mediapipe/wasm', runtimeBase).href
+      wasmBase: new URL('mediapipe/wasm', runtimeBase).href,
+      preferredDelegate: 'GPU'
     });
   }
 
@@ -642,6 +654,11 @@ let airDeskGesture: 'move' | 'scale' | 'rotate' | 'draw' | 'text' | null = null;
 let airDeskTextAnchor: Range | null = null;
 let airDeskLastSeenAt = -Infinity;
 let airDeskLossTimer: ReturnType<typeof setTimeout> | null = null;
+let airDeskRenderedDrawingRevision = -1;
+let airDeskRenderedTransform = '';
+const airDeskFingerElements = new Map<number, HTMLElement>();
+const airDeskPathElements: SVGPolylineElement[] = [];
+const airDeskRenderedPathLengths: number[] = [];
 
 function airDeskClientPoint(point: Pick<AirPoint, 'x' | 'y'>): { x: number; y: number } {
   const rect = airStage.getBoundingClientRect();
@@ -654,45 +671,82 @@ function airDeskImagePoint(client: { x: number; y: number }, at: number): AirPoi
   return { x: (client.x - rect.left) / rect.width, y: (client.y - rect.top) / rect.height, t: at };
 }
 
+function pickAirDeskTarget(client: { x: number; y: number }): HTMLElement | null {
+  const exact = document.elementFromPoint(client.x, client.y) as HTMLElement | null;
+  if (exact?.closest('[data-airdesk-action], [data-airdesk-text-action], [data-airdesk-handle], #airdesk-image, #airdesk-editor')) {
+    return exact;
+  }
+  const targets: TargetRect<HTMLElement>[] = [];
+  for (const element of document.querySelectorAll<HTMLElement>('[data-airdesk-action], [data-airdesk-text-action], [data-airdesk-handle]')) {
+    const rect = element.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) continue;
+    targets.push({ target: element, left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom });
+  }
+  const stageRect = airStage.getBoundingClientRect();
+  const radius = Math.min(38, Math.max(22, Math.hypot(stageRect.width, stageRect.height) * 0.022));
+  return nearestTargetWithin(client, targets, radius);
+}
+
 function renderAirDeskImage(): void {
   const transform = airDesk.getTransform();
-  airDeskImage.style.setProperty('--image-x', String(transform.x));
-  airDeskImage.style.setProperty('--image-y', String(transform.y));
-  airDeskImage.style.setProperty('--image-scale', String(transform.scale));
-  airDeskImage.style.setProperty('--image-rotation', `${transform.rotation}deg`);
-  airDeskImage.style.setProperty('--image-flip-x', transform.flipX ? '-1' : '1');
-  airDeskImage.style.setProperty('--image-flip-y', transform.flipY ? '-1' : '1');
-  airDeskDrawings.replaceChildren();
-  const svgNs = 'http://www.w3.org/2000/svg';
-  for (const path of airDesk.getPaths()) {
-    if (path.length < 2) continue;
-    const line = document.createElementNS(svgNs, 'polyline');
-    line.setAttribute('points', path.map((point) => `${point.x * 320},${point.y * 210}`).join(' '));
-    line.setAttribute('fill', 'none');
-    line.setAttribute('stroke', '#f2c94c');
-    line.setAttribute('stroke-width', '3');
-    line.setAttribute('stroke-linecap', 'round');
-    line.setAttribute('stroke-linejoin', 'round');
-    airDeskDrawings.appendChild(line);
+  const transformKey = `${transform.x}|${transform.y}|${transform.scale}|${transform.rotation}|${transform.flipX}|${transform.flipY}`;
+  if (transformKey !== airDeskRenderedTransform) {
+    airDeskRenderedTransform = transformKey;
+    airDeskImage.style.setProperty('--image-x', String(transform.x));
+    airDeskImage.style.setProperty('--image-y', String(transform.y));
+    airDeskImage.style.setProperty('--image-scale', String(transform.scale));
+    airDeskImage.style.setProperty('--image-rotation', `${transform.rotation}deg`);
+    airDeskImage.style.setProperty('--image-flip-x', transform.flipX ? '-1' : '1');
+    airDeskImage.style.setProperty('--image-flip-y', transform.flipY ? '-1' : '1');
+  }
+  const drawingRevision = airDesk.getDrawingRevision();
+  if (drawingRevision !== airDeskRenderedDrawingRevision) {
+    airDeskRenderedDrawingRevision = drawingRevision;
+    const svgNs = 'http://www.w3.org/2000/svg';
+    const paths = airDesk.getRenderablePaths();
+    while (airDeskPathElements.length < paths.length) {
+      const line = document.createElementNS(svgNs, 'polyline');
+      line.setAttribute('fill', 'none');
+      line.setAttribute('stroke', '#f2c94c');
+      line.setAttribute('stroke-width', '3');
+      line.setAttribute('stroke-linecap', 'round');
+      line.setAttribute('stroke-linejoin', 'round');
+      airDeskDrawings.appendChild(line);
+      airDeskPathElements.push(line);
+      airDeskRenderedPathLengths.push(-1);
+    }
+    while (airDeskPathElements.length > paths.length) {
+      airDeskPathElements.pop()?.remove();
+      airDeskRenderedPathLengths.pop();
+    }
+    for (let index = 0; index < paths.length; index++) {
+      const path = paths[index];
+      if (airDeskRenderedPathLengths[index] === path.length) continue;
+      airDeskRenderedPathLengths[index] = path.length;
+      airDeskPathElements[index].setAttribute('points', path.map((point) => `${point.x * 320},${point.y * 210}`).join(' '));
+    }
   }
   document.getElementById('airdesk-draw-btn')?.classList.toggle('active', airDesk.getTool() === 'draw');
 }
 
 function renderAirDeskFingers(fingertips: AirDeskHandSample['fingertips']): void {
   airDeskFingerLayer.hidden = false;
-  airDeskFingerLayer.replaceChildren();
+  const width = airDeskFingerLayer.clientWidth;
+  const height = airDeskFingerLayer.clientHeight;
   for (const finger of fingertips) {
-    const dot = document.createElement('i');
+    let dot = airDeskFingerElements.get(finger.index);
+    if (!dot) {
+      dot = document.createElement('i');
+      dot.dataset.finger = String(finger.index);
+      airDeskFingerElements.set(finger.index, dot);
+      airDeskFingerLayer.appendChild(dot);
+    }
     dot.className = `airdesk-finger${finger.extended ? ' extended' : ''}`;
-    dot.style.left = `${finger.point.x * 100}%`;
-    dot.style.top = `${finger.point.y * 100}%`;
-    dot.dataset.finger = String(finger.index);
-    airDeskFingerLayer.appendChild(dot);
+    dot.style.transform = `translate3d(${finger.point.x * width}px, ${finger.point.y * height}px, 0)`;
   }
 }
 
 function clearAirDeskFingers(): void {
-  airDeskFingerLayer.replaceChildren();
   airDeskFingerLayer.hidden = true;
 }
 
@@ -743,14 +797,15 @@ function performAirDeskTextAction(action: string): void {
 
 function handleAirDeskLandmarks(
   landmarks: import('./airsketch-types').HandLandmark[] | null,
-  capturedAt = performance.now()
+  capturedAt = performance.now(),
+  receivedAt = performance.now()
 ): void {
   if (!airDeskOn) return;
   if (!landmarks) {
     // A worker may return an occasional empty sample during a turn or brief
     // blur. Do not make all five markers flash out, or drop an active drag,
     // until the same bounded continuity window used by AirSketch has elapsed.
-    if (capturedAt - airDeskLastSeenAt < AIRSKETCH_CONFIG.tracking.lostHandGraceMs) {
+    if (receivedAt - airDeskLastSeenAt < AIRSKETCH_CONFIG.tracking.lostHandGraceMs) {
       if (airDeskLossTimer == null) {
         airDeskLossTimer = setTimeout(() => {
           airDeskLossTimer = null;
@@ -768,16 +823,16 @@ function handleAirDeskLandmarks(
     airDeskGesture = null;
     return;
   }
-  airDeskLastSeenAt = capturedAt;
+  airDeskLastSeenAt = receivedAt;
   if (airDeskLossTimer != null) {
     clearTimeout(airDeskLossTimer);
     airDeskLossTimer = null;
   }
-  const sample = airDesk.hand(landmarks, capturedAt);
+  const sample = airDesk.hand(landmarks, capturedAt, receivedAt);
   if (!sample) return;
   renderAirDeskFingers(sample.fingertips);
   const client = airDeskClientPoint(sample.pointer);
-  const target = document.elementFromPoint(client.x, client.y) as HTMLElement | null;
+  const target = pickAirDeskTarget(client);
   if (sample.justPinched) {
     const imageAction = target?.closest<HTMLElement>('[data-airdesk-action]')?.dataset.airdeskAction as AirDeskAction | undefined;
     const textAction = target?.closest<HTMLElement>('[data-airdesk-text-action]')?.dataset.airdeskTextAction;
@@ -788,11 +843,11 @@ function handleAirDeskLandmarks(
     } else if (textAction) {
       performAirDeskTextAction(textAction);
     } else if (target?.closest('[data-airdesk-handle="scale"]')) {
-      airDesk.begin(sample.pointer, 'scale');
+      airDesk.begin(sample.controlPointer, 'scale');
       airDeskGesture = 'scale';
       shell.setAirDeskStatus('Đang phóng to / thu nhỏ ảnh…');
     } else if (target?.closest('[data-airdesk-handle="rotate"]')) {
-      airDesk.begin(sample.pointer, 'rotate');
+      airDesk.begin(sample.controlPointer, 'rotate');
       airDeskGesture = 'rotate';
       shell.setAirDeskStatus('Đang xoay ảnh…');
     } else if (target?.closest('#airdesk-image')) {
@@ -802,7 +857,7 @@ function handleAirDeskLandmarks(
         airDeskGesture = 'draw';
         shell.setAirDeskStatus('Đang vẽ trực tiếp lên ảnh…');
       } else {
-        airDesk.begin(sample.pointer, 'move');
+        airDesk.begin(sample.controlPointer, 'move');
         airDeskGesture = 'move';
         shell.setAirDeskStatus('Đang kéo ảnh…');
       }
@@ -818,7 +873,7 @@ function handleAirDeskLandmarks(
       const imagePoint = airDeskImagePoint(client, capturedAt);
       if (imagePoint) airDesk.draw(imagePoint);
     } else if (airDeskGesture === 'move' || airDeskGesture === 'scale' || airDeskGesture === 'rotate') {
-      airDesk.move(sample.pointer);
+      airDesk.move(sample.controlPointer);
     } else if (airDeskGesture === 'text') {
       updateAirDeskTextSelection(client);
     }
@@ -906,6 +961,20 @@ function handleAirLandmarks(
     y: (rect.y + sample.grabCursor.y * rect.h) / Math.max(1, airStage.clientHeight),
     t: sample.grabCursor.t
   };
+  let interactionNotice: string | null = null;
+  // A pinch that begins on an existing scene object means “pick this up”. A
+  // pinch on empty space remains the pen clutch. Spatial intent is more
+  // reliable than forcing an open-palm timing gesture before every pickup.
+  if (sample.justPinched && sample.mode === 'drawing') {
+    const object = airScene.beginGrab(point, grabPoint, sample.palmSpan);
+    if (object && airInteraction.promotePinchToGrab()) {
+      sample.mode = 'grabbing';
+      sample.penDown = false;
+      interactionNotice = 'Đang cầm vật thể · đưa tay gần/xa để đổi kích thước';
+    } else if (object) {
+      airScene.release();
+    }
+  }
   // The interaction controller decides whether the pen is down; this bridge
   // is the sole path that turns a tracked hand sample into an ink stroke.
   // Keep it before scene manipulation so releasing a stroke first commits it
@@ -913,7 +982,6 @@ function handleAirLandmarks(
   applyAirPen(point, sample.penDown);
   const cursorGesture = sample.mode === 'drawing' ? 'draw' : sample.mode === 'grabbing' ? 'grab' : sample.mode === 'manipulating' ? 'manipulate' : 'hover';
   shell.setAirSketchCursor(sample.fist ? null : point, cursorGesture);
-  let interactionNotice: string | null = null;
   if (sample.justGrabbed) {
     const object = airScene.beginGrab(point, grabPoint, sample.palmSpan);
     interactionNotice = object ? 'Đang cầm vật thể · đưa tay gần/xa để đổi kích thước' : 'Không có vật thể trong vùng nhón';
@@ -931,7 +999,10 @@ function handleAirLandmarks(
     : sample.openPalm
       ? `Giữ bàn tay mở để vào chế độ cầm · ${Math.round(sample.manipulationProgress * 100)}%`
       : 'Giơ trỏ để định vị · chụm cái + trỏ để vẽ');
-  renderAirInk();
+  // Ink writes already render in applyAirPen(). Only scene manipulation needs
+  // an explicit redraw here; the old unconditional call painted every drawing
+  // sample twice and competed with hand tracking on the main thread.
+  if (sample.mode === 'grabbing' || sample.justGrabbed || sample.justReleased) renderAirInk();
 }
 
 function pointerPoint(event: PointerEvent): AirPoint {
@@ -1338,6 +1409,63 @@ function retryDepthWorker() {
   else void start();
 }
 
+function captureAirHandFrame(sourceAt: number, callbackAt = performance.now()): void {
+  const currentVideo = video;
+  const interval = 1_000 / AIRSKETCH_CONFIG.tracking.maxFps;
+  if ((!airSketchOn && !airDeskOn) || !airHandReady || airClassifierLoading || airHandBusy || frozen ||
+      !airHandWorker || !currentVideo || currentVideo.readyState < 2 || callbackAt - airLastCaptureAt < interval) return;
+  airHandBusy = true;
+  airLastCaptureAt = callbackAt;
+  const aspect = currentVideo.videoWidth / Math.max(1, currentVideo.videoHeight);
+  const width = AIRSKETCH_CONFIG.tracking.captureWidth;
+  const height = Math.max(2, Math.round(width / Math.max(0.1, aspect)));
+  const captureStartedAt = performance.now();
+  void createImageBitmap(currentVideo, { resizeWidth: width, resizeHeight: height, resizeQuality: 'medium' })
+    .then((bitmap) => {
+      if ((!airSketchOn && !airDeskOn) || !airHandWorker || currentVideo !== video) {
+        bitmap.close();
+        airHandBusy = false;
+        return;
+      }
+      const sentAt = performance.now();
+      airHandWorker.postMessage({
+        type: 'frame', bitmap, timestamp: sourceAt, capturedAt: sourceAt, captureStartedAt, sentAt
+      }, [bitmap]);
+    })
+    .catch((error) => {
+      airHandBusy = false;
+      diagnostics.record('airsketch.capture.error', { message: error instanceof Error ? error.message : String(error) });
+    });
+}
+
+function startAirVideoFrameLoop(): void {
+  const currentVideo = video;
+  const generation = ++airVideoFrameGeneration;
+  airLastPresentedFrame = 0;
+  airUsesVideoFrameCallback = Boolean(currentVideo && 'requestVideoFrameCallback' in currentVideo);
+  if (!currentVideo || !airUsesVideoFrameCallback) return;
+  if (airVideoFrameCallbackId != null && 'cancelVideoFrameCallback' in currentVideo) {
+    currentVideo.cancelVideoFrameCallback(airVideoFrameCallbackId);
+  }
+  const onFrame = (now: DOMHighResTimeStamp, metadata: VideoFrameCallbackMetadata) => {
+    if (generation !== airVideoFrameGeneration || currentVideo !== video) return;
+    airVideoFrameCallbackId = currentVideo.requestVideoFrameCallback(onFrame);
+    if ((airSketchOn || airDeskOn) && airLastPresentedFrame > 0 && metadata.presentedFrames > airLastPresentedFrame + 1) {
+      airMetrics.addDroppedVideoFrames(metadata.presentedFrames - airLastPresentedFrame - 1);
+    }
+    airLastPresentedFrame = metadata.presentedFrames;
+    // captureTime is available for camera-backed media in supporting browsers;
+    // presentationTime is the honest fallback and remains in the same high-res
+    // clock domain as performance.now().
+    const extendedMetadata = metadata as VideoFrameCallbackMetadata & { captureTime?: number };
+    const sourceAt = Number.isFinite(extendedMetadata.captureTime)
+      ? extendedMetadata.captureTime!
+      : Number.isFinite(metadata.presentationTime) ? metadata.presentationTime : now;
+    captureAirHandFrame(sourceAt, now);
+  };
+  airVideoFrameCallbackId = currentVideo.requestVideoFrameCallback(onFrame);
+}
+
 async function openCamera(deviceId?: string) {
   if (stream) for (const t of stream.getTracks()) t.stop();
   stream = await navigator.mediaDevices.getUserMedia({
@@ -1355,6 +1483,7 @@ async function openCamera(deviceId?: string) {
   }
   video.srcObject = stream;
   await video.play();
+  startAirVideoFrameLoop();
   sceneApi?.attachVideo(video);
   diagnostics.record('camera.ready', { width: video.videoWidth, height: video.videoHeight });
 }
@@ -1466,33 +1595,9 @@ async function boot() {
       }
     }
 
-    // Hand tracking chạy nhịp riêng tối đa 30 fps. ImageBitmap được transfer sang
-    // worker nên main thread không đọc lại pixel và không xếp hàng frame.
-    const airFrameInterval = 1000 / AIRSKETCH_CONFIG.tracking.maxFps;
-    if ((airSketchOn || airDeskOn) && airHandReady && !airClassifierLoading && !airHandBusy && !frozen && airHandWorker && video &&
-        video.readyState >= 2 && now - airLastCaptureAt >= airFrameInterval) {
-      airHandBusy = true;
-      airLastCaptureAt = now;
-      const aspect = video.videoWidth / Math.max(1, video.videoHeight);
-      const width = AIRSKETCH_CONFIG.tracking.captureWidth;
-      const height = Math.max(2, Math.round(width / Math.max(0.1, aspect)));
-      void createImageBitmap(video, { resizeWidth: width, resizeHeight: height, resizeQuality: 'medium' })
-        .then((bitmap) => {
-          if ((!airSketchOn && !airDeskOn) || !airHandWorker) {
-            bitmap.close();
-            airHandBusy = false;
-            return;
-          }
-          // Timestamp the actual hand-off after the video image has become a
-          // bitmap. Using the older render-loop time inflated compensation
-          // whenever bitmap conversion had to wait behind a frame.
-          airHandWorker.postMessage({ type: 'frame', bitmap, timestamp: performance.now() }, [bitmap]);
-        })
-        .catch((error) => {
-          airHandBusy = false;
-          diagnostics.record('airsketch.capture.error', { message: error instanceof Error ? error.message : String(error) });
-        });
-    }
+    // Modern browsers capture on actual decoded camera frames. Keep the old
+    // render-loop sampler only as a compatibility fallback.
+    if (!airUsesVideoFrameCallback) captureAirHandFrame(now, now);
 
     sceneApi?.render(dt);
     maybeClassifyAirSketch(now);

@@ -8,8 +8,16 @@ import { startPreview, stopPreview, waitForPreview } from './helpers/preview-ser
 const PORT = 4185;
 const ROOT = new URL('..', import.meta.url).pathname;
 const HAND_P95_MAX_MS = Number(process.env.AIRSKETCH_HAND_P95_MAX_MS ?? 80);
+const CAPTURE_P95_MAX_MS = Number(process.env.AIRSKETCH_CAPTURE_P95_MAX_MS ?? 30);
+const PIPELINE_P95_MAX_MS = Number(process.env.AIRSKETCH_PIPELINE_P95_MAX_MS ?? 160);
 if (!Number.isFinite(HAND_P95_MAX_MS) || HAND_P95_MAX_MS <= 0) {
   throw new Error(`AIRSKETCH_HAND_P95_MAX_MS không hợp lệ: ${process.env.AIRSKETCH_HAND_P95_MAX_MS}`);
+}
+if (!Number.isFinite(CAPTURE_P95_MAX_MS) || CAPTURE_P95_MAX_MS <= 0) {
+  throw new Error(`AIRSKETCH_CAPTURE_P95_MAX_MS không hợp lệ: ${process.env.AIRSKETCH_CAPTURE_P95_MAX_MS}`);
+}
+if (!Number.isFinite(PIPELINE_P95_MAX_MS) || PIPELINE_P95_MAX_MS <= 0) {
+  throw new Error(`AIRSKETCH_PIPELINE_P95_MAX_MS không hợp lệ: ${process.env.AIRSKETCH_PIPELINE_P95_MAX_MS}`);
 }
 const server = startPreview(ROOT, PORT);
 let browser;
@@ -118,11 +126,17 @@ try {
     { timeout: 120_000 }
   );
   const handSnapshot = await handPage.evaluate(() => window.__roboeyeAirSketchBenchmark?.snapshot());
-  if (!handSnapshot?.ready.hand || handSnapshot.hand.p95 == null || handSnapshot.pipeline.p95 == null) {
+  if (!handSnapshot?.ready.hand || handSnapshot.hand.p95 == null || handSnapshot.capture.p95 == null || handSnapshot.pipeline.p95 == null) {
     throw new Error(`Hand inference hoặc toàn tuyến không chạy: ${JSON.stringify(handSnapshot)}`);
   }
   if (handSnapshot.hand.p95 >= HAND_P95_MAX_MS) {
     throw new Error(`Hand p95 vượt ${HAND_P95_MAX_MS} ms: ${JSON.stringify(handSnapshot.hand)}`);
+  }
+  if (handSnapshot.capture.p95 >= CAPTURE_P95_MAX_MS) {
+    throw new Error(`Capture p95 vượt ${CAPTURE_P95_MAX_MS} ms: ${JSON.stringify(handSnapshot.capture)}`);
+  }
+  if (handSnapshot.pipeline.p95 >= PIPELINE_P95_MAX_MS) {
+    throw new Error(`Pipeline p95 vượt ${PIPELINE_P95_MAX_MS} ms: ${JSON.stringify(handSnapshot.pipeline)}`);
   }
   const fatalHandErrors = handErrors.filter((message) => !message.includes('Created TensorFlow Lite XNNPACK delegate'));
   if (fatalHandErrors.length) throw new Error(`Hand page console errors: ${fatalHandErrors.slice(0, 3).join(' | ')}`);
@@ -131,8 +145,9 @@ try {
   console.log('[airsketch-model-smoke] PASS', JSON.stringify({
     quickDraw: { labels, latency: classifySnapshot.classify },
     hand: handSnapshot.hand,
+    capture: handSnapshot.capture,
     pipeline: handSnapshot.pipeline,
-    handP95BudgetMs: HAND_P95_MAX_MS
+    budgetsMs: { handP95: HAND_P95_MAX_MS, captureP95: CAPTURE_P95_MAX_MS, pipelineP95: PIPELINE_P95_MAX_MS }
   }));
 } finally {
   await browser?.close();

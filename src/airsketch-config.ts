@@ -28,16 +28,12 @@ export const AIRSKETCH_CONFIG = {
     // An open palm is held briefly before entering object manipulation. It
     // keeps the draw clutch (thumb-index pinch) free from timing gestures.
     manipulationHoldMs: 350,
-    // Adaptive low-pass filters remove landmark jitter while preserving quick
-    // intentional motion for drawing and object manipulation.
-    // The pen needs to be visually tied to the fingertip.  A 0.34 minimum
-    // alpha looked calm in synthetic samples but introduced a visible second
-    // follower on a 30 fps camera.  The higher floor is paired with an
-    // explicit missing-hand grace window below, rather than smoothing away
-    // real motion.
-    cursorMinAlpha: 0.38,
-    cursorMaxAlpha: 0.92,
-    cursorVelocityGain: 0.8,
+    // The 1€ filter raises its cutoff with measured hand speed: quiet hands
+    // are stable while intentional motion remains responsive.
+    cursorMinCutoff: 1.8,
+    cursorBeta: 2.4,
+    cursorDerivativeCutoff: 1,
+    cursorVelocityAlpha: 0.58,
     // A worker result describes a frame captured slightly before the display.
     // Predict only a bounded short horizon so the cursor catches up without
     // leaping past a hand that suddenly stops.

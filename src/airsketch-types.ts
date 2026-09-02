@@ -30,16 +30,22 @@ export interface SketchPrediction {
 }
 
 export type AirSketchMainToHandWorker =
-  | { type: 'init'; modelUrl: string; expectedBytes: number; expectedSha256: string; visionBundleUrl: string; wasmBase: string }
-  | { type: 'frame'; bitmap: ImageBitmap; timestamp: number };
+  | {
+      type: 'init'; modelUrl: string; expectedBytes: number; expectedSha256: string;
+      visionBundleUrl: string; wasmBase: string; preferredDelegate?: 'GPU' | 'CPU';
+    }
+  | {
+      type: 'frame'; bitmap: ImageBitmap; timestamp: number;
+      capturedAt?: number; captureStartedAt?: number; sentAt?: number;
+    };
 
 export type AirSketchHandWorkerToMain =
   | { type: 'loading'; stage: 'runtime' | 'model' | 'graph' }
-  | { type: 'ready' }
+  | { type: 'ready'; delegate?: 'GPU' | 'CPU' }
   | {
       type: 'landmarks'; landmarks: HandLandmark[] | null; handedness: string | null; inferMs: number;
       // Timestamp of the video frame, not the later worker reply.
-      capturedAt: number;
+      capturedAt: number; captureStartedAt?: number; sentAt?: number; delegate?: 'GPU' | 'CPU';
     }
   | { type: 'error'; stage: 'load' | 'infer'; message: string };
 
@@ -60,6 +66,8 @@ export interface AirSketchBenchmarkSnapshot {
   ready: { hand: boolean; classifier: boolean; handStage?: string };
   hand: { samples: number; p50: number | null; p95: number | null };
   pipeline: { samples: number; p50: number | null; p95: number | null };
+  capture: { samples: number; p50: number | null; p95: number | null };
+  droppedVideoFrames: number;
   classify: { samples: number; p50: number | null; p95: number | null };
   strokes: number;
   points: number;

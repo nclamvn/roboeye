@@ -1,6 +1,7 @@
 /* RoboEye T16 · classic worker required by MediaPipe's importScripts loader. */
 let landmarker = null;
 let busy = false;
+let activeDelegate = 'CPU';
 
 async function init(message) {
   try {
@@ -26,15 +27,28 @@ async function init(message) {
     }
 
     postMessage({ type: 'loading', stage: 'graph' });
-    landmarker = await self.Vision.HandLandmarker.createFromOptions(vision, {
-      baseOptions: { modelAssetBuffer, delegate: 'CPU' },
+    const create = (delegate) => self.Vision.HandLandmarker.createFromOptions(vision, {
+      baseOptions: { modelAssetBuffer, delegate },
       runningMode: 'VIDEO',
       numHands: 1,
-      minHandDetectionConfidence: 0.55,
-      minHandPresenceConfidence: 0.55,
-      minTrackingConfidence: 0.55
+      minHandDetectionConfidence: 0.5,
+      minHandPresenceConfidence: 0.5,
+      minTrackingConfidence: 0.5
     });
-    postMessage({ type: 'ready' });
+    const preferred = message.preferredDelegate === 'CPU' ? 'CPU' : 'GPU';
+    try {
+      landmarker = await create(preferred);
+      activeDelegate = preferred;
+    } catch (preferredError) {
+      if (preferred === 'CPU') throw preferredError;
+      // Official MediaPipe web samples expose both delegates. GPU support in a
+      // classic worker still varies by browser/driver, so failure is explicit
+      // and recoverable rather than turning into a broken interaction mode.
+      postMessage({ type: 'loading', stage: 'graph' });
+      landmarker = await create('CPU');
+      activeDelegate = 'CPU';
+    }
+    postMessage({ type: 'ready', delegate: activeDelegate });
   } catch (error) {
     postMessage({ type: 'error', stage: 'load', message: error instanceof Error ? error.message : String(error) });
   }
@@ -59,7 +73,10 @@ function infer(message) {
       inferMs: performance.now() - startedAt,
       // Preserve the frame time so the main thread can compensate the worker
       // transit/inference gap before drawing the cursor and ink.
-      capturedAt: message.timestamp
+      capturedAt: message.capturedAt ?? message.timestamp,
+      captureStartedAt: message.captureStartedAt,
+      sentAt: message.sentAt,
+      delegate: activeDelegate
     });
   } catch (error) {
     postMessage({ type: 'error', stage: 'infer', message: error instanceof Error ? error.message : String(error) });

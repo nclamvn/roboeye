@@ -2,6 +2,7 @@
 // Pinching the thumb and index finger is the only way to put ink down. This
 // removes timing-sensitive flick recognition from the critical drawing path.
 import { AIRSKETCH_CONFIG } from './airsketch-config';
+import { RealtimePointFilter } from './realtime-point-filter';
 import type { AirPoint, HandLandmark } from './airsketch-types';
 
 export type AirInteractionMode = 'idle' | 'drawing' | 'manipulating' | 'grabbing';
@@ -18,6 +19,7 @@ export interface AirInteractionSample {
   penDown: boolean;
   openPalm: boolean;
   pinch: boolean;
+  justPinched: boolean;
   palmSpan: number;
   justGrabbed: boolean;
   justReleased: boolean;
@@ -48,21 +50,26 @@ function pointerPose(points: HandLandmark[]): boolean {
 
 export class AirInteractionController {
   private mode: AirInteractionMode = 'idle';
-  private smoothedCursor: AirPoint | null = null;
-  private previousRawCursor: AirPoint | null = null;
-  private cursorVelocity = { x: 0, y: 0 };
+  private readonly cursorFilter = new RealtimePointFilter({
+    minCutoff: AIRSKETCH_CONFIG.tracking.cursorMinCutoff,
+    beta: AIRSKETCH_CONFIG.tracking.cursorBeta,
+    derivativeCutoff: AIRSKETCH_CONFIG.tracking.cursorDerivativeCutoff,
+    velocityAlpha: AIRSKETCH_CONFIG.tracking.cursorVelocityAlpha,
+    maxPredictionMs: AIRSKETCH_CONFIG.tracking.cursorLatencyMaxMs,
+    maxPredictionDistance: AIRSKETCH_CONFIG.tracking.cursorMaxPrediction
+  });
   private smoothedPalmSpan: number | null = null;
   private pinchActive = false;
+  private grabReturnMode: 'idle' | 'manipulating' = 'manipulating';
   private openPalmStartedAt: number | null = null;
   private lastObservedAt = -Infinity;
 
   reset(): void {
     this.mode = 'idle';
-    this.smoothedCursor = null;
-    this.previousRawCursor = null;
-    this.cursorVelocity = { x: 0, y: 0 };
+    this.cursorFilter.reset();
     this.smoothedPalmSpan = null;
     this.pinchActive = false;
+    this.grabReturnMode = 'manipulating';
     this.openPalmStartedAt = null;
     this.lastObservedAt = -Infinity;
   }
@@ -70,60 +77,20 @@ export class AirInteractionController {
   release(): void { this.reset(); }
   currentMode(): AirInteractionMode { return this.mode; }
 
+  // Spatial disambiguation in the bridge can promote a pinch over an existing
+  // object into a direct grab. This removes the fragile open-palm dwell from
+  // the common pickup path while keeping it available as an explicit mode.
+  promotePinchToGrab(): boolean {
+    if (!this.pinchActive || this.mode !== 'drawing') return false;
+    this.mode = 'grabbing';
+    this.grabReturnMode = 'idle';
+    return true;
+  }
+
   // Kept here (rather than as an ad-hoc main-thread timestamp comparison) so
   // the continuity contract is deterministic and regression-testable.
   shouldReleaseAfterMissing(receivedAt: number): boolean {
     return receivedAt - this.lastObservedAt >= AIRSKETCH_CONFIG.tracking.lostHandGraceMs;
-  }
-
-  private smoothCursor(raw: AirPoint, reset = false): AirPoint {
-    if (reset || !this.smoothedCursor) {
-      this.smoothedCursor = raw;
-      return raw;
-    }
-    const previous = this.smoothedCursor;
-    const elapsed = Math.max(8, raw.t - previous.t);
-    const velocity = distance(raw, previous) * 1_000 / elapsed;
-    const alpha = Math.min(
-      AIRSKETCH_CONFIG.tracking.cursorMaxAlpha,
-      Math.max(AIRSKETCH_CONFIG.tracking.cursorMinAlpha,
-        AIRSKETCH_CONFIG.tracking.cursorMinAlpha + velocity * AIRSKETCH_CONFIG.tracking.cursorVelocityGain)
-    );
-    this.smoothedCursor = {
-      x: previous.x + (raw.x - previous.x) * alpha,
-      y: previous.y + (raw.y - previous.y) * alpha,
-      t: raw.t
-    };
-    return this.smoothedCursor;
-  }
-
-  private compensateCursor(raw: AirPoint, capturedAt: number, receivedAt: number): AirPoint {
-    const previous = this.previousRawCursor;
-    if (previous) {
-      const elapsed = Math.max(8, capturedAt - previous.t);
-      const measuredVelocity = {
-        x: (raw.x - previous.x) / elapsed,
-        y: (raw.y - previous.y) / elapsed
-      };
-      // Velocity EMA limits a single jittery landmark from launching the pen.
-      this.cursorVelocity = {
-        x: this.cursorVelocity.x + (measuredVelocity.x - this.cursorVelocity.x) * 0.62,
-        y: this.cursorVelocity.y + (measuredVelocity.y - this.cursorVelocity.y) * 0.62
-      };
-    }
-    this.previousRawCursor = { ...raw, t: capturedAt };
-    const latency = Math.min(
-      AIRSKETCH_CONFIG.tracking.cursorLatencyMaxMs,
-      Math.max(0, receivedAt - capturedAt)
-    );
-    const maxShift = AIRSKETCH_CONFIG.tracking.cursorMaxPrediction;
-    const dx = Math.max(-maxShift, Math.min(maxShift, this.cursorVelocity.x * latency));
-    const dy = Math.max(-maxShift, Math.min(maxShift, this.cursorVelocity.y * latency));
-    return {
-      x: Math.min(1, Math.max(0, raw.x + dx)),
-      y: Math.min(1, Math.max(0, raw.y + dy)),
-      t: receivedAt
-    };
   }
 
   private smoothPalmSpan(raw: number): number {
@@ -154,10 +121,12 @@ export class AirInteractionController {
     // Hysteresis keeps a grab stable when a real hand trembles near the
     // threshold: engage at the lower threshold and release at the higher one.
     // A fist is an explicit safety pose and always cancels a held pinch.
+    const pinchBefore = this.pinchActive;
     if (fist) this.pinchActive = false;
     else if (this.pinchActive) this.pinchActive = pinchRatio < AIRSKETCH_CONFIG.tracking.pinchUpRatio;
     else this.pinchActive = pinchRatio <= AIRSKETCH_CONFIG.tracking.pinchDownRatio;
     const pinch = this.pinchActive;
+    const justPinched = !pinchBefore && pinch;
     const palmSpan = this.smoothPalmSpan(rawPalmSpan);
     const openPalm = index && middle && ring && pinky;
     // Do not swap from the index tip to the thumb-index midpoint on pinch.
@@ -166,7 +135,6 @@ export class AirInteractionController {
     const rawCursor = { x: 1 - points[8].x, y: points[8].y, t: capturedAt };
     let justGrabbed = false;
     let justReleased = false;
-    const modeBeforeUpdate = this.mode;
     const pointer = pointerPose(points);
 
     // An open palm is intentionally a slow gesture.  While a pen pinch is
@@ -208,16 +176,17 @@ export class AirInteractionController {
       // silently fail for a natural hand pose.
       if (pinch) {
         this.mode = 'grabbing';
+        this.grabReturnMode = 'manipulating';
         justGrabbed = true;
       }
     } else if (this.mode === 'grabbing' && !pinch) {
-      this.mode = 'manipulating';
+      this.mode = this.grabReturnMode;
       justReleased = true;
     }
 
-    const startedDrawing = this.mode === 'drawing' && modeBeforeUpdate !== 'drawing';
-    const grabCursor = this.smoothCursor(rawCursor, startedDrawing);
-    const cursor = this.compensateCursor(grabCursor, capturedAt, receivedAt);
+    const filtered = this.cursorFilter.update(rawCursor, capturedAt, receivedAt);
+    const grabCursor = filtered.stable;
+    const cursor = filtered.display;
     return {
       cursor,
       grabCursor,
@@ -225,6 +194,7 @@ export class AirInteractionController {
       penDown: this.mode === 'drawing',
       openPalm,
       pinch,
+      justPinched,
       palmSpan,
       justGrabbed,
       justReleased,

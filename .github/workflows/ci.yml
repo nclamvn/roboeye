@@ -60,6 +60,8 @@ jobs:
       - run: npm run test:airsketch-models
         env:
           AIRSKETCH_HAND_P95_MAX_MS: 250
+          AIRSKETCH_CAPTURE_P95_MAX_MS: 60
+          AIRSKETCH_PIPELINE_P95_MAX_MS: 350
       - run: npm run test:airsketch-quality
 
   detection-benchmark:

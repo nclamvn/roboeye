@@ -1,0 +1,117 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>1€ Filter</title>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<p><span style="font-size:18pt; font-weight:bold">1€ Filter</span><br/>
+   <span style="font-size:10pt">
+   <i><a href="https://gery.casiez.net/" target="_top">Géry Casiez</a></i><sup>1,2,3</sup>
+   <i><a href="http://interaction.lille.inria.fr/~roussel/" target="_top">Nicolas Roussel</a></i><sup>3</sup> and
+   <i><a href="http://www.nonsequitoria.com" target="_top">Daniel Vogel</a></i><sup>4</sup>
+   <br/>
+
+   <sup>1</sup><i><a href="http://www.lifl.fr">LIFL</a></i>,
+   <sup>2</sup><i><a href="http://www.univ-lille.fr" target="_top">University of Lille</a></i>,
+   <sup>3</sup><i><a href="http://www.inria.fr/centre/lille" target="_top">Inria Lille</a></i> and
+   <sup>4</sup><i><a href="http://hci.uwaterloo.ca" target="_top">Cheriton School of Computer Science, University of Waterloo</a></i>
+   </span>
+</p>
+
+<p style="margin-left:2em; margin-right:2em; margin-top:-10pt; margin-bottom:0pt; font-size:10pt">
+This page implements the "1€ Filter" in different languages. See our <a href="https://dl.acm.org/doi/10.1145/2207676.2208639" target="_blank">CHI 2012 paper (PDF)</a>. The name "1€" is an homage to the <a href="https://depts.washington.edu/acelab/proj/dollar/index.html">$1 recognizer</a>.
+</p>
+
+ <table border="0" width="100%">
+ <tr>
+   <td valign="top" width="50%">
+   <h3>Algorithm</h3>
+   <img src="1euroAlgorithm.png" width="400px" alt="1 euro filter algorithm"></img> 
+
+   <h3>1€ Links and Downloads</h3>
+   <ul>
+   <li><a href="https://dl.acm.org/doi/10.1145/2207676.2208639" target="_blank">Our CHI 2012 1€ paper (PDF)</a></li>
+   <li><a href="1euroDataFig1.zip" target="_blank">Data corresponding to figure 1</a></li>   
+   <li><a href="mailto:Géry Casiez &lt;gery.casiez@univ-lille.fr&gt;?subject=From the 1€ filter page">Questions? Contact Géry Casiez</a></li>
+   </ul>
+   
+   <h3>References</h3>
+   <span style="font-size:10pt;padding-right:8em">
+   Casiez, G., Roussel, N. and Vogel, D. (2012). <a href="https://dl.acm.org/doi/10.1145/2207676.2208639" target="_top"><b>1€ Filter: A Simple Speed-based Low-pass Filter for Noisy Input in Interactive Systems.</b></a> Proceedings of the ACM Conference on Human Factors in Computing Systems (CHI '12). Austin, Texas (May 5-12, 2012). New York: ACM Press, pp. 2527-2530. <!-- ' -->
+   </span><br/><br/>
+			
+   </td>
+   <td valign="top">
+   <h3>Tuning the filter</h3>
+   <p>To minimize jitter and lag when tracking human motion, the two parameters (fcmin and beta) can be set using a simple two-step procedure. First beta is set to 0 and fcmin (mincutoff) to a reasonable middle-ground value such as 1 Hz. Then the body part is held steady or moved at a very low speed while fcmin is adjusted to remove jitter and preserve an acceptable lag during these slow movements (decreasing fcmin reduces jitter but increases lag, fcmin must be > 0). Next, the body part is moved quickly in different directions while beta is increased with a focus on minimizing lag. First find the right order of magnitude to tune beta, which depends on the kind of data you manipulate and their units: do not hesitate to start with values like 0.001 or 0.0001. You can first multiply and divide beta by factor 10 until you notice an effect on latency when moving quickly. Note that parameters fcmin and beta have clear conceptual relationships: if high speed lag is a problem, increase beta; if slow speed jitter is a problem, decrease fcmin.</p>
+   <p>Tuning can also be done using the <a href="https://dl.acm.org/doi/10.20380/GI2019.27">Pitch Pipe technique</a> [<a href="https://github.com/ISUE/PitchPipe">Code on Github</a>].</p>
+   <p></p>
+   <h3>1€ Implementations verified and <a href="https://github.com/casiez/OneEuroFilter/">available on Github</a></h3>
+   <ul>            
+      <li><a href="https://github.com/casiez/OneEuroFilter/tree/main/python">Python version</a> (BSD Licence)</li>
+      <li><a href="https://github.com/casiez/OneEuroFilter/tree/main/C">C version</a> (MIT licence) by Jonathan Aceituno</li>
+      <li><a href="https://github.com/casiez/OneEuroFilter/blob/main/cpp/">C++ version</a> (BSD Licence) by Nicolas Roussel</li>
+      <li><a href="https://github.com/casiez/OneEuroFilter/blob/main/CppUsingTemplates/">C++ version using templates</a> (MIT licence) by Jonathan Aceituno</li>
+      <li><a href="https://github.com/casiez/OneEuroFilter/blob/main/java/">Java version</a> (BSD Licence) by <a href="http://lii-enac.fr/~conversy/">Stéphane Conversy</a> from <a href="http://www.univ-toulouse.fr">Université de Toulouse</a></li>
+      <li><a href="https://github.com/casiez/OneEuroFilter/blob/main/javascript/OneEuroFilter.js">JavaScript version using class</a> (BSD Licence) by Géry Casiez</li>  
+      <li><a href="https://github.com/casiez/OneEuroFilter/tree/main/typescript">TypeScript version</a> (BSD Licence) by <a href="http://www.alixgoguey.fr/">Alix Goguey</a> and Géry Casiez</li>
+      <li><a href="https://github.com/casiez/OneEuroFilterArduino/">Arduino version</a> (BSD Licence) by  Géry Casiez</li>
+      <li><a href="https://github.com/SableRaf/signalfilter">Processing library</a> by <a href="http://cargocollective.com/raphaeldecourville">Raphaël de Courville</a></li> 
+      <li><a href="https://github.com/cuixing158/OneEuroFilter">Matlab version</a> by Xingxing Cui</li> 
+  </ul>
+  <h3>Other implementations not verified yet</h3>
+  <ul>
+      <li><a href="https://github.com/patrykkalinowski/godot-xr-kit/blob/master/addons/xr-kit/smooth-input-filter/scripts/one_euro_filter.gd">GDScript for Godot game engine</a> (MIT licence) by Patryk Kalinowski</li>
+      <li><a href="OneEuroFilter.cs">C# version</a> by <a href="http://mitsufu.wordpress.com/2012/05/09/lissage-oneeurofilter-implmentation-en-c-et-f/">Mitsuru Furuta</a> from <a href="http://www.sensorit.fr">Sensorit</a> > <a href="https://skydrive.live.com/embed?cid=7BD91AE7F5096B79&amp;resid=7BD91AE7F5096B79%21207&amp;authkey=AKqZ6OuAtDXOFE8">more code</a></li>
+      <li><a href="OneEuroFilter.fs">F# version</a> by <a href="http://mitsufu.wordpress.com/2012/05/09/lissage-oneeurofilter-implmentation-en-c-et-f/">Mitsuru Furuta</a> from <a href="http://www.sensorit.fr">Sensorit</a> > <a href="https://skydrive.live.com/embed?cid=7BD91AE7F5096B79&amp;resid=7BD91AE7F5096B79%21207&amp;authkey=AKqZ6OuAtDXOFE8">more code</a></li>
+      <li><a href="OneEuroFilterobjc.pdf">Objective C version</a> by <a href="http://hci.rwth-aachen.de/ivanov">Stefan Ivanov</a> from <a href="http://hci.rwth-aachen.de">RWTH Aachen University</a></li> 
+      <li><a href="one_Euro_filter_for_Processing.pdf">Non object-oriented version</a> by <a href="http://hci.rwth-aachen.de/ivanov">Stefan Ivanov</a> from <a href="http://hci.rwth-aachen.de">RWTH Aachen University</a></li>
+      <li><b>Available in the <a href="https://help.vicon.com/space/Tracker44/376309061/Create+an+object+preset">Vicon Tracker software</a></b></li>
+      <li><b>Implemented in Google Chrome <a href="chrome://credits/">chrome://credits/</a></b></li>
+      <li><b><a href="https://blog.chromium.org/2023/08/smoothing-out-scrolling-experience-in.html">Used in Chrome on all Android devices</a></b></li>
+      <li><b>Available in <a href="https://dev.epicgames.com/documentation/unreal-engine?application_version=5.8">Unreal Engine</a></b></li>
+      <li><b>Available in <a href="https://developers.meta.com/horizon/reference/interaction/v205/interface_oculus_interaction_input_i_one_euro_filter/">Meta Horizon SDK</a></b></li>
+      <li>Available as a dataflow processing device in the <a href="http://inputconf.sourceforge.net">ICon input management toolkit</a> by <a href="http://insitu.lri.fr/~huot/">Stéphane Huot</a> from <a href="http://www.u-psud.fr/en/international.html">Université Paris-Sud 11</a></li>
+      <li>Implemented in <a href="https://github.com/vrpn/">VRPN</a> by <a href="http://janoc.rd-h.com">Jan Ciger</a> and <a href="http://www.mendeley.com/profiles/ryan-pavlik/">Ryan Pavlik</a>. <b>Provides an example of quaternion filtering using linear and spherical interpolations</b>. Used to filter <a href="http://en.wikipedia.org/wiki/Razer_Hydra">Razer Hydra</a> data.</li>   
+      <li><a href="oneeurocaml.zip">OCaml version</a> by <a href="http://www.thomaspietrzak.com/">Thomas Pietrzak</a></li>
+      <li><a href="one_euro_filter.pd">Abstraction PureData version (can be re-compiled on any OS)</a> by <a href="http://hitmuri.net">Florent Berthaut</a></li>
+      <li><a href="1efilter_pd.zip">Pure Data version</a> by Jonathan Aceituno</li> 
+      <li><a href="OneeuroMatlab.zip">Matlab version</a> by Henry Mak</li>  
+      <li><a href="https://github.com/DarioMazzanti/OneEuroFilterUnity">C# utility for Unity3D</a> by <a href="https://www.iit.it/people/dario-mazzanti">Dario Mazzanti</a></li>
+      <li><a href="https://github.com/DarioMazzanti/OneEuroFilterUnreal">Plugin for Unreal</a> by <a href="https://www.iit.it/people/dario-mazzanti">Dario Mazzanti</a></li> 
+      <li><a href="http://www.libavg.de/blog/the-end-of-touch-jitter/">Used</a> in <a href="https://www.libavg.de/site/">libavg</a></li>
+      <li>Used in <a href="http://www.imin-vr.com/">MiddleVR</a></li>
+      <li><a href="https://www.lexaloffle.com/bbs/?tid=29646">Implementation in pico8 (lua)</a> by Stephan Steinbach
+      </li>
+      <li>Send me an e-mail to add your own implementation here</li>
+  </ul>
+
+   <h3><a href="InteractiveDemo" target="_blank">Try</a> the on-line interactive demo</h3>
+   Thanks to Jonathan Aceituno!<br/>
+   <a href="InteractiveDemo" target="_blank"><img src="1eurofilterdemo.png" width="420px" alt="1 euro filter demo"></img></a> 
+
+   <h3>Comparison with other filters (video)</h3>
+   <iframe width="420" height="315" src="https://www.youtube.com/embed/ybZR4WRjkpM" frameborder="0"></iframe>
+
+   </td>
+</tr>
+</table>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3774240-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

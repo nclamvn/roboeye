@@ -63,6 +63,8 @@ test('benchmark báo p50/p95 định lượng và readiness', () => {
   const metrics = new AirSketchMetrics();
   [10, 20, 30, 40].forEach((value) => metrics.addHand(value));
   [20, 30, 40, 50].forEach((value) => metrics.addPipeline(value));
+  [2, 4, 6].forEach((value) => metrics.addCapture(value));
+  metrics.addDroppedVideoFrames(2);
   [80, 120].forEach((value) => metrics.addClassify(value));
   const snapshot = metrics.snapshot(2, 30, { hand: true, classifier: true });
   assert.equal(snapshot.ready.hand, true);
@@ -72,5 +74,7 @@ test('benchmark báo p50/p95 định lượng và readiness', () => {
   assert.equal(snapshot.pipeline.samples, 4);
   assert.equal(snapshot.pipeline.p50, 30);
   assert.equal(snapshot.pipeline.p95, 50);
+  assert.equal(snapshot.capture.p95, 6);
+  assert.equal(snapshot.droppedVideoFrames, 2);
   assert.equal(snapshot.classify.p95, 120);
 });
