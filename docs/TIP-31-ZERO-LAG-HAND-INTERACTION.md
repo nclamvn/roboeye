@@ -28,7 +28,9 @@ chứng rằng tương tác đã nhanh.
 1. Dùng `HTMLVideoElement.requestVideoFrameCallback()` để chỉ xử lý frame camera
    mới; fallback render-loop chỉ dành cho trình duyệt không hỗ trợ.
 2. Giữ latest-frame-wins: tối đa một bitmap/inference đang bay, không tạo queue.
-3. Thử MediaPipe GPU trước, fallback CPU có trạng thái backend thật.
+3. Thử MediaPipe GPU trước, nhưng đo hai frame sống: nếu inference liên tiếp vượt
+   120 ms thì tự chuyển CPU. Một GPU graph khởi tạo được vẫn có thể là software
+   GPU và chậm hơn CPU; fallback không được chỉ dựa trên lỗi khởi tạo.
 4. Dùng bộ lọc 1€ theo timestamp. `stable` làm hit-test/drag anchor; `display`
    được dự báo ngắn theo tuổi frame để con trỏ và nét bám tay mà không làm vật bị
    overshoot.
@@ -70,7 +72,7 @@ và Bubble Cursor target acquisition. Xem `RESULT.md` để tái kiểm định.
 ## Acceptance
 
 - Frame capture bám frame video thật và có fallback.
-- GPU-first/CPU-fallback báo đúng delegate.
+- GPU-first, performance-probed CPU fallback báo đúng delegate.
 - AirSketch/AirDesk dùng cùng bộ lọc 1€ timestamp-aware.
 - Direct spatial pinch phân biệt cầm vật và vẽ.
 - AirDesk không tái tạo fingertip DOM hoặc toàn bộ SVG ở mỗi sample.

@@ -23,6 +23,10 @@ export const AIRSKETCH_CONFIG = {
     // latest-frame-wins prevents any queue buildup.
     maxFps: 30,
     captureWidth: 480,
+    // A delegate that initializes successfully can still be software-rendered
+    // and much slower than CPU. Probe two live frames, then auto-fallback.
+    gpuFallbackInferMs: 120,
+    gpuFallbackSlowSamples: 2,
     pinchDownRatio: 0.38,
     pinchUpRatio: 0.52,
     // An open palm is held briefly before entering object manipulation. It

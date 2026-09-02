@@ -2,6 +2,32 @@
 let landmarker = null;
 let busy = false;
 let activeDelegate = 'CPU';
+let createLandmarker = null;
+let switchingDelegate = false;
+let gpuFallbackAttempted = false;
+let gpuSlowSamples = 0;
+let gpuFallbackInferMs = 120;
+let gpuFallbackSlowSamples = 2;
+
+async function fallbackToCpu() {
+  if (switchingDelegate || gpuFallbackAttempted || activeDelegate !== 'GPU' || !createLandmarker) return;
+  switchingDelegate = true;
+  gpuFallbackAttempted = true;
+  const previous = landmarker;
+  try {
+    const replacement = await createLandmarker('CPU');
+    landmarker = replacement;
+    activeDelegate = 'CPU';
+    previous?.close?.();
+  } catch {
+    // A slow but working GPU graph is safer than disabling tracking if the CPU
+    // graph cannot be created on this browser.
+    landmarker = previous;
+  } finally {
+    switchingDelegate = false;
+    postMessage({ type: 'ready', delegate: activeDelegate });
+  }
+}
 
 async function init(message) {
   try {
@@ -27,7 +53,7 @@ async function init(message) {
     }
 
     postMessage({ type: 'loading', stage: 'graph' });
-    const create = (delegate) => self.Vision.HandLandmarker.createFromOptions(vision, {
+    createLandmarker = (delegate) => self.Vision.HandLandmarker.createFromOptions(vision, {
       baseOptions: { modelAssetBuffer, delegate },
       runningMode: 'VIDEO',
       numHands: 1,
@@ -35,9 +61,11 @@ async function init(message) {
       minHandPresenceConfidence: 0.5,
       minTrackingConfidence: 0.5
     });
+    gpuFallbackInferMs = Number.isFinite(message.gpuFallbackInferMs) ? message.gpuFallbackInferMs : 120;
+    gpuFallbackSlowSamples = Number.isFinite(message.gpuFallbackSlowSamples) ? message.gpuFallbackSlowSamples : 2;
     const preferred = message.preferredDelegate === 'CPU' ? 'CPU' : 'GPU';
     try {
-      landmarker = await create(preferred);
+      landmarker = await createLandmarker(preferred);
       activeDelegate = preferred;
     } catch (preferredError) {
       if (preferred === 'CPU') throw preferredError;
@@ -45,7 +73,7 @@ async function init(message) {
       // classic worker still varies by browser/driver, so failure is explicit
       // and recoverable rather than turning into a broken interaction mode.
       postMessage({ type: 'loading', stage: 'graph' });
-      landmarker = await create('CPU');
+      landmarker = await createLandmarker('CPU');
       activeDelegate = 'CPU';
     }
     postMessage({ type: 'ready', delegate: activeDelegate });
@@ -56,7 +84,7 @@ async function init(message) {
 
 function infer(message) {
   const bitmap = message.bitmap;
-  if (!landmarker || busy) {
+  if (!landmarker || busy || switchingDelegate) {
     bitmap.close();
     return;
   }
@@ -66,11 +94,20 @@ function infer(message) {
     const result = landmarker.detectForVideo(bitmap, message.timestamp);
     const landmarks = result.landmarks[0]?.map((point) => ({ x: point.x, y: point.y, z: point.z })) ?? null;
     const handedness = result.handedness[0]?.[0]?.categoryName ?? null;
+    const inferMs = performance.now() - startedAt;
+    if (activeDelegate === 'GPU' && !gpuFallbackAttempted) {
+      gpuSlowSamples = inferMs >= gpuFallbackInferMs ? gpuSlowSamples + 1 : 0;
+    }
+    const shouldFallback = activeDelegate === 'GPU' && !gpuFallbackAttempted && gpuSlowSamples >= gpuFallbackSlowSamples;
+    // Stop main-thread capture before acknowledging this result. The result
+    // still clears latest-frame-wins busy state; the next ready message resumes
+    // capture with the measured faster delegate.
+    if (shouldFallback) postMessage({ type: 'loading', stage: 'graph' });
     postMessage({
       type: 'landmarks',
       landmarks,
       handedness,
-      inferMs: performance.now() - startedAt,
+      inferMs,
       // Preserve the frame time so the main thread can compensate the worker
       // transit/inference gap before drawing the cursor and ink.
       capturedAt: message.capturedAt ?? message.timestamp,
@@ -78,6 +115,7 @@ function infer(message) {
       sentAt: message.sentAt,
       delegate: activeDelegate
     });
+    if (shouldFallback) void fallbackToCpu();
   } catch (error) {
     postMessage({ type: 'error', stage: 'infer', message: error instanceof Error ? error.message : String(error) });
   } finally {

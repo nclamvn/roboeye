@@ -33,6 +33,7 @@ export type AirSketchMainToHandWorker =
   | {
       type: 'init'; modelUrl: string; expectedBytes: number; expectedSha256: string;
       visionBundleUrl: string; wasmBase: string; preferredDelegate?: 'GPU' | 'CPU';
+      gpuFallbackInferMs?: number; gpuFallbackSlowSamples?: number;
     }
   | {
       type: 'frame'; bitmap: ImageBitmap; timestamp: number;

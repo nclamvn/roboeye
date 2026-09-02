@@ -7,7 +7,9 @@
 - Replaced render-loop hand sampling with video-frame-synchronous capture and
   honest capture/inference/source-frame-age telemetry, including dropped video
   frames and real-model latency gates.
-- Made MediaPipe GPU-first with an explicit CPU fallback and introduced a
+- Made MediaPipe GPU-first with an explicit CPU fallback, including automatic
+  fallback when a technically working software GPU misses the live inference
+  budget, and introduced a
   timestamp-aware 1€ filter with separate responsive display and stable drag
   coordinates across AirSketch and AirDesk.
 - Added direct pinch-on-object pickup and bounded nearest-target acquisition,

@@ -462,6 +462,7 @@ function spawnAirWorkers() {
       if (airHandWorker !== instance) return;
       const message = event.data;
       if (message.type === 'loading') {
+        airHandReady = false;
         airHandStage = message.stage;
         const label = message.stage === 'runtime' ? 'runtime WASM' : message.stage === 'model' ? 'model bàn tay' : 'đồ thị tracking';
         shell.setAirSketchStatus(`Đang chuẩn bị ${label}…`);
@@ -515,7 +516,9 @@ function spawnAirWorkers() {
       expectedSha256: AIRSKETCH_CONFIG.handModel.sha256,
       visionBundleUrl: new URL('mediapipe/vision_bundle.js', runtimeBase).href,
       wasmBase: new URL('mediapipe/wasm', runtimeBase).href,
-      preferredDelegate: 'GPU'
+      preferredDelegate: 'GPU',
+      gpuFallbackInferMs: AIRSKETCH_CONFIG.tracking.gpuFallbackInferMs,
+      gpuFallbackSlowSamples: AIRSKETCH_CONFIG.tracking.gpuFallbackSlowSamples
     });
   }
 
