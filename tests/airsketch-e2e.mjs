@@ -147,6 +147,7 @@ try {
   await page.click('[data-airdesk-text-action="spell"]');
   check('AirDesk có đề xuất sửa chính tả trong editor nội bộ', await page.textContent('#airdesk-editor')?.then((text) => text?.includes('tập kết') ?? false));
   await page.click('#airdesk-close-btn');
+  await page.click('#airsketch-btn');
 
   const heart = [[0.50, 0.18], [0.38, 0.08], [0.23, 0.08], [0.10, 0.20], [0.10, 0.38],
     [0.22, 0.62], [0.50, 0.92], [0.78, 0.62], [0.90, 0.38], [0.90, 0.20],

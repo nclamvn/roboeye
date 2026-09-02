@@ -640,6 +640,8 @@ function setAirSketch(on: boolean) {
 
 let airDeskGesture: 'move' | 'scale' | 'rotate' | 'draw' | 'text' | null = null;
 let airDeskTextAnchor: Range | null = null;
+let airDeskLastSeenAt = -Infinity;
+let airDeskLossTimer: ReturnType<typeof setTimeout> | null = null;
 
 function airDeskClientPoint(point: Pick<AirPoint, 'x' | 'y'>): { x: number; y: number } {
   const rect = airStage.getBoundingClientRect();
@@ -745,10 +747,31 @@ function handleAirDeskLandmarks(
 ): void {
   if (!airDeskOn) return;
   if (!landmarks) {
+    // A worker may return an occasional empty sample during a turn or brief
+    // blur. Do not make all five markers flash out, or drop an active drag,
+    // until the same bounded continuity window used by AirSketch has elapsed.
+    if (capturedAt - airDeskLastSeenAt < AIRSKETCH_CONFIG.tracking.lostHandGraceMs) {
+      if (airDeskLossTimer == null) {
+        airDeskLossTimer = setTimeout(() => {
+          airDeskLossTimer = null;
+          if (airDeskOn && performance.now() - airDeskLastSeenAt >= AIRSKETCH_CONFIG.tracking.lostHandGraceMs) {
+            clearAirDeskFingers();
+            airDesk.end();
+            airDeskGesture = null;
+          }
+        }, AIRSKETCH_CONFIG.tracking.lostHandGraceMs);
+      }
+      return;
+    }
     clearAirDeskFingers();
     airDesk.end();
     airDeskGesture = null;
     return;
+  }
+  airDeskLastSeenAt = capturedAt;
+  if (airDeskLossTimer != null) {
+    clearTimeout(airDeskLossTimer);
+    airDeskLossTimer = null;
   }
   const sample = airDesk.hand(landmarks, capturedAt);
   if (!sample) return;
@@ -822,6 +845,9 @@ function setAirDesk(on: boolean): void {
     airDesk.reset();
     airDeskGesture = null;
     airDeskTextAnchor = null;
+    airDeskLastSeenAt = -Infinity;
+    if (airDeskLossTimer != null) clearTimeout(airDeskLossTimer);
+    airDeskLossTimer = null;
     clearAirDeskFingers();
   }
   diagnostics.record('airdesk.toggle', { on });
