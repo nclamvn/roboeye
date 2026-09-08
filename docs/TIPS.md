@@ -237,3 +237,14 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - **Acceptance:** the rig follows real 21-point frames, camera proof overlay is
   synchronized, no remote asset is required and both renderer backends build.
 - **Detail:** `docs/TIP-34-ROBOHAND-PREMIUM-RIG.md`.
+
+## TIP-35 · RoboHand realtime quality
+
+- **Dependencies:** TIP-34. **Priority:** P0 felt performance.
+- **Task:** apply timestamp-aware adaptive direction/root/quaternion filtering,
+  bounded root prediction, label hysteresis and a 220 ms tracking-loss bridge;
+  expose honest camera-to-render and frame-cadence p50/p95 metrics.
+- **Acceptance:** stationary jitter falls by at least 55%, fast movement retains
+  at least 65% first-sample travel, fixed lengths survive filtering and short
+  tracking/label glitches do not make the rig snap.
+- **Detail:** `docs/TIP-35-ROBOHAND-REALTIME-QUALITY.md`.

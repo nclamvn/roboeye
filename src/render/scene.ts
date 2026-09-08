@@ -38,6 +38,7 @@ export interface SceneAPI {
   setDetections(boxes: DetBox[]): void;
   setSelectedBox(idx: number): void;
   setRobotHandPose(pose: RobotHandPose | null): void;
+  consumeRobotHandPresentedFrame(): number | null;
   getDetections3D(): Array<RelativeBox3D | null>;
   resize(): void;
   render(dtMs: number): void;
@@ -330,6 +331,8 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   let inferInterval = 200; // ms, EMA
   let viewW = 1;
   let viewH = 1;
+  let pendingRobotCapturedAt: number | null = null;
+  let presentedRobotCapturedAt: number | null = null;
 
   // Click lên BEV plane để đặt đích cho robot ảo (TIP-06)
   canvas.addEventListener('click', (e) => {
@@ -418,6 +421,13 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
 
     setRobotHandPose(pose) {
       robotRig.setPose(pose);
+      if (pose) pendingRobotCapturedAt = pose.capturedAt;
+    },
+
+    consumeRobotHandPresentedFrame() {
+      const value = presentedRobotCapturedAt;
+      presentedRobotCapturedAt = null;
+      return value;
     },
 
     setDetections(boxes: DetBox[]) {
@@ -514,6 +524,10 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
       if (mode === 'robohand') {
         robotRig.update(dtMs);
         robotHalo.rotation.z += Math.min(dtMs, 50) * .00016;
+        if (pendingRobotCapturedAt != null) {
+          presentedRobotCapturedAt = pendingRobotCapturedAt;
+          pendingRobotCapturedAt = null;
+        }
       }
       const cam = mode === 'cloud' ? perspCam : mode === 'robohand' ? robotCam : orthoCam;
       void renderer.render(scene, cam);

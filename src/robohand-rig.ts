@@ -192,7 +192,9 @@ export function createRobotHandRig(): RobotHandRig {
   }
 
   function update(dtMs: number): void {
-    const response = 1 - Math.exp(-Math.min(50, Math.max(0, dtMs)) / (tracking ? 38 : 190));
+    // Temporal stabilization lives in RobotHandPoseFilter. The rig performs
+    // only display-rate interpolation so it does not add a second laggy filter.
+    const response = 1 - Math.exp(-Math.min(50, Math.max(0, dtMs)) / (tracking ? 14 : 190));
     group.position.lerp(targetPosition, response);
     group.quaternion.slerp(targetQuaternion, response);
     const nextScale = THREE.MathUtils.lerp(group.scale.x, targetScale, response);
@@ -230,4 +232,3 @@ export function createRobotHandRig(): RobotHandRig {
     }
   };
 }
-

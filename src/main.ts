@@ -46,6 +46,7 @@ import { metricLift, toKittiLines, focalFromFov, type MetricBox3D } from './rend
 import type { MetricWorkerToMain } from './metric-types';
 import { DetectionSmoother } from './detection-smooth';
 import { solveRobotHandPose } from './robohand-pose';
+import { RobotHandMetrics, RobotHandRealtimeController } from './robohand-realtime';
 
 let sceneApi: SceneAPI | null = null;
 let worker: Worker | null = null;
@@ -106,6 +107,8 @@ const airDesk = new AirDeskController();
 let airSketchOn = false;
 let airDeskOn = false;
 let roboHandOn = false;
+const roboHandRealtime = new RobotHandRealtimeController(220);
+const roboHandMetrics = new RobotHandMetrics();
 let airHandWorker: Worker | null = null;
 let airHandReady = false;
 let airHandStage = 'idle';
@@ -643,13 +646,16 @@ function spawnAirWorkers() {
 function handleRoboHandLandmarks(message: Extract<AirSketchHandWorkerToMain, { type: 'landmarks' }>, receivedAt: number) {
   if (!roboHandOn) return;
   if (!message.landmarks || !message.worldLandmarks) {
-    sceneApi?.setRobotHandPose(null);
+    const missing = roboHandRealtime.missing(receivedAt);
+    sceneApi?.setRobotHandPose(missing.pose);
     shell.drawRoboHandLandmarks(null, {
-      pose: 'LOST',
+      pose: missing.gesture,
       latencyMs: receivedAt - message.capturedAt,
       delegate: message.delegate
     });
-    shell.setRoboHandStatus('Chưa thấy đủ bàn tay · giữ cả cổ tay và năm đầu ngón trong khung camera.');
+    shell.setRoboHandStatus(missing.state === 'hold'
+      ? 'Tay bị che ngắn · đang giữ pose cuối để tránh giật.'
+      : 'Chưa thấy đủ bàn tay · giữ cả cổ tay và năm đầu ngón trong khung camera.');
     return;
   }
   const pose = solveRobotHandPose({
@@ -660,14 +666,15 @@ function handleRoboHandLandmarks(message: Extract<AirSketchHandWorkerToMain, { t
     capturedAt: message.capturedAt,
     receivedAt
   });
-  sceneApi?.setRobotHandPose(pose);
+  const result = pose ? roboHandRealtime.update(pose, message.landmarks, receivedAt) : roboHandRealtime.missing(receivedAt);
+  sceneApi?.setRobotHandPose(result.pose);
   shell.drawRoboHandLandmarks(message.landmarks, {
-    handedness: pose?.handedness ?? message.handedness,
-    pose: pose ? 'COPY 21 KHỚP' : 'POSE INVALID',
+    handedness: result.pose?.handedness ?? message.handedness,
+    pose: result.gesture,
     latencyMs: receivedAt - message.capturedAt,
     delegate: message.delegate
   });
-  shell.setRoboHandStatus(pose
+  shell.setRoboHandStatus(result.pose
     ? 'Đang sao chép liên tục cổ tay và từng đốt ngón — không cần cử chỉ kích hoạt.'
     : 'Khung tay không đủ ổn định để giải pose; hãy xòe tay trong vùng sáng.');
 }
@@ -685,8 +692,11 @@ function setRoboHand(on: boolean, selectMode = true) {
     shell.setRoboHandStatus(video?.readyState && video.readyState >= 2
       ? 'Đang khởi động tracking 21 khớp…'
       : 'Mở camera để bắt đầu RoboHand Mirror.');
+    roboHandRealtime.reset();
+    roboHandMetrics.reset();
     spawnAirWorkers();
   } else {
+    roboHandRealtime.reset();
     sceneApi?.setRobotHandPose(null);
     shell.drawRoboHandLandmarks(null);
   }
@@ -1566,7 +1576,9 @@ function startAirVideoFrameLoop(): void {
     if (generation !== airVideoFrameGeneration || currentVideo !== video) return;
     airVideoFrameCallbackId = currentVideo.requestVideoFrameCallback(onFrame);
     if ((airSketchOn || airDeskOn || roboHandOn) && airLastPresentedFrame > 0 && metadata.presentedFrames > airLastPresentedFrame + 1) {
-      airMetrics.addDroppedVideoFrames(metadata.presentedFrames - airLastPresentedFrame - 1);
+      const dropped = metadata.presentedFrames - airLastPresentedFrame - 1;
+      airMetrics.addDroppedVideoFrames(dropped);
+      if (roboHandOn) roboHandMetrics.addDroppedVideoFrames(dropped);
     }
     airLastPresentedFrame = metadata.presentedFrames;
     // captureTime is available for camera-backed media in supporting browsers;
@@ -1721,6 +1733,11 @@ async function boot() {
     if (!airUsesVideoFrameCallback) captureAirHandFrame(now, now);
 
     sceneApi?.render(dt);
+    if (roboHandOn) {
+      roboHandMetrics.addRender(dt);
+      const presentedCaptureAt = sceneApi?.consumeRobotHandPresentedFrame();
+      if (presentedCaptureAt != null) roboHandMetrics.addPipeline(now - presentedCaptureAt);
+    }
     maybeClassifyAirSketch(now);
 
     // Overlay 2D box: chỉ ở chế độ RGB và Depth (cloud dùng 3D box, BEV ẩn)
@@ -1740,6 +1757,13 @@ async function boot() {
     }
   });
 }
+
+(window as unknown as {
+  __roboeyeRoboHand?: { snapshot(): ReturnType<RobotHandMetrics['snapshot']>; active(): boolean }
+}).__roboeyeRoboHand = {
+  snapshot: () => roboHandMetrics.snapshot(),
+  active: () => roboHandOn
+};
 
 function syncNetwork() {
   shell.setNetwork(navigator.onLine);
