@@ -37,10 +37,17 @@ export function installMockWorkers() {
         if (message.type === 'init') this.emit({ type: 'ready', delegate: 'CPU' });
         else if (message.type === 'frame') {
           const landmarks = window.__mockAirHandFrames.shift() ?? null;
+          const worldLandmarks = landmarks?.map((point) => ({
+            x: (point.x - 0.5) * 0.18,
+            y: (point.y - 0.72) * 0.18,
+            z: point.z * 0.18
+          })) ?? null;
           this.emit({
             type: 'landmarks',
             landmarks,
+            worldLandmarks,
             handedness: landmarks ? 'Right' : null,
+            handednessScore: landmarks ? 0.99 : 0,
             inferMs: 9,
             capturedAt: message.capturedAt ?? message.timestamp,
             captureStartedAt: message.captureStartedAt,

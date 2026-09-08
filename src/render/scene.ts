@@ -8,6 +8,8 @@ import { texture, uniform, uv, float, vec2, vec3, mix, floor as tslFloor, instan
 import { BevBuilder } from './bev';
 import type { Mode } from '../types';
 import type { DetBox, RelativeBox3D } from '../detection-types';
+import type { RobotHandPose } from '../robohand-types';
+import { createRobotHandRig } from '../robohand-rig';
 
 // Ánh xạ relative depth (0..1, 1 = gần) sang khoảng cách tương đối qua inverse depth
 const Z_NEAR = 0.5;
@@ -35,6 +37,7 @@ export interface SceneAPI {
   setFrozen(frozen: boolean): void;
   setDetections(boxes: DetBox[]): void;
   setSelectedBox(idx: number): void;
+  setRobotHandPose(pose: RobotHandPose | null): void;
   getDetections3D(): Array<RelativeBox3D | null>;
   resize(): void;
   render(dtMs: number): void;
@@ -45,6 +48,9 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   const renderer = new THREE.WebGPURenderer({ canvas, antialias: true, forceWebGL: opts.forceWebGL === true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   await renderer.init();
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.08;
+  renderer.shadowMap.enabled = true;
   const isWebGPU = (renderer.backend as { isWebGPUBackend?: boolean }).isWebGPUBackend === true;
 
   const scene = new THREE.Scene();
@@ -62,6 +68,44 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   controls.minDistance = 0.05;
   controls.maxDistance = 16;
   controls.update();
+  const robotCam = new THREE.PerspectiveCamera(36, 1, 0.05, 30);
+  robotCam.position.set(0, .58, 5.2);
+  robotCam.lookAt(0, .58, 0);
+
+  // ── RoboHand: original offline PBR exoskeleton ────────────
+  const robotStage = new THREE.Group();
+  robotStage.visible = false;
+  scene.add(robotStage);
+  const robotRig = createRobotHandRig();
+  robotStage.add(robotRig.group);
+  const robotKey = new THREE.DirectionalLight(0xe8f7ff, 4.2);
+  robotKey.position.set(-2.8, 4.5, 4);
+  robotKey.castShadow = true;
+  robotKey.shadow.mapSize.set(1024, 1024);
+  robotStage.add(robotKey);
+  const robotFill = new THREE.DirectionalLight(0xf2c94c, 2.5);
+  robotFill.position.set(3.5, 1.2, 2.2);
+  robotStage.add(robotFill);
+  const robotRim = new THREE.PointLight(0x34c8ff, 18, 9, 2);
+  robotRim.position.set(-2.4, 1.8, -1.7);
+  robotStage.add(robotRim);
+  const robotAmbient = new THREE.HemisphereLight(0xbfeaff, 0x080b0c, 1.7);
+  robotStage.add(robotAmbient);
+  const robotFloor = new THREE.Mesh(
+    new THREE.CircleGeometry(2.15, 64),
+    new THREE.MeshStandardMaterial({ color: 0x101617, metalness: .72, roughness: .34 })
+  );
+  robotFloor.rotation.x = -Math.PI / 2;
+  robotFloor.position.y = -1.27;
+  robotFloor.receiveShadow = true;
+  robotStage.add(robotFloor);
+  const robotHalo = new THREE.Mesh(
+    new THREE.TorusGeometry(1.64, .008, 8, 96),
+    new THREE.MeshBasicMaterial({ color: 0xf2c94c, transparent: true, opacity: .58 })
+  );
+  robotHalo.rotation.x = Math.PI / 2;
+  robotHalo.position.y = -1.25;
+  robotStage.add(robotHalo);
 
   // ── Uniforms dùng chung ────────────────────────────────────
   const uMix = uniform(1);
@@ -368,7 +412,12 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
       gridHelper.visible = m === 'cloud';
       boxGroup.visible = m === 'cloud';
       bevPlane.visible = m === 'bev';
+      robotStage.visible = m === 'robohand';
       controls.enabled = m === 'cloud';
+    },
+
+    setRobotHandPose(pose) {
+      robotRig.setPose(pose);
     },
 
     setDetections(boxes: DetBox[]) {
@@ -447,6 +496,8 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
       orthoCam.updateProjectionMatrix();
       perspCam.aspect = a;
       perspCam.updateProjectionMatrix();
+      robotCam.aspect = a;
+      robotCam.updateProjectionMatrix();
       refitPlanes();
     },
 
@@ -460,11 +511,20 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
         bevTex.needsUpdate = true;
       }
       if (mode === 'cloud') controls.update();
-      const cam = mode === 'cloud' ? perspCam : orthoCam;
+      if (mode === 'robohand') {
+        robotRig.update(dtMs);
+        robotHalo.rotation.z += Math.min(dtMs, 50) * .00016;
+      }
+      const cam = mode === 'cloud' ? perspCam : mode === 'robohand' ? robotCam : orthoCam;
       void renderer.render(scene, cam);
     },
 
     dispose() {
+      robotRig.dispose();
+      robotFloor.geometry.dispose();
+      (robotFloor.material as THREE.Material).dispose();
+      robotHalo.geometry.dispose();
+      (robotHalo.material as THREE.Material).dispose();
       renderer.dispose();
     }
   };

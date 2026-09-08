@@ -5,6 +5,7 @@ import type { Mode, InferDevice } from '../types';
 import type { DetBox, DetectionEngine } from '../detection-types';
 import { OWL_QUERY_PRESETS, type OwlQueryPresetId } from '../detection-presets';
 import type { AirGesture, SketchPrediction } from '../airsketch-types';
+import type { HandLandmark } from '../airsketch-types';
 import { localizeSketchLabel } from '../airsketch-labels';
 import { assessSketchConfidence } from '../airsketch-confidence';
 
@@ -77,6 +78,12 @@ export interface ShellAPI {
   setAirSketchPredictions(predictions: SketchPrediction[]): void;
   setAirSketchPhrase(words: string[]): void;
   setAirSketchCursor(point: { x: number; y: number } | null, gesture?: AirGesture, progress?: number): void;
+  setRoboHandActive(on: boolean): void;
+  setRoboHandStatus(text: string): void;
+  drawRoboHandLandmarks(
+    landmarks: HandLandmark[] | null,
+    telemetry?: { handedness?: string | null; pose?: string; latencyMs?: number; delegate?: string }
+  ): void;
 }
 
 const $ = <T extends HTMLElement>(sel: string): T => {
@@ -191,6 +198,13 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   const airPredictions = $('#air-predictions');
   const airPhrase = $('#air-phrase');
   const airCursor = $('#airsketch-cursor');
+  const roboHandHud = $('#robohand-hud');
+  const roboHandStatus = $('#robohand-status');
+  const roboHandHandedness = $('#robohand-handedness');
+  const roboHandPose = $('#robohand-pose');
+  const roboHandLatency = $('#robohand-latency');
+  const roboHandCameraLabel = $('#robohand-camera-label');
+  const roboHandLandmarks = $<HTMLCanvasElement>('#robohand-landmarks');
   let airSketchActive = false;
   let airDeskActive = false;
 
@@ -310,7 +324,7 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
     const t = e.target;
     const isText = t instanceof HTMLInputElement && ['text', 'number', 'search'].includes(t.type);
     if (isText || t instanceof HTMLTextAreaElement || t instanceof HTMLSelectElement) return;
-    const keyToMode: Record<string, Mode> = { '1': 'rgb', '2': 'depth', '3': 'cloud', '4': 'bev' };
+    const keyToMode: Record<string, Mode> = { '1': 'rgb', '2': 'depth', '3': 'cloud', '4': 'bev', '5': 'robohand' };
     if (keyToMode[e.key]) applyMode(keyToMode[e.key]);
     else if (e.key === 'f' || e.key === 'F') toggleFreeze();
     else if (e.key === '?' || e.key === '/') togglePanel();
@@ -564,6 +578,64 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
       airCursor.style.top = `${point.y * 100}%`;
       airCursor.style.setProperty('--hold-progress', `${Math.round(progress * 360)}deg`);
       airCursor.dataset.gesture = gesture;
+    },
+    setRoboHandActive(on) {
+      roboHandHud.hidden = !on;
+      viewport.classList.toggle('robohand-active', on);
+      if (!on) {
+        const context = roboHandLandmarks.getContext('2d');
+        context?.clearRect(0, 0, roboHandLandmarks.width, roboHandLandmarks.height);
+      }
+    },
+    setRoboHandStatus(text) {
+      roboHandStatus.textContent = text;
+    },
+    drawRoboHandLandmarks(landmarks, telemetry = {}) {
+      const rect = roboHandLandmarks.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      const width = Math.max(1, Math.round(rect.width * dpr));
+      const height = Math.max(1, Math.round(rect.height * dpr));
+      if (roboHandLandmarks.width !== width || roboHandLandmarks.height !== height) {
+        roboHandLandmarks.width = width;
+        roboHandLandmarks.height = height;
+      }
+      const context = roboHandLandmarks.getContext('2d');
+      if (context) {
+        context.clearRect(0, 0, width, height);
+        if (landmarks?.length === 21) {
+          const connections = [
+            [0, 1], [1, 2], [2, 3], [3, 4],
+            [0, 5], [5, 6], [6, 7], [7, 8],
+            [0, 9], [9, 10], [10, 11], [11, 12],
+            [0, 13], [13, 14], [14, 15], [15, 16],
+            [0, 17], [17, 18], [18, 19], [19, 20],
+            [5, 9], [9, 13], [13, 17]
+          ];
+          const px = (point: HandLandmark) => ({ x: (1 - point.x) * width, y: point.y * height });
+          context.lineWidth = Math.max(1.2, dpr * 1.1);
+          context.strokeStyle = 'rgba(134, 232, 255, .78)';
+          context.beginPath();
+          for (const [a, b] of connections) {
+            const start = px(landmarks[a]);
+            const end = px(landmarks[b]);
+            context.moveTo(start.x, start.y);
+            context.lineTo(end.x, end.y);
+          }
+          context.stroke();
+          landmarks.forEach((point, index) => {
+            const position = px(point);
+            const tip = [4, 8, 12, 16, 20].includes(index);
+            context.beginPath();
+            context.arc(position.x, position.y, (tip ? 4.2 : 2.3) * dpr, 0, Math.PI * 2);
+            context.fillStyle = tip ? '#f2c94c' : '#d7fbff';
+            context.fill();
+          });
+        }
+      }
+      roboHandHandedness.textContent = telemetry.handedness?.toUpperCase() ?? '—';
+      roboHandPose.textContent = telemetry.pose ?? (landmarks ? 'COPY 21 KHỚP' : 'LOST');
+      roboHandLatency.textContent = telemetry.latencyMs == null ? '— ms' : `${Math.round(telemetry.latencyMs)} ms`;
+      roboHandCameraLabel.textContent = `CAMERA · ${telemetry.delegate ?? 'LOCAL'}`;
     },
     isFrozen: () => frozen,
     currentMode: () => mode

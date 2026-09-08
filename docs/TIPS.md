@@ -227,3 +227,13 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   skeleton lengths, canonical left/right articulation and fail-closed handling
   for incomplete or degenerate frames.
 - **Detail:** `docs/TIP-33-ROBOHAND-POSE-PIPELINE.md`.
+
+## TIP-34 · RoboHand premium procedural rig
+
+- **Dependencies:** TIP-33. **Priority:** P0 RoboHand embodiment.
+- **Task:** render an original offline PBR exoskeleton with 20 articulated
+  links; add a dedicated RoboHand mode, proof-camera inset and worker-to-rig
+  runtime bridge while pausing competing perception workloads.
+- **Acceptance:** the rig follows real 21-point frames, camera proof overlay is
+  synchronized, no remote asset is required and both renderer backends build.
+- **Detail:** `docs/TIP-34-ROBOHAND-PREMIUM-RIG.md`.

@@ -35,6 +35,9 @@
         <button class="mode-btn" data-mode="bev" data-key="4">
           <span class="mode-key">4</span><span class="mode-label">BEV Grid</span>
         </button>
+        <button class="mode-btn robohand-mode-btn" data-mode="robohand" data-key="5">
+          <span class="mode-key">5</span><span class="mode-label">RoboHand</span>
+        </button>
       </nav>
 
       <div id="bev-status" class="bev-status" role="status" aria-live="polite" hidden>
@@ -130,6 +133,24 @@
       <canvas id="airsketch-overlay" aria-label="Nét vẽ AirSketch trên camera"></canvas>
       <div id="airsketch-cursor" data-gesture="hover" hidden><span></span></div>
       <div id="airdesk-fingers" aria-hidden="true" hidden><i id="airdesk-pinch-line" hidden></i></div>
+      <section id="robohand-hud" aria-label="RoboHand Mirror" hidden>
+        <header class="robohand-head">
+          <div class="robohand-kicker">21 KHỚP · LIVE RETARGET</div>
+          <h2>RoboHand <span>Mirror</span></h2>
+          <p id="robohand-status" role="status">Đang chuẩn bị camera và bộ theo dõi bàn tay…</p>
+        </header>
+        <div class="robohand-metrics" aria-live="polite">
+          <span><small>HAND</small><b id="robohand-handedness">—</b></span>
+          <span><small>POSE</small><b id="robohand-pose">WAITING</b></span>
+          <span><small>PIPELINE</small><b id="robohand-latency">— ms</b></span>
+        </div>
+        <figure class="robohand-camera">
+          <video id="robohand-video" muted playsinline aria-label="Camera bàn tay thật"></video>
+          <canvas id="robohand-landmarks" aria-hidden="true"></canvas>
+          <figcaption><i></i><span id="robohand-camera-label">CAMERA · LOCAL</span></figcaption>
+        </figure>
+        <p class="robohand-privacy">Khung hình và landmarks ở lại trên thiết bị.</p>
+      </section>
       <section id="airdesk" aria-label="AirDesk: chỉnh ảnh và văn bản bằng ngón tay" hidden>
         <header class="airdesk-head">
           <div>
@@ -283,6 +304,10 @@
           <h3><span class="mode-key">4</span> BEV Grid</h3>
           <p>Đám mây điểm được ép xuống sàn thành lưới ô vuông nhìn từ trên cao. Ô trắng là có vật cản. Đây chính là bản đồ mà thuật toán tránh vật cản và path planning của robot chạy trên đó.</p>
           <p>Click lên grid để đặt đích: một robot ảo sẽ chạy A* tìm đường né các ô vật cản và replan theo thời gian thực. Anh đứng chắn đường là nó tự vòng qua. Vật cản lọt vào vùng gần camera thì góc phải trên hiện cảnh báo.</p>
+        </section>
+        <section class="panel-sec" data-mode="robohand">
+          <h3><span class="mode-key">5</span> RoboHand</h3>
+          <p>MediaPipe đọc 21 mốc bàn tay. Pose solver đổi chúng thành 20 liên kết cơ khí có chiều dài cố định để bàn tay robot sao chép liên tục mà không kéo giãn hình học.</p>
         </section>
         <section class="panel-sec">
           <h3>Tinh chỉnh</h3>

@@ -45,6 +45,7 @@ import type {
 import { metricLift, toKittiLines, focalFromFov, type MetricBox3D } from './render/lift-metric';
 import type { MetricWorkerToMain } from './metric-types';
 import { DetectionSmoother } from './detection-smooth';
+import { solveRobotHandPose } from './robohand-pose';
 
 let sceneApi: SceneAPI | null = null;
 let worker: Worker | null = null;
@@ -104,6 +105,7 @@ const airMetrics = new AirSketchMetrics();
 const airDesk = new AirDeskController();
 let airSketchOn = false;
 let airDeskOn = false;
+let roboHandOn = false;
 let airHandWorker: Worker | null = null;
 let airHandReady = false;
 let airHandStage = 'idle';
@@ -238,7 +240,10 @@ let lastMeterUpdate = 0;
 
 const shell = createShell({
   onMode: (m) => {
+    if (m === 'robohand') setRoboHand(true, false);
+    else if (roboHandOn) setRoboHand(false, false);
     sceneApi?.setMode(m);
+    if (m !== 'robohand' && video?.srcObject && !worker) spawnWorker();
     diagnostics.record('mode.change', { mode: m });
   },
   onSize: (px) => {
@@ -453,8 +458,9 @@ function speakAirPhrase() {
 function spawnAirWorkers() {
   // Cold start tuần tự: ONNX classifier hoàn tất trước khi MediaPipe dựng graph,
   // tránh hai runtime WASM tranh bộ nhớ/compile rồi báo network error giả.
-  const classifierSettled = airClassifierReady || (airClassifierWorker != null && !airClassifierLoading);
-  if (!airHandWorker && classifierSettled) {
+  const handNeeded = airSketchOn || airDeskOn || roboHandOn;
+  const classifierSettled = !airSketchOn || airClassifierReady || (airClassifierWorker != null && !airClassifierLoading);
+  if (!airHandWorker && handNeeded && classifierSettled) {
     const runtimeBase = new URL(import.meta.env.BASE_URL, location.href);
     // MediaPipe loader vẫn dùng importScripts nội bộ; classic worker là contract
     // tương thích chính thức, đồng thời giữ inference khỏi main thread.
@@ -471,12 +477,14 @@ function spawnAirWorkers() {
         const label = message.stage === 'runtime' ? 'runtime WASM' : message.stage === 'model' ? 'model bàn tay' : 'đồ thị tracking';
         shell.setAirSketchStatus(`Đang chuẩn bị ${label}…`);
         if (airDeskOn) shell.setAirDeskStatus(`Đang chuẩn bị ${label}…`);
+        if (roboHandOn) shell.setRoboHandStatus(`Đang chuẩn bị ${label}…`);
       } else if (message.type === 'ready') {
         airHandStage = 'ready';
         airHandReady = true;
         const delegate = message.delegate ?? 'CPU';
         shell.setAirSketchStatus(`Tracking tay ${delegate} sẵn sàng · chụm lên vật thể để cầm, chụm vùng trống để vẽ`);
         if (airDeskOn) shell.setAirDeskStatus(`Tracking tay ${delegate} sẵn sàng · các đầu ngón vàng đã hoạt động.`);
+        if (roboHandOn) shell.setRoboHandStatus(`Tracking ${delegate} sẵn sàng · đưa một bàn tay trọn vẹn vào camera.`);
         diagnostics.record('airsketch.hand.ready', { model: AIRSKETCH_CONFIG.handModel.version, delegate });
       } else if (message.type === 'landmarks') {
         airHandBusy = false;
@@ -494,12 +502,14 @@ function spawnAirWorkers() {
         }
         if (airSketchOn) handleAirLandmarks(message.landmarks, message.capturedAt, resultAt);
         else if (airDeskOn) handleAirDeskLandmarks(message.landmarks, message.capturedAt, resultAt);
+        else if (roboHandOn) handleRoboHandLandmarks(message, resultAt);
       } else {
         airHandBusy = false;
         if (message.stage === 'load') airHandReady = false;
         airHandStage = `error:${message.stage}:${message.message}`;
         shell.setAirSketchStatus(`Tracking tay chưa sẵn sàng · dùng chuột/chạm (${message.message})`);
         if (airDeskOn) shell.setAirDeskStatus(`Tracking tay chưa sẵn sàng · dùng chuột/chạm (${message.message})`);
+        if (roboHandOn) shell.setRoboHandStatus(`Tracking tay gặp lỗi: ${message.message}`);
         diagnostics.record('airsketch.hand.error', { stage: message.stage, message: message.message });
       }
     };
@@ -509,6 +519,7 @@ function spawnAirWorkers() {
       airHandStage = 'crash';
       shell.setAirSketchStatus('Tracking tay gặp lỗi · chuột/chạm vẫn dùng được');
       if (airDeskOn) shell.setAirDeskStatus('Tracking tay gặp lỗi · chuột/chạm vẫn dùng được');
+      if (roboHandOn) shell.setRoboHandStatus('Hand Worker bị dừng · chuyển mode rồi quay lại để thử lại.');
       diagnostics.record('airsketch.hand.crash', { message: event.message });
     };
     instance.postMessage({
@@ -526,7 +537,7 @@ function spawnAirWorkers() {
     });
   }
 
-  if (!airClassifierWorker) {
+  if (airSketchOn && !airClassifierWorker) {
     const runtimeBase = new URL(import.meta.env.BASE_URL, location.href);
     const instance = new Worker(new URL('workers/air-classifier-worker.js', runtimeBase));
     airClassifierWorker = instance;
@@ -627,6 +638,59 @@ function spawnAirWorkers() {
       topK: AIRSKETCH_CONFIG.classifier.topK
     });
   }
+}
+
+function handleRoboHandLandmarks(message: Extract<AirSketchHandWorkerToMain, { type: 'landmarks' }>, receivedAt: number) {
+  if (!roboHandOn) return;
+  if (!message.landmarks || !message.worldLandmarks) {
+    sceneApi?.setRobotHandPose(null);
+    shell.drawRoboHandLandmarks(null, {
+      pose: 'LOST',
+      latencyMs: receivedAt - message.capturedAt,
+      delegate: message.delegate
+    });
+    shell.setRoboHandStatus('Chưa thấy đủ bàn tay · giữ cả cổ tay và năm đầu ngón trong khung camera.');
+    return;
+  }
+  const pose = solveRobotHandPose({
+    landmarks: message.landmarks,
+    worldLandmarks: message.worldLandmarks,
+    handedness: message.handedness,
+    handednessScore: message.handednessScore,
+    capturedAt: message.capturedAt,
+    receivedAt
+  });
+  sceneApi?.setRobotHandPose(pose);
+  shell.drawRoboHandLandmarks(message.landmarks, {
+    handedness: pose?.handedness ?? message.handedness,
+    pose: pose ? 'COPY 21 KHỚP' : 'POSE INVALID',
+    latencyMs: receivedAt - message.capturedAt,
+    delegate: message.delegate
+  });
+  shell.setRoboHandStatus(pose
+    ? 'Đang sao chép liên tục cổ tay và từng đốt ngón — không cần cử chỉ kích hoạt.'
+    : 'Khung tay không đủ ổn định để giải pose; hãy xòe tay trong vùng sáng.');
+}
+
+function setRoboHand(on: boolean, selectMode = true) {
+  if (on === roboHandOn) return;
+  if (on) {
+    if (airSketchOn) setAirSketch(false);
+    if (airDeskOn) setAirDesk(false);
+  }
+  roboHandOn = on;
+  shell.setRoboHandActive(on);
+  if (on) {
+    if (selectMode && shell.currentMode() !== 'robohand') shell.setMode('robohand');
+    shell.setRoboHandStatus(video?.readyState && video.readyState >= 2
+      ? 'Đang khởi động tracking 21 khớp…'
+      : 'Mở camera để bắt đầu RoboHand Mirror.');
+    spawnAirWorkers();
+  } else {
+    sceneApi?.setRobotHandPose(null);
+    shell.drawRoboHandLandmarks(null);
+  }
+  diagnostics.record('robohand.toggle', { on });
 }
 
 function setAirSketch(on: boolean) {
@@ -1463,7 +1527,7 @@ function retryDepthWorker() {
 function captureAirHandFrame(sourceAt: number, callbackAt = performance.now()): void {
   const currentVideo = video;
   const interval = 1_000 / AIRSKETCH_CONFIG.tracking.maxFps;
-  if ((!airSketchOn && !airDeskOn) || !airHandReady || airClassifierLoading || airHandBusy || frozen ||
+  if ((!airSketchOn && !airDeskOn && !roboHandOn) || !airHandReady || (airSketchOn && airClassifierLoading) || airHandBusy || frozen ||
       !airHandWorker || !currentVideo || currentVideo.readyState < 2 || callbackAt - airLastCaptureAt < interval) return;
   airHandBusy = true;
   airLastCaptureAt = callbackAt;
@@ -1473,7 +1537,7 @@ function captureAirHandFrame(sourceAt: number, callbackAt = performance.now()): 
   const captureStartedAt = performance.now();
   void createImageBitmap(currentVideo, { resizeWidth: width, resizeHeight: height, resizeQuality: 'medium' })
     .then((bitmap) => {
-      if ((!airSketchOn && !airDeskOn) || !airHandWorker || currentVideo !== video) {
+      if ((!airSketchOn && !airDeskOn && !roboHandOn) || !airHandWorker || currentVideo !== video) {
         bitmap.close();
         airHandBusy = false;
         return;
@@ -1501,7 +1565,7 @@ function startAirVideoFrameLoop(): void {
   const onFrame = (now: DOMHighResTimeStamp, metadata: VideoFrameCallbackMetadata) => {
     if (generation !== airVideoFrameGeneration || currentVideo !== video) return;
     airVideoFrameCallbackId = currentVideo.requestVideoFrameCallback(onFrame);
-    if ((airSketchOn || airDeskOn) && airLastPresentedFrame > 0 && metadata.presentedFrames > airLastPresentedFrame + 1) {
+    if ((airSketchOn || airDeskOn || roboHandOn) && airLastPresentedFrame > 0 && metadata.presentedFrames > airLastPresentedFrame + 1) {
       airMetrics.addDroppedVideoFrames(metadata.presentedFrames - airLastPresentedFrame - 1);
     }
     airLastPresentedFrame = metadata.presentedFrames;
@@ -1528,7 +1592,8 @@ async function openCamera(deviceId?: string) {
     audio: false
   });
   if (!video) {
-    video = document.createElement('video');
+    video = document.getElementById('robohand-video') as HTMLVideoElement | null;
+    if (!video) video = document.createElement('video');
     video.muted = true;
     video.playsInline = true;
   }
@@ -1580,7 +1645,12 @@ async function start() {
     return;
   }
   shell.setBootStatus('Camera đã mở. Đang tải model…');
-  spawnWorker();
+  if (roboHandOn) {
+    shell.hideBoot();
+    spawnAirWorkers();
+  } else {
+    spawnWorker();
+  }
 }
 
 async function boot() {
@@ -1619,7 +1689,7 @@ async function boot() {
     // Depth đọc pixel rất tốn tài nguyên. Khi người dùng đang xem RGB với
     // detection hoặc AirSketch, video texture vẫn cập nhật trực tiếp còn depth
     // được nhường tài nguyên cho model tương tác thời gian thực.
-    if (workerReady && !workerBusy && !frozen && worker && !airSketchOn &&
+    if (workerReady && !workerBusy && !frozen && worker && !airSketchOn && !airDeskOn && !roboHandOn &&
         (!detectOn || shell.currentMode() !== 'rgb')) {
       const img = captureFrame(captureW, depthCapture);
       if (img) {
@@ -1633,7 +1703,7 @@ async function boot() {
     }
 
     // Detection chạy nhịp riêng, cũng latest-frame-wins
-    if (detectOn && detectReady && !detectBusy && !frozen && detectWorker) {
+    if (detectOn && detectReady && !detectBusy && !frozen && !roboHandOn && detectWorker) {
       const dimg = captureFrame(DETECTION_CAPTURE_W, detectionCapture);
       if (dimg) {
         detectBusy = true;

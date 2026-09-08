@@ -2,7 +2,7 @@
 
 export type Dtype = 'fp16' | 'q4f16';
 export type InferDevice = 'webgpu' | 'wasm';
-export type Mode = 'rgb' | 'depth' | 'cloud' | 'bev';
+export type Mode = 'rgb' | 'depth' | 'cloud' | 'bev' | 'robohand';
 export type DepthErrorStage = 'load' | 'infer';
 
 export interface MsgInit {

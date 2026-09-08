@@ -104,7 +104,10 @@ function clamp(value: number, min: number, max: number): number {
  */
 export function solveRobotHandPose(frame: RobotHandFrame): RobotHandPose | null {
   if (!finiteLandmarks(frame.landmarks) || !finiteLandmarks(frame.worldLandmarks)) return null;
-  const world = frame.worldLandmarks;
+  // MediaPipe camera coordinates use +y downward. The RGB plane is also
+  // mirrored for selfie interaction, so convert to Three's +y-up display
+  // space before deriving the palm basis.
+  const world = frame.worldLandmarks.map((point) => ({ x: -point.x, y: -point.y, z: point.z }));
   const xAxis = normalize(sub(world[5], world[17]));
   const palmForward = sub(world[9], world[0]);
   if (!xAxis) return null;
@@ -155,4 +158,3 @@ export function solveRobotHandPose(frame: RobotHandFrame): RobotHandPose | null 
     receivedAt
   };
 }
-
