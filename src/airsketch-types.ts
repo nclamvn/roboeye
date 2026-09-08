@@ -44,7 +44,8 @@ export type AirSketchHandWorkerToMain =
   | { type: 'loading'; stage: 'runtime' | 'model' | 'graph' }
   | { type: 'ready'; delegate?: 'GPU' | 'CPU' }
   | {
-      type: 'landmarks'; landmarks: HandLandmark[] | null; handedness: string | null; inferMs: number;
+      type: 'landmarks'; landmarks: HandLandmark[] | null; worldLandmarks: HandLandmark[] | null;
+      handedness: string | null; handednessScore: number; inferMs: number;
       // Timestamp of the video frame, not the later worker reply.
       capturedAt: number; captureStartedAt?: number; sentAt?: number; delegate?: 'GPU' | 'CPU';
     }

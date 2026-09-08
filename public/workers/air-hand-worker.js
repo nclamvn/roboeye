@@ -93,7 +93,10 @@ function infer(message) {
   try {
     const result = landmarker.detectForVideo(bitmap, message.timestamp);
     const landmarks = result.landmarks[0]?.map((point) => ({ x: point.x, y: point.y, z: point.z })) ?? null;
-    const handedness = result.handedness[0]?.[0]?.categoryName ?? null;
+    const worldLandmarks = result.worldLandmarks?.[0]?.map((point) => ({ x: point.x, y: point.y, z: point.z })) ?? null;
+    const handednessResult = result.handedness[0]?.[0];
+    const handedness = handednessResult?.categoryName ?? null;
+    const handednessScore = handednessResult?.score ?? 0;
     const inferMs = performance.now() - startedAt;
     if (activeDelegate === 'GPU' && !gpuFallbackAttempted) {
       gpuSlowSamples = inferMs >= gpuFallbackInferMs ? gpuSlowSamples + 1 : 0;
@@ -106,7 +109,9 @@ function infer(message) {
     postMessage({
       type: 'landmarks',
       landmarks,
+      worldLandmarks,
       handedness,
+      handednessScore,
       inferMs,
       // Preserve the frame time so the main thread can compensate the worker
       // transit/inference gap before drawing the cursor and ink.

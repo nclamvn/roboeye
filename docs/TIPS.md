@@ -216,3 +216,14 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   translation, continuous zoom, rotation, relative face flip and deliberate
   release; a visible HUD reports the recognized geometry on every hand sample.
 - **Detail:** `docs/TIP-32-AIRDESK-SPATIAL-GESTURES.md`.
+
+## TIP-33 · RoboHand pose pipeline
+
+- **Dependencies:** TIP-31. **Priority:** P0 RoboHand foundation.
+- **Task:** extend the hand worker with world landmarks and handedness score;
+  derive a canonical palm basis; retarget all 20 MediaPipe links onto a
+  fixed-proportion, renderer-independent robot hand contract.
+- **Acceptance:** 21 finite solved points, 20 normalized links, scale-invariant
+  skeleton lengths, canonical left/right articulation and fail-closed handling
+  for incomplete or degenerate frames.
+- **Detail:** `docs/TIP-33-ROBOHAND-POSE-PIPELINE.md`.
