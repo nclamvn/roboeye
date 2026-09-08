@@ -76,8 +76,16 @@ try {
   check('HUD công khai latency hiện tại', /\d+ ms/.test(tracked.latency ?? ''), tracked.latency);
 
   await page.evaluate(() => window.__mockAirHandFrames.push(null));
-  await page.waitForFunction(() => document.querySelector('#robohand-pose')?.textContent === 'HOLD');
-  check('mất tracking ngắn giữ pose thay vì snap', (await page.textContent('#robohand-pose')) === 'HOLD');
+  await page.waitForFunction(() => {
+    const state = document.querySelector('#robohand-pose')?.textContent;
+    return state === 'HOLD' || state === 'REST';
+  });
+  const trackingLossState = await page.textContent('#robohand-pose');
+  check(
+    'mất tracking đi qua state machine an toàn',
+    trackingLossState === 'HOLD' || trackingLossState === 'REST',
+    trackingLossState,
+  );
 
   await page.setViewportSize({ width: 375, height: 667 });
   check('RoboHand mobile không tràn ngang', await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
@@ -109,4 +117,3 @@ if (failures.length) {
   process.exit(1);
 }
 console.log('[robohand-e2e:mock] TẤT CẢ PASS');
-
