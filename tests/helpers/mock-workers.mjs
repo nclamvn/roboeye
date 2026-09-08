@@ -11,6 +11,7 @@ export function installMockWorkers() {
   // consumed only when the application asks the hand worker to infer, so this
   // exercises the real main-thread landmark integration rather than a helper.
   window.__mockAirHandFrames = [];
+  window.__mockWorkerKinds = [];
 
   class MockWorker {
     constructor(url) {
@@ -19,6 +20,7 @@ export function installMockWorkers() {
         : workerUrl.includes('air-hand-worker') ? 'air-hand'
           : workerUrl.includes('air-classifier-worker') ? 'air-classifier'
             : 'depth';
+      window.__mockWorkerKinds.push(this.kind);
       this.onmessage = null;
       this.onerror = null;
       this.terminated = false;

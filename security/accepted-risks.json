@@ -5,8 +5,8 @@
       "id": "GHSA-f88m-g3jw-g9cj",
       "package": "sharp",
       "severity": "high",
-      "reviewBy": "2026-09-06",
-      "reason": "RoboEye deploys the Transformers.js browser export; the static bundle contains no sharp/libvips implementation and no Node image-processing service handles untrusted input."
+      "reviewBy": "2026-12-08",
+      "reason": "Re-reviewed 2026-09-08: latest @huggingface/transformers 4.2.0 still declares sharp ^0.34.5 while the patched line is 0.35.x. RoboEye deploys the Transformers.js browser export; the static bundle contains no sharp/libvips implementation and no Node image-processing service handles untrusted input."
     }
   ]
 }

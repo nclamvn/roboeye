@@ -248,3 +248,13 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   at least 65% first-sample travel, fixed lengths survive filtering and short
   tracking/label glitches do not make the rig snap.
 - **Detail:** `docs/TIP-35-ROBOHAND-REALTIME-QUALITY.md`.
+
+## TIP-36 · RoboHand verification and release
+
+- **Dependencies:** TIP-35. **Priority:** P0 production gate.
+- **Task:** add worker-to-DOM fallback E2E, responsive and tracking-loss
+  contracts; wire the suite into QA/CI; update product/release documentation and
+  package the approved phase as RoboEye `1.5.0`.
+- **Acceptance:** every local deterministic gate, release metadata check and
+  browser visual smoke passes without regressing existing modes.
+- **Detail:** `docs/TIP-36-ROBOHAND-RELEASE.md`.

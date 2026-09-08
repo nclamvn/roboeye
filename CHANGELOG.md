@@ -1,6 +1,18 @@
 # Changelog
 
-## Unreleased
+## 1.5.0 — 2026-09-08
+
+### RoboHand Mirror (TIP-33–36)
+
+- Added a dedicated real-time humanoid robot-hand mode driven by all 21
+  MediaPipe normalized and world landmarks.
+- Added an original offline PBR exoskeleton with 20 articulated links, studio
+  lighting, proof-camera PiP and synchronized landmark overlay.
+- Added fixed-length hand-centric retargeting, canonical left/right mapping,
+  speed-adaptive direction/quaternion filtering, bounded root prediction and a
+  220 ms tracking-loss bridge.
+- Added open/fist/point/pinch/V/OK telemetry, camera-to-render p50/p95 metrics,
+  deterministic quality fixtures and worker-to-DOM WebGL2 E2E coverage.
 
 ### AirDesk spatial hand gestures (TIP-32)
 
@@ -99,8 +111,6 @@
   recall at the model boundary.
 - Patched the transitive `nanoid` advisory in the lockfile; security audit is
   green without accepting that finding as a policy exception.
-
-## 1.5.0 — 09/08/2026
 
 ### Metric depth and KITTI export (P1-B-2)
 

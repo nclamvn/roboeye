@@ -28,7 +28,7 @@ Màn hình đầu tiên có hai đường vào: **Mở camera** để dùng tr�
 
 ## Phím và điều khiển
 
-Phím 1 2 3 4 chuyển bốn chế độ RGB, Depth, Point Cloud, BEV Grid. Phím F đóng băng khung hình để bay quanh, phím ? mở panel giải thích từng tầng pipeline. Ở chế độ Point Cloud, kéo chuột để orbit, lăn để zoom. Ở chế độ BEV, click lên grid để đặt đích: robot ảo chạy A* tìm đường né vật cản và replan theo thời gian thực; vật cản lọt vùng gần camera thì chip cảnh báo hiện góc phải trên ở mọi chế độ. Sidebar có slider Inference size (đánh đổi tốc độ với chi tiết), Point size, chọn camera và chọn dtype model (fp16 khoảng 50MB, q4f16 khoảng 18MB cho mạng yếu).
+Phím 1 2 3 4 5 chuyển năm chế độ RGB, Depth, Point Cloud, BEV Grid và RoboHand. Phím F đóng băng khung hình để bay quanh, phím ? mở panel giải thích từng tầng pipeline. Ở chế độ Point Cloud, kéo chuột để orbit, lăn để zoom. Ở chế độ BEV, click lên grid để đặt đích: robot ảo chạy A* tìm đường né vật cản và replan theo thời gian thực; vật cản lọt vùng gần camera thì chip cảnh báo hiện góc phải trên ở mọi chế độ. Sidebar có slider Inference size (đánh đổi tốc độ với chi tiết), Point size, chọn camera và chọn dtype model (fp16 khoảng 50MB, q4f16 khoảng 18MB cho mạng yếu).
 
 Hai đồng hồ fps độc lập là hành vi đúng: render chạy 60fps trong khi inference chậm hơn, point cloud nội suy giữa hai depth frame nên chuyển động vẫn mềm.
 
@@ -80,6 +80,24 @@ npm run test:airsketch-quality # top-1/top-3 trên mẫu QuickDraw chính thức
 ```
 
 Smoke local giữ ngân sách hand p95 mặc định 80 ms. Shared CI dùng trần 250 ms để phát hiện treo/hồi quy lớn mà không biến độ nhiễu phần cứng runner thành lỗi tương thích model; có thể ghi đè bằng `AIRSKETCH_HAND_P95_MAX_MS`.
+
+## RoboHand Mirror — sao chép bàn tay sang robot 3D
+
+Nhấn mode **5 · RoboHand** sau khi mở camera. Bàn tay exoskeleton PBR ở vùng
+chính sao chép liên tục cổ tay và toàn bộ 20 liên kết ngón từ 21 mốc MediaPipe;
+không cần cử chỉ kích hoạt. Camera picture-in-picture hiển thị đồng thời skeleton
+21 điểm để kiểm chứng quan hệ giữa tay thật và model.
+
+Open, fist, point, pinch, V và OK được hiện như telemetry, không phải danh sách
+giới hạn chuyển động. Pose trung gian vẫn được retarget. Solver dùng world
+landmarks cho articulation, normalized landmarks cho vị trí/kích thước, rồi
+đưa kết quả qua adaptive filtering, root prediction bị chặn và tracking-loss
+hold 220 ms. Depth, detection và QuickDraw được nhường tài nguyên khi mode này
+hoạt động. Mô hình robot được tạo hoàn toàn bằng code và không tải asset 3D ngoài.
+
+```bash
+npm run test:robohand-e2e  # worker → pose → HUD/render contract
+```
 
 ## Switch fallback và demo offline
 

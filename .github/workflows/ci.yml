@@ -28,6 +28,7 @@ jobs:
       - run: npm run build
       - run: npm run security:audit
       - run: npm run test:detection-e2e
+      - run: npm run test:robohand-e2e
       - run: npm run test:release-e2e
       - run: npm run release:verify
 
