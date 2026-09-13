@@ -52,6 +52,7 @@ export default defineConfig({
   },
   plugins: [releaseArtifacts()],
   build: {
+    rollupOptions: { input: { index: 'index.html', drive: 'drive.html' } },
     target: 'es2022',
     chunkSizeWarningLimit: 2500
   },

@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-13",
+  "environment": "Codex in-app browser on this host; hardware not characterized",
+  "testPage": "tests/drive-model-smoke.html",
+  "fixture": "bus",
+  "fixtureSha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
+  "inputWidth": 480,
+  "inputHeight": 640,
+  "backend": "wasm",
+  "model": "onnx-community/rtdetr_v2_r18vd-ONNX",
+  "revision": "936f90b6a476c6da4dfe053fc521af55285976ba",
+  "dtype": "q8",
+  "warmupRuns": 1,
+  "inferenceMs": [2107.6, 1848.2, 1767.5, 1784.2],
+  "detectedVehicle": "bus",
+  "score": 0.9579342603683472,
+  "distanceWithoutCalibration": null,
+  "functionalSmokePass": true,
+  "realtimeAcceptance": false,
+  "realDistanceAccuracy": null,
+  "note": "Manually transcribed from browser test DOM. One image, no live road/camera testing; score is not accuracy. This file records evidence, not an assertion fixture."
+}

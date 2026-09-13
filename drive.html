@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://huggingface.co https://*.huggingface.co https://*.hf.co ws://localhost:* ws://127.0.0.1:*; worker-src 'self' blob:; object-src 'none'; base-uri 'self'" />
+  <title>DriveSense · đo khoảng cách từ camera</title>
+</head>
+<body>
+  <header class="topbar"><a href="./">RoboEye</a><h1>DriveSense</h1><span>Phòng thử nghiệm camera 2D</span></header>
+  <p class="safety">Chỉ phân tích video hoặc thử tại bãi có kiểm soát. Chưa phải hệ thống cảnh báo va chạm; không dùng để quyết định phanh/lái.</p>
+  <main class="workspace">
+    <section class="viewer" aria-label="Video và kết quả đo">
+      <div class="sourcebar"><span id="source-label">Chưa chọn nguồn</span><span id="backend">AI chưa tải</span></div>
+      <div class="stage" id="stage"><video id="video" muted playsinline aria-label="Video hành trình"></video><canvas id="overlay" aria-label="Khung xe và nhãn khoảng cách"></canvas>
+        <div id="empty"><h2>Nhìn thấy xe.<br>Đo có căn cứ.</h2><p>Mở video hành trình trên máy để bắt đầu.<br>Chưa hiệu chuẩn? Vẫn nhận diện xe, không gán mét.</p><button id="demo">Xem mẫu toán học</button><small>Mẫu dựng sẵn để kiểm tra toán và giao diện, không phải kết quả AI.</small></div>
+      </div>
+      <div class="transport"><button id="play" disabled>Phát / tạm dừng</button><input id="seek" type="range" min="0" max="1" step="0.01" value="0" aria-label="Vị trí video" disabled/><output id="time">0:00</output><button id="stop">Dừng nguồn</button></div>
+      <div class="telemetry"><span>Phép đo <b id="method">Chưa hiệu chuẩn</b></span><span>Tuổi dữ liệu <b id="age">—</b></span><span>Xe đang bám <b id="count">0</b></span></div>
+      <p id="status" role="status">Video ở trên máy; chỉ tải model khi bạn bật nhận diện.</p>
+      <div class="legend"><span class="blue">Đang bám</span><span class="amber">Dưới 20 m*</span><span class="red">Dưới 10 m*</span><span>┄ Chưa đủ dữ liệu</span></div>
+      <p class="fineprint">*Màu thử nghiệm theo khoảng cách tới chân xe, không phải ngưỡng an toàn. Giả định mặt đường phẳng, không đo khoảng hở cản xe. Khoảng bất định chưa được hiệu chuẩn xác suất.</p>
+      <div id="track-list" aria-label="Danh sách xe"></div>
+    </section>
+    <aside class="controls" aria-label="Nguồn và hiệu chuẩn">
+      <section><h2>Nguồn hình</h2><label class="file-button">Mở video trên máy<input id="file" type="file" accept="video/*"/></label><div class="row"><button id="camera">Camera sau</button><button id="model">Bật nhận diện xe</button></div><label class="check"><input id="wasm" type="checkbox"/> Ép WASM nếu WebGPU lỗi</label></section>
+      <section><h2>Hiệu chuẩn camera</h2><p>Nhập thông số đã đo hoặc profile JSON. Giá trị ví dụ không phải hiệu chuẩn của camera bạn.</p>
+        <form id="calibration"><div class="fields">
+          <label>Chiều rộng ảnh (px)<input id="width" type="number" required min="160" max="8192" step="1"/></label>
+          <label>Chiều cao ảnh (px)<input id="height" type="number" required min="120" max="8192" step="1"/></label>
+          <label>fx (px)<input id="fx" type="number" required min="50" step="any"/></label><label>fy (px)<input id="fy" type="number" required min="50" step="any"/></label>
+          <label>cx (px)<input id="cx" type="number" required min="0" step="any"/></label><label>cy (px)<input id="cy" type="number" required min="0" step="any"/></label>
+          <label>Camera cao (m)<input id="heightM" type="number" required min="0.4" max="4" step="any"/></label><label>Chúc xuống (°)<input id="pitchDeg" type="number" required min="-20" max="30" step="any"/></label>
+          <label>Nghiêng roll (°)<input id="rollDeg" type="number" value="0" required min="-15" max="15" step="any"/></label><label>Xa nhất thử (m)<input id="maxM" type="number" value="50" required min="10" max="100"/></label>
+        </div><label>Độ méo k1, k2, p1, p2, k3<input id="distortion" value="0,0,0,0,0" required/></label>
+        <label class="check"><input id="confirmed" type="checkbox" required/> Tôi đã đo thông số, gá cố định, giữ nguyên lens/crop; chỉ thử trên đường phẳng.</label>
+        <div class="row"><button type="submit">Áp dụng thông số</button><button type="button" id="clear-profile">Hủy hiệu chuẩn</button></div></form>
+        <div class="row"><label class="file-button secondary">Nhập profile<input id="profile-file" type="file" accept=".json,application/json"/></label><button id="export-profile" disabled>Xuất profile</button></div>
+        <p id="profile-status">Chưa hiệu chuẩn — nhãn khoảng cách bị khóa.</p>
+        <details><summary>Tinh chỉnh bằng điểm đất đã đo</summary><p>Giữ nguyên intrinsics. JSON gồm u,v (pixel gốc), zM (mét dọc phía trước camera), split: fit hoặc check. Cần 6 điểm fit trải ≥8 m và 2 điểm check độc lập.</p><label class="file-button secondary">Nhập điểm fit + check<input id="ground-file" type="file" accept=".json,application/json"/></label><p id="fit-status">Huber + Gauss–Newton; holdout không đạt sẽ không áp dụng.</p></details>
+      </section>
+      <section><h2>Đối chứng & báo cáo</h2><p>Nhập JSON với timeMs, trackId, distanceM đã đo độc lập. ID phải đối chiếu với đúng phiên video.</p><div class="report-actions"><label class="file-button secondary">Nhập đối chứng<input id="reference-file" type="file" accept=".json,application/json"/></label><button id="report">Xuất báo cáo JSON</button></div><p id="reference-status">Chưa có đối chứng — chưa thể công bố độ chính xác.</p></section>
+    </aside>
+  </main>
+  <script type="module" src="/src/drive/app.ts"></script>
+</body>
+</html>

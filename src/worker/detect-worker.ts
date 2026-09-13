@@ -44,6 +44,7 @@ let loadVersion = 0;
 let queries: string[] = [...OWL_QUERY_PRESETS.everyday.queries];
 let forceWasmFlag = false;
 let localFlag = false;
+let driveProfile = false;
 
 function post(msg: DetectionWorkerToMain, transfer?: Transferable[]) {
   (self as unknown as Worker).postMessage(msg, { transfer: transfer ?? [] });
@@ -117,7 +118,7 @@ async function detect(rgba: ArrayBuffer, width: number, height: number, captured
       })) as typeof raw;
     } else {
       raw = (await activeDetector(image, {
-        threshold: DETECTION_CONFIG.rtdetr.threshold,
+        threshold: driveProfile ? 0.15 : DETECTION_CONFIG.rtdetr.threshold,
         percentage: false
       })) as typeof raw;
     }
@@ -142,6 +143,7 @@ self.onmessage = (ev: MessageEvent<DetectionMainToWorker>) => {
   const m = ev.data;
   if (m.type === 'init') {
     forceWasmFlag = m.forceWasm === true;
+    driveProfile = m.profile === 'drive';
     localFlag = m.localModels === true;
     if (localFlag) useLocalModels();
     engine = m.engine;

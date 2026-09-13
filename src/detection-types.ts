@@ -51,6 +51,8 @@ export type DetectionMainToWorker =
       localModels: boolean;
       engine: DetectionEngine;
       queries: string[];
+      // Opt-in low-score candidates for DriveSense two-stage association only.
+      profile?: 'drive';
     }
   | { type: 'engine'; engine: DetectionEngine }
   | { type: 'queries'; value: string[] }

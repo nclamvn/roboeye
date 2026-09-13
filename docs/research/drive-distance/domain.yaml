@@ -1,0 +1,13 @@
+domain: drive-distance
+entity_label: "10 nguồn/giải pháp được chọn đối chiếu; không phải toàn bộ lĩnh vực"
+schema:
+  type_field: null
+  fields: [method, inputs, license, limitation, measured_roboeye_accuracy, measured_roboeye_latency]
+rollup_field: method
+universe:
+  estimate: 10
+  basis: "Mẫu có chủ đích gồm 7 họ giải pháp perception, Depth Pro, KITTI và kinh nghiệm FCW của comma; không suy ra thị phần hay best-in-world."
+refresh_days:
+  default: 30
+alias_map: {}
+ambiguous_clusters: []
