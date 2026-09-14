@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-14",
+  "source": "Chrome CUA UI smoke, local server 4193",
+  "fixture": "public T14 bus.jpg, identical canvas RGBA 480x640",
+  "foreground": true,
+  "sampling": "1 warmup excluded, 21 measured runs each; sequential A/B",
+  "scope": "worker detMs includes preprocessing/inference/decode; excludes load, seek and sensor-to-display",
+  "wasm": {
+    "dtype": "q8", "threads": 1, "p50Ms": 1746.7, "p95Ms": 1783.2,
+    "warmupMs": 1803.2,
+    "runsMs": [1762.9,1756.2,1753.7,1738,1743.3,1765.6,1768.9,1783.2,1709.4,1711.5,1741.7,1744.1,1746.7,1731.3,1712.5,1732.1,1718.5,1801.3,1750.1,1754.1,1767.6],
+    "bus": {"score": 0.9219414657383503, "x0":0.014583333333333334,"y0":0.2125,"x1":0.9895833333333334,"y1":0.6859375}
+  },
+  "webgpu": {
+    "dtype": "fp32", "inputShape": [1,3,640,640],
+    "sha256": "86171edeb435bd3f113e82d1c6720a576932e6deca962426bb1bc794e7000458",
+    "p50Ms":72.4,"p95Ms":76.4,"warmupMs":80,
+    "runsMs": [73.1,74.1,76.1,76.4,71.9,73.8,73.7,72.3,69.3,72.2,75.4,72.3,69.7,71.3,77.9,71.3,70.5,72.4,66.2,75.1,76.1],
+    "bus": {"score":0.9263731322262735,"x0":0.012989282608032227,"y0":0.213621124625206,"x1":0.9927992820739746,"y1":0.6834605485200882}
+  },
+  "nativeFp32GraphParity": {
+    "fixtures": ["zero","random","bus","dog"],
+    "maxLogitsAbs": 0.000072479248046875,
+    "maxBoxesAbs": 0.00000852346420288086,
+    "threshold": 0.0001,
+    "pass": true
+  },
+  "fullUiSynthetic2Seconds": {
+    "samples":11,"approxProcessingSeconds":4,"baselineApproxProcessingSeconds":28,
+    "detectorBackend":"webgpu","depthBackend":"webgpu",
+    "strongVehicles":0,"tracks":0,"validMetres":0,
+    "representativeDashcamBenchmark":false
+  },
+  "distanceAccuracyGroundTruth": null,
+  "newThreeMinuteEndToEndBenchmark": null,
+  "limitations": "Static public image, q8 versus fp32; not distance accuracy or real-time proof. Synthetic video has no qualifying vehicles. Private 3-minute clip has not been retested with this build."
+}

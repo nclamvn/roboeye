@@ -9,5 +9,8 @@ tests/.airsketch-model-cache/
 tests/.detection-benchmark-cache/
 tests/.benchmark-results/
 release/
+tests/.metric-venv/
+tests/.metric-cache/
+tests/.drive-cache/
 *.log
 .DS_Store

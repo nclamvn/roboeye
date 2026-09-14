@@ -11,7 +11,8 @@ export interface CameraProfile {
   minM: number; maxM: number;
 }
 export interface RangeEstimate {
-  kind: 'ground_contact_forward_m';
+  kind: 'ground_contact_forward_m' | 'learned_optical_axis_z_m';
+  provenance: 'none' | 'user-profile-geometry' | 'learned-unverified';
   distanceM: number | null;
   lateralM: number | null;
   sigmaM: number | null;
@@ -19,8 +20,8 @@ export interface RangeEstimate {
   intervalCalibrated: false;
   reason: string;
 }
-export const unknownRange = (reason: string): RangeEstimate => ({ kind: 'ground_contact_forward_m',
-  distanceM: null, lateralM: null, sigmaM: null, interval: null, intervalCalibrated: false, reason });
+export const unknownRange = (reason: string,kind:RangeEstimate['kind']='ground_contact_forward_m'): RangeEstimate => ({ kind,
+  provenance:'none',distanceM: null, lateralM: null, sigmaM: null, interval: null, intervalCalibrated: false, reason });
 
 export function parseProfile(value: unknown): CameraProfile {
   if (!value || typeof value !== 'object') throw Error('Profile phải là JSON object.');
@@ -97,7 +98,7 @@ export function estimateGroundRange(box:DetBox,p:CameraProfile|null,width:number
   }
   const sigma=Math.sqrt(variance);
   if(2*sigma/hit.z>.5) return unknownRange('Độ bất định quá lớn');
-  return {kind:'ground_contact_forward_m',distanceM:hit.z,lateralM:hit.x,sigmaM:sigma,
+  return {kind:'ground_contact_forward_m',provenance:'user-profile-geometry',distanceM:hit.z,lateralM:hit.x,sigmaM:sigma,
     interval:[Math.max(0,hit.z-2*sigma),hit.z+2*sigma],intervalCalibrated:false,
     reason:'Ước lượng chân xe; giả định đường phẳng, không phải khoảng hở cản xe'};
 }

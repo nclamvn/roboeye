@@ -53,6 +53,8 @@ export type DetectionMainToWorker =
       queries: string[];
       // Opt-in low-score candidates for DriveSense two-stage association only.
       profile?: 'drive';
+      // Diagnostic/DriveSense precision selection, not used by other engines.
+      driveDtype?: 'fp16' | 'fp32' | 'q8';
     }
   | { type: 'engine'; engine: DetectionEngine }
   | { type: 'queries'; value: string[] }

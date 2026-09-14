@@ -1,0 +1,444 @@
+{
+  "backend": "webgpu",
+  "browserVersion": "151.0.7922.34",
+  "headless": true,
+  "flags": [],
+  "adapter": {
+    "info": {
+      "vendor": "apple",
+      "architecture": "metal-3",
+      "device": "",
+      "description": ""
+    },
+    "features": [
+      "depth32float-stencil8",
+      "rg11b10ufloat-renderable",
+      "texture-formats-tier1",
+      "bgra8unorm-storage",
+      "texture-compression-bc",
+      "dual-source-blending",
+      "core-features-and-limits",
+      "float32-filterable",
+      "indirect-first-instance",
+      "texture-compression-astc-sliced-3d",
+      "float32-blendable",
+      "texture-compression-astc",
+      "texture-compression-etc2",
+      "depth-clip-control",
+      "texture-compression-bc-sliced-3d",
+      "shader-f16",
+      "texture-formats-tier2",
+      "clip-distances",
+      "timestamp-query",
+      "primitive-index",
+      "texture-component-swizzle",
+      "subgroups"
+    ]
+  },
+  "parity": {
+    "maxAbsM": 0.00011444091796875,
+    "meanAbsM": 0.000006899427698583019,
+    "valid": 62720,
+    "maskDisagreements": 0,
+    "focal": null,
+    "shift": null
+  },
+  "report": {
+    "schema": "drivesense-metric-lab-v1",
+    "model": {
+      "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+      "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+      "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+      "sha256": "d5a9b987d5f71653827b02452675fa3bd781c9ac1a74bac84cfdc0870e55390b",
+      "bytes": 99159817,
+      "adapter": "da2-metric-fixed-fixture-v1",
+      "width": 224,
+      "height": 280,
+      "unit": "metres",
+      "distanceKind": "optical-axis-z",
+      "scope": "fixed-shape-lab-only"
+    },
+    "backend": "webgpu",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "sourceKind": "reference",
+    "probe": [
+      0.5,
+      0.5
+    ],
+    "completed": 21,
+    "retained": 21,
+    "dropped": 0,
+    "computeP95Ms": 39.899999998509884,
+    "executionProviderRequested": "webgpu",
+    "kernelPlacement": "not-profiled; ORT can place shape/control nodes on CPU",
+    "warmSampleCount": 20,
+    "warmAgeP95Ms": 40.900000002235174,
+    "postP95Ms": 0.8000000007450581,
+    "quality": {
+      "distanceKind": "optical-axis-z",
+      "alignment": "none",
+      "referenceCount": 0,
+      "matched": 0,
+      "coverage": null,
+      "maeM": null,
+      "biasM": null,
+      "p95AbsoluteErrorM": null,
+      "p95RelativeError": null,
+      "ageP95Ms": 41.100000001490116,
+      "bins": [
+        {
+          "minM": 5,
+          "maxExclusiveM": 10,
+          "references": 0,
+          "matched": 0,
+          "maeM": null
+        },
+        {
+          "minM": 10,
+          "maxExclusiveM": 20,
+          "references": 0,
+          "matched": 0,
+          "maeM": null
+        },
+        {
+          "minM": 20,
+          "maxExclusiveM": 30,
+          "references": 0,
+          "matched": 0,
+          "maeM": null
+        },
+        {
+          "minM": 30,
+          "maxExclusiveM": 50,
+          "references": 0,
+          "matched": 0,
+          "maeM": null
+        }
+      ],
+      "note": "Không alignment/fit bằng đáp án. Đối chứng phải độc lập, cùng nguồn/điểm/timestamp. Chưa chứng nhận an toàn."
+    },
+    "samples": [
+      {
+        "id": "0.00:0.500:0.500:1",
+        "estimateM": 14.7294340133667,
+        "ageMs": 80.20000000298023,
+        "computeMs": 78.60000000149012,
+        "postMs": 0.8999999985098839,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": true
+      },
+      {
+        "id": "0.00:0.500:0.500:2",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.900000002235174,
+        "computeMs": 39.79999999701977,
+        "postMs": 0.7000000029802322,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:3",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.400000002235174,
+        "computeMs": 39.29999999701977,
+        "postMs": 0.5,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:4",
+        "estimateM": 14.7294340133667,
+        "ageMs": 39.599999997764826,
+        "computeMs": 38.70000000298023,
+        "postMs": 0.5,
+        "prepMs": 0.19999999925494194,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:5",
+        "estimateM": 14.7294340133667,
+        "ageMs": 38.600000001490116,
+        "computeMs": 37.5,
+        "postMs": 0.5999999977648258,
+        "prepMs": 0.4000000022351742,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:6",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.600000001490116,
+        "computeMs": 39.5,
+        "postMs": 0.6000000014901161,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:7",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.599999997764826,
+        "computeMs": 39.70000000298023,
+        "postMs": 0.5,
+        "prepMs": 0.19999999925494194,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:8",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.100000001490116,
+        "computeMs": 39.19999999925494,
+        "postMs": 0.5,
+        "prepMs": 0.20000000298023224,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:9",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.30000000074506,
+        "computeMs": 39,
+        "postMs": 0.7000000029802322,
+        "prepMs": 0.19999999925494194,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:10",
+        "estimateM": 14.7294340133667,
+        "ageMs": 38.80000000074506,
+        "computeMs": 37.69999999925494,
+        "postMs": 0.6000000014901161,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:11",
+        "estimateM": 14.7294340133667,
+        "ageMs": 37.69999999925494,
+        "computeMs": 36.69999999925494,
+        "postMs": 0.6000000014901161,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:12",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.69999999925494,
+        "computeMs": 39.399999998509884,
+        "postMs": 0.8000000007450581,
+        "prepMs": 0.29999999701976776,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:13",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.69999999925494,
+        "computeMs": 39.5,
+        "postMs": 0.7000000029802322,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:14",
+        "estimateM": 14.7294340133667,
+        "ageMs": 38.5,
+        "computeMs": 37.599999997764826,
+        "postMs": 0.5,
+        "prepMs": 0.19999999925494194,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:15",
+        "estimateM": 14.7294340133667,
+        "ageMs": 38.899999998509884,
+        "computeMs": 37.80000000074506,
+        "postMs": 0.5,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:16",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40,
+        "computeMs": 38.899999998509884,
+        "postMs": 0.6000000014901161,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:17",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.80000000074506,
+        "computeMs": 39.80000000074506,
+        "postMs": 0.5,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:18",
+        "estimateM": 14.7294340133667,
+        "ageMs": 41.100000001490116,
+        "computeMs": 39.899999998509884,
+        "postMs": 0.6999999992549419,
+        "prepMs": 0.4000000022351742,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:19",
+        "estimateM": 14.7294340133667,
+        "ageMs": 39,
+        "computeMs": 38.100000001490116,
+        "postMs": 0.6000000014901161,
+        "prepMs": 0.29999999701976776,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:20",
+        "estimateM": 14.7294340133667,
+        "ageMs": 40.19999999925494,
+        "computeMs": 39.399999998509884,
+        "postMs": 0.5,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      },
+      {
+        "id": "0.00:0.500:0.500:21",
+        "estimateM": 14.7294340133667,
+        "ageMs": 39,
+        "computeMs": 37.80000000074506,
+        "postMs": 0.8000000007450581,
+        "prepMs": 0.19999999925494194,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ],
+        "warmup": false
+      }
+    ],
+    "status": "experimental-not-road-qualified",
+    "lastError": null,
+    "note": "Browser measurements, not sensor-to-screen. No video upload. Warmup retained and identified by sample order; no phone result inferred."
+  },
+  "errors": [],
+  "pass": true,
+  "scope": "Graph + recovery parity on identical public-image tensor; NOT true-distance accuracy, mobile acceptance, or normal-browser feature support."
+}

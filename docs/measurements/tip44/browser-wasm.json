@@ -1,0 +1,181 @@
+{
+  "backend": "wasm",
+  "browserVersion": "151.0.7922.34",
+  "headless": true,
+  "flags": [
+    "--enable-unsafe-webgpu"
+  ],
+  "adapter": {
+    "info": {
+      "vendor": "apple",
+      "architecture": "metal-3",
+      "device": "",
+      "description": ""
+    },
+    "features": [
+      "depth32float-stencil8",
+      "chromium-experimental-subgroup-matrix",
+      "rg11b10ufloat-renderable",
+      "texture-formats-tier1",
+      "bgra8unorm-storage",
+      "texture-compression-bc",
+      "dual-source-blending",
+      "core-features-and-limits",
+      "float32-filterable",
+      "indirect-first-instance",
+      "texture-compression-astc-sliced-3d",
+      "float32-blendable",
+      "texture-compression-astc",
+      "texture-compression-etc2",
+      "depth-clip-control",
+      "texture-compression-bc-sliced-3d",
+      "shader-f16",
+      "texture-formats-tier2",
+      "clip-distances",
+      "timestamp-query",
+      "primitive-index",
+      "texture-component-swizzle",
+      "subgroups"
+    ]
+  },
+  "parity": {
+    "maxAbsM": 0.00014400482177734375,
+    "meanAbsM": 0.000010829570950294027,
+    "valid": 62720,
+    "maskDisagreements": 0,
+    "focal": 2.3489103805355716,
+    "shift": 0.2100786706732002
+  },
+  "report": {
+    "schema": "drivesense-metric-lab-v1",
+    "model": {
+      "id": "Ruicheng/moge-2-vits-normal-onnx",
+      "revision": "e50ffda41565591092adea54c6ac83d6212e1e23",
+      "sha256": "24eacb5dc7a2c54c7bc98f7de085ffbed79ad006ea5b664c2c2cdc02ff3a52f0",
+      "bytes": 140852051,
+      "weightsLicense": "MIT (source MoGe-2 ViT-S Normal model card)",
+      "adapter": "moge-affine-recovery-v1",
+      "unit": "metres",
+      "distanceKind": "optical-axis-z"
+    },
+    "backend": "wasm",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "sourceKind": "reference",
+    "probe": [
+      0.5,
+      0.5
+    ],
+    "completed": 4,
+    "retained": 4,
+    "dropped": 0,
+    "computeP95Ms": 3037,
+    "postP95Ms": 10.5,
+    "quality": {
+      "distanceKind": "optical-axis-z",
+      "alignment": "none",
+      "referenceCount": 0,
+      "matched": 0,
+      "coverage": null,
+      "maeM": null,
+      "biasM": null,
+      "p95AbsoluteErrorM": null,
+      "p95RelativeError": null,
+      "ageP95Ms": 3048.800000000745,
+      "bins": [
+        {
+          "minM": 5,
+          "maxExclusiveM": 10,
+          "references": 0,
+          "matched": 0,
+          "maeM": null
+        },
+        {
+          "minM": 10,
+          "maxExclusiveM": 20,
+          "references": 0,
+          "matched": 0,
+          "maeM": null
+        },
+        {
+          "minM": 20,
+          "maxExclusiveM": 30,
+          "references": 0,
+          "matched": 0,
+          "maeM": null
+        },
+        {
+          "minM": 30,
+          "maxExclusiveM": 50,
+          "references": 0,
+          "matched": 0,
+          "maeM": null
+        }
+      ],
+      "note": "Không alignment/fit bằng đáp án. Đối chứng phải độc lập, cùng nguồn/điểm/timestamp. Chưa chứng nhận an toàn."
+    },
+    "samples": [
+      {
+        "id": "0.00:0.500:0.500:1",
+        "estimateM": 12.044346809387207,
+        "ageMs": 3048.800000000745,
+        "computeMs": 3037,
+        "postMs": 10.5,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "id": "0.00:0.500:0.500:2",
+        "estimateM": 12.044346809387207,
+        "ageMs": 2941,
+        "computeMs": 2935.5,
+        "postMs": 5,
+        "prepMs": 0.20000000298023224,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "id": "0.00:0.500:0.500:3",
+        "estimateM": 12.044346809387207,
+        "ageMs": 2955.800000000745,
+        "computeMs": 2949.5,
+        "postMs": 5.600000001490116,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "id": "0.00:0.500:0.500:4",
+        "estimateM": 12.044346809387207,
+        "ageMs": 2951.900000002235,
+        "computeMs": 2948.900000002235,
+        "postMs": 2.5,
+        "prepMs": 0.30000000074505806,
+        "mode": "static",
+        "mediaMs": 0,
+        "point": [
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "status": "experimental-not-road-qualified",
+    "lastError": null,
+    "note": "Browser measurements, not sensor-to-screen. No video upload. Warmup retained and identified by sample order; no phone result inferred."
+  },
+  "errors": [],
+  "pass": true,
+  "scope": "Graph + recovery parity on identical public-image tensor; NOT true-distance accuracy, mobile acceptance, or normal-browser feature support."
+}

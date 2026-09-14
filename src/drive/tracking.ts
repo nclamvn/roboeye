@@ -1,5 +1,6 @@
 import type { DetBox } from '../detection-types';
 import { detectionIoU } from '../detection-postprocess';
+import { vehicleCandidates, VEHICLE_STRONG_SCORE, VEHICLE_IMMEDIATE_SCORE, VEHICLE_WEAK_GRACE_MS } from './vehicle-candidates';
 import { estimateGroundRange, unknownRange, type CameraProfile, type RangeEstimate } from './geometry';
 
 /** Rectangular minimum-cost assignment. Each row gets a private-cost dummy column. */
@@ -47,17 +48,29 @@ export class RangeFilter {
   }
 }
 
-interface Track {id:number;box:DetBox;vx:number;vy:number;at:number;wall:number;hits:number;range:RangeEstimate;filter:RangeFilter;velocity:number|null}
-export interface DriveTrack {id:number;box:DetBox;ageMs:number;range:RangeEstimate;closingSpeed:number|null;status:'unknown'|'tracked'|'caution'|'near'}
+interface Track {
+  id:number;box:DetBox;vx:number;vy:number;at:number;wall:number;hits:number;strongAt:number;strongHits:number;confirmed:boolean;
+  range:RangeEstimate;filter:RangeFilter;velocity:number|null;
+  logScale:number;logScaleRate:number;scaleUpdates:number;
+}
+export interface DriveTrack {
+  id:number;box:DetBox;ageMs:number;range:RangeEstimate;closingSpeed:number|null;
+  opticalTtcS:number|null;rangeTtcS:number|null;motionConfidence:number;
+  status:'unknown'|'tracked'|'caution'|'near';
+}
+
+function boxLogScale(box:DetBox):number {
+  return .5*Math.log(Math.max(1e-8,(box.x1-box.x0)*(box.y1-box.y0)));
+}
 
 export class VehicleTracker {
   private tracks:Track[]=[];private nextId=1;private lastTime=-Infinity;
   reset(){this.tracks=[];this.lastTime=-Infinity;}
-  observe(boxes:DetBox[],t:number,wall:number,profile:CameraProfile|null,width:number,height:number) {
+  observe(boxes:DetBox[],t:number,wall:number,profile:CameraProfile|null,width:number,height:number,learned:ReadonlyMap<DetBox,RangeEstimate>|null=null) {
     if(!Number.isFinite(t+wall)||t<=this.lastTime)return;
     this.lastTime=t;
     this.tracks=this.tracks.filter(a=>t-a.at<=800);
-    const candidates=boxes.filter(b=>['car','bus','truck'].includes(b.label)&&b.score>=.15&&b.score<=1&&[b.x0,b.y0,b.x1,b.y1,b.score].every(Number.isFinite)&&b.x0>=0&&b.y0>=0&&b.x1<=1&&b.y1<=1&&b.x1>b.x0&&b.y1>b.y0).slice(0,40);
+    const candidates=vehicleCandidates(boxes);
     const used=new Set<number>(),matched=new Set<number>();
     // ByteTrack-inspired high-then-low association. Low scores never birth a track.
     for(const high of [true,false]) {
@@ -66,27 +79,53 @@ export class VehicleTracker {
       const costs=indexes.map(i=>detections.map(j=>{
         const track=this.tracks[i],b=candidates[j],a=this.predict(track,t),iou=detectionIoU(a,b);
         const dc=Math.hypot((a.x0+a.x1-b.x0-b.x1)/2,(a.y0+a.y1-b.y0-b.y1)/2);
-        if(a.label!==b.label||(iou<.1&&dc>.08))return 1e6;
-        return 1-iou+.8*dc;
+        const areaA=(a.x1-a.x0)*(a.y1-a.y0),areaB=(b.x1-b.x0)*(b.y1-b.y0),sizeCost=Math.abs(Math.log(areaB/areaA));
+        // At a 200 ms offline sampling interval, a close vehicle may move more
+        // than one box width. Keep a strict centre/scale gate, then score motion
+        // continuously; vehicle subclass flicker is a penalty, not a new ID.
+        if((iou<.02&&dc>.22)||sizeCost>1.25)return 1e6;
+        return .55*(1-iou)+1.6*dc+.12*sizeCost+(a.label===b.label?0:.08);
       }));
       for(const [ii,jj] of assign(costs,.98)) {
         const i=indexes[ii],j=detections[jj],a=this.tracks[i],b=candidates[j],dt=Math.max(16,t-a.at);
         a.vx=.5*a.vx+.5*(b.x0+b.x1-a.box.x0-a.box.x1)/2/dt;
         a.vy=.5*a.vy+.5*(b.y0+b.y1-a.box.y0-a.box.y1)/2/dt;
-        a.box={...b};a.at=t;a.wall=wall;a.hits++;this.measure(a,profile,width,height);
+        const strong=b.score>=VEHICLE_STRONG_SCORE;
+        if(t-a.strongAt>VEHICLE_WEAK_GRACE_MS)a.confirmed=false;
+        if(strong){a.strongHits=t-a.strongAt<=VEHICLE_WEAK_GRACE_MS?a.strongHits+1:1;a.strongAt=t;}
+        else a.strongHits=0;
+        a.confirmed=a.confirmed||b.score>=VEHICLE_IMMEDIATE_SCORE||a.strongHits>=2;
+        if(strong){
+          const nextScale=boxLogScale(b),seconds=dt/1000,raw=(nextScale-a.logScale)/seconds;
+          if(Number.isFinite(raw)&&Math.abs(raw)<=2){
+            const alpha=Math.max(.2,Math.min(.55,seconds/(.35+seconds)));
+            a.logScaleRate=a.scaleUpdates?alpha*raw+(1-alpha)*a.logScaleRate:raw;
+            a.scaleUpdates=Math.min(20,a.scaleUpdates+1);
+          }else{a.logScaleRate=0;a.scaleUpdates=0;}
+          a.logScale=nextScale;
+        }else{a.logScale=boxLogScale(b);a.logScaleRate=0;a.scaleUpdates=0;}
+        const stableLabel=a.box.label===b.label||b.score>a.box.score+.15?b.label:a.box.label;
+        a.box={...b,label:stableLabel};a.at=t;a.wall=wall;a.hits++;this.measure(a,profile,width,height,learned?.get(b));
         used.add(j);matched.add(i);
       }
     }
     // An unmatched observation invalidates range immediately; prediction is overlay-only.
-    this.tracks.forEach((a,i)=>{if(!matched.has(i)){a.range=unknownRange('Mất quan sát xe');a.velocity=null;a.filter.clear();}});
+    this.tracks.forEach((a,i)=>{if(!matched.has(i)){a.strongHits=0;a.range=unknownRange('Mất quan sát xe');a.velocity=null;a.logScaleRate=0;a.scaleUpdates=0;a.filter.clear();}});
     candidates.forEach((b,j)=>{
-      if(used.has(j)||b.score<.45||this.tracks.length>=32)return;
-      const a:Track={id:this.nextId++,box:{...b},vx:0,vy:0,at:t,wall,hits:1,range:unknownRange('Track mới'),filter:new RangeFilter(),velocity:null};
-      this.measure(a,profile,width,height);this.tracks.push(a);
+      if(used.has(j)||b.score<VEHICLE_STRONG_SCORE||this.tracks.length>=32)return;
+      const a:Track={id:this.nextId++,box:{...b},vx:0,vy:0,at:t,wall,hits:1,strongAt:t,strongHits:1,confirmed:b.score>=VEHICLE_IMMEDIATE_SCORE,range:unknownRange('Track mới'),filter:new RangeFilter(),velocity:null,logScale:boxLogScale(b),logScaleRate:0,scaleUpdates:0};
+      this.measure(a,profile,width,height,learned?.get(b));this.tracks.push(a);
     });
   }
-  private measure(a:Track,p:CameraProfile|null,w:number,h:number) {
-    a.range=estimateGroundRange(a.box,p,w,h);a.velocity=null;
+  private measure(a:Track,p:CameraProfile|null,w:number,h:number,learned?:RangeEstimate) {
+    if(!a.confirmed||a.box.score<VEHICLE_STRONG_SCORE){a.range=unknownRange('Bằng chứng xe yếu; chưa đo');a.velocity=null;a.filter.clear();return;}
+    const geometric=estimateGroundRange(a.box,p,w,h);
+    const previousKind=a.range.kind,previousSource=a.range.provenance;
+    // A supplied camera profile is authoritative, including its abstentions.
+    // Falling back to an uncalibrated neural value hides bad crop/occlusion and
+    // mixing ground-forward Z with optical-camera Z poisons the temporal filter.
+    a.range=p?geometric:learned?structuredClone(learned):geometric;a.velocity=null;
+    if(previousKind!==a.range.kind||previousSource!==a.range.provenance)a.filter.clear();
     if(a.range.distanceM===null||a.range.sigmaM===null){a.filter.clear();return;}
     const filtered=a.filter.update(a.range.distanceM,a.range.sigmaM,a.at);
     if(!filtered){a.range=unknownRange('Bước nhảy phép đo; chờ đo lại');a.filter.clear();return;}
@@ -99,12 +138,18 @@ export class VehicleTracker {
   snapshot(t:number,wall:number,paused=false):DriveTrack[] {
     return this.tracks.flatMap(a=>{
       const age=Math.max(0,t-a.at,paused?0:wall-a.wall);
-      if(age>1000)return [];
+      // Association can preserve identity through occlusion, not a positive label
+      // indefinitely. Old strong evidence cannot be refreshed by weak detections.
+      if(age>1000||!a.confirmed||t-a.strongAt>VEHICLE_WEAK_GRACE_MS)return [];
       const range=age>400?unknownRange('Dữ liệu cũ'):a.range;
       const d=range.distanceM;
       // Experimental proximity ONLY. No lane, TTC or safe-distance claim.
       const status=d===null?'unknown':d<10?'near':d<20?'caution':'tracked';
-      return [{id:a.id,box:this.predict(a,t),ageMs:age,range,closingSpeed:d!==null&&a.velocity!==null?-a.velocity:null,status}];
+      const closingSpeed=d!==null&&a.velocity!==null?-a.velocity:null;
+      const opticalTtcS=a.scaleUpdates>=3&&a.logScaleRate>.025?Math.max(.25,Math.min(30,1/a.logScaleRate)):null;
+      const rangeTtcS=d!==null&&closingSpeed!==null&&closingSpeed>.25?Math.max(.25,Math.min(30,d/closingSpeed)):null;
+      const motionConfidence=Math.min(1,a.scaleUpdates/8)*(1-Math.min(1,age/500))*Math.max(0,Math.min(1,a.box.score));
+      return [{id:a.id,box:this.predict(a,t),ageMs:age,range,closingSpeed,opticalTtcS,rangeTtcS,motionConfidence,status}];
     });
   }
 }

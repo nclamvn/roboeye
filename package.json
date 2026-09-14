@@ -15,6 +15,13 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test:unit": "tsx --test tests/unit/*.test.ts",
+    "test:drive-range-e2e": "node tests/drive-range-e2e.mjs",
+    "fixtures:metric": "tsx scripts/prepare-metric-model.ts",
+    "fixtures:metric:verify": "tsx scripts/prepare-metric-model.ts --verify-only",
+    "fixtures:drive-metric": "tsx scripts/prepare-drive-metric-model.ts",
+    "fixtures:drive-detector": "tsx scripts/prepare-drive-detector.ts",
+    "fixtures:drive-detector:export": "tests/.metric-venv/bin/python tests/export-drive-detector.py",
+    "fixtures:drive-metric:export": "tests/.metric-venv/bin/python tests/export-da2-drive.py",
     "security:audit": "node scripts/security-audit.mjs",
     "qa": "npm run typecheck && npm run test:unit && npm run build && npm run security:audit && npm run test:detection-e2e && npm run test:airsketch-e2e && npm run test:robohand-e2e && npm run test:release-e2e",
     "fixtures:prepare": "node scripts/prepare-test-models.mjs",
@@ -51,6 +58,7 @@
     "@tensorflow/tfjs-backend-cpu": "4.9.0",
     "@tensorflow/tfjs-core": "4.9.0",
     "@tensorflow/tfjs-tflite": "0.0.1-alpha.10",
+    "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4",
     "three": "^0.185.1"
   },
   "devDependencies": {

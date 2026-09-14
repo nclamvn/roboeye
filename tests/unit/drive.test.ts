@@ -57,12 +57,21 @@ test('drive two-stage association preserves ID through low confidence and reorde
   tracker.observe(b,0,0,DEMO_PROFILE,1280,720);const first=tracker.snapshot(0,0);
   tracker.observe([...b].reverse().map(a=>({...a,score:.2})),100,100,DEMO_PROFILE,1280,720);
   const second=tracker.snapshot(100,100);assert.equal(second.length,2);assert.deepEqual(second.map(a=>[a.id,a.box.label]),first.map(a=>[a.id,a.box.label]));
+  assert.ok(second.every(a=>a.range.distanceM===null)); // weak association is not a metre measurement
   const low=new VehicleTracker();low.observe(b.map(a=>({...a,score:.2})),0,0,DEMO_PROFILE,1280,720);assert.equal(low.snapshot(0,0).length,0);
+});
+test('drive associates a fast non-overlapping vehicle and resists one-frame subclass flicker',()=>{
+  const tracker=new VehicleTracker(),first={label:'car',score:.92,x0:.1,y0:.2,x1:.2,y1:.4};
+  tracker.observe([first],0,0,null,1280,720);const id=tracker.snapshot(0,0)[0].id;
+  tracker.observe([{label:'truck',score:.76,x0:.21,y0:.22,x1:.31,y1:.42}],200,200,null,1280,720);
+  const moved=tracker.snapshot(200,200);assert.equal(moved.length,1);assert.equal(moved[0].id,id);assert.equal(moved[0].box.label,'car');
+  tracker.observe([{label:'car',score:.92,x0:.7,y0:.2,x1:.8,y1:.4}],400,400,null,1280,720);
+  const split=tracker.snapshot(400,400);assert.ok(split.some(track=>track.id!==id));assert.equal(split.find(track=>track.id===id)?.range.distanceM,null);
 });
 test('drive missed detection and stale data never retain a current distance',()=>{
   const tracker=new VehicleTracker();tracker.observe(demoFrame(0).boxes,0,0,DEMO_PROFILE,1280,720);
   assert.ok(tracker.snapshot(100,100)[0].range.distanceM);
-  assert.equal(tracker.snapshot(500,500)[0].range.distanceM,null);
+  assert.equal(tracker.snapshot(500,500).length,0); // strong-evidence window expired
   tracker.observe([],100,100,DEMO_PROFILE,1280,720);assert.equal(tracker.snapshot(100,100)[0].range.distanceM,null);
   assert.equal(tracker.snapshot(1200,1200).length,0);
 });
@@ -78,6 +87,13 @@ test('drive Kalman follows closing motion, suppresses jitter and rejects large i
   assert.ok(filteredError<rawError*.5);assert.ok(Math.abs(result!.velocity!+2)<.4);
   assert.equal(filter.update(100,.2,8000),null);assert.equal(filter.update(NaN,1,8100),null);
   filter.clear();assert.equal(filter.update(10,1,0)?.velocity,null);
+});
+test('drive optical TTC resets after a miss instead of preserving stale motion',()=>{
+  const tracker=new VehicleTracker();
+  for(const timeMs of [0,200,400,600]){const s=.12*Math.exp(timeMs/3000);tracker.observe([{label:'car',score:.96,x0:.5-s/2,x1:.5+s/2,y0:.72-s,y1:.72}],timeMs,timeMs,null,1280,720);}
+  assert.ok(tracker.snapshot(600,600)[0].opticalTtcS);
+  tracker.observe([],800,800,null,1280,720);
+  const after=tracker.snapshot(800,800)[0];assert.equal(after?.opticalTtcS,null);
 });
 test('drive report exposes missing ground truth and includes abstention in coverage',()=>{
   const obs=[{timeMs:0,trackId:1,distanceM:11,latencyMs:60,reason:''},{timeMs:100,trackId:1,distanceM:null,latencyMs:120,reason:'unknown'}];

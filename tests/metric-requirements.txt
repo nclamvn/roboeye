@@ -1,0 +1,10 @@
+# Isolated offline export/reference toolchain, measured with Python 3.14 on this Mac.
+# These are not browser production dependencies; see measurement environment freeze.
+torch==2.14.0
+transformers==4.50.3
+numpy==2.5.3
+scipy==1.18.1
+onnx==1.22.0
+onnxruntime==1.30.0
+pillow==12.3.0
+safetensors==0.8.0

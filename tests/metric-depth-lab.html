@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DriveSense · cổng kiểm chứng metric</title>
+<style>
+body{font:16px system-ui;margin:24px;color:#183340;background:#eef3f5}main{max-width:1100px;margin:auto}h1{font-size:24px}button,select,input{font:inherit;padding:10px;margin:4px;border:1px solid #617782;border-radius:5px;background:white;color:#183340}button:disabled{opacity:.5}#stage{position:relative;background:#111;max-width:100%;line-height:0}#stage img,#stage video{display:block;width:100%;max-height:65vh;object-fit:contain}#probe{position:absolute;color:#ffe46e;font:24px system-ui;pointer-events:none;transform:translate(-50%,-50%)}[hidden]{display:none!important}#status{padding:12px;background:#dfeaf0;min-height:24px}#measurement{font-size:22px;font-weight:bold}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:14px}.notice{border-left:4px solid #bf6900;padding:12px;background:#fff2d9}label{display:inline-block}a{color:#15546c}
+*,*::before,*::after{box-sizing:border-box}label{max-width:100%}input,select,button{max-width:calc(100% - 8px)}input[type=file]{width:100%}@media(max-width:480px){body{margin:12px}label{display:block}select{display:block}}
+</style></head><body><main>
+<h1>DriveSense · kiểm chứng số mét và độ trễ</h1>
+<p class="notice">Phòng đo R0/R1, chưa phải chức năng cảnh báo lái xe. MoGe dự đoán <b>độ sâu Z tới điểm chọn</b>, không phải khoảng hở cản xe. Không có ground truth thì không công bố accuracy. Ảnh/video ở lại trình duyệt.</p>
+<p><a href="/drive.html">← DriveSense hiện tại</a></p>
+<label>Ảnh / video local <input id="file" type="file" accept="image/*,video/*"></label>
+<button id="fixture">Ảnh thử công khai (bus)</button><button id="reference">Fixture tham chiếu</button><button id="camera">Camera sau</button><button id="source-stop">Dừng nguồn</button>
+<div><label>Model <select id="model"><option value="moge">MoGe-2 Small</option><option value="da2">DA2 Metric — chỉ fixture cố định</option></select></label>
+<label>Backend <select id="backend"><option value="webgpu">WebGPU — không fallback ngầm</option><option value="wasm">WASM — đo đối chứng</option></select></label>
+<label>Token <select id="tokens"><option>196</option><option selected>400</option><option>800</option><option>1600</option></select></label>
+<button id="init">Tải / khởi tạo model</button><button id="step" disabled>Đo một frame</button><button id="live" disabled>Bắt đầu đo liên tục</button><button id="stop">Dừng AI</button></div>
+<p id="status" role="status">Chọn nguồn, sau đó khởi tạo model. Chưa tải model.</p>
+<div id="stage"><img id="image" alt="Ảnh local dùng kiểm chứng" hidden><video id="video" playsinline muted controls hidden></video><span id="probe" hidden>＋</span></div>
+<p>Chạm vào hình để chọn điểm đo. Nhãn live hết hiệu lực khi quá 200 ms; đo frame tĩnh vẫn hiển thị nhưng không được tính là realtime.</p>
+<p id="measurement">Chưa có phép đo</p>
+<label>Đối chứng JSON <input id="refs" type="file" accept="application/json"></label><button id="export">Xuất báo cáo JSON</button>
+<pre id="stats">Chưa có dữ liệu.</pre>
+<script type="module" src="/src/drive/metric-lab.ts"></script>
+</main></body></html>

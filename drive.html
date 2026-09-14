@@ -7,24 +7,68 @@
   <title>DriveSense · đo khoảng cách từ camera</title>
 </head>
 <body>
-  <header class="topbar"><a href="./">RoboEye</a><h1>DriveSense</h1><span>Phòng thử nghiệm camera 2D</span></header>
-  <p class="safety">Chỉ phân tích video hoặc thử tại bãi có kiểm soát. Chưa phải hệ thống cảnh báo va chạm; không dùng để quyết định phanh/lái.</p>
   <main class="workspace">
     <section class="viewer" aria-label="Video và kết quả đo">
-      <div class="sourcebar"><span id="source-label">Chưa chọn nguồn</span><span id="backend">AI chưa tải</span></div>
-      <div class="stage" id="stage"><video id="video" muted playsinline aria-label="Video hành trình"></video><canvas id="overlay" aria-label="Khung xe và nhãn khoảng cách"></canvas>
-        <div id="empty"><h2>Nhìn thấy xe.<br>Đo có căn cứ.</h2><p>Mở video hành trình trên máy để bắt đầu.<br>Chưa hiệu chuẩn? Vẫn nhận diện xe, không gán mét.</p><button id="demo">Xem mẫu toán học</button><small>Mẫu dựng sẵn để kiểm tra toán và giao diện, không phải kết quả AI.</small></div>
-      </div>
-      <div class="transport"><button id="play" disabled>Phát / tạm dừng</button><input id="seek" type="range" min="0" max="1" step="0.01" value="0" aria-label="Vị trí video" disabled/><output id="time">0:00</output><button id="stop">Dừng nguồn</button></div>
+      <div class="stage" id="stage" data-source="none"><video id="video" muted playsinline aria-label="Video hành trình"></video><canvas id="overlay" aria-label="Khung xe và nhãn khoảng cách"></canvas>
+        <header class="topbar"><a href="./">RoboEye</a><h1>DriveSense</h1><span class="safety">PoC · Không dùng để phanh/lái.</span></header>
+        <div class="shadow-chip" id="hud-mode" role="status">Chọn nguồn</div>
+        <div class="proximity-warning" id="hud-warning" role="alert" aria-atomic="true" hidden><span class="warning-icon" aria-hidden="true">⚠</span><span id="hud-warning-text"></span></div>
+        <section class="job-notice" id="job-notice" aria-label="Trạng thái xử lý video" hidden>
+          <div class="job-heading"><strong id="job-title" role="status"></strong><button id="job-action" type="button" hidden></button></div>
+          <p id="job-detail"></p><progress id="hud-progress" value="0" max="1" aria-label="Tiến độ xử lý" hidden></progress>
+        </section>
+        <div id="empty">
+          <svg class="empty-road" viewBox="0 0 280 160" aria-hidden="true"><path class="road-edge" d="M56 148 115 36M224 148 165 36M32 148h216M80 18h120"/><path class="road-lane" d="M140 146v-24m0-18V88m0-16V61m0-15v-7"/><path class="road-car" d="m117 82 5-15h36l5 15v18h-46Zm0 0h46m-38-10h30m-31 18h4m24 0h4m-38 10v6m42-6v6"/><path class="road-lock" d="M110 61h-8v12m68-12h8v12m-76 28v12h8m68-12v12h-8"/></svg>
+          <h2>Mở video hành trình</h2>
+          <p>Khoanh xe. Ước lượng khoảng cách bằng mét.</p>
+          <div class="empty-actions"><button class="empty-primary" id="open-video" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>Mở video</button><button class="empty-camera" id="open-camera" type="button">Camera</button></div>
+          <button class="demo-link" id="demo" type="button">Xem mẫu dựng</button>
+          <small>Video được xử lý trên thiết bị.</small>
+        </div>
+        <div class="video-dock" id="video-dock" role="group" aria-label="Điều khiển video">
+          <label class="file-button dock-button dock-source" title="Mở video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg><input id="file" type="file" accept="video/*" aria-label="Mở video"/></label>
+          <button class="dock-button" id="camera" type="button" aria-label="Mở camera" title="Mở camera"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="m16 10 5-3v10l-5-3"/></svg></button>
+          <span class="dock-divider" aria-hidden="true"></span>
+          <button class="dock-button" id="play" type="button" disabled aria-label="Phát video" title="Phát video" data-playing="false"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+          <div class="transport"><input id="seek" type="range" min="0" max="1" step="0.01" value="0" aria-label="Vị trí video" disabled/><output id="time" aria-label="Thời gian video">0:00</output></div>
+          <button class="dock-button" id="enable-alerts" type="button" aria-label="Bật âm cảnh báo" title="Bật âm cảnh báo" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-6 5H3v4h2l6 5Z"/><path class="sound-on" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="sound-off" d="m16 9 5 6m0-6-5 6"/></svg></button>
+          <button class="dock-button" id="stop" type="button" aria-label="Dừng nguồn" title="Dừng nguồn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg></button>
+          <button class="dock-button" id="fullscreen" type="button" aria-label="Toàn màn hình" title="Toàn màn hình" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button>
+        </div>
+    <details class="analysis-panel" id="analysis-panel">
+      <summary title="Phân tích" aria-label="Phân tích" aria-controls="analysis-surface"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h9m4 0h3"/><circle cx="11" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg><span>Phân tích</span></summary>
+      <div class="analysis-surface" id="analysis-surface" role="region" aria-label="Phân tích phiên">
+      <header class="analysis-header"><h2>Phân tích phiên</h2><button id="close-analysis" type="button" aria-label="Đóng phân tích" title="Đóng phân tích"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header>
+      <div class="analysis-scroll">
+      <div class="analysis-layout">
+      <section class="analysis-data" aria-label="Dữ liệu phân tích">
+      <div class="workflow" aria-label="Tiến độ phân tích"><strong id="display-mode">Chưa có nguồn</strong><span id="analysis-status" role="status">Mở video: AI tự phân tích trước, sau đó phát lại kết quả.</span><progress id="analysis-progress" value="0" max="1" aria-label="Tiến độ phân tích video"></progress><button id="analyse" disabled>Phân tích lại video</button></div>
+      <div class="sourcebar"><span id="source-label">Chưa chọn nguồn</span><span id="backend">AI chưa tải</span><span id="metric-backend">Khoảng cách AI chưa tải</span></div>
+      <section class="risk-console" id="risk-console" data-level="clear" aria-label="Đánh giá nguy cơ camera-only">
+        <div class="risk-lead"><span>NGUY CƠ ƯU TIÊN</span><strong id="risk-target">Chưa có mục tiêu</strong><small id="risk-reason">Chờ track nằm trong hành lang chạy ước lượng.</small></div>
+        <div><span>KHOẢNG CÁCH XE</span><strong id="risk-distance">—</strong><small id="risk-distance-source">Chưa đủ dữ liệu mét</small></div>
+        <div><span>MỐC THEO TỐC ĐỘ</span><strong id="risk-reference">—</strong><small id="risk-reference-label">Nhập tốc độ thử</small></div>
+        <div><span>BẰNG CHỨNG</span><strong id="risk-confidence">—</strong><small><b id="event-count">0</b> sự kiện shadow</small></div>
+      </section>
       <div class="telemetry"><span>Phép đo <b id="method">Chưa hiệu chuẩn</b></span><span>Tuổi dữ liệu <b id="age">—</b></span><span>Xe đang bám <b id="count">0</b></span></div>
-      <p id="status" role="status">Video ở trên máy; chỉ tải model khi bạn bật nhận diện.</p>
-      <div class="legend"><span class="blue">Đang bám</span><span class="amber">Dưới 20 m*</span><span class="red">Dưới 10 m*</span><span>┄ Chưa đủ dữ liệu</span></div>
-      <p class="fineprint">*Màu thử nghiệm theo khoảng cách tới chân xe, không phải ngưỡng an toàn. Giả định mặt đường phẳng, không đo khoảng hở cản xe. Khoảng bất định chưa được hiệu chuẩn xác suất.</p>
+      <p id="status" role="status">Mở clip tối đa 5 phút để tự tải AI và phân tích. Video không rời thiết bị.</p><p id="range-status" class="range-status">Video đã phân tích có thể ước lượng mét bằng AI mà không cần profile; kết quả chưa hiệu chuẩn thực địa.</p>
+      <div class="legend"><span class="blue">Đang bám</span><span class="amber">Cần chú ý</span><span class="red">Nguy cơ cao</span><span>┄ Chưa đủ dữ liệu</span></div>
+      <p class="fineprint"><strong>Màu khung = ID xe; góc vàng = cần chú ý; khung tô đỏ = nguy cơ cao.</strong> Giao diện chỉ công bố khoảng cách bằng mét. Tín hiệu chuyển động chỉ dùng nội bộ để xếp hạng nguy cơ; không được trình bày như phép đo khoảng cách. Không thay người lái và chưa được hiệu chuẩn xác suất.</p>
       <div id="track-list" aria-label="Danh sách xe"></div>
     </section>
     <aside class="controls" aria-label="Nguồn và hiệu chuẩn">
-      <section><h2>Nguồn hình</h2><label class="file-button">Mở video trên máy<input id="file" type="file" accept="video/*"/></label><div class="row"><button id="camera">Camera sau</button><button id="model">Bật nhận diện xe</button></div><label class="check"><input id="wasm" type="checkbox"/> Ép WASM nếu WebGPU lỗi</label></section>
-      <section><h2>Hiệu chuẩn camera</h2><p>Nhập thông số đã đo hoặc profile JSON. Giá trị ví dụ không phải hiệu chuẩn của camera bạn.</p>
+      <section><h2>Nhận diện</h2><p>5 mẫu/giây, detector GPU và depth xử lý gối đầu nhưng giữ đúng frame. Phân tích xong mới phát; chưa phải AI realtime.</p><button id="model">Bật nhận diện xe</button><label class="check"><input id="wasm" type="checkbox"/> Ép WASM cho cả detector và depth</label>
+        <label>Zoom/crop video (×)<input id="video-zoom" type="number" value="1" min="1" max="4" step="0.1"/></label>
+        <p id="zoom-status">1×: mét AI vẫn chưa kiểm chứng. Xe sát biên hoặc phối cảnh mâu thuẫn sẽ không hiện số đo.</p>
+      </section>
+      <section><h2>Shadow risk HUD</h2><p>Tốc độ chỉ là đầu vào thử nghiệm để chọn mốc khoảng cách theo Thông tư 38/2024. Mọi giá trị công bố trên HUD đều dùng mét; tín hiệu tiến gần được giữ bên trong risk engine.</p>
+        <label>Tốc độ xe thử <output id="ego-speed-value">0 km/h</output><input id="ego-speed" type="range" min="0" max="120" step="1" value="0"/></label>
+        <label class="check"><input id="adverse" type="checkbox"/> Điều kiện xấu: thêm biên kỹ thuật 25% (không phải trị số luật định)</label>
+        <p id="alert-status">Âm thanh tắt. Khi lái thử, không thao tác màn hình.</p>
+      </section>
+      <section><h2>Hiệu chuẩn camera</h2><p>Profile đúng lens/crop được ưu tiên, không bị AI ghi đè. Số mét là dọc phía trước camera, không phải khoảng hở cản xe hay khoảng cách ngang tới xe vượt.</p>
+        <div class="fields"><label>Góc nhìn ngang ở 1× (°)<input id="base-fov" type="number" min="15" max="149" step="any" placeholder="Thông số lens thực"/></label><button id="fill-focal" type="button">Điền tiêu cự từ góc nhìn</button></div>
+        <p>Chỉ hỗ trợ camera pinhole, pixel vuông và crop chính giữa: fx = fy = rộng × zoom / (2 tan(góc/2)). Không tự đo góc nhìn, độ méo hay chiều cao camera. Lens quang học khác hoặc crop lệch cần profile riêng.</p>
         <form id="calibration"><div class="fields">
           <label>Chiều rộng ảnh (px)<input id="width" type="number" required min="160" max="8192" step="1"/></label>
           <label>Chiều cao ảnh (px)<input id="height" type="number" required min="120" max="8192" step="1"/></label>
@@ -36,11 +80,17 @@
         <label class="check"><input id="confirmed" type="checkbox" required/> Tôi đã đo thông số, gá cố định, giữ nguyên lens/crop; chỉ thử trên đường phẳng.</label>
         <div class="row"><button type="submit">Áp dụng thông số</button><button type="button" id="clear-profile">Hủy hiệu chuẩn</button></div></form>
         <div class="row"><label class="file-button secondary">Nhập profile<input id="profile-file" type="file" accept=".json,application/json"/></label><button id="export-profile" disabled>Xuất profile</button></div>
-        <p id="profile-status">Chưa hiệu chuẩn — nhãn khoảng cách bị khóa.</p>
+        <p id="profile-status">Chưa có profile hình học; AI metric vẫn hoạt động độc lập trên video đã phân tích.</p>
         <details><summary>Tinh chỉnh bằng điểm đất đã đo</summary><p>Giữ nguyên intrinsics. JSON gồm u,v (pixel gốc), zM (mét dọc phía trước camera), split: fit hoặc check. Cần 6 điểm fit trải ≥8 m và 2 điểm check độc lập.</p><label class="file-button secondary">Nhập điểm fit + check<input id="ground-file" type="file" accept=".json,application/json"/></label><p id="fit-status">Huber + Gauss–Newton; holdout không đạt sẽ không áp dụng.</p></details>
       </section>
       <section><h2>Đối chứng & báo cáo</h2><p>Nhập JSON với timeMs, trackId, distanceM đã đo độc lập. ID phải đối chiếu với đúng phiên video.</p><div class="report-actions"><label class="file-button secondary">Nhập đối chứng<input id="reference-file" type="file" accept=".json,application/json"/></label><button id="report">Xuất báo cáo JSON</button></div><p id="reference-status">Chưa có đối chứng — chưa thể công bố độ chính xác.</p></section>
     </aside>
+      </div>
+      </div>
+      </div>
+    </details>
+      </div>
+    </section>
   </main>
   <script type="module" src="/src/drive/app.ts"></script>
 </body>

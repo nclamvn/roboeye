@@ -1,0 +1,5 @@
+
+> roboeye@1.5.0 security:audit
+> node scripts/security-audit.mjs
+
+[security] FAIL: high/critical advisory ngoài allowlist: @huggingface/transformers, sharp

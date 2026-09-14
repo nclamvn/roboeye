@@ -12,6 +12,7 @@ import type {
   DetectionWorkerToMain
 } from '../detection-types';
 import { DETECTION_CONFIG } from '../detection-config';
+import { installDriveDecoder } from '../drive/detector-decode';
 import {
   OWLVIT_POSTPROCESS,
   RTDETR_POSTPROCESS,
@@ -34,7 +35,7 @@ function useLocalModels() {
 const makePipe = pipeline as unknown as (
   task: string,
   model: string,
-  opts: { device: string; dtype: string; revision: string; progress_callback: (item: unknown) => void }
+  opts: { device: string; dtype: string; revision: string; progress_callback: (item: unknown) => void; session_options?: {freeDimensionOverrides:Record<string,number>;logSeverityLevel:number} }
 ) => Promise<(input: unknown, ...rest: unknown[]) => Promise<unknown>>;
 
 let engine: DetectionEngine = 'rtdetr';
@@ -45,6 +46,7 @@ let queries: string[] = [...OWL_QUERY_PRESETS.everyday.queries];
 let forceWasmFlag = false;
 let localFlag = false;
 let driveProfile = false;
+let driveDtype: 'fp16'|'fp32'|'q8'|undefined;
 
 function post(msg: DetectionWorkerToMain, transfer?: Transferable[]) {
   (self as unknown as Worker).postMessage(msg, { transfer: transfer ?? [] });
@@ -74,30 +76,36 @@ async function loadEngine(e: DetectionEngine) {
   const task = e === 'rtdetr' ? 'object-detection' : 'zero-shot-object-detection';
   const config = DETECTION_CONFIG[e];
   const webgpu = !forceWasmFlag && (await hasWebGPU());
-  const tries: Array<{ device: DetectionDevice; dtype: string }> = webgpu
+  const tries: Array<{ device: DetectionDevice; dtype: string }> = driveProfile&&driveDtype
+    ? [{device:driveDtype==='q8'?'wasm':'webgpu',dtype:driveDtype}]
+    : webgpu
     ? [{ device: 'webgpu', dtype: e === 'rtdetr' ? 'fp16' : 'q4f16' }, { device: 'wasm', dtype: 'q8' }]
     : [{ device: 'wasm', dtype: 'q8' }];
   let lastErr = '';
+  const attempts:string[]=[];
   for (const t of tries) {
     try {
       const candidate = await makePipe(task, config.model, {
         device: t.device,
         dtype: t.dtype,
         revision: config.revision,
+        ...(driveProfile?{session_options:{freeDimensionOverrides:{batch_size:1,height:640,width:640},logSeverityLevel:2}}:{}),
         progress_callback: progress
       });
       if (version !== loadVersion) return;
+      if (e === 'rtdetr' && driveProfile) installDriveDecoder(candidate);
       detector = candidate;
       post({ type: 'ready', engine: e, device: t.device });
       return;
     } catch (err) {
       if (version !== loadVersion) return;
       lastErr = err instanceof Error ? err.message : String(err);
+      attempts.push(`${t.device}/${t.dtype}: ${lastErr}`);
       console.warn(`[detect] ${e} ${t.device} fail:`, err);
     }
   }
   if (version === loadVersion) {
-    post({ type: 'error', stage: 'load', message: `Không load được ${e}: ${lastErr}` });
+    post({ type: 'error', stage: 'load', message: `Không load được ${e}: ${attempts.join(' | ')||lastErr}` });
   }
 }
 
@@ -144,6 +152,7 @@ self.onmessage = (ev: MessageEvent<DetectionMainToWorker>) => {
   if (m.type === 'init') {
     forceWasmFlag = m.forceWasm === true;
     driveProfile = m.profile === 'drive';
+    driveDtype = m.driveDtype;
     localFlag = m.localModels === true;
     if (localFlag) useLocalModels();
     engine = m.engine;

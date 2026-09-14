@@ -258,3 +258,14 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - **Acceptance:** every local deterministic gate, release metadata check and
   browser visual smoke passes without regressing existing modes.
 - **Detail:** `docs/TIP-36-ROBOHAND-RELEASE.md`.
+
+## TIP-46 · Camera-only shadow risk HUD
+
+- **Dependencies:** TIP-42–45. **Priority:** P0 software capability before hardware.
+- **Task:** add scale-expansion TTC, range-TTC agreement, perspective path
+  relevance, primary-threat selection, speed/time-headway context, explainable
+  warning states, opt-in audio and auditable shadow events.
+- **Acceptance:** deterministic risk tests, visible synthetic product proof,
+  report schema v4, full unit/type/build/security gates and no production FCW or
+  vehicle-control claim.
+- **Detail:** `docs/TIP-46-SHADOW-RISK-HUD.md`.

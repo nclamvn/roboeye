@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "cases": [
+    "real public image -> metric point probe",
+    "pointer coordinate maps through contained image",
+    "390px layout has no horizontal overflow (not mobile inference)",
+    "stop terminates worker and invalidates depth",
+    "corrupt model rejected, no fallback",
+    "static camera step pauses display; source reset discards pending result/releases stream",
+    "no POST/PUT or page exception"
+  ],
+  "scope": "UI/lifecycle on desktop Chromium with fake camera; no phone or road accuracy acceptance"
+}

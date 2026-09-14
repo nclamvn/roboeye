@@ -2,14 +2,17 @@
 <html lang="vi"><meta charset="utf-8"><title>DriveSense real-model smoke</title>
 <h1>Kiểm tra model xe thật</h1>
 <p>Ảnh bus thuộc corpus T14, không phải benchmark khoảng cách. Chạy fixtures:detection-benchmark trước.</p>
-<button id="run">Chạy RT-DETR WASM</button><pre id="result">Chưa chạy</pre>
+<label>Backend <select id="backend"><option value="wasm">WASM q8</option><option value="fp16">WebGPU fp16</option><option value="fp32">WebGPU fp32</option><option value="static">WebGPU graph tương đương</option></select></label>
+<label>Số lượt <select id="runs"><option value="4">1 warmup + 3</option><option value="22">1 warmup + 21</option></select></label>
+<button id="run">Chạy RT-DETR</button><pre id="result">Chưa chạy</pre>
 <script type="module">
 import {VehicleTracker} from '/src/drive/tracking.ts';
 const out=document.querySelector('#result'),button=document.querySelector('#run');
- let worker;
+ let worker,backend='';
 button.onclick=async()=>{
  button.disabled=true;out.textContent='Đang tải model';
- worker=new Worker(new URL('../src/worker/detect-worker.ts',import.meta.url),{type:'module'});
+ const choice=document.querySelector('#backend').value,count=Number(document.querySelector('#runs').value);
+ worker=choice==='static'?new Worker(new URL('../src/worker/drive-detect-worker.ts',import.meta.url),{type:'module'}):new Worker(new URL('../src/worker/detect-worker.ts',import.meta.url),{type:'module'});
  const timeout=setTimeout(()=>{worker.terminate();out.textContent='FAIL timeout';button.disabled=false;},120000);
  const finish=value=>{clearTimeout(timeout);out.textContent=JSON.stringify(value,null,2);worker.terminate();button.disabled=false;};
  worker.onerror=e=>finish({pass:false,error:e.message});
@@ -20,20 +23,22 @@ button.onclick=async()=>{
    if(m.type==='error')finish({pass:false,error:m.message});
    if(m.type==='progress')out.textContent=`Tải ${Math.round(m.progress)}%`;
    if(m.type==='ready'){
+    backend=m.device;
     const image=new Image();image.src='./.detection-benchmark-cache/bus.jpg';await image.decode();
     const canvas=document.createElement('canvas');canvas.width=480;canvas.height=640;
     const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0,480,640);
     pixels=ctx.getImageData(0,0,480,640).data;out.textContent='Đang inference ảnh bus';send();
    }
    if(m.type==='det'){
-    inferenceMs.push(m.detMs);if(inferenceMs.length<4){out.textContent=`Đang đo lượt ${inferenceMs.length+1}/4`;send();return;}
+    inferenceMs.push(m.detMs);if(inferenceMs.length<count){out.textContent=`Đang đo lượt ${inferenceMs.length+1}/${count}`;send();return;}
     const tracker=new VehicleTracker();tracker.observe(m.boxes,0,performance.now(),null,810,1080);
     const tracks=tracker.snapshot(0,performance.now());
-    finish({pass:tracks.some(t=>t.box.label==='bus')&&tracks.every(t=>t.range.distanceM===null),inferenceMs,warmupRuns:1,tracks:tracks.map(t=>({id:t.id,label:t.box.label,score:t.box.score,range:t.range})),note:'Ảnh tĩnh kiểm tra model + tracker; 1 warmup + 3 lượt, không chứng minh video realtime hoặc accuracy mét.'});
+    const sorted=inferenceMs.slice(1).sort((a,b)=>a-b),pick=q=>sorted[Math.ceil(q*sorted.length)-1];
+    finish({pass:tracks.some(t=>t.box.label==='bus')&&tracks.every(t=>t.range.distanceM===null),backend,inferenceMs,warmupRuns:1,measuredRuns:sorted.length,p50Ms:pick(.5),p95Ms:pick(.95),boxes:m.boxes,tracks:tracks.map(t=>({id:t.id,label:t.box.label,score:t.box.score,range:t.range})),note:'Ảnh tĩnh kiểm tra model + tracker; không chứng minh video realtime hoặc accuracy mét.'});
    }
   }catch(e){finish({pass:false,error:String(e)});}
  };
- worker.postMessage({type:'init',engine:'rtdetr',queries:['car','bus','truck'],forceWasm:true,profile:'drive'});
+ worker.postMessage({type:'init',engine:'rtdetr',queries:['car','bus','truck'],forceWasm:choice==='wasm',profile:'drive',driveDtype:choice==='wasm'?'q8':choice});
 };
 addEventListener('pagehide',()=>worker?.terminate());
 </script></html>

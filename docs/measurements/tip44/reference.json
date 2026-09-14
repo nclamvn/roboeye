@@ -1,0 +1,16 @@
+{
+  "width": 224,
+  "height": 280,
+  "tokens": 400,
+  "outputWidth": 224,
+  "outputHeight": 280,
+  "focal": 2.3489095535825077,
+  "shift": 0.21007854234205267,
+  "scale": 7.079422950744629,
+  "solverSuccess": true,
+  "reprojectionRmse": 0.005888356262335757,
+  "nativeSessionAndRunMs": 679.6153340001183,
+  "onnxruntimeVersion": "1.30.0",
+  "inputSha256": "1b205ab1633c9356298cde6883366ff46194fa0d90189afe042c163b60e05930",
+  "note": "CPU graph + scipy reference, not browser latency, not real metres ground truth."
+}
