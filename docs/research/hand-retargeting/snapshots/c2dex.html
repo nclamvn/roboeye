@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C2Dex: Contact-Consistent Reconstruction and Retargeting for Dexterous Manipulation from Monocular Video</title>
+<meta name="description" content="C2Dex converts monocular human videos into executable dexterous-hand-object trajectories via contact-consistent HOI reconstruction and contact-interaction-preserving retargeting.">
+<link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-wall" aria-hidden="true"></div>
+  <div class="wrap">
+    <h1 class="title"><img src="assets/images/c2dex-wordmark-transparent.png" alt="C2Dex"></h1>
+    <h2 class="subtitle">Contact-Consistent Reconstruction and Retargeting for<br>
+      Dexterous Manipulation from Monocular Video</h2>
+    <p class="authors">Jie Ren<sup>1,*</sup>, Zhehao Jiang<sup>1,*</sup>, Yinhong Yang<sup>1,*</sup>,
+      Haorui Jia<sup>1</sup>, Han Jiang<sup>1</sup>, Ben Li<sup>2</sup>, Yao Yao<sup>1</sup>,
+      Cheng Lin<sup>3</sup>, Qiu Shen<sup>1</sup>, Zhenshan Bing<sup>1</sup>,
+      Xiao-Xiao Long<sup>1,&dagger;</sup>, Xun Cao<sup>1</sup></p>
+    <div class="affil-orgs">
+      <div class="org">
+        <span class="org-mark"><img src="assets/images/logo-nju.png" alt="Nanjing University"></span>
+        <span class="org-name"><sup>1</sup>Nanjing University</span>
+      </div>
+      <div class="org">
+        <span class="org-mark"><img src="assets/images/logo-cmri.png" alt="China Mobile Research Institute"></span>
+        <span class="org-name"><sup>2</sup>China Mobile Research Institute</span>
+      </div>
+      <div class="org">
+        <span class="org-mark"><img src="assets/images/logo-must.png" alt="Macau University of Science and Technology"></span>
+        <span class="org-name"><sup>3</sup>Macau University of Science and Technology</span>
+      </div>
+    </div>
+    <p class="affil"><sup>*</sup>Equal contribution &nbsp;&middot;&nbsp;
+      <sup>&dagger;</sup>Corresponding author</p>
+    <nav class="links">
+      <a class="btn" href="https://arxiv.org/pdf/2608.07045" target="_blank" rel="noopener">
+        <span class="ico">&#9646;</span> Paper (PDF)
+      </a>
+      <a class="btn" href="https://arxiv.org/abs/2608.07045" target="_blank" rel="noopener">
+        <span class="ico">&#9670;</span> arXiv
+      </a>
+      <a class="btn" href="https://github.com/K-Jie/C2Dex_code" target="_blank" rel="noopener">
+        <span class="ico">&#9671;</span> Code
+      </a>
+    </nav>
+    <div class="hero-overview" aria-labelledby="overview-title">
+      <p class="eyebrow hero-flow-title" id="overview-title">From Human Demonstrations to Robot Dexterity</p>
+      <div class="overview-card overview-animation" aria-label="Animated C2Dex pipeline overview">
+        <img class="part-image part-video" src="assets/images/group-part/Video.png" alt="Human demonstration video">
+        <span class="part-caption part-video-caption">Human Video</span>
+        <img class="part-image part-hoi-label" src="assets/images/group-part/ContactConsistentHOI-v2.png" alt="Contact-consistent HOI reconstruction">
+        <img class="part-image part-hand" src="assets/images/group-part/HOIRec.png" alt="Reconstructed hand-object interaction">
+        <span class="part-caption part-hoi-caption">Reconstructed HOI</span>
+        <img class="part-image part-retarget-label" src="assets/images/group-part/NewRetarget-v2.png" alt="Retargeting and policy training">
+        <img class="part-image part-robot" src="assets/images/group-part/robot.png" alt="Dexterous robot executing the retargeted interaction">
+        <span class="part-caption part-robot-caption">Robot Execution</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <figure class="fig guide-video">
+      <video src="assets/videos/guide_video.mp4" controls preload="metadata" playsinline>
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap narrow">
+    <h3 class="head">Abstract</h3>
+    <p class="abstract">
+      High-quality demonstrations for dexterous robot manipulation are costly and difficult to collect,
+      whereas monocular human videos provide a scalable source of diverse manipulation behaviors.
+      However, transferring such demonstrations to dexterous robots remains challenging: monocular
+      hand–object interaction (HOI) reconstruction often produces temporally unstable contacts and
+      physically implausible interactions, while conventional retargeting methods struggle to preserve
+      task-relevant contacts and local interaction geometry across different hand embodiments. We
+      present <b>C2Dex</b>, a video-to-dexterous-manipulation framework built around a shared
+      interaction representation: stable object-side contacts recovered by aggregating noisy frame-wise
+      observations in the canonical object space. These stable contacts serve a dual role: as
+      trajectory-level constraints that guide reconstruction toward temporally coherent and physically
+      plausible human HOI trajectories, and as explicit transfer targets for the dexterous hand, where
+      Laplacian interaction optimization preserves the local hand–object geometry across embodiments
+      and residual reinforcement learning refines the trajectory in simulation. Experiments on DexYCB
+      and TACO show that C2Dex achieves end-to-end trajectory success rates of <b>57.78%</b> and
+      <b>26.67%</b>, respectively, substantially outperforming the strongest baselines (<b>17.78%</b>
+      and <b>10.00%</b>) under identical evaluation criteria. Real-robot replay experiments further
+      demonstrate physical feasibility across diverse contact-rich manipulation tasks.
+    </p>
+    <ul class="keywords">
+      <li>Hand–Object Interaction</li>
+      <li>Contact-Consistent Reconstruction</li>
+      <li>Contact-Interaction-Preserving Retargeting</li>
+      <li>Human-to-Robot Skill Transfer</li>
+      <li>Dexterous Manipulation</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h3 class="head">Method</h3>
+    <p class="lead">
+      C2Dex converts a monocular human video into an executable dexterous manipulation trajectory through
+      two tightly coupled modules. <b>Contact-consistent HOI reconstruction</b> recovers stable
+      object-side contacts from noisy frame-wise observations and uses them to refine the human HOI
+      trajectory. <b>Contact-interaction-preserving retargeting</b> transfers the reconstructed interaction to
+      the target dexterous hand while preserving task-relevant contacts and local hand–object geometry.
+    </p>
+    <figure class="fig">
+      <img src="assets/images/method.png" alt="Overview of the C2Dex method: contact-consistent HOI reconstruction and contact-interaction-preserving retargeting">
+    </figure>
+    <div class="cards">
+      <div class="card">
+        <h4>Contact-Consistent HOI Reconstruction</h4>
+        <p>Given a monocular video, we first estimate an initial human HOI trajectory and extract
+          frame-wise contact observations between the hand and object, which are then stabilized and
+          used to refine the hand motion.</p>
+      </div>
+      <div class="card">
+        <h4>Contact-Interaction-Preserving Retargeting</h4>
+        <p>Starting from a keypoint-based initialization, stable contact optimization transfers
+          task-relevant contacts while Laplacian optimization preserves local hand–object geometry.
+          Residual reinforcement learning then yields the executable trajectory.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="real-world">
+  <div class="wrap">
+    <h3 class="head">Real-World Results</h3>
+    <p class="lead">
+      We collect 24 human demonstration videos covering 8 contact-rich daily manipulation tasks. For each
+      demonstration, C2Dex reconstructs the human HOI and generates the corresponding dexterous-hand–object
+      trajectory, which is then <b>directly replayed</b> on a physical robot equipped with the Inspire
+      dexterous hand — no per-task policy training and no teleoperation.
+    </p>
+
+    <div class="tasks tasks-real">
+      <div class="task">
+        <h4>Wipe Board</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/real/wipe_human.mp4" data-label="Human"></div>
+          <div class="vslot" data-src="assets/videos/real/wipe_robot.mp4" data-label="Robot"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Pour Juice</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/real/pour_human.mp4" data-label="Human"></div>
+          <div class="vslot" data-src="assets/videos/real/pour_robot.mp4" data-label="Robot"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sweep Litter</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/real/sweep_human.mp4" data-label="Human"></div>
+          <div class="vslot" data-src="assets/videos/real/sweep_robot.mp4" data-label="Robot"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Hang Cap</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/real/cap_human.mp4" data-label="Human"></div>
+          <div class="vslot" data-src="assets/videos/real/cap_robot.mp4" data-label="Robot"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Drop Litter</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/real/drop_human.mp4" data-label="Human"></div>
+          <div class="vslot" data-src="assets/videos/real/drop_robot.mp4" data-label="Robot"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Stack Cups</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/real/stack_cups_human.mp4" data-label="Human"></div>
+          <div class="vslot" data-src="assets/videos/real/stack_cups_robot.mp4" data-label="Robot"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Brush Litter</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/real/brush_human.mp4" data-label="Human"></div>
+          <div class="vslot" data-src="assets/videos/real/brush_robot.mp4" data-label="Robot"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Nest Cups</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/real/nest_cups_human.mp4" data-label="Human"></div>
+          <div class="vslot" data-src="assets/videos/real/nest_cups_robot.mp4" data-label="Robot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h3 class="head">Simulation Results</h3>
+    <p class="lead">
+      For each benchmark sequence we show the human demonstration video alongside the rollout of the
+      residual policy in simulation.
+    </p>
+
+    <h4 class="sub">DexYCB</h4>
+    <div class="tasks tasks-dexycb">
+      <div class="task">
+        <h4>Sequence 1</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq1_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq1_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 2</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq2_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq2_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 3</h4>
+        <!-- 展示顺序上 seq3 与 seq7 对调; 文件本身仍与 DexYCB 的原始序号一一对应 -->
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq7_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq7_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 4</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq4_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq4_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 5</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq5_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq5_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 6</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq6_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq6_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 7</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq3_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq3_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 8</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq8_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/dexycb/seq8_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="sub">TACO</h4>
+    <div class="tasks tasks-taco">
+      <div class="task">
+        <h4>Sequence 1</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/taco/seq1_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/taco/seq1_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 2</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/taco/seq2_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/taco/seq2_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 3</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/taco/seq3_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/taco/seq3_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 4</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/taco/seq4_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/taco/seq4_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 5</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/taco/seq5_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/taco/seq5_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+      <div class="task">
+        <h4>Sequence 6</h4>
+        <div class="vpair">
+          <div class="vslot" data-src="assets/videos/sim/taco/seq6_human.mp4" data-label="Human video"></div>
+          <div class="vslot" data-src="assets/videos/sim/taco/seq6_rollout.mp4" data-label="Policy rollout"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap narrow">
+    <h3 class="head">BibTeX</h3>
+    <div class="bibtex">
+      <button class="copy" type="button">Copy</button>
+<pre>@article{ren2026c2dex,
+  title   = {C2Dex: Contact-Consistent Reconstruction and Retargeting for
+             Dexterous Manipulation from Monocular Video},
+  author  = {Ren, Jie and Jiang, Zhehao and Yang, Yinhong and Jia, Haorui and
+             Jiang, Han and Li, Ben and Yao, Yao and Lin, Cheng and Shen, Qiu and
+             Bing, Zhenshan and Long, Xiao-Xiao and Cao, Xun},
+  journal = {arXiv preprint arXiv:2608.07045},
+  year    = {2026}
+}</pre>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap narrow">
+    <p>Anonymous RA-L 2026 submission. Page template inspired by common academic project pages;
+      all media on this page belong to the authors.</p>
+  </div>
+</footer>
+
+<script src="assets/js/index.js"></script>
+</body>
+</html>

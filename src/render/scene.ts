@@ -4,6 +4,7 @@
 
 import * as THREE from 'three/webgpu';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { texture, uniform, uv, float, vec2, vec3, mix, floor as tslFloor, instanceIndex, varying } from 'three/tsl';
 import { BevBuilder } from './bev';
 import type { Mode } from '../types';
@@ -70,8 +71,8 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   controls.maxDistance = 16;
   controls.update();
   const robotCam = new THREE.PerspectiveCamera(36, 1, 0.05, 30);
-  robotCam.position.set(0, .58, 5.2);
-  robotCam.lookAt(0, .58, 0);
+  robotCam.position.set(0, .16, 5.6);
+  robotCam.lookAt(0, .16, 0);
 
   // ── RoboHand: original offline PBR exoskeleton ────────────
   const robotStage = new THREE.Group();
@@ -79,18 +80,35 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   scene.add(robotStage);
   const robotRig = createRobotHandRig();
   robotStage.add(robotRig.group);
-  const robotKey = new THREE.DirectionalLight(0xe8f7ff, 4.2);
+  let robotEnvironment: THREE.RenderTarget | null = null;
+  function prepareRobotEnvironment(): void {
+    if (robotEnvironment) return;
+    const room = new RoomEnvironment();
+    const generator = new THREE.PMREMGenerator(renderer);
+    robotEnvironment = generator.fromScene(room, .04, .1, 100, { size: 128 });
+    // Apply reflections only to this rig; existing perception modes retain their lighting.
+    robotRig.group.traverse(object => {
+      if (!(object instanceof THREE.Mesh)) return;
+      const material = object.material as THREE.MeshStandardMaterial;
+      material.envMap = robotEnvironment!.texture;
+      material.envMapIntensity = .75;
+      material.needsUpdate = true;
+    });
+    generator.dispose();
+    room.dispose();
+  }
+  const robotKey = new THREE.DirectionalLight(0xf3f6ff, 3.2);
   robotKey.position.set(-2.8, 4.5, 4);
   robotKey.castShadow = true;
   robotKey.shadow.mapSize.set(1024, 1024);
   robotStage.add(robotKey);
-  const robotFill = new THREE.DirectionalLight(0xf2c94c, 2.5);
+  const robotFill = new THREE.DirectionalLight(0xc5d8ee, 1.8);
   robotFill.position.set(3.5, 1.2, 2.2);
   robotStage.add(robotFill);
-  const robotRim = new THREE.PointLight(0x34c8ff, 18, 9, 2);
+  const robotRim = new THREE.PointLight(0xb7ecff, 12, 9, 2);
   robotRim.position.set(-2.4, 1.8, -1.7);
   robotStage.add(robotRim);
-  const robotAmbient = new THREE.HemisphereLight(0xbfeaff, 0x080b0c, 1.7);
+  const robotAmbient = new THREE.HemisphereLight(0xe0e7ef, 0x20242a, 2.0);
   robotStage.add(robotAmbient);
   const robotFloor = new THREE.Mesh(
     new THREE.CircleGeometry(2.15, 64),
@@ -102,7 +120,7 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   robotStage.add(robotFloor);
   const robotHalo = new THREE.Mesh(
     new THREE.TorusGeometry(1.64, .008, 8, 96),
-    new THREE.MeshBasicMaterial({ color: 0xf2c94c, transparent: true, opacity: .58 })
+    new THREE.MeshBasicMaterial({ color: 0x799ba9, transparent: true, opacity: .25 })
   );
   robotHalo.rotation.x = Math.PI / 2;
   robotHalo.position.y = -1.25;
@@ -416,6 +434,7 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
       boxGroup.visible = m === 'cloud';
       bevPlane.visible = m === 'bev';
       robotStage.visible = m === 'robohand';
+      if (m === 'robohand') prepareRobotEnvironment();
       controls.enabled = m === 'cloud';
     },
 
@@ -507,6 +526,8 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
       perspCam.aspect = a;
       perspCam.updateProjectionMatrix();
       robotCam.aspect = a;
+      // Keep the thumb and wrist in view on narrow camera-stage layouts.
+      robotCam.position.z = Math.max(5.6, 3.8 / Math.max(.25, a));
       robotCam.updateProjectionMatrix();
       refitPlanes();
     },
@@ -535,6 +556,7 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
 
     dispose() {
       robotRig.dispose();
+      robotEnvironment?.dispose();
       robotFloor.geometry.dispose();
       (robotFloor.material as THREE.Material).dispose();
       robotHalo.geometry.dispose();

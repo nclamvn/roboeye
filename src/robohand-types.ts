@@ -1,4 +1,5 @@
 import type { HandLandmark } from './airsketch-types';
+import type { HandTask } from './robohand-retarget';
 
 export interface Vec3 {
   x: number;
@@ -24,6 +25,8 @@ export interface RobotHandSegment {
 }
 
 export interface RobotHandPose {
+  /** Source-space fingertip/contact objectives; preserved through filtering. */
+  handTask?: HandTask;
   /** Fixed-length hand-local landmark positions, wrist is always the origin. */
   points: Vec3[];
   /** Unit hand-local direction for every entry in ROBOT_HAND_SEGMENTS. */
@@ -44,7 +47,18 @@ export interface RobotHandFrame {
   handednessScore?: number;
   capturedAt: number;
   receivedAt?: number;
+  /** Camera width / height; landmarks.y must use the same units as landmarks.x. */
+  imageAspectRatio?: number;
 }
+
+/** Rigid palm mounting directions shared by pose solver and mesh rest pose. */
+export const ROBOT_PALM_DIRECTIONS: Record<RobotHandSegment['finger'], Vec3> = {
+  thumb: { x: .66, y: .40, z: -.16 },
+  index: { x: .39, y: .92, z: 0 },
+  middle: { x: 0, y: 1, z: 0 },
+  ring: { x: -.38, y: .93, z: 0 },
+  pinky: { x: -.67, y: .74, z: -.02 }
+};
 
 export const ROBOT_HAND_SEGMENTS: readonly RobotHandSegment[] = [
   { parent: 0, child: 1, finger: 'thumb', section: 0, length: 0.38 },
@@ -68,4 +82,3 @@ export const ROBOT_HAND_SEGMENTS: readonly RobotHandSegment[] = [
   { parent: 18, child: 19, finger: 'pinky', section: 2, length: 0.24 },
   { parent: 19, child: 20, finger: 'pinky', section: 3, length: 0.19 }
 ] as const;
-

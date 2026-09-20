@@ -1,0 +1,13 @@
+domain: hand-retargeting
+entity_label: "Giải pháp retargeting đã chọn để đối chiếu (không phải toàn thị trường)"
+schema:
+  type_field: null
+  fields: [method, implementation, license, input_limit, measured_roboeye_latency]
+rollup_field: method
+universe:
+  estimate: 4
+  basis: "Tập đối chiếu có chủ đích gồm Dex Retargeting, GeoRT, AnyDexRT, C2Dex; không công bố độ phủ lĩnh vực."
+refresh_days:
+  default: 30
+alias_map: {}
+ambiguous_clusters: []

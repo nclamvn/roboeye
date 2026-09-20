@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RoboHand · Design review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101418;color:#e3e9ed;font:14px system-ui}canvas{display:block;width:100vw;height:100vh}
+header{position:absolute;left:36px;top:28px;pointer-events:none}small{font-size:10px;letter-spacing:3px;color:#8bacb8}h1{font-size:30px;letter-spacing:-1px;margin:8px 0}p{color:#9aa7b2;font-size:12px}
+nav{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;justify-content:center;flex-wrap:wrap;width:95%;gap:8px}button{white-space:nowrap;border:1px solid #46525e;background:#1a232ce8;color:#dce7ee;padding:12px 16px;border-radius:6px;cursor:pointer}button[aria-pressed=true]{background:#c7d7de;color:#15222c}#stats{position:absolute;bottom:8px;right:16px;color:#7c8c98;font:10px monospace}
+</style></head><body>
+<canvas id="gl"></canvas><header><small>ROBOEYE / DESIGN STUDY 02</small><h1>Humanoid hand.</h1><p>Titanium · ceramic shell · graphite tactile pads</p></header>
+<nav><button data-view="front" aria-pressed="true">Chính diện</button><button data-view="angle">Góc ¾</button><button data-view="palm">Lòng bàn tay</button><button data-view="flex">Co ngón</button><button data-view="sweep">Xoay liên tục</button><button data-view="pinch">Cái–trỏ</button><button data-view="middle">Cái–giữa</button><button data-view="ring">Cái–áp út</button><button data-view="little">Cái–út</button><button data-view="three">3 ngón</button><button data-view="four">4 ngón</button><button data-view="fist">Nắm tay</button><button id="baseline">So sánh: bản mới</button></nav><output id="stats"></output>
+<script type="module">
+import * as THREE from 'three/webgpu';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { createRobotHandRig, createRobotHandRestPoints } from '/src/robohand-rig.ts';
+import { ROBOT_HAND_SEGMENTS } from '/src/robohand-types.ts';
+import { solveRobotHandPose } from '/src/robohand-pose.ts';
+import { RobotHandPoseFilter } from '/src/robohand-realtime.ts';
+import { precisionHand, precisionFrame, precisionFist } from '/tests/fixtures/robohand-precision.ts';
+import { contactResidual } from '/src/robohand-retarget.ts';
+const renderer=new THREE.WebGPURenderer({canvas:document.querySelector('canvas'),antialias:true,forceWebGL:new URLSearchParams(location.search).has('webgl')});
+await renderer.init();renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.toneMapping=THREE.ACESFilmicToneMapping;
+const scene=new THREE.Scene();scene.background=new THREE.Color('#101418');
+const camera=new THREE.PerspectiveCamera(34,1,.1,30);camera.position.set(0,.15,5.6);camera.lookAt(0,.15,0);
+const rig=createRobotHandRig();scene.add(rig.group);
+const room=new RoomEnvironment(), pmrem=new THREE.PMREMGenerator(renderer), environment=pmrem.fromScene(room,.04,.1,100,{size:128});
+rig.group.traverse(o=>{if(o.isMesh){o.material.envMap=environment.texture;o.material.envMapIntensity=.75;}});room.dispose();pmrem.dispose();
+scene.add(new THREE.HemisphereLight(0xe0e7ef,0x20242a,2));
+for(const [color,intensity,x,y,z] of [[0xf3f6ff,3.2,-2.8,4.5,4],[0xc5d8ee,1.8,3.5,1.2,2.2],[0xb7ecff,2,-2,2,-2]]){
+const light=new THREE.DirectionalLight(color,intensity);light.position.set(x,y,z);scene.add(light);}
+function resize(){renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.position.z=Math.max(5.6,3.8/camera.aspect);camera.updateProjectionMatrix();}resize();addEventListener('resize',resize);
+let sweep=false, precision=null, baseline=false, gap=0, activeView='front';
+const filter=new RobotHandPoseFilter();
+function pose(view){
+activeView=view;sweep=view==='sweep';filter.reset();
+precision=({pinch:[0,1],middle:[0,2],ring:[0,3],little:[0,4],three:[0,1,2],four:[0,1,2,3],fist:[]})[view]??null;
+if(precision){updatePrecision(performance.now());return;}
+const points=createRobotHandRestPoints(), directions=[];
+for(const segment of ROBOT_HAND_SEGMENTS){
+const d=new THREE.Vector3().copy(points[segment.child]).sub(points[segment.parent]).normalize();
+directions.push({x:d.x,y:d.y,z:d.z});}
+if(view==='flex')for(let i=0;i<ROBOT_HAND_SEGMENTS.length;i++){
+const s=ROBOT_HAND_SEGMENTS[i];
+if(s.section>0){const a=(s.finger==='thumb'?.25:.70)*s.section;directions[i]={x:directions[i].x*.3,y:Math.cos(a),z:-Math.sin(a)};}
+const d=new THREE.Vector3().copy(directions[i]).normalize(),p=points[s.parent];
+points[s.child]={x:p.x+d.x*s.length,y:p.y+d.y*s.length,z:p.z+d.z*s.length};}
+const q=new THREE.Quaternion().setFromEuler(new THREE.Euler(view==='flex'?.15:0,view==='palm'?Math.PI:view==='front'?0:-.65,view==='front'?0:-.12));
+rig.setPose({points,directions,rootPosition:{x:0,y:0,z:0},rootOrientation:q,rootScale:1/.88,handedness:'Right',handednessScore:1,capturedAt:performance.now(),receivedAt:performance.now()});
+}
+function updatePrecision(now){
+const source=activeView==='fist'?precisionFist():precisionHand(precision,0,.4*Math.sin(now/1800));
+const raw=solveRobotHandPose(precisionFrame(source,now,false,.15));
+const solved=baseline?raw:filter.update(raw,now);
+gap=contactResidual(solved.points,solved.handTask.contacts);
+const orientation=new THREE.Quaternion().setFromEuler(new THREE.Euler(.1,2.4,-.1)).multiply(new THREE.Quaternion().copy(solved.rootOrientation));
+rig.setPose({...solved,rootOrientation:orientation,handTask:baseline?undefined:solved.handTask,rootPosition:{x:0,y:0,z:0},rootScale:1/.88});
+}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));pose(b.dataset.view);});
+document.querySelector('#baseline').onclick=()=>{baseline=!baseline;document.querySelector('#baseline').textContent='So sánh: '+(baseline?'trước sửa':'bản mới');filter.reset();pose(activeView);};
+pose('front');let prev=performance.now(),last=prev,frames=0;
+renderer.setAnimationLoop(()=>{const now=performance.now();
+if(precision)updatePrecision(now);
+if(sweep){
+const q=new THREE.Quaternion().setFromEuler(new THREE.Euler(.35*Math.sin(now/1400),1.3*Math.sin(now/1800),-.55));
+const world=createRobotHandRestPoints().map(p=>{const v=new THREE.Vector3(p.x,p.y,p.z).applyQuaternion(q);return{x:-v.x,y:-v.y,z:v.z};});
+const landmarks=world.map(p=>({x:.5+p.x*.25,y:.62+p.y*.25,z:p.z*.25}));
+const solved=solveRobotHandPose({worldLandmarks:world,landmarks,capturedAt:now,receivedAt:now,handedness:'Right',handednessScore:1});
+if(solved)rig.setPose(filter.update(solved,now));
+}
+rig.update(now-prev);prev=now;renderer.render(scene,camera);frames++;
+if(now-last>1000){document.querySelector('#stats').textContent=Math.round(frames*1000/(now-last))+' render fps · SYNTHETIC · gap residual '+gap.toFixed(3)+' rig units';frames=0;last=now;}});
+</script></body></html>

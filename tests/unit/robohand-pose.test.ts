@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { HandLandmark } from '../../src/airsketch-types';
 import { solveRobotHandPose } from '../../src/robohand-pose';
-import { ROBOT_HAND_SEGMENTS } from '../../src/robohand-types';
+import { ROBOT_HAND_SEGMENTS, ROBOT_PALM_DIRECTIONS } from '../../src/robohand-types';
 
 function openHand(mirror = false, scale = 1): HandLandmark[] {
   const raw: Array<[number, number, number]> = [
@@ -85,3 +85,35 @@ test('solver rejects incomplete and degenerate palms without leaking NaN', () =>
   assert.equal(solve(Array.from({ length: 21 }, () => ({ x: 0, y: 0, z: 0 })), 'Right'), null);
 });
 
+test('robot finger sockets remain registered to the palm across source proportions and cupping', () => {
+  for (const width of [.55, 1, 1.6]) {
+    const world = openHand().map(p => ({ ...p, x: p.x * width, z: Math.abs(p.x) * .18 }));
+    const pose = solve(world, 'Right');
+    assert.ok(pose);
+    for (const segment of ROBOT_HAND_SEGMENTS.filter(s => s.section === 0)) {
+      const d = ROBOT_PALM_DIRECTIONS[segment.finger];
+      const norm = Math.hypot(d.x, d.y, d.z);
+      const actual = pose.points[segment.child];
+      assert.ok(Math.hypot(actual.x - d.x / norm * segment.length,
+        actual.y - d.y / norm * segment.length, actual.z - d.z / norm * segment.length) < 1e-9);
+    }
+  }
+});
+
+test('depth scale compensates yaw/pitch foreshortening at both square and widescreen aspect ratios', () => {
+  const scales: number[] = [];
+  for (const aspect of [1, 16 / 9]) for (const yaw of [0, .5, 1, 1.48]) for (const pitch of [0, .6, 1]) {
+    const world = openHand().map(p => {
+      const x = p.x * Math.cos(yaw), z = -p.x * Math.sin(yaw);
+      return { x, y: p.y * Math.cos(pitch) - z * Math.sin(pitch), z: p.y * Math.sin(pitch) + z * Math.cos(pitch) };
+    });
+    const landmarks = imageLandmarks(world, 1.4).map(p => ({ ...p, y: .82 + (p.y - .82) * aspect }));
+    const pose = solveRobotHandPose({ landmarks, worldLandmarks: world, imageAspectRatio: aspect, capturedAt: 0 });
+    assert.ok(pose);
+    scales.push(pose.rootScale);
+  }
+  assert.ok(Math.max(...scales) - Math.min(...scales) < 1e-8, JSON.stringify(scales));
+  const far = solve(openHand(), 'Right', 1.2), near = solve(openHand(), 'Right', 1.8);
+  assert.ok(far && near);
+  assert.ok(Math.abs(near.rootScale / far.rootScale - 1.5) < 1e-8, 'actual approach must still enlarge the robot');
+});

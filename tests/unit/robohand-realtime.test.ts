@@ -43,7 +43,10 @@ function solved(points: HandLandmark[], at: number) {
     receivedAt: at + 20
   });
   assert.ok(pose);
-  return pose;
+  // These tests isolate the original direction filter. Their schematic DIP
+  // positions are not an anatomical IK fixture. Full task-space filtering is
+  // exercised with independent articulated fixtures in robohand-precision.test.
+  return { ...pose, handTask: undefined };
 }
 
 test('adaptive pose filter suppresses stationary direction jitter while preserving fixed lengths', () => {

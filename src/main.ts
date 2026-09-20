@@ -46,6 +46,7 @@ import { metricLift, toKittiLines, focalFromFov, type MetricBox3D } from './rend
 import type { MetricWorkerToMain } from './metric-types';
 import { DetectionSmoother } from './detection-smooth';
 import { solveRobotHandPose } from './robohand-pose';
+import { contactResidual } from './robohand-retarget';
 import { RobotHandMetrics, RobotHandRealtimeController } from './robohand-realtime';
 
 let sceneApi: SceneAPI | null = null;
@@ -659,6 +660,7 @@ function handleRoboHandLandmarks(message: Extract<AirSketchHandWorkerToMain, { t
     return;
   }
   const pose = solveRobotHandPose({
+    imageAspectRatio: video ? video.videoWidth / Math.max(1, video.videoHeight) : 1,
     landmarks: message.landmarks,
     worldLandmarks: message.worldLandmarks,
     handedness: message.handedness,
@@ -674,8 +676,12 @@ function handleRoboHandLandmarks(message: Extract<AirSketchHandWorkerToMain, { t
     latencyMs: receivedAt - message.capturedAt,
     delegate: message.delegate
   });
+  const contacts=result.pose?.handTask?.contacts??[];
+  const unclosed=result.pose&&contactResidual(result.pose.points,contacts)>.035;
   shell.setRoboHandStatus(result.pose
-    ? 'Đang sao chép liên tục cổ tay và từng đốt ngón — không cần cử chỉ kích hoạt.'
+    ? unclosed ? 'Thấy cử chỉ chụm nhưng mô hình chưa khép đúng · thử đổi góc để thấy rõ các đầu ngón.'
+      : contacts.some(c=>c.weight>.95) ? 'Đang giữ khoảng cách chụm bằng IK · tiếp xúc được ước lượng từ camera, không phải cảm biến lực.'
+      : 'Theo dõi từng đốt ngón · chụm cái với từng ngón hoặc chụm nhiều ngón, không cần kích hoạt.'
     : 'Khung tay không đủ ổn định để giải pose; hãy xòe tay trong vùng sáng.');
 }
 

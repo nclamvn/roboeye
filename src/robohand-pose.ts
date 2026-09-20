@@ -1,6 +1,8 @@
 import type { HandLandmark } from './airsketch-types';
+import { createHandTask } from './robohand-retarget';
 import {
   ROBOT_HAND_SEGMENTS,
+  ROBOT_PALM_DIRECTIONS,
   type Quaternion,
   type RobotHandFrame,
   type RobotHandPose,
@@ -129,20 +131,39 @@ export function solveRobotHandPose(frame: RobotHandFrame): RobotHandPose | null 
   const directions: Vec3[] = [];
   const points = Array.from({ length: 21 }, () => ({ x: 0, y: 0, z: 0 }));
   for (const segment of ROBOT_HAND_SEGMENTS) {
-    const direction = projectDirection(segment.parent, segment.child);
+    // A rigid robot palm cannot change its finger sockets with the user's
+    // palm proportions, cupping or landmark noise. Retarget only articulation.
+    const direction = segment.section === 0
+      ? normalize(ROBOT_PALM_DIRECTIONS[segment.finger])
+      : projectDirection(segment.parent, segment.child);
     if (!direction) return null;
     directions.push(direction);
     points[segment.child] = add(points[segment.parent], scale(direction, segment.length));
   }
 
-  const imagePalmWidth = Math.hypot(
-    frame.landmarks[5].x - frame.landmarks[17].x,
-    frame.landmarks[5].y - frame.landmarks[17].y
-  );
-  const rootScale = clamp(imagePalmWidth / 0.18, 0.68, 1.55);
+  // Weak-perspective fit across both palm axes. A foreshortened axis contributes
+  // little weight, so turning edge-on does not masquerade as moving farther away.
+  const aspect = frame.imageAspectRatio && Number.isFinite(frame.imageAspectRatio) && frame.imageAspectRatio > 0
+    ? frame.imageAspectRatio : 1;
+  const palmWidth3D = length(sub(world[5], world[17]));
+  let numerator = 0, denominator = 0;
+  for (const [a, b] of [[5, 17], [0, 9], [0, 5], [0, 17]]) {
+    const delta = sub(world[b], world[a]);
+    const expected = Math.hypot(delta.x, delta.y) / palmWidth3D * .18;
+    const observed = Math.hypot(frame.landmarks[b].x - frame.landmarks[a].x,
+      (frame.landmarks[b].y - frame.landmarks[a].y) / aspect);
+    numerator += expected * observed;
+    denominator += expected * expected;
+  }
+  if (denominator < EPSILON) return null;
+  const rootScale = clamp(numerator / denominator, 0.68, 1.55);
   const wrist = frame.landmarks[0];
   const receivedAt = frame.receivedAt ?? frame.capturedAt;
   return {
+    handTask: createHandTask(world.map(p => {
+      const v = sub(p, world[0]);
+      return { x: dot(v,xAxis), y: dot(v,yAxis), z: dot(v,zAxis) };
+    }), points),
     points,
     directions,
     rootPosition: {

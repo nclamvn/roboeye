@@ -1,6 +1,7 @@
 import type { HandLandmark } from './airsketch-types';
 
-export type RobotHandGesture = 'OPEN' | 'FIST' | 'POINT' | 'PINCH' | 'V SIGN' | 'OK' | 'FREE POSE';
+export type RobotHandGesture = 'OPEN' | 'FIST' | 'POINT' | 'PINCH' | 'V SIGN' | 'OK' | 'FREE POSE'
+  | 'CHỤM 3 NGÓN' | 'CHỤM 4 NGÓN' | 'CHỤM 5 NGÓN' | 'CÁI–GIỮA' | 'CÁI–ÁP ÚT' | 'CÁI–ÚT';
 
 function distance(a: HandLandmark, b: HandLandmark): number {
   return Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
@@ -60,4 +61,3 @@ export class RobotHandGestureStabilizer {
     this.samples = 0;
   }
 }
-

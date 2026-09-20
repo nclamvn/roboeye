@@ -2,6 +2,7 @@ import { RealtimeValueFilter } from './realtime-point-filter';
 import { classifyRobotHandGesture, RobotHandGestureStabilizer, type RobotHandGesture } from './robohand-gestures';
 import { ROBOT_HAND_SEGMENTS, type Quaternion, type RobotHandPose, type Vec3 } from './robohand-types';
 import type { HandLandmark } from './airsketch-types';
+import { retargetHand, directionsFromPoints } from './robohand-retarget';
 
 function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
@@ -117,6 +118,8 @@ class RootPositionFilter {
 }
 
 export class RobotHandPoseFilter {
+  private readonly tipFilters = Array.from({length:5}, () =>
+    ['x','y','z'].map(() => new RealtimeValueFilter({minCutoff:4,beta:25,derivativeCutoff:1.5})));
   private readonly directionFilters = ROBOT_HAND_SEGMENTS.map(() => new DirectionFilter());
   private readonly rootPosition = new RootPositionFilter();
   private readonly rootScale = new RealtimeValueFilter({ minCutoff: 1.6, beta: 2.8 });
@@ -164,10 +167,21 @@ export class RobotHandPoseFilter {
       this.handednessSamples = 0;
     }
 
+    const handTask = pose.handTask ? {
+      tipDirections: [3,7,11,15,19].map(i=>({...directions[i]})),
+      tips: pose.handTask.tips.map((p,f) => ({
+        x:this.tipFilters[f][0].update(p.x,pose.capturedAt),
+        y:this.tipFilters[f][1].update(p.y,pose.capturedAt),
+        z:this.tipFilters[f][2].update(p.z,pose.capturedAt)
+      })),
+      contacts:pose.handTask.contacts.map(c=>({...c}))
+    } : undefined;
+    const articulated = handTask ? retargetHand(points,handTask) : points;
     return {
       ...pose,
-      points,
-      directions,
+      handTask,
+      points:articulated,
+      directions:handTask ? directionsFromPoints(articulated) : directions,
       rootPosition,
       rootOrientation: { ...this.orientation },
       rootScale: this.rootScale.update(pose.rootScale, pose.capturedAt),
@@ -177,6 +191,7 @@ export class RobotHandPoseFilter {
   }
 
   reset(): void {
+    this.tipFilters.forEach(filters=>filters.forEach(filter=>filter.reset()));
     this.directionFilters.forEach((filter) => filter.reset());
     this.rootPosition.reset();
     this.rootScale.reset();
@@ -205,9 +220,15 @@ export class RobotHandRealtimeController {
   update(pose: RobotHandPose, landmarks: HandLandmark[], now: number): RobotHandRealtimeResult {
     this.lastPose = this.filter.update(pose, now);
     this.lastSeenAt = now;
+    // Labels summarize observed 3D proximity; they never select a canned pose.
+    const thumbContacts=pose.handTask?.contacts.filter(c=>c.a===0&&c.weight>.95)??[];
+    let gesture=classifyRobotHandGesture(landmarks);
+    if(thumbContacts.length>=2)gesture=thumbContacts.length===2?'CHỤM 3 NGÓN':thumbContacts.length===3?'CHỤM 4 NGÓN':'CHỤM 5 NGÓN';
+    else if(thumbContacts.length===1&&thumbContacts[0].b>1)
+      gesture=thumbContacts[0].b===2?'CÁI–GIỮA':thumbContacts[0].b===3?'CÁI–ÁP ÚT':'CÁI–ÚT';
     return {
       pose: this.lastPose,
-      gesture: this.gestures.update(classifyRobotHandGesture(landmarks)),
+      gesture: this.gestures.update(gesture),
       state: 'live'
     };
   }
