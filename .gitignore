@@ -12,5 +12,8 @@ release/
 tests/.metric-venv/
 tests/.metric-cache/
 tests/.drive-cache/
+tests/.road-cache/
+tests/.road-tools/
 *.log
 .DS_Store
+:memory:.ses

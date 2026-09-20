@@ -269,3 +269,80 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   report schema v4, full unit/type/build/security gates and no production FCW or
   vehicle-control claim.
 - **Detail:** `docs/TIP-46-SHADOW-RISK-HUD.md`.
+
+## TIP-50R-A/B/C · DriveSense RoadStructure evidence and artifact gates
+
+- **Dependencies:** TIP-49L. **Priority:** P0 commercial architecture.
+- **Task:** keep model code, weights and training-data rights separate; benchmark typed lanes, physical boundaries and drivable area on a closed local corpus; then admit ONNX artifacts only through pinned provenance, exact hashes, static tensor contracts and mandatory operator audit.
+- **Acceptance:** registry and Refinery audits fail closed; deterministic benchmark reports quality/latency/staleness; artifact intake rejects unknown fields, unpinned sources, mismatched bytes, unsafe paths and self-declared commercial rights.
+- **Detail:** `docs/TIP-50R-A-ROAD-MODEL-REGISTRY.md`, `docs/TIP-50R-B-ROAD-BENCHMARK.md`, `docs/TIP-50R-C-ROAD-ARTIFACT-INTAKE.md`.
+
+## TIP-50R-D1 · Prediction-blind road ground truth
+
+- **Dependencies:** TIP-50R-B/C. **Priority:** P0 evidence quality.
+- **Task:** extract exact raw frames into a local-only, hash-bound task; annotate typed lanes, physical boundaries and drivable area without exposing model output; require a distinct review pass before benchmark use.
+- **Acceptance:** closed schemas reject prediction leakage and changed task/image hashes; two supplied clips yield eight verified 1280×720 frames; both workbenches pass Chrome smoke with zero browser errors; draft or self-reviewed labels cannot become truth.
+- **Detail:** `docs/TIP-50R-D1-BLIND-GROUND-TRUTH.md`.
+
+## TIP-50R-D2 · Reviewed RoadStructure benchmark
+
+- **Dependencies:** TIP-50R-D1. **Priority:** P0 evidence gate.
+- **Task:** vectorize the pinned four-class mask without reading truth geometry; benchmark the exact reviewed eight-frame test set and preserve the first run even when it fails.
+- **Acceptance:** reviewed/task/model hashes are bound; 8/8 predictions and diagnostic renders complete; misses remain in denominators; quality failure blocks RoadGraph/HUD promotion.
+- **Result:** implementation verified; candidate rejected (`IoU 0.5949`, lane match `0/16`, ego-corridor recall `0`, WASM p50/p95 `178.3/233.3 ms`).
+- **Detail:** `docs/TIP-50R-D2-REVIEWED-ROAD-BENCHMARK.md`.
+
+## TIP-50R-D3 · Continuity-aware road-mark paths
+
+- **Dependencies:** TIP-50R-D2. **Priority:** P0 perception quality.
+- **Task:** preserve the D2 baseline, replace row-local mark selection with global continuity-aware path hypotheses and bounded curve fitting, expose confidence/abstention, and remove polyline sample-density bias from the scorer.
+- **Acceptance:** dashed/curved/distractor and fail-closed synthetic scenarios pass; v1/v2 evidence is explicit; no D2 coordinate enters vectorization; no RoadGraph/HUD wiring occurs.
+- **Result:** 9/9 requirements implemented. Corrected post-hoc comparison improves F1 `0.0625→0.4444` and ego-corridor recall `0→0.375`, but remains non-promotable until a new independent source is evaluated.
+- **Detail:** `docs/TIP-50R-D3-CONTINUITY-PATHS.md`.
+
+## TIP-50R-D4 · Local lane test UI
+
+- **Dependencies:** D3. **Priority:** P0 UI integration requested by user.
+- **Task:** real model worker + independent experimental overlay, explicit lane-only
+  file/camera mode, pause/seek/slow inspection, state/error/retry and diagnostic export.
+- **Boundary:** no change to distance/risk; no research weights in production build.
+- **Detail:** `docs/TIP-50R-D4-LOCAL-LANE-UI.md` and completion/verification report.
+
+## TIP-50R-D5 · Quiet lane HUD
+
+- **Dependencies:** D4. **Task:** compact icon by default, optional debug overlay,
+  sustained paired-evidence acquisition and hysteresis; highlight only the side
+  showing confirmed image-space proximity. Missing evidence remains gray.
+- **Boundary:** not a calibrated physical lane-departure warning; no impact on
+  collision/range logic; no red severity or audio without validated evidence.
+- **Detail:** `docs/TIP-50R-D5-QUIET-LANE-HUD.md`.
+
+## TIP-50R-D6 · Video-anchored lane icon
+
+- **Dependencies:** D5. **Priority:** P0 UI correctness.
+- **Task:** anchor the compact lane icon to the actual `object-fit: contain`
+  video rectangle instead of fixed viewport offsets; keep it inside the image
+  across resize, fullscreen and source-aspect changes.
+- **Boundary:** layout only; no inference, confidence, distance or risk change.
+- **Detail:** `docs/TIP-50R-D6-VIDEO-ANCHORED-ICON.md`.
+
+## TIP-50R-D7 · In-video DriveSense feature toggles
+
+- **Dependencies:** D6 and existing distance/lane pipelines. **Priority:** P0
+  operator control.
+- **Task:** expose adjacent `Khoảng cách` and `Làn` toggles in the video
+  transport dock with explicit off/loading/ready states and bounded resource
+  arbitration.
+- **Boundary:** control integration only; no detector, metric-depth, road model,
+  calibration or warning-threshold change.
+- **Detail:** `docs/TIP-50R-D7-FEATURE-TOGGLES.md`.
+
+## TIP-STAB-01 · Source of Truth and Repository Recovery
+
+- **Dependencies:** current local DriveSense/RoadStructure/RoboHand work.
+  **Priority:** P0 release hygiene.
+- **Task:** preserve and classify the dirty worktree, establish one canonical
+  repository, quarantine non-source artifacts, restore the missing D6/D7 audit
+  trail, and produce a reproducible inventory before CI/release work.
+- **Boundary:** no product behavior or approved architecture change.
+- **Detail:** `docs/TIP-STAB-01-SOURCE-OF-TRUTH.md`.

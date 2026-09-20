@@ -1,5 +1,42 @@
 # DriveSense — hướng dẫn baseline D1/D2
 
+## Test làn đường trên UI local (TIP-50R-D4/D5)
+
+Mở `http://127.0.0.1:4192/drive.html?lanes=1`, chọn video cũ rồi bấm Phát.
+Hoặc chọn **Test làn trên video** ở màn mở đầu. Nút **Làn** trên thanh điều khiển
+bật/tắt lớp dự đoán; bật trong khi đang xử lý xe sẽ hủy lượt xử lý đó để test làn
+ngay. Nếu video đã phân tích xe xong, lớp làn có thể xem cùng replay xe.
+**Phân tích lại video** chạy lại luồng xe/khoảng cách, tạm nhường phần tính làn.
+
+- Mặc định chỉ có icon nhỏ: xanh khi bám được cặp vạch ổn định; xám khi chưa đủ
+  dữ liệu. Không tự phủ mặt đường hoặc vẽ hai biên. Xanh không xác nhận an toàn.
+- Chỉ sau khi đã bám ổn định, dấu hiệu tiến gần biên kéo dài mới làm icon vàng,
+  có mũi tên và vẽ **một biên tương ứng**. Đây là thử nghiệm vị trí tâm ảnh giữa
+  hai vạch, không phải đo bánh xe/đè vạch; chưa hiệu chuẩn gá camera hoặc ý định
+  chuyển làn. Không phát âm thanh hay đưa hướng dẫn điều khiển.
+- **Phân tích → Hiện vạch để kiểm tra** bật lại lớp debug: cyan trái, tím phải.
+  **Kèm mặt đường/lề** chỉ có tác dụng khi lớp kiểm tra đang bật. Xanh nhạt là
+  pixel mặt đường, vàng là pixel lề dự đoán, không phải vùng được xác nhận an toàn.
+- Trong **Phân tích → Làn đường**, chọn tốc độ ½×/¼×, xem thời gian xử lý và
+  **Xuất chẩn đoán làn**. Tạm dừng/tua để soi đúng khung hình khi máy xử lý chậm.
+- Model chạy WASM trong worker, tối đa một yêu cầu đang chạy. Kết quả quá 400 ms
+  theo thời gian video sẽ ẩn; không giữ đường vẽ cũ cho có vẻ mượt.
+- Camera laptop/điện thoại được OS nhận như webcam dùng cùng nút **Làn**, nhưng
+  chưa nghiệm thu tốc độ realtime, độ chính xác thực địa hoặc cảnh báo lệch làn.
+- Tải lỗi sẽ hiện trạng thái; mở **Phân tích** và chọn **Thử lại model làn**.
+
+Model local đã được chuẩn bị trên máy hiện tại. Trên máy phát triển khác:
+`npm run fixtures:road-ui -- /absolute/path/road-segmentation-adas-0001.onnx`.
+Script kiểm SHA-256 và lưu trong `tests/.road-cache`, Vite chỉ phục vụ ở dev;
+không đưa weights nghiên cứu vào bản release. Video không được gửi lên máy chủ.
+UI này kiểm tra D3, không cải thiện hay chứng nhận chất lượng D3 và không tham gia
+phép đo mét, hành lang risk hay cảnh báo phanh/lái.
+
+D5 yêu cầu tối thiểu 3 mẫu khác nhau trải ≥700 ms, hai biên đủ chất lượng và còn
+mới. Một khung hình đứng yên không đủ làm icon xanh. Thiếu/mất/trễ vạch về xám;
+ngưỡng vào/ra riêng tránh đổi trạng thái chỉ vì dao động nhỏ. Muốn soi độ bám khi
+máy chậm, chọn ¼×, nhưng không gọi đó là tốc độ realtime.
+
 ## HUD tối giản
 
 Giao diện là một khung camera chiếm toàn bộ cửa sổ, không có nội dung rơi xuống
@@ -214,11 +251,22 @@ Muốn đo hình học cần profile đúng ảnh đầu ra. Nếu biết FOV ng
 có thể dùng nút điền tiêu cự để hỗ trợ nhập pinhole/crop giữa ảnh; đây không phải
 hiệu chuẩn tự động, không xử lý méo/fisheye/EIS hoặc tự biết chiều cao gá.
 
-Xe nhỏ dưới 10 pixel mỗi chiều trên depth map và cặp xe cùng lớp/căn dọc có depth
-xa–gần mâu thuẫn nghiêm trọng với phối cảnh sẽ bị từ chối. Gate phối cảnh là
-heuristic bỏ phép đo không đáng tin, không tự sửa thành cự ly đúng, không phải
-lane detection. Model outdoor bị giới hạn 80 m; không ngoại suy xe xa hơn từ
-khoảng trống nhìn bằng mắt hoặc cộng khoảng B–C chưa được đo.
+Xe nhỏ dưới 10 pixel mỗi chiều trên depth map và cặp thuộc họ phương tiện
+`car`/`truck`/`bus` có depth xa–gần
+mâu thuẫn nghiêm trọng với phối cảnh sẽ bị từ chối. Với xe khác làn, điểm chạm
+mặt đường xấp xỉ là cue thứ tự chính; chiều cao box chỉ phủ quyết khi nó mâu thuẫn
+mạnh vì kích thước xe thật và crop detector có thể khác nhau. Flicker nhãn con
+giữa ô tô/xe tải/xe buýt không được phép bỏ qua kiểm tra này. Khi phát hiện đảo
+thứ tự, cả hai số bị ẩn vì ảnh chỉ chứng minh được mâu thuẫn, không chứng minh số
+mét nào đúng. Gate phối cảnh là heuristic bỏ phép đo không
+đáng tin, không tự tráo/sửa thành cự ly đúng, không phải lane detection. Model
+outdoor bị giới hạn 80 m; không ngoại suy xe xa hơn từ khoảng trống nhìn bằng mắt
+hoặc cộng khoảng B–C chưa được đo.
+
+Invariant này chạy cả trước tracking và ngay trước publish. Vì Kalman lọc từng
+track độc lập và replay nội suy box giữa hai sample, kết quả cuối gửi đến HUD/risk
+được kiểm lại; nếu thứ tự bị tái đảo, hệ thống xóa mét, closing speed và TTC theo
+range thay vì giữ một số cũ trông có vẻ ổn định.
 
 Báo cáo v5 giữ các lý do từ chối, zoom, policy, graph GPU hash, seek/inference,
 số request depth và tốc độ xử lý toàn clip. Chỉ số sai số mét vẫn là `null` khi

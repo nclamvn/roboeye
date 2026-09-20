@@ -2,9 +2,18 @@
 
 Handover snapshot: 06/08/2026
 
+Source-of-truth correction: 20/09/2026
+
 Method: Vibecode Kit v6.1 · X-Ray Protocol
 
-Canonical repository: `/Users/os/Downloads/roboeye`
+Canonical repository: `/Users/os/Documents/Codex/2026-08-05/new-chat/roboeye-live`
+
+The former `/Users/os/Downloads/roboeye` and `/Users/os/Downloads/roboeye 2`
+paths no longer exist. Historical TIPs may still quote those paths as evidence of
+where work was performed at the time; they are not current setup instructions.
+The repository inventory and release-recovery gate are recorded in
+`docs/REPOSITORY-INVENTORY-2026-09-20.md` and
+`docs/TIP-STAB-01-SOURCE-OF-TRUTH.md`.
 
 ## Cập nhật 09/08/2026 — v1.5.0
 
