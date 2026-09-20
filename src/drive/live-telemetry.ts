@@ -31,6 +31,8 @@ export class LiveTelemetry {
   private totals = { started: 0, accepted: 0, dropped: 0, alertFrames: 0, overlays: 0, audioRequests: 0 };
   private dropReasons: Partial<Record<LiveDropReason, number>> = {};
   private skipReasons: Partial<Record<LiveSkipReason, number>> = {};
+  private firstFrameAvailableAt: number | null = null;
+  private lastFrameAvailableAt: number | null = null;
 
   constructor(limit = 5000) { this.limit = Math.max(50, Math.min(20000, Math.floor(limit))); }
 
@@ -38,6 +40,7 @@ export class LiveTelemetry {
     this.epoch = epoch; this.rows = []; this.byId.clear();
     this.totals = { started: 0, accepted: 0, dropped: 0, alertFrames: 0, overlays: 0, audioRequests: 0 };
     this.dropReasons = {}; this.skipReasons = {};
+    this.firstFrameAvailableAt = null; this.lastFrameAvailableAt = null;
   }
   skip(reason: LiveSkipReason) { this.skipReasons[reason] = (this.skipReasons[reason] ?? 0) + 1; }
   begin(id: number, epoch: number, mediaTimeMs: number, frameAvailableAt: number) {
@@ -46,6 +49,8 @@ export class LiveTelemetry {
       resultAt: null, acceptedAt: null, riskAt: null, overlayAt: null, alertOverlayAt: null, audioAt: null,
       hasAlert: false, droppedReason: null };
     this.rows.push(row); this.byId.set(id, row); this.totals.started++;
+    this.firstFrameAvailableAt ??= frameAvailableAt;
+    this.lastFrameAvailableAt = frameAvailableAt;
     while (this.rows.length > this.limit) {
       const removed = this.rows.shift()!;
       this.byId.delete(removed.id);
@@ -95,6 +100,9 @@ export class LiveTelemetry {
     });
     return { schema: 'drivesense-live-timing-v1', epoch: this.epoch,
       clock: 'performance.now monotonic milliseconds', provenance: 'live-camera',
+      session: { durationMs: this.firstFrameAvailableAt === null || this.lastFrameAvailableAt === null
+        ? 0 : Math.max(0, this.lastFrameAvailableAt - this.firstFrameAvailableAt),
+        firstFrameAvailableAt: this.firstFrameAvailableAt, lastFrameAvailableAt: this.lastFrameAvailableAt },
       percentileWindow: { retained, limit: this.limit, policy: 'most-recent traces; lifetime counters remain cumulative' },
       counts: { ...this.totals, inflightRetained: this.rows.filter(row => row.acceptedAt === null && row.droppedReason === null).length,
         skipped: Object.values(this.skipReasons).reduce((sum, value) => sum + (value ?? 0), 0),

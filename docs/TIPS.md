@@ -357,3 +357,14 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - **Detail:** `docs/TIP-STAB-02-CI-RELEASE-GATE.md`.
 - **Result:** reproducible local and GitHub gates are green at `d674258`; see
   `docs/COMPLETION-REPORT-TIP-STAB-02.md` and `docs/VERIFY-TIP-STAB-02.md`.
+
+## TIP-49L-D · Repeatable live-camera acceptance
+
+- **Dependencies:** TIP-48 and TIP-49L-A. **Priority:** P0 local runtime evidence.
+- **Task:** add cumulative live-session duration, deterministic smoke/soak and
+  metric-path verdicts, embed the verdict in camera reports and provide a CLI
+  verifier for MacBook/phone-webcam runs.
+- **Boundary:** runtime evidence only; no distance-accuracy, sensor exposure,
+  collision-warning safety or public-road claim.
+- **Detail:** `docs/TIP-49L-D-LIVE-CAMERA-ACCEPTANCE.md` and
+  `docs/COMPLETION-REPORT-TIP-49L-D.md`.

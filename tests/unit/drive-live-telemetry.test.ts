@@ -8,6 +8,7 @@ test('normal live trace exposes exact capture, inference, risk and overlay durat
   metric.captureDone(7, 12); metric.dispatched(7, 13); metric.result(7, 43); metric.accept(7, 44);
   metric.risk(7, 45, true); metric.overlay(7, 50, true); metric.audio(7, 55);
   const report = metric.report();
+  assert.equal(report.session.durationMs, 0);
   assert.equal(report.stages.frameCallbackToCapture.p95Ms, 2);
   assert.equal(report.stages.requestToResult.p95Ms, 30);
   assert.equal(report.stages.frameAgeAtAcceptance.p95Ms, 34);
@@ -52,5 +53,6 @@ test('two-hour-like stream keeps bounded trace rows and cumulative totals', () =
   }
   const report = metric.report();
   assert.equal(report.counts.started, 72_000); assert.equal(report.counts.accepted, 72_000);
+  assert.equal(report.session.durationMs, 7_199_900);
   assert.equal(report.percentileWindow.retained, 50); assert.equal(report.traceRows.length, 50);
 });

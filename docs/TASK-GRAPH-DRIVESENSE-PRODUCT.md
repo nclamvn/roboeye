@@ -39,6 +39,7 @@ No downstream node may claim readiness when a required upstream gate is missing.
 | TIP-49L-A | IMPLEMENTED / runtime evidence pending | Select laptop/phone webcam and run detector plus bounded same-frame live depth | TIP-48 contracts | Tests/build pass; operator camera report still required |
 | TIP-49L-B | VERIFIED / real clips measured | Explicit offline quality/speed presets, profiling and exact session cache | Existing uploaded-video pipeline | Six hash-bound runs on the two original clips; no depth failure/drop; tradeoff preserved |
 | TIP-49L-C | CODE-ACCEPTED v6 / runtime + physical accuracy pending | Enforce ground-contact ordering across car/truck/bus before filtering and at HUD/risk publication | Observed 70/56, 57/52, 51/45 and post-filter 51/43 inversions + 39-claim registry | All regression and quality gates must pass; user must rerun clip on v6 |
+| TIP-49L-D | IMPLEMENTED / real camera evidence pending | Turn live camera telemetry into repeatable smoke/soak and metric-path gates | TIP-48 instrumentation + TIP-49L-A camera path | Exported camera report passes the automated verifier; no pixels retained |
 | TIP-47B | DEFERRED / external evidence needed | Acquire controlled physical truth | Measurement method, camera/device IDs, consent/rights | Locked journey/device split; synchronized physical distances; provenance audit |
 | TIP-50 | DEFERRED by product owner | Select compute/model on identical evidence | Real corpus + instrumentation + candidate hardware | Pareto report for quality, latency, power, heat, BOM/license; explicit promotion decision |
 | TIP-51 | BLOCKED by 50 | Integrate calibrated live metric range and event-level shadow policy | Selected runtime/model and fixed mount | Predeclared range coverage/error and missed/false-warning gates in fixed ODD |
@@ -58,9 +59,9 @@ No downstream node may claim readiness when a required upstream gate is missing.
 1. **DONE:** TIP-STAB-02 restored a clean remote CI/release baseline.
 2. **DONE:** the two existing clips were measured under Detail, Balanced and
    Fast; see `docs/evidence/TIP-49L-B-REAL-CLIP-PROFILE-2026-09-20.json`.
-3. **NEXT:** test the MacBook camera and phone exposed as a webcam; export a
-   short live report to verify source selection, metric acceptance/drop counts
-   and capture→overlay latency.
+3. **IMPLEMENTED / EVIDENCE PENDING:** TIP-49L-D now evaluates an exported
+   MacBook/phone-webcam report against explicit runtime smoke/soak gates and a
+   separate metric-path gate. The first real camera report is still required.
 4. Close remaining software-only defects and package a repeatable local demo before any purchase, mount or vehicle setup.
 5. Only after the product owner reopens investment work, acquire TIP-47B physical truth and use it with runtime reports for the TIP-50 hardware/model bake-off.
 

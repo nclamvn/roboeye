@@ -21,6 +21,7 @@ import {runOfflinePipeline} from './offline-pipeline';
 import {focalFromHorizontalFov} from './camera-intrinsics';
 import {DRIVE_GPU_DETECTOR} from './detector-contract';
 import {LiveTelemetry} from './live-telemetry';
+import {evaluateLiveEvidence} from './live-evidence';
 import {cameraChoices,cameraConstraints} from './camera-source';
 import {offlinePlan,type OfflinePreset} from './offline-plan';
 import {RoadUI} from './road-ui';
@@ -563,7 +564,7 @@ $('report').onclick=()=>{
   const rangeLatencies=recorded?samples.flatMap(s=>s.metricLatencyMs===null||s.metricLatencyMs===undefined?[]:[s.metricLatencyMs]):metricLatencies;
   const seekLatencies=recorded?samples.flatMap(s=>s.seekMs===undefined?[]:[s.seekMs]):[],sampleWall=recorded?samples.flatMap(s=>s.sampleWallMs===undefined?[]:[s.sampleWallMs]):[];
   const depthCounts=recorded?{depthAttempts:samples.filter(s=>s.metricState==='success'||s.metricState==='failed').length,depthSuccessfulRequests:rangeLatencies.length,depthSkippedFrames:samples.filter(s=>s.metricState==='skipped').length,depthFailedFrames:samples.filter(s=>s.metricState==='failed').length}:{};
-  download('drivesense-report.json',{
+  const report={
     version:7,createdAt:new Date().toISOString(),source:sourceName,sourceKind:source,session:epoch,synthetic:source==='demo',mode:recorded?'analysed-replay':source==='file'?'unanalysed-video':'live-or-synthetic',
     runtime:{app:'RoboEye DriveSense',appVersion:'1.5.0',sourceDimensions:{width:sourceWidth,height:sourceHeight},devicePixelRatio,capabilities:{requestVideoFrameCallback:'requestVideoFrameCallback' in video,webgpu:'gpu' in navigator,offscreenCanvas:'OffscreenCanvas' in window,crossOriginIsolated},userAgent:navigator.userAgent},
     distanceKinds:['learned_optical_axis_z_m','ground_contact_forward_m'],distanceDefinition:'Forward Z from camera; NOT bumper clearance, lateral separation or inter-vehicle B-C gap',videoZoom:number('video-zoom'),rangePolicy:LEARNED_RANGE_POLICY,
@@ -574,7 +575,8 @@ $('report').onclick=()=>{
     profile,risk:{config:riskConfig(),policy:'shadow-risk-v1',events:riskEvents,latest:latestRisk},summary:evaluate(values,references),liveTiming:source==='camera'?liveTelemetry.report():null,
     frameTiming:{count:latencies.length,detectorRequestP50Ms:percentile(latencies,.5),detectorRequestP95Ms:percentile(latencies,.95),metricInferenceP50Ms:percentile(rangeLatencies,.5),metricInferenceP95Ms:percentile(rangeLatencies,.95),seekP50Ms:percentile(seekLatencies,.5),seekP95Ms:percentile(seekLatencies,.95),sampleWallP50Ms:percentile(sampleWall,.5),sampleWallP95Ms:percentile(sampleWall,.95),...depthCounts,droppedResults,analysisElapsedMs:recorded?analysisElapsedMs:null,analysedFramesPerSecond:recorded&&!analysisCacheHit&&analysisElapsedMs>0?samples.length/(analysisElapsedMs/1000):null,mediaToProcessingRatio:recorded&&!analysisCacheHit&&analysisElapsedMs>0?video.duration*1000/analysisElapsedMs:null,scope:source==='camera'?'liveTiming measures camera callback to overlay/audio; live metric depth is same-frame, bounded and unverified.':'Offline detector/depth overlap with an explicit sampling preset; not realtime sensor-to-display latency.'},
     observations:values,references,samples:recorded?samples:[],limits:'PoC desktop shadow-mode. Absolute metres/zoom/near-side/far-vehicle accuracy remain ground-truth unvalidated; not for braking/steering.'
-  });
+  };
+  download('drivesense-report.json',source==='camera'?{...report,liveAcceptance:evaluateLiveEvidence(report)}:report);
 };
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&!analysis){video.pause();if(!replayReady)resetTimeline();}});
 window.addEventListener('pagehide',()=>{cancelAnimationFrame(raf);stopSource();stopWorker();stopMetricWorker();});
