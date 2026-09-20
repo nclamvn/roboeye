@@ -24,8 +24,16 @@ export function startDev(root, port) {
   });
 }
 
+const ANSI_ESCAPE_PATTERN = /\u001B\[[0-?]*[ -/]*[@-~]/g;
+
+export function isViteReadyOutput(output) {
+  const cleanOutput = String(output).replace(ANSI_ESCAPE_PATTERN, '');
+  return /\bLocal:\s+http:\/\/(?:localhost|127\.0\.0\.1):\d+\/?/.test(cleanOutput);
+}
+
 export function waitForPreview(server, timeoutMs = 20_000) {
   return new Promise((resolve, reject) => {
+    let outputBuffer = '';
     const cleanup = () => {
       clearTimeout(timer);
       server.stdout.off('data', onData);
@@ -33,7 +41,8 @@ export function waitForPreview(server, timeoutMs = 20_000) {
       server.off('exit', onExit);
     };
     const onData = (data) => {
-      if (!/Local:\s+http:\/\//.test(String(data))) return;
+      outputBuffer = `${outputBuffer}${String(data)}`.slice(-4096);
+      if (!isViteReadyOutput(outputBuffer)) return;
       cleanup();
       resolve();
     };
