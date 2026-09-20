@@ -1,6 +1,7 @@
 import type {DetBox} from '../detection-types';
 import {assertMetricMap,type MetricMap} from './metric-contract';
 import {unknownRange,type RangeEstimate} from './geometry';
+import type {DriveTrack} from './tracking';
 
 export interface LetterboxTransform {
   sourceWidth:number;sourceHeight:number;targetWidth:number;targetHeight:number;
@@ -56,22 +57,40 @@ export function estimateLearnedVehicleRange(map:MetricMap,box:DetBox,transform:L
     reason:`AI metric chưa hiệu chuẩn thực địa · ROI ${values.length} px · độ phân tán ${Math.round(100*spread)}%`};
 }
 
-export const LEARNED_RANGE_POLICY='visible-roi-zoom-perspective-gates-v2';
+export const LEARNED_RANGE_POLICY='ground-contact-publication-invariant-v7';
 const invalidLearned=(reason:string)=>unknownRange(reason,'learned_optical_axis_z_m');
+const ORDINAL_VEHICLE_LABELS=new Set(['car','bus','truck']);
+// The detector edge itself is not sub-pixel ground truth. Two source pixels is
+// the explicit resolution floor; it is intentionally expressed in source
+// pixels instead of a screenshot-tuned normalized percentage.
+export const GROUND_CONTACT_RESOLUTION_PX=2;
+
+function visuallyNearer(a:DetBox,b:DetBox,sourceHeight:number):boolean {
+  // For vehicles resting on the same locally planar road, the lower tyre/road
+  // contact row is nearer. Apparent box height must not veto this invariant:
+  // cars, buses, trucks and partial occlusion have different physical heights.
+  return (a.y1-b.y1)*sourceHeight>=GROUND_CONTACT_RESOLUTION_PX;
+}
+
+function usableOrdinalBox(box:DetBox):boolean {
+  return [box.x0,box.y0,box.x1,box.y1].every(Number.isFinite)&&
+    box.x0>.01&&box.y0>.01&&box.x1<.99&&box.y1<.99&&box.x1>box.x0&&box.y1>box.y0;
+}
 
 /** These are abstention heuristics, NOT a metric correction or lane detector.
  * Never manufacture A-C metres by adding an apparent B-C gap. Known zoom does
  * not license dividing an unconditioned neural depth output by that zoom.
  */
-export function validateLearnedRanges(boxes:readonly DetBox[],ranges:readonly (RangeEstimate|null)[],zoom=1):Array<RangeEstimate|null> {
+export function validateLearnedRanges(boxes:readonly DetBox[],ranges:readonly (RangeEstimate|null)[],zoom=1,sourceHeight=720):Array<RangeEstimate|null> {
   if(!Number.isFinite(zoom)||zoom<1||zoom>4)throw Error('Zoom video cần nằm trong 1–4×.');
+  if(!Number.isInteger(sourceHeight)||sourceHeight<1)throw Error('Chiều cao nguồn cần là số nguyên dương.');
   const out=boxes.map((_,i)=>ranges[i]?structuredClone(ranges[i]!):null);
-  if(zoom!==1)return boxes.map(()=>invalidLearned('Video có zoom/crop; cần profile đúng tiêu cự hiệu dụng, không tự sửa scale AI'));
+  if(zoom!==1)return out.map(range=>range?.kind==='learned_optical_axis_z_m'?invalidLearned('Video có zoom/crop; cần profile đúng tiêu cự hiệu dụng, không tự sửa scale AI'):range);
   for(let i=0;i<boxes.length;i++){
-    const far=boxes[i],range=out[i];if(range?.distanceM==null)continue;
+    const far=boxes[i],range=out[i];if(range?.kind!=='learned_optical_axis_z_m'||range.distanceM==null)continue;
     const fh=far.y1-far.y0,fw=far.x1-far.x0;
     for(let j=0;j<boxes.length;j++){
-      const near=boxes[j],nr=ranges[j];if(i===j||nr?.distanceM==null||near.label!==far.label||near.score<.65||far.score<.65)continue;
+      const near=boxes[j],nr=out[j];if(i===j||nr?.kind!=='learned_optical_axis_z_m'||nr.distanceM==null||near.label!==far.label||near.score<.65||far.score<.65)continue;
       const nh=near.y1-near.y0;
       const overlap=Math.max(0,Math.min(near.x1,far.x1)-Math.max(near.x0,far.x0))/Math.max(1e-6,Math.min(fw,near.x1-near.x0));
       // Same-class aligned vehicles with a pronounced perspective size change.
@@ -82,5 +101,45 @@ export function validateLearnedRanges(boxes:readonly DetBox[],ranges:readonly (R
       }
     }
   }
+  // Cross-lane vehicles do not overlap horizontally, so the aligned-box gate
+  // above cannot see an inverted near/far order. Once the ground-contact rows
+  // differ by more than detector resolution, a reversed learned order is
+  // internally inconsistent and unsafe to publish. Invalidate both:
+  // the image can identify the contradiction but cannot prove which metre value
+  // is correct. Never swap or synthesize distances.
+  const conflicts=new Set<number>();
+  for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){
+    const a=boxes[i],b=boxes[j],ar=out[i],br=out[j];
+    // Raw RT-DETR vehicle subclasses may flicker (car/truck/bus) even though
+    // candidate suppression and tracking already treat them as competing labels.
+    // Ground-contact ordering is independent of vehicle subclass, so apply it
+    // consistently to the entire reviewed vehicle family.
+    if(!usableOrdinalBox(a)||!usableOrdinalBox(b)||!ORDINAL_VEHICLE_LABELS.has(a.label)||!ORDINAL_VEHICLE_LABELS.has(b.label)||a.score<.65||b.score<.65||ar?.kind!=='learned_optical_axis_z_m'||br?.kind!=='learned_optical_axis_z_m'||ar.distanceM==null||br.distanceM==null)continue;
+    const near=visuallyNearer(a,b,sourceHeight)?i:visuallyNearer(b,a,sourceHeight)?j:-1;if(near<0)continue;
+    const far=near===i?j:i,nearDistance=out[near]!.distanceM!,farDistance=out[far]!.distanceM!;
+    // This is a publication invariant, not a tolerance-based model score. Once
+    // the contact rows are resolved, *any* reversed metric order is internally
+    // inconsistent. Abstain rather than allowing a smaller wrong order onto the
+    // HUD, swapping values, or inventing an isotonic metre correction.
+    if(nearDistance>farDistance){conflicts.add(near);conflicts.add(far);}
+  }
+  for(const index of conflicts)out[index]=invalidLearned('Depth đảo thứ tự gần–xa so với điểm chạm mặt đường; kích thước ảnh không phủ quyết; cần hình học hoặc model đối chứng');
   return out;
+}
+
+/** Final publication guard. Tracking/Kalman may legitimately smooth each range,
+ * but independently filtered tracks can recreate an ordinal contradiction that
+ * was absent in the raw frame. Revalidate the exact boxes and ranges sent to the
+ * HUD/risk layer, then clear every range-derived signal when the metre is unsafe.
+ */
+export function validatePublishedLearnedTracks(tracks:readonly DriveTrack[],zoom=1,sourceHeight=720):DriveTrack[] {
+  const ranges=validateLearnedRanges(tracks.map(track=>track.box),tracks.map(track=>track.range),zoom,sourceHeight);
+  return tracks.map((track,index)=>{
+    const out=structuredClone(track),range=ranges[index];
+    if(range)out.range=range;
+    if(out.range.kind==='learned_optical_axis_z_m'&&out.range.distanceM===null){
+      out.status='unknown';out.closingSpeed=null;out.rangeTtcS=null;
+    }
+    return out;
+  });
 }

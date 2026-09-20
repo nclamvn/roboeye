@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "corpusId": "synthetic-scorer-contract-v1",
+  "journeys": [
+    {
+      "journeyId": "synthetic-journey-1",
+      "split": "test",
+      "deviceId": "synthetic-device",
+      "cameraId": "synthetic-camera",
+      "width": 1280,
+      "height": 720,
+      "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "truthMethod": "synthetic",
+      "rights": { "basis": "synthetic", "reference": "hand-written scorer unit fixture; no video" },
+      "scenarioTags": ["straight-road", "roadside-false-positive", "track-switch"],
+      "truthFrames": [
+        { "timeMs": 0, "objects": [
+          { "objectId": "real-car-A", "label": "car", "bbox": { "x0": 0.4, "y0": 0.4, "x1": 0.6, "y1": 0.7 }, "distanceM": 20, "distanceKind": "ground_contact_forward_m" }
+        ] },
+        { "timeMs": 200, "objects": [
+          { "objectId": "real-car-A", "label": "car", "bbox": { "x0": 0.4, "y0": 0.4, "x1": 0.6, "y1": 0.7 }, "distanceM": 19, "distanceKind": "ground_contact_forward_m" },
+          { "objectId": "real-car-B", "label": "car", "bbox": { "x0": 0.7, "y0": 0.42, "x1": 0.8, "y1": 0.58 }, "distanceM": 60, "distanceKind": "ground_contact_forward_m" }
+        ] },
+        { "timeMs": 400, "objects": [
+          { "objectId": "real-car-A", "label": "car", "bbox": { "x0": 0.4, "y0": 0.4, "x1": 0.6, "y1": 0.7 }, "distanceM": 18, "distanceKind": "ground_contact_forward_m" }
+        ] }
+      ],
+      "predictionFrames": [
+        { "timeMs": 5, "requestToResultMs": 60, "objects": [
+          { "trackId": "model-track-7", "label": "car", "bbox": { "x0": 0.4, "y0": 0.4, "x1": 0.6, "y1": 0.7 }, "distanceM": 21, "distanceKind": "ground_contact_forward_m" },
+          { "trackId": "model-track-99", "label": "truck", "bbox": { "x0": 0.05, "y0": 0.1, "x1": 0.2, "y1": 0.3 }, "distanceM": null, "distanceKind": null }
+        ] },
+        { "timeMs": 205, "requestToResultMs": 80, "objects": [
+          { "trackId": "model-track-7", "label": "car", "bbox": { "x0": 0.4, "y0": 0.4, "x1": 0.6, "y1": 0.7 }, "distanceM": null, "distanceKind": null }
+        ] },
+        { "timeMs": 405, "requestToResultMs": 70, "objects": [
+          { "trackId": "model-track-8", "label": "car", "bbox": { "x0": 0.4, "y0": 0.4, "x1": 0.6, "y1": 0.7 }, "distanceM": 17, "distanceKind": "ground_contact_forward_m" }
+        ] }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,27 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import { readFileSync } from 'node:fs';
 
 const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')) as { version: string };
 const commit = (process.env.ROBOEYE_COMMIT || process.env.GITHUB_SHA || 'local').slice(0, 12);
 const offlineBuild = process.env.ROBOEYE_OFFLINE === '1';
+
+// Research weights are explicitly local-only, never copied into a release.
+function localRoadModel(): Plugin {
+  return {
+    name: 'local-road-research-model', apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use((request, response, next) => {
+        if (request.url?.split('?')[0] !== `${server.config.base}__local-road/model.onnx`) return next();
+        if (request.method !== 'GET') { response.writeHead(405).end(); return; }
+        try {
+          const bytes = readFileSync(new URL('./tests/.road-cache/road-segmentation-adas-0001.onnx', import.meta.url));
+          response.writeHead(200, { 'Content-Type': 'application/octet-stream', 'Cache-Control': 'no-store' });
+          response.end(bytes);
+        } catch { response.writeHead(404).end('Local research model not staged.'); }
+      });
+    },
+  };
+}
 
 function releaseArtifacts() {
   let base = '/';
@@ -50,7 +68,7 @@ export default defineConfig({
     __ROBOEYE_COMMIT__: JSON.stringify(commit),
     __ROBOEYE_OFFLINE__: JSON.stringify(offlineBuild)
   },
-  plugins: [releaseArtifacts()],
+  plugins: [releaseArtifacts(), localRoadModel()],
   build: {
     rollupOptions: { input: { index: 'index.html', drive: 'drive.html' } },
     target: 'es2022',

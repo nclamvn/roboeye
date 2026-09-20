@@ -1,0 +1,15 @@
+domain: desktop-vehicle-range
+entity_label: "20 ứng viên/phương pháp/runtime được khảo sát có chủ đích"
+schema:
+  type_field: null
+  fields: [method, inputs, contract, code_license, weights_license, limitation, availability, measured_desktop_latency, measured_vehicle_error]
+rollup_field: method
+universe:
+  estimate: 20
+  basis: "Tập sàng lọc cho desktop browser, không phải toàn bộ lĩnh vực; không công bố tỷ lệ thị trường."
+refresh_days:
+  default: 30
+alias_map: {}
+ambiguous_clusters: []
+domain_gates:
+  no_inferred_fields: [measured_desktop_latency, measured_vehicle_error]

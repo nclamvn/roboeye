@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Road Ground Truth Workbench</title>
+  <link rel="stylesheet" href="/road-annotator.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">ROBОEYE · TIP-50R-D</p>
+      <h1>Road Ground Truth</h1>
+    </div>
+    <div class="status-cluster">
+      <span class="badge blind">BLIND · KHÔNG PREDICTION</span>
+      <span id="save-state" class="badge">Đang tải</span>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="stage-panel">
+      <div class="frame-strip" id="frame-strip" aria-label="Danh sách frame"></div>
+      <div class="canvas-shell">
+        <canvas id="annotation-canvas"></canvas>
+        <div id="empty-hint" class="empty-hint">Chọn công cụ rồi bấm các điểm trên ảnh thô</div>
+      </div>
+      <div class="stage-footer">
+        <span id="frame-meta">—</span>
+        <span id="shape-count">—</span>
+      </div>
+    </section>
+
+    <aside class="inspector">
+      <section>
+        <p class="section-label">Công cụ</p>
+        <div class="segmented" role="group" aria-label="Chế độ vẽ">
+          <button type="button" data-mode="line" class="active">Đường / biên</button>
+          <button type="button" data-mode="area">Vùng chạy được</button>
+        </div>
+        <label>Loại đường
+          <select id="line-class">
+            <option value="lane-marking">Vạch làn</option>
+            <option value="curb">Bó vỉa</option>
+            <option value="median">Con lươn</option>
+            <option value="barrier">Dải chắn</option>
+            <option value="guardrail">Hộ lan</option>
+          </select>
+        </label>
+        <label>Vai trò
+          <select id="line-role">
+            <option value="ego-left">Biên trái làn mình</option>
+            <option value="ego-right">Biên phải làn mình</option>
+            <option value="adjacent">Làn bên cạnh</option>
+            <option value="unknown">Không xác định</option>
+          </select>
+        </label>
+        <div class="button-grid">
+          <button type="button" id="finish-shape" class="primary">Kết thúc nét</button>
+          <button type="button" id="undo-point">Lùi một điểm</button>
+          <button type="button" id="delete-shape">Xóa nét cuối</button>
+          <button type="button" id="cancel-shape">Hủy nét đang vẽ</button>
+        </div>
+        <p class="help">Bấm để đặt điểm. Enter hoặc nhấp đúp để kết thúc. Biên vật lý luôn dùng vai trò “không xác định”.</p>
+      </section>
+
+      <section>
+        <p class="section-label">Audit</p>
+        <dl class="audit-list">
+          <div><dt>Task</dt><dd id="task-id">—</dd></div>
+          <div><dt>Clip</dt><dd id="clip-id">—</dd></div>
+          <div><dt>Source hash</dt><dd id="source-hash">—</dd></div>
+          <div><dt>Task hash</dt><dd id="task-hash">—</dd></div>
+        </dl>
+        <label>Vai người gán nhãn
+          <input id="annotated-by" value="local-annotator" maxlength="100">
+        </label>
+      </section>
+
+      <section class="actions">
+        <button type="button" id="save-draft" class="primary wide">Lưu bản nháp</button>
+        <button type="button" id="accept-review" class="wide">Chấp nhận sau kiểm tra vòng hai</button>
+        <p class="help warning">Chỉ trạng thái <strong>reviewed</strong> mới được phép đi vào benchmark. Người review phải dùng tên vai khác người gán nhãn.</p>
+      </section>
+    </aside>
+  </main>
+  <script type="module" src="/road-annotator.js"></script>
+</body>
+</html>

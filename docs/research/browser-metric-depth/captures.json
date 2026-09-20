@@ -1,0 +1,158 @@
+[
+  {
+    "snapshot": "moge.txt",
+    "url": "https://raw.githubusercontent.com/microsoft/MoGe/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "unidepth.txt",
+    "url": "https://raw.githubusercontent.com/lpiccinelli-eth/UniDepth/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "geocalib.txt",
+    "url": "https://raw.githubusercontent.com/cvg/GeoCalib/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "vda.txt",
+    "url": "https://raw.githubusercontent.com/DepthAnything/Video-Depth-Anything/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "yolo-depth.txt",
+    "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/main/docs/en/tasks/depth.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "moge-card.txt",
+    "url": "https://huggingface.co/Ruicheng/moge-2-vitl-normal/raw/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "webkit.html",
+    "url": "https://webkit.org/blog/17333/webkit-features-in-safari-26-0/",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "ort-webgpu.txt",
+    "url": "https://onnxruntime.ai/docs/tutorials/web/ep-webgpu.html",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "depthpro.txt",
+    "url": "https://raw.githubusercontent.com/apple/ml-depth-pro/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "gencalib.txt",
+    "url": "https://arxiv.org/abs/2303.17137",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "moge-onnx.txt",
+    "url": "https://raw.githubusercontent.com/microsoft/MoGe/main/docs/onnx.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "moge-small-card.txt",
+    "url": "https://huggingface.co/Ruicheng/moge-2-vits-normal/raw/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "da2-metric.txt",
+    "url": "https://raw.githubusercontent.com/DepthAnything/Depth-Anything-V2/main/metric_depth/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "da3.txt",
+    "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "ort-support.txt",
+    "url": "https://onnxruntime.ai/docs/get-started/with-javascript/web.html",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "depthpro-license.txt",
+    "url": "https://raw.githubusercontent.com/apple/ml-depth-pro/main/LICENSE",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "yolox.txt",
+    "url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "vda-card.txt",
+    "url": "https://huggingface.co/depth-anything/Metric-Video-Depth-Anything-Small/raw/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "moge-v2-source.txt",
+    "url": "https://raw.githubusercontent.com/microsoft/MoGe/main/moge/model/v2.py",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "da2-card.txt",
+    "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-VKITTI-Small/raw/main/README.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "chrome-webgpu.txt",
+    "url": "https://developer.chrome.com/blog/new-in-webgpu-121",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "rvfc.txt",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestVideoFrameCallback",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "yolo-kitti.txt",
+    "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/main/docs/en/datasets/depth/kitti.md",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "kitti.txt",
+    "url": "https://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_prediction",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "yolo-license.txt",
+    "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/main/LICENSE",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  },
+  {
+    "snapshot": "comma-fcw.txt",
+    "url": "https://blog.comma.ai/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/",
+    "fetched_at": "2026-09-13",
+    "note": "Raw fetched source; same author family is not independent corroboration."
+  }
+]

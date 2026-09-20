@@ -1,0 +1,1313 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>The KITTI Vision Benchmark Suite</title>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+</head>
+<body>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
+<div id="restore-notice" style="box-sizing:border-box;width:100%;margin:0;padding:8px 15px;background:#c00;color:#fff;text-align:center;font:600 14px/1.3 'Open Sans',Arial,Helvetica,sans-serif;">
+Important note: On September 7, 2026, the KITTI and KITTI-360 servers had to be restored to the backed-up state of August 7, 2026. Results within this period have to be resubmitted.
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="wrapper">
+<div id="header" class="container">
+<div id="logo">
+<h1><a href="https://www.cvlibs.net/datasets/kitti">The KITTI Vision Benchmark Suite</a></h1>
+<h2>A project of <a href="http://www.kit.edu/english" target="_blank">Karlsruhe Institute of Technology</a><br>and
+<a href="http://www.ttic.edu" target="_blank">Toyota Technological Institute at Chicago</a></h2>
+</div>
+<div id="banner">
+<a href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/autonomous-vision/home/" target="_blank"><img src="images/unitue.jpg"></a>
+<a href="http://www.ttic.edu" target="_blank"><img src="images/ttic.jpg"></a>
+<a href="http://www.kit.edu/english" target="_blank"><img src="images/kit.jpg"></a>
+</div>
+</div>
+<div id="menu" class="container">
+<ul id="navigation">
+<li ><a href="index.php">home</a></li>
+<li ><a href="setup.php">setup</a></li>
+<li ><a href="eval_stereo.php">stereo</a>
+<ul>
+<li><a href="eval_stereo_flow.php?benchmark=stereo"">Stereo 2012</a></li>
+<li><a href="eval_scene_flow.php?benchmark=stereo">Stereo 2015</a></li>
+</ul>
+</li>
+<li ><a href="eval_flow.php">flow</a>
+<ul>
+<li><a href="eval_stereo_flow.php?benchmark=flow"">Flow 2012</a></li>
+<li><a href="eval_scene_flow.php?benchmark=flow">Flow 2015</a></li>
+</ul>
+</li>
+<li ><a href="eval_scene_flow.php">sceneflow</a></li>
+
+<li class="active"><a href="eval_depth_all.php">depth</a>
+<ul>
+<li><a href="eval_depth.php?benchmark=depth_completion">Depth Completion</a></li>
+<li><a href="eval_depth.php?benchmark=depth_prediction">Depth Prediction</a></li>
+</ul>
+</li>
+
+<li ><a href="eval_odometry.php">odometry</a></li>
+<li ><a href="eval_3dobject.php">object</a>
+<ul>
+<li><a href="eval_object.php?obj_benchmark=2d"">2d object</a></li>
+<li><a href="eval_object.php?obj_benchmark=3d"">3d object</a></li>
+<li><a href="eval_object.php?obj_benchmark=bev">bird's eye view</a></li>
+</ul>
+</li>
+<li ><a href="eval_tracking_overview.php">tracking</a>
+<ul>
+<li><a href="eval_tracking.php"">multi-object tracking</a></li>
+<li><a href="eval_mots.php"">multi-object tracking and segmentation</a></li>
+<li><a href="eval_step.php"">segmenting and tracking every pixel</a></li>
+</ul>
+</li>
+<li ><a href="eval_road.php">road</a></li>
+<li ><a href="eval_semantics.php">semantics</a>
+<ul>
+<li><a href="eval_semseg.php?benchmark=semantics2015"">pixel-level</a></li>
+<li><a href="eval_instance_seg.php?benchmark=instanceSeg2015"">instance-level</a></li>
+</ul>
+</li>
+<li ><a href="raw_data.php">raw data</a></li>
+<li ><a href="user_submit.php">submit results</a></li>
+</ul>
+</div>
+<div id="top-bar" class="container">
+<div class="bar"><div class="text">
+  <div style="width:900px">
+<div style="float:left;">
+  <a href="https://www.cvlibs.net" target="_blank">A. Geiger</a> |
+  <a href="http://www.mrt.kit.edu/mitarbeiter_lenz.php" target="_blank">P. Lenz</a> |
+  <a href="http://www.mrt.kit.edu/mitarbeiter_stiller.php" target="_blank">C. Stiller</a> |
+  <a href="http://ttic.uchicago.edu/~rurtasun/" target="_blank">R. Urtasun</a>
+</div>
+<div style="float:right;">
+<a href="user_login.php">Log in</a>
+</div>
+</div>
+</div></div>
+</div>
+<div id="page" class="container">
+<div id="content">
+
+
+<div class="section">
+<h2 class="title">Depth Prediction Evaluation</h2>
+<div class="entry">
+
+<p>
+<img src="images/header_depth.jpg"><br>
+<br/>The depth completion and depth prediction evaluation are related to our work published in <a href="https://www.cvlibs.net/publications/Uhrig2017THREEDV.pdf" target="_blank">Sparsity Invariant CNNs (THREEDV 2017)</a>. It <br/>contains over 93 thousand depth maps with
+corresponding raw LiDaR scans and RGB images, aligned with the <a href="raw_data.php">"raw data"</a> of the KITTI dataset. <br/>Given the large amount of training data, this
+dataset shall allow a training of complex deep learning models for the tasks of depth completion <br/>and single image depth prediction. Also, we provide
+manually selected images with unpublished depth maps to serve as a benchmark for those <br/>two challenging tasks.<br/><br/>
+
+
+The structure of all provided depth maps is aligned with the structure of our raw data to easily find corresponding left and right images, <br/>
+or other provided information.
+<br/><br/>
+
+<ul>
+<li><a href="user_login.php" target="_blank">Download annotated depth maps data set (14 GB)</a></li>
+<li><a href="user_login.php" target="_blank">Download projected raw LiDaR scans data set (5 GB)</a></li>
+<li><a href="user_login.php" target="_blank">Download manually selected validation and test data sets (2 GB)</a></li>
+<li><a href="user_login.php" target="_blank">Download development kit (48 K)</a></li>
+</ul>
+<br>
+<b>Note:</b> On 12.04.2018 we have fixed a small error in the file data_depth_velodyne.zip, please download this file again if you have an old version.
+</p>
+<p>
+<br/>
+All methods providing less than 100 % density have been interpolated using simple background interpolation as explained in the corresponding header file in the development kit.
+</p>
+<ul>
+Our evaluation table ranks all methods according to square root of the scale invariant logarithmic error (SILog). <br/>
+However, we also provide other metrics:
+<li><b>SILog:</b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspScale invariant logarithmic error [log(m)*100] (for more info click on the formula below)</li>
+<a href="https://papers.nips.cc/paper/5539-depth-map-prediction-from-a-single-image-using-a-multi-scale-deep-network.pdf">
+<img src="https://www.cvlibs.net/datasets/kitti/images/eigen_formula.png"  width="500px"/></a>
+<br>
+<li><b>sqErrorRel:</b> &nbsp&nbsp&nbspRelative squared error (percent)</li>
+<li><b>absErrorRel:</b> &nbspRelative absolute error (percent)</li>
+<li><b>iRMSE:</b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRoot mean squared error of the inverse depth [1/km]</li>
+</ul>
+<p>
+</p><br/>
+
+<div class="alertbox_600"><b>Important Policy Update:</b> As more and more non-published work and re-implementations of existing work is submitted to KITTI, we have established a new policy: from now on, only submissions with significant novelty that are leading to a peer-reviewed paper in a conference or journal are allowed. Minor modifications of existing algorithms or student research projects are not allowed. Such work must be evaluated on a split of the training set. To ensure that our policy is adopted, new users must detail their status, describe their work and specify the targeted venue during registration. Furthermore, we will regularly delete all entries that are 6 months old but are still anonymous or do not have a paper associated with them. For conferences, 6 month is enough to determine if a paper has been accepted and to add the bibliography information. For longer review cycles, you need to resubmit your results.</div><div class="alertbox_600"><b><u><center>Additional information used by the methods</center></u></b><ul><li><img src="images/icon_at.png"> Additional training data: Use of additional data sources for training (see details)</li></ul></div>
+<!--
+<br>
+<a href="http://www.robustvision.net"><center>
+<img src="http://www.robustvision.net/images/banner.png"/></center></a>
+-->
+<br>
+
+
+
+
+<form method="post" action="eval_depth_detail.php?benchmark=depth_prediction"><table class="results">
+  <tr class="heading">
+    <td class="results"></td>
+     <td class="results">Method</td>
+     <td class="results">Setting</td>
+     <td class="results">Code</td>
+     <td class="results"><span style="color:red"><u>SILog</u></span></td>
+     <td class="results">sqErrorRel</td>
+     <td class="results">absErrorRel</td>
+     <td class="results">iRMSE</td>
+     <td class="results">Runtime</td>
+     <td class="results">Environment</td>
+     <td class="results"><input type="submit" value="Compare" name="compare"></td>
+   </tr>
+   <tr>
+    <td class="results">1</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=717533ee5f71870b41edc95350141922eaa50ab9">MD2E</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results"><b> 7.28</b></td>
+     <td class="results"><b> 0.82</b></td>
+     <td class="results"> 5.71</td>
+     <td class="results"> 7.33</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="717533ee5f71870b41edc95350141922eaa50ab9" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11"></td>
+   </tr>
+   <tr>
+    <td class="results">2</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=ca7dfd600f02df6cee60f8c02a3ad2cee858e0ad">×Net</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results"> 7.51</td>
+     <td class="results"> 0.93</td>
+     <td class="results"> 6.14</td>
+     <td class="results"> 7.62</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="ca7dfd600f02df6cee60f8c02a3ad2cee858e0ad" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11"></td>
+   </tr>
+   <tr>
+    <td class="results">3</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=e8776d2c890a7bf1eadf2cbd178efee53b9e8b27">UniDepthV2</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results"> 7.74</td>
+     <td class="results"> 0.91</td>
+     <td class="results"><b> 5.53</b></td>
+     <td class="results"><b> 7.19</b></td>
+     <td class="results">0.1 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python + C/C++)</td>
+     <td class="results"><input type="checkbox" value="e8776d2c890a7bf1eadf2cbd178efee53b9e8b27" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">L. Piccinelli, C. Sakaridis, Y. Yang, M. Segu, S. Li, W. Abbeloos and L. Gool: <a href="http://scholar.google.de/scholar?q=UniDepthV2: Universal Monocular 
+Metric Depth Estimation Made Simpler"> UniDepthV2: Universal Monocular 
+Metric Depth Estimation Made Simpler</a>. IEEE Transactions on Pattern 
+Analysis and Machine Intelligence (PAMI) 2026.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">4</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=0f8aa91de5c0aa61ea1e15baa927ffbd1b27de1f">OCEM</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://tj12342.github.io/object-concepts-from-motion/" target="blank">code</a></td>
+     <td class="results"> 7.91</td>
+     <td class="results"> 1.02</td>
+     <td class="results"> 6.36</td>
+     <td class="results"> 8.53</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="0f8aa91de5c0aa61ea1e15baa927ffbd1b27de1f" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">B. Li, X. Wang, X. Wu, Z. Li, Y. Yang and N. Wang: <a href="http://scholar.google.de/scholar?q=Object Concepts Emerge from Motion"> Object Concepts Emerge from Motion</a>. arXiv preprint arXiv:2609.04348 2026.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">5</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=3b208ac3dcb606758b18948ed90df8c1b6fccaa7">UniDepth</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/lpiccinelli-eth/unidepth" target="blank">code</a></td>
+     <td class="results"> 8.13</td>
+     <td class="results"> 1.09</td>
+     <td class="results"> 6.54</td>
+     <td class="results"> 8.24</td>
+     <td class="results">0.1 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="3b208ac3dcb606758b18948ed90df8c1b6fccaa7" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">L. Piccinelli, Y. Yang, C. Sakaridis, M. Segu, S. Li, L. Van Gool and F. Yu: <a href="http://scholar.google.de/scholar?q=UniDepth: Universal Monocular Metric 
+Depth Estimation"> UniDepth: Universal Monocular Metric 
+Depth Estimation</a>. IEEE Conference on Computer Vision 
+and Pattern Recognition (CVPR) 2024.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">6</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=0565c0b23b7cce86ea22c1a9b80eb2f9cf23c8be">HyperDepth</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results"> 9.16</td>
+     <td class="results"> 1.55</td>
+     <td class="results"> 7.70</td>
+     <td class="results">10.15</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="0565c0b23b7cce86ea22c1a9b80eb2f9cf23c8be" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">L. Bie, S. Li, Y. Feng and Y. Gao: <a href="http://scholar.google.de/scholar?q=Hyper-Depth: Hypergraph-based 
+Multi-Scale Representation Fusion for Monocular 
+Depth Estimation"> Hyper-Depth: Hypergraph-based 
+Multi-Scale Representation Fusion for Monocular 
+Depth Estimation</a>. Proceedings of the IEEE/CVF 
+International Conference on Computer Vision 
+(ICCV) 2025.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">7</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=a1f6f4a743c064b2698dbf425fe62aa3f789488f">MSFusion</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results"> 9.37</td>
+     <td class="results"> 1.51</td>
+     <td class="results"> 7.62</td>
+     <td class="results">10.15</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="a1f6f4a743c064b2698dbf425fe62aa3f789488f" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">L. Bie, S. Li, X. Zhong, Z. Wu and Y. Gao: <a href="http://scholar.google.de/scholar?q=Multi-space Representation Fusion 
+Enhanced Monocular Depth Estimation via Virtual 
+Point Cloud"> Multi-space Representation Fusion 
+Enhanced Monocular Depth Estimation via Virtual 
+Point Cloud</a>. ACM Trans. 
+Multimedia Comput. Commun. Appl. 2025.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">8</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=ce85eba730390163741751535abacdda0485104e">DCDepth</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/w2kun/DCDepth" target="blank">code</a></td>
+     <td class="results"> 9.60</td>
+     <td class="results"> 1.54</td>
+     <td class="results"> 7.83</td>
+     <td class="results">10.12</td>
+     <td class="results">0.07 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="ce85eba730390163741751535abacdda0485104e" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">K. Wang, Z. Yan, J. Fan, W. Zhu, X. Li, J. Li and J. Yang: <a href="http://scholar.google.de/scholar?q=DCDepth: Progressive Monocular Depth Estimation in Discrete Cosine Domain"> DCDepth: Progressive Monocular Depth Estimation in Discrete Cosine Domain</a>. Advances in Neural Information Processing Systems (NeurIPS) 2024.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">9</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=7525fd4ef8e73fe9b6671bf57e13c98261ac91b0">NDDepth</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/ShuweiShao/NDDepth" target="blank">code</a></td>
+     <td class="results"> 9.62</td>
+     <td class="results"> 1.59</td>
+     <td class="results"> 7.75</td>
+     <td class="results">10.62</td>
+     <td class="results">0.1s </td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="7525fd4ef8e73fe9b6671bf57e13c98261ac91b0" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">S. Shao, Z. Pei, W. Chen, X. Wu and Z. Li: <a href="http://scholar.google.de/scholar?q=NDDepth: Normal-Distance Assisted 
+Monocular Depth Estimation"> NDDepth: Normal-Distance Assisted 
+Monocular Depth Estimation</a>. International Conference on Computer 
+Vision (ICCV) 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">10</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=e3d5eac3d0a918d300282730c3b1706fae7e21f7">IEBins</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/ShuweiShao/IEBins" target="blank">code</a></td>
+     <td class="results"> 9.63</td>
+     <td class="results"> 1.60</td>
+     <td class="results"> 7.82</td>
+     <td class="results">10.68</td>
+     <td class="results">0.1s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="e3d5eac3d0a918d300282730c3b1706fae7e21f7" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">S. Shao, Z. Pei, X. Wu, Z. Liu, W. Chen and Z. Li: <a href="http://scholar.google.de/scholar?q=IEBins: Iterative Elastic Bins for 
+Monocular Depth Estimation"> IEBins: Iterative Elastic Bins for 
+Monocular Depth Estimation</a>. Advances in Neural Information 
+Processing Systems (NeurIPS) 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">11</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=f405bd4de1aea79a515b8783869b66135b5e2325">VA-DepthNet</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/cnexah/VA-DepthNet" target="blank">code</a></td>
+     <td class="results"> 9.84</td>
+     <td class="results"> 1.66</td>
+     <td class="results"> 7.96</td>
+     <td class="results">10.44</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="f405bd4de1aea79a515b8783869b66135b5e2325" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">C. Liu, S. Kumar, S. Gu, R. Timofte and L. Van Gool: <a href="http://scholar.google.de/scholar?q=VA-DepthNet: A Variational Approach to Single Image Depth Prediction"> VA-DepthNet: A Variational Approach to Single Image Depth Prediction</a>. International Conference on Learning Representations (ICLR) 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">12</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=339401e33ee2e9c077592d79f1a478a53f9bda1c">DiffusionDepth-I</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/duanyiqun/DiffusionDepth" target="blank">code</a></td>
+     <td class="results"> 9.85</td>
+     <td class="results"> 1.64</td>
+     <td class="results"> 8.06</td>
+     <td class="results">10.58</td>
+     <td class="results">0.2 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="339401e33ee2e9c077592d79f1a478a53f9bda1c" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">Y. Duan, X. Guo and Z. Zhu: <a href="http://scholar.google.de/scholar?q=Diffusiondepth: Diffusion denoising 
+approach for monocular depth estimation"> Diffusiondepth: Diffusion denoising 
+approach for monocular depth estimation</a>. arXiv preprint arXiv:2303.05021 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">13</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=fd050404ca849a55f41c90fe4f3d0788bd43b9ce">iDisc</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/SysCV/idisc" target="blank">code</a></td>
+     <td class="results"> 9.89</td>
+     <td class="results"> 1.77</td>
+     <td class="results"> 8.11</td>
+     <td class="results">10.73</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="fd050404ca849a55f41c90fe4f3d0788bd43b9ce" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">L. Piccinelli, C. Sakaridis and F. Yu: <a href="http://scholar.google.de/scholar?q=iDisc: Internal Discretization for Monocular 
+Depth Estimation"> iDisc: Internal Discretization for Monocular 
+Depth Estimation</a>. IEEE Conference on Computer Vision and 
+Pattern Recognition (CVPR) 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">14</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=543442e96e8fdb2607bba70dc6370d2ff7f2b117">MG</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://drive.google.com/drive/folders/1yJER3eQrQ4UItPv4m8wqfcwAQ4Tgcnb_?usp=sharing" target="blank">code</a></td>
+     <td class="results"> 9.93</td>
+     <td class="results"> 1.68</td>
+     <td class="results"> 7.99</td>
+     <td class="results">10.63</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="543442e96e8fdb2607bba70dc6370d2ff7f2b117" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">C. Liu, S. Kumar, S. Gu, R. Timofte and L. Van Gool: <a href="http://scholar.google.de/scholar?q=Single Image Depth Prediction Made Better: A Multivariate Gaussian Take"> Single Image Depth Prediction Made Better: A Multivariate Gaussian Take</a>. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">15</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=70643e574a0626360bf3f6503c97a8b4280520da">URCDC-Depth</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/ShuweiShao/URCDC-Depth" target="blank">code</a></td>
+     <td class="results">10.03</td>
+     <td class="results"> 1.74</td>
+     <td class="results"> 8.24</td>
+     <td class="results">10.71</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="70643e574a0626360bf3f6503c97a8b4280520da" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">S. Shao, Z. Pei, W. Chen, R. Li, Z. Liu and Z. Li: <a href="http://scholar.google.de/scholar?q=URCDC-Depth: Uncertainty Rectified 
+Cross-Distillation with CutFlip for Monocular 
+Depth Estimation"> URCDC-Depth: Uncertainty Rectified 
+Cross-Distillation with CutFlip for Monocular 
+Depth Estimation</a>. IEEE Transactions on Multimedia 
+(TMM) 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">16</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=af8acc971330aabdca9914cbd099a21c6b3f7285">BinsFormer</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/zhyever/Monocular-Depth-Estimation-Toolbox" target="blank">code</a></td>
+     <td class="results">10.14</td>
+     <td class="results"> 1.69</td>
+     <td class="results"> 8.23</td>
+     <td class="results">10.90</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="af8acc971330aabdca9914cbd099a21c6b3f7285" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">Z. Li, X. Wang, X. Liu and J. Jiang: <a href="http://scholar.google.de/scholar?q=BinsFormer: Revisiting Adaptive Bins for 
+Monocular Depth Estimation"> BinsFormer: Revisiting Adaptive Bins for 
+Monocular Depth Estimation</a>. arXiv preprint arXiv:2204.00987 2022.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">17</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=ec7ea3d79860ef35dd679eb4a135c56bcd9c1399">TrapNet</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">10.15</td>
+     <td class="results"> 1.66</td>
+     <td class="results"> 7.92</td>
+     <td class="results">10.45</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="ec7ea3d79860ef35dd679eb4a135c56bcd9c1399" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">C. Ning and H. Gan: <a href="http://scholar.google.de/scholar?q=Trap Attention: Monocular Depth Estimation 
+with Manual Traps"> Trap Attention: Monocular Depth Estimation 
+with Manual Traps</a>. Proceedings of the IEEE/CVF 
+International Conference on Computer Vision and 
+Pattern Recognition 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">18</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=7e595c89917da8647b7e530cad8e9b05419eb7c9">PixelFormer</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">10.28</td>
+     <td class="results"> 1.82</td>
+     <td class="results"> 8.16</td>
+     <td class="results">10.84</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="7e595c89917da8647b7e530cad8e9b05419eb7c9" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">A. Agarwal and C. Arora: <a href="http://scholar.google.de/scholar?q=Attention Attention Everywhere: Monocular Depth Prediction 
+with Skip Attention"> Attention Attention Everywhere: Monocular Depth Prediction 
+with Skip Attention</a>. WACV 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">19</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=f590664e572b2289cb8582d62c3797c73ee56c2d">RED-T</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">10.36</td>
+     <td class="results"> 1.92</td>
+     <td class="results"> 8.11</td>
+     <td class="results">10.82</td>
+     <td class="results">0.1 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="f590664e572b2289cb8582d62c3797c73ee56c2d" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">K. Shim, J. Kim, G. Lee and B. Shim: <a href="http://scholar.google.de/scholar?q=Depth-Relative Self Attention for Monocular 
+Depth Estimation"> Depth-Relative Self Attention for Monocular 
+Depth Estimation</a>. 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">20</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=0c13c83871c058843be8d7c0202533f1bf1ab549">NeWCRFs</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">10.39</td>
+     <td class="results"> 1.83</td>
+     <td class="results"> 8.37</td>
+     <td class="results">11.03</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="0c13c83871c058843be8d7c0202533f1bf1ab549" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">W. Yuan, X. Gu, Z. Dai, S. Zhu and P. Tan: <a href="http://scholar.google.de/scholar?q=NeWCRFs: Neural Window Fully-connected 
+CRFs for Monocular Depth Estimation"> NeWCRFs: Neural Window Fully-connected 
+CRFs for Monocular Depth Estimation</a>. Proceedings of the IEEE Conference on 
+Computer Vision and Pattern Recognition 2022.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">21</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=2a12844ea5fc4b28fc1fcfb63978eb90d0f371f9">DepthFormer</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/zhyever/Monocular-Depth-Estimation-Toolbox" target="blank">code</a></td>
+     <td class="results">10.69</td>
+     <td class="results"> 1.84</td>
+     <td class="results"> 8.68</td>
+     <td class="results">11.39</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="2a12844ea5fc4b28fc1fcfb63978eb90d0f371f9" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">Z. Li, Z. Chen, X. Liu and J. Jiang: <a href="http://scholar.google.de/scholar?q=Depthformer: Exploiting long-range 
+correlation and local information for accurate 
+monocular depth estimation"> Depthformer: Exploiting long-range 
+correlation and local information for accurate 
+monocular depth estimation</a>. arXiv preprint arXiv:2203.14211 2022.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">22</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=4b55d1a47e0a5e829c6e89b937e438803ad53ae4">ViP-DeepLab</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">10.80</td>
+     <td class="results"> 2.19</td>
+     <td class="results"> 8.94</td>
+     <td class="results">11.77</td>
+     <td class="results">0.1 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="4b55d1a47e0a5e829c6e89b937e438803ad53ae4" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">S. Qiao, Y. Zhu, H. Adam, A. Yuille and L. Chen: <a href="http://scholar.google.de/scholar?q=ViP-DeepLab: Learning Visual Perception 
+with Depth-aware Video Panoptic Segmentation"> ViP-DeepLab: Learning Visual Perception 
+with Depth-aware Video Panoptic Segmentation</a>. Proceedings of the IEEE Conference on 
+Computer Vision and Pattern Recognition 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">23</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=7acb09ff4d2f756a80f1790115414b8fb967d4c0">SideRT</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">11.42</td>
+     <td class="results"> 2.25</td>
+     <td class="results"> 9.28</td>
+     <td class="results">11.88</td>
+     <td class="results">0.02 s</td>
+     <td class="results">GPU @ 1.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="7acb09ff4d2f756a80f1790115414b8fb967d4c0" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">C. Shu, Z. Chen, L. Chen, K. Ma, M. Wang and H. Ren: <a href="http://scholar.google.de/scholar?q=SideRT: A Real-time Pure Transformer 
+Architecture for Single Image Depth Estimation"> SideRT: A Real-time Pure Transformer 
+Architecture for Single Image Depth Estimation</a>. 2022.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">24</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=8ecddfe6ab130af7ad0b92a2886c03339ea368fb">PWA</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">11.45</td>
+     <td class="results"> 2.30</td>
+     <td class="results"> 9.05</td>
+     <td class="results">12.32</td>
+     <td class="results">0.06 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="8ecddfe6ab130af7ad0b92a2886c03339ea368fb" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">S. Lee, J. Lee, B. Kim, E. Yi and J. Kim: <a href="http://scholar.google.de/scholar?q=Patch-Wise Attention Network for Monocular 
+Depth Estimation"> Patch-Wise Attention Network for Monocular 
+Depth Estimation</a>. Proceedings of the AAAI Conference on 
+Artificial Intelligence 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">25</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=c6c4f373f5cc7778a371b3ae746d6e4938ebcc74">BANet</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">11.55</td>
+     <td class="results"> 2.31</td>
+     <td class="results"> 9.34</td>
+     <td class="results">12.17</td>
+     <td class="results">0.04 s</td>
+     <td class="results">GPU @ 1.5 Ghz (Python + C/C++)</td>
+     <td class="results"><input type="checkbox" value="c6c4f373f5cc7778a371b3ae746d6e4938ebcc74" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">S. Aich, J. Vianney, M. Islam, M. Kaur and B. Liu: <a href="http://scholar.google.de/scholar?q=Bidirectional Attention Network for 
+Monocular Depth Estimation"> Bidirectional Attention Network for 
+Monocular Depth Estimation</a>. IEEE International Conference on 
+Robotics and Automation (ICRA) 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">26</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=0a6bc52786a9a1cae86bb2b7e3527823a8dcfe7b">BTS</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/cogaplex-bts/bts" target="blank">code</a></td>
+     <td class="results">11.67</td>
+     <td class="results"> 2.21</td>
+     <td class="results"> 9.04</td>
+     <td class="results">12.23</td>
+     <td class="results">0.06 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python + C/C++)</td>
+     <td class="results"><input type="checkbox" value="0a6bc52786a9a1cae86bb2b7e3527823a8dcfe7b" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">J. Lee, M. Han, D. Ko and I. Suh: <a href="http://scholar.google.de/scholar?q=From Big to Small: Multi-Scale 
+Local Planar Guidance for Monocular Depth 
+Estimation"> From Big to Small: Multi-Scale 
+Local Planar Guidance for Monocular Depth 
+Estimation</a>. 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">27</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=1ce0a43027cad607f008ef741f852837d6ff5c85">DL_61 (DORN)</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/hufu6371/DORN" target="blank">code</a></td>
+     <td class="results">11.77</td>
+     <td class="results"> 2.23</td>
+     <td class="results"> 8.78</td>
+     <td class="results">12.98</td>
+     <td class="results">0.5 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python + C/C++)</td>
+     <td class="results"><input type="checkbox" value="1ce0a43027cad607f008ef741f852837d6ff5c85" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">H. Fu, M. Gong, C. Wang, K. Batmanghelich and D. Tao: <a href="http://scholar.google.de/scholar?q=Deep Ordinal Regression Network for Monocular 
+Depth Estimation"> Deep Ordinal Regression Network for Monocular 
+Depth Estimation</a>. IEEE Conference on Computer Vision and 
+Pattern Recognition (CVPR) 2018.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">28</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=1a61ead47e5253cf35650e52b4f461cd5cd9c99d">RefinedMPL</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">11.80</td>
+     <td class="results"> 2.31</td>
+     <td class="results">10.09</td>
+     <td class="results">13.39</td>
+     <td class="results">0.05 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python + C/C++)</td>
+     <td class="results"><input type="checkbox" value="1a61ead47e5253cf35650e52b4f461cd5cd9c99d" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">J. Vianney, S. Aich and B. Liu: <a href="http://scholar.google.de/scholar?q=RefinedMPL: Refined Monocular 
+PseudoLiDAR for 3D Object Detection in 
+Autonomous Driving"> RefinedMPL: Refined Monocular 
+PseudoLiDAR for 3D Object Detection in 
+Autonomous Driving</a>. arXiv preprint arXiv:1911.09712 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">29</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=9ae027b08acc1d29cd3ffc98a27aa65ac994409e">DLE</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/cnexah/DeepLineEncoding" target="blank">code</a></td>
+     <td class="results">11.81</td>
+     <td class="results"> 2.22</td>
+     <td class="results"> 9.09</td>
+     <td class="results">12.49</td>
+     <td class="results">0.09 s</td>
+     <td class="results">NVIDIA Tesla V100</td>
+     <td class="results"><input type="checkbox" value="9ae027b08acc1d29cd3ffc98a27aa65ac994409e" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">C. Liu, S. Gu, L. Gool and R. Timofte: <a href="http://scholar.google.de/scholar?q=Deep Line Encoding for Monocular 3D Object Detection and Depth Prediction"> Deep Line Encoding for Monocular 3D Object Detection and Depth Prediction</a>. Proceedings of the British Machine Vision Conference (BMVC) 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">30</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=dbacc206ba1fe656f496cd11dfa4e78689465ec3">PFANet</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">11.84</td>
+     <td class="results"> 2.46</td>
+     <td class="results"> 9.23</td>
+     <td class="results">12.63</td>
+     <td class="results">0.1 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="dbacc206ba1fe656f496cd11dfa4e78689465ec3" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">Y. Xu, C. Peng, M. Li, Y. Li and S. Du: <a href="http://scholar.google.de/scholar?q=Pyramid Feature Attention Network for Monocular 
+Depth Prediction"> Pyramid Feature Attention Network for Monocular 
+Depth Prediction</a>. 2021 IEEE International 
+Conference on Multimedia and Expo (ICME) 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">31</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=0a6b665caac233dc57d620d9c9241dead8036ad5">GAC</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/Owen-Liuyuxuan/visualDet3D" target="blank">code</a></td>
+     <td class="results">12.13</td>
+     <td class="results"> 2.61</td>
+     <td class="results"> 9.41</td>
+     <td class="results">12.65</td>
+     <td class="results">0.05 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="0a6b665caac233dc57d620d9c9241dead8036ad5" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">Y. Liu, Y. Yuan and M. Liu: <a href="http://scholar.google.de/scholar?q=Ground-aware Monocular 3D Object Detection 
+for Autonomous Driving"> Ground-aware Monocular 3D Object Detection 
+for Autonomous Driving</a>. IEEE Robotics and Automation Letters 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">32</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=d198a6f759f4d079e5f5b26fd9a2d881ca561a9e">DL_SORD_SL</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">12.39</td>
+     <td class="results"> 2.49</td>
+     <td class="results">10.10</td>
+     <td class="results">13.48</td>
+     <td class="results">0.8 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python + C/C++)</td>
+     <td class="results"><input type="checkbox" value="d198a6f759f4d079e5f5b26fd9a2d881ca561a9e" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">R. Diaz and A. Marathe: <a href="http://scholar.google.de/scholar?q=Soft Labels for Ordinal Regression"> Soft Labels for Ordinal Regression</a>. The IEEE Conference on Computer 
+Vision and Pattern Recognition (CVPR) 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">33</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=2fb2f86a9fb6515334790eb62fe6a3fb23152da2">VNL</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/YvanYin/VNL_Monocular_Depth_Prediction" target="blank">code</a></td>
+     <td class="results">12.65</td>
+     <td class="results"> 2.46</td>
+     <td class="results">10.15</td>
+     <td class="results">13.02</td>
+     <td class="results">0.5 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="2fb2f86a9fb6515334790eb62fe6a3fb23152da2" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">Y. Wei, Y. Liu, C. Shen and Y. Yan: <a href="http://scholar.google.de/scholar?q=Enforcing geometric constraints of 
+virtual normal for depth prediction"> Enforcing geometric constraints of 
+virtual normal for depth prediction</a>. 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">34</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=2b9bc318cc8d74ecc968f7fb4f1e865f4cbd61a6">P3Depth</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/SysCV/P3Depth" target="blank">code</a></td>
+     <td class="results">12.82</td>
+     <td class="results"> 2.53</td>
+     <td class="results"> 9.92</td>
+     <td class="results">13.71</td>
+     <td class="results">0.1 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="2b9bc318cc8d74ecc968f7fb4f1e865f4cbd61a6" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">V. Patil, C. Sakaridis, A. Liniger and L. Van Gool: <a href="http://scholar.google.de/scholar?q=P3Depth: Monocular Depth Estimation 
+with a Piecewise Planarity Prior"> P3Depth: Monocular Depth Estimation 
+with a Piecewise Planarity Prior</a>. Proceedings of the IEEE/CVF 
+Conference on Computer Vision and Pattern 
+Recognition (CVPR) 2022.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">35</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=33125990938ebe3b25fa836fe42ff02d433396c9">MS-DPT</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/ji-min-song/KD-of-MS-DPT" target="blank">code</a></td>
+     <td class="results">12.83</td>
+     <td class="results"> 3.62</td>
+     <td class="results">11.01</td>
+     <td class="results">13.43</td>
+     <td class="results">0.1 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="33125990938ebe3b25fa836fe42ff02d433396c9" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">J. Song and S. Lee: <a href="http://scholar.google.de/scholar?q=Knowledge Distillation of Multi-scale Dense Prediction Transformer for Self-supervised Depth Estimation"> Knowledge Distillation of Multi-scale Dense Prediction Transformer for Self-supervised Depth Estimation</a>. 2023.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">36</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=f91e6b54a266b30ad883a4d18faa9bad26ed9554">DS-SIDENet_ROB</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">12.86</td>
+     <td class="results"> 2.87</td>
+     <td class="results">10.03</td>
+     <td class="results">14.40</td>
+     <td class="results">0.35 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="f91e6b54a266b30ad883a4d18faa9bad26ed9554" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">H. Ren, M. El-Khamy and J. Lee: <a href="http://scholar.google.de/scholar?q=Deep Robust Single Image Depth Estimation Neural Network Using Scene Understanding"> Deep Robust Single Image Depth Estimation Neural Network Using Scene Understanding</a>. IEEE Conference on Computer Vision and Pattern Recognition Workshop (CVPRW) 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">37</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=2dfef8e793d26ae50483e743b30b5afc219c46a1">DL_SORD_SQ</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">13.00</td>
+     <td class="results"> 2.95</td>
+     <td class="results">10.38</td>
+     <td class="results">13.78</td>
+     <td class="results">0.88 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python + C/C++)</td>
+     <td class="results"><input type="checkbox" value="2dfef8e793d26ae50483e743b30b5afc219c46a1" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">R. Diaz and A. Marathe: <a href="http://scholar.google.de/scholar?q=Soft Labels for Ordinal Regression"> Soft Labels for Ordinal Regression</a>. The IEEE Conference on Computer 
+Vision and Pattern Recognition (CVPR) 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">38</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=9c2a80cb821d9169bc523ad5c0a850e020dc0bd0">PAP</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">13.08</td>
+     <td class="results"> 2.72</td>
+     <td class="results">10.27</td>
+     <td class="results">13.95</td>
+     <td class="results">0.18 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python + C/C++)</td>
+     <td class="results"><input type="checkbox" value="9c2a80cb821d9169bc523ad5c0a850e020dc0bd0" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">Z. Zhang, Z. Cui, C. Xu, Y. Yan, N. Sebe and J. Yang: <a href="http://scholar.google.de/scholar?q=Pattern-Affinitive Propagation Across Depth, Surface Normal and Semantic Segmentation"> Pattern-Affinitive Propagation Across Depth, Surface Normal and Semantic Segmentation</a>. The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">39</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=75fee937bf34451717ecf8477c794044a45173c5">CADepth-Net</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/kamiLight/CADepth-master" target="blank">code</a></td>
+     <td class="results">13.34</td>
+     <td class="results"> 3.33</td>
+     <td class="results">10.67</td>
+     <td class="results">13.61</td>
+     <td class="results">0.08 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="75fee937bf34451717ecf8477c794044a45173c5" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">J. Yan, H. Zhao, P. Bu and Y. Jin: <a href="http://scholar.google.de/scholar?q=Channel-Wise Attention-Based Network 
+for Self-Supervised Monocular Depth Estimation"> Channel-Wise Attention-Based Network 
+for Self-Supervised Monocular Depth Estimation</a>. 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">40</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=ac722ff207453830be639fa6a10201b3c6ca52f0">VGG16-UNet</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">13.41</td>
+     <td class="results"> 2.86</td>
+     <td class="results">10.60</td>
+     <td class="results">15.06</td>
+     <td class="results">0.16 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python + C/C++)</td>
+     <td class="results"><input type="checkbox" value="ac722ff207453830be639fa6a10201b3c6ca52f0" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">X. Guo, H. Li, S. Yi, J. Ren and X. Wang: <a href="http://scholar.google.de/scholar?q=Learning monocular depth by distilling 
+cross-domain stereo networks"> Learning monocular depth by distilling 
+cross-domain stereo networks</a>. Proceedings of the European Conference 
+on Computer Vision (ECCV) 2018.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">41</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=2ab43000b4bd177f113383ef9f80a087b280a02c">DORN_ROB</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">13.53</td>
+     <td class="results"> 3.06</td>
+     <td class="results">10.35</td>
+     <td class="results">15.96</td>
+     <td class="results">2 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="2ab43000b4bd177f113383ef9f80a087b280a02c" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">H. Fu, M. Gong, C. Wang, K. Batmanghelich and D. Tao: <a href="http://scholar.google.de/scholar?q=Deep Ordinal Regression Network for Monocular 
+Depth Estimation"> Deep Ordinal Regression Network for Monocular 
+Depth Estimation</a>. IEEE Conference on Computer Vision and 
+Pattern Recognition (CVPR) 2018.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">42</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=af65cd4731f9bd91a2892bb7e8fcc688e08612d8">g2s</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/NeurAI-Lab/g2s" target="blank">code</a></td>
+     <td class="results">14.16</td>
+     <td class="results"> 3.65</td>
+     <td class="results">11.40</td>
+     <td class="results">15.53</td>
+     <td class="results">0.04 s</td>
+     <td class="results">GPU @ 1.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="af65cd4731f9bd91a2892bb7e8fcc688e08612d8" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">H. Chawla, A. Varma, E. Arani and B. Zonooz: <a href="http://scholar.google.de/scholar?q=Multimodal Scale Consistency and Awareness for Monocular Self-Supervised Depth Estimation"> Multimodal Scale Consistency and Awareness for Monocular Self-Supervised Depth Estimation</a>. 2021 IEEE International Conference on Robotics and Automation (ICRA) 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">43</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=5b73230f4b20d2e7348de0f9e4f4b095a6765c4e">MT-SfMLearner</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">14.25</td>
+     <td class="results"> 3.72</td>
+     <td class="results">12.52</td>
+     <td class="results">15.83</td>
+     <td class="results">0.04s</td>
+     <td class="results">GPU @ 1.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="5b73230f4b20d2e7348de0f9e4f4b095a6765c4e" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">A. Varma., H. Chawla., B. Zonooz. and E. Arani.: <a href="http://scholar.google.de/scholar?q=Transformers in Self-Supervised Monocular Depth Estimation with Unknown Camera Intrinsics"> Transformers in Self-Supervised Monocular Depth Estimation with Unknown Camera Intrinsics</a>. Proceedings of the 17th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 4: VISAPP, 2022.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">44</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=e45355dc9c1450d3bb5c17a1a63f83ead24b55eb">MLDA-Net</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">14.42</td>
+     <td class="results"> 3.41</td>
+     <td class="results">11.67</td>
+     <td class="results">16.12</td>
+     <td class="results">0.2 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="e45355dc9c1450d3bb5c17a1a63f83ead24b55eb" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">X. Song, W. Li, D. Zhou, Y. Dai, J. Fang, H. Li and L. Zhang: <a href="http://scholar.google.de/scholar?q=MLDA-Net: Multi-Level Dual Attention-Based 
+Network for Self-Supervised Monocular Depth 
+Estimation"> MLDA-Net: Multi-Level Dual Attention-Based 
+Network for Self-Supervised Monocular Depth 
+Estimation</a>. IEEE Transactions on Image Processing 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">45</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=481fd3c0cd365844664eb263a4defa73d3cd6f3e">DABC_ROB</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">14.49</td>
+     <td class="results"> 4.08</td>
+     <td class="results">12.72</td>
+     <td class="results">15.53</td>
+     <td class="results">0.7 s</td>
+     <td class="results">GPU @ 2.0 Ghz (Matlab)</td>
+     <td class="results"><input type="checkbox" value="481fd3c0cd365844664eb263a4defa73d3cd6f3e" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">R. Li, K. Xian, C. Shen, Z. Cao, H. Lu and L. Hang: <a href="http://scholar.google.de/scholar?q=Deep attention-based classification 
+network for robust depth prediction"> Deep attention-based classification 
+network for robust depth prediction</a>. Proceedings of the Asian 
+Conference on Computer Vision (ACCV) 2018.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">46</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=a39151de1c2fce0885c3fda98d4f9e2748bc35d9">BTSREF_RVC</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/cogaplex-bts/bts" target="blank">code</a></td>
+     <td class="results">14.67</td>
+     <td class="results"> 3.12</td>
+     <td class="results">12.42</td>
+     <td class="results">16.84</td>
+     <td class="results">0.1 s</td>
+     <td class="results">1 core @ >3.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="a39151de1c2fce0885c3fda98d4f9e2748bc35d9" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">J. Lee, M. Han, D. Ko and I. Suh: <a href="http://scholar.google.de/scholar?q=From big to small: Multi-scale local planar 
+guidance for monocular depth estimation"> From big to small: Multi-scale local planar 
+guidance for monocular depth estimation</a>. arXiv preprint arXiv:1907.10326 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">47</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=7360df6841d5d45f48d02d398c0f1dccea09a47b">SDNet</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://arxiv.org/abs/1907.10659" target="blank">code</a></td>
+     <td class="results">14.68</td>
+     <td class="results"> 3.90</td>
+     <td class="results">12.31</td>
+     <td class="results">15.96</td>
+     <td class="results">0.2 s</td>
+     <td class="results">GPU @ 2.5 Ghz (C/C++)</td>
+     <td class="results"><input type="checkbox" value="7360df6841d5d45f48d02d398c0f1dccea09a47b" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">M. Ochs, A. Kretz and R. Mester: <a href="http://scholar.google.de/scholar?q=SDNet: Semantic Guided Depth 
+Estimation Network"> SDNet: Semantic Guided Depth 
+Estimation Network</a>. German Conference on Pattern 
+Recognition (GCPR) 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">48</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=89657f5faba9f16dc8df340ccd280b51cd152f69">APMoE_base_ROB</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/aimerykong/Pixel-Attentional-Gating" target="blank">code</a></td>
+     <td class="results">14.74</td>
+     <td class="results"> 3.88</td>
+     <td class="results">11.74</td>
+     <td class="results">15.63</td>
+     <td class="results">0.2 s</td>
+     <td class="results">GPU @ 3.5 Ghz (Matlab), Geforce Titan X</td>
+     <td class="results"><input type="checkbox" value="89657f5faba9f16dc8df340ccd280b51cd152f69" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">S. Kong and C. Fowlkes: <a href="http://scholar.google.de/scholar?q=Pixel-wise Attentional Gating for 
+Parsimonious Pixel Labeling"> Pixel-wise Attentional Gating for 
+Parsimonious Pixel Labeling</a>. arxiv 1805.01556 2018.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">49</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=27a649fde0f183840abaf3a9256952c0a7dbba09">DiPE</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">14.84</td>
+     <td class="results"> 4.04</td>
+     <td class="results">12.28</td>
+     <td class="results">15.69</td>
+     <td class="results">0.01 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="27a649fde0f183840abaf3a9256952c0a7dbba09" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">H. Jiang, L. Ding, Z. Sun and R. Huang: <a href="http://scholar.google.de/scholar?q=DiPE: Deeper into Photometric Errors for 
+Unsupervised Learning of Depth and Ego-motion from 
+Monocular Videos"> DiPE: Deeper into Photometric Errors for 
+Unsupervised Learning of Depth and Ego-motion from 
+Monocular Videos</a>. In IEEE/RSJ International Conference 
+on Intelligent Robots and Systems (IROS) 2020.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">50</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=5d198c5e080cc844589575d48e7f2f0428d166be">CSWS_E_ROB</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">14.85</td>
+     <td class="results"> 3.48</td>
+     <td class="results">11.84</td>
+     <td class="results">16.38</td>
+     <td class="results">0.2 s</td>
+     <td class="results">1 core @ 2.5 Ghz (C/C++), Titian GTX 108</td>
+     <td class="results"><input type="checkbox" value="5d198c5e080cc844589575d48e7f2f0428d166be" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">M. Bo Li: <a href="http://scholar.google.de/scholar?q=Monocular Depth Estimation with Hierarchical 
+Fusion of  Dilated CNNs and Soft-Weighted-Sum Inference"> Monocular Depth Estimation with Hierarchical 
+Fusion of  Dilated CNNs and Soft-Weighted-Sum Inference</a>. 2018.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">51</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=58fb3a591340f127ed57849b56d77da1d7e39a1a">R-MSFM</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/jsczzzk/R-MSFM" target="blank">code</a></td>
+     <td class="results">15.09</td>
+     <td class="results"> 3.57</td>
+     <td class="results">11.80</td>
+     <td class="results">17.60</td>
+     <td class="results">1 s</td>
+     <td class="results">1 core @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="58fb3a591340f127ed57849b56d77da1d7e39a1a" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">Z. Zhou, X. Fan, P. Shi and Y. Xin: <a href="http://scholar.google.de/scholar?q=R-msfm: Recurrent multi-scale feature 
+modulation for monocular depth estimating"> R-msfm: Recurrent multi-scale feature 
+modulation for monocular depth estimating</a>. Proceedings of the IEEE/CVF 
+international conference on computer vision 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">52</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=fa87f80968a1084cd2dc073862edc310a915cac8">HBC</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">15.18</td>
+     <td class="results"> 3.79</td>
+     <td class="results">12.33</td>
+     <td class="results">17.86</td>
+     <td class="results">0.05 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="fa87f80968a1084cd2dc073862edc310a915cac8" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">H. Jiang and R. Huang: <a href="http://scholar.google.de/scholar?q=Hierarchical Binary Classification
+for Monocular Depth Estimation"> Hierarchical Binary Classification
+for Monocular Depth Estimation</a>. IEEE International Conference on 
+Robotics and Biomimetics 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">53</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=8d9a52c944051a4aca5f49cda556b39ce0aa4b87">SGDepth</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/ifnspaml/SGDepth" target="blank">code</a></td>
+     <td class="results">15.30</td>
+     <td class="results"> 5.00</td>
+     <td class="results">13.29</td>
+     <td class="results">15.80</td>
+     <td class="results">0.1 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="8d9a52c944051a4aca5f49cda556b39ce0aa4b87" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">M. Klingner, J. Termöhlen, J. Mikolajczyk and T. Fingscheidt: <a href="http://scholar.google.de/scholar?q=Self-Supervised Monocular Depth 
+Estimation: Solving the Dynamic Object Problem by 
+Semantic Guidance"> Self-Supervised Monocular Depth 
+Estimation: Solving the Dynamic Object Problem by 
+Semantic Guidance</a>. ECCV 2020.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">54</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=d524b80eb0829dc9270f57c80901055261e00c16">DHGRL</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">15.47</td>
+     <td class="results"> 4.04</td>
+     <td class="results">12.52</td>
+     <td class="results">15.72</td>
+     <td class="results">0.2 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="d524b80eb0829dc9270f57c80901055261e00c16" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">Z. Zhang, C. Xu, J. Yang, Y. Tai and L. Chen: <a href="http://scholar.google.de/scholar?q=Deep hierarchical guidance and regularization 
+learning for end-to-end depth estimation"> Deep hierarchical guidance and regularization 
+learning for end-to-end depth estimation</a>. Pattern Recognition 2018.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">55</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=10d37cdcbfd9a8eca730c0cd56c8caf4e20c3159">GCNDepth</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/ArminMasoumian/GCNDepth" target="blank">code</a></td>
+     <td class="results">15.54</td>
+     <td class="results"> 4.26</td>
+     <td class="results">12.75</td>
+     <td class="results">15.99</td>
+     <td class="results">0.05 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="10d37cdcbfd9a8eca730c0cd56c8caf4e20c3159" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">A. Masoumian, H. Rashwan, S. Abdulwahab, J. Cristiano and D. Puig: <a href="http://scholar.google.de/scholar?q=GCNDepth: Self-supervised Monocular Depth 
+Estimation based on Graph Convolutional Network"> GCNDepth: Self-supervised Monocular Depth 
+Estimation based on Graph Convolutional Network</a>. arXiv preprint arXiv:2112.06782
+ 2021.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">56</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=86f02fef77927f55299c09c5e44f3bc09c94759d">packnSFMHR_RVC</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/TRI-ML/packnet-sfm" target="blank">code</a></td>
+     <td class="results">15.80</td>
+     <td class="results"> 4.73</td>
+     <td class="results">12.28</td>
+     <td class="results">17.96</td>
+     <td class="results">0.5 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="86f02fef77927f55299c09c5e44f3bc09c94759d" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">V. Guizilini, R. Ambrus, S. Pillai, A. Raventos and A. Gaidon: <a href="http://scholar.google.de/scholar?q=3D Packing for Self-Supervised 
+Monocular Depth Estimation"> 3D Packing for Self-Supervised 
+Monocular Depth Estimation</a>. IEEE Conference on Computer 
+Vision and Pattern Recognition (CVPR) .<br/></td>
+   </tr>
+   <tr>
+    <td class="results">57</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=8ba88804325b6d1d0163dfafd245edaadf910f20">MultiDepth</a></td>
+     <td class="results"></td>
+     <td class="results"><a href="https://github.com/lukasliebel/MultiDepth" target="blank">code</a></td>
+     <td class="results">16.05</td>
+     <td class="results"> 3.89</td>
+     <td class="results">13.82</td>
+     <td class="results">18.21</td>
+     <td class="results">0.01 s</td>
+     <td class="results">GPU @ 1.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="8ba88804325b6d1d0163dfafd245edaadf910f20" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">L. Liebel and M. Körner: <a href="http://scholar.google.de/scholar?q=MultiDepth: Single-Image Depth Estimation via Multi-Task Regression and Classification"> MultiDepth: Single-Image Depth Estimation via Multi-Task Regression and Classification</a>. IEEE Intelligent Transportation Systems Conference (ITSC) 2019.<br/></td>
+   </tr>
+   <tr>
+    <td class="results">58</td>
+     <td class="results"><a href="eval_depth_detail.php?benchmark=depth_prediction&result=d10231d7042cf282cac74f4831339b855ae47130">LSIM</a></td>
+     <td class="results"></td>
+     <td class="results"></td>
+     <td class="results">17.92</td>
+     <td class="results"> 6.88</td>
+     <td class="results">14.04</td>
+     <td class="results">17.62</td>
+     <td class="results">0.08 s</td>
+     <td class="results">GPU @ 2.5 Ghz (Python)</td>
+     <td class="results"><input type="checkbox" value="d10231d7042cf282cac74f4831339b855ae47130" name="selected[]"></td>
+   </tr>
+   <tr>
+    <td class="results_sub" colspan="11">M. Goldman, T. Hassner and S. Avidan: <a href="http://scholar.google.de/scholar?q=Learn Stereo, Infer Mono: Siamese Networks for 
+Self-Supervised, Monocular, Depth Estimation"> Learn Stereo, Infer Mono: Siamese Networks for 
+Self-Supervised, Monocular, Depth Estimation</a>. Computer Vision and Pattern Recognition 
+Workshops (CVPRW) 2019.<br/></td>
+   </tr>
+ </table></form>
+
+<center><a target="_blank" href="table_depth.php?benchmark=depth_prediction&mode=1"> Table as LaTeX</a> | <a target="_blank" href="table_depth.php?benchmark=depth_prediction&mode=2"> Only published Methods</a></center><br><br><br><br>
+
+</div></div>
+<div class="section">
+<h2 class="title">Related Datasets</h2>
+<div class="entry"><p>
+
+<ul>
+<li><a href="http://synthia-dataset.net/" target="_blank">SYNTHIA Dataset</a>: SYNTHIA is a collection of photo-realistic frames rendered from a virtual city and comes with precise pixel-level semantic annotations as well as pixel-wise depth information. The dataset consists of +200,000 HD images from video streams and +20,000 HD images from independent snapshots.</li>
+<li><a href="http://vision.middlebury.edu/stereo/" target="_blank">Middlebury Stereo Evaluation</a>: The classic stereo evaluation benchmark, featuring four test images in version 2 of the benchmark, with very accurate ground truth from a structured light system. 38 image pairs are provided in total.</li>
+<li><a href="http://make3d.cs.cornell.edu/data.html" target="_blank">Make3D Range Image Data</a>: Images with small-resolution ground truth used to learn and evaluate depth from single monocular images.</li>
+<li><a href="http://www.europe.naverlabs.com/Research/Computer-Vision/Proxy-Virtual-Worlds" target="_blank">Virtual KITTI Dataset</a>: Virtual KITTI contains 50 high-resolution monocular videos (21,260 frames) generated from five different virtual worlds in urban settings under different imaging and weather conditions. </li>
+<li><a href="https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html" target="_blank">Scene Flow Dataset</a>: The Freiburg Scene Flow Dataset collection has been used to train convolutional networks for disparity, optical flow, and scene flow estimation. The collection contains more than 39000 stereo frames in 960x540 pixel resolution, rendered from various synthetic sequences.</li>
+</ul>
+</p></div></div>
+
+<div class="section">
+<h2 class="title">Citation</h2>
+<div class="entry"><p>
+When using this dataset in your research, we will be happy if you cite us:<br>
+@inproceedings{<a href="https://www.cvlibs.net/publications/Uhrig2017THREEDV.pdf" target="_blank">Uhrig2017THREEDV</a>,<br/>
+&nbsp; author = {<a href="https://lmb.informatik.uni-freiburg.de/people/uhrigj/index.en.html" target="blank">Jonas Uhrig</a> and <a href="http://nick-schneider.me/" target="blank">Nick Schneider</a> and Lukas Schneider and <a href="http://www.uwe-franke.de/" target="blank">Uwe Franke</a> and <a href="https://lmb.informatik.uni-freiburg.de/people/brox/index.en.html" target="blank">Thomas Brox</a> and <a href="https://www.cvlibs.net" target="blank">Andreas Geiger</a>},<br/>
+&nbsp; title = {Sparsity Invariant CNNs},<br/>&nbsp; booktitle = {International Conference on 3D Vision (3DV)},<br/>
+&nbsp; year = {2017}<br/>
+}
+<br>
+</p></div></div>
+
+  <div class="clearfix"></div>
+  <div class="tracker">
+  <div id="eXTReMe"><br><br><a href="http://extremetracking.com/open?login=votec">
+  <img src="http://t1.extreme-dm.com/i.gif" style="border: 0;"
+  height="38" width="41" id="EXim" alt="eXTReMe Tracker" /></a>
+  <script type="text/javascript"><!--
+  var EXlogin='votec' // Login
+  var EXvsrv='s10' // VServer
+  EXs=screen;EXw=EXs.width;navigator.appName!="Netscape"?
+  EXb=EXs.colorDepth:EXb=EXs.pixelDepth;
+  navigator.javaEnabled()==1?EXjv="y":EXjv="n";
+  EXd=document;EXw?"":EXw="na";EXb?"":EXb="na";
+  EXd.write("<img src=http://e1.extreme-dm.com",
+  "/"+EXvsrv+".g?login="+EXlogin+"&amp;",
+  "jv="+EXjv+"&amp;j=y&amp;srw="+EXw+"&amp;srb="+EXb+"&amp;",
+  "l="+escape(EXd.referrer)+" height=1 width=1>");//-->
+  </script><noscript><div id="neXTReMe"><img height="1" width="1" alt=""
+  src="http://e1.extreme-dm.com/s10.g?login=votec&amp;j=n&amp;jv=n" />
+  </div></noscript></div>
+  </div>
+
+</div>
+<div class="clearfix">&nbsp;</div>
+</div>
+</div>
+
+<div id="footer" class="container">
+	<p>© 2026 | <a href="privacy_policy.php">Privacy Policy</a> | <a href="terms_of_service.php">Terms of Service</a> | <a href="imprint.php">Imprint</a> | <a href="http://www.freecsstemplates.org/" target="_blank">csstemplates</a></p>
+</div>
+
+</body>
+</html>
+
+

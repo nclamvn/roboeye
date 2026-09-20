@@ -1,0 +1,6 @@
+---
+license: mit
+base_model:
+- facebook/dinov2-small
+pipeline_tag: depth-estimation
+---

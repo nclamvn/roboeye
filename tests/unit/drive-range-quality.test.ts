@@ -46,6 +46,62 @@ test('compressed A-B / A-C depth is flagged, never force-corrected by adding ima
   assert.equal(validateLearnedRanges([b,c],[learned(40),learned(75)])[1]!.distanceM,75);
   assert.equal(validateLearnedRanges([b,{...c,x0:.75,x1:.9}],raw)[1]!.distanceM,50,'no claim about side lane ordering');
 });
+test('cross-lane screenshot inversion abstains instead of swapping or publishing wrong metres',()=>{
+  // Normalized from Screenshot 2026-09-17 at 10.02.10 (728×496).
+  const left:DetBox={label:'car',score:.9,x0:135/728,x1:236/728,y0:318/496,y1:405/496};
+  const right:DetBox={label:'car',score:.9,x0:472/728,x1:573/728,y0:313/496,y1:393/496};
+  const inverted=validateLearnedRanges([left,right],[learned(70),learned(56)]);
+  assert.equal(inverted[0]!.distanceM,null);assert.equal(inverted[1]!.distanceM,null);
+  assert.match(inverted[0]!.reason,/đảo thứ tự/);
+  const ordered=validateLearnedRanges([left,right],[learned(56),learned(70)]);
+  assert.equal(ordered[0]!.distanceM,56);assert.equal(ordered[1]!.distanceM,70);
+});
+test('cross-lane ground-contact ordering catches the 57 m / 52 m regression when apparent heights are neutral',()=>{
+  // Normalized from Screenshot 2026-09-17 at 10.16.05 (742×608). The two
+  // same-class boxes have almost equal height, but the left tyre/contact proxy
+  // is materially lower in the image and therefore nearer on a level road.
+  const left:DetBox={label:'car',score:.9,x0:139/742,x1:244/742,y0:381/608,y1:473/608};
+  const right:DetBox={label:'car',score:.9,x0:471/742,x1:580/742,y0:370/608,y1:463/608};
+  const inverted=validateLearnedRanges([left,right],[learned(57),learned(52)]);
+  assert.equal(inverted[0]!.distanceM,null);assert.equal(inverted[1]!.distanceM,null);
+  assert.match(inverted[0]!.reason,/đảo thứ tự/);
+});
+test('vehicle subclass flicker cannot bypass the 51 m / 45 m ground-contact regression',()=>{
+  // Normalized from Screenshot 2026-09-17 at 10.21.41 (700×530). RT-DETR
+  // car/truck/bus are competing labels and the tracker already tolerates their
+  // flicker, so raw subclass must not disable vehicle ground ordering.
+  const left:DetBox={label:'car',score:.9,x0:70/700,x1:186/700,y0:306/530,y1:406/530};
+  const right:DetBox={label:'truck',score:.9,x0:430/700,x1:543/700,y0:306/530,y1:395/530};
+  const inverted=validateLearnedRanges([left,right],[learned(51),learned(45)]);
+  assert.equal(inverted[0]!.distanceM,null);assert.equal(inverted[1]!.distanceM,null);
+  assert.match(inverted[0]!.reason,/đảo thứ tự/);
+});
+test('ordinal publication invariant uses source-pixel contact resolution and reviewed vehicle labels',()=>{
+  const a:DetBox={label:'car',score:.9,x0:.1,x1:.23,y0:.61,y1:.79};
+  const ambiguous={...a,x0:.7,x1:.83,y0:.605,y1:.79+1/720};
+  assert.deepEqual(validateLearnedRanges([a,ambiguous],[learned(70),learned(56)]).map(r=>r!.distanceM),[70,56]);
+  const truck:DetBox={...ambiguous,label:'truck',y0:.58,y1:.76};
+  assert.deepEqual(validateLearnedRanges([a,truck],[learned(70),learned(56)]).map(r=>r!.distanceM),[null,null]);
+  const person:DetBox={...truck,label:'person'};
+  assert.deepEqual(validateLearnedRanges([a,person],[learned(70),learned(56)]).map(r=>r!.distanceM),[70,56]);
+  const clipped={...a,x0:0,y0:.58,y1:.8};
+  assert.deepEqual(validateLearnedRanges([clipped,ambiguous],[learned(70),learned(56)]).map(r=>r!.distanceM),[70,56]);
+  const sizeContradiction={...a,x0:.7,x1:.9,y0:.55,y1:.785};
+  assert.deepEqual(validateLearnedRanges([a,sizeContradiction],[learned(70),learned(56)]).map(r=>r!.distanceM),[null,null],
+    'physical vehicle height cannot overrule a resolved tyre/contact row');
+  assert.throws(()=>validateLearnedRanges([a],[learned(70)],1,0),/Chiều cao nguồn/);
+});
+test('Test1.mp4 runtime trace rejects the exact 51.23 m / 44.68 m side-vehicle inversion',()=>{
+  // Captured from the browser-generated report on 2026-09-17, frame 0 at
+  // 1280×720. This is the source trace behind the user screenshot, not a box
+  // reconstructed from the resized screenshot.
+  const left:DetBox={label:'car',score:.9055399192257336,x0:.40487808361649513,y0:.6621259897947311,x1:.4542520008981228,y1:.7373024970293045};
+  const right:DetBox={label:'car',score:.89399216726949,x0:.5663659851998091,y0:.6609205342829227,x1:.6147811133414507,y1:.7290317676961422};
+  assert.ok((left.y1-right.y1)*720>5.9);
+  const out=validateLearnedRanges([left,right],[learned(51.22602081298828),learned(44.677467346191406)],1,720);
+  assert.deepEqual(out.map(range=>range!.distanceM),[null,null]);
+  assert.match(out[0]!.reason,/đảo thứ tự/);
+});
 test('applied geometry takes priority, even if learned depth claims a plausible wrong distance',()=>{
   const boxes=demoFrame(0).boxes;
   const raw=[0,200].map(timeMs=>({timeMs,width:1280,height:720,boxes,latencyMs:10,learnedRanges:boxes.map(()=>learned(12))}));

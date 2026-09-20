@@ -2,7 +2,7 @@ import type {DetBox} from '../detection-types';
 import {VehicleTracker, type DriveTrack} from './tracking';
 import type {CameraProfile} from './geometry';
 import type {RangeEstimate} from './geometry';
-import {validateLearnedRanges} from './learned-range';
+import {validateLearnedRanges,validatePublishedLearnedTracks} from './learned-range';
 
 export const REPLAY_STEP_MS=200;
 // 5 Hz, at most 1,501 samples; cache boxes/ranges, never decoded video frames.
@@ -13,14 +13,15 @@ export interface ReplaySample {
   metricState?:'success'|'skipped'|'failed';
   seekMs?:number;sampleWallMs?:number;
 }
-export interface ReplayFrame {timeMs:number;tracks:DriveTrack[]}
+export interface ReplayFrame {timeMs:number;tracks:DriveTrack[];sourceHeight?:number}
 export interface ReplayView {tracks:DriveTrack[];interpolated:boolean;sampleTimeMs:number|null}
 
-export function sampleTimes(durationMs:number):number[] {
+export function sampleTimes(durationMs:number,stepMs=REPLAY_STEP_MS):number[] {
   if(!Number.isFinite(durationMs)||durationMs<100)throw Error('Không đọc được thời lượng hợp lệ. Chọn video MP4/H.264 từ 0,1 giây.');
   if(durationMs>MAX_REPLAY_MS)throw Error('Video dài hơn 5 phút. Hãy cắt clip hoặc chọn video ngắn hơn.');
+  if(!Number.isInteger(stepMs)||stepMs<REPLAY_STEP_MS||stepMs>2000)throw Error('Bước lấy mẫu cần là số nguyên trong 200–2000 ms.');
   const last=Math.max(0,durationMs-50),times:number[]=[];
-  for(let t=0;t<=last;t+=REPLAY_STEP_MS)times.push(t);
+  for(let t=0;t<=last;t+=stepMs)times.push(t);
   if(last-times[times.length-1]>1)times.push(last);
   return times;
 }
@@ -29,29 +30,29 @@ export function buildReplay(samples:ReplaySample[],profile:CameraProfile|null,zo
   const tracker=new VehicleTracker();
   return samples.map(s=>{
     const learned=new Map<DetBox,RangeEstimate>();
-    const validated=validateLearnedRanges(s.boxes,s.learnedRanges??[],zoom);
+    const validated=validateLearnedRanges(s.boxes,s.learnedRanges??[],zoom,s.height);
     s.boxes.forEach((box,index)=>{const range=validated[index];if(range)learned.set(box,range);});
     tracker.observe(s.boxes,s.timeMs,s.timeMs,profile,s.width,s.height,learned);
     // Do not cache predicted unmatched tracks as if they were real observations.
-    return {timeMs:s.timeMs,tracks:tracker.snapshot(s.timeMs,s.timeMs,true).filter(t=>t.ageMs<1)};
+    return {timeMs:s.timeMs,sourceHeight:s.height,tracks:validatePublishedLearnedTracks(tracker.snapshot(s.timeMs,s.timeMs,true),zoom,s.height).filter(t=>t.ageMs<1)};
   });
 }
 
 /** Offline display interpolation only; never invent a track through a missed detection. */
-export function replayAt(frames:ReplayFrame[],t:number):ReplayView {
+export function replayAt(frames:ReplayFrame[],t:number,maxGapMs=REPLAY_STEP_MS+5):ReplayView {
   const empty:ReplayView={tracks:[],interpolated:false,sampleTimeMs:null};
   if(!frames.length||!Number.isFinite(t)||t<frames[0].timeMs)return empty;
   let lo=0,hi=frames.length;
   while(lo<hi){const m=(lo+hi)>>>1;if(frames[m].timeMs<=t)lo=m+1;else hi=m;}
   const a=frames[Math.max(0,lo-1)],b=frames[lo],dt=t-a.timeMs;
-  if(dt===0)return {tracks:structuredClone(a.tracks),interpolated:false,sampleTimeMs:a.timeMs};
+  if(dt===0)return {tracks:validatePublishedLearnedTracks(a.tracks,1,a.sourceHeight??720),interpolated:false,sampleTimeMs:a.timeMs};
   if(!b){
     if(dt>80)return empty;
     const tracks=structuredClone(a.tracks);
     tracks.forEach(track=>track.ageMs+=dt);
-    return {tracks,interpolated:false,sampleTimeMs:a.timeMs};
+    return {tracks:validatePublishedLearnedTracks(tracks,1,a.sourceHeight??720),interpolated:false,sampleTimeMs:a.timeMs};
   }
-  if(b.timeMs-a.timeMs>REPLAY_STEP_MS+5)return empty;
+  if(b.timeMs-a.timeMs>maxGapMs)return empty;
   const alpha=dt/(b.timeMs-a.timeMs),next=new Map(b.tracks.map(track=>[track.id,track]));
   const tracks=a.tracks.flatMap(track=>{
     const target=next.get(track.id);if(!target||target.box.label!==track.box.label)return [];
@@ -73,7 +74,7 @@ export function replayAt(frames:ReplayFrame[],t:number):ReplayView {
     }
     return [out];
   });
-  return {tracks,interpolated:true,sampleTimeMs:a.timeMs};
+  return {tracks:validatePublishedLearnedTracks(tracks,1,Math.min(a.sourceHeight??720,b.sourceHeight??720)),interpolated:true,sampleTimeMs:a.timeMs};
 }
 
 /** Wait for decoded seek completion. Aborts remove listeners and cannot advance a new source. */

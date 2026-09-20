@@ -1,0 +1,11 @@
+import { readFile, mkdir, copyFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+const source = process.argv[2];
+if (!source) throw Error('Usage: npm run fixtures:road-ui -- /absolute/path/road-segmentation-adas-0001.onnx');
+const manifest = JSON.parse(await readFile(new URL('../docs/research/road-structure/artifacts/openvino-road-segmentation-adas-0001.manifest.json', import.meta.url), 'utf8'));
+const bytes = await readFile(source);
+if (bytes.length !== manifest.export.bytes || createHash('sha256').update(bytes).digest('hex') !== manifest.export.sha256) throw Error('Wrong road model: size/hash mismatch. Nothing staged.');
+const directory = new URL('../tests/.road-cache/', import.meta.url);
+await mkdir(directory, { recursive: true });
+await copyFile(source, new URL('road-segmentation-adas-0001.onnx', directory));
+console.log('Verified model staged for Vite local UI only; not in public/ or production build.');

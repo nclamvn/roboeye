@@ -1,0 +1,186 @@
+════════════════════════════════════════════════════════════════
+REFINERY · domain=browser-metric-depth · 15 ứng viên/phương pháp/nền tảng có chủ đích; không phải toàn bộ thị trường
+════════════════════════════════════════════════════════════════
+
+▸ Chrome Android WebGPU  (—)
+    method          : Chrome 121 enables WebGPU for Android 12+ with specified Qualcomm/ARM GPUs [✓A]
+    parameters      : —
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ DA2 Metric VKITTI Small  (—)
+    method          : Outdoor synthetic-data-finetuned metric depth baseline [✓A]
+    parameters      : 24.8M [✓A]
+    inputs          : —
+    contract        : Outdoor reference sets max_depth to 80 m [✓A]
+    code_license    : —
+    weights_license : Apache-2.0 [✓A]
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ DA3 Metric Large  (—)
+    method          : —
+    parameters      : 0.35B [✓A]
+    inputs          : —
+    contract        : metric_depth = focal * net_output / 300; requires focal in pixels [✓A]
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ Depth Pro  (—)
+    method          : Metric depth without camera intrinsics required [✓A]
+    parameters      : —
+    inputs          : —
+    contract        : —
+    code_license    : Apple custom license; separate notices for included subcomponents [✓A]
+    weights_license : —
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ GeoCalib  (—)
+    method          : Estimate camera intrinsics and gravity, not metric camera height [✓A]
+    parameters      : —
+    inputs          : Single image; priors optional [✓A]
+    contract        : —
+    code_license    : Apache-2.0 [✓A]
+    weights_license : CC BY 4.0 [✓A]
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ KITTI Depth Prediction  (—)
+    method          : Depth benchmark with corresponding RGB and raw LiDAR; not product vehicle-gap certification [✓A]
+    parameters      : —
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ Metric Video Depth Anything Small  (—)
+    method          : Metric streaming supported, experimental temporal-cache approach [✓A]
+    parameters      : 28.4M [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : Apache-2.0 [✓A]
+    limitation      : Streaming quality drop acknowledged; benchmark hardware is A100, not browser [✓A]
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ MoGe-2 ViT-S Normal  (—)
+    method          : Metric point/depth/normal maps and estimated camera FoV [✓A]
+    parameters      : 35M [✓A]
+    inputs          : —
+    contract        : ONNX forward only; camera recovery and reprojection must be implemented separately [✓A]
+    code_license    : —
+    weights_license : MIT [✓A]
+    limitation      : Published export FP32 with dynamic shapes; browser performance unmeasured [✓A]
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ MoGe-3  (—)
+    method          : —
+    parameters      : ViT-L 370M; ViT-G 1.25B [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : Official package warns macOS unsupported due to FlexGEMM/Triton dependencies [✓A]
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ ONNX Runtime WebGPU  (—)
+    method          : GPU IO binding can keep data on GPU [✓A]
+    parameters      : —
+    inputs          : —
+    contract        : Graph capture requires static shapes and kernels on WebGPU EP [✓A]
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ Online camera-to-ground Li et al.  (—)
+    method          : Online calibration through sliding-window factor graph [✓A]
+    parameters      : —
+    inputs          : Wheel odometry is used; not RGB-only browser input [✓A]
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ Safari 26 WebGPU  (—)
+    method          : WebKit officially ships WebGPU in Safari 26 [✓A]
+    parameters      : —
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ UniDepthV2  (—)
+    method          : Metric depth with confidence output [✓A]
+    parameters      : —
+    inputs          : —
+    contract        : ONNX support stated in V2 changelog [✓A]
+    code_license    : CC BY-NC 4.0 according to repository [✓A]
+    weights_license : —
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ YOLO26-Depth  (—)
+    method          : Relative log-depth head with a separate absolute-scale transform [✓A]
+    parameters      : —
+    inputs          : —
+    contract        : Single-scale reported validation uses median alignment, not raw absolute metre accuracy [✓A]
+    code_license    : AGPL-3.0 [✓A]
+    weights_license : —
+    limitation      : Released weights overlap 72 frames with current KITTI evaluation per publisher; not clean zero-shot evidence [✓A]
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+▸ YOLOX Nano  (—)
+    method          : —
+    parameters      : 0.91M at 416 input, detector-budget baseline [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    measured_browser_latency: —
+    measured_vehicle_range_error: —
+
+Phân bố theo method (n=15 / universe≈15 · coverage 100.0%):
+    Chrome 121 enables WebGPU for Android 12+ with specified Qualcomm/ARM GPUs: 1
+    Chưa rõ: 3
+    Depth benchmark with corresponding RGB and raw LiDAR; not product vehicle-gap certification: 1
+    Estimate camera intrinsics and gravity, not metric camera height: 1
+    GPU IO binding can keep data on GPU: 1
+    Metric depth with confidence output: 1
+    Metric depth without camera intrinsics required: 1
+    Metric point/depth/normal maps and estimated camera FoV: 1
+    Metric streaming supported, experimental temporal-cache approach: 1
+    Online calibration through sliding-window factor graph: 1
+    Outdoor synthetic-data-finetuned metric depth baseline: 1
+    Relative log-depth head with a separate absolute-scale transform: 1
+    WebKit officially ships WebGPU in Safari 26: 1
+
+build digest = 362ece2a2bf9086e  · idempotent OK · auditor OK
+VALIDATION PASSED · 0 gate bites

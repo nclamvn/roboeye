@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "artifactSha256": "be0ceeb002af577936e9b439b7194dc8df6c8e5bc84ecb9bbfcab68695c86d17",
+  "operatorInventorySha256": "219b926e7c08e1a1f0eae6d9fa18a779c45d11115fe060ae5b9e7686571896b7",
+  "testedAt": "2026-09-17T04:24:24.732Z",
+  "environment": {
+    "os": "darwin",
+    "arch": "arm64",
+    "hardware": "MacBook Pro M1 Max 32GB",
+    "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "ortVersion": "1.22.0-dev.20250409-89f8206ba4"
+  },
+  "results": [
+    { "provider": "webgpu", "status": "failed", "coldStartMs": null, "inferenceP50Ms": null, "inferenceP95Ms": null, "peakMemoryMb": null, "error": "Error: using ceil() in shape computation is not yet supported for MaxPool" },
+    { "provider": "wasm", "status": "passed", "coldStartMs": 77, "inferenceP50Ms": 180.19999998807907, "inferenceP95Ms": 185.40000000596046, "peakMemoryMb": null, "error": null }
+  ]
+}

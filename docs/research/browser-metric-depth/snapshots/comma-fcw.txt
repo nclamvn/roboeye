@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<title>Bringing Forward Collision Warnings to our open source self-driving car - comma.ai blog</title>
+<meta name="description" content="">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="comma.ai blog">
+<meta property="og:title" content="Bringing Forward Collision Warnings to our open source self-driving car">
+<meta property="og:url" content="https://blog.comma.ai/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/">
+<meta name="twitter:site" content="@comma_ai">
+<meta name="twitter:title" content="Bringing Forward Collision Warnings to our open source self-driving car">
+<meta name="twitter:description" content="">
+<meta name="twitter:url" content="https://blog.comma.ai/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2018-01-22T00:00:00-08:00">
+<link rel="canonical" href="https://blog.comma.ai/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/">
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "comma.ai",
+    "url": "https://blog.comma.ai/"
+  }
+</script>
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="comma.ai blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+  <link rel="stylesheet" href="/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+<script defer data-domain="blog.comma.ai" src="https://plausible.io/js/script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NKN922YQ1D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NKN922YQ1D');
+</script>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Rr Mr fi Cr Ar ci Tr Fr capture Mi calculateEventProperties Lr register register_once register_for_session unregister unregister_for_session Hr getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ur jr createPersonProfile zr kr Br opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Dr debug M Nr getPageViewId captureTraceFeedback captureTraceMetric $r".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_4VfSi5FAChlAt5keSrxVWCaVyZTsYpFKqz2Bw60KLz', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2025-05-24',
+        person_profiles: 'identified_only',
+    })
+</script>
+
+  </head>
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <div class="header">
+  <div class="header__inner-wrap">
+    <a href="/" title="back to blog" class="back"><span>Blog</span></a>
+    <a class="site-logo" href="https://comma.ai" target="_blank" rel="noopener noreferrer"><img src="/img/comma_black_small.png" alt="comma.ai"></a>
+    <a href="https://comma.ai/jobs" title="Jobs" class="shop-button" target="_blank" rel="noopener noreferrer"><span>Jobs</span></a>
+  </div>
+</div>
+
+    <div>
+  <style>
+    .banner {
+      margin: 0 auto;
+      padding: 12px;
+      background-color: #86FF4E;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+    }
+    .banner-text {
+      color: black;
+      line-height: 25.6px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .banner a {
+      color: black;
+    }
+    @media only screen and (max-width: 768px) {
+      .banner {
+        justify-content: center;
+        align-items: stretch;
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+      }
+      .banner a {
+        margin-left: 0px;
+        margin-top:16px;
+      }
+    }
+  </style>
+  <div class="banner">
+    <p class="banner-text"><b>Got questions?</b> Drop a <a href="#giscus-comments">comment</a> and the team will answer!</p>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+<div id="main" role="main">
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Bringing Forward Collision Warnings to our open source self-driving car"><meta itemprop="datePublished" content="2018-01-22T00:00:00-08:00">
+
+    <div class="page__inner-wrap">
+      <header>
+        <h1 id="page-title" class="page__title" itemprop="headline">
+          <a href="https://blog.comma.ai/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/" itemprop="url">Bringing Forward Collision Warnings to our open source self-driving car</a>
+        </h1>
+        
+<p class="page__meta">
+  
+    <span class="page__meta-date">
+      <i class="far fa-calendar-alt" aria-hidden="true"></i>
+      <time datetime="2018-01-22T00:00:00-08:00">January 22, 2018</time>
+    </span>
+  
+  <span class="page__meta-sep"></span>
+  
+    <span class="page__meta-readtime">
+      <i class="far fa-clock" aria-hidden="true"></i>
+      5 minute read
+    </span>
+  
+</p>
+
+
+      </header>
+      <section class="page__content" itemprop="text">
+        <p>At <a href="https://comma.ai/" target="_blank" rel="noopener noreferrer">comma.ai</a> we are building <a href="https://github.com/commaai/openpilot" target="_blank" rel="noopener noreferrer">openpilot</a>, open-source software that can drive your car. Right now support includes Toyotas with TSS-P, the Honda Civic and CR-V (with Honda Sensing) and Acura ILX. In this post, I will describe how we built the Forward Collision Warning (FCW) system in openpilot. (note: the human was driving in all footage below)</p>
+<figure>
+  <img src="/img/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/forward-collision-warning-indicator-on-the-dashboard.jpg">
+  <figcaption>Forward Collision Warning indicator on the dashboard</figcaption>
+</figure>
+<p>Our openpilot community also ported openpilot to a bunch of other cars, including a variety of Toyotas, Hondas, pre-autopilot Teslas and the Chevy Volt. This makes openpilot compatible with 5 out of the 10 most sold cars in the US in 2017. Currently, openpilot is a level 2 system and provides better lane keep assist and adaptive cruise control than the system that ships with the car. Also openpilot keeps improving with every update.</p>
+<blockquote>
+<p>This makes openpilot compatible with 5 out of the 10 most sold cars in the US in 2017.Each week, our fleet of openpilot users sends back hundreds of hours of video paired with sensor data from their car and EON. We use this data to train our neural networks, create accurate maps and reverse engineer more CAN bus signals. But this data can be used for much more than learning how to drive.
+Having access to all these miles of driving data enables us to quickly develop new algorithms. Using our infrastructure, we can simply run our algorithms on all historical data. We don’t need to deploy our software in ‘shadow mode’ and wait weeks for a result. This gives us very good estimates on how well our system behaves, how many warnings were generated and how many of those were false positives.</p>
+</blockquote>
+<figure>
+  <video style="margin: auto auto 1em; width: 100%; max-height: 512px;" loop="true" autoplay="autoplay" muted playsinline>
+    <source src="/img/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/image-02.mp4">
+  </video>
+  <figcaption style="font-size: 0.85em; font-family: InterRegular;"></figcaption>
+</figure>
+
+<h2 id="what-is-an-fcw">What is an FCW?<a class="header-link" href="#what-is-an-fcw" title="Permalink"><span class="sr-only">Permalink</span><i class="fas fa-link"></i></a></h2>
+<p>In short, you want to get a warning when you have to decelerate quickly in the near future. This can happen because the car in front of you starts braking suddenly, or when the driver is not paying attention and gets very close the other car. The FCW system will then sound loud beeps and show a sign on the dashboard. Warning the user early can greatly increase the time the user has to respond and avoid a collision. According to <a href="http://journals.sagepub.com/doi/pdf/10.1518/0018720024497844" target="_blank" rel="noopener noreferrer">[Lee et al., 2002]</a> an FCW system can reduce rear-end collision by up to 80.7%.</p>
+<blockquote>
+<p>An FCW system can reduce rear-end collision by up to 80.7%.</p>
+</blockquote>
+<p>When searching for events where an FCW should trigger, we look for a maneuver where the car brakes with deceleration of 3 m/s² for at least 1 second. With this level of braking you go from 65 mph to a full stop in about 10 seconds. On the other hand, every warning generated by the system which is not followed by at least 2 m/s² deceleration is considered a false positive.</p>
+<figure>
+  <video style="margin: auto auto 1em; width: 100%; max-height: 512px;" loop="true" autoplay="autoplay" muted playsinline>
+    <source src="/img/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/image-03.mp4">
+  </video>
+  <figcaption style="font-size: 0.85em; font-family: InterRegular;"></figcaption>
+</figure>
+
+<h2 id="building-fcw">Building FCW<a class="header-link" href="#building-fcw" title="Permalink"><span class="sr-only">Permalink</span><i class="fas fa-link"></i></a></h2>
+<p>During our search, we are interested in three types of events: an FCW followed by braking (true positive), FCW not followed by braking (false positive) and braking not preceded by an FCW (false negative).</p>
+<p>We’d like to minimize the false negatives, while still being careful not to generate too many false positives. After too many false positives the user will not trust the system anymore, or worse: turn the system off. We decided that a ratio of 1 false positive per 2 true positives is acceptable.</p>
+<p>To trigger an FCW at the right moment we need to predict if any hard braking is required in the near future. Luckily, for our Adaptive Cruise Control, we used model predictive control to build an advanced planner which calculates the desired speed trajectory for the next 10 seconds. This uses an optimization algorithm, based on radar and vision information of the lead car (e.g. relative position and speed) and speed and acceleration of your own car.</p>
+<figure>
+  <video style="margin: auto auto 1em; width: 100%; max-height: 512px;" loop="true" autoplay="autoplay" muted playsinline>
+    <source src="/img/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/image-04.mp4">
+  </video>
+  <figcaption style="font-size: 0.85em; font-family: InterRegular;"></figcaption>
+</figure>
+
+<p>This optimization algorithm tries to keep the car out of the ‘danger zone’ of the lead car, while minimizing passenger discomfort by acceleration and jerk. This ‘danger zone’ is defined as the distance in which the driver has less than 1.8 seconds to avoid a collision if the lead car would suddenly start braking very hard. According to <a href="http://www.design.caltech.edu/Research/Publications/06a.pdf" target="_blank" rel="noopener noreferrer">[Zhang, Antonsson &amp; Grote 2006]</a>,1.8 seconds should give most drivers enough time to react</p>
+<p>This optimization runs 20 times per second and generates a speed and acceleration trajectory. If this trajectory contains a deceleration that is significantly lower than our current deceleration, we know hard braking is required in the near future and it is time to warn the driver.</p>
+<blockquote>
+<p>This optimization runs 20 times per second and generates a speed and acceleration trajectory.</p>
+</blockquote>
+<p>However, just using this trajectory would generate a lot of false positives. There are a lot of situations where a human drivers enter the danger zone while this is still pretty safe. For example, this happens when the driver is about to change lanes. By running the algorithm on a lot of data we were able to come up with conditions to filter these false positives, while still keeping most of the useful warnings.</p>
+<figure>
+  <video style="margin: auto auto 1em; width: 100%; max-height: 512px;" loop="true" autoplay="autoplay" muted playsinline>
+    <source src="/img/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/example-of-a-false-positive.mp4">
+  </video>
+  <figcaption style="font-size: 0.85em; font-family: InterRegular;"><p>Example of a false positive</p></figcaption>
+</figure>
+
+<h2 id="results">Results<a class="header-link" href="#results" title="Permalink"><span class="sr-only">Permalink</span><i class="fas fa-link"></i></a></h2>
+<p>We ran our algorithm on a subset of our driving data since June 2017, about 6400 hours of driving. By changing parameters we found a tuning that resulted in 625 successful warnings and 246 false positives. There were 7531 false negatives, but most of those didn’t warrant an FCW (e.g. hard braking for a red light). This means our target of 1 false positive per 2 real warnings is reached and the system can be shipped.</p>
+<figure>
+  <img src="/img/bringing-forward-collision-warnings-to-our-open-source-self-driving-car/qualitative-plot-of-false-positives-vs-events-detected.png">
+  <figcaption>Qualitative plot of false positives vs. events detected when increasing sensitivity</figcaption>
+</figure>
+<h2 id="conclusion">Conclusion<a class="header-link" href="#conclusion" title="Permalink"><span class="sr-only">Permalink</span><i class="fas fa-link"></i></a></h2>
+<p>Of course, the development of the FCW system is not finished, because there are still situations where the system did not trigger a warning when it should have. By collecting more data and spending more time on this problem we can improve the performance over time.</p>
+<p>Additionally, we could train a neural network based on raw camera images and feed this as an extra input to the FCW system. Alternatively we could train a net to decide whether to trigger an FCW based on the available metrics, instead of manually selecting the features for which we trigger.</p>
+<p>However, data already shows the current system has the potential to improve the safety of our users. And unlike most of the systems built by car manufacturers, we have the ability to roll out over-the-air updates with system improvements.</p>
+<p><em>Want to work on interesting problems like this? Check out <a href="https://comma.ai/positions.html" target="_blank" rel="noopener noreferrer">our open positions</a>.</em> Also <em><a href="https://twitter.com/comma_ai" target="_blank" rel="noopener noreferrer">follow us on Twitter</a>.</em></p>
+
+      </section>
+      <footer class="page__meta">
+        <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2018-01-22T00:00:00-08:00">January 22, 2018</time></p>
+      </footer>
+      <section class="page__share">
+  <h4 class="page__share-title">Share on</h4>
+  <a href="https://x.com/intent/tweet?via=comma_ai&amp;text=Bringing&#43;Forward&#43;Collision&#43;Warnings&#43;to&#43;our&#43;open&#43;source&#43;self-driving&#43;car%20https%3A%2F%2Fblog.comma.ai%2Fbringing-forward-collision-warnings-to-our-open-source-self-driving-car%2F" class="btn btn--x" aria-label="Share on X" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on X" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-fw fa-x-twitter" aria-hidden="true"></i><span> X</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fblog.comma.ai%2Fbringing-forward-collision-warnings-to-our-open-source-self-driving-car%2F" class="btn btn--facebook" aria-label="Share on Facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span>
+  </a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fblog.comma.ai%2Fbringing-forward-collision-warnings-to-our-open-source-self-driving-car%2F" class="btn btn--linkedin" aria-label="Share on LinkedIn" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  <a href="https://bsky.app/intent/compose?text=Bringing&#43;Forward&#43;Collision&#43;Warnings&#43;to&#43;our&#43;open&#43;source&#43;self-driving&#43;car%20https%3A%2F%2Fblog.comma.ai%2Fbringing-forward-collision-warnings-to-our-open-source-self-driving-car%2F" class="btn btn--bluesky" aria-label="Share on Bluesky" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Bluesky" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-fw fa-bluesky" aria-hidden="true"></i><span> Bluesky</span>
+  </a>
+</section>
+
+      <nav class="pagination">
+  
+    <a href="/self-driving-car-awareness-week/" class="pagination--pager" title="Self Driving Car Awareness Week">Previous</a>
+  
+  
+    <a href="/openpilot-port-guide-for-toyota-models/" class="pagination--pager" title="openpilot port guide for Toyota models">Next</a>
+  
+</nav>
+    </div>
+    
+      <div class="page__comments">
+        <h4 class="page__comments-title">Leave a comment</h4>
+        <section id="giscus-comments"></section>
+      </div>
+    
+  </article>
+</div>
+
+    </div>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <div class="footer-subscribe" id="email-updates">
+  <div class="copy">
+    <strong>Get new posts by email</strong>
+    <span>An email whenever we publish a new post.</span>
+  </div>
+
+  <form>
+    <input
+      type="email"
+      name="EMAIL"
+      placeholder="Enter email"
+      autocomplete="email"
+      maxlength="256"
+      aria-label="Email address"
+      required
+    >
+    <button type="submit">subscribe</button>
+  </form>
+
+  <p class="message" role="status" hidden></p>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('email-updates');
+    if (!root) return;
+
+    var form = root.querySelector('form');
+    var input = form.querySelector('input');
+    var button = form.querySelector('button');
+    var message = root.querySelector('.message');
+
+    function say(text, isError) {
+      message.textContent = text;
+      message.hidden = false;
+      message.classList.toggle('is-error', !!isError);
+    }
+
+    
+    function cleanMailchimpMessage(raw) {
+      var element = document.createElement('div');
+      element.innerHTML = raw || '';
+      var text = element.textContent.replace(/^\s*\d+\s*-\s*/, '').trim();
+      return text || 'Please try again.';
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      var email = input.value.trim();
+      if (!email) return;
+
+      button.disabled = true;
+      button.textContent = 'signing up...';
+
+      var callbackName = 'mailchimpEmailUpdates_' + Math.random().toString(36).slice(2, 11);
+      var script = document.createElement('script');
+      var params = new URLSearchParams({
+        u: 'e127cf7151180db2b566d880b',
+        id: 'f150bd2a9c',
+        EMAIL: email,
+        SOURCE: window.location.pathname,
+        'group[54660][8]': '1',  
+        c: callbackName
+      });
+
+      function cleanUp() {
+        script.remove();
+        delete window[callbackName];
+        button.disabled = false;
+        button.textContent = 'subscribe';
+      }
+
+      window[callbackName] = function (response) {
+        var alreadySubscribed = /already subscribed/i.test(response.msg || '');
+        cleanUp();
+
+        if (response.result === 'success' || alreadySubscribed) {
+          form.hidden = true;
+          root.querySelector('.copy').hidden = true;
+          say("Thanks for signing up!", false);
+        } else {
+          say(cleanMailchimpMessage(response.msg), true);
+        }
+      };
+
+      script.onerror = function () {
+        cleanUp();
+        say('Could not connect. Please try again.', true);
+      };
+
+      script.src = 'https://comma.us12.list-manage.com/subscribe/post?' + params;
+      document.body.appendChild(script);
+    });
+  })();
+</script>
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    <li><a href="https://twitter.com/comma_ai" rel="nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    <li><a href="https://github.com/commaai" rel="nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    <li><a href="https://www.youtube.com/c/commaai" rel="nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i> YouTube</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">© 2026 comma.ai</div>
+
+      </footer>
+    </div>
+
+    <script>
+  'use strict';
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+    if (!commentContainer) {
+      return;
+    }
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'commaai\/.discussions');
+    script.setAttribute('data-repo-id', 'R_kgDOPEAU4w');
+    script.setAttribute('data-category', 'blog');
+    script.setAttribute('data-category-id', 'DIC_kwDOPEAU484CsOI-');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '1');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-theme', 'light');
+    script.setAttribute('data-lang',  'en');
+    script.setAttribute('data-loading', 'lazy');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('async', '');
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+    <script>
+      document.addEventListener("click", function (e) {
+        var link = e.target.closest(".header-link");
+        if (!link) return;
+        e.preventDefault();
+        var url = link.href;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url);
+        }
+      });
+    </script>
+  </body>
+</html>

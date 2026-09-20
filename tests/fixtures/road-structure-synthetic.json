@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "corpusId": "road-structure-synthetic-v1",
+  "modelId": "synthetic-contract-probe",
+  "clips": [{
+    "clipId": "synthetic-highway-two-frames",
+    "split": "test",
+    "width": 1280,
+    "height": 720,
+    "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rights": { "basis": "synthetic", "reference": "generated coordinates; no media" },
+    "scenarioTags": ["day", "highway", "median", "ego-corridor"],
+    "truthFrames": [
+      { "timeMs": 0, "lines": [
+        { "id": "left-0", "class": "lane-marking", "role": "ego-left", "points": [{"x":0.2,"y":1},{"x":0.44,"y":0.45}] },
+        { "id": "right-0", "class": "lane-marking", "role": "ego-right", "points": [{"x":0.8,"y":1},{"x":0.56,"y":0.45}] },
+        { "id": "median-0", "class": "median", "role": "unknown", "points": [{"x":0.04,"y":1},{"x":0.30,"y":0.45}] }
+      ], "areas": [{ "id": "road-0", "class": "drivable", "points": [{"x":0.2,"y":1},{"x":0.44,"y":0.45},{"x":0.56,"y":0.45},{"x":0.8,"y":1}] }] },
+      { "timeMs": 100, "lines": [
+        { "id": "left-1", "class": "lane-marking", "role": "ego-left", "points": [{"x":0.21,"y":1},{"x":0.45,"y":0.45}] },
+        { "id": "right-1", "class": "lane-marking", "role": "ego-right", "points": [{"x":0.79,"y":1},{"x":0.55,"y":0.45}] },
+        { "id": "median-1", "class": "median", "role": "unknown", "points": [{"x":0.05,"y":1},{"x":0.31,"y":0.45}] }
+      ], "areas": [{ "id": "road-1", "class": "drivable", "points": [{"x":0.2,"y":1},{"x":0.44,"y":0.45},{"x":0.56,"y":0.45},{"x":0.8,"y":1}] }] }
+    ],
+    "predictionFrames": [
+      { "timeMs": 0, "inferenceMs": 12, "evidenceAgeMs": 40, "lines": [
+        { "id": "p-left-0", "class": "lane-marking", "role": "ego-left", "points": [{"x":0.202,"y":1},{"x":0.442,"y":0.45}] },
+        { "id": "p-right-0", "class": "lane-marking", "role": "ego-right", "points": [{"x":0.798,"y":1},{"x":0.558,"y":0.45}] },
+        { "id": "p-median-0", "class": "median", "role": "unknown", "points": [{"x":0.042,"y":1},{"x":0.302,"y":0.45}] },
+        { "id": "p-fp-0", "class": "guardrail", "role": "unknown", "points": [{"x":0.9,"y":1},{"x":0.7,"y":0.5}] }
+      ], "areas": [{ "id": "p-road-0", "class": "drivable", "points": [{"x":0.2,"y":1},{"x":0.44,"y":0.45},{"x":0.56,"y":0.45},{"x":0.8,"y":1}] }] },
+      { "timeMs": 100, "inferenceMs": 18, "evidenceAgeMs": 300, "lines": [
+        { "id": "p-left-1", "class": "lane-marking", "role": "ego-left", "points": [{"x":0.214,"y":1},{"x":0.454,"y":0.45}] },
+        { "id": "p-median-1", "class": "median", "role": "unknown", "points": [{"x":0.052,"y":1},{"x":0.312,"y":0.45}] }
+      ], "areas": [{ "id": "p-road-1", "class": "drivable", "points": [{"x":0.2,"y":1},{"x":0.44,"y":0.45},{"x":0.56,"y":0.45},{"x":0.8,"y":1}] }] }
+    ]
+  }]
+}
+

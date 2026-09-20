@@ -12,6 +12,7 @@
       <div class="stage" id="stage" data-source="none"><video id="video" muted playsinline aria-label="Video hành trình"></video><canvas id="overlay" aria-label="Khung xe và nhãn khoảng cách"></canvas>
         <header class="topbar"><a href="./">RoboEye</a><h1>DriveSense</h1><span class="safety">PoC · Không dùng để phanh/lái.</span></header>
         <div class="shadow-chip" id="hud-mode" role="status">Chọn nguồn</div>
+        <div class="road-chip" id="road-chip" role="status" aria-live="polite" aria-label="Làn: chưa đủ dữ liệu" title="Làn: chưa đủ dữ liệu" data-lane="unknown" hidden><svg viewBox="0 0 32 32" aria-hidden="true"><path class="lane-left" d="M5 27 11 5"/><path class="lane-right" d="m21 5 6 22"/><rect x="13" y="15" width="6" height="10" rx="2"/><path class="lane-direction" d="m15 7-4 3 4 3m-4-3h10"/></svg></div>
         <div class="proximity-warning" id="hud-warning" role="alert" aria-atomic="true" hidden><span class="warning-icon" aria-hidden="true">⚠</span><span id="hud-warning-text"></span></div>
         <section class="job-notice" id="job-notice" aria-label="Trạng thái xử lý video" hidden>
           <div class="job-heading"><strong id="job-title" role="status"></strong><button id="job-action" type="button" hidden></button></div>
@@ -23,12 +24,15 @@
           <p>Khoanh xe. Ước lượng khoảng cách bằng mét.</p>
           <div class="empty-actions"><button class="empty-primary" id="open-video" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>Mở video</button><button class="empty-camera" id="open-camera" type="button">Camera</button></div>
           <button class="demo-link" id="demo" type="button">Xem mẫu dựng</button>
+          <button class="demo-link" id="test-road" type="button">Test làn trên video</button>
           <small>Video được xử lý trên thiết bị.</small>
         </div>
         <div class="video-dock" id="video-dock" role="group" aria-label="Điều khiển video">
           <label class="file-button dock-button dock-source" title="Mở video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg><input id="file" type="file" accept="video/*" aria-label="Mở video"/></label>
           <button class="dock-button" id="camera" type="button" aria-label="Mở camera" title="Mở camera"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="m16 10 5-3v10l-5-3"/></svg></button>
           <span class="dock-divider" aria-hidden="true"></span>
+          <button class="dock-button dock-feature dock-range" id="range-toggle" type="button" aria-label="Bật nhận diện và đo khoảng cách" title="Bật nhận diện và đo khoảng cách" aria-pressed="false" data-state="off"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7v10m18-10v10M7 15V9l2-3h6l2 3v6Z"/><path d="M7 10h10M9 15v2m6-2v2"/></svg><span>Khoảng cách</span></button>
+          <button class="dock-button dock-feature dock-road" id="road-toggle" type="button" aria-label="Bật thử nghiệm làn đường" title="Bật thử nghiệm làn đường" aria-pressed="false" data-state="off"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21 9 3m6 0 5 18M12 4v3m0 4v3m0 4v3"/></svg><span>Làn</span></button>
           <button class="dock-button" id="play" type="button" disabled aria-label="Phát video" title="Phát video" data-playing="false"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
           <div class="transport"><input id="seek" type="range" min="0" max="1" step="0.01" value="0" aria-label="Vị trí video" disabled/><output id="time" aria-label="Thời gian video">0:00</output></div>
           <button class="dock-button" id="enable-alerts" type="button" aria-label="Bật âm cảnh báo" title="Bật âm cảnh báo" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-6 5H3v4h2l6 5Z"/><path class="sound-on" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="sound-off" d="m16 9 5 6m0-6-5 6"/></svg></button>
@@ -40,6 +44,12 @@
       <div class="analysis-surface" id="analysis-surface" role="region" aria-label="Phân tích phiên">
       <header class="analysis-header"><h2>Phân tích phiên</h2><button id="close-analysis" type="button" aria-label="Đóng phân tích" title="Đóng phân tích"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header>
       <div class="analysis-scroll">
+      <section class="road-settings" aria-label="Thử nghiệm nhận diện làn">
+        <h2>Làn đường <small>Thử nghiệm local</small></h2>
+        <p id="road-detail">Bật Làn để thử trên video hoặc camera. Không cần chờ phân tích xe.</p>
+        <div class="road-actions"><label class="check"><input type="checkbox" id="road-debug"/> Hiện vạch để kiểm tra</label><label class="check"><input type="checkbox" id="road-surface"/> Kèm mặt đường/lề (kiểm tra)</label><label>Tốc độ xem <select id="road-speed" aria-label="Tốc độ xem video"><option value="1">1×</option><option value="0.5">½×</option><option value="0.25">¼× · soi vạch</option></select></label><button id="road-retry" type="button" hidden>Thử lại model làn</button><button id="road-report" type="button">Xuất chẩn đoán làn</button></div>
+        <p class="fineprint">Xanh: bám được cặp vạch ổn định, không xác nhận an toàn. Xám: chưa đủ dữ liệu. Vàng + mũi tên: dấu hiệu tiến gần một biên qua nhiều khung, chỉ là thử nghiệm theo tâm ảnh; chưa hiệu chuẩn camera/xe, không xác nhận đè vạch hoặc cảnh báo lệch làn thực địa. Bật Làn khi đang phân tích sẽ chuyển sang test làn; chọn Phân tích lại video để chạy xe/khoảng cách.</p>
+      </section>
       <div class="analysis-layout">
       <section class="analysis-data" aria-label="Dữ liệu phân tích">
       <div class="workflow" aria-label="Tiến độ phân tích"><strong id="display-mode">Chưa có nguồn</strong><span id="analysis-status" role="status">Mở video: AI tự phân tích trước, sau đó phát lại kết quả.</span><progress id="analysis-progress" value="0" max="1" aria-label="Tiến độ phân tích video"></progress><button id="analyse" disabled>Phân tích lại video</button></div>
@@ -57,7 +67,14 @@
       <div id="track-list" aria-label="Danh sách xe"></div>
     </section>
     <aside class="controls" aria-label="Nguồn và hiệu chuẩn">
-      <section><h2>Nhận diện</h2><p>5 mẫu/giây, detector GPU và depth xử lý gối đầu nhưng giữ đúng frame. Phân tích xong mới phát; chưa phải AI realtime.</p><button id="model">Bật nhận diện xe</button><label class="check"><input id="wasm" type="checkbox"/> Ép WASM cho cả detector và depth</label>
+      <section><h2>Nguồn local</h2><p>Chọn camera MacBook, điện thoại được hệ điều hành nhận như webcam, hoặc mở video từ máy. Không gửi hình ảnh lên máy chủ.</p>
+        <label>Camera<select id="camera-select"><option value="">Tự chọn camera phù hợp</option></select></label>
+        <div class="row"><button id="refresh-cameras" type="button">Làm mới danh sách</button><button id="open-selected-camera" type="button">Mở camera đã chọn</button></div>
+        <p id="camera-status">Cấp quyền camera để hiện tên đầy đủ của thiết bị.</p>
+      </section>
+      <section><h2>Nhận diện</h2><p>Camera live dùng detector và depth theo nhịp độc lập; video xử lý gối đầu rồi mới phát lại. Chọn mật độ thấp hơn để giảm số inference một cách minh bạch.</p><button id="model">Bật nhận diện xe</button><label class="check"><input id="wasm" type="checkbox"/> Ép WASM cho cả detector và depth</label>
+        <label>Chế độ phân tích video<select id="analysis-preset"><option value="quality">Chi tiết · 5 mẫu/giây</option><option value="balanced" selected>Cân bằng · 2,5 mẫu/giây</option><option value="fast">Nhanh · 1 mẫu/giây</option></select></label>
+        <p id="analysis-preset-status">Cân bằng giảm một nửa số inference so với Chi tiết; vẫn phân tích toàn timeline.</p>
         <label>Zoom/crop video (×)<input id="video-zoom" type="number" value="1" min="1" max="4" step="0.1"/></label>
         <p id="zoom-status">1×: mét AI vẫn chưa kiểm chứng. Xe sát biên hoặc phối cảnh mâu thuẫn sẽ không hiện số đo.</p>
       </section>

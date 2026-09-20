@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "artifactSha256": "be0ceeb002af577936e9b439b7194dc8df6c8e5bc84ecb9bbfcab68695c86d17",
+  "opset": 17,
+  "operators": {
+    "Add": 180,
+    "AveragePool": 2,
+    "Constant": 279,
+    "Conv": 137,
+    "MaxPool": 2,
+    "Relu": 128,
+    "Resize": 5,
+    "Softmax": 1
+  },
+  "inputs": [{ "name": "data", "dtype": "float32", "shape": [1, 3, 512, 896] }],
+  "outputs": [{ "name": "L0317_ReWeight", "dtype": "float32", "shape": [1, 4, 512, 896] }]
+}

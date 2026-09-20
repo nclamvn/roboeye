@@ -1,0 +1,19 @@
+---
+license: apache-2.0
+base_model:
+- yjh001/metricanything_student_pointmap
+pipeline_tag: depth-estimation
+tags:
+- monocular metric depth estimation
+---
+**MetricAnything Student PointMap** model is finetuned from MoGe-2 ViT-l.
+
+Paper: https://huggingface.co/papers/2601.22054
+
+Project Page: https://metric-anything.github.io/metric-anything-io/
+
+Demo: https://huggingface.co/spaces/yjh001/metricanything-student-pointmap
+
+Checkpoint: [yjh001/metricanything_student_pointmap](https://huggingface.co/yjh001/metricanything_student_pointmap)
+
+Code: https://github.com/metric-anything/metric-anything

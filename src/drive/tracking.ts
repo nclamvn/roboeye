@@ -50,7 +50,7 @@ export class RangeFilter {
 
 interface Track {
   id:number;box:DetBox;vx:number;vy:number;at:number;wall:number;hits:number;strongAt:number;strongHits:number;confirmed:boolean;
-  range:RangeEstimate;filter:RangeFilter;velocity:number|null;
+  range:RangeEstimate;rangeAt:number;filter:RangeFilter;velocity:number|null;
   logScale:number;logScaleRate:number;scaleUpdates:number;
 }
 export interface DriveTrack {
@@ -66,7 +66,7 @@ function boxLogScale(box:DetBox):number {
 export class VehicleTracker {
   private tracks:Track[]=[];private nextId=1;private lastTime=-Infinity;
   reset(){this.tracks=[];this.lastTime=-Infinity;}
-  observe(boxes:DetBox[],t:number,wall:number,profile:CameraProfile|null,width:number,height:number,learned:ReadonlyMap<DetBox,RangeEstimate>|null=null) {
+  observe(boxes:DetBox[],t:number,wall:number,profile:CameraProfile|null,width:number,height:number,learned:ReadonlyMap<DetBox,RangeEstimate>|null=null,preserveLearned=false) {
     if(!Number.isFinite(t+wall)||t<=this.lastTime)return;
     this.lastTime=t;
     this.tracks=this.tracks.filter(a=>t-a.at<=800);
@@ -105,20 +105,41 @@ export class VehicleTracker {
           a.logScale=nextScale;
         }else{a.logScale=boxLogScale(b);a.logScaleRate=0;a.scaleUpdates=0;}
         const stableLabel=a.box.label===b.label||b.score>a.box.score+.15?b.label:a.box.label;
-        a.box={...b,label:stableLabel};a.at=t;a.wall=wall;a.hits++;this.measure(a,profile,width,height,learned?.get(b));
+        a.box={...b,label:stableLabel};a.at=t;a.wall=wall;a.hits++;this.measure(a,profile,width,height,learned?.get(b),t,preserveLearned);
         used.add(j);matched.add(i);
       }
     }
     // An unmatched observation invalidates range immediately; prediction is overlay-only.
-    this.tracks.forEach((a,i)=>{if(!matched.has(i)){a.strongHits=0;a.range=unknownRange('Mất quan sát xe');a.velocity=null;a.logScaleRate=0;a.scaleUpdates=0;a.filter.clear();}});
+    this.tracks.forEach((a,i)=>{if(!matched.has(i)){a.strongHits=0;a.range=unknownRange('Mất quan sát xe');a.rangeAt=t;a.velocity=null;a.logScaleRate=0;a.scaleUpdates=0;a.filter.clear();}});
     candidates.forEach((b,j)=>{
       if(used.has(j)||b.score<VEHICLE_STRONG_SCORE||this.tracks.length>=32)return;
-      const a:Track={id:this.nextId++,box:{...b},vx:0,vy:0,at:t,wall,hits:1,strongAt:t,strongHits:1,confirmed:b.score>=VEHICLE_IMMEDIATE_SCORE,range:unknownRange('Track mới'),filter:new RangeFilter(),velocity:null,logScale:boxLogScale(b),logScaleRate:0,scaleUpdates:0};
-      this.measure(a,profile,width,height,learned?.get(b));this.tracks.push(a);
+      const a:Track={id:this.nextId++,box:{...b},vx:0,vy:0,at:t,wall,hits:1,strongAt:t,strongHits:1,confirmed:b.score>=VEHICLE_IMMEDIATE_SCORE,range:unknownRange('Track mới'),rangeAt:t,filter:new RangeFilter(),velocity:null,logScale:boxLogScale(b),logScaleRate:0,scaleUpdates:0};
+      this.measure(a,profile,width,height,learned?.get(b),t,preserveLearned);this.tracks.push(a);
     });
   }
-  private measure(a:Track,p:CameraProfile|null,w:number,h:number,learned?:RangeEstimate) {
-    if(!a.confirmed||a.box.score<VEHICLE_STRONG_SCORE){a.range=unknownRange('Bằng chứng xe yếu; chưa đo');a.velocity=null;a.filter.clear();return;}
+  /** Attach a same-frame learned range after the detector result was already
+   * rendered. This keeps boxes responsive while the slower depth worker runs.
+   * It never advances track time or applies a range to a newer observation. */
+  enrichLearnedRanges(boxes:DetBox[],ranges:ReadonlyArray<RangeEstimate|null>,t:number,width:number,height:number):number {
+    if(t>this.lastTime||this.lastTime-t>600||boxes.length!==ranges.length||![t,width,height].every(Number.isFinite)||width<1||height<1)return 0;
+    const measured=vehicleCandidates(boxes).flatMap(box=>{
+      const range=ranges[boxes.indexOf(box)];
+      return range?.kind==='learned_optical_axis_z_m'&&range.provenance==='learned-unverified'&&range.distanceM!==null?[{box,range}]:[];
+    });
+    const indexes=this.tracks.map((_,i)=>i).filter(i=>this.tracks[i].at>=t&&this.tracks[i].at-t<=600);
+    const costs=indexes.map(i=>measured.map(({box})=>{
+      const overlap=detectionIoU(this.tracks[i].box,box);return overlap>=.5?1-overlap:1e6;
+    }));
+    let applied=0;
+    for(const [ii,jj] of assign(costs,.5000001)){
+      const track=this.tracks[indexes[ii]];if(t<track.rangeAt)continue;
+      this.measure(track,null,width,height,measured[jj].range,t);applied++;
+    }
+    return applied;
+  }
+  private measure(a:Track,p:CameraProfile|null,w:number,h:number,learned?:RangeEstimate,measurementAt=a.at,preserveLearned=false) {
+    if(!a.confirmed||a.box.score<VEHICLE_STRONG_SCORE){a.range=unknownRange('Bằng chứng xe yếu; chưa đo');a.rangeAt=measurementAt;a.velocity=null;a.filter.clear();return;}
+    if(preserveLearned&&!p&&!learned&&a.range.provenance==='learned-unverified'&&measurementAt-a.rangeAt<=600)return;
     const geometric=estimateGroundRange(a.box,p,w,h);
     const previousKind=a.range.kind,previousSource=a.range.provenance;
     // A supplied camera profile is authoritative, including its abstentions.
@@ -126,10 +147,10 @@ export class VehicleTracker {
     // mixing ground-forward Z with optical-camera Z poisons the temporal filter.
     a.range=p?geometric:learned?structuredClone(learned):geometric;a.velocity=null;
     if(previousKind!==a.range.kind||previousSource!==a.range.provenance)a.filter.clear();
-    if(a.range.distanceM===null||a.range.sigmaM===null){a.filter.clear();return;}
-    const filtered=a.filter.update(a.range.distanceM,a.range.sigmaM,a.at);
-    if(!filtered){a.range=unknownRange('Bước nhảy phép đo; chờ đo lại');a.filter.clear();return;}
-    a.range={...a.range,distanceM:filtered.z,interval:[Math.max(0,filtered.z-2*a.range.sigmaM),filtered.z+2*a.range.sigmaM]};a.velocity=filtered.velocity;
+    if(a.range.distanceM===null||a.range.sigmaM===null){a.rangeAt=measurementAt;a.filter.clear();return;}
+    const filtered=a.filter.update(a.range.distanceM,a.range.sigmaM,measurementAt);
+    if(!filtered){a.range=unknownRange('Bước nhảy phép đo; chờ đo lại');a.rangeAt=measurementAt;a.filter.clear();return;}
+    a.range={...a.range,distanceM:filtered.z,interval:[Math.max(0,filtered.z-2*a.range.sigmaM),filtered.z+2*a.range.sigmaM]};a.rangeAt=measurementAt;a.velocity=filtered.velocity;
   }
   private predict(a:Track,t:number):DetBox {
     const dt=Math.max(0,Math.min(180,t-a.at)),dx=Math.max(-.05,Math.min(.05,a.vx*dt)),dy=Math.max(-.05,Math.min(.05,a.vy*dt));
@@ -141,7 +162,7 @@ export class VehicleTracker {
       // Association can preserve identity through occlusion, not a positive label
       // indefinitely. Old strong evidence cannot be refreshed by weak detections.
       if(age>1000||!a.confirmed||t-a.strongAt>VEHICLE_WEAK_GRACE_MS)return [];
-      const range=age>400?unknownRange('Dữ liệu cũ'):a.range;
+      const rangeAge=Math.max(age,t-a.rangeAt),range=rangeAge>400?unknownRange('Dữ liệu khoảng cách cũ',a.range.kind):a.range;
       const d=range.distanceM;
       // Experimental proximity ONLY. No lane, TTC or safe-distance claim.
       const status=d===null?'unknown':d<10?'near':d<20?'caution':'tracked';

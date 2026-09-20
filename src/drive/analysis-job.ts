@@ -16,9 +16,9 @@ export class FileAnalysisJob {
   reset(){this.phase='idle';this.total=0;this.completed=0;this.message='';}
   open(now:number){this.reset();this.phase='reading';this.openedAt=now;}
   metadataExpired(now:number){return this.phase==='reading'&&now-this.openedAt>15000;}
-  prepare(durationMs:number){
+  prepare(durationMs:number,stepMs?:number){
     // This throws BEFORE a caller is allowed to initialise inference workers.
-    const times=sampleTimes(durationMs);
+    const times=sampleTimes(durationMs,stepMs);
     this.total=times.length;this.completed=0;this.phase='loading';this.message='';
     return times;
   }

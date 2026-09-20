@@ -1,0 +1,302 @@
+[
+  {
+    "id": "da2",
+    "url": "https://raw.githubusercontent.com/DepthAnything/Depth-Anything-V2/main/metric_depth/README.md",
+    "source": "DepthAnything",
+    "snapshot": "da2.txt",
+    "bytes": 4621,
+    "sha256": "659b050b538d5832899c093b83b5fb48e50c3431cf84f1f05bbdc8152b81c9d2",
+    "fetched_at": "2026-09-14T01:58:57.767Z"
+  },
+  {
+    "id": "da2card",
+    "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-VKITTI-Small/raw/main/README.md",
+    "source": "DepthAnything",
+    "snapshot": "da2card.txt",
+    "bytes": 4266,
+    "sha256": "b1cbcdb1d81290c5a7c7bd78adc0c3759c4648f1234fe63f8b3bede4b8d7e832",
+    "fetched_at": "2026-09-14T01:58:57.839Z"
+  },
+  {
+    "id": "moge",
+    "url": "https://raw.githubusercontent.com/microsoft/MoGe/main/README.md",
+    "source": "Microsoft-MoGe",
+    "snapshot": "moge.txt",
+    "bytes": 15822,
+    "sha256": "b940dbb7c39bdc96cdd9a707b0ec7c19733c8ef92681b734ac4d9393adad5c21",
+    "fetched_at": "2026-09-14T01:58:58.072Z"
+  },
+  {
+    "id": "mogeonnx",
+    "url": "https://raw.githubusercontent.com/microsoft/MoGe/main/docs/onnx.md",
+    "source": "Microsoft-MoGe",
+    "snapshot": "mogeonnx.txt",
+    "bytes": 3077,
+    "sha256": "e670ef794ed1d703dfe464894252f3fb1fa0f07bbeef811da60ad11f4a56f39b",
+    "fetched_at": "2026-09-14T01:58:58.278Z"
+  },
+  {
+    "id": "vda",
+    "url": "https://raw.githubusercontent.com/DepthAnything/Video-Depth-Anything/main/README.md",
+    "source": "DepthAnything",
+    "snapshot": "vda.txt",
+    "bytes": 9452,
+    "sha256": "cb786de4a6ef8f344cd8212dd9e51a6c08923fa5ccafc91dd6c96ee4f4af4d88",
+    "fetched_at": "2026-09-14T01:58:57.910Z"
+  },
+  {
+    "id": "vdacard",
+    "url": "https://huggingface.co/depth-anything/Metric-Video-Depth-Anything-Small/raw/main/README.md",
+    "source": "DepthAnything",
+    "snapshot": "vdacard.txt",
+    "bytes": 31,
+    "sha256": "4bcf87ecfbbb8e07a01b21415a970c8b53a5283bf6872b657040d3f45c9241f7",
+    "fetched_at": "2026-09-14T01:58:57.766Z"
+  },
+  {
+    "id": "da3",
+    "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/main/README.md",
+    "source": "ByteDance-DA3",
+    "snapshot": "da3.txt",
+    "bytes": 18759,
+    "sha256": "91679cf6df290b6af439c85f29a2440ce10353a1063ae4f599e9c734ec3096a8",
+    "fetched_at": "2026-09-14T01:58:57.866Z"
+  },
+  {
+    "id": "da3stream",
+    "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/main/da3_streaming/README.md",
+    "source": "ByteDance-DA3",
+    "snapshot": "da3stream.txt",
+    "bytes": 8024,
+    "sha256": "ace54bed87447348082432e84889acb79b78f1fdb020aef277e87d96435f325a",
+    "fetched_at": "2026-09-14T01:58:57.864Z"
+  },
+  {
+    "id": "unidepth",
+    "url": "https://raw.githubusercontent.com/lpiccinelli-eth/UniDepth/main/README.md",
+    "source": "ETH-UniDepth",
+    "snapshot": "unidepth.txt",
+    "bytes": 12096,
+    "sha256": "068100d194668f599e01fe6d3e91fdcf0476d8ea23e15582bb82c8b5405a0af3",
+    "fetched_at": "2026-09-14T01:58:57.936Z"
+  },
+  {
+    "id": "metric3d",
+    "url": "https://raw.githubusercontent.com/YvanYin/Metric3D/main/README.md",
+    "source": "Metric3D-authors",
+    "snapshot": "metric3d.txt",
+    "bytes": 24738,
+    "sha256": "e2ff64798e16a1c9236f9e4dd31a8e8087c01ad9d39ba607d57e416493cf0618",
+    "fetched_at": "2026-09-14T01:58:58.208Z"
+  },
+  {
+    "id": "gvdepth",
+    "url": "https://unizgfer-lamor.github.io/gvdepth/",
+    "source": "Zagreb-GVDepth",
+    "snapshot": "gvdepth.html",
+    "bytes": 15946,
+    "sha256": "5b2391c42b25f60c0979d9fbe2371bf7cfffe033b888319fd6fc1c840dc979b5",
+    "fetched_at": "2026-09-14T01:58:57.961Z"
+  },
+  {
+    "id": "gvrepo",
+    "url": "https://api.github.com/repos/unizgfer-lamor/gvdepth/contents",
+    "source": "Zagreb-GVDepth",
+    "snapshot": "gvrepo.txt",
+    "bytes": 2971,
+    "sha256": "ef883e0fbe528aa619cca17ed422f62d036281aeb95404e949593d2d4b134880",
+    "fetched_at": "2026-09-14T01:58:57.960Z"
+  },
+  {
+    "id": "fumet",
+    "url": "https://raw.githubusercontent.com/kyotovision-public/fumet/main/README.md",
+    "source": "Kyoto-FUMET",
+    "snapshot": "fumet.txt",
+    "bytes": 12153,
+    "sha256": "af45e2a39aa8fab9f88046d89d2cd6f9a1ca8fcf0b63154c454a1c7630b317e8",
+    "fetched_at": "2026-09-14T01:58:58.365Z"
+  },
+  {
+    "id": "geocalib",
+    "url": "https://raw.githubusercontent.com/cvg/GeoCalib/main/README.md",
+    "source": "ETH-GeoCalib",
+    "snapshot": "geocalib.txt",
+    "bytes": 23790,
+    "sha256": "9568126845a274760210f7a41a3915ea42aab48b6a938be07f92e673a6a5ccfb",
+    "fetched_at": "2026-09-14T01:58:57.840Z"
+  },
+  {
+    "id": "flash",
+    "url": "https://raw.githubusercontent.com/Eyeline-Labs/FlashDepth/main/README.md",
+    "source": "Eyeline-FlashDepth",
+    "snapshot": "flash.txt",
+    "bytes": 5659,
+    "sha256": "1967bb8b041e088fec35b30077ecc8f00ac13865c38611926bfb7a122ce55b78",
+    "fetched_at": "2026-09-14T01:58:57.865Z"
+  },
+  {
+    "id": "metricanything",
+    "url": "https://raw.githubusercontent.com/metric-anything/metric-anything/main/README.md",
+    "source": "MetricAnything-authors",
+    "snapshot": "metricanything.txt",
+    "bytes": 7298,
+    "sha256": "971ddfca6fbeabca814918c84dea804bc948689b162be20c8dd20c54418c35b9",
+    "fetched_at": "2026-09-14T01:58:58.042Z"
+  },
+  {
+    "id": "macard",
+    "url": "https://huggingface.co/yjh001/metricanything_student_pointmap/raw/main/README.md",
+    "source": "MetricAnything-authors",
+    "snapshot": "macard.txt",
+    "bytes": 596,
+    "sha256": "b3704ce94a761d1def3c508043b87cc5288ad4c1824481f23b03620da3ad2e53",
+    "fetched_at": "2026-09-14T01:58:57.827Z"
+  },
+  {
+    "id": "ort",
+    "url": "https://onnxruntime.ai/docs/tutorials/web/ep-webgpu.html",
+    "source": "Microsoft-ORT",
+    "snapshot": "ort.txt",
+    "bytes": 57643,
+    "sha256": "b42356f351dda2182b929a02d0b47120c46c9b1887b9ea46b9869377ad18fa18",
+    "fetched_at": "2026-09-14T01:58:59.018Z"
+  },
+  {
+    "id": "ortperf",
+    "url": "https://onnxruntime.ai/docs/tutorials/web/performance-diagnosis.html",
+    "source": "Microsoft-ORT",
+    "snapshot": "ortperf.txt",
+    "bytes": 56063,
+    "sha256": "0f2a989be0e4e5dd5f9b056b2ab6d2350d9100bc9b88b5d546f41314e270a086",
+    "fetched_at": "2026-09-14T01:58:59.037Z"
+  },
+  {
+    "id": "gard",
+    "url": "https://raw.githubusercontent.com/SonicAutoDrive/GARD/main/README.md",
+    "source": "GARD-authors",
+    "snapshot": "gard.txt",
+    "bytes": 5542,
+    "sha256": "f3c526bf7ad6ee7f69a08a83711485a092789f1952932cb789fe554e47170edf",
+    "fetched_at": "2026-09-14T01:58:59.070Z"
+  },
+  {
+    "id": "depthpro",
+    "url": "https://raw.githubusercontent.com/apple/ml-depth-pro/main/README.md",
+    "source": "Apple-DepthPro",
+    "snapshot": "depthpro.txt",
+    "bytes": 3776,
+    "sha256": "5a10be5d4c040e382a82ffc356ce06f1f73a8f7ff4250e53efea98680b4ea1e0",
+    "fetched_at": "2026-09-14T01:58:58.986Z"
+  },
+  {
+    "id": "yolodepth",
+    "url": "https://docs.ultralytics.com/tasks/depth/",
+    "source": "Ultralytics",
+    "snapshot": "yolodepth.txt",
+    "bytes": 501474,
+    "sha256": "a055ce3ba8f2a04e300d812a0de9504e64ca2709cf270a70b5d1b2937985a09a",
+    "fetched_at": "2026-09-14T01:58:59.679Z"
+  },
+  {
+    "id": "kittiprotocol",
+    "url": "https://docs.ultralytics.com/datasets/depth/kitti/",
+    "source": "Ultralytics",
+    "snapshot": "kittiprotocol.txt",
+    "bytes": 364858,
+    "sha256": "84e3e1586a8cbcc8189ee9c083e1c67691c178c70d4890bc06296a748d8bffa1",
+    "fetched_at": "2026-09-14T01:58:59.795Z"
+  },
+  {
+    "id": "metric3dhub",
+    "url": "https://raw.githubusercontent.com/YvanYin/Metric3D/main/hubconf.py",
+    "source": "Metric3D-authors",
+    "snapshot": "metric3dhub.txt",
+    "bytes": 8535,
+    "sha256": "b29ffc0530109bd55ce4067afd5dffd87fb2567416afb145e2cfdd0a1a0c8119",
+    "fetched_at": "2026-09-14T02:00:56.242Z"
+  },
+  {
+    "id": "metric3dcard",
+    "url": "https://huggingface.co/onnx-community/metric3d-vit-small/raw/main/README.md",
+    "source": "ONNX-community",
+    "snapshot": "metric3dcard.txt",
+    "bytes": 85,
+    "sha256": "d51642260354665c529a8e1633e40ad3e628a5f253398a930bcc6371fa69c68b",
+    "fetched_at": "2026-09-14T02:00:56.779Z"
+  },
+  {
+    "id": "flashpaper",
+    "url": "https://arxiv.org/html/2504.07093v2",
+    "source": "Eyeline-FlashDepth",
+    "snapshot": "flashpaper.txt",
+    "bytes": 257822,
+    "sha256": "49cbd9af9bdd242013893c92e04c9a18fcf75a426e4522e22d197235cdeed81a",
+    "fetched_at": "2026-09-14T02:00:57.202Z"
+  },
+  {
+    "id": "gvpaper",
+    "url": "https://arxiv.org/html/2412.06080v2",
+    "source": "Zagreb-GVDepth",
+    "snapshot": "gvpaper.txt",
+    "bytes": 459274,
+    "sha256": "980482fdeb915226a15ab0715ef26c7ae653ab3520c701ed089a8ebd6bba7639",
+    "fetched_at": "2026-09-14T02:00:57.572Z"
+  },
+  {
+    "id": "m3license",
+    "url": "https://raw.githubusercontent.com/YvanYin/Metric3D/main/LICENSE",
+    "source": "Metric3D-authors",
+    "snapshot": "m3license.txt",
+    "bytes": 1306,
+    "sha256": "cb2dba18d598b6ad0b34f0f8b0ad01f9d495e657cae9bf0544786190cb26f9f9",
+    "fetched_at": "2026-09-14T02:00:57.879Z"
+  },
+  {
+    "id": "flashlicense",
+    "url": "https://raw.githubusercontent.com/Eyeline-Labs/FlashDepth/main/LICENSE",
+    "source": "Eyeline-FlashDepth",
+    "snapshot": "flashlicense.txt",
+    "bytes": 11356,
+    "sha256": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+    "fetched_at": "2026-09-14T02:00:58.518Z"
+  },
+  {
+    "id": "rtdetrcard",
+    "url": "https://huggingface.co/onnx-community/rtdetr_v2_r18vd-ONNX/raw/main/README.md",
+    "source": "ONNX-community",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "id": "rtdetrfiles",
+    "url": "https://huggingface.co/api/models/onnx-community/rtdetr_v2_r18vd-ONNX/tree/main/onnx?recursive=false&expand=false",
+    "source": "ONNX-community",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "id": "rtdetrcard",
+    "url": "https://huggingface.co/onnx-community/rtdetr_v2_r18vd-ONNX/raw/main/README.md",
+    "source": "ONNX-community",
+    "snapshot": "rtdetrcard.txt",
+    "bytes": 818,
+    "sha256": "76b3f440f9b8d4027e72d9ca99446fac927e3e7d0e15aefd450f7047219fe3d7",
+    "fetched_at": "2026-09-14T02:11:56.232Z"
+  },
+  {
+    "id": "rtdetrfiles",
+    "url": "https://huggingface.co/api/models/onnx-community/rtdetr_v2_r18vd-ONNX/tree/main/onnx?recursive=false&expand=false",
+    "source": "ONNX-community",
+    "snapshot": "rtdetrfiles.txt",
+    "bytes": 2425,
+    "sha256": "1b29e822e7d836c6466c860c53a3c78b2c607251ae19461ff92463f808d36b54",
+    "fetched_at": "2026-09-14T02:11:56.598Z"
+  },
+  {
+    "id": "monoground",
+    "url": "https://openaccess.thecvf.com/content/CVPR2022/html/Qin_MonoGround_Detecting_Monocular_3D_Objects_From_the_Ground_CVPR_2022_paper.html",
+    "source": "CVF-MonoGround",
+    "snapshot": "monoground.txt",
+    "bytes": 5808,
+    "sha256": "47f277de9ea0271ff3193d509c59b686c8122bf6c46d2ce638950a0ac9c69b9c",
+    "fetched_at": "2026-09-17T03:07:14.212Z"
+  }
+]

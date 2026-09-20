@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+
+  <meta name="description" content="GVDepth: Zero-Shot Monocular Depth Estimation for Ground Vehicles based on Probabilistic Cue Fusion.">
+  <meta property="og:title" content="GVDepth: Zero-Shot Monocular Depth Estimation"/>
+  <meta property="og:description" content="A novel method achieving accurate zero-shot monocular depth estimation for ground vehicles with probabilistic fusion."/>
+  <meta property="og:url" content="URL_OF_THE_PROJECT_PAGE"/>
+  <meta property="og:image" content="static/images/gvdepth_banner.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="twitter:title" content="GVDepth: Zero-Shot Monocular Depth Estimation">
+  <meta name="twitter:description" content="Probabilistic fusion for robust monocular depth estimation across datasets and camera setups.">
+  <meta name="keywords" content="Monocular Depth Estimation, Autonomous Vehicles, Zero-Shot Learning, Robotics">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>GVDepth Project Page</title>
+  <link rel="icon" type="image/x-icon" href="static/images/icon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title"><strong>GVDepth:</strong><br>
+              Zero-Shot Monocular Depth Estimation for Ground Vehicles based on Probabilistic Cue Fusion</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://koledickarlo.github.io/" target="_blank">Karlo Koledić</a>,
+                </span>
+                <span class="author-block">
+                    Luka Petrović,
+                </span>
+                <span class="author-block">
+                    Ivan Marković,
+                </span>
+                <span class="author-block">
+                    Ivan Petrović
+                </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">University of Zagreb, Faculty of Electrical Engineering and Computing</span>
+                    <span class="author-block">Laboratory for Autonomous Systems and Mobile Robotics</span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2412.06080" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                                  <!-- ArXiv abstract Link -->
+                  <span class="link-block">
+                      <a href="https://arxiv.org/abs/2412.06080" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="#" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered"">
+      <div class="column is-one-half-desktop has-text-centered">
+          <img src="static/images/comparison_kitti.png" alt="Comparison KITTI">
+      </div>
+      <div class="column is-one-half-desktop has-text-centered">
+          <img src="static/images/comparison_ddad.png" alt="Comparison DDAD">
+      </div>
+  </div>
+  <div class="content has-text-justified">
+  <br>
+  <p><strong>Zero-shot evaluation on KITTI and DDAD:</strong> GVDepth demonstrates competitive zero-shot accuracy on autonomous driving datasets, matching state-of-the-art zero-shot Monocular Depth Estimation (MDE) methods. 
+    Remarkably, this is achieved while being trained on a <strong>single dataset</strong> collected with a <strong>single camera setup</strong>, even though its data distribution significantly differs from the KITTI and DDAD datasets.
+    <em>Note: UniDepth_RP and Metric3D_RP are not entirely true zero-shot methods, as they require resizing and padding to align with the training resolution</em>.
+  </p>
+  </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Generalizing metric monocular depth estimation presents a significant challenge due to its ill-posed nature, while the entanglement between camera parameters and depth amplifies issues further, hindering multi-dataset training and zero-shot accuracy.
+            This challenge is particularly evident in autonomous vehicles and mobile robotics, where data is collected with fixed camera setups, limiting the geometric diversity.
+            Yet, this context also presents an opportunity: the fixed relationship between the camera and the ground plane imposes additional perspective geometry constraints, enabling depth regression via vertical image positions of objects.
+            However, this cue is highly susceptible to overfitting, thus we propose a novel canonical representation that maintains consistency across varied camera setups, effectively disentangling depth from specific parameters and enhancing generalization across datasets.
+            We also propose a novel architecture that adaptively and probabilistically fuses depths estimated via object size and vertical image position cues.
+            A comprehensive evaluation demonstrates the effectiveness of the proposed approach on five autonomous driving datasets, achieving accurate metric depth estimation for varying resolutions, aspect ratios and camera setups.
+            Notably, we achieve comparable accuracy to existing zero-shot methods, despite training on a single dataset with a single-camera setup.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<section class="section" style="padding-top: 15px; padding-bottom: 5px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr style="margin-top: 10px">
+        <h2 class="title is-3">Methodology</h2>
+        <section class="hero is-small">
+          <div class="container hero-body">
+            <div class="columns is-centered">
+              <!-- Image 1 with Bottom Alignment -->
+              <div class="column is-one-half-desktop" style="display: flex; flex-direction: column; justify-content: flex-end; align-items: center;">
+                <img src="static/images/car.png" alt="Car Image" style="width: 80%; height: auto;">
+              </div>
+              <!-- Image 2 with Bottom Alignment -->
+              <div class="column is-one-half-desktop" style="display: flex; flex-direction: column; justify-content: flex-end; align-items: center;">
+                <img src="static/images/intro.png" alt="Intro Image" style="max-width: 100%; height: auto;">
+              </div>
+            </div>
+            <!-- Descriptions in New Row Below the Images -->
+            <div class="columns is-centered">
+              <!-- Description for Image 1 -->
+              <div class="column is-one-half-desktop has-text-centered">
+                <p><strong>Depth cues.</strong> Depth can be calculated both as a function of object's imaging size and vertical image position.</p>
+              </div>
+              <!-- Description for Image 2 -->
+              <div class="column is-one-half-desktop has-text-centered">
+                <p><strong>Vertical Canonical Representation.</strong> We introduce a novel canonical representation, ensuring consistency of vertical image position cue for varying perspective geometries, facilitating learning and generalization.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top: 10px; padding-bottom: 5px;">
+  <div class="container is-max-desktop">
+<div class="columns is-centered has-text-centered">
+  <div class="column is-full_width">
+    <hr style="margin-top: 10px">
+    <h2 class="title is-3">Model architecture</h2>
+    <img src="static/images/model.png" class="center"; style="width: 80%; height: auto;"/>
+    <div class="content has-text-justified">
+      <br>  
+      <p>
+        
+Our model predicts two canonical depth representations, each paired with an uncertainty estimate. These are transformed into depth maps via the
+<em>Focal Canonical Transform</em> and <em>Vertical Canonical Transform</em>, which effectively <strong>disentangle camera parameters from depth</strong>, facilitating learning and generalization across arbitrary camera setups.
+By leveraging carefully designed transforms and targeted data augmentation, the approach encourages two depth maps to leverage distinct cues: one emphasizing <strong>object size</strong> and the other focusing on object's <strong>vertical image position</strong>.
+The final depth map is then computed through probabilistic fusion.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section" style="padding-top: 10px; padding-bottom: 5px;">
+  <div class="container is-max-desktop">
+<div class="columns is-centered has-text-centered">
+  <div class="column is-full_width">
+    <hr style="margin-top: 10px">
+    <h2 class="title is-3">Results</h2>
+    <br>
+    <h3 align="left" class="title is-4">Qualitative ablation</h3>
+    <br>
+    <img src="static/images/ablation.png" class="center" style="width: 80%; height: auto;"/>
+    <br>
+    <br>
+    <h3 align="left" class="title is-4">Highlights</h3>
+    <div class="content has-text-justified">
+      <br>  
+      <p>We run extensive ablation studies on 5 autonomous driving datasets, 
+        demonstrating the improved generalization properties of proposed <em>Vertical Canonical Representation</em> 
+        and probabilistic fusion guided by estimated uncertanties.
+      </p>
+      <ul>
+        <li>The model with <em>Vertical Canonical Representation</em> exhibits better zero-shot accuracy than model leveraging 
+          object size cue on <strong>18 out of 25 train/test dataset combinations</strong></li>
+        <li>The model with fusion of both cues outperforms the model with object size cue on <strong>24 out of 25 train/test dataset combinations</strong></li>
+      </ul>
+  </div>
+  <br>
+    <h3 align="left" class="title is-4">Why resolution adaptability matters</h3>
+    <br>
+    <img src="static/images/resolution.png" style="width: 70%; height: auto;" class="center"/>
+    <div class="content has-text-justified">
+      <br>  
+      <p>Metric3D and UniDepth are not fully zero-shot, as they overfit to the aspect ratio and typically high image resolution used during training. 
+        This necessitates image resizing and padding during evaluation, resulting in processing of <em>blank</em> pixels without adding any meaningful detail to the image.
+      </p>
+      <p>
+        In contrast, GVDepth is <strong>fully resolution agnostic</strong>, adapting seamlessly to the native resolution of the input image.
+        This feature is especially advantageous for real-time systems, where dynamically adjusting image resolution is one of 
+        the simplest and most effective ways to control computational complexity.
+      </p>
+    </div>
+</div>
+</div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{koledic2024gvdepth,
+      title={GVDepth: Zero-Shot Monocular Depth Estimation for Ground Vehicles based on Probabilistic Cue Fusion}, 
+      author={Karlo Koledic and Luka Petrovic and Ivan Markovic and Ivan Petrovic},
+      year={2024},
+      eprint={2412.06080},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2412.06080}, 
+}</code></pre>
+  </div>
+</section>
+
+<section class="section" id="acknowledgment">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr style="margin-top: 10px">
+        <h2 class="title is-3 has-text-left">Acknowledgment</h2>
+        <div class="content has-text-justified">
+          <p>
+            This research has been funded by the H2020 project AIFORS under Grant Agreement No 952275.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>

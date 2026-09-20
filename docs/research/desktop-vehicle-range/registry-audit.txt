@@ -1,0 +1,241 @@
+════════════════════════════════════════════════════════════════
+REFINERY · domain=desktop-vehicle-range · 20 ứng viên/phương pháp/runtime được khảo sát có chủ đích
+════════════════════════════════════════════════════════════════
+
+▸ DA2 Metric Small  (—)
+    method          : Metric depth ảnh đơn ngoài trời, học từ Virtual KITTI [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : Apache-2.0 theo model card VKITTI Small [✓A]
+    limitation      : Cấu hình outdoor có max_depth 80; không phải bảo đảm chính xác tới 80 m [✓A]
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ DA3 Chunk Streaming  (—)
+    method          : Pipeline chia cụm frame, không đồng nhất với cập nhật causal một frame độ trễ thấp [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ DA3 Metric Large  (—)
+    method          : —
+    inputs          : —
+    contract        : Đổi output sang mét bằng focal*output/300, focal theo pixel đúng resize [✓A]
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ Depth Pro  (—)
+    method          : Mô hình metric depth ảnh đơn [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ FUMET  (—)
+    method          : Học metric scale cho monocular road-scene từ dashcam [✓A]
+    inputs          : Quy trình huấn luyện công bố còn cần mask xe và chiều cao ước lượng [✓A]
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ FlashDepth  (—)
+    method          : Streaming video depth [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : Apache-2.0 theo LICENSE của code [✓A]
+    weights_license : —
+    limitation      : Benchmark paper có alignment scale và shift theo cả chuỗi; không chứng minh mét thô [✓A]
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ GARD  (—)
+    method          : Hình học monocular từ góc camera ven đường [✓A]
+    inputs          : Cần intrinsics hiệu chuẩn và chiều cao lắp camera [✓A]
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ GVDepth  (—)
+    method          : Kết hợp xác suất hai cue: kích thước và vị trí dọc ảnh [✓A]
+    inputs          : —
+    contract        : Vị trí tiếp xúc mặt đường theo chiều dọc ảnh là cue phối cảnh độc lập cần đối chiếu với kích thước [✓A]
+    code_license    : —
+    weights_license : —
+    limitation      : Bước calibration trong paper dùng depth đối chứng, không tự hiệu chuẩn metric từ video RGB trống [✓A]
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ GeoCalib  (—)
+    method          : Ước lượng intrinsics và gravity từ ảnh đơn [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : Principal point giả định giữa ảnh, không tối ưu [✓A]
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ Metric3D Small ONNX  (—)
+    method          : —
+    inputs          : —
+    contract        : Nhánh tham chiếu khôi phục thang camera từ focal đã resize /1000 [✓A]
+    code_license    : BSD-2-Clause của upstream [✓A]
+    weights_license : Metadata bản chuyển ONNX ghi CC0-1.0; cần kiểm nguồn checkpoint, không thay thế nghĩa vụ upstream [✓A]
+    limitation      : —
+    availability    : Upstream liên kết graph ViT-Small với RAFT 4 vòng [✓A]
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ MetricAnything DepthMap  (—)
+    method          : —
+    inputs          : Ví dụ infer yêu cầu focal pixel; giá trị image.width chỉ là mặc định [✓A]
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ MetricAnything PointMap  (—)
+    method          : Student point map metric [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : Apache-2.0 theo model card student pointmap [✓A]
+    limitation      : —
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ MoGe-2 Small  (—)
+    method          : Hình học ảnh đơn, point/depth/normal và camera FoV [✓A]
+    inputs          : —
+    contract        : Graph ONNX chỉ forward; cần phục hồi hình học bên ngoài [✓A]
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ MoGe-3  (—)
+    method          : —
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : Nhánh upstream không hỗ trợ macOS do FlexGEMM/Triton; không phải thay thế browser drop-in [✓A]
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ MonoGround  (—)
+    method          : Mặt đường bổ sung điều kiện hình học và một nguồn depth cho monocular 3D [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : —
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ ORT WebGPU  (—)
+    method          : —
+    inputs          : —
+    contract        : Giữ tensor GPU bằng IO binding; chuyển CPU/GPU có chi phí [✓A]
+    code_license    : —
+    weights_license : —
+    limitation      : Graph capture cần kiểm điều kiện shape và kernel; không đảm bảo chạy cho mọi model [✓A]
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ RT-DETRv2 R18 ONNX  (—)
+    method          : —
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : Model card ghi Apache-2.0 [✓A]
+    limitation      : —
+    availability    : Detector hiện tại có các graph FP32, FP16 và quantized [✓A]
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ UniDepthV2  (—)
+    method          : —
+    inputs          : —
+    contract        : —
+    code_license    : CC BY-NC 4.0; không lựa chọn mặc định cho thương mại [✓A]
+    weights_license : —
+    limitation      : —
+    availability    : Upstream có hỗ trợ ONNX [✓A]
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ VDA Metric Small  (—)
+    method          : Video metric depth, có nhánh streaming [✓A]
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : Apache-2.0 theo model card Metric Small chính chủ [✓A]
+    limitation      : Chế độ streaming được công bố là thử nghiệm [✓A]
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+▸ YOLO26 Depth  (—)
+    method          : —
+    inputs          : —
+    contract        : —
+    code_license    : —
+    weights_license : —
+    limitation      : Validator có scale alignment; không suy chất lượng mét thô từ điểm đã align [✓A]
+    availability    : —
+    measured_desktop_latency: —
+    measured_vehicle_error: —
+
+Phân bố theo method (n=20 / universe≈20 · coverage 100.0%):
+    Chưa rõ: 8
+    Hình học monocular từ góc camera ven đường: 1
+    Hình học ảnh đơn, point/depth/normal và camera FoV: 1
+    Học metric scale cho monocular road-scene từ dashcam: 1
+    Kết hợp xác suất hai cue: kích thước và vị trí dọc ảnh: 1
+    Metric depth ảnh đơn ngoài trời, học từ Virtual KITTI: 1
+    Mô hình metric depth ảnh đơn: 1
+    Mặt đường bổ sung điều kiện hình học và một nguồn depth cho monocular 3D: 1
+    Pipeline chia cụm frame, không đồng nhất với cập nhật causal một frame độ trễ thấp: 1
+    Streaming video depth: 1
+    Student point map metric: 1
+    Video metric depth, có nhánh streaming: 1
+    Ước lượng intrinsics và gravity từ ảnh đơn: 1
+
+build digest = d2fc759b02610d12  · idempotent OK · auditor OK
+VALIDATION PASSED · 0 gate bites

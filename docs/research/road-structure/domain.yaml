@@ -1,0 +1,25 @@
+domain: road_structure_candidates
+entity_label: "model, dataset hoặc runtime candidate"
+
+schema:
+  type_field: entity_type
+  fields:
+    - entity_type
+    - code_license
+    - primary_tasks
+    - training_data
+    - reported_profile
+    - web_deployment
+    - commercial_terms
+
+rollup_field: entity_type
+
+universe:
+  estimate: 7
+  basis: "Bảy thực thể đã được chọn cho TIP-50R-A/C; không phải toàn bộ thị trường."
+
+refresh_days:
+  default: 90
+
+alias_map: {}
+ambiguous_clusters: []

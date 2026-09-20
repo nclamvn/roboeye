@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import {sampleTimes,buildReplay,replayAt,seekDecoded,type ReplaySample} from '../../src/drive/replay';
 import {demoFrame,DEMO_PROFILE} from '../../src/drive/demo';
 import type {RangeEstimate} from '../../src/drive/geometry';
+import type {DetBox} from '../../src/detection-types';
+import type {DriveTrack} from '../../src/drive/tracking';
 const sample=(timeMs:number):ReplaySample=>({timeMs,boxes:demoFrame(timeMs).boxes,latencyMs:1800,width:1280,height:720});
 
 test('replay sampling is bounded, monotonic, includes the tail and rejects unsupported clips',()=>{
@@ -10,6 +12,8 @@ test('replay sampling is bounded, monotonic, includes the tail and rejects unsup
   assert.ok(sampleTimes(120000).length<=601);
   assert.ok(sampleTimes(300000).length<=1501);
   for(const n of [NaN,Infinity,0,99,300001])assert.throws(()=>sampleTimes(n));
+  assert.deepEqual(sampleTimes(1000,400),[0,400,800,950]);
+  for(const step of [199,2001,200.5,NaN])assert.throws(()=>sampleTimes(1000,step));
 });
 test('three-minute clips retain 5 Hz sampling through the complete duration without truncation',()=>{
   const times=sampleTimes(180000);
@@ -43,6 +47,18 @@ test('replay interpolates matching IDs only, retains sampled range and cannot mu
   assert.ok(Math.abs(view.tracks[0].box.x0-original-.01)<1e-8);
   assert.equal(view.tracks[0].range.distanceM,frames[0].tracks[0].range.distanceM);
   view.tracks[0].box.x0=10;assert.equal(frames[0].tracks[0].box.x0,original);
+});
+test('final replay publication revalidates filtered ranges against the boxes actually shown',()=>{
+  const left:DetBox={label:'car',score:.9,x0:135/862,x1:247/862,y0:298/576,y1:397/576};
+  const right:DetBox={label:'truck',score:.9,x0:482/862,x1:594/862,y0:296/576,y1:387/576};
+  const track=(id:number,box:DetBox,distanceM:number):DriveTrack=>({id,box,ageMs:0,
+    range:{kind:'learned_optical_axis_z_m',provenance:'learned-unverified',distanceM,lateralM:null,sigmaM:5,interval:[distanceM-10,distanceM+10],intervalCalibrated:false,reason:'post-filter fixture'},
+    closingSpeed:1,opticalTtcS:null,rangeTtcS:distanceM,status:'tracked',motionConfidence:.9});
+  // Simulates the final Kalman output, not raw model input. This was the missing
+  // publication boundary in the 10:25 screenshot.
+  const view=replayAt([{timeMs:0,tracks:[track(1,left,51),track(2,right,43)]}],0);
+  assert.deepEqual(view.tracks.map(item=>item.range.distanceM),[null,null]);
+  assert.ok(view.tracks.every(item=>item.status==='unknown'&&item.closingSpeed===null&&item.rangeTtcS===null));
 });
 test('replay does not fabricate boxes through missed detections, different IDs or long gaps',()=>{
   const frames=buildReplay([sample(0),{...sample(200),boxes:[]}],null);

@@ -1,0 +1,15 @@
+domain: browser-metric-depth
+entity_label: "15 ứng viên/phương pháp/nền tảng có chủ đích; không phải toàn bộ thị trường"
+schema:
+  type_field: null
+  fields: [method, parameters, inputs, contract, code_license, weights_license, limitation, measured_browser_latency, measured_vehicle_range_error]
+rollup_field: method
+universe:
+  estimate: 15
+  basis: "Tập khảo sát có chủ đích để chọn hướng camera đơn browser-only; không suy ra coverage của cả lĩnh vực hoặc best-in-world."
+refresh_days:
+  default: 30
+alias_map: {}
+ambiguous_clusters: []
+domain_gates:
+  no_inferred_fields: [measured_browser_latency, measured_vehicle_range_error]
