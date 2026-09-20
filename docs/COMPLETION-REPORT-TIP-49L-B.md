@@ -2,7 +2,8 @@
 
 **Date:** 2026-09-17
 **Builder status:** DONE
-**Contractor verdict:** ACCEPTED for deterministic offline planning/profiling; real-clip speedup remains to be measured.
+**Contractor verdict:** ACCEPTED for deterministic offline planning/profiling;
+the real-clip throughput gate was closed on 2026-09-20.
 
 ## Outcome
 
@@ -52,4 +53,14 @@ An exact in-memory session cache avoids repeating an unchanged run for the same 
 
 The scheduled inference count is reduced by 50% in Balanced and about 80% in Fast relative to Detail for a three-minute clip. That is a workload reduction, not a measured wall-clock speedup claim: decode, model startup, backend and per-frame detector/depth time still matter.
 
-The two clips previously opened in the browser were user-selected local files; their bytes and prior timing are intentionally not stored in the repository. To close the empirical gate, rerun each clip under the three presets and compare exported `analysisElapsedMs`, `analysedFramesPerSecond`, `mediaToProcessingRatio`, stage P95 and detection/range coverage. No hardware setup is required.
+The two user-selected clips were rerun under all three presets on 2026-09-20;
+their bytes and screenshots remain outside the repository. On the 186.7-second
+clip, Detail/Balanced/Fast completed in 165.4/41.0/23.8 seconds. Balanced was
+observed 4.0× faster and Fast 7.0× faster than Detail. Across all six runs,
+depth failures and dropped results were zero.
+
+This closes the missing empirical throughput gate, not the accuracy gate. Fast
+retained only 79 metre-bearing observations on the long clip versus 350 for
+Balanced and 717 for Detail; it can miss short events as disclosed. The
+hash-bound, privacy-preserving evidence is in
+`docs/evidence/TIP-49L-B-REAL-CLIP-PROFILE-2026-09-20.json`.

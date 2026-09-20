@@ -42,3 +42,21 @@ Every plan includes time zero and the final decodable tail. Interpolation remain
 - No claim that a lower sample rate improves model inference speed per frame.
 - No frame skipping hidden from the operator, no persistent browser cache and no video upload.
 - No realtime or field-accuracy claim from offline throughput.
+
+## EMPIRICAL CLOSURE — 2026-09-20
+
+The two original local clips were rerun once under all three presets on the
+user's MacBook Pro M1 Max 32 GB with the pinned local detector and metric models
+using WebGPU. The 186.7-second clip completed in 165.4 seconds (Detail), 41.0
+seconds (Balanced) and 23.8 seconds (Fast). No depth request failed and no
+result was dropped in any of the six runs.
+
+Balanced is the current default for local demonstration: on the long clip it
+was observed 4.0× faster than Detail while retaining 350 metre-bearing track
+observations versus 717. Fast was observed 7.0× faster than Detail but retained
+only 79 metre-bearing observations and therefore remains explicitly
+speed-first. These are single-run throughput observations, not accuracy or
+realtime claims.
+
+Reproducible command: `DRIVE_VIDEO=/path/clip.mp4 DRIVE_PRESET=balanced npm run profile:drive-offline`.
+Hash-bound aggregate evidence: `docs/evidence/TIP-49L-B-REAL-CLIP-PROFILE-2026-09-20.json`.

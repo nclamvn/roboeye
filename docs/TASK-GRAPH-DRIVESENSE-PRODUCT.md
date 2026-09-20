@@ -1,6 +1,6 @@
 # DriveSense product task graph
 
-**Baseline:** 2026-09-17
+**Baseline:** 2026-09-20
 **Method:** Vibecode — Contractor defines gates and verifies evidence; Builder implements one bounded TIP at a time; product owner approves strategic architecture and field-risk decisions.
 
 ## Critical path
@@ -33,11 +33,11 @@ No downstream node may claim readiness when a required upstream gate is missing.
 |---|---|---|---|---|
 | D0 Scan/RRI/PRD | DONE | Establish current truth, product boundary and measurable requirements | Repository + prior reports | Scan, RRI, PRD and draft commercial blueprint |
 | TIP-STAB-01 | VERIFIED | Recover one reproducible local source of truth before further feature work | Dirty local worktree + source scan | Inventory, quarantine, traceability, partitioned commits and local quality gates |
-| TIP-STAB-02 | NEXT | Restore remote CI and release truth without deploying an unverified artifact | Clean STAB-01 baseline | Green remote CI, commit-aligned release candidate and explicit deploy decision |
+| TIP-STAB-02 | VERIFIED | Restore remote CI and release truth without deploying an unverified artifact | Clean STAB-01 baseline | Green remote CI at `821170d`; deploy remains an explicit decision |
 | TIP-47A | VERIFIED | Independent corpus contract and scorer | Approved PoC blueprint | 163/163 tests; build pass; synthetic scorer clearly non-field |
 | TIP-48 | VERIFIED / runtime measurement pending | Measure live capture→result→risk→display/audio | Current browser camera pipeline | Instrumentation/tests/build pass; first 30-minute camera report still required |
 | TIP-49L-A | IMPLEMENTED / runtime evidence pending | Select laptop/phone webcam and run detector plus bounded same-frame live depth | TIP-48 contracts | Tests/build pass; operator camera report still required |
-| TIP-49L-B | IMPLEMENTED / clip evidence pending | Explicit offline quality/speed presets, profiling and exact session cache | Existing uploaded-video pipeline | Tests/build pass; operator's two real clips must be rerun for before/after timing |
+| TIP-49L-B | VERIFIED / real clips measured | Explicit offline quality/speed presets, profiling and exact session cache | Existing uploaded-video pipeline | Six hash-bound runs on the two original clips; no depth failure/drop; tradeoff preserved |
 | TIP-49L-C | CODE-ACCEPTED v6 / runtime + physical accuracy pending | Enforce ground-contact ordering across car/truck/bus before filtering and at HUD/risk publication | Observed 70/56, 57/52, 51/45 and post-filter 51/43 inversions + 39-claim registry | All regression and quality gates must pass; user must rerun clip on v6 |
 | TIP-47B | DEFERRED / external evidence needed | Acquire controlled physical truth | Measurement method, camera/device IDs, consent/rights | Locked journey/device split; synchronized physical distances; provenance audit |
 | TIP-50 | DEFERRED by product owner | Select compute/model on identical evidence | Real corpus + instrumentation + candidate hardware | Pareto report for quality, latency, power, heat, BOM/license; explicit promotion decision |
@@ -55,10 +55,12 @@ No downstream node may claim readiness when a required upstream gate is missing.
 
 ## Immediate sequence
 
-1. Complete TIP-STAB-02: push the recovered baseline, make remote CI green and
-   verify that any release candidate names the exact source commit.
-2. Rerun the two existing uploaded clips under Detail, Balanced and Fast; export reports and compare elapsed time, stage P95, detections and metric coverage.
-3. Test the MacBook camera and phone exposed as a webcam; export a short live report to verify source selection, metric acceptance/drop counts and capture→overlay latency.
+1. **DONE:** TIP-STAB-02 restored a clean remote CI/release baseline.
+2. **DONE:** the two existing clips were measured under Detail, Balanced and
+   Fast; see `docs/evidence/TIP-49L-B-REAL-CLIP-PROFILE-2026-09-20.json`.
+3. **NEXT:** test the MacBook camera and phone exposed as a webcam; export a
+   short live report to verify source selection, metric acceptance/drop counts
+   and capture→overlay latency.
 4. Close remaining software-only defects and package a repeatable local demo before any purchase, mount or vehicle setup.
 5. Only after the product owner reopens investment work, acquire TIP-47B physical truth and use it with runtime reports for the TIP-50 hardware/model bake-off.
 

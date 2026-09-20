@@ -18,6 +18,7 @@
     "test:drive-range-e2e": "node tests/drive-range-e2e.mjs",
     "pretest:drive-controls-e2e": "npm run build",
     "test:drive-controls-e2e": "node tests/drive-road-layout-e2e.mjs && node tests/drive-feature-toggle-e2e.mjs",
+    "profile:drive-offline": "node scripts/profile-drive-offline.mjs",
     "benchmark:drive-corpus": "node --import tsx scripts/evaluate-drive-corpus.ts",
     "benchmark:road": "node --import tsx scripts/evaluate-road-corpus.ts",
     "inspect:road-artifact": "node --import tsx scripts/inspect-road-artifact.ts",

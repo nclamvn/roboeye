@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "tip-49l-b-real-clip-profile-2026-09-20",
+  "scope": "Single-run offline throughput and output-coverage observation; not accuracy, realtime or road-safety evidence.",
+  "host": {
+    "model": "MacBook Pro",
+    "chip": "Apple M1 Max",
+    "memoryGb": 32,
+    "os": "macOS 27.0",
+    "browser": "HeadlessChrome 151.0.0.0",
+    "detectorBackend": "webgpu",
+    "metricBackend": "webgpu"
+  },
+  "sources": [
+    {
+      "clipId": "test1-short",
+      "sha256": "83a2ee31d6bbdd205531f5c684b29d23d2573011ac988b12efb8058ffb9de93f",
+      "bytes": 3258278,
+      "durationS": 19.5,
+      "width": 1280,
+      "height": 720,
+      "rights": "User-supplied local clip; bytes and screenshots are not redistributed."
+    },
+    {
+      "clipId": "test2-3m",
+      "sha256": "85d59cccacf5e968df17d92dad570ddbb1a72854e2221e1842a669fdb8cf575d",
+      "bytes": 34210680,
+      "durationS": 186.733333,
+      "width": 1280,
+      "height": 720,
+      "rights": "User-supplied local clip; bytes and screenshots are not redistributed."
+    }
+  ],
+  "runs": [
+    {"clipId":"test1-short","preset":"quality","sampledFrames":99,"elapsedMs":31223.8,"framesPerSecond":3.1707,"mediaToProcessingRatio":0.6245,"detectorP95Ms":368.4,"metricP95Ms":298.2,"sampleWallP95Ms":689.9,"depthSuccess":99,"depthSkipped":0,"depthFailed":0,"droppedResults":0,"trackedObservations":304,"metreObservations":123,"metreCoverage":0.4046},
+    {"clipId":"test1-short","preset":"balanced","sampledFrames":50,"elapsedMs":15188.1,"framesPerSecond":3.2921,"mediaToProcessingRatio":1.2839,"detectorP95Ms":392.1,"metricP95Ms":295.6,"sampleWallP95Ms":748.8,"depthSuccess":50,"depthSkipped":0,"depthFailed":0,"droppedResults":0,"trackedObservations":148,"metreObservations":60,"metreCoverage":0.4054},
+    {"clipId":"test1-short","preset":"fast","sampledFrames":21,"elapsedMs":1926,"framesPerSecond":10.9034,"mediaToProcessingRatio":10.1246,"detectorP95Ms":84.4,"metricP95Ms":64.5,"sampleWallP95Ms":154.8,"depthSuccess":21,"depthSkipped":0,"depthFailed":0,"droppedResults":0,"trackedObservations":52,"metreObservations":25,"metreCoverage":0.4808},
+    {"clipId":"test2-3m","preset":"quality","sampledFrames":935,"elapsedMs":165401.4,"framesPerSecond":5.6529,"mediaToProcessingRatio":1.129,"detectorP95Ms":637.5,"metricP95Ms":527.2,"sampleWallP95Ms":1207.7,"depthSuccess":913,"depthSkipped":22,"depthFailed":0,"droppedResults":0,"trackedObservations":2243,"metreObservations":717,"metreCoverage":0.3197},
+    {"clipId":"test2-3m","preset":"balanced","sampledFrames":468,"elapsedMs":40986.9,"framesPerSecond":11.4183,"mediaToProcessingRatio":4.5559,"detectorP95Ms":80.8,"metricP95Ms":61.5,"sampleWallP95Ms":154.2,"depthSuccess":457,"depthSkipped":11,"depthFailed":0,"droppedResults":0,"trackedObservations":1019,"metreObservations":350,"metreCoverage":0.3435},
+    {"clipId":"test2-3m","preset":"fast","sampledFrames":188,"elapsedMs":23762.7,"framesPerSecond":7.9116,"mediaToProcessingRatio":7.8583,"detectorP95Ms":153.1,"metricP95Ms":127.6,"sampleWallP95Ms":359.6,"depthSuccess":183,"depthSkipped":5,"depthFailed":0,"droppedResults":0,"trackedObservations":135,"metreObservations":79,"metreCoverage":0.5852}
+  ],
+  "caveats": [
+    "One run per clip and preset; observed timing is not a confidence interval or hardware guarantee.",
+    "Fast has higher conditional metre coverage but far fewer absolute track/metre observations and may miss short events.",
+    "Metre coverage means published metre observations divided by tracked observations, not physical-distance accuracy.",
+    "No independent distance ground truth was used, so MAE, bias and safety performance remain unavailable."
+  ]
+}
