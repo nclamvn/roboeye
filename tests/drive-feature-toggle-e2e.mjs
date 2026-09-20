@@ -3,9 +3,11 @@ import {browserLaunchOptions,resolveBrowserExecutable} from './helpers/browser.m
 import {startDev,stopPreview,waitForPreview} from './helpers/preview-server.mjs';
 import {createSyntheticVideo} from './helpers/video-fixture.mjs';
 import {mkdir,writeFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import assert from 'node:assert/strict';
 
-const out='/private/tmp/roboeye-drive-feature-toggle-qa';
+const out=join(tmpdir(),'roboeye-drive-feature-toggle-qa');
 await mkdir(out,{recursive:true});
 const port=4195,root=new URL('..',import.meta.url).pathname,server=startDev(root,port);
 await waitForPreview(server);

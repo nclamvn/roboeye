@@ -3,8 +3,10 @@ import {browserLaunchOptions,resolveBrowserExecutable} from './helpers/browser.m
 import {startDev,stopPreview,waitForPreview} from './helpers/preview-server.mjs';
 import {createSyntheticVideo} from './helpers/video-fixture.mjs';
 import {mkdir,writeFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import assert from 'node:assert/strict';
-const out='/private/tmp/roboeye-road-icon-anchor-qa';await mkdir(out,{recursive:true});
+const out=join(tmpdir(),'roboeye-road-icon-anchor-qa');await mkdir(out,{recursive:true});
 const port=4194,root=new URL('..',import.meta.url).pathname,server=startDev(root,port);
 await waitForPreview(server);
 const browser=await chromium.launch(await browserLaunchOptions(await resolveBrowserExecutable()));
