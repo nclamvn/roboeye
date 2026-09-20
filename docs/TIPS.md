@@ -346,3 +346,12 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   trail, and produce a reproducible inventory before CI/release work.
 - **Boundary:** no product behavior or approved architecture change.
 - **Detail:** `docs/TIP-STAB-01-SOURCE-OF-TRUTH.md`.
+
+## TIP-STAB-02 · CI and Release Gate
+
+- **Dependencies:** STAB-01. **Priority:** P0 release hygiene.
+- **Task:** replace machine-private D6/D7 video dependencies with a generated
+  browser fixture, make the tests own their local dev-server lifecycle, include them in
+  package/GitHub QA, then push only after the full local gate passes.
+- **Boundary:** no model/risk change, force push, tag or deployment.
+- **Detail:** `docs/TIP-STAB-02-CI-RELEASE-GATE.md`.

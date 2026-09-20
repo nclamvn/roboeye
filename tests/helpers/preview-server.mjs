@@ -12,6 +12,18 @@ export function startPreview(root, port) {
   });
 }
 
+export function startDev(root, port) {
+  return spawn(process.execPath, [
+    'node_modules/vite/bin/vite.js',
+    '--host', '127.0.0.1',
+    '--port', String(port),
+    '--strictPort'
+  ], {
+    cwd: root,
+    stdio: 'pipe'
+  });
+}
+
 export function waitForPreview(server, timeoutMs = 20_000) {
   return new Promise((resolve, reject) => {
     const cleanup = () => {
@@ -21,7 +33,7 @@ export function waitForPreview(server, timeoutMs = 20_000) {
       server.off('exit', onExit);
     };
     const onData = (data) => {
-      if (!String(data).includes('localhost')) return;
+      if (!/Local:\s+http:\/\//.test(String(data))) return;
       cleanup();
       resolve();
     };
@@ -31,7 +43,7 @@ export function waitForPreview(server, timeoutMs = 20_000) {
     };
     const timer = setTimeout(() => {
       cleanup();
-      reject(new Error(`vite preview không lên sau ${timeoutMs / 1000}s`));
+      reject(new Error(`vite server không lên sau ${timeoutMs / 1000}s`));
     }, timeoutMs);
 
     server.stdout.on('data', onData);
