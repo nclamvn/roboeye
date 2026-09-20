@@ -355,3 +355,5 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   package/GitHub QA, then push only after the full local gate passes.
 - **Boundary:** no model/risk change, force push, tag or deployment.
 - **Detail:** `docs/TIP-STAB-02-CI-RELEASE-GATE.md`.
+- **Result:** reproducible local and GitHub gates are green at `d674258`; see
+  `docs/COMPLETION-REPORT-TIP-STAB-02.md` and `docs/VERIFY-TIP-STAB-02.md`.
