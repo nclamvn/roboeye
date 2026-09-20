@@ -13,11 +13,34 @@ export function installMockWorkers() {
   window.__mockAirHandFrames = [];
   window.__mockWorkerKinds = [];
 
+  const centeredRoadVector = {
+    lines: [
+      { id: 'mock-ego-left', class: 'lane-marking', role: 'ego-left', points: [
+        { x: .46, y: .45 }, { x: .40, y: .65 }, { x: .34, y: .82 }, { x: .28, y: .98 }
+      ] },
+      { id: 'mock-ego-right', class: 'lane-marking', role: 'ego-right', points: [
+        { x: .54, y: .45 }, { x: .60, y: .65 }, { x: .66, y: .82 }, { x: .72, y: .98 }
+      ] }
+    ],
+    areas: [{ id: 'mock-drivable', class: 'drivable', points: [
+      { x: .46, y: .45 }, { x: .54, y: .45 }, { x: .72, y: .98 }, { x: .28, y: .98 }
+    ] }],
+    diagnostics: {
+      vectorizerVersion: 2, roadRows: 80, markRows: 48, horizonY: .42,
+      paths: {
+        left: { accepted: true, reason: 'accepted', supportRows: 24, span: .53, rmsPx: 1.2, confidence: .94 },
+        right: { accepted: true, reason: 'accepted', supportRows: 24, span: .53, rmsPx: 1.2, confidence: .94 }
+      }
+    }
+  };
+
   class MockWorker {
     constructor(url) {
       const workerUrl = String(url);
-      this.kind = workerUrl.includes('detect-worker') ? 'detection'
-        : workerUrl.includes('air-hand-worker') ? 'air-hand'
+      this.kind = workerUrl.includes('drive-road-worker') ? 'drive-road'
+        : workerUrl.includes('drive-range-worker') ? 'drive-range'
+          : workerUrl.includes('detect-worker') ? 'detection'
+            : workerUrl.includes('air-hand-worker') ? 'air-hand'
           : workerUrl.includes('air-classifier-worker') ? 'air-classifier'
             : 'depth';
       window.__mockWorkerKinds.push(this.kind);
@@ -35,6 +58,31 @@ export function installMockWorkers() {
 
     postMessage(message) {
       if (this.terminated) return;
+      if (this.kind === 'drive-road') {
+        if (message.type === 'init') this.emit({ type: 'ready' });
+        else if (message.type === 'frame') {
+          this.emit({
+            type: 'result', id: message.id, vector: centeredRoadVector,
+            inferenceMs: 4, vectorMs: 1,
+            mask: new Uint8ClampedArray(224 * 128 * 4).buffer
+          });
+        }
+        return;
+      }
+      if (this.kind === 'drive-range') {
+        if (message.type === 'init') {
+          this.emit({ channel: 'drive-range-v1', type: 'ready', backend: message.backend, warmupMs: 1 });
+        } else if (message.type === 'frame') {
+          const depth = new Float32Array(message.width * message.height).fill(30);
+          this.emit({
+            channel: 'drive-range-v1', type: 'result', id: message.id, latencyMs: 5,
+            map: { width: message.width, height: message.height, depth,
+              unit: 'metres', distanceKind: 'optical-axis-z', provenance: 'learned-unverified',
+              focal: null, shift: null, reprojectionRmse: null }
+          });
+        }
+        return;
+      }
       if (this.kind === 'air-hand') {
         if (message.type === 'init') this.emit({ type: 'ready', delegate: 'CPU' });
         else if (message.type === 'frame') {

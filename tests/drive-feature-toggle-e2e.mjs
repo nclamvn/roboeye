@@ -2,6 +2,7 @@ import {chromium} from 'playwright-core';
 import {browserLaunchOptions,resolveBrowserExecutable} from './helpers/browser.mjs';
 import {startDev,stopPreview,waitForPreview} from './helpers/preview-server.mjs';
 import {createSyntheticVideo} from './helpers/video-fixture.mjs';
+import {installMockWorkers} from './helpers/mock-workers.mjs';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
@@ -14,9 +15,13 @@ await waitForPreview(server);
 const browser=await chromium.launch(await browserLaunchOptions(await resolveBrowserExecutable()));
 const page=await browser.newPage({viewport:{width:1440,height:900}});
 const errors=[];page.on('pageerror',error=>errors.push(error.message));
+// This gate proves feature orchestration and control state with deterministic
+// workers. It deliberately makes no claim about model quality.
+await page.addInitScript(installMockWorkers);
 try{
   const video=await createSyntheticVideo(page);
   await page.goto(`http://localhost:${port}/drive.html?lanes=1&v=feature-toggles`);
+  await page.evaluate(()=>{window.__allowMockDetection=true;});
   const range=page.locator('#range-toggle'),lane=page.locator('#road-toggle');
   await Promise.all([range.waitFor({state:'visible'}),lane.waitFor({state:'visible'})]);
   assert.equal(await range.getAttribute('aria-pressed'),'false');
