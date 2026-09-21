@@ -1,0 +1,33 @@
+domain: drivesense_technical_solutions
+entity_label: "Technical candidates for the DriveSense local stack"
+
+schema:
+  type_field: solution_type
+  fields:
+    - solution_type
+    - primary_capability
+    - runtime_targets
+    - license
+    - model_terms
+    - performance_note
+
+rollup_field: solution_type
+
+universe:
+  estimate: 4
+  basis: "Initial four-candidate shortlist selected for TIP-55A; not the total market universe"
+
+refresh_days:
+  license: 30
+  model_terms: 30
+  runtime_targets: 90
+  default: 90
+
+alias_map: {}
+ambiguous_clusters: []
+
+domain_gates:
+  no_inferred_fields:
+    - license
+    - model_terms
+    - performance_note

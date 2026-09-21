@@ -1,6 +1,6 @@
 # DriveSense product task graph
 
-**Baseline:** 2026-09-20
+**Baseline:** 2026-09-21
 **Method:** Vibecode — Contractor defines gates and verifies evidence; Builder implements one bounded TIP at a time; product owner approves strategic architecture and field-risk decisions.
 
 ## Critical path
@@ -21,8 +21,12 @@ SCAN/RRI/PRD
                               TIP-52 HMI/installation/soak/privacy release gate
                                                                     ↓
                               TIP-53 licensed route-data connectors
-                                                                    ↓
+                                            ↓
                               TIP-54 limited B2B pilot package
+
+Commercial evidence lane (never enters the local warning hot path):
+
+TIP-55A sourced candidate registries ──→ TIP-55B provider-neutral fixtures/RFI ──→ TIP-53 trial input
 ```
 
 No downstream node may claim readiness when a required upstream gate is missing. UI polish and additional models cannot substitute for physical truth or end-to-end latency.
@@ -46,6 +50,8 @@ No downstream node may claim readiness when a required upstream gate is missing.
 | TIP-52 | BLOCKED by 51 | Make pilot installation and operation durable | Stable live pipeline | 30 min then ≥2 h soak, fail-closed degraded states, rollback, privacy and installer checklist |
 | TIP-53 | BLOCKED by commercial architecture approval | Add connected route awareness without entering local warning hot path | Signed data rights/provider test access | Direction/map-match/TTL/dedup quality, outage safety and per-vehicle cost report |
 | TIP-54 | BLOCKED by 52 plus selected parts of 53 | Limited B2B pilot | Buyer, route, fleet, liability/claims and support owner | Partner-approved protocol, incident review, KPI/cost report and stop criteria |
+| TIP-55A | VERIFIED | Establish auditable technical/provider evidence before commercial integration | Approved research direction; primary official sources | Two deterministic registries, 9 entities/36 claims, source-span gates and destructive bite suites pass |
+| TIP-55B | VERIFIED / commercial answers pending | Define provider-neutral connected-event contract and compare HERE/TomTom without a live safety dependency | TIP-55A + public official schemas + synthetic offline fixtures | Neutral advisory-only contract; HERE/TomTom fixtures; direction/map-match/TTL/dedup tests; honest-null Vietnam coverage, rights, retention, SLA and cost RFI |
 
 ## Work-in-progress limits
 
@@ -64,6 +70,9 @@ No downstream node may claim readiness when a required upstream gate is missing.
    separate metric-path gate. The first real camera report is still required.
 4. Close remaining software-only defects and package a repeatable local demo before any purchase, mount or vehicle setup.
 5. Only after the product owner reopens investment work, acquire TIP-47B physical truth and use it with runtime reports for the TIP-50 hardware/model bake-off.
+6. **DONE:** TIP-55A created source-backed technical and traffic-data registries without changing the runtime.
+7. **DONE:** TIP-55B defines the neutral advisory-only contract, HERE/TomTom offline adapters and the provider RFI. No credentials or production calls were introduced.
+8. **NEXT COMMERCIAL DECISION:** send the TIP-55B RFI to both providers and obtain a timestamped Vietnam corridor sample. TIP-53 remains blocked until written rights, retention, SLA, price and production-version answers exist.
 
 ## Product-owner decision checkpoints
 

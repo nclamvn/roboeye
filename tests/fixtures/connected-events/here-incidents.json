@@ -1,0 +1,85 @@
+{
+  "fixtureMeta": {
+    "id": "tip55b-here-synthetic-v1",
+    "synthetic": true,
+    "warning": "Schema-oriented offline fixture; not provider output and not evidence of Vietnam coverage."
+  },
+  "sourceUpdated": "2026-09-21T03:00:00Z",
+  "results": [
+    {
+      "location": {
+        "length": 58,
+        "description": { "value": "QL1A" },
+        "shape": {
+          "links": [
+            {
+              "points": [
+                { "lat": 10.77690, "lng": 106.70400 },
+                { "lat": 10.77691, "lng": 106.70450 }
+              ]
+            }
+          ]
+        }
+      },
+      "incidentDetails": {
+        "id": "here-version-2",
+        "originalId": "here-accident-stable",
+        "startTime": "2026-09-21T02:55:00Z",
+        "endTime": "2026-09-21T04:00:00Z",
+        "entryTime": "2026-09-21T02:59:00Z",
+        "roadClosed": false,
+        "criticality": "major",
+        "type": "accident",
+        "summary": { "value": "Synthetic collision fixture" }
+      }
+    },
+    {
+      "location": {
+        "length": 120,
+        "description": { "value": "Test road north" },
+        "shape": {
+          "links": [
+            {
+              "points": [
+                { "lat": 10.78690, "lng": 106.70400 },
+                { "lat": 10.78690, "lng": 106.70500 }
+              ]
+            }
+          ]
+        }
+      },
+      "incidentDetails": {
+        "id": "here-roadworks-far",
+        "originalId": "here-roadworks-far",
+        "startTime": "2026-09-21T02:30:00Z",
+        "endTime": "2026-09-21T06:00:00Z",
+        "roadClosed": false,
+        "criticality": "minor",
+        "type": "construction",
+        "summary": { "value": "Synthetic distant roadworks fixture" }
+      }
+    },
+    {
+      "location": {
+        "shape": {
+          "links": [
+            {
+              "points": [
+                { "lat": 10.77690, "lng": 106.70600 }
+              ]
+            }
+          ]
+        }
+      },
+      "incidentDetails": {
+        "id": "here-expired",
+        "originalId": "here-expired",
+        "startTime": "2026-09-21T01:00:00Z",
+        "endTime": "2026-09-21T02:00:00Z",
+        "roadClosed": true,
+        "criticality": "critical",
+        "type": "roadClosure"
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-21T00:00:00Z",
+  "decisionStatus": "blocked-pending-written-provider-responses",
+  "scope": "Traffic incidents for an advisory-only Vietnam DriveSense trial; never the local collision-warning hot path.",
+  "requiredBeforeTrial": [
+    "exactVietnamIncidentCoverage",
+    "routeCoverageSample",
+    "pricing",
+    "commercialUseRights",
+    "retentionCaching",
+    "redistributionAttribution",
+    "sla",
+    "supportEscalation",
+    "dataResidency",
+    "productionVersion"
+  ],
+  "providers": [
+    {
+      "id": "here",
+      "name": "HERE Traffic API v7",
+      "officialIncidentDocs": "https://docs.here.com/traffic-api/docs/incidents-here-traffic-api-v7-concepts",
+      "documentedInterface": "Traffic incidents with location and incidentDetails; request shape location references for neutral geometry.",
+      "documentedFreshnessSignal": "sourceUpdated plus incident startTime/endTime/entryTime",
+      "documentedStableId": "originalId",
+      "exactVietnamIncidentCoverage": null,
+      "routeCoverageSample": null,
+      "pricing": null,
+      "commercialUseRights": null,
+      "retentionCaching": null,
+      "redistributionAttribution": null,
+      "sla": null,
+      "supportEscalation": null,
+      "dataResidency": null,
+      "productionVersion": null
+    },
+    {
+      "id": "tomtom",
+      "name": "TomTom Traffic API",
+      "officialIncidentDocs": "https://docs.tomtom.com/traffic-api/documentation/tomtom-maps/v1/traffic-incidents/incident-details",
+      "documentedInterface": "Incident Details v5 returns GeoJSON-like incidents with geometry and properties.",
+      "documentedFreshnessSignal": "Traffic Model ID, startTime/endTime and optional lastReportTime",
+      "documentedStableId": "properties.id",
+      "exactVietnamIncidentCoverage": null,
+      "routeCoverageSample": null,
+      "pricing": null,
+      "commercialUseRights": null,
+      "retentionCaching": null,
+      "redistributionAttribution": null,
+      "sla": null,
+      "supportEscalation": null,
+      "dataResidency": null,
+      "productionVersion": null
+    }
+  ]
+}

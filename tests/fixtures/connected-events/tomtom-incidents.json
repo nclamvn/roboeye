@@ -1,0 +1,70 @@
+{
+  "fixtureMeta": {
+    "id": "tip55b-tomtom-synthetic-v1",
+    "synthetic": true,
+    "warning": "Schema-oriented offline fixture; not provider output and not evidence of Vietnam coverage."
+  },
+  "incidents": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [106.70410, 10.77692],
+          [106.70455, 10.77693]
+        ]
+      },
+      "properties": {
+        "id": "tomtom-accident-a",
+        "iconCategory": 1,
+        "magnitudeOfDelay": 2,
+        "events": [
+          { "description": "Synthetic collision fixture", "code": 101, "iconCategory": 1 }
+        ],
+        "startTime": "2026-09-21T02:56:00Z",
+        "endTime": "2026-09-21T04:00:00Z",
+        "from": "Fixture origin",
+        "to": "Fixture destination",
+        "roadNumbers": ["QL1A"],
+        "timeValidity": "present",
+        "lastReportTime": "2026-09-21T03:00:20Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [106.70800, 10.77695]
+      },
+      "properties": {
+        "id": "tomtom-closure-near",
+        "iconCategory": 8,
+        "magnitudeOfDelay": 4,
+        "events": [
+          { "description": "Synthetic closure fixture", "code": 401, "iconCategory": 8 }
+        ],
+        "startTime": "2026-09-21T02:50:00Z",
+        "endTime": "2026-09-21T05:00:00Z",
+        "roadNumbers": ["QL1A"],
+        "timeValidity": "present",
+        "lastReportTime": "2026-09-21T03:00:10Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": []
+      },
+      "properties": {
+        "id": "tomtom-invalid-geometry",
+        "iconCategory": 9,
+        "magnitudeOfDelay": 1,
+        "events": [],
+        "startTime": "2026-09-21T02:50:00Z",
+        "endTime": "2026-09-21T05:00:00Z",
+        "roadNumbers": ["TEST"]
+      }
+    }
+  ]
+}

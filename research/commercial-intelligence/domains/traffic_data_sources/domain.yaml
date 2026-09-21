@@ -1,0 +1,36 @@
+domain: drivesense_traffic_data_sources
+entity_label: "Connected traffic and road-data candidates"
+
+schema:
+  type_field: source_type
+  fields:
+    - source_type
+    - data_offering
+    - access_method
+    - freshness
+    - cost_model
+    - eligibility
+    - license_or_rights
+
+rollup_field: source_type
+
+universe:
+  estimate: 5
+  basis: "Initial five-source shortlist selected for TIP-55A; not the total provider universe"
+
+refresh_days:
+  freshness: 14
+  cost_model: 14
+  eligibility: 30
+  license_or_rights: 30
+  default: 60
+
+alias_map: {}
+ambiguous_clusters: []
+
+domain_gates:
+  no_inferred_fields:
+    - freshness
+    - cost_model
+    - eligibility
+    - license_or_rights
