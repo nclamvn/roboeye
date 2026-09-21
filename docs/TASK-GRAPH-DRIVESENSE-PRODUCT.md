@@ -27,6 +27,10 @@ SCAN/RRI/PRD
 Commercial evidence lane (never enters the local warning hot path):
 
 TIP-55A sourced candidate registries ──→ TIP-55B provider-neutral fixtures/RFI ──→ TIP-53 trial input
+
+Technical frontier lane (promotion remains blocked by common-corpus evidence):
+
+TIP-56A independent frontier audit ──→ TIP-56B common evidence plane ──→ TIP-50 model/hardware promotion
 ```
 
 No downstream node may claim readiness when a required upstream gate is missing. UI polish and additional models cannot substitute for physical truth or end-to-end latency.
@@ -52,6 +56,8 @@ No downstream node may claim readiness when a required upstream gate is missing.
 | TIP-54 | BLOCKED by 52 plus selected parts of 53 | Limited B2B pilot | Buyer, route, fleet, liability/claims and support owner | Partner-approved protocol, incident review, KPI/cost report and stop criteria |
 | TIP-55A | VERIFIED | Establish auditable technical/provider evidence before commercial integration | Approved research direction; primary official sources | Two deterministic registries, 9 entities/36 claims, source-span gates and destructive bite suites pass |
 | TIP-55B | VERIFIED / commercial answers pending | Define provider-neutral connected-event contract and compare HERE/TomTom without a live safety dependency | TIP-55A + public official schemas + synthetic offline fixtures | Neutral advisory-only contract; HERE/TomTom fixtures; direction/map-match/TTL/dedup tests; honest-null Vietnam coverage, rights, retention, SLA and cost RFI |
+| TIP-56A | VERIFIED / no runtime promotion | Independently audit current DriveSense direction against the technical frontier | Current repository truth + frozen official-source universe | 18 entities, 84 claims, 100% declared coverage, hash/source gates and destructive bite suite pass |
+| TIP-56B | VERIFIED / real challenger evidence pending | Build one same-sample, same-video evidence plane for detector/tracker challengers | TIP-56A + existing uploaded clips and reviewed 2D labels | Closed contract, uploaded-video export, assembler/scorer and synthetic proof pass; real reviewed clips/challenger runs remain external inputs |
 
 ## Work-in-progress limits
 
@@ -73,6 +79,9 @@ No downstream node may claim readiness when a required upstream gate is missing.
 6. **DONE:** TIP-55A created source-backed technical and traffic-data registries without changing the runtime.
 7. **DONE:** TIP-55B defines the neutral advisory-only contract, HERE/TomTom offline adapters and the provider RFI. No credentials or production calls were introduced.
 8. **NEXT COMMERCIAL DECISION:** send the TIP-55B RFI to both providers and obtain a timestamped Vietnam corridor sample. TIP-53 remains blocked until written rights, retention, SLA, price and production-version answers exist.
+9. **DONE:** TIP-56A independently audited 18 technical/data/HMI candidates. It accepts the current architecture as the control, but rejects field-readiness claims until common-corpus and physical-truth gates pass.
+10. **DONE:** TIP-56B freezes a common evidence plane around the existing uploaded-video path. It scores detection, continuity, primary-target churn and runtime coverage without selecting a winner.
+11. **NEXT EVIDENCE INPUT:** bind an original clip SHA to independently reviewed 2D vehicle truth, then run the control and one licensed challenger through the same sample plan. No hardware purchase is needed.
 
 ## Product-owner decision checkpoints
 

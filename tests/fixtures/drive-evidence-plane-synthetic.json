@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "benchmarkId": "tip56b-synthetic-contract",
+  "protocol": {
+    "minimumIou": 0.5,
+    "labelPolicy": "vehicle-family",
+    "samplePlanId": "fixed-5hz-v1",
+    "preprocessingId": "stretch-640x640-rgb01"
+  },
+  "corpus": {
+    "corpusId": "tip56b-synthetic-corpus",
+    "journeys": [
+      {
+        "journeyId": "synthetic-highway-01",
+        "split": "test",
+        "width": 1280,
+        "height": 720,
+        "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rights": { "basis": "synthetic", "reference": "hand-written scorer fixture; no media" },
+        "annotation": { "method": "synthetic", "reference": "independent IDs for scorer contract only" },
+        "scenarioTags": ["multi-lane", "track-switch", "roadside-fp"],
+        "truthFrames": [
+          { "sampleIndex": 0, "sourceTimeMs": 0, "objects": [
+            { "objectId": "vehicle-a", "label": "car", "bbox": { "x0": 0.40, "y0": 0.40, "x1": 0.60, "y1": 0.72 }, "primaryTarget": true },
+            { "objectId": "vehicle-b", "label": "car", "bbox": { "x0": 0.70, "y0": 0.42, "x1": 0.82, "y1": 0.62 }, "primaryTarget": false }
+          ] },
+          { "sampleIndex": 1, "sourceTimeMs": 200, "objects": [
+            { "objectId": "vehicle-a", "label": "car", "bbox": { "x0": 0.40, "y0": 0.41, "x1": 0.61, "y1": 0.73 }, "primaryTarget": true },
+            { "objectId": "vehicle-b", "label": "car", "bbox": { "x0": 0.69, "y0": 0.43, "x1": 0.81, "y1": 0.63 }, "primaryTarget": false }
+          ] },
+          { "sampleIndex": 2, "sourceTimeMs": 400, "objects": [
+            { "objectId": "vehicle-a", "label": "car", "bbox": { "x0": 0.39, "y0": 0.42, "x1": 0.61, "y1": 0.75 }, "primaryTarget": true },
+            { "objectId": "vehicle-b", "label": "car", "bbox": { "x0": 0.68, "y0": 0.44, "x1": 0.80, "y1": 0.64 }, "primaryTarget": false }
+          ] },
+          { "sampleIndex": 3, "sourceTimeMs": 600, "objects": [
+            { "objectId": "vehicle-a", "label": "car", "bbox": { "x0": 0.38, "y0": 0.43, "x1": 0.62, "y1": 0.77 }, "primaryTarget": true }
+          ] }
+        ]
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "manifest": {
+        "candidateId": "rtdetr-control",
+        "role": "control",
+        "detector": { "family": "RT-DETRv2 R18", "revision": "pinned-control", "artifactSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" },
+        "tracker": { "family": "DriveSense VehicleTracker", "revision": "v1", "configId": "hungarian-kalman-v1" },
+        "runtime": { "backend": "webgpu", "environmentId": "synthetic-device" },
+        "commercialGate": { "status": "approved", "reference": "synthetic fixture approval only" }
+      },
+      "runs": [
+        {
+          "journeyId": "synthetic-highway-01",
+          "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width": 1280,
+          "height": 720,
+          "frames": [
+            { "sampleIndex": 0, "sourceTimeMs": 0, "primaryTrackId": "c1", "telemetry": { "decodeMs": 3, "preprocessMs": 5, "inferenceMs": 60, "postprocessMs": 4, "trackingMs": 2, "requestToResultMs": 74, "captureToDisplayMs": null, "evidenceAgeMs": null, "peakMemoryBytes": null }, "objects": [
+              { "trackId": "c1", "label": "car", "score": 0.91, "bbox": { "x0": 0.40, "y0": 0.40, "x1": 0.60, "y1": 0.72 } },
+              { "trackId": "c2", "label": "car", "score": 0.80, "bbox": { "x0": 0.70, "y0": 0.42, "x1": 0.82, "y1": 0.62 } },
+              { "trackId": "c99", "label": "truck", "score": 0.70, "bbox": { "x0": 0.05, "y0": 0.15, "x1": 0.16, "y1": 0.30 } }
+            ] },
+            { "sampleIndex": 1, "sourceTimeMs": 200, "primaryTrackId": "c1", "telemetry": { "decodeMs": 4, "preprocessMs": 5, "inferenceMs": 64, "postprocessMs": 4, "trackingMs": 2, "requestToResultMs": 79, "captureToDisplayMs": null, "evidenceAgeMs": null, "peakMemoryBytes": null }, "objects": [
+              { "trackId": "c1", "label": "car", "score": 0.90, "bbox": { "x0": 0.40, "y0": 0.41, "x1": 0.61, "y1": 0.73 } }
+            ] },
+            { "sampleIndex": 2, "sourceTimeMs": 400, "primaryTrackId": "c3", "telemetry": { "decodeMs": 3, "preprocessMs": 5, "inferenceMs": 62, "postprocessMs": 4, "trackingMs": 2, "requestToResultMs": 76, "captureToDisplayMs": null, "evidenceAgeMs": null, "peakMemoryBytes": null }, "objects": [
+              { "trackId": "c3", "label": "car", "score": 0.89, "bbox": { "x0": 0.39, "y0": 0.42, "x1": 0.61, "y1": 0.75 } },
+              { "trackId": "c2", "label": "car", "score": 0.78, "bbox": { "x0": 0.68, "y0": 0.44, "x1": 0.80, "y1": 0.64 } }
+            ] },
+            { "sampleIndex": 3, "sourceTimeMs": 600, "primaryTrackId": "c3", "telemetry": { "decodeMs": 3, "preprocessMs": 5, "inferenceMs": 61, "postprocessMs": 4, "trackingMs": 2, "requestToResultMs": 75, "captureToDisplayMs": null, "evidenceAgeMs": null, "peakMemoryBytes": null }, "objects": [
+              { "trackId": "c3", "label": "truck", "score": 0.86, "bbox": { "x0": 0.38, "y0": 0.43, "x1": 0.62, "y1": 0.77 } }
+            ] }
+          ]
+        }
+      ]
+    },
+    {
+      "manifest": {
+        "candidateId": "challenger-blocked",
+        "role": "challenger",
+        "detector": { "family": "Synthetic Challenger", "revision": "fixture-v1", "artifactSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" },
+        "tracker": { "family": "Synthetic Stable Tracker", "revision": "v1", "configId": "stable-v1" },
+        "runtime": { "backend": "webgpu", "environmentId": "synthetic-device" },
+        "commercialGate": { "status": "blocked", "reference": "deliberate licence gate fixture" }
+      },
+      "runs": [
+        {
+          "journeyId": "synthetic-highway-01",
+          "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width": 1280,
+          "height": 720,
+          "frames": [
+            { "sampleIndex": 0, "sourceTimeMs": 0, "primaryTrackId": "a", "telemetry": { "decodeMs": 3, "preprocessMs": 4, "inferenceMs": 40, "postprocessMs": 3, "trackingMs": 1, "requestToResultMs": 51, "captureToDisplayMs": 57, "evidenceAgeMs": 57, "peakMemoryBytes": 200000000 }, "objects": [
+              { "trackId": "a", "label": "car", "score": 0.95, "bbox": { "x0": 0.40, "y0": 0.40, "x1": 0.60, "y1": 0.72 } },
+              { "trackId": "b", "label": "car", "score": 0.90, "bbox": { "x0": 0.70, "y0": 0.42, "x1": 0.82, "y1": 0.62 } }
+            ] },
+            { "sampleIndex": 1, "sourceTimeMs": 200, "primaryTrackId": "a", "telemetry": { "decodeMs": 3, "preprocessMs": 4, "inferenceMs": 42, "postprocessMs": 3, "trackingMs": 1, "requestToResultMs": 53, "captureToDisplayMs": 59, "evidenceAgeMs": 59, "peakMemoryBytes": 204000000 }, "objects": [
+              { "trackId": "a", "label": "car", "score": 0.95, "bbox": { "x0": 0.40, "y0": 0.41, "x1": 0.61, "y1": 0.73 } },
+              { "trackId": "b", "label": "car", "score": 0.89, "bbox": { "x0": 0.69, "y0": 0.43, "x1": 0.81, "y1": 0.63 } }
+            ] },
+            { "sampleIndex": 2, "sourceTimeMs": 400, "primaryTrackId": "a", "telemetry": { "decodeMs": 3, "preprocessMs": 4, "inferenceMs": 41, "postprocessMs": 3, "trackingMs": 1, "requestToResultMs": 52, "captureToDisplayMs": 58, "evidenceAgeMs": 58, "peakMemoryBytes": 208000000 }, "objects": [
+              { "trackId": "a", "label": "car", "score": 0.94, "bbox": { "x0": 0.39, "y0": 0.42, "x1": 0.61, "y1": 0.75 } },
+              { "trackId": "b", "label": "car", "score": 0.88, "bbox": { "x0": 0.68, "y0": 0.44, "x1": 0.80, "y1": 0.64 } }
+            ] },
+            { "sampleIndex": 3, "sourceTimeMs": 600, "primaryTrackId": "a", "telemetry": { "decodeMs": 3, "preprocessMs": 4, "inferenceMs": 39, "postprocessMs": 3, "trackingMs": 1, "requestToResultMs": 50, "captureToDisplayMs": 56, "evidenceAgeMs": 56, "peakMemoryBytes": 210000000 }, "objects": [
+              { "trackId": "a", "label": "car", "score": 0.93, "bbox": { "x0": 0.38, "y0": 0.43, "x1": 0.62, "y1": 0.77 } }
+            ] }
+          ]
+        }
+      ]
+    }
+  ]
+}

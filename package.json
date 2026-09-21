@@ -21,6 +21,8 @@
     "profile:drive-offline": "node scripts/profile-drive-offline.mjs",
     "verify:drive-live-report": "node --import tsx scripts/verify-drive-live-report.ts",
     "benchmark:drive-corpus": "node --import tsx scripts/evaluate-drive-corpus.ts",
+    "benchmark:drive-evidence-plane": "node --import tsx scripts/evaluate-drive-evidence-plane.ts",
+    "assemble:drive-evidence-plane": "node --import tsx scripts/assemble-drive-evidence-plane.ts",
     "benchmark:road": "node --import tsx scripts/evaluate-road-corpus.ts",
     "inspect:road-artifact": "node --import tsx scripts/inspect-road-artifact.ts",
     "smoke:road-artifact": "node scripts/smoke-road-artifact.mjs",

@@ -10,7 +10,7 @@ import assert from 'node:assert/strict';
 
 const out=join(tmpdir(),'roboeye-drive-feature-toggle-qa');
 await mkdir(out,{recursive:true});
-const port=4195,root=new URL('..',import.meta.url).pathname,server=startDev(root,port);
+const port=Number(process.env.ROBOEYE_TEST_PORT ?? '4195'),root=new URL('..',import.meta.url).pathname,server=startDev(root,port);
 await waitForPreview(server);
 const browser=await chromium.launch(await browserLaunchOptions(await resolveBrowserExecutable()));
 const page=await browser.newPage({viewport:{width:1440,height:900}});

@@ -1,0 +1,229 @@
+[
+  {
+    "id": "yolo26",
+    "url": "https://docs.ultralytics.com/models/yolo26/",
+    "source": "Ultralytics",
+    "snapshot": "yolo26.html",
+    "bytes": 473941,
+    "sha256": "84a2a6c6ef93b1f8f1ce2abda9da5cea10bb3873be712b9032a52d75a2f502af",
+    "fetched_at": "2026-09-21T09:12:55.909Z"
+  },
+  {
+    "id": "rfdetr",
+    "url": "https://raw.githubusercontent.com/roboflow/rf-detr/develop/README.md",
+    "source": "Roboflow-RF-DETR",
+    "snapshot": "rfdetr.txt",
+    "bytes": 26774,
+    "sha256": "2626e785682875b615fbf95f36a29f74495cc543a18ae62c266312e3de50d0e8",
+    "fetched_at": "2026-09-21T09:12:56.139Z"
+  },
+  {
+    "id": "rtdetr",
+    "url": "https://raw.githubusercontent.com/lyuwenyu/RT-DETR/main/README.md",
+    "source": "RT-DETR-authors",
+    "snapshot": "rtdetr.txt",
+    "bytes": 8247,
+    "sha256": "599e90b38354c7c5cb7f7f1679454fd0537a608b5feab5703210ba79353f30c9",
+    "fetched_at": "2026-09-21T09:12:56.205Z"
+  },
+  {
+    "id": "rtdetr-license",
+    "url": "https://raw.githubusercontent.com/lyuwenyu/RT-DETR/main/LICENSE",
+    "source": "RT-DETR-authors",
+    "snapshot": "rtdetr-license.txt",
+    "bytes": 11357,
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "fetched_at": "2026-09-21T09:12:56.287Z"
+  },
+  {
+    "id": "bytetrack",
+    "url": "https://raw.githubusercontent.com/FoundationVision/ByteTrack/main/README.md",
+    "source": "FoundationVision-ByteTrack",
+    "snapshot": "bytetrack.txt",
+    "bytes": 15448,
+    "sha256": "126d307a421e4421aa9d3917e7849d1cf63c95f7b36864e1ca92a9d1a451c247",
+    "fetched_at": "2026-09-21T09:12:56.362Z"
+  },
+  {
+    "id": "bytetrack-license",
+    "url": "https://raw.githubusercontent.com/FoundationVision/ByteTrack/main/LICENSE",
+    "source": "FoundationVision-ByteTrack",
+    "snapshot": "bytetrack-license.txt",
+    "bytes": 1067,
+    "sha256": "e9d83751678cbaba6dfba902ea39215c423d93425e58f8450d6001f7261696f9",
+    "fetched_at": "2026-09-21T09:12:56.446Z"
+  },
+  {
+    "id": "metric3d",
+    "url": "https://raw.githubusercontent.com/YvanYin/Metric3D/main/README.md",
+    "source": "Metric3D-authors",
+    "snapshot": "metric3d.txt",
+    "bytes": 24738,
+    "sha256": "e2ff64798e16a1c9236f9e4dd31a8e8087c01ad9d39ba607d57e416493cf0618",
+    "fetched_at": "2026-09-21T09:12:56.528Z"
+  },
+  {
+    "id": "metric3d-license",
+    "url": "https://raw.githubusercontent.com/YvanYin/Metric3D/main/LICENSE",
+    "source": "Metric3D-authors",
+    "snapshot": "metric3d-license.txt",
+    "bytes": 1306,
+    "sha256": "cb2dba18d598b6ad0b34f0f8b0ad01f9d495e657cae9bf0544786190cb26f9f9",
+    "fetched_at": "2026-09-21T09:12:56.593Z"
+  },
+  {
+    "id": "unidepth",
+    "url": "https://raw.githubusercontent.com/lpiccinelli-eth/UniDepth/main/README.md",
+    "source": "ETH-UniDepth",
+    "snapshot": "unidepth.txt",
+    "bytes": 12096,
+    "sha256": "068100d194668f599e01fe6d3e91fdcf0476d8ea23e15582bb82c8b5405a0af3",
+    "fetched_at": "2026-09-21T09:12:56.657Z"
+  },
+  {
+    "id": "depthpro",
+    "url": "https://raw.githubusercontent.com/apple/ml-depth-pro/main/README.md",
+    "source": "Apple-DepthPro",
+    "snapshot": "depthpro.txt",
+    "bytes": 3776,
+    "sha256": "5a10be5d4c040e382a82ffc356ce06f1f73a8f7ff4250e53efea98680b4ea1e0",
+    "fetched_at": "2026-09-21T09:12:56.743Z"
+  },
+  {
+    "id": "depthpro-license",
+    "url": "https://raw.githubusercontent.com/apple/ml-depth-pro/main/LICENSE",
+    "source": "Apple-DepthPro",
+    "snapshot": "depthpro-license.txt",
+    "bytes": 2672,
+    "sha256": "21a6551d1f8f851d2d10b5c6cc56535956b983c3cb997d25f3db4dd6f59ef99f",
+    "fetched_at": "2026-09-21T09:12:56.812Z"
+  },
+  {
+    "id": "da2",
+    "url": "https://raw.githubusercontent.com/DepthAnything/Depth-Anything-V2/main/README.md",
+    "source": "DepthAnything",
+    "snapshot": "da2.txt",
+    "bytes": 9904,
+    "sha256": "987d1ab991c1b149276a0426bec7d8f3472d85c29ec976d96ea657aa960fad50",
+    "fetched_at": "2026-09-21T09:12:56.883Z"
+  },
+  {
+    "id": "yolopv2",
+    "url": "https://raw.githubusercontent.com/CAIC-AD/YOLOPv2/main/README.md",
+    "source": "CAIC-AD-YOLOPv2",
+    "snapshot": "yolopv2.txt",
+    "bytes": 7214,
+    "sha256": "aa57e2805b89cf1a23997ad5ccf22c25af33eea38b469047bfc3e3425a371cae",
+    "fetched_at": "2026-09-21T09:12:56.949Z"
+  },
+  {
+    "id": "yolopv2-license",
+    "url": "https://raw.githubusercontent.com/CAIC-AD/YOLOPv2/main/LICENSE",
+    "source": "CAIC-AD-YOLOPv2",
+    "snapshot": "yolopv2-license.txt",
+    "bytes": 1064,
+    "sha256": "efb0c258639b94b84e344b1ab0ff55249a8dd115914b195d63602aa24fbb8c60",
+    "fetched_at": "2026-09-21T09:12:57.009Z"
+  },
+  {
+    "id": "openvino-road",
+    "url": "https://docs.openvino.ai/2024/notebooks/hello-segmentation-with-output.html",
+    "source": "OpenVINO",
+    "snapshot": "openvino-road.html",
+    "bytes": 859170,
+    "sha256": "62bd7f3c59d5d4cf4967fa7e14495e12ab47e844582efe668cf21b0931f58192",
+    "fetched_at": "2026-09-21T09:12:57.187Z"
+  },
+  {
+    "id": "ort-web",
+    "url": "https://onnxruntime.ai/docs/tutorials/web/",
+    "source": "Microsoft-ONNXRuntime",
+    "snapshot": "ort-web.html",
+    "bytes": 44678,
+    "sha256": "0c7be4ac3214b6ba7d964ef1cd6fa1143af7c87aa8b7f3aa69e00cddcd498ec3",
+    "fetched_at": "2026-09-21T09:12:57.442Z"
+  },
+  {
+    "id": "ort-license",
+    "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/main/LICENSE",
+    "source": "Microsoft-ONNXRuntime",
+    "snapshot": "ort-license.txt",
+    "bytes": 1073,
+    "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+    "fetched_at": "2026-09-21T09:12:58.066Z"
+  },
+  {
+    "id": "webcodecs",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API",
+    "source": "MDN",
+    "snapshot": "webcodecs.html",
+    "bytes": 160148,
+    "sha256": "57dce3093fc306cd6266de41c1025c6e787e58440888810cb04f5d7378ed5aae",
+    "fetched_at": "2026-09-21T09:12:58.364Z"
+  },
+  {
+    "id": "video-frame-callback",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestVideoFrameCallback",
+    "source": "MDN",
+    "snapshot": "video-frame-callback.html",
+    "bytes": 169783,
+    "sha256": "b244cd4ac9a7d1dd2f714a2a0318715d1c55243cec702a6f82ac59b4c0e2f422",
+    "fetched_at": "2026-09-21T09:12:58.464Z"
+  },
+  {
+    "id": "deepstream-tracker",
+    "url": "https://docs.nvidia.com/metropolis/deepstream/9.0/text/DS_plugin_gst-nvtracker.html",
+    "source": "NVIDIA-DeepStream",
+    "snapshot": "deepstream-tracker.html",
+    "bytes": 381234,
+    "sha256": "d34938fd3608929fb9bfe19194564f0af7c4ec733ba2bf2445597e9645cabe60",
+    "fetched_at": "2026-09-21T09:12:58.689Z"
+  },
+  {
+    "id": "opencv-calibration",
+    "url": "https://raw.githubusercontent.com/opencv/opencv/4.x/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.markdown",
+    "source": "OpenCV",
+    "snapshot": "opencv-calibration.txt",
+    "bytes": 10651,
+    "sha256": "72f48a264d331a7d81dcd9463b98f096871cb140105f96f08abdf954d84203c4",
+    "fetched_at": "2026-09-21T09:12:59.007Z"
+  },
+  {
+    "id": "bdd100k",
+    "url": "https://raw.githubusercontent.com/bdd100k/bdd100k/master/README.md",
+    "source": "Berkeley-BDD100K",
+    "snapshot": "bdd100k.txt",
+    "bytes": 1899,
+    "sha256": "c63a9a1fd2033362133e26207c6ae1ebfc509a3555a903759f111bfbfb454512",
+    "fetched_at": "2026-09-21T09:12:59.090Z"
+  },
+  {
+    "id": "kitti",
+    "url": "https://www.cvlibs.net/datasets/kitti/",
+    "source": "KITTI",
+    "snapshot": "kitti.html",
+    "bytes": 19970,
+    "sha256": "828a0add3e07f8ae9156ec73bde2ebaa4db0a637ad36e000cf01670b717bcd2a",
+    "fetched_at": "2026-09-21T09:13:00.062Z"
+  },
+  {
+    "id": "comma2k19",
+    "url": "https://raw.githubusercontent.com/commaai/comma2k19/master/README.md",
+    "source": "comma.ai",
+    "snapshot": "comma2k19.txt",
+    "bytes": 7405,
+    "sha256": "c4dd5833ea9dc1530c18e8a1c3edd13345d9e139d4c8357e319c33c8a4442a34",
+    "fetched_at": "2026-09-21T09:13:00.144Z"
+  },
+  {
+    "id": "nhtsa-hmi",
+    "url": "https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/documents/812360_humanfactorsdesignguidance.pdf",
+    "source": "NHTSA",
+    "snapshot": "nhtsa-hmi.pdf",
+    "bytes": 6594364,
+    "sha256": "4dc1a7fd5175e09c4419991fcd0ec6f937f6e43363e472d166f8a7ad0082e491",
+    "fetched_at": "2026-09-21T09:13:01.362Z",
+    "text_snapshot": "nhtsa-hmi.txt",
+    "text_sha256": "ec7d38046c956a23187c3dceb0503ab9a1b815209f9d47f1bbae11d1114bcd9d"
+  }
+]

@@ -1,0 +1,35 @@
+domain: drivesense_technical_frontier_2026_09
+entity_label: "Technical methods, runtimes, datasets and safety references independently audited for DriveSense"
+
+schema:
+  type_field: layer
+  fields:
+    - layer
+    - capability
+    - deployment_target
+    - code_license
+    - weights_or_data_terms
+    - benchmark_or_contract
+    - limitation
+
+rollup_field: layer
+
+universe:
+  estimate: 18
+  basis: "Predeclared TIP-56A shortlist spanning perception, range, road understanding, runtime, validation and safety; not the total technology market"
+
+refresh_days:
+  code_license: 30
+  weights_or_data_terms: 30
+  benchmark_or_contract: 90
+  default: 90
+
+alias_map: {}
+ambiguous_clusters: []
+
+domain_gates:
+  no_inferred_fields:
+    - code_license
+    - weights_or_data_terms
+    - benchmark_or_contract
+    - limitation
