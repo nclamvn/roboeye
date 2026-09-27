@@ -422,3 +422,16 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   negative-scale production asset and no canned gesture animation.
 - **Detail:** `docs/TIP-58-SHARPA-WAVE-ANATOMICAL-RIG.md`, research shortlist
   and completion report.
+
+## TIP-59 · Mobile detector continuity and CPU arbitration
+
+- **Dependencies:** TIP-49L-D live timing and the current RT-DETR + DA2
+  browser pipeline. **Priority:** P0 smartphone usability.
+- **Task:** separate capture-time evidence from publication freshness, adapt
+  track hold/association to observed detector latency, bridge bounded misses
+  without preserving range-derived risk, and throttle depth when two WASM
+  workers compete for a mobile CPU.
+- **Boundary:** improves continuity and scheduling only. It does not claim a
+  higher detector recall, calibrated metres, collision-warning readiness or
+  safe driver operation.
+- **Detail:** `docs/TIP-59-MOBILE-DETECTOR-CONTINUITY.md`.

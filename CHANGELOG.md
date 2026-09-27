@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+### DriveSense mobile continuity (TIP-59)
+
+- Replaced the fixed 400 ms live-track publication window with a bounded
+  cadence/latency-aware continuity policy, separating capture time from the
+  time an inference result becomes visible.
+- Preserved confirmed vehicle identity through up to two missed detector
+  samples while retaining a finite 1.8 second maximum hold and immediate range
+  invalidation on a miss.
+- Made live learned-range publication use its own result clock so the slower
+  depth stream no longer expires at the instant it reaches the UI.
+- Added mobile CPU arbitration: when detector and depth both use WASM, depth
+  yields to the measured detector cadence instead of competing every 500 ms.
+- Added regression coverage for 800 ms WASM latency, 900 ms detector cadence,
+  bounded occlusion continuity, offline replay misses and depth scheduling.
+
 ### RoboHand Studio (TIP-57)
 
 - Extended the local MediaPipe worker from one to two hands while retaining the

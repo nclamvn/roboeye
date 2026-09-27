@@ -26,6 +26,7 @@ import {cameraChoices,cameraConstraints} from './camera-source';
 import {offlinePlan,type OfflinePreset} from './offline-plan';
 import {RoadUI} from './road-ui';
 import {exportCurrentDriveCandidate} from './evidence-plane';
+import {liveMetricIntervalMs} from './live-scheduler';
 
 // A release service worker previously installed on localhost must never make the
 // development session look stale after a code change.
@@ -127,7 +128,7 @@ function startMetricWorker(cleanWasmRetry=false){
         if(request.live){
           metricLatencies.push(m.latencyMs);if(metricLatencies.length>5000)metricLatencies.shift();
           const fresh=request.live.epoch===epoch&&source==='camera'&&performance.now()-request.wall<=1200;
-          const applied=fresh?tracker.enrichLearnedRanges(request.boxes,ranges,request.live.t,request.live.w,request.live.h):0;
+          const applied=fresh?tracker.enrichLearnedRanges(request.boxes,ranges,request.live.t,request.live.w,request.live.h,performance.now()):0;
           if(applied){liveMetricAccepted++;latest=publishedSnapshot(clock(),performance.now());}else liveMetricDropped++;
         }else request.resolve?.({ranges,latencyMs:m.latencyMs});
       }catch(error){if(request.live)liveMetricDropped++;else request.reject?.(error instanceof Error?error:Error(String(error)));}
@@ -176,7 +177,7 @@ function startWorker(cleanWasmRetry=false){
       const current=size();if(current[0]!==request.w||current[1]!==request.h){liveTelemetry.drop(request.id,'geometry-change');clearProfile();status('Nguồn đổi kích thước: cần hiệu chuẩn lại.');return;}
       // Scale detector endpoint uncertainty back into original image coordinates.
       const effective=profile?{...profile,pixelSigma:Math.max(profile.pixelSigma,3*request.w/capture.width)}:null;
-      tracker.observe(m.boxes,request.t,request.wall,effective,request.w,request.h,null,source==='camera');
+      tracker.observe(m.boxes,request.t,now,effective,request.w,request.h,null,source==='camera',now-request.wall);
       record(request.t,now,now-request.wall,video.paused);
       if(source==='camera'&&liveTelemetry.accept(request.id,performance.now()))liveTraceId=request.id;
       if(source==='camera')dispatchLiveMetric(request,m.boxes);
@@ -200,7 +201,7 @@ function sendFrame(frameAvailableAt=performance.now()){
     if(source==='camera')liveTelemetry.begin(id,epoch,t,frameAvailableAt);
     captureCtx.drawImage(video,0,0,capture.width,capture.height);const data=captureCtx.getImageData(0,0,capture.width,capture.height);
     let metricSnapshot:MetricSnapshot|undefined;
-    if(source==='camera'&&!profile&&metricReady&&!metricPending&&wall-lastLiveMetricCapture>=500){
+    if(source==='camera'&&!profile&&metricReady&&!metricPending&&wall-lastLiveMetricCapture>=liveMetricIntervalMs(frameLatencies,backend,metricBackend)){
       const transform=letterboxTransform(w,h,DA2_DRIVE.width,DA2_DRIVE.height);metricCapture.width=DA2_DRIVE.width;metricCapture.height=DA2_DRIVE.height;
       metricCaptureCtx.fillStyle='#000';metricCaptureCtx.fillRect(0,0,metricCapture.width,metricCapture.height);
       metricCaptureCtx.drawImage(video,0,0,w,h,transform.offsetX,transform.offsetY,transform.contentWidth,transform.contentHeight);

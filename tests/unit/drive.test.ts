@@ -71,9 +71,24 @@ test('drive associates a fast non-overlapping vehicle and resists one-frame subc
 test('drive missed detection and stale data never retain a current distance',()=>{
   const tracker=new VehicleTracker();tracker.observe(demoFrame(0).boxes,0,0,DEMO_PROFILE,1280,720);
   assert.ok(tracker.snapshot(100,100)[0].range.distanceM);
-  assert.equal(tracker.snapshot(500,500).length,0); // strong-evidence window expired
+  assert.equal(tracker.snapshot(600,600).length,0); // bounded visual continuity expired
   tracker.observe([],100,100,DEMO_PROFILE,1280,720);assert.equal(tracker.snapshot(100,100)[0].range.distanceM,null);
   assert.equal(tracker.snapshot(1200,1200).length,0);
+});
+test('drive tracking remains readable at mobile WASM cadence without reviving ghosts',()=>{
+  const tracker=new VehicleTracker(),mobile={label:'car',score:.72,x0:.36,y0:.42,x1:.64,y1:.78};
+  // Capture timestamps are 900 ms apart and each result arrives 800 ms late.
+  // A fixed 400 ms media-time gate used to hide each result immediately.
+  tracker.observe([mobile],0,800,null,1280,720,null,false,800);
+  assert.equal(tracker.snapshot(800,800).length,0,'first moderate hit still requires confirmation');
+  tracker.observe([{...mobile,x0:.37,x1:.65}],900,1700,null,1280,720,null,false,800);
+  const confirmed=tracker.snapshot(1700,1700);assert.equal(confirmed.length,1);const id=confirmed[0].id;
+  assert.equal(tracker.snapshot(2350,2350)[0].id,id,'overlay bridges the next slow inference result');
+  tracker.observe([],1800,2600,null,1280,720,null,false,800);
+  assert.equal(tracker.snapshot(2600,2600)[0].id,id,'one detector miss does not flash the box off');
+  tracker.observe([],2700,3500,null,1280,720,null,false,800);
+  tracker.observe([],3600,4400,null,1280,720,null,false,800);
+  assert.equal(tracker.snapshot(4400,4400).length,0,'bounded miss budget removes a vanished vehicle');
 });
 test('drive reordered/duplicate time is ignored; reset does not transfer old range to a new source',()=>{
   const tracker=new VehicleTracker();tracker.observe(demoFrame(0).boxes,100,100,DEMO_PROFILE,1280,720);
