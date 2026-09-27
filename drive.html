@@ -100,7 +100,7 @@
         <p id="profile-status">Chưa có profile hình học; AI metric vẫn hoạt động độc lập trên video đã phân tích.</p>
         <details><summary>Tinh chỉnh bằng điểm đất đã đo</summary><p>Giữ nguyên intrinsics. JSON gồm u,v (pixel gốc), zM (mét dọc phía trước camera), split: fit hoặc check. Cần 6 điểm fit trải ≥8 m và 2 điểm check độc lập.</p><label class="file-button secondary">Nhập điểm fit + check<input id="ground-file" type="file" accept=".json,application/json"/></label><p id="fit-status">Huber + Gauss–Newton; holdout không đạt sẽ không áp dụng.</p></details>
       </section>
-      <section><h2>Đối chứng & báo cáo</h2><p>Nhập JSON với timeMs, trackId, distanceM đã đo độc lập. ID phải đối chiếu với đúng phiên video.</p><div class="report-actions"><label class="file-button secondary">Nhập đối chứng<input id="reference-file" type="file" accept=".json,application/json"/></label><button id="report">Xuất báo cáo JSON</button></div><p id="reference-status">Chưa có đối chứng — chưa thể công bố độ chính xác.</p></section>
+      <section><h2>Đối chứng & báo cáo</h2><p>Nhập JSON với timeMs, trackId, distanceM đã đo độc lập. ID phải đối chiếu với đúng phiên video.</p><div class="report-actions"><label class="file-button secondary">Nhập đối chứng<input id="reference-file" type="file" accept=".json,application/json"/></label><button id="report">Xuất báo cáo JSON</button></div><p id="mobile-soak-status">Mobile soak chưa chạy · mở camera để thu telemetry cục bộ, không lưu pixel.</p><p id="reference-status">Chưa có đối chứng — chưa thể công bố độ chính xác.</p></section>
     </aside>
       </div>
       </div>

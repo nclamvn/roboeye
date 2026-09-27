@@ -27,6 +27,7 @@ import {offlinePlan,type OfflinePreset} from './offline-plan';
 import {RoadUI} from './road-ui';
 import {exportCurrentDriveCandidate} from './evidence-plane';
 import {liveMetricIntervalMs} from './live-scheduler';
+import {MobileSoakTelemetry,safeCameraSettings,type PresentedFrameMetadata} from './mobile-soak';
 
 // A release service worker previously installed on localhost must never make the
 // development session look stale after a code change.
@@ -61,7 +62,7 @@ let lastLiveMetricCapture=-Infinity,liveMetricAttempts=0,liveMetricAccepted=0,li
 interface HazardEvent {timeMs:number;trackId:number;level:'caution'|'critical';ttcS:number|null;distanceM:number|null;confidence:number;reason:string}
 let riskEvents:HazardEvent[]=[],lastRiskEvent=new Map<string,number>(),latestRisk:RiskSnapshot=assessRisk([],{speedKph:0,adverse:false});
 let alertsEnabled=false,audioContext:AudioContext|null=null,lastAlertWall=-Infinity;
-const liveTelemetry=new LiveTelemetry(5000);let liveTraceId:number|null=null;
+const liveTelemetry=new LiveTelemetry(5000),mobileSoak=new MobileSoakTelemetry();let liveTraceId:number|null=null;
 const status=(s:string)=>{$('status').textContent=s;};
 function syncFeatureToggles(){
   const range=$<HTMLButtonElement>('range-toggle'),lane=$<HTMLButtonElement>('road-toggle');
@@ -75,12 +76,12 @@ function syncFeatureToggles(){
 const number=(id:string)=>Number($<HTMLInputElement>(id).value);
 function size():[number,number]{return source==='demo'?[1280,720]:[video.videoWidth,video.videoHeight];}
 function clock(){return source==='demo'?performance.now()-demoStart:video.currentTime*1000;}
-function resetTimeline(clearReferences=true){epoch++;liveTelemetry.reset(epoch);liveTraceId=null;lastLiveMetricCapture=-Infinity;liveMetricAttempts=0;liveMetricAccepted=0;liveMetricDropped=0;tracker=new VehicleTracker();observations=[];latest=[];latestRisk=assessRisk([],{speedKph:0,adverse:false});riskEvents=[];lastRiskEvent.clear();lastFrame=-1;frameLatencies=[];metricLatencies=[];droppedResults=0;$('event-count').textContent='0';if(clearReferences){references=[];$('reference-status').textContent='Chưa có đối chứng cho phiên này.';}}
+function resetTimeline(clearReferences=true){epoch++;liveTelemetry.reset(epoch);mobileSoak.timelineReset(epoch);liveTraceId=null;lastLiveMetricCapture=-Infinity;liveMetricAttempts=0;liveMetricAccepted=0;liveMetricDropped=0;tracker=new VehicleTracker();observations=[];latest=[];latestRisk=assessRisk([],{speedKph:0,adverse:false});riskEvents=[];lastRiskEvent.clear();lastFrame=-1;frameLatencies=[];metricLatencies=[];droppedResults=0;$('event-count').textContent='0';if(clearReferences){references=[];$('reference-status').textContent='Chưa có đối chứng cho phiên này.';}}
 function refreshReplay(){if(replayReady)replayFrames=buildReplay(samples,profile?{...profile,pixelSigma:Math.max(profile.pixelSigma,3*profile.width/640)}:null,number('video-zoom'));}
 function cancelAnalysis(){autoAnalyse=false;analysis?.abort();analysis=null;fileJob.cancel();$<HTMLButtonElement>('analyse').textContent='Phân tích lại video';}
 function zoomDescription(){const zoom=number('video-zoom');return zoom===1?'1×: AI chưa kiểm chứng; xe cắt biên, quá nhỏ hoặc phối cảnh mâu thuẫn sẽ không hiện số đo.':`${zoom}×: AI không biết tiêu cự; nhập profile đúng lens/crop để có mét hình học. Không chia/nhân số AI theo zoom.`;}
 function clearProfile(){profile=null;$('profile-status').textContent=number('video-zoom')===1?'Chưa có profile hình học; chỉ dùng AI metric chưa kiểm chứng khi ROI hợp lệ.':'Chưa có profile đúng zoom/crop; chưa thể công bố số mét.';$('zoom-status').textContent=zoomDescription();$<HTMLButtonElement>('export-profile').disabled=true;$<HTMLInputElement>('confirmed').checked=false;resetTimeline();refreshReplay();}
-function stopSource(){road.stop();cancelAnalysis();fileJob.reset();replayReady=false;samples=[];replayFrames=[];analysisElapsedMs=0;currentFile=null;activeOfflinePlan=null;analysisCacheHit=false;$<HTMLProgressElement>('analysis-progress').value=0;sourceTicket++;source='none';sourceName='';importedDraft=null;video.pause();stream?.getTracks().forEach(t=>t.stop());stream=null;video.srcObject=null;video.removeAttribute('src');video.load();if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=null;$<HTMLInputElement>('video-zoom').value='1';clearProfile();resetTimeline(true);for(const key of ['fx','fy','cx','cy','heightM','pitchDeg','base-fov'])$<HTMLInputElement>(key).value='';$('empty').hidden=false;$('source-label').textContent='Chưa chọn nguồn';$<HTMLButtonElement>('play').disabled=true;$<HTMLInputElement>('seek').disabled=true;}
+function stopSource(){road.stop();cancelAnalysis();fileJob.reset();replayReady=false;samples=[];replayFrames=[];analysisElapsedMs=0;currentFile=null;activeOfflinePlan=null;analysisCacheHit=false;$<HTMLProgressElement>('analysis-progress').value=0;sourceTicket++;if(source==='camera')mobileSoak.cameraEnded(performance.now());source='none';sourceName='';importedDraft=null;video.pause();stream?.getTracks().forEach(t=>t.stop());stream=null;video.srcObject=null;video.removeAttribute('src');video.load();if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=null;$<HTMLInputElement>('video-zoom').value='1';clearProfile();resetTimeline(true);for(const key of ['fx','fy','cx','cy','heightM','pitchDeg','base-fov'])$<HTMLInputElement>(key).value='';$('empty').hidden=false;$('source-label').textContent='Chưa chọn nguồn';$<HTMLButtonElement>('play').disabled=true;$<HTMLInputElement>('seek').disabled=true;}
 function stopWorker(){pending?.reject?.(Error('Nhận diện đã dừng.'));worker?.terminate();worker=null;ready=false;loading=false;pending=null;$('backend').textContent='AI chưa tải';$('model').textContent='Bật nhận diện xe';}
 function stopMetricWorker(message='Khoảng cách AI chưa tải'){metricPending?.reject?.(Error('Metric AI đã dừng.'));metricWorker?.terminate();metricWorker=null;metricReady=false;metricLoading=false;metricPending=null;metricBackend='';$('metric-backend').textContent=message;}
 function failFileAnalysis(message:string,action:'retry'|'choose'='retry'){
@@ -115,11 +116,12 @@ function storeCachedAnalysis(){if(!currentFile)return;let entries=sessionAnalysi
 
 function startMetricWorker(cleanWasmRetry=false){
   stopMetricWorker('Đang tải khoảng cách AI…');metricLoading=true;metricLoadAt=performance.now();
+  mobileSoak.modelLoadStarted('metric-depth',$<HTMLInputElement>('wasm').checked||cleanWasmRetry?'wasm':'webgpu',metricLoadAt);
   const instance=new Worker(new URL('../worker/drive-range-worker.ts',import.meta.url),{type:'module'});metricWorker=instance;
   instance.onmessage=(event:MessageEvent<MetricWorkerMessage>)=>{
     if(metricWorker!==instance)return;const m=event.data;if(m?.channel!=='drive-range-v1')return;
     if(m.type==='status')$('metric-backend').textContent=m.message;
-    else if(m.type==='ready'){metricReady=true;metricLoading=false;metricBackend=m.backend;$('metric-backend').textContent=`Khoảng cách AI · ${m.backend}`;}
+    else if(m.type==='ready'){metricReady=true;metricLoading=false;metricBackend=m.backend;mobileSoak.modelReady('metric-depth',m.backend,performance.now(),m.warmupMs);$('metric-backend').textContent=`Khoảng cách AI · ${m.backend}`;}
     else if(m.type==='result'){
       const request=metricPending;if(!request||request.id!==m.id)return;metricPending=null;
       try{
@@ -129,34 +131,38 @@ function startMetricWorker(cleanWasmRetry=false){
           metricLatencies.push(m.latencyMs);if(metricLatencies.length>5000)metricLatencies.shift();
           const fresh=request.live.epoch===epoch&&source==='camera'&&performance.now()-request.wall<=1200;
           const applied=fresh?tracker.enrichLearnedRanges(request.boxes,ranges,request.live.t,request.live.w,request.live.h,performance.now()):0;
+          mobileSoak.metricResult(request.wall,m.latencyMs,applied>0);
           if(applied){liveMetricAccepted++;latest=publishedSnapshot(clock(),performance.now());}else liveMetricDropped++;
         }else request.resolve?.({ranges,latencyMs:m.latencyMs});
-      }catch(error){if(request.live)liveMetricDropped++;else request.reject?.(error instanceof Error?error:Error(String(error)));}
+      }catch(error){if(request.live){liveMetricDropped++;mobileSoak.metricResult(request.wall,m.latencyMs,false);}else request.reject?.(error instanceof Error?error:Error(String(error)));}
     }else if(m.type==='error'){
+      if(m.stage==='load')mobileSoak.modelError('metric-depth','metricLoadError');else mobileSoak.event('metricWorkerError');
       if(m.stage==='load'&&!cleanWasmRetry&&!$<HTMLInputElement>('wasm').checked){startMetricWorker(true);return;}
-      if(metricPending?.live)liveMetricDropped++;else metricPending?.reject?.(Error(m.message));metricPending=null;stopMetricWorker('Khoảng cách AI không khả dụng');
+      if(metricPending?.live){liveMetricDropped++;mobileSoak.metricResult(metricPending.wall,performance.now()-metricPending.wall,false);}else metricPending?.reject?.(Error(m.message));metricPending=null;stopMetricWorker('Khoảng cách AI không khả dụng');
       status(`Khoảng cách AI không tải được; vẫn tiếp tục khoanh xe. ${m.message}`);
     }
   };
-  instance.onerror=()=>{if(metricPending?.live)liveMetricDropped++;else metricPending?.reject?.(Error('Metric worker lỗi.'));metricPending=null;stopMetricWorker('Khoảng cách AI không khả dụng');status('Khoảng cách AI lỗi; nhận diện xe vẫn tiếp tục.');};
+  instance.onerror=()=>{if(!mobileSoak.modelError('metric-depth','metricLoadError'))mobileSoak.event('metricWorkerError');if(metricPending?.live){liveMetricDropped++;mobileSoak.metricResult(metricPending.wall,performance.now()-metricPending.wall,false);}else metricPending?.reject?.(Error('Metric worker lỗi.'));metricPending=null;stopMetricWorker('Khoảng cách AI không khả dụng');status('Khoảng cách AI lỗi; nhận diện xe vẫn tiếp tục.');};
   instance.postMessage({type:'init',backend:$<HTMLInputElement>('wasm').checked||cleanWasmRetry?'wasm':'webgpu'});
 }
 function dispatchLiveMetric(request:PendingFrame,boxes:DetBox[]){
   const snapshot=request.metricSnapshot,current=metricWorker;
   if(!snapshot||!current||!metricReady||metricPending||profile||!vehicleCandidates(boxes).some(box=>box.score>=VEHICLE_STRONG_SCORE))return;
-  const id=++metricFrameId;metricPending={id,wall:request.wall,boxes,transform:snapshot.transform,live:{epoch:request.epoch,t:request.t,w:request.w,h:request.h}};liveMetricAttempts++;
+  const id=++metricFrameId;metricPending={id,wall:request.wall,boxes,transform:snapshot.transform,live:{epoch:request.epoch,t:request.t,w:request.w,h:request.h}};liveMetricAttempts++;mobileSoak.metricAttempt(request.wall);
   current.postMessage({type:'frame',id,width:DA2_DRIVE.width,height:DA2_DRIVE.height,rgba:snapshot.rgba},[snapshot.rgba]);
 }
 
 function startWorker(cleanWasmRetry=false){
   stopWorker();if(!metricWorker)startMetricWorker();loading=true;loadAt=performance.now();$('backend').textContent='Đang tải RT-DETR…';$('model').textContent='Dừng nhận diện';
   const useGpu=!cleanWasmRetry&&!$<HTMLInputElement>('wasm').checked;
+  mobileSoak.modelLoadStarted('detector',useGpu?'webgpu':'wasm',loadAt);
   const instance=useGpu?new Worker(new URL('../worker/drive-detect-worker.ts',import.meta.url),{type:'module'}):new Worker(new URL('../worker/detect-worker.ts',import.meta.url),{type:'module'});worker=instance;
   instance.onmessage=(event:MessageEvent<DetectionWorkerToMain>)=>{
     if(worker!==instance)return;const m=event.data;
-    if(m.type==='ready'){ready=true;loading=false;backend=m.device;$('backend').textContent=`RT-DETR · ${backend}`;status(source==='file'?'AI sẵn sàng. Đang chuẩn bị phân tích video.':'AI sẵn sàng. Chưa hiệu chuẩn vẫn chỉ khoanh xe.');lastFrame=-1;}
+    if(m.type==='ready'){ready=true;loading=false;backend=m.device;mobileSoak.modelReady('detector',m.device,performance.now());$('backend').textContent=`RT-DETR · ${backend}`;status(source==='file'?'AI sẵn sàng. Đang chuẩn bị phân tích video.':'AI sẵn sàng. Chưa hiệu chuẩn vẫn chỉ khoanh xe.');lastFrame=-1;}
     else if(m.type==='progress')$('backend').textContent=`Tải model ${Math.round(m.progress)}%`;
     else if(m.type==='error'){
+      if(m.stage==='load')mobileSoak.modelError('detector','detectorLoadError');else mobileSoak.event('detectorWorkerError');
       // An unsuccessful GPU/session initialisation may leave the runtime unusable
       // for in-worker fallback. Retry load once in a new, WASM-only worker.
       if(m.stage==='load'&&!cleanWasmRetry&&!$<HTMLInputElement>('wasm').checked){
@@ -168,28 +174,31 @@ function startWorker(cleanWasmRetry=false){
     else if(m.type==='det'){
       const request=pending;if(!request||request.id!==m.capturedAt)return;pending=null;
       const now=performance.now();
-      if(source==='camera')liveTelemetry.result(request.id,now);
+      if(source==='camera'){liveTelemetry.result(request.id,now);mobileSoak.result(request.id,now);}
       if(request.resolve){request.resolve({timeMs:request.t,boxes:m.boxes,latencyMs:now-request.wall,width:request.w,height:request.h});return;}
-      if(request.epoch!==epoch||source==='none'||source==='demo'){liveTelemetry.drop(request.id,'source-reset');return;}
+      if(request.epoch!==epoch||source==='none'||source==='demo'){liveTelemetry.drop(request.id,'source-reset');mobileSoak.drop(request.id,'source-reset');return;}
       frameLatencies.push(now-request.wall);if(frameLatencies.length>5000)frameLatencies.shift();
       const samePausedFrame=source==='file'&&video.paused&&Math.abs(clock()-request.t)<1;
-      if(now-request.wall>1000&&!samePausedFrame){droppedResults++;liveTelemetry.drop(request.id,'stale-result');status('Kết quả AI chậm hơn 1 giây: không hiển thị như phép đo hiện tại. Tạm dừng video để phân tích frame hoặc dùng thiết bị/backend nhanh hơn.');return;}
-      const current=size();if(current[0]!==request.w||current[1]!==request.h){liveTelemetry.drop(request.id,'geometry-change');clearProfile();status('Nguồn đổi kích thước: cần hiệu chuẩn lại.');return;}
+      if(now-request.wall>1000&&!samePausedFrame){droppedResults++;liveTelemetry.drop(request.id,'stale-result');mobileSoak.drop(request.id,'stale-result');status('Kết quả AI chậm hơn 1 giây: không hiển thị như phép đo hiện tại. Tạm dừng video để phân tích frame hoặc dùng thiết bị/backend nhanh hơn.');return;}
+      const current=size();if(current[0]!==request.w||current[1]!==request.h){liveTelemetry.drop(request.id,'geometry-change');mobileSoak.drop(request.id,'geometry-change');clearProfile();status('Nguồn đổi kích thước: cần hiệu chuẩn lại.');return;}
       // Scale detector endpoint uncertainty back into original image coordinates.
       const effective=profile?{...profile,pixelSigma:Math.max(profile.pixelSigma,3*request.w/capture.width)}:null;
       tracker.observe(m.boxes,request.t,now,effective,request.w,request.h,null,source==='camera',now-request.wall);
       record(request.t,now,now-request.wall,video.paused);
-      if(source==='camera'&&liveTelemetry.accept(request.id,performance.now()))liveTraceId=request.id;
+      if(source==='camera'){
+        if(liveTelemetry.accept(request.id,performance.now()))liveTraceId=request.id;
+        mobileSoak.accept(request.id);mobileSoak.tracks(now,latest.map(track=>track.id));
+      }
       if(source==='camera')dispatchLiveMetric(request,m.boxes);
     }
   };
-  instance.onerror=()=>{if(pending&&source==='camera')liveTelemetry.drop(pending.id,'worker-error');failFileAnalysis('Worker lỗi: nhận diện đã dừng. Chạy lại hoặc chọn WASM trong Phân tích.');stopWorker();resetTimeline();};
+  instance.onerror=()=>{if(!mobileSoak.modelError('detector','detectorLoadError'))mobileSoak.event('detectorWorkerError');if(pending&&source==='camera'){liveTelemetry.drop(pending.id,'worker-error');mobileSoak.drop(pending.id,'worker-error');}failFileAnalysis('Worker lỗi: nhận diện đã dừng. Chạy lại hoặc chọn WASM trong Phân tích.');stopWorker();resetTimeline();};
   instance.postMessage({type:'init',engine:'rtdetr',queries:['car','bus','truck'],
     localModels:new URLSearchParams(location.search).get('local-models')==='1',profile:'drive',forceWasm:!useGpu});
 }
 
 function sendFrame(frameAvailableAt=performance.now()){
-  if(pending){if(source==='camera')liveTelemetry.skip('busy');return;}
+  if(pending){if(source==='camera'){liveTelemetry.skip('busy');mobileSoak.busy(frameAvailableAt);}return;}
   if(!ready||!worker||source==='none'||source==='demo'||source==='file'||video.readyState<2||video.seeking)return;
   const t=video.currentTime*1000;if(t===lastFrame)return;
   const [w,h]=size();if(!w||!h)return;
@@ -198,7 +207,7 @@ function sendFrame(frameAvailableAt=performance.now()){
   const height=Math.max(1,Math.round(capture.width*h/w));if(capture.height!==height)capture.height=height;
   try {
     const wall=performance.now(),id=++frameId;
-    if(source==='camera')liveTelemetry.begin(id,epoch,t,frameAvailableAt);
+    if(source==='camera'){liveTelemetry.begin(id,epoch,t,frameAvailableAt);mobileSoak.begin(id,epoch,frameAvailableAt);}
     captureCtx.drawImage(video,0,0,capture.width,capture.height);const data=captureCtx.getImageData(0,0,capture.width,capture.height);
     let metricSnapshot:MetricSnapshot|undefined;
     if(source==='camera'&&!profile&&metricReady&&!metricPending&&wall-lastLiveMetricCapture>=liveMetricIntervalMs(frameLatencies,backend,metricBackend)){
@@ -209,7 +218,7 @@ function sendFrame(frameAvailableAt=performance.now()){
     }
     if(source==='camera')liveTelemetry.captureDone(id,performance.now());pending={id,t,wall,epoch,w,h,metricSnapshot};lastFrame=t;
     worker.postMessage({type:'frame',rgba:data.data.buffer,width:capture.width,height:capture.height,capturedAt:id},[data.data.buffer]);
-    if(source==='camera')liveTelemetry.dispatched(id,performance.now());
+    if(source==='camera'){const dispatchedAt=performance.now();liveTelemetry.dispatched(id,dispatchedAt);mobileSoak.dispatched(id,dispatchedAt);}
   }catch(error){status(`Không đọc được frame: ${String(error)}`);stopWorker();resetTimeline();}
 }
 function inferReplay(signal:AbortSignal):Promise<ReplaySample>{
@@ -286,7 +295,7 @@ async function analyseVideo(){
   }catch(e){if(!job.signal.aborted){replayReady=false;samples=[];replayFrames=[];const message=`Phân tích chưa hoàn tất: ${e instanceof Error?e.message:String(e)}`;fileJob.fail(message);status(message);}}
   finally{if(analysis===job){analysis=null;$<HTMLButtonElement>('analyse').textContent='Phân tích lại video';}}
 }
-if('requestVideoFrameCallback' in video){const tick=(now:number)=>{sendFrame(now);video.requestVideoFrameCallback(tick);};video.requestVideoFrameCallback(tick);}
+if('requestVideoFrameCallback' in video){const tick=(now:number,metadata:VideoFrameCallbackMetadata)=>{if(source==='camera')mobileSoak.presentedFrame(now,metadata as PresentedFrameMetadata);sendFrame(now);video.requestVideoFrameCallback(tick);};video.requestVideoFrameCallback(tick);}
 
 function formatTime(seconds:number){return `${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;}
 function riskConfig(){return {speedKph:number('ego-speed'),adverse:$<HTMLInputElement>('adverse').checked};}
@@ -395,9 +404,11 @@ function draw(now:number){
     // unchanged internally and in Analysis, restored as soon as risk subsides.
     if(emphasized){const k=Math.min(22,bw/4,bh/4);ctx.strokeStyle=hazardColour;ctx.lineWidth=5;for(const [sx,sy,dx,dy] of [[x,y,1,1],[x+bw,y,-1,1],[x,y+bh,1,-1],[x+bw,y+bh,-1,-1]] as const){ctx.beginPath();ctx.moveTo(sx+dx*k,sy);ctx.lineTo(sx,sy);ctx.lineTo(sx,sy+dy*k);ctx.stroke();}}
   }ctx.restore();
-  if(source==='camera'&&liveTraceId!==null)liveTelemetry.overlay(liveTraceId,performance.now(),warningText!==null);
+  if(source==='camera'&&liveTraceId!==null){const overlayAt=performance.now();liveTelemetry.overlay(liveTraceId,overlayAt,warningText!==null);mobileSoak.overlay(liveTraceId,overlayAt,warningText!==null);}
   if(now-lastTable>200){lastTable=now;
     syncFeatureToggles();
+    const soak=mobileSoak.status(performance.now()),soakSeconds=Math.floor(soak.durationMs/1000);
+    $('mobile-soak-status').textContent=source==='camera'?`Mobile soak · ${Math.floor(soakSeconds/60)}:${String(soakSeconds%60).padStart(2,'0')} · ${soak.phase} · pixel-free`:'Mobile soak chưa chạy · mở camera để thu telemetry cục bộ, không lưu pixel.';
     const audioRequested=captureRiskEvent(latestRisk,clock());
     if(audioRequested&&source==='camera'&&liveTraceId!==null)liveTelemetry.audio(liveTraceId,performance.now());
     $<HTMLButtonElement>('analyse').disabled=source!=='file'||loading||metricLoading||!!metricPending;
@@ -502,6 +513,9 @@ async function openLocalCamera(){
   next.getVideoTracks().forEach(track=>track.addEventListener('ended',()=>{if(stream===next){stopSource();status('Camera đã ngắt; dữ liệu đo đã hủy.');}},{once:true}));
   try{await video.play();}catch(error){if(ticket===sourceTicket)stopSource();throw error;}
   if(ticket!==sourceTicket)return;
+  mobileSoak.cameraOpened(epoch,performance.now(),safeCameraSettings(track?.getSettings()));
+  if(worker&&ready)mobileSoak.modelObserved('detector',backend);else if(worker&&loading)mobileSoak.modelLoadStarted('detector','preloaded-before-camera-session',performance.now());
+  if(metricWorker&&metricReady)mobileSoak.modelObserved('metric-depth',metricBackend);else if(metricWorker&&metricLoading)mobileSoak.modelLoadStarted('metric-depth','preloaded-before-camera-session',performance.now());
   $('empty').hidden=true;$('source-label').textContent=`${sourceName} · local · không ghi hình`;if(rangeEnabled&&!worker&&!road.enabled)startWorker();status(road.enabled?'Camera đã mở để test làn local. Không phải cảnh báo lệch làn.':rangeEnabled?'Camera đã mở. Detector ưu tiên khung mượt; depth metric chạy cùng frame ở nhịp tối đa 2 Hz và tự loại kết quả cũ. Mét vẫn chưa hiệu chuẩn thực địa.':'Camera đã mở. Chọn Khoảng cách hoặc Làn ngay trên video.');
 }
 $('camera').onclick=safe(openLocalCamera);
@@ -568,20 +582,20 @@ $('report').onclick=()=>{
   const depthCounts=recorded?{depthAttempts:samples.filter(s=>s.metricState==='success'||s.metricState==='failed').length,depthSuccessfulRequests:rangeLatencies.length,depthSkippedFrames:samples.filter(s=>s.metricState==='skipped').length,depthFailedFrames:samples.filter(s=>s.metricState==='failed').length}:{};
   const evidencePlaneCandidate=recorded?exportCurrentDriveCandidate(samples,replayFrames,replayFrames.map(frame=>assessRisk(frame.tracks,riskConfig(),'analysed-replay').primary?.track.id??null),analysisBackend||backend):null;
   const report={
-    version:7,createdAt:new Date().toISOString(),source:sourceName,sourceKind:source,session:epoch,synthetic:source==='demo',mode:recorded?'analysed-replay':source==='file'?'unanalysed-video':'live-or-synthetic',
+    version:8,createdAt:new Date().toISOString(),source:source==='camera'?'Local camera':sourceName,sourceKind:source,session:epoch,synthetic:source==='demo',mode:recorded?'analysed-replay':source==='file'?'unanalysed-video':'live-or-synthetic',
     runtime:{app:'RoboEye DriveSense',appVersion:'1.5.0',sourceDimensions:{width:sourceWidth,height:sourceHeight},devicePixelRatio,capabilities:{requestVideoFrameCallback:'requestVideoFrameCallback' in video,webgpu:'gpu' in navigator,offscreenCanvas:'OffscreenCanvas' in window,crossOriginIsolated},userAgent:navigator.userAgent},
     distanceKinds:['learned_optical_axis_z_m','ground_contact_forward_m'],distanceDefinition:'Forward Z from camera; NOT bumper clearance, lateral separation or inter-vehicle B-C gap',videoZoom:number('video-zoom'),rangePolicy:LEARNED_RANGE_POLICY,
     model:source!=='demo'&&backend?{name:'RT-DETRv2 R18',backend:recorded?analysisBackend:backend,gpuArtifact:(recorded?analysisBackend:backend)==='webgpu'?DRIVE_GPU_DETECTOR:null,decoder:DRIVE_DECODER,candidatePolicy:DRIVE_CANDIDATE_POLICY}:null,
     rangeModel:(recorded||source==='camera')&&metricReady?{...DA2_DRIVE,backend:recorded?analysisMetricBackend:metricBackend,validation:'learned-unverified'}:null,
     offlineAnalysis:recorded&&activeOfflinePlan?{preset:activeOfflinePlan.preset,stepMs:activeOfflinePlan.stepMs,samplesPerSecond:activeOfflinePlan.samplesPerSecond,cacheHit:analysisCacheHit,disclosure:activeOfflinePlan.disclosure}:null,
     liveMetric:source==='camera'?{cadenceCapHz:2,attempts:liveMetricAttempts,accepted:liveMetricAccepted,droppedOrUnmatched:liveMetricDropped,policy:'same-frame snapshot; learned result expires after 400 ms and never overrides a supplied camera profile'}:null,
-    profile,risk:{config:riskConfig(),policy:'shadow-risk-v1',events:riskEvents,latest:latestRisk},summary:evaluate(values,references),liveTiming:source==='camera'?liveTelemetry.report():null,
+    profile,risk:{config:riskConfig(),policy:'shadow-risk-v1',events:riskEvents,latest:latestRisk},summary:evaluate(values,references),liveTiming:source==='camera'?liveTelemetry.report():null,mobileSoak:source==='camera'?mobileSoak.report(performance.now()):null,
     frameTiming:{count:latencies.length,detectorRequestP50Ms:percentile(latencies,.5),detectorRequestP95Ms:percentile(latencies,.95),metricInferenceP50Ms:percentile(rangeLatencies,.5),metricInferenceP95Ms:percentile(rangeLatencies,.95),seekP50Ms:percentile(seekLatencies,.5),seekP95Ms:percentile(seekLatencies,.95),sampleWallP50Ms:percentile(sampleWall,.5),sampleWallP95Ms:percentile(sampleWall,.95),...depthCounts,droppedResults,analysisElapsedMs:recorded?analysisElapsedMs:null,analysedFramesPerSecond:recorded&&!analysisCacheHit&&analysisElapsedMs>0?samples.length/(analysisElapsedMs/1000):null,mediaToProcessingRatio:recorded&&!analysisCacheHit&&analysisElapsedMs>0?video.duration*1000/analysisElapsedMs:null,scope:source==='camera'?'liveTiming measures camera callback to overlay/audio; live metric depth is same-frame, bounded and unverified.':'Offline detector/depth overlap with an explicit sampling preset; not realtime sensor-to-display latency.'},
     observations:values,references,samples:recorded?samples:[],evidencePlaneCandidate,limits:'PoC desktop shadow-mode. Absolute metres/zoom/near-side/far-vehicle accuracy remain ground-truth unvalidated; not for braking/steering.'
   };
   download('drivesense-report.json',source==='camera'?{...report,liveAcceptance:evaluateLiveEvidence(report)}:report);
 };
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&!analysis){video.pause();if(!replayReady)resetTimeline();}});
+document.addEventListener('visibilitychange',()=>{if(source==='camera')mobileSoak.event(document.hidden?'visibilityHidden':'visibilityVisible');if(document.hidden&&!analysis){video.pause();if(!replayReady)resetTimeline();}});
 window.addEventListener('pagehide',()=>{cancelAnimationFrame(raf);stopSource();stopWorker();stopMetricWorker();});
 if(initialRoadOnly)toggleRoad(true);else syncFeatureToggles();
 raf=requestAnimationFrame(draw);

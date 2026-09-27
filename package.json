@@ -20,6 +20,7 @@
     "test:drive-controls-e2e": "node tests/drive-road-layout-e2e.mjs && node tests/drive-feature-toggle-e2e.mjs",
     "profile:drive-offline": "node scripts/profile-drive-offline.mjs",
     "verify:drive-live-report": "node --import tsx scripts/verify-drive-live-report.ts",
+    "verify:drive-mobile-soak": "node --import tsx scripts/verify-drive-mobile-soak-report.ts",
     "benchmark:drive-corpus": "node --import tsx scripts/evaluate-drive-corpus.ts",
     "benchmark:drive-evidence-plane": "node --import tsx scripts/evaluate-drive-evidence-plane.ts",
     "assemble:drive-evidence-plane": "node --import tsx scripts/assemble-drive-evidence-plane.ts",

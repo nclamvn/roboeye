@@ -31,6 +31,10 @@ TIP-55A sourced candidate registries ──→ TIP-55B provider-neutral fixtures
 Technical frontier lane (promotion remains blocked by common-corpus evidence):
 
 TIP-56A independent frontier audit ──→ TIP-56B common evidence plane ──→ TIP-50 model/hardware promotion
+
+Mobile runtime lane (measure before replacing the model):
+
+TIP-59 continuity/control fix ──→ TIP-60A bounded mobile soak evidence ──→ TIP-60B device/model bake-off
 ```
 
 No downstream node may claim readiness when a required upstream gate is missing. UI polish and additional models cannot substitute for physical truth or end-to-end latency.
@@ -58,6 +62,9 @@ No downstream node may claim readiness when a required upstream gate is missing.
 | TIP-55B | VERIFIED / commercial answers pending | Define provider-neutral connected-event contract and compare HERE/TomTom without a live safety dependency | TIP-55A + public official schemas + synthetic offline fixtures | Neutral advisory-only contract; HERE/TomTom fixtures; direction/map-match/TTL/dedup tests; honest-null Vietnam coverage, rights, retention, SLA and cost RFI |
 | TIP-56A | VERIFIED / no runtime promotion | Independently audit current DriveSense direction against the technical frontier | Current repository truth + frozen official-source universe | 18 entities, 84 claims, 100% declared coverage, hash/source gates and destructive bite suite pass |
 | TIP-56B | VERIFIED / real challenger evidence pending | Build one same-sample, same-video evidence plane for detector/tracker challengers | TIP-56A + existing uploaded clips and reviewed 2D labels | Closed contract, uploaded-video export, assembler/scorer and synthetic proof pass; real reviewed clips/challenger runs remain external inputs |
+| TIP-59 | VERIFIED / device soak pending | Correct live publication time, bounded continuity and dual-WASM arbitration after iPhone box flicker | iPhone 16 Pro Max incident | Slow-cadence continuity tests pass; no stale range/risk is preserved |
+| TIP-60A | VERIFIED IN CODE / phone reports pending | Capture bounded, pixel-free capability and thermal-trend evidence on iPhone/Xiaomi before model selection | Mobile technical scan + TIP-59 | Camera/model/frame/drop/latency/turnover windows export and verify; three 30-minute runs per phone remain external evidence |
+| TIP-60B | BLOCKED by 60A phone reports + reviewed truth | Compare control and licensed small-model challengers on both target phones | Valid TIP-60A soak reports + TIP-56B corpus | Per-device quality/latency/heat Pareto and explicit tier/promotion decision |
 
 ## Work-in-progress limits
 
@@ -82,6 +89,7 @@ No downstream node may claim readiness when a required upstream gate is missing.
 9. **DONE:** TIP-56A independently audited 18 technical/data/HMI candidates. It accepts the current architecture as the control, but rejects field-readiness claims until common-corpus and physical-truth gates pass.
 10. **DONE:** TIP-56B freezes a common evidence plane around the existing uploaded-video path. It scores detection, continuity, primary-target churn and runtime coverage without selecting a winner.
 11. **NEXT EVIDENCE INPUT:** bind an original clip SHA to independently reviewed 2D vehicle truth, then run the control and one licensed challenger through the same sample plan. No hardware purchase is needed.
+12. **READY FOR PHONE EVIDENCE:** TIP-60A now exports four-window mobile soak telemetry without pixels or device IDs. Run the controlled 60-second smoke and three 30-minute soaks on iPhone 16 Pro Max and Xiaomi 14T; do not change the detector until these reports identify the actual bottleneck.
 
 ## Product-owner decision checkpoints
 
