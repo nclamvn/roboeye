@@ -101,7 +101,10 @@ try {
   await page.evaluate(() => navigator.serviceWorker.ready.then(() => undefined));
   await page.waitForFunction(() => navigator.serviceWorker.controller != null);
   const cachedAssets = await page.evaluate(async (version) => {
-    const cache = await caches.open(`roboeye-app-${version}`);
+    const names = await caches.keys();
+    const cacheName = names.find((name) => name.startsWith(`roboeye-app-${version}-`));
+    if (!cacheName) return [];
+    const cache = await caches.open(cacheName);
     return (await cache.keys()).map((request) => new URL(request.url).pathname);
   }, VERSION);
   check('service worker đã cache JS/CSS app shell', cachedAssets.some((path) => /\/assets\/index-.*\.js$/.test(path)) && cachedAssets.some((path) => /\/assets\/index-.*\.css$/.test(path)), cachedAssets.slice(-5).join(', '));

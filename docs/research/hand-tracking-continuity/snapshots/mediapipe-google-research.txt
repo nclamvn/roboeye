@@ -1,0 +1,4 @@
+Source: https://www.research.google/blog/on-device-real-time-hand-tracking-with-mediapipe/
+Fetched: 2026-09-24T11:00:00Z
+
+high-fidelity hand and finger tracking by employing machine learning (ML) to infer 21 3D keypoints

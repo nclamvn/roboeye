@@ -5,7 +5,7 @@ import { precisionHand, precisionFrame, precisionFist } from '../fixtures/roboha
 import { solveRobotHandPose } from '../../src/robohand-pose';
 import { RobotHandPoseFilter } from '../../src/robohand-realtime';
 import { createRobotHandRig } from '../../src/robohand-rig';
-import { contactResidual, HAND_TIPS } from '../../src/robohand-retarget';
+import { contactResidual, constrainHandAnatomy, HAND_TIPS } from '../../src/robohand-retarget';
 import { ROBOT_HAND_SEGMENTS, type Vec3 } from '../../src/robohand-types';
 
 const cases=[[0,1],[0,2],[0,3],[0,4],[0,1,2],[0,1,2,3],[1,2]];
@@ -83,7 +83,89 @@ test('fist preserves deep flexion and bounded consecutive joint angles',()=>{
       const bend=Math.acos(Math.max(-1,Math.min(1,a.x*b.x+a.y*b.y+a.z*b.z)));
       assert.ok(bend<=1.951,`unbounded bend ${bend}`);
     }
+    const cross=(a:Vec3,b:Vec3):Vec3=>({x:a.y*b.z-a.z*b.y,y:a.z*b.x-a.x*b.z,z:a.x*b.y-a.y*b.x});
+    const first=cross(dirs[0],dirs[1]),second=cross(dirs[1],dirs[2]);
+    assert.ok(first.x*second.x+first.y*second.y+first.z*second.z>=-.001,
+      `finger ${f} reversed its flexion plane`);
   }
+});
+
+test('anatomical projection preserves an open chain and repairs an opposing DIP branch',()=>{
+  const open=precisionHand(),openResult=constrainHandAnatomy(open);
+  assert.deepEqual(openResult,open);
+  const broken=precisionFist();
+  const base=5;
+  const previous=broken[base+2],length=ROBOT_HAND_SEGMENTS[7].length;
+  broken[base+3]={x:previous.x+.64*length,y:previous.y+.42*length,z:previous.z+.64*length};
+  const fixed=constrainHandAnatomy(broken);
+  const direction=(a:Vec3,b:Vec3):Vec3=>{const n=distance(a,b);return {x:(b.x-a.x)/n,y:(b.y-a.y)/n,z:(b.z-a.z)/n};};
+  const cross=(a:Vec3,b:Vec3):Vec3=>({x:a.y*b.z-a.z*b.y,y:a.z*b.x-a.x*b.z,z:a.x*b.y-a.y*b.x});
+  const d1=direction(fixed[base],fixed[base+1]),d2=direction(fixed[base+1],fixed[base+2]),d3=direction(fixed[base+2],fixed[base+3]);
+  const a=cross(d1,d2),b=cross(d2,d3);
+  assert.ok(a.x*b.x+a.y*b.y+a.z*b.z>=-.001,'conditioned finger still reverses joint direction');
+  for(let index=5;index<=7;index++){
+    const segment=ROBOT_HAND_SEGMENTS[index];
+    assert.ok(Math.abs(distance(fixed[segment.parent],fixed[segment.child])-segment.length)<1e-6);
+  }
+});
+
+test('continuous measured curl keeps an occluded fist compact without selecting a canned pose',()=>{
+  const flattened=precisionHand();
+  const conditioned=constrainHandAnatomy(flattened,[0,1,1,1,1]);
+  for(let finger=1;finger<5;finger++){
+    const base=finger*4+1;
+    assert.ok(distance(conditioned[base],conditioned[base+3])<distance(flattened[base],flattened[base+3])*.82,
+      `finger ${finger} did not retain measured curl`);
+  }
+  assert.deepEqual(constrainHandAnatomy(flattened),flattened,'missing curl evidence must preserve free articulation');
+});
+
+test('contact hysteresis bridges one dropped landmark frame then releases deliberately',()=>{
+  const filter=new RobotHandPoseFilter();
+  const pinch=solveRobotHandPose(precisionFrame(precisionHand([0,1]),0))!;
+  const live=filter.update(pinch);
+  assert.ok(live.handTask!.contacts.some(c=>c.a===0&&c.b===1&&c.weight>.9));
+  const open=solveRobotHandPose(precisionFrame(precisionHand(),16))!;
+  const dropout=filter.update(open);
+  assert.ok(dropout.handTask!.contacts.some(c=>c.a===0&&c.b===1&&c.weight>.5),
+    'one dropped contact frame tore the pinch apart');
+  let released=dropout;
+  for(let frame=2;frame<16;frame++)released=filter.update(solveRobotHandPose(precisionFrame(precisionHand(),frame*16))!);
+  assert.ok(!released.handTask!.contacts.some(c=>c.a===0&&c.b===1),
+    'sustained open hand retained a stale pinch');
+});
+
+test('palm grip socket follows the smoothed rig transform and scale',()=>{
+  const rig=createRobotHandRig({positionGainX:.68,positionGainY:.38,baseY:-.55});
+  const pose=new RobotHandPoseFilter().update(solveRobotHandPose(precisionFrame(precisionFist()))!);
+  pose.rootPosition={x:.5,y:.25,z:0};pose.rootScale=1.12;
+  rig.setPose(pose);for(let frame=0;frame<24;frame++)rig.update(16);
+  const position=new THREE.Vector3(),quaternion=new THREE.Quaternion(),scale=new THREE.Vector3();
+  rig.getGripTransform('phone',position,quaternion,scale);
+  assert.ok(Number.isFinite(position.x+position.y+position.z));
+  assert.ok(position.y>rig.group.position.y,'socket is not inside the palm');
+  assert.ok(scale.x>.8&&scale.x<1.2,`unexpected socket scale ${scale.x}`);
+  assert.ok(Math.abs(quaternion.length()-1)<1e-6);
+  rig.dispose();
+});
+
+test('render interpolation from open to fist never crosses an opposing joint plane',()=>{
+  const rig=createRobotHandRig(),filter=new RobotHandPoseFilter();
+  const open=filter.update(solveRobotHandPose(precisionFrame(precisionHand(),0))!);
+  rig.setPose(open);for(let frame=0;frame<12;frame++)rig.update(16);
+  const fist=filter.update(solveRobotHandPose(precisionFrame(precisionFist(),33))!);
+  rig.setPose(fist);
+  const direction=(name:string)=>new THREE.Vector3(0,1,0)
+    .applyQuaternion(rig.group.getObjectByName(name)!.quaternion).normalize();
+  for(let frame=0;frame<32;frame++){
+    rig.update(16);
+    for(const finger of ['index','middle','ring','pinky']){
+      const d1=direction(`${finger}-phalange-1`),d2=direction(`${finger}-phalange-2`),d3=direction(`${finger}-phalange-3`);
+      assert.ok(new THREE.Vector3().crossVectors(d1,d2).dot(new THREE.Vector3().crossVectors(d2,d3))>=-.001,
+        `${finger} reversed at render frame ${frame}`);
+    }
+  }
+  rig.dispose();
 });
 
 test('millimetre-like small target motion is continuous and no contact is inferred from a 2D crossing alone',()=>{

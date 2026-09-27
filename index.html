@@ -134,17 +134,19 @@
       <canvas id="airsketch-overlay" aria-label="Nét vẽ AirSketch trên camera"></canvas>
       <div id="airsketch-cursor" data-gesture="hover" hidden><span></span></div>
       <div id="airdesk-fingers" aria-hidden="true" hidden><i id="airdesk-pinch-line" hidden></i></div>
-      <section id="robohand-hud" aria-label="RoboHand Mirror" hidden>
+      <section id="robohand-hud" aria-label="RoboHand Studio" hidden>
         <header class="robohand-head">
-          <div class="robohand-kicker">21 KHỚP · LIVE RETARGET</div>
-          <h2>RoboHand <span>Mirror</span></h2>
+          <div class="robohand-kicker">42 KHỚP · TWO-HAND TELEOP</div>
+          <h2>RoboHand <span>Studio</span></h2>
           <p id="robohand-status" role="status">Đang chuẩn bị camera và bộ theo dõi bàn tay…</p>
+          <button id="robohand-camera-start" class="robohand-camera-start">Mở camera để điều khiển</button>
         </header>
         <div class="robohand-metrics" aria-live="polite">
-          <span><small>HAND</small><b id="robohand-handedness">—</b></span>
-          <span><small>POSE</small><b id="robohand-pose">WAITING</b></span>
+          <span><small>TAY</small><b id="robohand-handedness">—</b></span>
+          <span><small>HÀNH ĐỘNG</small><b id="robohand-pose">WAITING</b></span>
           <span><small>PIPELINE</small><b id="robohand-latency">— ms</b></span>
         </div>
+        <div class="robohand-legend" aria-hidden="true"><span>CHỤM / NẮM · CẦM</span><i></i><span>CHỈ / VUỐT · THAO TÁC</span></div>
         <figure class="robohand-camera">
           <video id="robohand-video" muted playsinline aria-label="Camera bàn tay thật"></video>
           <canvas id="robohand-landmarks" aria-hidden="true"></canvas>
@@ -246,6 +248,7 @@
           <div class="boot-actions">
             <button id="start-btn" class="boot-btn">Mở camera</button>
             <button id="demo-start-btn" class="boot-btn boot-btn-secondary">Demo 60 giây</button>
+            <a id="robohand-preview-btn" class="boot-btn boot-btn-secondary" href="./?robohand=1">Xem RoboHand mới</a>
           </div>
           <div id="boot-error" class="boot-error" hidden></div>
         </div>

@@ -14,6 +14,13 @@ export interface HandLandmark {
   z: number;
 }
 
+export interface TrackedHandLandmarks {
+  landmarks: HandLandmark[];
+  worldLandmarks: HandLandmark[];
+  handedness: string | null;
+  handednessScore: number;
+}
+
 export type AirGesture = 'hover' | 'draw' | 'undo-hold' | 'clear-hold' | 'armed' | 'manipulate' | 'grab';
 
 export interface AirHandSample {
@@ -34,6 +41,8 @@ export type AirSketchMainToHandWorker =
       type: 'init'; modelUrl: string; expectedBytes: number; expectedSha256: string;
       visionBundleUrl: string; wasmBase: string; preferredDelegate?: 'GPU' | 'CPU';
       gpuFallbackInferMs?: number; gpuFallbackSlowSamples?: number;
+      numHands?: 1 | 2;
+      confidence?: { detection:number; presence:number; tracking:number };
     }
   | {
       type: 'frame'; bitmap: ImageBitmap; timestamp: number;
@@ -46,6 +55,8 @@ export type AirSketchHandWorkerToMain =
   | {
       type: 'landmarks'; landmarks: HandLandmark[] | null; worldLandmarks: HandLandmark[] | null;
       handedness: string | null; handednessScore: number; inferMs: number;
+      /** All observations. Legacy single-hand fields above remain the first hand. */
+      hands?: TrackedHandLandmarks[];
       // Timestamp of the video frame, not the later worker reply.
       capturedAt: number; captureStartedAt?: number; sentAt?: number; delegate?: 'GPU' | 'CPU';
     }

@@ -1,0 +1,7 @@
+Source: https://gery.casiez.net/1euro/
+Fetched: 2026-09-24T11:00:00Z
+
+A Simple Speed-based Low-pass Filter for Noisy Input in Interactive Systems.
+To minimize jitter and lag when tracking human motion.
+if high speed lag is a problem, increase beta; if slow speed jitter is a problem, decrease fcmin.
+JavaScript version using class.

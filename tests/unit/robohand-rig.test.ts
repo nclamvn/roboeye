@@ -3,6 +3,36 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three/webgpu';
 import { createRobotHandRig, createRobotHandRestPoints } from '../../src/robohand-rig';
 import { ROBOT_HAND_SEGMENTS, type RobotHandPose } from '../../src/robohand-types';
+import { solveRobotHandPose } from '../../src/robohand-pose';
+import { precisionFrame, precisionHand } from '../fixtures/robohand-precision';
+
+test('native left and right rigs keep positive world scale while fallback chirality stays discrete', () => {
+  const rightPose=solveRobotHandPose(precisionFrame(precisionHand(),0,false));
+  const leftPose=solveRobotHandPose(precisionFrame(precisionHand(),0,true));
+  assert.ok(rightPose&&leftPose);
+  const rigs=[createRobotHandRig({modelHandedness:'Right'}),createRobotHandRig({modelHandedness:'Left'})];
+  for(const [rig,pose] of [[rigs[0],rightPose],[rigs[1],leftPose]] as const){
+    rig.setPose(pose);
+    for(let frame=0;frame<30;frame++)rig.update(16);
+    rig.group.updateMatrixWorld(true);
+  }
+  assert.ok(rigs[0].group.scale.x>0,'right hand lost base chirality');
+  assert.ok(rigs[1].group.scale.x>0,'native left asset must never use a negative world scale');
+  assert.ok(rigs[0].group.matrixWorld.determinant()>0&&rigs[1].group.matrixWorld.determinant()>0,
+    'native rig transform lost right-handed topology');
+  const rightFallback=rigs[0].group.getObjectByName('RoboHandFallback')!;
+  const leftFallback=rigs[1].group.getObjectByName('RoboHandFallback')!;
+  rightFallback.updateMatrixWorld(true);leftFallback.updateMatrixWorld(true);
+  assert.ok(rightFallback.matrixWorld.determinant()*leftFallback.matrixWorld.determinant()<0,
+    'emergency fallback meshes do not preserve opposite chirality');
+  assert.equal(rigs[0].group.userData.modelName,'Sharpa Wave Right');
+  assert.equal(rigs[1].group.userData.modelName,'Sharpa Wave Left');
+
+  rigs[0].setPose(leftPose);
+  rigs[0].update(16);
+  assert.ok(rigs[0].group.scale.x>.2,'fixed right asset collapsed after contradictory observation');
+  rigs.forEach(rig=>rig.dispose());
+});
 
 test('humanoid shells keep finite rigid transforms through flexion and palm rotation', () => {
   const rig = createRobotHandRig();

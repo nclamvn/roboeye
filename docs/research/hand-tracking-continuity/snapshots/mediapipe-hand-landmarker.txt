@@ -1,0 +1,5 @@
+Source: https://developers.google.com/edge/mediapipe/solutions/vision/hand_landmarker/ios
+Fetched: 2026-09-24T11:00:00Z
+
+Hand Landmarker uses tracking to avoid triggering palm detection model on every frame.
+If the tracking fails, Hand Landmarker triggers hand detection.

@@ -1,0 +1,6 @@
+Source: https://github.com/rolpotamias/WiLoR
+Fetched: 2026-09-24T11:00:00Z
+
+state-of-the-art hand localization and reconstruction model.
+tested with PyTorch 2.0.0 and CUDA 11.7.
+WiLoR models fall under the CC-BY-NC--ND License.

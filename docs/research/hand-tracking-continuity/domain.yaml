@@ -1,0 +1,26 @@
+domain: hand_tracking_continuity
+entity_label: "Phương pháp theo dõi bàn tay thời gian thực"
+
+schema:
+  type_field: role
+  fields:
+    - method
+    - role
+    - source_capability
+    - runtime_constraint
+    - commercial_constraint
+    - browser_fit
+
+rollup_field: browser_fit
+
+universe:
+  estimate: 7
+  basis: "Bảy hướng kỹ thuật được đối chiếu cho TIP-57D ngày 2026-09-24; đây là tập quyết định, không phải toàn bộ nghiên cứu hand tracking."
+
+refresh_days:
+  runtime_constraint: 90
+  commercial_constraint: 90
+  default: 180
+
+alias_map: {}
+ambiguous_clusters: []

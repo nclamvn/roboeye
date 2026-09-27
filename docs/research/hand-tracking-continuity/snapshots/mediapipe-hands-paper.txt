@@ -1,0 +1,4 @@
+Source: https://research.google/pubs/mediapipe-hands-on-device-real-time-hand-tracking/
+Fetched: 2026-09-24T11:00:00Z
+
+The pipeline consists of two models: 1) a palm detector, 2) a hand landmark prediction.

@@ -1,5 +1,8 @@
 node_modules/
 dist/
+.vercel/
+output/
+tmp/
 public/ort/
 public/mediapipe/
 public/tflite/

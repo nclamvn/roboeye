@@ -48,6 +48,8 @@ import { DetectionSmoother } from './detection-smooth';
 import { solveRobotHandPose } from './robohand-pose';
 import { contactResidual } from './robohand-retarget';
 import { RobotHandMetrics, RobotHandRealtimeController } from './robohand-realtime';
+import {RoboHandStudioController,StudioHandIdentityTracker,handIntent,type StudioHandInput} from './robohand-studio';
+import {classifyRobotHandGesture,type RobotHandGesture} from './robohand-gestures';
 
 let sceneApi: SceneAPI | null = null;
 let worker: Worker | null = null;
@@ -108,9 +110,13 @@ const airDesk = new AirDeskController();
 let airSketchOn = false;
 let airDeskOn = false;
 let roboHandOn = false;
-const roboHandRealtime = new RobotHandRealtimeController(220);
+const roboHandRealtime = new Map<string,RobotHandRealtimeController>();
+const roboHandStudio = new RoboHandStudioController();
+const roboHandIdentity = new StudioHandIdentityTracker();
+const roboHandMemory = new Map<string,{gesture:RobotHandGesture;pinchStrength:number;gripStrength:number}>();
 const roboHandMetrics = new RobotHandMetrics();
 let airHandWorker: Worker | null = null;
+let airHandMaxHands:1|2=1;
 let airHandReady = false;
 let airHandStage = 'idle';
 let airHandBusy = false;
@@ -223,6 +229,7 @@ const detectWebGPU = !forceWasm && !urlParams.has('detectwasm');
 let detectForceWasm = !detectWebGPU;
 const localModels = urlParams.has('localmodels') || __ROBOEYE_OFFLINE__;
 const demoMode = urlParams.has('demo');
+const roboHandPreviewMode = urlParams.has('robohand');
 const detectionBenchmarkMode = urlParams.has('detection-benchmark');
 let demoRequested = demoMode;
 
@@ -244,7 +251,10 @@ let lastMeterUpdate = 0;
 
 const shell = createShell({
   onMode: (m) => {
-    if (m === 'robohand') setRoboHand(true, false);
+    if (m === 'robohand') {
+      setRoboHand(true, false);
+      if (!video?.srcObject) shell.setRoboHandStatus('Sharpa Wave trái/phải · đang xem thử không cần camera.');
+    }
     else if (roboHandOn) setRoboHand(false, false);
     sceneApi?.setMode(m);
     if (m !== 'robohand' && video?.srcObject && !worker) spawnWorker();
@@ -464,12 +474,21 @@ function spawnAirWorkers() {
   // tránh hai runtime WASM tranh bộ nhớ/compile rồi báo network error giả.
   const handNeeded = airSketchOn || airDeskOn || roboHandOn;
   const classifierSettled = !airSketchOn || airClassifierReady || (airClassifierWorker != null && !airClassifierLoading);
+  const desiredHands:1|2=roboHandOn?2:1;
+  // MediaPipe fixes numHands when constructing the graph. Reuse across
+  // AirSketch/AirDesk is valuable, but entering/leaving Studio must rebuild
+  // exactly once or a worker first opened in single-hand mode stays single.
+  if(airHandWorker&&handNeeded&&airHandMaxHands!==desiredHands){
+    airHandWorker.terminate();
+    airHandWorker=null;airHandReady=false;airHandBusy=false;airHandStage='reconfigure';
+  }
   if (!airHandWorker && handNeeded && classifierSettled) {
     const runtimeBase = new URL(import.meta.env.BASE_URL, location.href);
     // MediaPipe loader vẫn dùng importScripts nội bộ; classic worker là contract
     // tương thích chính thức, đồng thời giữ inference khỏi main thread.
     const instance = new Worker(new URL('workers/air-hand-worker.js', runtimeBase));
     airHandWorker = instance;
+    airHandMaxHands=desiredHands;
     airHandReady = false;
     airHandWarmupRemaining = 3;
     instance.onmessage = (event: MessageEvent<AirSketchHandWorkerToMain>) => {
@@ -488,7 +507,7 @@ function spawnAirWorkers() {
         const delegate = message.delegate ?? 'CPU';
         shell.setAirSketchStatus(`Tracking tay ${delegate} sẵn sàng · chụm lên vật thể để cầm, chụm vùng trống để vẽ`);
         if (airDeskOn) shell.setAirDeskStatus(`Tracking tay ${delegate} sẵn sàng · các đầu ngón vàng đã hoạt động.`);
-        if (roboHandOn) shell.setRoboHandStatus(`Tracking ${delegate} sẵn sàng · đưa một bàn tay trọn vẹn vào camera.`);
+        if (roboHandOn) shell.setRoboHandStatus(`Tracking ${delegate} sẵn sàng · đưa một hoặc hai bàn tay trọn vẹn vào camera.`);
         diagnostics.record('airsketch.hand.ready', { model: AIRSKETCH_CONFIG.handModel.version, delegate });
       } else if (message.type === 'landmarks') {
         airHandBusy = false;
@@ -537,7 +556,12 @@ function spawnAirWorkers() {
       wasmBase: new URL('mediapipe/wasm', runtimeBase).href,
       preferredDelegate: 'GPU',
       gpuFallbackInferMs: AIRSKETCH_CONFIG.tracking.gpuFallbackInferMs,
-      gpuFallbackSlowSamples: AIRSKETCH_CONFIG.tracking.gpuFallbackSlowSamples
+      gpuFallbackSlowSamples: AIRSKETCH_CONFIG.tracking.gpuFallbackSlowSamples,
+      numHands: desiredHands,
+      // In Studio, accept a lower consecutive-frame IoU/presence score so a
+      // fast turn stays on the lightweight tracker instead of repeatedly
+      // paying full-frame palm re-detection. Initial detection remains strict.
+      confidence:roboHandOn?{detection:.5,presence:.42,tracking:.35}:{detection:.5,presence:.5,tracking:.5}
     });
   }
 
@@ -646,43 +670,57 @@ function spawnAirWorkers() {
 
 function handleRoboHandLandmarks(message: Extract<AirSketchHandWorkerToMain, { type: 'landmarks' }>, receivedAt: number) {
   if (!roboHandOn) return;
-  if (!message.landmarks || !message.worldLandmarks) {
-    const missing = roboHandRealtime.missing(receivedAt);
-    sceneApi?.setRobotHandPose(missing.pose);
-    shell.drawRoboHandLandmarks(null, {
-      pose: missing.gesture,
-      latencyMs: receivedAt - message.capturedAt,
-      delegate: message.delegate
-    });
-    shell.setRoboHandStatus(missing.state === 'hold'
-      ? 'Tay bị che ngắn · đang giữ pose cuối để tránh giật.'
-      : 'Chưa thấy đủ bàn tay · giữ cả cổ tay và năm đầu ngón trong khung camera.');
-    return;
+  const observations=message.hands?.length?message.hands:message.landmarks&&message.worldLandmarks?[{
+    landmarks:message.landmarks,worldLandmarks:message.worldLandmarks,
+    handedness:message.handedness,handednessScore:message.handednessScore
+  }]:[];
+  const identities=roboHandIdentity.assign(observations.map(observation=>({
+    handedness:observation.handedness,handednessScore:observation.handednessScore,
+    wristX:observation.landmarks[0].x,wristY:observation.landmarks[0].y,
+    palmSpan:Math.hypot(
+      observation.landmarks[5].x-observation.landmarks[17].x,
+      observation.landmarks[5].y-observation.landmarks[17].y
+    )
+  })),receivedAt);
+  const used=new Set<string>();
+  const inputs:StudioHandInput[]=[];
+  const overlays:Array<{id:string;landmarks:NonNullable<typeof message.landmarks>;gesture:string;handedness:string|null}>=[];
+  for(let index=0;index<observations.length&&index<2;index++){
+    const observation=observations[index];
+    const id=identities[index];
+    used.add(id);
+    let controller=roboHandRealtime.get(id);
+    if(!controller){controller=new RobotHandRealtimeController(420,180);roboHandRealtime.set(id,controller);}
+    const pose=solveRobotHandPose({imageAspectRatio:video?video.videoWidth/Math.max(1,video.videoHeight):1,
+      landmarks:observation.landmarks,worldLandmarks:observation.worldLandmarks,
+      handedness:id==='left'?'Left':'Right',handednessScore:observation.handednessScore,
+      capturedAt:message.capturedAt,receivedAt});
+    if(!pose)continue;
+    const result=controller.update(pose,observation.landmarks,receivedAt);
+    if(!result.pose)continue;
+    const intent=handIntent(observation.worldLandmarks);
+    const gesture=classifyRobotHandGesture(observation.landmarks);
+    roboHandMemory.set(id,{gesture,pinchStrength:intent.pinchStrength,gripStrength:intent.gripStrength});
+    inputs.push({id,handedness:result.pose.handedness,pose:result.pose,gesture,
+      pinchStrength:intent.pinchStrength,gripStrength:intent.gripStrength});
+    overlays.push({id,landmarks:observation.landmarks,gesture:result.gesture,handedness:result.pose.handedness});
   }
-  const pose = solveRobotHandPose({
-    imageAspectRatio: video ? video.videoWidth / Math.max(1, video.videoHeight) : 1,
-    landmarks: message.landmarks,
-    worldLandmarks: message.worldLandmarks,
-    handedness: message.handedness,
-    handednessScore: message.handednessScore,
-    capturedAt: message.capturedAt,
-    receivedAt
-  });
-  const result = pose ? roboHandRealtime.update(pose, message.landmarks, receivedAt) : roboHandRealtime.missing(receivedAt);
-  sceneApi?.setRobotHandPose(result.pose);
-  shell.drawRoboHandLandmarks(message.landmarks, {
-    handedness: result.pose?.handedness ?? message.handedness,
-    pose: result.gesture,
-    latencyMs: receivedAt - message.capturedAt,
-    delegate: message.delegate
-  });
-  const contacts=result.pose?.handTask?.contacts??[];
-  const unclosed=result.pose&&contactResidual(result.pose.points,contacts)>.035;
-  shell.setRoboHandStatus(result.pose
-    ? unclosed ? 'Thấy cử chỉ chụm nhưng mô hình chưa khép đúng · thử đổi góc để thấy rõ các đầu ngón.'
-      : contacts.some(c=>c.weight>.95) ? 'Đang giữ khoảng cách chụm bằng IK · tiếp xúc được ước lượng từ camera, không phải cảm biến lực.'
-      : 'Theo dõi từng đốt ngón · chụm cái với từng ngón hoặc chụm nhiều ngón, không cần kích hoạt.'
-    : 'Khung tay không đủ ổn định để giải pose; hãy xòe tay trong vùng sáng.');
+  for(const [id,controller] of roboHandRealtime){
+    if(used.has(id))continue;
+    const missing=controller.missing(receivedAt),memory=roboHandMemory.get(id);
+    if(missing.pose&&memory)inputs.push({id,handedness:missing.pose.handedness,pose:missing.pose,...memory});
+    else if(missing.state==='rest'){roboHandRealtime.delete(id);roboHandMemory.delete(id);}
+  }
+  const studio=inputs.length?roboHandStudio.update(inputs,receivedAt):roboHandStudio.missing(new Set(),receivedAt);
+  sceneApi?.setRobotHandStudio(studio);
+  shell.drawRoboHandLandmarks(overlays,{hands:inputs.length,pose:studio.actionLabel,
+    latencyMs:receivedAt-message.capturedAt,delegate:message.delegate});
+  const unclosed=inputs.some(input=>contactResidual(input.pose.points,input.pose.handTask?.contacts??[])>.035);
+  const hasContact=inputs.some(input=>(input.pose.handTask?.contacts??[]).some(contact=>contact.weight>.95));
+  shell.setRoboHandStatus(inputs.length
+    ? unclosed?'Cử chỉ chụm chưa khép ổn định · xoay lòng bàn tay để camera thấy rõ đầu ngón.'
+      : `${studio.actionLabel} · ${inputs.length}/2 tay · ${hasContact?'tiếp xúc IK':'khớp tự do'}`
+    : 'Chưa thấy bàn tay · giữ cổ tay và các đầu ngón trong khung camera nhỏ.');
 }
 
 function setRoboHand(on: boolean, selectMode = true) {
@@ -696,14 +734,18 @@ function setRoboHand(on: boolean, selectMode = true) {
   if (on) {
     if (selectMode && shell.currentMode() !== 'robohand') shell.setMode('robohand');
     shell.setRoboHandStatus(video?.readyState && video.readyState >= 2
-      ? 'Đang khởi động tracking 21 khớp…'
-      : 'Mở camera để bắt đầu RoboHand Mirror.');
-    roboHandRealtime.reset();
+      ? 'Đang khởi động tracking tối đa 42 khớp…'
+      : 'Mở camera để bắt đầu RoboHand Studio.');
+    roboHandRealtime.forEach(controller=>controller.reset());
+    roboHandRealtime.clear();roboHandMemory.clear();roboHandStudio.reset();roboHandIdentity.reset();
     roboHandMetrics.reset();
-    spawnAirWorkers();
+    // Showcase phải hoạt động độc lập camera. Chỉ dựng MediaPipe graph sau
+    // khi đã có source video; nếu không một lỗi worker có thể chặn cả scene 3D.
+    if (video?.srcObject) spawnAirWorkers();
   } else {
-    roboHandRealtime.reset();
-    sceneApi?.setRobotHandPose(null);
+    roboHandRealtime.forEach(controller=>controller.reset());
+    roboHandRealtime.clear();roboHandMemory.clear();roboHandStudio.reset();roboHandIdentity.reset();
+    sceneApi?.setRobotHandStudio({hands:[],props:[],actionLabel:'Sẵn sàng',capturedAt:null});
     shell.drawRoboHandLandmarks(null);
   }
   diagnostics.record('robohand.toggle', { on });
@@ -1600,6 +1642,9 @@ function startAirVideoFrameLoop(): void {
 }
 
 async function openCamera(deviceId?: string) {
+  if (!navigator.mediaDevices?.getUserMedia) {
+    throw new Error('Trình duyệt này không cung cấp Camera API. Hãy mở bằng Chrome/Edge/Safari trên localhost hoặc HTTPS');
+  }
   if (stream) for (const t of stream.getTracks()) t.stop();
   stream = await navigator.mediaDevices.getUserMedia({
     video: {
@@ -1646,6 +1691,7 @@ function captureFrame(width: number, surface: CaptureSurface): ImageData | null 
 
 async function start() {
   shell.setBootStatus('Đang xin quyền camera…');
+  if (roboHandOn) shell.setRoboHandStatus('Đang xin quyền camera để điều khiển mô hình…');
   shell.setBootError('');
   shell.hideRuntimeNotice();
   worker?.terminate();
@@ -1657,6 +1703,7 @@ async function start() {
     await refreshCameraList();
   } catch (e) {
     diagnostics.record('camera.error', { message: e instanceof Error ? e.message : String(e) });
+    if (roboHandOn) shell.setRoboHandStatus(`Không mở được camera: ${e instanceof Error ? e.message : String(e)}`);
     shell.setBootError(
       `Không mở được camera: ${e instanceof Error ? e.message : String(e)}. RoboEye cần chạy trên localhost hoặc https và cần quyền camera.`
     );
@@ -1665,6 +1712,7 @@ async function start() {
   shell.setBootStatus('Camera đã mở. Đang tải model…');
   if (roboHandOn) {
     shell.hideBoot();
+    shell.setRoboHandStatus('Camera đã mở · đang khởi động tracking tối đa 42 khớp…');
     spawnAirWorkers();
   } else {
     spawnWorker();
@@ -1692,6 +1740,10 @@ async function boot() {
       : `Renderer WebGL2 (fallback) · point cloud ${sceneApi.cloudCount.toLocaleString('vi-VN')} điểm. Nhấn "Mở camera".`
   );
   shell.setMode('rgb');
+  if (roboHandPreviewMode) {
+    shell.setMode('robohand');
+    shell.hideBoot();
+  }
   window.addEventListener('resize', () => {
     sceneApi?.resize();
     resizeAirCanvas();

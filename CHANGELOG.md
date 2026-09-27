@@ -1,5 +1,45 @@
 # Changelog
 
+## Unreleased
+
+### RoboHand Studio (TIP-57)
+
+- Extended the local MediaPipe worker from one to two hands while retaining the
+  legacy single-hand message fields used by AirSketch and AirDesk.
+- Added independent per-hand pose/loss controllers, a dual humanoid rig stage,
+  two-colour proof overlay and live 42-landmark telemetry.
+- Added deterministic phone/book props with grab, release, phone-swipe and
+  page-turn interactions, plus normalized gesture intent and unit/E2E fixtures.
+- Kept one renderer, one latest-frame-wins camera boundary and automatic
+  WebGPU-to-WebGL2 fallback; no camera pixels or runtime assets leave the device.
+- Added TIP-57B anatomical conditioning before contact IK and again after
+  render interpolation, preventing a fist transition from reversing PIP/DIP.
+- Attached held phone/book geometry to palm-local grip sockets and retained
+  opaque depth reads/writes so real 3D ordering, not a 2D mask, controls which
+  hand/object surfaces remain visible.
+- Replaced one-frame release with a 120 ms fully-open-palm dwell; released
+  props now enter bounded gravity, visibly fall and settle on the stage.
+- Restored true left/right chirality at the renderer with a non-collapsing
+  reflected hierarchy instead of drawing the same hand mesh twice.
+- Added depth-corroborated contact evidence, per-pair contact hysteresis and
+  continuous measured finger curl so pinches survive brief misses and occluded
+  fists remain compact without a canned gesture pose.
+- Replaced frame-local two-hand identity with observation-centric trajectory
+  association so transient duplicate/flipped labels do not swap robot hands.
+- Replaced the frozen 220 ms loss bridge with bounded braking prediction,
+  finite hold/expiry and three-frame reacquisition blending; RoboHand now uses
+  an explicit continuity-tuned MediaPipe confidence profile without changing
+  AirSketch/AirDesk thresholds.
+- Added a primary-source, adversarially verified seven-method research registry
+  documenting why MediaPipe + 1€ remains primary and why optical flow, HaMeR,
+  WiLoR and RTMPose/RTMW are deferred or blocked for this browser product.
+- Replaced the production procedural hand shell with official native left/right
+  Sharpa Wave URDF rigs, preserving the previous geometry only as a load-failure
+  fallback and eliminating negative-scale chirality on the main assets.
+- Added a 22-joint mechanical retargeter with manufacturer limits, thumb
+  opposition, PIP–DIP fist coupling, late-load PBR environment support and
+  offline-precache/attribution gates for the 11 MB browser asset subset.
+
 ## 1.5.0 — 2026-09-08
 
 ### RoboHand Mirror (TIP-33–36)

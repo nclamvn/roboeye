@@ -1,0 +1,4 @@
+Source: https://arxiv.org/abs/2303.07399
+Fetched: 2026-09-24T11:00:00Z
+
+high-performance real-time multi-person pose estimation framework based on MMPose.

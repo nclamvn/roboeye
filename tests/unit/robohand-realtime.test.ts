@@ -109,6 +109,46 @@ test('realtime controller holds a short tracking miss and releases after 220 ms'
   assert.equal(released.pose, null);
 });
 
+test('realtime controller predicts through a short miss, brakes motion, then expires safely', () => {
+  const controller = new RobotHandRealtimeController(420, 180);
+  const points = hand('open');
+  const first = solved(points, 0);
+  controller.update(first, points, 20);
+  const moved = { ...solved(points, 16), rootPosition: { ...first.rootPosition, x: first.rootPosition.x + .08 } };
+  const live = controller.update(moved, points, 36);
+  const predicted = controller.missing(84);
+  assert.equal(predicted.state, 'predict');
+  assert.ok(predicted.pose && predicted.pose.rootPosition.x > live.pose!.rootPosition.x, 'short loss froze instead of following motion');
+  const late = controller.missing(236);
+  assert.equal(late.state, 'hold');
+  assert.ok(late.pose && predicted.pose && late.pose.rootPosition.x < predicted.pose.rootPosition.x + .28, 'prediction compounded without a bound');
+  const released = controller.missing(457);
+  assert.equal(released.state, 'rest');
+  assert.equal(released.pose, null);
+  const continuity = controller.continuitySnapshot();
+  assert.ok(continuity.predictedFrames >= 1);
+  assert.ok(continuity.heldFrames >= 1);
+  assert.ok(continuity.maxGapMs >= 200);
+});
+
+test('reacquisition blends from predicted output instead of snapping in one frame', () => {
+  const controller = new RobotHandRealtimeController(420, 180);
+  const points = hand('open');
+  const first = solved(points, 0);
+  controller.update(first, points, 20);
+  const moving = { ...solved(points, 16), rootPosition: { ...first.rootPosition, x: first.rootPosition.x + .08 } };
+  controller.update(moving, points, 36);
+  const bridge = controller.missing(116);
+  assert.ok(bridge.pose);
+  const returned = { ...solved(points, 112), rootPosition: { ...first.rootPosition, x: first.rootPosition.x + .5 } };
+  const reacquired = controller.update(returned, points, 132);
+  assert.equal(reacquired.state, 'live');
+  assert.ok(reacquired.pose);
+  assert.ok(Math.abs(reacquired.pose.rootPosition.x-bridge.pose!.rootPosition.x)<.5,
+    'reacquisition ignored the continuity envelope');
+  assert.equal(controller.continuitySnapshot().reacquisitions,1);
+});
+
 test('metrics report bounded nearest-rank p50/p95 snapshots', () => {
   const metrics = new RobotHandMetrics();
   for (let value = 1; value <= 100; value++) {

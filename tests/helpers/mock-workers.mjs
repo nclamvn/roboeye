@@ -7,6 +7,7 @@ export function installMockWorkers() {
   window.__lastDetectionFrame = null;
   window.__detectionInitCount = 0;
   window.__lastAirClassify = null;
+  window.__lastAirHandInit = null;
   // E2E can queue deterministic MediaPipe-shaped hand landmarks.  A frame is
   // consumed only when the application asks the hand worker to infer, so this
   // exercises the real main-thread landmark integration rather than a helper.
@@ -84,20 +85,31 @@ export function installMockWorkers() {
         return;
       }
       if (this.kind === 'air-hand') {
-        if (message.type === 'init') this.emit({ type: 'ready', delegate: 'CPU' });
+        if (message.type === 'init') {
+          window.__lastAirHandInit = message;
+          this.emit({ type: 'ready', delegate: 'CPU' });
+        }
         else if (message.type === 'frame') {
-          const landmarks = window.__mockAirHandFrames.shift() ?? null;
-          const worldLandmarks = landmarks?.map((point) => ({
-            x: (point.x - 0.5) * 0.18,
-            y: (point.y - 0.72) * 0.18,
-            z: point.z * 0.18
-          })) ?? null;
+          const queued = window.__mockAirHandFrames.shift() ?? null;
+          const entries = queued?.hands ?? (Array.isArray(queued) ? [{ landmarks: queued, handedness: 'Right' }] : []);
+          const hands = entries.map((entry) => ({
+            landmarks: entry.landmarks,
+            worldLandmarks: entry.landmarks.map((point) => ({
+              x: (point.x - 0.5) * 0.18,
+              y: (point.y - 0.72) * 0.18,
+              z: point.z * 0.18
+            })),
+            handedness: entry.handedness ?? null,
+            handednessScore: .99
+          }));
+          const primary = hands[0] ?? null;
           this.emit({
             type: 'landmarks',
-            landmarks,
-            worldLandmarks,
-            handedness: landmarks ? 'Right' : null,
-            handednessScore: landmarks ? 0.99 : 0,
+            landmarks: primary?.landmarks ?? null,
+            worldLandmarks: primary?.worldLandmarks ?? null,
+            handedness: primary?.handedness ?? null,
+            handednessScore: primary?.handednessScore ?? 0,
+            hands,
             inferMs: 9,
             capturedAt: message.capturedAt ?? message.timestamp,
             captureStartedAt: message.captureStartedAt,

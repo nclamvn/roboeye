@@ -1,0 +1,29 @@
+domain: robot_hand_model_candidates
+entity_label: "Ứng viên mô hình bàn tay cho RoboHand Studio"
+
+schema:
+  type_field: category
+  fields:
+    - category
+    - fingers
+    - degrees_of_freedom
+    - handedness
+    - asset_formats
+    - license
+    - retargeting_support
+    - anatomical_basis
+
+rollup_field: category
+
+universe:
+  estimate: 6
+  basis: "Shortlist có chủ đích gồm 4 robot hand có asset/rig kiểm chứng được và 2 mô hình giải phẫu dùng làm reference/control layer."
+
+refresh_days:
+  default: 180
+  license: 90
+
+alias_map:
+  "Shadow Dexterous Hand E3M5": "Shadow Hand E3M5"
+
+ambiguous_clusters: []

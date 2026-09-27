@@ -1,0 +1,6 @@
+Source: https://openaccess.thecvf.com/content/CVPR2024/html/Pavlakos_Reconstructing_Hands_in_3D_with_Transformers_CVPR_2024_paper.html
+Fetched: 2026-09-24T11:00:00Z
+
+reconstruct hands in 3D from monocular input.
+HaMeR follows a fully transformer-based architecture.
+we use a large scale Vision Transformer architecture.

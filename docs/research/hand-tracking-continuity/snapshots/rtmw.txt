@@ -1,0 +1,5 @@
+Source: https://arxiv.org/abs/2407.08634
+Fetched: 2026-09-24T11:00:00Z
+
+simultaneous prediction of keypoints for the body, hands, face, and feet.
+deployment friendliness.

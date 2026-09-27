@@ -64,7 +64,7 @@ test('source world scale cannot stretch the fixed robot skeleton', () => {
   }
 });
 
-test('mirrored hands preserve canonical articulation and report handedness', () => {
+test('mirrored hands preserve canonical articulation while retaining chirality for the renderer', () => {
   const right = solve(openHand(), 'Right');
   const left = solve(openHand(true), 'Left');
   assert.ok(right && left);

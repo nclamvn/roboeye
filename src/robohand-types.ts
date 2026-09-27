@@ -15,6 +15,7 @@ export interface Quaternion {
 }
 
 export type RobotHandedness = 'Left' | 'Right' | 'Unknown';
+export type RobotFingerCurls = readonly [number, number, number, number, number];
 
 export interface RobotHandSegment {
   parent: number;
@@ -31,6 +32,8 @@ export interface RobotHandPose {
   points: Vec3[];
   /** Unit hand-local direction for every entry in ROBOT_HAND_SEGMENTS. */
   directions: Vec3[];
+  /** Continuous measured flexion evidence: thumb, index, middle, ring, pinky. */
+  fingerCurls?: RobotFingerCurls;
   rootPosition: Vec3;
   rootOrientation: Quaternion;
   rootScale: number;

@@ -15,16 +15,89 @@ const unit = (a: Vec3, fallback: Vec3={x:1,y:0,z:0}) => norm(a)>1e-8?mul(a,1/nor
 const mix = (a: Vec3,b: Vec3,t:number) => add(mul(a,1-t),mul(b,t));
 const rotate = (v: Vec3, axis: Vec3, angle: number) => add(add(mul(v,Math.cos(angle)),mul(cross(axis,v),Math.sin(angle))),mul(axis,dot(axis,v)*(1-Math.cos(angle))));
 
+/**
+ * Project a flexed finger back onto one stable anatomical flexion plane.
+ *
+ * Camera landmarks can independently move PIP/DIP directions across frames.
+ * Filtering those directions separately may then produce an impossible chain:
+ * PIP bends to one side while DIP bends through the opposite side.  Open
+ * fingers are intentionally returned byte-for-byte; only clearly flexed
+ * fingers are conditioned.
+ */
+export function constrainHandAnatomy(points: Vec3[], fingerCurls?: readonly number[]): Vec3[] {
+  if(points.length!==21)return points.map(point=>({...point}));
+  const output=points.map(point=>({...point}));
+  for(let finger=0;finger<5;finger++){
+    const base=finger*4+1;
+    const d1=unit(sub(points[base+1],points[base]));
+    const d2=unit(sub(points[base+2],points[base+1]),d1);
+    const d3=unit(sub(points[base+3],points[base+2]),d2);
+    const bend1=Math.acos(clamp(dot(d1,d2),-1,1));
+    const bend2=Math.acos(clamp(dot(d2,d3),-1,1));
+    const lengths=ROBOT_HAND_SEGMENTS.slice(finger*4+1,finger*4+4).map(segment=>segment.length);
+    const reach=norm(sub(points[base+3],points[base]))/Math.max(1e-6,lengths.reduce((sum,value)=>sum+value,0));
+    const measuredCurl=clamp(fingerCurls?.[finger]??0,0,1);
+    // Preserve open/free articulation exactly. This also avoids introducing
+    // work on the overwhelmingly common relaxed-hand path.
+    const curlStart=finger===0?.68:.58;
+    if(reach>.84&&bend1+bend2<.42&&measuredCurl<curlStart)continue;
+
+    const cross1=cross(d1,d2),cross2=cross(d2,d3);
+    let plane=add(mul(cross1,Math.max(.08,bend1)),mul(cross2,Math.max(.08,bend2)));
+    const tangent=unit({x:d1.y,y:-d1.x,z:0},{x:1,y:0,z:0});
+    if(norm(plane)<1e-5)plane=measuredCurl>curlStart?mul(tangent,-1):{...tangent};
+    plane=unit(plane,tangent);
+    // The flexion axis should remain approximately transverse to the finger.
+    // Preserve which side the observed hand curls toward, while rejecting the
+    // lateral axis flip that makes a fist visually explode.
+    const signedTangent=dot(plane,tangent)<0?mul(tangent,-1):tangent;
+    const planarConfidence=clamp((bend1+bend2-.32)/1.4,0,.78);
+    plane=unit(mix(plane,signedTangent,planarConfidence),signedTangent);
+    if(dot(cross1,plane)<0&&dot(cross2,plane)<0)plane=mul(plane,-1);
+
+    const maxPip=finger===0?1.45:1.72;
+    const maxDip=finger===0?1.35:1.55;
+    const signedBend1=Math.atan2(dot(cross1,plane),clamp(dot(d1,d2),-1,1));
+    const signedBend2=Math.atan2(dot(cross2,plane),clamp(dot(d2,d3),-1,1));
+    const closure=clamp((measuredCurl-curlStart)/(finger===0?.26:.34),0,1);
+    // Minimum flexion is driven by measured curl, never by a discrete FIST
+    // label. This preserves continuous motion while preventing an occluded
+    // fingertip from exploding an otherwise compact fist.
+    const minimumPip=closure*(finger===0?.72:1.08);
+    const minimumDip=closure*(finger===0?.50:.76);
+    const safeBend1=clamp(Math.max(signedBend1,minimumPip),0,maxPip);
+    const safeBend2=clamp(Math.max(signedBend2,minimumDip),0,maxDip);
+    const safeD2=unit(rotate(d1,plane,safeBend1),d2);
+    const safeD3=unit(rotate(safeD2,plane,safeBend2),d3);
+    output[base+1]=add(output[base],mul(d1,lengths[0]));
+    output[base+2]=add(output[base+1],mul(safeD2,lengths[1]));
+    output[base+3]=add(output[base+2],mul(safeD3,lengths[2]));
+  }
+  return output;
+}
+
 /** Palm-local source points, before changing human bone lengths. */
-export function createHandTask(source: Vec3[], robot: Vec3[]): HandTask {
+export function createHandTask(source: Vec3[], robot: Vec3[], image?: Vec3[]): HandTask {
   const span=norm(sub(source[5],source[17]));
+  const imageSpan=image?.length===21?Math.hypot(image[5].x-image[17].x,image[5].y-image[17].y):0;
   const scale=norm(sub(robot[5],robot[17]))/Math.max(span,1e-6);
   let offset={x:0,y:0,z:0};
   for(const id of [1,5,9,13,17]) offset=add(offset,mul(sub(robot[id],mul(source[id],scale)),.2));
   const tips=HAND_TIPS.map(id=>add(mul(source[id],scale),offset));
   const contacts: HandContact[]=[];
   for(let a=0;a<5;a++)for(let b=a+1;b<5;b++){
-    const ratio=norm(sub(source[HAND_TIPS[a]],source[HAND_TIPS[b]]))/Math.max(span,1e-6);
+    const worldRatio=norm(sub(source[HAND_TIPS[a]],source[HAND_TIPS[b]]))/Math.max(span,1e-6);
+    let ratio=worldRatio;
+    if(image?.length===21&&imageSpan>1e-6){
+      const pa=image[HAND_TIPS[a]],pb=image[HAND_TIPS[b]];
+      const imageRatio=Math.hypot(pa.x-pb.x,pa.y-pb.y)/imageSpan;
+      const depthRatio=Math.abs(source[HAND_TIPS[a]].z-source[HAND_TIPS[b]].z)/Math.max(span,1e-6);
+      // Screen proximity may rescue noisy world x/y, but can never create a
+      // contact on its own: 3D depth consistency and a broad world-space gate
+      // are both mandatory.
+      if(imageRatio<.20&&depthRatio<.16&&worldRatio<.36)
+        ratio=Math.min(worldRatio,Math.max(imageRatio,depthRatio));
+    }
     // Smooth transition, not a binary gesture snap. Thresholds are normalized
     // palm fractions (not metres). Small nonzero separation preserves distinct tips.
     const t=clamp((.22-ratio)/.14,0,1), weight=t*t*(3-2*t);

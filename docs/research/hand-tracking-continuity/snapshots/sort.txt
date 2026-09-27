@@ -1,0 +1,5 @@
+Source: https://arxiv.org/abs/1602.00763
+Fetched: 2026-09-24T11:00:00Z
+
+associate objects efficiently for online and realtime applications.
+Kalman Filter and Hungarian algorithm for the tracking components.

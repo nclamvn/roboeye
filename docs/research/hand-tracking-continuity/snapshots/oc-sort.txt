@@ -1,0 +1,5 @@
+Source: https://arxiv.org/abs/2203.14360
+Fetched: 2026-09-24T11:00:00Z
+
+use object observations to compute a virtual trajectory over the occlusion period.
+It remains Simple, Online, and Real-Time.

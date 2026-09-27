@@ -78,7 +78,8 @@
     "@tensorflow/tfjs-core": "4.9.0",
     "@tensorflow/tfjs-tflite": "0.0.1-alpha.10",
     "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4",
-    "three": "^0.185.1"
+    "three": "^0.185.1",
+    "urdf-loader": "^0.13.1"
   },
   "devDependencies": {
     "@types/three": "^0.185.0",

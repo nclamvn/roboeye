@@ -56,10 +56,10 @@ async function init(message) {
     createLandmarker = (delegate) => self.Vision.HandLandmarker.createFromOptions(vision, {
       baseOptions: { modelAssetBuffer, delegate },
       runningMode: 'VIDEO',
-      numHands: 1,
-      minHandDetectionConfidence: 0.5,
-      minHandPresenceConfidence: 0.5,
-      minTrackingConfidence: 0.5
+      numHands: message.numHands === 2 ? 2 : 1,
+      minHandDetectionConfidence: message.confidence?.detection ?? 0.5,
+      minHandPresenceConfidence: message.confidence?.presence ?? 0.5,
+      minTrackingConfidence: message.confidence?.tracking ?? 0.5
     });
     gpuFallbackInferMs = Number.isFinite(message.gpuFallbackInferMs) ? message.gpuFallbackInferMs : 120;
     gpuFallbackSlowSamples = Number.isFinite(message.gpuFallbackSlowSamples) ? message.gpuFallbackSlowSamples : 2;
@@ -92,8 +92,20 @@ function infer(message) {
   const startedAt = performance.now();
   try {
     const result = landmarker.detectForVideo(bitmap, message.timestamp);
-    const landmarks = result.landmarks[0]?.map((point) => ({ x: point.x, y: point.y, z: point.z })) ?? null;
-    const worldLandmarks = result.worldLandmarks?.[0]?.map((point) => ({ x: point.x, y: point.y, z: point.z })) ?? null;
+    const hands = (result.landmarks ?? []).flatMap((points, index) => {
+      const world = result.worldLandmarks?.[index];
+      if (!points || !world || points.length !== 21 || world.length !== 21) return [];
+      const category = result.handedness?.[index]?.[0];
+      return [{
+        landmarks: points.map((point) => ({ x: point.x, y: point.y, z: point.z })),
+        worldLandmarks: world.map((point) => ({ x: point.x, y: point.y, z: point.z })),
+        handedness: category?.categoryName ?? null,
+        handednessScore: category?.score ?? 0
+      }];
+    });
+    const primary = hands[0] ?? null;
+    const landmarks = primary?.landmarks ?? null;
+    const worldLandmarks = primary?.worldLandmarks ?? null;
     const handednessResult = result.handedness[0]?.[0];
     const handedness = handednessResult?.categoryName ?? null;
     const handednessScore = handednessResult?.score ?? 0;
@@ -112,6 +124,7 @@ function infer(message) {
       worldLandmarks,
       handedness,
       handednessScore,
+      hands,
       inferMs,
       // Preserve the frame time so the main thread can compensate the worker
       // transit/inference gap before drawing the cursor and ink.

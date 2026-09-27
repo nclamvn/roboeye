@@ -7,6 +7,7 @@ import {
   type RobotHandFrame,
   type RobotHandPose,
   type RobotHandedness,
+  type RobotFingerCurls,
   type Vec3
 } from './robohand-types';
 
@@ -106,6 +107,8 @@ function clamp(value: number, min: number, max: number): number {
  */
 export function solveRobotHandPose(frame: RobotHandFrame): RobotHandPose | null {
   if (!finiteLandmarks(frame.landmarks) || !finiteLandmarks(frame.worldLandmarks)) return null;
+  const aspect = frame.imageAspectRatio && Number.isFinite(frame.imageAspectRatio) && frame.imageAspectRatio > 0
+    ? frame.imageAspectRatio : 1;
   // MediaPipe camera coordinates use +y downward. The RGB plane is also
   // mirrored for selfie interaction, so convert to Three's +y-up display
   // space before deriving the palm basis.
@@ -143,8 +146,6 @@ export function solveRobotHandPose(frame: RobotHandFrame): RobotHandPose | null 
 
   // Weak-perspective fit across both palm axes. A foreshortened axis contributes
   // little weight, so turning edge-on does not masquerade as moving farther away.
-  const aspect = frame.imageAspectRatio && Number.isFinite(frame.imageAspectRatio) && frame.imageAspectRatio > 0
-    ? frame.imageAspectRatio : 1;
   const palmWidth3D = length(sub(world[5], world[17]));
   let numerator = 0, denominator = 0;
   for (const [a, b] of [[5, 17], [0, 9], [0, 5], [0, 17]]) {
@@ -159,13 +160,29 @@ export function solveRobotHandPose(frame: RobotHandFrame): RobotHandPose | null 
   const rootScale = clamp(numerator / denominator, 0.68, 1.55);
   const wrist = frame.landmarks[0];
   const receivedAt = frame.receivedAt ?? frame.capturedAt;
+  const sourcePoints = world.map(p => {
+    const v = sub(p, world[0]);
+    return { x: dot(v, xAxis), y: dot(v, yAxis), z: dot(v, zAxis) };
+  });
+  // This is continuous measurement evidence, not a gesture-selected pose.
+  // It lets the anatomical projection retain a compact fist when distal
+  // world landmarks become partially occluded and momentarily flatten.
+  const curlPairs = [[4, 3], [8, 6], [12, 10], [16, 14], [20, 18]] as const;
+  const fingerCurls = curlPairs.map(([tip, pip]) => clamp(
+    1 - (length(sub(sourcePoints[tip], sourcePoints[0]))
+      - length(sub(sourcePoints[pip], sourcePoints[0]))) / Math.max(palmWidth3D * .72, EPSILON),
+    0, 1
+  )) as unknown as RobotFingerCurls;
+  const imageEvidence = frame.landmarks.map(point => ({
+    x: point.x,
+    y: point.y / aspect,
+    z: point.z
+  }));
   return {
-    handTask: createHandTask(world.map(p => {
-      const v = sub(p, world[0]);
-      return { x: dot(v,xAxis), y: dot(v,yAxis), z: dot(v,zAxis) };
-    }), points),
+    handTask: createHandTask(sourcePoints, points, imageEvidence),
     points,
     directions,
+    fingerCurls,
     rootPosition: {
       x: clamp((0.5 - wrist.x) * 3.2, -1.25, 1.25),
       y: clamp((0.58 - wrist.y) * 2.2, -0.9, 0.9),

@@ -368,3 +368,57 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   collision-warning safety or public-road claim.
 - **Detail:** `docs/TIP-49L-D-LIVE-CAMERA-ACCEPTANCE.md` and
   `docs/COMPLETION-REPORT-TIP-49L-D.md`.
+
+## TIP-57 · RoboHand Studio
+
+- **Dependencies:** TIP-33 → TIP-37. **Priority:** P0 interactive demo.
+- **Task:** promote RoboHand from a one-hand mirror to a two-hand studio with
+  independent temporal controllers, dual proof-overlay identities and
+  stateful phone/book manipulation.
+- **Boundary:** deterministic visual teleoperation, not force/collision physics,
+  arbitrary-tool understanding or sign-language interpretation.
+- **Detail:** `docs/BLUEPRINT-ROBOHAND-STUDIO.md`,
+  `docs/TIP-57-ROBOHAND-STUDIO.md` and completion report.
+
+## TIP-57B · Anatomical grip, depth occlusion and release dynamics
+
+- **Dependencies:** TIP-57. **Priority:** P0 demo correctness.
+- **Task:** prevent deep-flexion joint reversal in both filtered and rendered
+  poses; attach props to a rendered palm socket; use shared depth for natural
+  hand/object occlusion; require stable OPEN release and gravity-to-floor.
+- **Boundary:** deterministic local contact presentation, not force or
+  collision-grade rigid-body simulation; no screen-space masking.
+- **Detail:** `docs/TIP-57B-HAND-CONTACT-DYNAMICS.md` and completion report.
+
+## TIP-57C · True chirality and stable micro-grasp
+
+- **Dependencies:** TIP-57B. **Priority:** P0 visual correctness.
+- **Task:** restore left/right reflection at the render boundary; fuse
+  depth-consistent contact evidence; retain contact through transient misses;
+  preserve occluded fist closure from continuous measured curl.
+- **Boundary:** no canned gesture animation, 2D-only contact, detector swap or
+  force-level claim.
+- **Detail:** `docs/TIP-57C-TRUE-CHIRALITY-MICRO-GRASP.md` and completion report.
+
+## TIP-57D · Occlusion-resilient hand continuity
+
+- **Dependencies:** TIP-57C. **Priority:** P0 realtime interaction quality.
+- **Task:** replace frame-local handedness identity and static loss hold with
+  observation-centric two-hand association, bounded motion prediction,
+  controlled reacquisition blending and a RoboHand-only tracking profile.
+- **Boundary:** finite continuity, not hidden-hand reconstruction; no optical
+  flow or heavier detector until an A/B corpus proves its latency/quality gain.
+- **Detail:** `docs/TIP-57D-OCCLUSION-RESILIENT-CONTINUITY.md`, provenance
+  registry and completion report.
+
+## TIP-58 · Sharpa Wave anatomical rig
+
+- **Dependencies:** TIP-57D. **Priority:** P0 demo credibility.
+- **Task:** replace the production procedural shell with native Apache-2.0
+  Sharpa Wave left/right URDF assets; retarget canonical evidence into 22
+  bounded joints with thumb opposition and PIP–DIP coupling; retain the old rig
+  only as an asset-load fallback.
+- **Boundary:** visual teleoperation PoC, not force/collision simulation; no
+  negative-scale production asset and no canned gesture animation.
+- **Detail:** `docs/TIP-58-SHARPA-WAVE-ANATOMICAL-RIG.md`, research shortlist
+  and completion report.

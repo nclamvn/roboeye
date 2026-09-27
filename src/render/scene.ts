@@ -5,12 +5,14 @@
 import * as THREE from 'three/webgpu';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { texture, uniform, uv, float, vec2, vec3, mix, floor as tslFloor, instanceIndex, varying } from 'three/tsl';
 import { BevBuilder } from './bev';
 import type { Mode } from '../types';
 import type { DetBox, RelativeBox3D } from '../detection-types';
-import type { RobotHandPose } from '../robohand-types';
-import { createRobotHandRig } from '../robohand-rig';
+import { ROBOT_HAND_SEGMENTS, type RobotFingerCurls, type RobotHandPose, type RobotHandedness } from '../robohand-types';
+import { createRobotHandRestPoints, createRobotHandRig } from '../robohand-rig';
+import type {RoboHandStudioFrame,StudioPropKind} from '../robohand-studio';
 
 // Ánh xạ relative depth (0..1, 1 = gần) sang khoảng cách tương đối qua inverse depth
 const Z_NEAR = 0.5;
@@ -21,6 +23,37 @@ const GRID_WEBGPU: [number, number] = [448, 336];
 const GRID_WEBGL: [number, number] = [192, 144];
 
 type TexNode = ReturnType<typeof texture>;
+
+function createShowcasePose(
+  handedness: Exclude<RobotHandedness,'Unknown'>,
+  rootX:number,
+  curls:RobotFingerCurls
+):RobotHandPose{
+  const points=createRobotHandRestPoints();
+  const directions=ROBOT_HAND_SEGMENTS.map(segment=>{
+    const parent=points[segment.parent],child=points[segment.child];
+    const magnitude=Math.hypot(child.x-parent.x,child.y-parent.y,child.z-parent.z)||1;
+    return {x:(child.x-parent.x)/magnitude,y:(child.y-parent.y)/magnitude,z:(child.z-parent.z)/magnitude};
+  });
+  const orientation=new THREE.Quaternion().setFromEuler(new THREE.Euler(-.08,handedness==='Left'?-.14:.14,handedness==='Left'?-.06:.06));
+  return {points,directions,fingerCurls:curls,rootPosition:{x:rootX,y:.22,z:0},
+    rootOrientation:{x:orientation.x,y:orientation.y,z:orientation.z,w:orientation.w},rootScale:1.08,
+    handedness,handednessScore:1,capturedAt:0,receivedAt:0};
+}
+
+function createRobotHandShowcaseFrame():RoboHandStudioFrame{
+  return {
+    hands:[
+      {id:'left',handedness:'Left',pose:createShowcasePose('Left',-1.42,[.82,.66,.54,.58,.62]),gesture:'PINCH',pinchStrength:.9,gripStrength:.72},
+      {id:'right',handedness:'Right',pose:createShowcasePose('Right',1.42,[1,1,1,1,1]),gesture:'FIST',pinchStrength:.42,gripStrength:1}
+    ],
+    props:[
+      {id:'phone',ownerId:'left',position:{x:-1.05,y:-.18},action:'idle',value:0},
+      {id:'book',ownerId:null,position:{x:1.05,y:-.18},action:'idle',value:0}
+    ],
+    actionLabel:'Sharpa Wave · xem thử không cần camera',capturedAt:null
+  };
+}
 
 export interface SceneAPI {
   renderer: THREE.WebGPURenderer;
@@ -39,6 +72,7 @@ export interface SceneAPI {
   setDetections(boxes: DetBox[]): void;
   setSelectedBox(idx: number): void;
   setRobotHandPose(pose: RobotHandPose | null): void;
+  setRobotHandStudio(frame:RoboHandStudioFrame):void;
   consumeRobotHandPresentedFrame(): number | null;
   getDetections3D(): Array<RelativeBox3D | null>;
   resize(): void;
@@ -74,26 +108,22 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   robotCam.position.set(0, .16, 5.6);
   robotCam.lookAt(0, .16, 0);
 
-  // ── RoboHand: original offline PBR exoskeleton ────────────
+  // ── RoboHand: native left/right Sharpa Wave URDF rigs ─────
   const robotStage = new THREE.Group();
   robotStage.visible = false;
   scene.add(robotStage);
-  const robotRig = createRobotHandRig();
-  robotStage.add(robotRig.group);
+  const robotRigs=[createRobotHandRig({positionGainX:.68,positionGainY:.38,accentColor:0x67e8f9,modelHandedness:'Left'}),
+    createRobotHandRig({positionGainX:.68,positionGainY:.38,accentColor:0xa78bfa,modelHandedness:'Right'})];
+  robotRigs.forEach(rig=>{rig.group.visible=false;robotStage.add(rig.group);});
   let robotEnvironment: THREE.RenderTarget | null = null;
   function prepareRobotEnvironment(): void {
     if (robotEnvironment) return;
     const room = new RoomEnvironment();
     const generator = new THREE.PMREMGenerator(renderer);
     robotEnvironment = generator.fromScene(room, .04, .1, 100, { size: 128 });
-    // Apply reflections only to this rig; existing perception modes retain their lighting.
-    robotRig.group.traverse(object => {
-      if (!(object instanceof THREE.Mesh)) return;
-      const material = object.material as THREE.MeshStandardMaterial;
-      material.envMap = robotEnvironment!.texture;
-      material.envMapIntensity = .75;
-      material.needsUpdate = true;
-    });
+    // Keep the environment scoped to hand materials. The rig also applies it
+    // to Wave meshes that finish loading after this one-time preparation.
+    robotRigs.forEach(rig=>rig.setEnvironment(robotEnvironment!.texture));
     generator.dispose();
     room.dispose();
   }
@@ -125,6 +155,53 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   robotHalo.rotation.x = Math.PI / 2;
   robotHalo.position.y = -1.25;
   robotStage.add(robotHalo);
+
+  // Recognizable offline props. Their state is driven by RoboHandStudioController;
+  // geometry stays deliberately lightweight so tracking keeps the GPU budget.
+  const propGeometries:THREE.BufferGeometry[]=[];
+  const propMaterials:THREE.Material[]=[];
+  const propGroup=new THREE.Group();robotStage.add(propGroup);
+  function propMaterial(parameters:THREE.MeshStandardMaterialParameters):THREE.MeshStandardMaterial{
+    const material=new THREE.MeshStandardMaterial(parameters);
+    // Props and hand shells share the real depth buffer. Keeping both writes
+    // enabled lets the renderer naturally expose the thumb in front of a
+    // phone while hiding the palm/fingers that are physically behind it.
+    material.depthTest=true;material.depthWrite=true;material.transparent=false;
+    propMaterials.push(material);return material;
+  }
+  function propMesh(geometry:THREE.BufferGeometry,material:THREE.Material,parent:THREE.Object3D):THREE.Mesh{
+    propGeometries.push(geometry);const object=new THREE.Mesh(geometry,material);object.castShadow=true;object.receiveShadow=true;parent.add(object);return object;
+  }
+  const phone=new THREE.Group();phone.name='studio-phone';propGroup.add(phone);
+  propMesh(new RoundedBoxGeometry(.46,.86,.075,4,.055),propMaterial({color:0x161b22,metalness:.82,roughness:.24}),phone);
+  const phoneScreen=propMesh(new RoundedBoxGeometry(.405,.75,.012,3,.034),propMaterial({color:0x16354a,emissive:0x0b314d,emissiveIntensity:1.3,metalness:.08,roughness:.2}),phone);
+  phoneScreen.position.z=.048;
+  const phoneBar=propMesh(new RoundedBoxGeometry(.20,.012,.008,2,.006),propMaterial({color:0xb8f3ff,emissive:0x4fd6ff,emissiveIntensity:1.5}),phone);
+  phoneBar.position.set(0,.29,.06);
+  phone.position.set(-1.10,-.62,.34);phone.rotation.z=-.12;phone.scale.setScalar(.84);
+  const book=new THREE.Group();book.name='studio-book';propGroup.add(book);
+  const bookCoverMat=propMaterial({color:0x36536a,metalness:.16,roughness:.58});
+  const paperMat=propMaterial({color:0xe9e5d9,roughness:.88});
+  const leftCover=propMesh(new RoundedBoxGeometry(.46,.72,.055,3,.025),bookCoverMat,book);leftCover.position.x=-.235;
+  const rightCover=propMesh(new RoundedBoxGeometry(.46,.72,.055,3,.025),bookCoverMat,book);rightCover.position.x=.235;
+  const leftPages=propMesh(new RoundedBoxGeometry(.42,.66,.065,2,.018),paperMat,book);leftPages.position.set(-.22,0,.045);
+  const rightPages=propMesh(new RoundedBoxGeometry(.42,.66,.065,2,.018),paperMat,book);rightPages.position.set(.22,0,.045);
+  const pageLeaf=new THREE.Group();pageLeaf.position.set(0,0,.09);book.add(pageLeaf);
+  const leaf=propMesh(new THREE.PlaneGeometry(.42,.64),paperMat,pageLeaf);leaf.position.x=.21;
+  book.position.set(1.10,-.62,.28);book.rotation.set(-.18,.08,.1);book.scale.setScalar(.82);
+  const propObjects:Record<StudioPropKind,THREE.Group>={phone,book};
+  const propHome={phone:new THREE.Vector3(-1.10,-.62,.34),book:new THREE.Vector3(1.10,-.62,.28)};
+  const propFloor={phone:-.94,book:-.95};
+  const propMotion:Record<StudioPropKind,{falling:boolean;velocityY:number;spin:number}>={
+    phone:{falling:false,velocityY:0,spin:0},book:{falling:false,velocityY:0,spin:0}
+  };
+  const gripPosition=new THREE.Vector3(),gripQuaternion=new THREE.Quaternion(),gripScale=new THREE.Vector3();
+  const localGripPosition=new THREE.Vector3(),localGripQuaternion=new THREE.Quaternion();
+  const propParentQuaternion=new THREE.Quaternion(),propParentScale=new THREE.Vector3();
+  const desiredScale=new THREE.Vector3();
+  let studioFrame:RoboHandStudioFrame|null=null;
+  let rigOwnerIds:(string|null)[]=[null,null];
+  let pageTurn=0;
 
   // ── Uniforms dùng chung ────────────────────────────────────
   const uMix = uniform(1);
@@ -352,6 +429,16 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
   let pendingRobotCapturedAt: number | null = null;
   let presentedRobotCapturedAt: number | null = null;
 
+  function applyRobotHandFrame(frame:RoboHandStudioFrame):void{
+    studioFrame=frame;
+    robotRigs.forEach((rig,index)=>{
+      const hand=frame.hands.find(candidate=>candidate.id===(index===0?'left':'right'));
+      rigOwnerIds[index]=hand?.id??null;
+      rig.group.visible=Boolean(hand);rig.setPose(hand?.pose??null);
+    });
+    if(frame.capturedAt!=null)pendingRobotCapturedAt=frame.capturedAt;
+  }
+
   // Click lên BEV plane để đặt đích cho robot ảo (TIP-06)
   canvas.addEventListener('click', (e) => {
     if (mode !== 'bev') return;
@@ -434,13 +521,24 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
       boxGroup.visible = m === 'cloud';
       bevPlane.visible = m === 'bev';
       robotStage.visible = m === 'robohand';
-      if (m === 'robohand') prepareRobotEnvironment();
+      if (m === 'robohand') {
+        prepareRobotEnvironment();
+        if(!studioFrame?.hands.length)applyRobotHandFrame(createRobotHandShowcaseFrame());
+      }
       controls.enabled = m === 'cloud';
     },
 
     setRobotHandPose(pose) {
-      robotRig.setPose(pose);
+      const index=pose?.handedness==='Right'?1:0;
+      robotRigs.forEach((rig,rigIndex)=>{
+        const selected=pose!=null&&rigIndex===index;
+        rig.group.visible=selected;rig.setPose(selected?pose:null);
+      });
       if (pose) pendingRobotCapturedAt = pose.capturedAt;
+    },
+
+    setRobotHandStudio(frame){
+      applyRobotHandFrame(frame);
     },
 
     consumeRobotHandPresentedFrame() {
@@ -543,8 +641,52 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
       }
       if (mode === 'cloud') controls.update();
       if (mode === 'robohand') {
-        robotRig.update(dtMs);
+        robotRigs.forEach(rig=>rig.update(dtMs));
+        robotStage.updateMatrixWorld(true);
+        propGroup.updateWorldMatrix(true,false);
         robotHalo.rotation.z += Math.min(dtMs, 50) * .00016;
+        const response=1-Math.exp(-Math.min(dtMs,50)/55);
+        for(const prop of studioFrame?.props??[]){
+          const object=propObjects[prop.id];
+          const owner=studioFrame?.hands.find(hand=>hand.id===prop.ownerId);
+          if(owner){
+            const rigIndex=rigOwnerIds.indexOf(owner.id);
+            const rig=rigIndex>=0?robotRigs[rigIndex]:null;
+            if(rig){
+              rig.getGripTransform(prop.id,gripPosition,gripQuaternion,gripScale);
+              localGripPosition.copy(gripPosition);propGroup.worldToLocal(localGripPosition);
+              propGroup.getWorldQuaternion(propParentQuaternion).invert();
+              localGripQuaternion.copy(propParentQuaternion).multiply(gripQuaternion);
+              propGroup.getWorldScale(propParentScale);
+              desiredScale.copy(gripScale).divide(propParentScale)
+                .multiplyScalar(prop.id==='phone'?.76:.69);
+              object.position.lerp(localGripPosition,response);
+              object.quaternion.slerp(localGripQuaternion,response);
+              object.scale.lerp(desiredScale,response);
+            }
+            const motion=propMotion[prop.id];motion.falling=false;motion.velocityY=0;motion.spin=0;
+          }else if(prop.action==='falling'||propMotion[prop.id].falling){
+            const motion=propMotion[prop.id];
+            if(!motion.falling){motion.falling=true;motion.velocityY=0;motion.spin=prop.id==='phone'?2.1:-1.65;}
+            const seconds=Math.min(dtMs,50)/1000;
+            motion.velocityY-=3.9*seconds;
+            object.position.y+=motion.velocityY*seconds;
+            object.rotation.x+=motion.spin*seconds;
+            object.rotation.z+=motion.spin*.37*seconds;
+            if(object.position.y<=propFloor[prop.id]){
+              object.position.y=propFloor[prop.id];motion.falling=false;motion.velocityY=0;
+            }
+          }else if(!Number.isFinite(object.position.x))object.position.copy(propHome[prop.id]);
+          if(prop.id==='phone'&&prop.action==='swipe'){
+            const hue=[0x16354a,0x3d285d,0x17493e,0x533029][prop.value%4];
+            (phoneScreen.material as THREE.MeshStandardMaterial).color.setHex(hue);
+            (phoneScreen.material as THREE.MeshStandardMaterial).emissive.setHex(hue);
+            phoneBar.position.y=.29-(prop.value%4)*.15;
+          }
+          if(prop.id==='book'&&prop.action==='page-turn')pageTurn=1;
+        }
+        pageTurn=Math.max(0,pageTurn-Math.min(dtMs,50)/520);
+        pageLeaf.rotation.y=Math.sin((1-pageTurn)*Math.PI)*-2.65;
         if (pendingRobotCapturedAt != null) {
           presentedRobotCapturedAt = pendingRobotCapturedAt;
           pendingRobotCapturedAt = null;
@@ -555,12 +697,14 @@ export async function createScene(canvas: HTMLCanvasElement, opts: { forceWebGL?
     },
 
     dispose() {
-      robotRig.dispose();
+      robotRigs.forEach(rig=>rig.dispose());
       robotEnvironment?.dispose();
       robotFloor.geometry.dispose();
       (robotFloor.material as THREE.Material).dispose();
       robotHalo.geometry.dispose();
       (robotHalo.material as THREE.Material).dispose();
+      propGeometries.forEach(geometry=>geometry.dispose());
+      propMaterials.forEach(material=>material.dispose());
       renderer.dispose();
     }
   };
