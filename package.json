@@ -10,7 +10,7 @@
   "scripts": {
     "predev": "node scripts/copy-ort.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/copy-ort.mjs",
+    "prebuild": "node scripts/fetch-drive-models.mjs && node scripts/copy-ort.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",

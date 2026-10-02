@@ -6,10 +6,10 @@
 
 - Fixed production camera sessions that could detect vehicles but never publish
   metres because both git-ignored ONNX artifacts were absent from Vercel.
-- Added immutable GitHub Release artifacts plus exact-path Vercel reverse
-  proxies for detector and metric-depth assets, keeping mobile fetches on the
-  production origin; all bytes must still pass the pinned size and SHA-256
-  contract before ONNX Runtime can create a session.
+- Added immutable GitHub Release artifacts and a verified Vercel build-stage
+  fetch so detector and metric-depth files ship as static, same-origin assets;
+  all bytes must pass the pinned size and SHA-256 contract both at build time
+  and again before ONNX Runtime can create a session.
 - Extended the production CSP only for the GitHub release redirect chain and
   added regression coverage for local-miss fallback and tampered artifacts.
 

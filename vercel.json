@@ -1,14 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/models/drive-metric/da2-outdoor-392x224.onnx",
-      "destination": "https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/da2-outdoor-392x224.onnx"
-    },
-    {
-      "source": "/models/drive-detector/rtdetr-r18-640-webgpu.onnx",
-      "destination": "https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/rtdetr-r18-640-webgpu.onnx"
-    }
-  ],
   "headers": [
     {
       "source": "/models/drive-metric/da2-outdoor-392x224.onnx",
