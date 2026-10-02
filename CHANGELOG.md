@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### DriveSense production model delivery (TIP-60B)
+
+- Fixed production camera sessions that could detect vehicles but never publish
+  metres because both git-ignored ONNX artifacts were absent from Vercel.
+- Added immutable GitHub Release fallbacks for detector and metric-depth assets;
+  local and remote bytes must still pass the pinned size and SHA-256 contract
+  before ONNX Runtime can create a session.
+- Extended the production CSP only for the GitHub release redirect chain and
+  added regression coverage for local-miss fallback and tampered artifacts.
+
 ### DriveSense mobile continuity (TIP-59)
 
 - Replaced the fixed 400 ms live-track publication window with a bounded

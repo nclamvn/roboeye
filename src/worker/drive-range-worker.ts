@@ -1,5 +1,6 @@
 import * as ort from 'onnxruntime-web/webgpu';
 import {DA2_DRIVE,decodeDa2DriveMetric} from '../drive/metric-contract';
+import {fetchVerifiedModelArtifact} from '../drive/model-artifact';
 
 const base=new URL(import.meta.env.BASE_URL,self.location.href).href;
 ort.env.wasm.wasmPaths=`${base}ort/`;ort.env.wasm.numThreads=1;
@@ -15,13 +16,9 @@ self.onmessage=async({data:m})=>{
       if(!['webgpu','wasm'].includes(m.backend))throw Error('Metric backend không hợp lệ.');
       const requestedBackend=m.backend as 'webgpu'|'wasm';
       post({type:'status',message:'Đang kiểm model khoảng cách…'});
-      const response=await fetch(`${base}models/drive-metric/${DA2_DRIVE.file}`,{credentials:'omit'});
-      if(!response.ok)throw Error('Thiếu model khoảng cách local. Chạy npm run fixtures:drive-metric.');
-      const bytes=await response.arrayBuffer();
-      if(bytes.byteLength!==DA2_DRIVE.bytes)throw Error('Model khoảng cách sai kích thước.');
-      const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join('');
-      if(hash!==DA2_DRIVE.sha256)throw Error('Model khoảng cách sai SHA-256.');
-      session=await ort.InferenceSession.create(bytes,{executionProviders:[requestedBackend],graphOptimizationLevel:'all'});
+      const artifact=await fetchVerifiedModelArtifact(base,'drive-metric',DA2_DRIVE);
+      post({type:'status',message:artifact.source==='same-origin'?'Đang mở model khoảng cách local…':'Đang mở model khoảng cách release…'});
+      session=await ort.InferenceSession.create(artifact.bytes,{executionProviders:[requestedBackend],graphOptimizationLevel:'all'});
       if(session.inputNames.join(',')!=='image'||session.outputNames.join(',')!=='depth_metres')throw Error('Sai contract input/output metric.');
       post({type:'status',message:'Đang warm-up khoảng cách AI…'});
       const warmStart=performance.now(),warmInput=new ort.Tensor('float32',new Float32Array(3*DA2_DRIVE.width*DA2_DRIVE.height),[1,3,DA2_DRIVE.height,DA2_DRIVE.width]);

@@ -3,6 +3,7 @@ import type {DetectionMainToWorker,DetectionWorkerToMain,DetBox} from '../detect
 import {DRIVE_GPU_DETECTOR,DRIVE_CLASS_LABELS,detectorRgbPlanes} from '../drive/detector-contract';
 import {decodeFocal} from '../drive/detector-decode';
 import {postprocessDetections,RTDETR_POSTPROCESS} from '../detection-postprocess';
+import {fetchVerifiedModelArtifact} from '../drive/model-artifact';
 
 const base=new URL(import.meta.env.BASE_URL,self.location.href).href;
 ort.env.wasm.wasmPaths=`${base}ort/`;ort.env.wasm.numThreads=1;
@@ -27,13 +28,8 @@ self.onmessage=async({data:m}:MessageEvent<DetectionMainToWorker>)=>{
     if(m.type==='init'){
       if(session||m.engine!=='rtdetr'||m.profile!=='drive'||m.forceWasm)throw Error('Sai contract detector GPU DriveSense.');
       post({type:'loading',engine:'rtdetr'});
-      const response=await fetch(`${base}models/drive-detector/${DRIVE_GPU_DETECTOR.file}`,{credentials:'omit'});
-      if(!response.ok)throw Error('Thiếu graph GPU: chạy npm run fixtures:drive-detector.');
-      const bytes=await response.arrayBuffer();
-      if(bytes.byteLength!==DRIVE_GPU_DETECTOR.bytes)throw Error('Graph detector GPU sai kích thước.');
-      const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),n=>n.toString(16).padStart(2,'0')).join('');
-      if(hash!==DRIVE_GPU_DETECTOR.sha256)throw Error('Graph detector GPU sai SHA-256.');
-      session=await ort.InferenceSession.create(bytes,{executionProviders:['webgpu'],graphOptimizationLevel:'all'});
+      const artifact=await fetchVerifiedModelArtifact(base,'drive-detector',DRIVE_GPU_DETECTOR);
+      session=await ort.InferenceSession.create(artifact.bytes,{executionProviders:['webgpu'],graphOptimizationLevel:'all'});
       if(session.inputNames.join(',')!=='pixel_values'||session.outputNames.join(',')!=='logits,pred_boxes')throw Error('Detector GPU sai input/output.');
       await run(new Float32Array(3*640*640));
       post({type:'ready',engine:'rtdetr',device:'webgpu'});

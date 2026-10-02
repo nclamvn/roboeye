@@ -3,6 +3,7 @@ export const DRIVE_GPU_DETECTOR=Object.freeze({
   sourceSha256:'583a236ac21c95a7fd94f284fc21485e42355bfef82c27011ba78fbc09ee87e2',
   sha256:'86171edeb435bd3f113e82d1c6720a576932e6deca962426bb1bc794e7000458',bytes:81033458,
   file:'rtdetr-r18-640-webgpu.onnx',width:640,height:640,dtype:'fp32',
+  releaseUrl:'https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/rtdetr-r18-640-webgpu.onnx',
   adapter:'rtdetr-r18-static-equivalent-averagepool-v1',license:'Apache-2.0',
 } as const);
 export const DRIVE_CLASS_LABELS:Readonly<Record<number,string>>=Object.freeze({2:'car',5:'bus',7:'truck'});

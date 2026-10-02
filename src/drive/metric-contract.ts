@@ -23,6 +23,7 @@ export const DA2_DRIVE = Object.freeze({
   sourceWeightsSha256:'ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124',
   sha256:'dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f',bytes:99159817,
   file:'da2-outdoor-392x224.onnx',adapter:'da2-outdoor-letterbox-roi-v1',width:392,height:224,maxDepthM:80,
+  releaseUrl:'https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/da2-outdoor-392x224.onnx',
   unit:'metres',distanceKind:'optical-axis-z',scope:'desktop-analysed-video-poc',
 } as const);
 
