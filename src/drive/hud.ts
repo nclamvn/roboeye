@@ -17,6 +17,8 @@ export function redThreat(threat:RiskTrack|null|undefined):boolean {
   return !!threat&&threat.inPath&&threat.level==='critical'&&
     Number.isFinite(threat.confidence)&&threat.confidence>=.52&&
     Number.isFinite(threat.track.ageMs)&&threat.track.ageMs>=0&&threat.track.ageMs<500&&
+    (threat.track.evidenceAgeMs??threat.track.ageMs)<500&&
+    (threat.track.range.distanceM===null||(threat.track.rangeAgeMs??threat.track.ageMs)<500)&&
     threat.ttcAgreement!=='conflict';
 }
 

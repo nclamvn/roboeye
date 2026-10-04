@@ -84,7 +84,8 @@ export function assessRisk(tracks:DriveTrack[],config:RiskConfig,evidenceMode:Ri
     // missing/invalid tracks still disappear in replayAt, and live age decays.
     const sampleWindowMs=evidenceMode==='synthetic'?105:205;
     const sampledAgeValid=Number.isFinite(track.ageMs)&&track.ageMs>=0&&track.ageMs<=sampleWindowMs;
-    const freshness=evidenceMode==='live'?clamp(1-track.ageMs/500):(sampledAgeValid?1:0);
+    const evidenceAge=Math.max(track.ageMs,track.evidenceAgeMs??track.ageMs,distance===null?0:track.rangeAgeMs??track.ageMs);
+    const freshness=evidenceMode==='live'?clamp(1-evidenceAge/500):(sampledAgeValid?1:0);
     const rangeQuality=distance===null||track.range.sigmaM===null?0:clamp(1-track.range.sigmaM/Math.max(1,distance));
     let confidence=clamp(track.box.score*freshness*(.45+.35*fused.confidence+.2*rangeQuality));
     if(fused.agreement==='conflict')confidence=Math.min(confidence,.39);

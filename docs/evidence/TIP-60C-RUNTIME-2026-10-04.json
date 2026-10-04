@@ -1,0 +1,39 @@
+{
+  "schema": "drivesense-tip60c-runtime-v1",
+  "date": "2026-10-04",
+  "pass": true,
+  "scope": "Real pinned detector/depth models on desktop Chrome, separate workers and public bus image. No iPhone/Android hardware, simultaneous-camera throughput, or physical metre accuracy acceptance.",
+  "results": [
+    {
+      "backend": "wasm",
+      "detector": {
+        "measuredRuns": 3,
+        "p50Ms": 1691,
+        "p95Ms": 1702.699999988079
+      },
+      "depth": {
+        "samples": 3,
+        "p50Ms": 826.1000000238419,
+        "p95Ms": 829.1000000238419,
+        "provenance": "learned-unverified"
+      }
+    },
+    {
+      "backend": "webgpu",
+      "detector": {
+        "measuredRuns": 3,
+        "p50Ms": 63.400000005960464,
+        "p95Ms": 64
+      },
+      "depth": {
+        "samples": 21,
+        "p50Ms": 40.29999998211861,
+        "p95Ms": 43.89999997615814,
+        "provenance": "learned-unverified"
+      }
+    }
+  ],
+  "externalRequests": 0,
+  "pageErrors": [],
+  "physicalPhonesVerified": false
+}

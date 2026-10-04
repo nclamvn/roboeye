@@ -435,3 +435,12 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
   higher detector recall, calibrated metres, collision-warning readiness or
   safe driver operation.
 - **Detail:** `docs/TIP-59-MOBILE-DETECTOR-CONTINUITY.md`.
+# TIP-60C · Mobile live join and backend startup
+
+- Dependencies: TIP-59, TIP-60A, production model staging.
+- Priority: P0 · iPhone Chrome says “Chưa đo”; Android Brave has no boxes.
+- Scope: same-capture concurrent detector/depth join, immutable vehicle binding,
+  capture-age risk freshness, local q8 model and clean WASM startup retry.
+- Detail: `docs/TIP-60C-MOBILE-LIVE-JOIN.md`.
+- Acceptance: unit/browser/runtime evidence; real phone smoke/soak remains a
+  separate acceptance gate, not inferred from desktop Chrome.

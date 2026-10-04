@@ -75,6 +75,7 @@ async function loadEngine(e: DetectionEngine) {
   post({ type: 'loading', engine: e });
   const task = e === 'rtdetr' ? 'object-detection' : 'zero-shot-object-detection';
   const config = DETECTION_CONFIG[e];
+  if(driveProfile&&env.backends?.onnx?.wasm){env.backends.onnx.wasm.wasmPaths=`${BASE}ort/`;env.backends.onnx.wasm.numThreads=1;}
   const webgpu = !forceWasmFlag && (await hasWebGPU());
   const tries: Array<{ device: DetectionDevice; dtype: string }> = driveProfile&&driveDtype
     ? [{device:driveDtype==='q8'?'wasm':'webgpu',dtype:driveDtype}]

@@ -1,6 +1,7 @@
 import * as ort from 'onnxruntime-web/webgpu';
 import {DA2_DRIVE,decodeDa2DriveMetric} from '../drive/metric-contract';
 import {fetchVerifiedModelArtifact} from '../drive/model-artifact';
+import {driveBackend} from '../drive/backend';
 
 const base=new URL(import.meta.env.BASE_URL,self.location.href).href;
 ort.env.wasm.wasmPaths=`${base}ort/`;ort.env.wasm.numThreads=1;
@@ -14,9 +15,12 @@ self.onmessage=async({data:m})=>{
     if(m.type==='init'){
       if(session)throw Error('Metric worker đã khởi tạo.');
       if(!['webgpu','wasm'].includes(m.backend))throw Error('Metric backend không hợp lệ.');
-      const requestedBackend=m.backend as 'webgpu'|'wasm';
+      const requestedBackend=await driveBackend(m.backend==='wasm',navigator);
       post({type:'status',message:'Đang kiểm model khoảng cách…'});
-      const artifact=await fetchVerifiedModelArtifact(base,'drive-metric',DA2_DRIVE);
+      let lastProgress=-1;
+      const artifact=await fetchVerifiedModelArtifact(base,'drive-metric',DA2_DRIVE,fetch,(loaded,total)=>{
+        const progress=Math.floor(100*loaded/total);if(progress!==lastProgress){lastProgress=progress;post({type:'status',message:`Tải khoảng cách ${progress}% · ${requestedBackend}`});}
+      });
       post({type:'status',message:artifact.source==='same-origin'?'Đang mở model khoảng cách local…':'Đang mở model khoảng cách release…'});
       session=await ort.InferenceSession.create(artifact.bytes,{executionProviders:[requestedBackend],graphOptimizationLevel:'all'});
       if(session.inputNames.join(',')!=='image'||session.outputNames.join(',')!=='depth_metres')throw Error('Sai contract input/output metric.');
@@ -38,6 +42,6 @@ self.onmessage=async({data:m})=>{
         post({type:'result',id:m.id,map,latencyMs:performance.now()-start},[map.depth.buffer]);
       }finally{output?.dispose();input.dispose();}
     }else throw Error('Thông điệp metric không hợp lệ.');
-  }catch(error){post({type:'error',id:m.id,stage:session?'infer':'load',message:error instanceof Error?error.message:String(error)});}
+  }catch(error){post({type:'error',id:m.id,stage:m.type==='init'?'load':'infer',message:error instanceof Error?error.message:String(error)});}
   finally{busy=false;}
 };

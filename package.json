@@ -16,6 +16,8 @@
     "typecheck": "tsc --noEmit",
     "test:unit": "tsx --test tests/unit/*.test.ts",
     "test:drive-range-e2e": "node tests/drive-range-e2e.mjs",
+    "test:drive-mobile-live-e2e": "node tests/drive-mobile-live-e2e.mjs",
+    "test:drive-mobile-runtime-e2e": "node tests/drive-mobile-runtime-e2e.mjs",
     "pretest:drive-controls-e2e": "npm run build",
     "test:drive-controls-e2e": "node tests/drive-road-layout-e2e.mjs && node tests/drive-feature-toggle-e2e.mjs",
     "profile:drive-offline": "node scripts/profile-drive-offline.mjs",

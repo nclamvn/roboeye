@@ -4,6 +4,7 @@ import {DRIVE_GPU_DETECTOR,DRIVE_CLASS_LABELS,detectorRgbPlanes} from '../drive/
 import {decodeFocal} from '../drive/detector-decode';
 import {postprocessDetections,RTDETR_POSTPROCESS} from '../detection-postprocess';
 import {fetchVerifiedModelArtifact} from '../drive/model-artifact';
+import {driveBackend} from '../drive/backend';
 
 const base=new URL(import.meta.env.BASE_URL,self.location.href).href;
 ort.env.wasm.wasmPaths=`${base}ort/`;ort.env.wasm.numThreads=1;
@@ -27,8 +28,12 @@ self.onmessage=async({data:m}:MessageEvent<DetectionMainToWorker>)=>{
   try{
     if(m.type==='init'){
       if(session||m.engine!=='rtdetr'||m.profile!=='drive'||m.forceWasm)throw Error('Sai contract detector GPU DriveSense.');
+      if(await driveBackend(false,navigator)!=='webgpu')throw Error('WebGPU không khả dụng; dùng detector q8 WASM.');
       post({type:'loading',engine:'rtdetr'});
-      const artifact=await fetchVerifiedModelArtifact(base,'drive-detector',DRIVE_GPU_DETECTOR);
+      let lastProgress=-1;
+      const artifact=await fetchVerifiedModelArtifact(base,'drive-detector',DRIVE_GPU_DETECTOR,fetch,(loaded,total)=>{
+        const progress=Math.floor(100*loaded/total);if(progress!==lastProgress){lastProgress=progress;post({type:'progress',file:DRIVE_GPU_DETECTOR.file,progress,loaded,total});}
+      });
       session=await ort.InferenceSession.create(artifact.bytes,{executionProviders:['webgpu'],graphOptimizationLevel:'all'});
       if(session.inputNames.join(',')!=='pixel_values'||session.outputNames.join(',')!=='logits,pred_boxes')throw Error('Detector GPU sai input/output.');
       await run(new Float32Array(3*640*640));

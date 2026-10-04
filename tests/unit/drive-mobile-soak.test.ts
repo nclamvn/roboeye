@@ -2,6 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { MobileSoakTelemetry, safeCameraSettings } from '../../src/drive/mobile-soak';
 
+test('expired metric join counts one outcome without fabricating execution time',()=>{
+  const soak=new MobileSoakTelemetry();soak.cameraOpened(1,0,{width:1280,height:720});soak.metricAttempt(100);
+  soak.metricOutcome(100,false);
+  const expired=soak.report(1400);assert.equal(expired.overall.counts.metricDropped,1);assert.equal(expired.overall.stages.metricInference.samples,0);
+  soak.metricInferenceOnly(100,1800);
+  const arrived=soak.report(2000);assert.equal(arrived.overall.counts.metricDropped,1);assert.equal(arrived.overall.stages.metricInference.samples,1);assert.equal(arrived.overall.stages.metricInference.p50Ms,1800);
+});
+
 test('camera settings use a closed privacy allowlist', () => {
   const settings = safeCameraSettings({ width: 1920, height: 1080, frameRate: 29.97, aspectRatio: 16 / 9,
     facingMode: 'environment', resizeMode: 'crop-and-scale', deviceId: 'secret-id', groupId: 'secret-group', label: 'My phone' });

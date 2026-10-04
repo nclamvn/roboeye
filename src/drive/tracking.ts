@@ -2,6 +2,7 @@ import type { DetBox } from '../detection-types';
 import { detectionIoU } from '../detection-postprocess';
 import { vehicleCandidates, VEHICLE_STRONG_SCORE, VEHICLE_IMMEDIATE_SCORE, VEHICLE_WEAK_GRACE_MS } from './vehicle-candidates';
 import { estimateGroundRange, unknownRange, type CameraProfile, type RangeEstimate } from './geometry';
+import {LIVE_METRIC_MAX_AGE_MS} from './live-metric-join';
 
 /** Rectangular minimum-cost assignment. Each row gets a private-cost dummy column. */
 export function assign(cost:number[][],unmatched=1): Array<[number,number]> {
@@ -51,13 +52,14 @@ export class RangeFilter {
 interface Track {
   id:number;box:DetBox;vx:number;vy:number;at:number;wall:number;hits:number;misses:number;
   strongAt:number;strongWall:number;strongHits:number;confirmed:boolean;
-  range:RangeEstimate;rangeAt:number;rangeWall:number;filter:RangeFilter;velocity:number|null;
+  range:RangeEstimate;rangeAt:number;rangeWall:number;lastLearnedAt:number;invalidatedAt:number;evidenceWall:number;filter:RangeFilter;velocity:number|null;
   logScale:number;logScaleRate:number;scaleUpdates:number;
 }
 export interface DriveTrack {
   id:number;box:DetBox;ageMs:number;range:RangeEstimate;closingSpeed:number|null;
   opticalTtcS:number|null;rangeTtcS:number|null;motionConfidence:number;
   status:'unknown'|'tracked'|'caution'|'near';
+  evidenceAgeMs?:number;rangeAgeMs?:number;
 }
 
 function boxLogScale(box:DetBox):number {
@@ -119,41 +121,47 @@ export class VehicleTracker {
           a.logScale=nextScale;
         }else{a.logScale=boxLogScale(b);a.logScaleRate=0;a.scaleUpdates=0;}
         const stableLabel=a.box.label===b.label||b.score>a.box.score+.15?b.label:a.box.label;
-        a.box={...b,label:stableLabel};a.at=t;a.wall=wall;a.hits++;a.misses=0;this.measure(a,profile,width,height,learned?.get(b),t,preserveLearned,wall);
+        a.box={...b,label:stableLabel};a.at=t;a.wall=wall;a.evidenceWall=wall-Math.max(0,latencyMs);a.hits++;a.misses=0;this.measure(a,profile,width,height,learned?.get(b),t,preserveLearned,a.evidenceWall);
         used.add(j);matched.add(i);
       }
     }
     // An unmatched observation invalidates range immediately; prediction is overlay-only.
-    this.tracks.forEach((a,i)=>{if(!matched.has(i)){a.misses++;a.strongHits=0;a.range=unknownRange('Mất quan sát xe');a.rangeAt=t;a.rangeWall=wall;a.velocity=null;a.logScaleRate=0;a.scaleUpdates=0;a.filter.clear();}});
+    this.tracks.forEach((a,i)=>{if(!matched.has(i)){a.misses++;a.strongHits=0;a.invalidatedAt=t;a.range=unknownRange('Mất quan sát xe');a.rangeAt=t;a.rangeWall=wall;a.velocity=null;a.logScaleRate=0;a.scaleUpdates=0;a.filter.clear();}});
     candidates.forEach((b,j)=>{
       if(used.has(j)||b.score<VEHICLE_STRONG_SCORE||this.tracks.length>=32)return;
-      const a:Track={id:this.nextId++,box:{...b},vx:0,vy:0,at:t,wall,hits:1,misses:0,strongAt:t,strongWall:wall,strongHits:1,confirmed:b.score>=VEHICLE_IMMEDIATE_SCORE,range:unknownRange('Track mới'),rangeAt:t,rangeWall:wall,filter:new RangeFilter(),velocity:null,logScale:boxLogScale(b),logScaleRate:0,scaleUpdates:0};
-      this.measure(a,profile,width,height,learned?.get(b),t,preserveLearned,wall);this.tracks.push(a);
+      const a:Track={id:this.nextId++,box:{...b},vx:0,vy:0,at:t,wall,hits:1,misses:0,strongAt:t,strongWall:wall,strongHits:1,confirmed:b.score>=VEHICLE_IMMEDIATE_SCORE,range:unknownRange('Track mới'),rangeAt:t,rangeWall:wall,lastLearnedAt:-Infinity,invalidatedAt:-Infinity,evidenceWall:wall-Math.max(0,latencyMs),filter:new RangeFilter(),velocity:null,logScale:boxLogScale(b),logScaleRate:0,scaleUpdates:0};
+      this.measure(a,profile,width,height,learned?.get(b),t,preserveLearned,a.evidenceWall);this.tracks.push(a);
     });
   }
-  /** Attach a same-frame learned range after the detector result was already
-   * rendered. This keeps boxes responsive while the slower depth worker runs.
-   * It never advances track time or applies a range to a newer observation. */
-  enrichLearnedRanges(boxes:DetBox[],ranges:ReadonlyArray<RangeEstimate|null>,t:number,width:number,height:number,wall=t):number {
-    if(t>this.lastTime||this.lastTime-t>600||boxes.length!==ranges.length||![t,width,height,wall].every(Number.isFinite)||width<1||height<1)return 0;
+  /** Capture identity immediately after observe, before another detector frame
+   * can replace a box. A later range must keep this binding. */
+  bindLearnedFrame(boxes:DetBox[],t:number):Array<number|null> {
+    return boxes.map(box=>this.tracks.find(track=>track.at===t&&track.confirmed&&track.misses===0&&detectionIoU(track.box,box)>.95)?.id??null);
+  }
+  enrichLearnedRanges(boxes:DetBox[],ranges:ReadonlyArray<RangeEstimate|null>,t:number,width:number,height:number,wall=t,binding?:{trackIds:ReadonlyArray<number|null>;capturedWall:number}):number {
+    const maxGap=binding?LIVE_METRIC_MAX_AGE_MS:0;
+    if(t>this.lastTime||this.lastTime-t>maxGap||boxes.length!==ranges.length||![t,width,height,wall].every(Number.isFinite)||width<1||height<1)return 0;
+    if(binding&&(binding.trackIds.length!==boxes.length||!Number.isFinite(binding.capturedWall)||wall<binding.capturedWall||wall-binding.capturedWall>LIVE_METRIC_MAX_AGE_MS))return 0;
     const measured=vehicleCandidates(boxes).flatMap(box=>{
       const range=ranges[boxes.indexOf(box)];
-      return range?.kind==='learned_optical_axis_z_m'&&range.provenance==='learned-unverified'&&range.distanceM!==null?[{box,range}]:[];
+      return range?.kind==='learned_optical_axis_z_m'&&range.provenance==='learned-unverified'&&range.distanceM!==null?[{box,range,index:boxes.indexOf(box)}]:[];
     });
-    const indexes=this.tracks.map((_,i)=>i).filter(i=>this.tracks[i].at>=t&&this.tracks[i].at-t<=600);
-    const costs=indexes.map(i=>measured.map(({box})=>{
-      const overlap=detectionIoU(this.tracks[i].box,box);return overlap>=.5?1-overlap:1e6;
+    const indexes=this.tracks.map((_,i)=>i).filter(i=>this.tracks[i].at>=t&&this.tracks[i].at-t<=maxGap&&this.tracks[i].misses===0&&this.tracks[i].invalidatedAt<=t);
+    const costs=indexes.map(i=>measured.map(({box,index})=>{
+      const track=this.tracks[i];if(binding&&track.id!==binding.trackIds[index])return 1e6;
+      const overlap=detectionIoU(track.box,box);return overlap>=(binding ? .7 : .5)?1-overlap:1e6;
     }));
     let applied=0;
     for(const [ii,jj] of assign(costs,.5000001)){
-      const track=this.tracks[indexes[ii]];if(t<track.rangeAt)continue;
-      this.measure(track,null,width,height,measured[jj].range,t,false,wall);applied++;
+      const track=this.tracks[indexes[ii]];if(t<=track.lastLearnedAt)continue;
+      this.measure(track,null,width,height,measured[jj].range,t,false,binding?.capturedWall??wall);
+      if(track.range.distanceM!==null){track.lastLearnedAt=t;applied++;}
     }
     return applied;
   }
   private measure(a:Track,p:CameraProfile|null,w:number,h:number,learned?:RangeEstimate,measurementAt=a.at,preserveLearned=false,measurementWall=a.wall) {
-    if(!a.confirmed||a.box.score<VEHICLE_STRONG_SCORE){a.range=unknownRange('Bằng chứng xe yếu; chưa đo');a.rangeAt=measurementAt;a.rangeWall=measurementWall;a.velocity=null;a.filter.clear();return;}
-    if(preserveLearned&&!p&&!learned&&a.range.provenance==='learned-unverified'&&measurementAt-a.rangeAt<=600)return;
+    if(!a.confirmed||a.box.score<VEHICLE_STRONG_SCORE){a.invalidatedAt=a.at;a.range=unknownRange('Bằng chứng xe yếu; chưa đo');a.rangeAt=measurementAt;a.rangeWall=measurementWall;a.velocity=null;a.filter.clear();return;}
+    if(preserveLearned&&!p&&!learned&&a.range.provenance==='learned-unverified'&&measurementAt-a.rangeAt<=LIVE_METRIC_MAX_AGE_MS)return;
     const geometric=estimateGroundRange(a.box,p,w,h);
     const previousKind=a.range.kind,previousSource=a.range.provenance;
     // A supplied camera profile is authoritative, including its abstentions.
@@ -176,7 +184,7 @@ export class VehicleTracker {
       // Association can preserve identity through occlusion, not a positive label
       // indefinitely. Old strong evidence cannot be refreshed by weak detections.
       if(age>visualHold||!a.confirmed||a.misses>2||(!paused&&wall-a.strongWall>visualHold))return [];
-      const rangeAge=paused?Math.max(0,t-a.rangeAt):Math.max(age,wall-a.rangeWall),rangeHold=paused?400:this.rangeHoldMs();
+      const rangeAge=paused?Math.max(0,t-a.rangeAt):Math.max(age,wall-a.rangeWall),rangeHold=paused?400:a.range.provenance==='learned-unverified'?LIVE_METRIC_MAX_AGE_MS:this.rangeHoldMs();
       const range=rangeAge>rangeHold?unknownRange('Dữ liệu khoảng cách cũ',a.range.kind):a.range;
       const d=range.distanceM;
       // Experimental proximity ONLY. No lane, TTC or safe-distance claim.
@@ -185,7 +193,7 @@ export class VehicleTracker {
       const opticalTtcS=a.scaleUpdates>=3&&a.logScaleRate>.025?Math.max(.25,Math.min(30,1/a.logScaleRate)):null;
       const rangeTtcS=d!==null&&closingSpeed!==null&&closingSpeed>.25?Math.max(.25,Math.min(30,d/closingSpeed)):null;
       const motionConfidence=Math.min(1,a.scaleUpdates/8)*(1-Math.min(1,age/visualHold))*Math.max(0,Math.min(1,a.box.score));
-      return [{id:a.id,box:this.predict(a,t),ageMs:age,range,closingSpeed,opticalTtcS,rangeTtcS,motionConfidence,status}];
+      return [{id:a.id,box:this.predict(a,t),ageMs:age,evidenceAgeMs:paused?age:Math.max(0,wall-a.evidenceWall),rangeAgeMs:rangeAge,range,closingSpeed,opticalTtcS,rangeTtcS,motionConfidence,status}];
     });
   }
 }

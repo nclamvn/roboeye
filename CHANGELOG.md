@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+### DriveSense mobile live join (TIP-60C)
+
+- Run detector and metric depth on the same capture, joining either completion
+  order without waiting for detector before starting depth.
+- Bind delayed depth to originating track IDs; reject weak, missing, moved,
+  replaced and >1200 ms old measurements. Unknown newer ranges no longer block
+  a valid pending depth result. Capture age is retained for warning freshness.
+- Keep bounded visual boxes for 1000–2500 ms inference without treating those
+  boxes as fresh danger-warning evidence.
+- Stage the pinned 21 MB quantized CPU detector and its JSON processor files
+  on the app origin. Probe worker GPU before large downloads and retry module
+  startup errors once in a clean WASM worker.
+- Show model download progress, startup failures, retry, actual latencies and
+  rejection reasons; distinguish timeout outcomes from actual depth timings.
+- Add same-frame/identity/safety tests, six live UI timing scenarios, and real
+  model tests with external browser requests blocked.
+
 ### DriveSense production model delivery (TIP-60B)
 
 - Fixed production camera sessions that could detect vehicles but never publish

@@ -6,6 +6,12 @@ export const DRIVE_GPU_DETECTOR=Object.freeze({
   releaseUrl:'https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/rtdetr-r18-640-webgpu.onnx',
   adapter:'rtdetr-r18-static-equivalent-averagepool-v1',license:'Apache-2.0',
 } as const);
+export const DRIVE_WASM_DETECTOR=Object.freeze({
+  id:'onnx-community/rtdetr_v2_r18vd-ONNX',revision:'936f90b6a476c6da4dfe053fc521af55285976ba',
+  file:'onnx/model_quantized.onnx',dtype:'q8',width:640,height:640,bytes:20991219,
+  sha256:'4b839c46187b77fc620c770de0be6790637b98afde9b386232b0fcf74382eb3c',
+  delivery:'same-origin; build-time size and SHA-256 verified',license:'Apache-2.0',
+} as const);
 export const DRIVE_CLASS_LABELS:Readonly<Record<number,string>>=Object.freeze({2:'car',5:'bus',7:'truck'});
 
 /** The pinned HF processor rescales RGB to [0,1], stretches to 640x640 and does

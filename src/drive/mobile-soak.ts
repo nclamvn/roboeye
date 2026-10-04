@@ -294,8 +294,20 @@ export class MobileSoakTelemetry {
   metricAttempt(at: number) { const targets = this.aggregates(at); for (const target of targets) target.counts.metricAttempts++; return targets.length > 0; }
 
   metricResult(at: number, latencyMs: number, accepted: boolean) {
+    this.metricInferenceOnly(at,latencyMs);return this.metricOutcome(at,accepted);
+  }
+
+  /** A join may expire before depth returns. Count its outcome once without
+   * inventing model execution time from the wall-clock watchdog duration. */
+  metricInferenceOnly(at:number,latencyMs:number){
     const targets = this.aggregates(at);
-    for (const target of targets) { target.metricInference.add(latencyMs); if (accepted) target.counts.metricAccepted++; else target.counts.metricDropped++; }
+    for(const target of targets)target.metricInference.add(latencyMs);
+    return targets.length>0;
+  }
+
+  metricOutcome(at:number,accepted:boolean){
+    const targets=this.aggregates(at);
+    for(const target of targets){if(accepted)target.counts.metricAccepted++;else target.counts.metricDropped++;}
     return targets.length > 0;
   }
 

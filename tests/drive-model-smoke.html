@@ -38,7 +38,7 @@ button.onclick=async()=>{
    }
   }catch(e){finish({pass:false,error:String(e)});}
  };
- worker.postMessage({type:'init',engine:'rtdetr',queries:['car','bus','truck'],forceWasm:choice==='wasm',profile:'drive',driveDtype:choice==='wasm'?'q8':choice});
+ worker.postMessage({type:'init',engine:'rtdetr',queries:['car','bus','truck'],forceWasm:choice==='wasm',localModels:choice==='wasm',profile:'drive',driveDtype:choice==='wasm'?'q8':choice});
 };
 addEventListener('pagehide',()=>worker?.terminate());
 </script></html>
