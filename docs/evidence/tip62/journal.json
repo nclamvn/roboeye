@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "checks": [
+    "reopen-after-minute",
+    "detector-1691ms-stale-join",
+    "three-successes-then-depth-stops",
+    "storage-denied-ai-continues"
+  ],
+  "fixture": {
+    "sha256": "76aeb51ffb615dee05e11399f4278f934fb45a6158c0a95d3f978246cec31c89",
+    "bytes": 92982,
+    "license": "Original code-generated visual test; no perception/metric ground truth"
+  },
+  "scope": "Real Chromium IndexedDB and real wall-clock video; mocked AI workers. NOT phone performance or distance accuracy validation."
+}

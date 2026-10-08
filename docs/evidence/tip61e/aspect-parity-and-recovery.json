@@ -1,0 +1,194 @@
+{
+  "pass": true,
+  "results": [
+    {
+      "status": "pass",
+      "orientation": "landscape",
+      "backend": "wasm",
+      "shape": [
+        392,
+        224
+      ],
+      "model": {
+        "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+        "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+        "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+        "sha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+        "bytes": 99159817,
+        "file": "da2-outdoor-392x224.onnx",
+        "adapter": "da2-outdoor-letterbox-roi-v1",
+        "width": 392,
+        "height": 224,
+        "maxDepthM": 80,
+        "orientation": "landscape",
+        "releaseUrl": "https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/da2-outdoor-392x224.onnx",
+        "unit": "metres",
+        "distanceKind": "optical-axis-z",
+        "scope": "desktop-analysed-video-poc"
+      },
+      "samples": [
+        {
+          "latencyMs": 1005.5999999940395,
+          "maxAbsM": 0.0000514984130859375
+        },
+        {
+          "latencyMs": 994.2000000029802,
+          "maxAbsM": 0.0000514984130859375
+        },
+        {
+          "latencyMs": 937.6999999880791,
+          "maxAbsM": 0.0000514984130859375
+        },
+        {
+          "latencyMs": 917.1999999880791,
+          "maxAbsM": 0.0000514984130859375
+        }
+      ],
+      "wrongShapeRejected": true,
+      "recoveredAfterShapeError": true,
+      "error": null
+    },
+    {
+      "status": "pass",
+      "orientation": "portrait",
+      "backend": "wasm",
+      "shape": [
+        224,
+        392
+      ],
+      "model": {
+        "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+        "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+        "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+        "sha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+        "bytes": 99159816,
+        "file": "da2-outdoor-224x392.onnx",
+        "adapter": "da2-outdoor-aspect-static-support-v2",
+        "width": 224,
+        "height": 392,
+        "maxDepthM": 80,
+        "orientation": "portrait",
+        "unit": "metres",
+        "distanceKind": "optical-axis-z",
+        "scope": "aspect-specific-browser-poc; metric accuracy and mobile throughput unvalidated"
+      },
+      "samples": [
+        {
+          "latencyMs": 966.6999999880791,
+          "maxAbsM": 0.000028133392333984375
+        },
+        {
+          "latencyMs": 933.6000000089407,
+          "maxAbsM": 0.000028133392333984375
+        },
+        {
+          "latencyMs": 955.6000000089407,
+          "maxAbsM": 0.000028133392333984375
+        },
+        {
+          "latencyMs": 1006.5,
+          "maxAbsM": 0.000028133392333984375
+        }
+      ],
+      "wrongShapeRejected": true,
+      "recoveredAfterShapeError": true,
+      "error": null
+    },
+    {
+      "status": "pass",
+      "orientation": "landscape",
+      "backend": "webgpu",
+      "shape": [
+        392,
+        224
+      ],
+      "model": {
+        "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+        "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+        "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+        "sha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+        "bytes": 99159817,
+        "file": "da2-outdoor-392x224.onnx",
+        "adapter": "da2-outdoor-letterbox-roi-v1",
+        "width": 392,
+        "height": 224,
+        "maxDepthM": 80,
+        "orientation": "landscape",
+        "releaseUrl": "https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/da2-outdoor-392x224.onnx",
+        "unit": "metres",
+        "distanceKind": "optical-axis-z",
+        "scope": "desktop-analysed-video-poc"
+      },
+      "samples": [
+        {
+          "latencyMs": 54.80000001192093,
+          "maxAbsM": 0.0000553131103515625
+        },
+        {
+          "latencyMs": 53.5,
+          "maxAbsM": 0.0000553131103515625
+        },
+        {
+          "latencyMs": 53.5,
+          "maxAbsM": 0.0000553131103515625
+        },
+        {
+          "latencyMs": 51.5,
+          "maxAbsM": 0.0000553131103515625
+        }
+      ],
+      "wrongShapeRejected": true,
+      "recoveredAfterShapeError": true,
+      "error": null
+    },
+    {
+      "status": "pass",
+      "orientation": "portrait",
+      "backend": "webgpu",
+      "shape": [
+        224,
+        392
+      ],
+      "model": {
+        "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+        "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+        "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+        "sha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+        "bytes": 99159816,
+        "file": "da2-outdoor-224x392.onnx",
+        "adapter": "da2-outdoor-aspect-static-support-v2",
+        "width": 224,
+        "height": 392,
+        "maxDepthM": 80,
+        "orientation": "portrait",
+        "unit": "metres",
+        "distanceKind": "optical-axis-z",
+        "scope": "aspect-specific-browser-poc; metric accuracy and mobile throughput unvalidated"
+      },
+      "samples": [
+        {
+          "latencyMs": 69.19999998807907,
+          "maxAbsM": 0.00003814697265625
+        },
+        {
+          "latencyMs": 56,
+          "maxAbsM": 0.00003814697265625
+        },
+        {
+          "latencyMs": 49.6000000089407,
+          "maxAbsM": 0.00003814697265625
+        },
+        {
+          "latencyMs": 45.6000000089407,
+          "maxAbsM": 0.00003814697265625
+        }
+      ],
+      "wrongShapeRejected": true,
+      "recoveredAfterShapeError": true,
+      "error": null
+    }
+  ],
+  "external": [],
+  "errors": [],
+  "scope": "Pinned real graphs versus native float reference on desktop Chrome; synthetic RGB fixture, not physical distance or mobile performance."
+}

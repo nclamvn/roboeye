@@ -1,0 +1,40 @@
+{
+  "generatedUtc": "2026-10-08T05:38:44.106Z",
+  "unit": {
+    "count": 310,
+    "passed": 310
+  },
+  "release": {
+    "name": "roboeye",
+    "version": "1.5.0",
+    "commit": "8219b578cb4e",
+    "base": "/",
+    "offlineDepth": false,
+    "buildFingerprint": "80142f1f649a",
+    "sourceFingerprint": "81c6100aadf2122d89beb3846651af4266420ded516dc54e9a1403e09714f508",
+    "runtimeFingerprint": "e1fda66b8d99"
+  },
+  "invariants": {
+    "captureExpiryMs": 1200,
+    "precision": "fp32",
+    "nativePortraitGraph": true,
+    "noThresholdRelaxation": true
+  },
+  "scopes": {
+    "units": "Pure logic",
+    "browser": "Desktop Chrome, mocked workers/canvas streams except native parity and real-model bake-off",
+    "deviceAcceptance": "No new physical iPhone/Android test; owner baseline is not an after result",
+    "physicalAccuracy": "Unvalidated without independent truth"
+  },
+  "typecheck": "pass",
+  "productionBuild": "pass",
+  "releaseVerifier": {
+    "passed": 5
+  },
+  "security": {
+    "high": 0,
+    "critical": 0,
+    "browserNativeSharpExposure": 0
+  },
+  "caveat": "No speedup claim for input pooling; the paired FP32 controls are NOT before/after product versions."
+}

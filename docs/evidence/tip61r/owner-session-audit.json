@@ -1,0 +1,225 @@
+{
+  "inputSha256": "de9b54013220c0ce7a09ee607fac61ca4ec541f5a8802e9b43472688ce410932",
+  "inputBytes": 145766,
+  "inputKind": "owner-provided real iPhone session; no physical distance truth",
+  "sourceFingerprint": "79dd54fe6d497c1b99f0e4f7cad328413d1c6876cc71713841719a6ddc936407",
+  "browserFamily": "iPhone Chrome (CriOS), owner report",
+  "sourceSize": [
+    720,
+    1280
+  ],
+  "frameRate": 30,
+  "backend": {
+    "detector": "webgpu",
+    "metric": "webgpu"
+  },
+  "lifecycle": {
+    "state": "RUNNING",
+    "failures": 0
+  },
+  "profileSupplied": false,
+  "videoZoom": 1,
+  "elapsedMs": 59608,
+  "metric": {
+    "started": 36,
+    "completed": 35,
+    "inflight": 1,
+    "balanced": true,
+    "outcomes": {
+      "accepted-observed": 15,
+      "binding-rejected": 2,
+      "roi-rejected": 15,
+      "stale": 3
+    },
+    "stages": {
+      "capture": 36,
+      "dispatch": 36,
+      "result": 35,
+      "join": 32,
+      "roi": 32,
+      "binding": 32,
+      "publication": 15
+    }
+  },
+  "detector": {
+    "started": 66,
+    "completed": 65,
+    "inflight": 1,
+    "balanced": true,
+    "outcomes": {
+      "accepted-observed": 65
+    },
+    "stages": {
+      "capture": 66,
+      "dispatch": 66,
+      "result": 65,
+      "publication": 65
+    }
+  },
+  "availability": {
+    "observedMs": 59539,
+    "visibleMs": 7638,
+    "fullSessionCoverage": 0.1282856614991854,
+    "maxBlackoutMs": 24938,
+    "predictedOnlyPresentations": 1832,
+    "eligibleCoverage": null,
+    "eligibility": "not annotated; no automatic exclusion based on model failure",
+    "freshAcceptedMeasurements": 15
+  },
+  "frameTiming": {
+    "count": 65,
+    "detectorRequestP50Ms": 616,
+    "detectorRequestP95Ms": 1143,
+    "metricInferenceP50Ms": 647,
+    "metricInferenceP95Ms": 1397,
+    "seekP50Ms": null,
+    "seekP95Ms": null,
+    "sampleWallP50Ms": null,
+    "sampleWallP95Ms": null,
+    "droppedResults": 0,
+    "analysisElapsedMs": null,
+    "analysedFramesPerSecond": null,
+    "mediaToProcessingRatio": null,
+    "scope": "liveTiming measures camera callback to overlay/audio; live metric depth is same-frame, bounded and unverified."
+  },
+  "perOutcome": {
+    "accepted-observed": {
+      "count": 15,
+      "admissionAgeMs": [
+        619,
+        613,
+        613,
+        632,
+        635,
+        640,
+        651,
+        654,
+        667,
+        661,
+        672,
+        686,
+        762,
+        813,
+        1145
+      ],
+      "resultAgeMs": [
+        593,
+        582,
+        605,
+        606,
+        600,
+        608,
+        617,
+        620,
+        637,
+        660,
+        638,
+        646,
+        718,
+        764,
+        1069
+      ]
+    },
+    "binding-rejected": {
+      "count": 2,
+      "admissionAgeMs": [
+        643,
+        713
+      ],
+      "resultAgeMs": [
+        618,
+        683
+      ]
+    },
+    "roi-rejected": {
+      "count": 15,
+      "admissionAgeMs": [
+        658,
+        664,
+        668,
+        686,
+        684,
+        687,
+        703,
+        710,
+        731,
+        716,
+        711,
+        710,
+        712,
+        717,
+        739
+      ],
+      "resultAgeMs": [
+        620,
+        637,
+        634,
+        680,
+        683,
+        657,
+        697,
+        708,
+        710,
+        689,
+        674,
+        673,
+        674,
+        716,
+        708
+      ]
+    },
+    "stale": {
+      "count": 3,
+      "admissionAgeMs": [
+        1209,
+        1213,
+        1217
+      ],
+      "resultAgeMs": [
+        1321,
+        1726,
+        1427
+      ]
+    }
+  },
+  "observationReasons": {
+    "Chưa hiệu chuẩn": 107,
+    "Bằng chứng xe yếu; chưa đo": 40,
+    "Dữ liệu khoảng cách cũ": 15,
+    "Mất quan sát xe": 7,
+    "AI metric chưa hiệu chuẩn thực địa · ROI 72 px · độ phân tán 9%": 1,
+    "AI metric chưa hiệu chuẩn thực địa · ROI 60 px · độ phân tán 6%": 1,
+    "AI metric chưa hiệu chuẩn thực địa · ROI 40 px · độ phân tán 2%": 1,
+    "AI metric chưa hiệu chuẩn thực địa · ROI 28 px · độ phân tán 2%": 1,
+    "AI metric chưa hiệu chuẩn thực địa · ROI 24 px · độ phân tán 3%": 1
+  },
+  "sourceAspect": {
+    "target": [
+      392,
+      224
+    ],
+    "content": [
+      125.99999999999999,
+      224
+    ],
+    "contentFraction": 0.32142857142857145,
+    "minimumNormalizedBoxWidth": 0.07936507936507937
+  },
+  "limitations": [
+    "accepted-observed means validated HUD admission, not physical scanout/verified metres",
+    "aggregate roi-rejected has no per-object reason/subgate or raw depth/box; exact 15 rejection causes cannot be reconstructed",
+    "observation Chưa hiệu chuẩn is a generic missing-range placeholder, not evidence that profile absence caused ROI rejection",
+    "full-session coverage includes startup; not independently annotated eligible coverage",
+    "single ~60-second session, not a 30-minute thermal test or historical incident"
+  ],
+  "findings": {
+    "completed": 35,
+    "accepted": 15,
+    "roiRejected": 15,
+    "bindingRejected": 2,
+    "stale": 3,
+    "runtimeFaultObserved": false,
+    "wasmFallbackObserved": false,
+    "physicalAccuracyEstablished": false
+  }
+}

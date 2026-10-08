@@ -1,0 +1,346 @@
+{
+  "pass": true,
+  "errors": [],
+  "external": [],
+  "results": [
+    {
+      "clipSha256": "83a2ee31d6bbdd205531f5c684b29d23d2573011ac988b12efb8058ffb9de93f",
+      "bytes": 3258278,
+      "build": {
+        "version": "1.5.0",
+        "commit": "8219b578cb4e",
+        "sourceFingerprint": "b3959cc788bf01d9de567d2cb164de6de43beedcd2c50ec846184b18781f950d"
+      },
+      "backends": {
+        "detector": "webgpu",
+        "metric": "webgpu"
+      },
+      "liveMetric": {
+        "scheduler": {
+          "policy": "measured-workload-v2",
+          "intervalMs": 250,
+          "detectorP50Ms": 86.6000000089407,
+          "depthP50Ms": 101.79999999701977,
+          "terminalAgeP95Ms": 140.20000000298023,
+          "targetAdmissionMs": 300,
+          "targetAnchorHz": 3,
+          "deadlineFeasible": true,
+          "targetLatencyMet": true,
+          "note": "Runtime budget only; actual cadence, coverage and device acceptance are measured separately."
+        },
+        "attempts": 6,
+        "accepted": 6,
+        "droppedOrUnmatched": 0,
+        "rejectionReasons": {},
+        "lastReason": "Đã ghép depth và xe cùng frame · mét AI chưa kiểm chứng.",
+        "detectorError": "",
+        "metricError": "",
+        "maxCaptureAgeMs": 1200,
+        "policy": "parallel same-frame snapshot; immutable track binding; metres expire 1200 ms after capture; warnings use original capture age; never overrides a supplied camera profile"
+      },
+      "accounting": {
+        "detector": {
+          "started": 106,
+          "completed": 105,
+          "inflight": 1,
+          "balanced": true,
+          "outcomes": {
+            "accepted-observed": 104,
+            "wrong-generation": 1
+          },
+          "stages": {
+            "capture": 106,
+            "dispatch": 106,
+            "result": 105,
+            "publication": 104
+          }
+        },
+        "metric": {
+          "started": 39,
+          "completed": 39,
+          "inflight": 0,
+          "balanced": true,
+          "outcomes": {
+            "accepted-observed": 38,
+            "wrong-generation": 1
+          },
+          "stages": {
+            "capture": 39,
+            "dispatch": 39,
+            "result": 39,
+            "join": 38,
+            "roi": 38,
+            "policy": 38,
+            "binding": 38,
+            "filter": 38,
+            "publication": 38
+          }
+        }
+      },
+      "availability": {
+        "observedMs": 21766.399999999998,
+        "visibleMs": 11665.9,
+        "fullSessionCoverage": 0.5359590929138489,
+        "maxBlackoutMs": 9758.4,
+        "predictedOnlyPresentations": 61,
+        "eligibleCoverage": null,
+        "eligibility": "not annotated; no automatic exclusion based on model failure",
+        "freshAcceptedMeasurements": 38
+      },
+      "objectTerminalReasons": {
+        "ordinal-conflict": 40,
+        "accepted": 52,
+        "not-candidate": 447,
+        "unconfirmed-track": 51,
+        "tiny-roi": 19,
+        "foreground-ambiguous": 1
+      },
+      "timing": {
+        "callbackVsExpectedDisplay": {
+          "samples": 563,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 0.6067495559502659,
+          "p50Ms": 0,
+          "p95Ms": 0,
+          "p99Ms": 0,
+          "maxMs": 247.10000000000036
+        },
+        "captureToCallback": {
+          "samples": 0,
+          "unavailable": 563,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": null,
+          "p50Ms": null,
+          "p95Ms": null,
+          "p99Ms": null,
+          "maxMs": null
+        },
+        "decodeProcessing": {
+          "samples": 563,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 112.48277087033759,
+          "p50Ms": 100,
+          "p95Ms": 267,
+          "p99Ms": 271,
+          "maxMs": 361.4
+        },
+        "requestToResult": {
+          "samples": 104,
+          "unavailable": 2,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 100.43942307637862,
+          "p50Ms": 87,
+          "p95Ms": 154,
+          "p99Ms": 177,
+          "maxMs": 906.6999999880791
+        },
+        "frameToOverlay": {
+          "samples": 104,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 114.22692307081941,
+          "p50Ms": 104,
+          "p95Ms": 175,
+          "p99Ms": 192,
+          "maxMs": 917.7999999880794
+        },
+        "metricInference": {
+          "samples": 38,
+          "unavailable": 1,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 101.21052631578948,
+          "p50Ms": 94,
+          "p95Ms": 142,
+          "p99Ms": 168,
+          "maxMs": 168.30000001192093
+        }
+      },
+      "scope": "Real app and pinned real models on recorded road video at wall-clock playback. NOT physical camera/phone/road metre accuracy"
+    },
+    {
+      "clipSha256": "85d59cccacf5e968df17d92dad570ddbb1a72854e2221e1842a669fdb8cf575d",
+      "bytes": 34210680,
+      "build": {
+        "version": "1.5.0",
+        "commit": "8219b578cb4e",
+        "sourceFingerprint": "b3959cc788bf01d9de567d2cb164de6de43beedcd2c50ec846184b18781f950d"
+      },
+      "backends": {
+        "detector": "webgpu",
+        "metric": "webgpu"
+      },
+      "liveMetric": {
+        "scheduler": {
+          "policy": "measured-workload-v2",
+          "intervalMs": 250,
+          "detectorP50Ms": 78.5,
+          "depthP50Ms": 100.40000000596046,
+          "terminalAgeP95Ms": 149.79999999701977,
+          "targetAdmissionMs": 300,
+          "targetAnchorHz": 3,
+          "deadlineFeasible": true,
+          "targetLatencyMet": true,
+          "note": "Runtime budget only; actual cadence, coverage and device acceptance are measured separately."
+        },
+        "attempts": 36,
+        "accepted": 31,
+        "droppedOrUnmatched": 5,
+        "rejectionReasons": {
+          "roi-policy": 3,
+          "publication": 2
+        },
+        "lastReason": "Đã ghép depth và xe cùng frame · mét AI chưa kiểm chứng.",
+        "detectorError": "",
+        "metricError": "",
+        "maxCaptureAgeMs": 1200,
+        "policy": "parallel same-frame snapshot; immutable track binding; metres expire 1200 ms after capture; warnings use original capture age; never overrides a supplied camera profile"
+      },
+      "accounting": {
+        "detector": {
+          "started": 116,
+          "completed": 115,
+          "inflight": 1,
+          "balanced": true,
+          "outcomes": {
+            "accepted-observed": 115
+          },
+          "stages": {
+            "capture": 116,
+            "dispatch": 116,
+            "result": 115,
+            "publication": 115
+          }
+        },
+        "metric": {
+          "started": 36,
+          "completed": 36,
+          "inflight": 0,
+          "balanced": true,
+          "outcomes": {
+            "accepted-observed": 31,
+            "roi-rejected": 3,
+            "publication-rejected": 2
+          },
+          "stages": {
+            "capture": 36,
+            "dispatch": 36,
+            "result": 36,
+            "join": 36,
+            "roi": 36,
+            "policy": 36,
+            "binding": 36,
+            "filter": 36,
+            "publication": 33
+          }
+        }
+      },
+      "availability": {
+        "observedMs": 19345,
+        "visibleMs": 9961.299999999996,
+        "fullSessionCoverage": 0.5149289222021192,
+        "maxBlackoutMs": 8708.300000000003,
+        "predictedOnlyPresentations": 262,
+        "eligibleCoverage": null,
+        "eligibility": "not annotated; no automatic exclusion based on model failure",
+        "freshAcceptedMeasurements": 31
+      },
+      "objectTerminalReasons": {
+        "accepted": 33,
+        "tiny-roi": 82,
+        "not-candidate": 595,
+        "ordinal-conflict": 6,
+        "unconfirmed-track": 22,
+        "clipped-box": 1
+      },
+      "timing": {
+        "callbackVsExpectedDisplay": {
+          "samples": 580,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 0.0036206896551699047,
+          "p50Ms": 0,
+          "p95Ms": 0,
+          "p99Ms": 0,
+          "maxMs": 2
+        },
+        "captureToCallback": {
+          "samples": 0,
+          "unavailable": 580,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": null,
+          "p50Ms": null,
+          "p95Ms": null,
+          "p99Ms": null,
+          "maxMs": null
+        },
+        "decodeProcessing": {
+          "samples": 580,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 115.28120689655174,
+          "p50Ms": 101,
+          "p95Ms": 234,
+          "p99Ms": 235,
+          "maxMs": 236.5
+        },
+        "requestToResult": {
+          "samples": 115,
+          "unavailable": 1,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 83.84695652088394,
+          "p50Ms": 76,
+          "p95Ms": 127,
+          "p99Ms": 140,
+          "maxMs": 161.79999999701977
+        },
+        "frameToOverlay": {
+          "samples": 115,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 96.99826086394172,
+          "p50Ms": 85,
+          "p95Ms": 143,
+          "p99Ms": 154,
+          "maxMs": 172
+        },
+        "metricInference": {
+          "samples": 36,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 93.24999999917216,
+          "p50Ms": 91,
+          "p95Ms": 125,
+          "p99Ms": 125,
+          "maxMs": 124.8999999910593
+        }
+      },
+      "scope": "Real app and pinned real models on recorded road video at wall-clock playback. NOT physical camera/phone/road metre accuracy"
+    }
+  ]
+}

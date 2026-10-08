@@ -3,6 +3,7 @@ import { detectionIoU } from '../detection-postprocess';
 import { vehicleCandidates, VEHICLE_STRONG_SCORE, VEHICLE_IMMEDIATE_SCORE, VEHICLE_WEAK_GRACE_MS } from './vehicle-candidates';
 import { estimateGroundRange, unknownRange, type CameraProfile, type RangeEstimate } from './geometry';
 import {LIVE_METRIC_MAX_AGE_MS} from './live-metric-join';
+import type {MetricReasonCode} from './metric-diagnostics';
 
 /** Rectangular minimum-cost assignment. Each row gets a private-cost dummy column. */
 export function assign(cost:number[][],unmatched=1): Array<[number,number]> {
@@ -31,16 +32,28 @@ export function assign(cost:number[][],unmatched=1): Array<[number,number]> {
 
 /** Constant-velocity Kalman, variable dt, innovation gate and Joseph covariance. */
 export class RangeFilter {
-  private x=0;private velocity=0;private a=1;private b=0;private c=100;private at:number|null=null;
+  private x=0;private velocity=0;private a=1;private b=0;private c=16;private at:number|null=null;
+  private reacquire:{z:number;sigma:number;t:number}|null=null;
+  lastReason:MetricReasonCode='accepted';
   updates=0;
-  clear(){this.at=null;this.updates=0;this.velocity=0;this.b=0;this.c=100;}
+  clear(){this.at=null;this.updates=0;this.velocity=0;this.b=0;this.c=16;this.reacquire=null;this.lastReason='accepted';}
   update(z:number,sigma:number,t:number):{z:number;velocity:number|null}|null {
-    if(![z,sigma,t].every(Number.isFinite)||z<=0||sigma<=0)return null;
-    if(this.at===null||t-this.at>800){this.x=z;this.a=sigma*sigma;this.b=0;this.c=100;this.velocity=0;this.at=t;this.updates=1;return {z,velocity:null};}
-    const dt=(t-this.at)/1000;if(dt<=0)return null;
+    this.lastReason='accepted';
+    if(![z,sigma,t].every(Number.isFinite)||z<=0||sigma<=0){this.lastReason='out-of-domain';return null;}
+    if(this.at===null){this.x=z;this.a=sigma*sigma;this.b=0;this.c=16;this.velocity=0;this.at=t;this.updates=1;return {z,velocity:null};}
+    const dt=(t-this.at)/1000;if(dt<=0){this.lastReason='out-of-order';return null;}
+    // A long gap requires two consistent NEW observations. The first stays
+    // unknown and never refreshes the expired old HUD measurement.
+    if(dt>2.5){
+      const candidate=this.reacquire;
+      if(candidate&&t>candidate.t&&t-candidate.t<=2500&&Math.abs(z-candidate.z)<=3*Math.hypot(sigma,candidate.sigma)){
+        this.clear();return this.update(z,sigma,t);
+      }
+      this.reacquire={z,sigma,t};this.lastReason='temporal-reacquiring';return null;
+    }
     const a=this.a+2*dt*this.b+dt*dt*this.c+16*dt**4/4,b=this.b+dt*this.c+16*dt**3/2,c=this.c+16*dt*dt;
     const predicted=this.x+dt*this.velocity,residual=z-predicted,r=sigma*sigma,s=a+r;
-    if(residual*residual>16*s)return null;
+    if(residual*residual>9*s){this.lastReason='temporal-outlier';return null;}
     const k0=a/s,k1=b/s;
     this.x=predicted+k0*residual;this.velocity+=k1*residual;
     this.a=(1-k0)**2*a+k0*k0*r;this.b=(1-k0)*(b-k1*a)+k0*k1*r;this.c=c-2*k1*b+k1*k1*(a+r);
@@ -53,6 +66,7 @@ interface Track {
   id:number;box:DetBox;vx:number;vy:number;at:number;wall:number;hits:number;misses:number;
   strongAt:number;strongWall:number;strongHits:number;confirmed:boolean;
   range:RangeEstimate;rangeAt:number;rangeWall:number;lastLearnedAt:number;invalidatedAt:number;evidenceWall:number;filter:RangeFilter;velocity:number|null;
+  filterIdentity?:string;
   logScale:number;logScaleRate:number;scaleUpdates:number;
 }
 export interface DriveTrack {
@@ -126,7 +140,7 @@ export class VehicleTracker {
       }
     }
     // An unmatched observation invalidates range immediately; prediction is overlay-only.
-    this.tracks.forEach((a,i)=>{if(!matched.has(i)){a.misses++;a.strongHits=0;a.invalidatedAt=t;a.range=unknownRange('Mất quan sát xe');a.rangeAt=t;a.rangeWall=wall;a.velocity=null;a.logScaleRate=0;a.scaleUpdates=0;a.filter.clear();}});
+    this.tracks.forEach((a,i)=>{if(!matched.has(i)){a.misses++;a.strongHits=0;a.invalidatedAt=t;a.range=unknownRange('Mất quan sát xe');a.rangeAt=t;a.rangeWall=wall;a.velocity=null;a.logScaleRate=0;a.scaleUpdates=0;a.filter.clear();a.filterIdentity=undefined;}});
     candidates.forEach((b,j)=>{
       if(used.has(j)||b.score<VEHICLE_STRONG_SCORE||this.tracks.length>=32)return;
       const a:Track={id:this.nextId++,box:{...b},vx:0,vy:0,at:t,wall,hits:1,misses:0,strongAt:t,strongWall:wall,strongHits:1,confirmed:b.score>=VEHICLE_IMMEDIATE_SCORE,range:unknownRange('Track mới'),rangeAt:t,rangeWall:wall,lastLearnedAt:-Infinity,invalidatedAt:-Infinity,evidenceWall:wall-Math.max(0,latencyMs),filter:new RangeFilter(),velocity:null,logScale:boxLogScale(b),logScaleRate:0,scaleUpdates:0};
@@ -138,7 +152,7 @@ export class VehicleTracker {
   bindLearnedFrame(boxes:DetBox[],t:number):Array<number|null> {
     return boxes.map(box=>this.tracks.find(track=>track.at===t&&track.confirmed&&track.misses===0&&detectionIoU(track.box,box)>.95)?.id??null);
   }
-  enrichLearnedRanges(boxes:DetBox[],ranges:ReadonlyArray<RangeEstimate|null>,t:number,width:number,height:number,wall=t,binding?:{trackIds:ReadonlyArray<number|null>;capturedWall:number}):number {
+  enrichLearnedRanges(boxes:DetBox[],ranges:ReadonlyArray<RangeEstimate|null>,t:number,width:number,height:number,wall=t,binding?:{trackIds:ReadonlyArray<number|null>;capturedWall:number},diagnose?:(index:number,code:MetricReasonCode,filteredM:number|null)=>void):number {
     const maxGap=binding?LIVE_METRIC_MAX_AGE_MS:0;
     if(t>this.lastTime||this.lastTime-t>maxGap||boxes.length!==ranges.length||![t,width,height,wall].every(Number.isFinite)||width<1||height<1)return 0;
     if(binding&&(binding.trackIds.length!==boxes.length||!Number.isFinite(binding.capturedWall)||wall<binding.capturedWall||wall-binding.capturedWall>LIVE_METRIC_MAX_AGE_MS))return 0;
@@ -146,6 +160,7 @@ export class VehicleTracker {
       const range=ranges[boxes.indexOf(box)];
       return range?.kind==='learned_optical_axis_z_m'&&range.provenance==='learned-unverified'&&range.distanceM!==null?[{box,range,index:boxes.indexOf(box)}]:[];
     });
+    const terminal=new Set<number>();
     const indexes=this.tracks.map((_,i)=>i).filter(i=>this.tracks[i].at>=t&&this.tracks[i].at-t<=maxGap&&this.tracks[i].misses===0&&this.tracks[i].invalidatedAt<=t);
     const costs=indexes.map(i=>measured.map(({box,index})=>{
       const track=this.tracks[i];if(binding&&track.id!==binding.trackIds[index])return 1e6;
@@ -153,25 +168,31 @@ export class VehicleTracker {
     }));
     let applied=0;
     for(const [ii,jj] of assign(costs,.5000001)){
-      const track=this.tracks[indexes[ii]];if(t<=track.lastLearnedAt)continue;
+      const track=this.tracks[indexes[ii]],index=measured[jj].index;terminal.add(index);
+      if(t<=track.lastLearnedAt){diagnose?.(index,'out-of-order',null);continue;}
       this.measure(track,null,width,height,measured[jj].range,t,false,binding?.capturedWall??wall);
+      diagnose?.(index,track.range.distanceM===null?track.range.reasonCode??'binding-mismatch':'accepted',track.range.distanceM);
       if(track.range.distanceM!==null){track.lastLearnedAt=t;applied++;}
+    }
+    for(const {index} of measured)if(!terminal.has(index)){
+      const id=binding?.trackIds[index],track=this.tracks.find(item=>item.id===id);
+      diagnose?.(index,id===null?'unconfirmed-track':track?.misses||!track?'track-lost':'binding-mismatch',null);
     }
     return applied;
   }
   private measure(a:Track,p:CameraProfile|null,w:number,h:number,learned?:RangeEstimate,measurementAt=a.at,preserveLearned=false,measurementWall=a.wall) {
-    if(!a.confirmed||a.box.score<VEHICLE_STRONG_SCORE){a.invalidatedAt=a.at;a.range=unknownRange('Bằng chứng xe yếu; chưa đo');a.rangeAt=measurementAt;a.rangeWall=measurementWall;a.velocity=null;a.filter.clear();return;}
+    if(!a.confirmed||a.box.score<VEHICLE_STRONG_SCORE){a.invalidatedAt=a.at;a.range={...unknownRange('Bằng chứng xe yếu; chưa đo'),reasonCode:'unconfirmed-track'};a.rangeAt=measurementAt;a.rangeWall=measurementWall;a.velocity=null;a.filter.clear();a.filterIdentity=undefined;return;}
     if(preserveLearned&&!p&&!learned&&a.range.provenance==='learned-unverified'&&measurementAt-a.rangeAt<=LIVE_METRIC_MAX_AGE_MS)return;
     const geometric=estimateGroundRange(a.box,p,w,h);
-    const previousKind=a.range.kind,previousSource=a.range.provenance;
     // A supplied camera profile is authoritative, including its abstentions.
     // Falling back to an uncalibrated neural value hides bad crop/occlusion and
     // mixing ground-forward Z with optical-camera Z poisons the temporal filter.
     a.range=p?geometric:learned?structuredClone(learned):geometric;a.velocity=null;
-    if(previousKind!==a.range.kind||previousSource!==a.range.provenance)a.filter.clear();
-    if(a.range.distanceM===null||a.range.sigmaM===null){a.rangeAt=measurementAt;a.rangeWall=measurementWall;a.filter.clear();return;}
+    if(a.range.distanceM===null||a.range.sigmaM===null){a.rangeAt=measurementAt;a.rangeWall=measurementWall;return;}
+    const identity=`${a.range.kind}:${a.range.provenance}`;
+    if(a.filterIdentity!==identity){a.filter.clear();a.filterIdentity=identity;}
     const filtered=a.filter.update(a.range.distanceM,a.range.sigmaM,measurementAt);
-    if(!filtered){a.range=unknownRange('Bước nhảy phép đo; chờ đo lại');a.rangeAt=measurementAt;a.rangeWall=measurementWall;a.filter.clear();return;}
+    if(!filtered){a.range={...unknownRange('Bước nhảy phép đo hoặc cần tái xác nhận; chờ đo lại',a.range.kind),reasonCode:a.filter.lastReason};a.rangeAt=measurementAt;a.rangeWall=measurementWall;return;}
     a.range={...a.range,distanceM:filtered.z,interval:[Math.max(0,filtered.z-2*a.range.sigmaM),filtered.z+2*a.range.sigmaM]};a.rangeAt=measurementAt;a.rangeWall=measurementWall;a.velocity=filtered.velocity;
   }
   private predict(a:Track,t:number):DetBox {

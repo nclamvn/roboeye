@@ -1,0 +1,20 @@
+{
+  "verifiedAt": "2026-10-08T05:35:35.756Z",
+  "id": "dpl_F8nLUAwdfoxhaPyKbezQZG9Wbdr5",
+  "url": "https://roboeye-drivesense-hqcy1ko08-nclamvn-gmailcoms-projects.vercel.app",
+  "canonical": "https://roboeye-drivesense.vercel.app",
+  "readyState": "READY",
+  "target": "production",
+  "previousDeploymentId": "dpl_2xdNgvTnzA3VK5gukp39BQVhe4Kw",
+  "release": {
+    "name": "roboeye",
+    "version": "1.5.0",
+    "commit": "8219b578cb4e",
+    "base": "/",
+    "offlineDepth": false,
+    "buildFingerprint": "80142f1f649a",
+    "sourceFingerprint": "81c6100aadf2122d89beb3846651af4266420ded516dc54e9a1403e09714f508",
+    "runtimeFingerprint": "e1fda66b8d99"
+  },
+  "scope": "Existing project prebuilt production deployment; no Git commit/push or phone acceptance"
+}

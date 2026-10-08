@@ -2,7 +2,7 @@ export interface BrowserModelArtifact {
   file: string;
   bytes: number;
   sha256: string;
-  releaseUrl: string;
+  releaseUrl?: string;
 }
 
 export interface VerifiedModelArtifact {
@@ -27,11 +27,11 @@ export async function fetchVerifiedModelArtifact(
   fetcher: typeof fetch = fetch,
   onProgress?: (loaded:number,total:number)=>void,
 ): Promise<VerifiedModelArtifact> {
-  const release = new URL(artifact.releaseUrl);
-  if (release.protocol !== 'https:' || release.hostname !== 'github.com') throw Error('Model release URL không hợp lệ.');
+  const release = artifact.releaseUrl?new URL(artifact.releaseUrl):null;
+  if (release&&(release.protocol !== 'https:' || release.hostname !== 'github.com')) throw Error('Model release URL không hợp lệ.');
   const candidates: Array<{url: string; source: VerifiedModelArtifact['source']}> = [
     {url: new URL(`models/${directory}/${artifact.file}`, base).href, source: 'same-origin'},
-    {url: release.href, source: 'release'},
+    ...(release?[{url: release.href, source: 'release' as const}]:[]),
   ];
   const failures: string[] = [];
   for (const candidate of candidates) {

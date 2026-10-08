@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "checks": [
+    "two-visible-toggles",
+    "lane-only-initial-state",
+    "range-starts-pipeline",
+    "range-disables-lane-before-unfinished-analysis",
+    "range-stops",
+    "lane-restores",
+    "mobile-visible"
+  ],
+  "errors": []
+}

@@ -24,6 +24,7 @@ function distribution(values: number[], denominator: number): Distribution {
 
 /** Bounded, pixel-free instrumentation for the live camera hot path. */
 export class LiveTelemetry {
+  provenance = 'live-camera';
   private readonly limit: number;
   private rows: LiveTrace[] = [];
   private byId = new Map<number, LiveTrace>();
@@ -99,7 +100,7 @@ export class LiveTelemetry {
       return typeof a === 'number' && typeof b === 'number' && b >= a ? [b - a] : [];
     });
     return { schema: 'drivesense-live-timing-v1', epoch: this.epoch,
-      clock: 'performance.now monotonic milliseconds', provenance: 'live-camera',
+      clock: 'performance.now monotonic milliseconds', provenance: this.provenance,
       session: { durationMs: this.firstFrameAvailableAt === null || this.lastFrameAvailableAt === null
         ? 0 : Math.max(0, this.lastFrameAvailableAt - this.firstFrameAvailableAt),
         firstFrameAvailableAt: this.firstFrameAvailableAt, lastFrameAvailableAt: this.lastFrameAvailableAt },

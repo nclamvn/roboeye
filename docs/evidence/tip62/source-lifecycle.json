@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "checks": [
+    "hidden-visible-owned-camera-resumes-with-new-metres",
+    "mute-unmute-invalidates-and-resumes",
+    "autoplay-denied-explicit-user-retry",
+    "unexpected-camera-pause-has-explicit-retry",
+    "enumeration-error-does-not-stop-camera",
+    "late-permission-stream-stopped-after-cancel",
+    "permission-denied-actionable-no-stuck-source",
+    "camera-replacement-stops-late-stream",
+    "late-enumeration-cannot-relabel-or-play-stopped-source",
+    "late-wake-lock-released-after-stop",
+    "bfcache-render-restarts-no-camera-resurrection",
+    "wake-denied-nonfatal",
+    "lifecycle-in-pixel-free-journal-compatible-report",
+    "initial-portrait-model-and-manifest-agree",
+    "manual-fixture-pause-survives-background-return"
+  ],
+  "errors": [],
+  "scope": "Real app, canvas stream/mock workers; simulated visibility/track/wake-lock faults, not physical phone verification."
+}

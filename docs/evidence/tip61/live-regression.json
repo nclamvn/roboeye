@@ -1,0 +1,12 @@
+{
+  "pass": true,
+  "checks": [
+    "depth-after-newer-detector",
+    "depth-before-detector",
+    "module-crash-clean-wasm",
+    "stale-depth-abstains",
+    "slow-box-no-fresh-warning",
+    "load-error-visible-retry"
+  ],
+  "scope": "Browser orchestration with fake camera and deterministic workers. No real phone or metric accuracy acceptance."
+}

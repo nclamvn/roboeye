@@ -1,0 +1,65 @@
+<!doctype html><html><meta charset="utf-8"><title>DriveSense paired real-worker workload</title><pre id="result">Ready</pre>
+<script type="module">
+const out=document.querySelector('#result');
+window.runWorkload=async({orientation,backend,precision,runs=12,references=null})=>{
+ const width=orientation==='portrait'?224:392,height=orientation==='portrait'?392:224;
+ const workers=[],errors=[],results=[],start=performance.now();
+ function channel(worker){
+  workers.push(worker);let waiting=null;
+  worker.onmessage=({data:m})=>{if(m.type==='error'){errors.push(m.message);waiting?.reject(Error(m.message));waiting=null;}else if(['ready','result','det'].includes(m.type)){waiting?.resolve(m);waiting=null;}else out.textContent=m.message??'Loading';};
+  worker.onerror=e=>{errors.push(e.message);waiting?.reject(Error(e.message));waiting=null;};
+  return (message,transfer=[])=>new Promise((resolve,reject)=>{
+   if(waiting){reject(Error('overlapping request'));return;}
+   const timer=setTimeout(()=>{waiting=null;reject(Error('worker deadline'));},120000);
+   waiting={resolve:m=>{clearTimeout(timer);resolve(m);},reject:e=>{clearTimeout(timer);reject(e);}};worker.postMessage(message,transfer);
+  });
+ }
+ try{
+  const detect=backend==='webgpu'?new Worker(new URL('../src/worker/drive-detect-worker.ts',import.meta.url),{type:'module'}):new Worker(new URL('../src/worker/detect-worker.ts',import.meta.url),{type:'module'});
+  const depth=new Worker(precision==='fp16'?new URL('./drive-range-candidate-worker.ts',import.meta.url):new URL('../src/worker/drive-range-worker.ts',import.meta.url),{type:'module'});
+  const detectionRequest=channel(detect),depthRequest=channel(depth);
+  const [detectorReady,metricReady]=await Promise.all([
+   detectionRequest({type:'init',engine:'rtdetr',queries:['car','bus','truck'],forceWasm:backend==='wasm',localModels:backend==='wasm',profile:'drive',driveDtype:backend==='wasm'?'q8':'static'}),
+   depthRequest({type:'init',backend,orientation})]);
+  if((detectorReady.device??detectorReady.backend)!==backend||metricReady.backend!==backend)throw Error('backend mismatch');
+  const coldStartMs=performance.now()-start;
+  const image=new Image();image.src='./.detection-benchmark-cache/bus.jpg';await image.decode();
+  const detectorCanvas=document.createElement('canvas');detectorCanvas.width=480;detectorCanvas.height=640;
+  detectorCanvas.getContext('2d').drawImage(image,0,0,480,640);
+  const detectorPixels=detectorCanvas.getContext('2d').getImageData(0,0,480,640).data;
+  const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');
+  ctx.fillStyle='black';ctx.fillRect(0,0,width,height);const scale=Math.min(width/image.width,height/image.height),w=image.width*scale,h=image.height*scale;
+  ctx.drawImage(image,(width-w)/2,(height-h)/2,w,h);const bus=ctx.getImageData(0,0,width,height).data;
+  const gradient=new Uint8ClampedArray(width*height*4);
+  for(let y=0;y<height;y++)for(let x=0;x<width;x++){const k=4*(y*width+x);gradient[k]=Math.floor(255*x/(width-1)+.5);gradient[k+1]=Math.floor(255*y/(height-1)+.5);gradient[k+2]=Math.floor(255*(.35+.3*x/(width-1))+.5);gradient[k+3]=255;}
+  const native=new Float32Array(await(await fetch(`/tests/.metric-cache/da2-drive-${width}x${height}-reference.f32`)).arrayBuffer());
+  if(native.length!==width*height)throw Error('native reference missing');
+  const maps={};
+  for(const [scene,pixels] of Object.entries({gradient,bus})){
+   const samples=[];let metrics=null;
+   for(let i=0;i<runs;i++){
+    const capture=performance.now(),a=detectorPixels.slice(),b=pixels.slice();
+    const [det,range]=await Promise.all([
+     detectionRequest({type:'frame',width:480,height:640,rgba:a.buffer,capturedAt:capture},[a.buffer]),
+     depthRequest({type:'frame',id:i+1,width,height,rgba:b.buffer},[b.buffer])]);
+    if(!det.boxes.some(box=>box.label==='bus'))throw Error('real detector lost bus fixture');
+    const joinedMs=performance.now()-capture;
+    samples.push({detectorMs:det.detMs,depthMs:range.latencyMs,joinedMs,withinOriginalTtl:joinedMs<=1200});metrics=range.map.depth;
+    if(metrics.length!==width*height||metrics.some(x=>!Number.isFinite(x)||x<=0||x>80.001))throw Error('bad metric output');
+    out.textContent=`${precision} ${orientation} ${backend} ${scene} ${i+1}/${runs}`;
+   }
+   const reference=scene==='gradient'?native:references?.bus;
+   let parity=null;if(reference){
+    const abs=[],relative=[];for(let i=0;i<metrics.length;i++){const d=Math.abs(metrics[i]-reference[i]);abs.push(d);relative.push(d/Math.max(.01,reference[i]));}
+    abs.sort((a,b)=>a-b);relative.sort((a,b)=>a-b);parity={maxAbsM:abs.at(-1),p99Relative:relative[Math.ceil(.99*relative.length)-1],maxRelative:relative.at(-1)};
+   }
+   const measured=samples.slice(1),quantile=(field,q)=>{const v=measured.map(x=>x[field]).sort((a,b)=>a-b);return v[Math.ceil(q*v.length)-1];};
+   results.push({scene,warmupExcluded:1,measuredRuns:measured.length,samples,parity,summary:{detectorP50Ms:quantile('detectorMs',.5),detectorP95Ms:quantile('detectorMs',.95),depthP50Ms:quantile('depthMs',.5),depthP95Ms:quantile('depthMs',.95),joinedP50Ms:quantile('joinedMs',.5),joinedP95Ms:quantile('joinedMs',.95),withinTtl:measured.filter(x=>x.withinOriginalTtl).length}});
+   maps[scene]=Array.from(metrics);
+  }
+  return {pass:true,orientation,backend,precision,coldStartMs,model:metricReady.model,results,errors,maps};
+ }catch(error){return {pass:false,orientation,backend,precision,errors:[...errors,String(error)],results};}
+ finally{for(const worker of workers)worker.terminate();}
+};
+window.workloadReady=true;
+</script></html>

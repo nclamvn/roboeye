@@ -10,17 +10,23 @@
   "scripts": {
     "predev": "node scripts/copy-ort.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/fetch-drive-models.mjs && node scripts/copy-ort.mjs",
+    "prebuild": "node scripts/fetch-drive-models.mjs && node scripts/derive-da2-portrait.mjs && node scripts/copy-ort.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test:unit": "tsx --test tests/unit/*.test.ts",
     "test:drive-range-e2e": "node tests/drive-range-e2e.mjs",
     "test:drive-mobile-live-e2e": "node tests/drive-mobile-live-e2e.mjs",
+    "test:drive-session-journal-e2e": "node tests/drive-session-journal-e2e.mjs",
+    "test:drive-metric-recovery-e2e": "node tests/drive-metric-recovery-e2e.mjs",
     "test:drive-mobile-runtime-e2e": "node tests/drive-mobile-runtime-e2e.mjs",
+    "test:drive-source-lifecycle-e2e": "node tests/drive-source-lifecycle-e2e.mjs",
+    "qa:drive-partner": "node scripts/qa-drive-partner.mjs",
+    "test:drive-camera-hardware": "node tests/drive-camera-hardware-probe.mjs",
+    "experiment:drive-fp16": "tests/.metric-venv/bin/python tests/export-da2-fp16-candidate.py && node tests/drive-combined-workload.mjs",
     "pretest:drive-controls-e2e": "npm run build",
     "test:drive-controls-e2e": "node tests/drive-road-layout-e2e.mjs && node tests/drive-feature-toggle-e2e.mjs",
-    "profile:drive-offline": "node scripts/profile-drive-offline.mjs",
+    "profile:drive-offline": "node --import tsx scripts/profile-drive-offline.mjs",
     "verify:drive-live-report": "node --import tsx scripts/verify-drive-live-report.ts",
     "verify:drive-mobile-soak": "node --import tsx scripts/verify-drive-mobile-soak-report.ts",
     "benchmark:drive-corpus": "node --import tsx scripts/evaluate-drive-corpus.ts",
@@ -40,10 +46,10 @@
     "test:road-ui": "node tests/drive-road-ui-e2e.mjs",
     "fixtures:metric": "tsx scripts/prepare-metric-model.ts",
     "fixtures:metric:verify": "tsx scripts/prepare-metric-model.ts --verify-only",
-    "fixtures:drive-metric": "tsx scripts/prepare-drive-metric-model.ts",
+    "fixtures:drive-metric": "node scripts/fetch-drive-models.mjs && node scripts/derive-da2-portrait.mjs",
     "fixtures:drive-detector": "tsx scripts/prepare-drive-detector.ts",
     "fixtures:drive-detector:export": "tests/.metric-venv/bin/python tests/export-drive-detector.py",
-    "fixtures:drive-metric:export": "tests/.metric-venv/bin/python tests/export-da2-drive.py",
+    "fixtures:drive-metric:export": "tests/.metric-venv/bin/python tests/export-da2-drive.py --portrait && tests/.metric-venv/bin/python tests/export-da2-drive.py --verify-existing-landscape",
     "security:audit": "node scripts/security-audit.mjs",
     "qa": "npm run typecheck && npm run test:unit && npm run build && npm run security:audit && npm run test:detection-e2e && npm run test:airsketch-e2e && npm run test:robohand-e2e && npm run test:drive-controls-e2e && npm run test:release-e2e",
     "fixtures:prepare": "node scripts/prepare-test-models.mjs",
@@ -90,5 +96,9 @@
     "tsx": "^4.23.8",
     "typescript": "~5.9.2",
     "vite": "^7.0.2"
+  },
+  "overrides": {
+    "source-map-js": "1.2.2",
+    "sharp": "0.35.5"
   }
 }

@@ -1,9 +1,14 @@
 import { defineConfig, type Plugin } from 'vite';
 import { readFileSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 
 const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')) as { version: string };
-const commit = (process.env.ROBOEYE_COMMIT || process.env.GITHUB_SHA || 'local').slice(0, 12);
+function checkoutCommit() {
+  try { return execFileSync('git', ['rev-parse', 'HEAD'], { cwd: new URL('.', import.meta.url), encoding: 'utf8' }).trim(); }
+  catch { return 'unavailable'; }
+}
+const commit = (process.env.ROBOEYE_COMMIT || process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA || checkoutCommit()).slice(0, 12);
 const offlineBuild = process.env.ROBOEYE_OFFLINE === '1';
 
 function publicTree(directory: URL, prefix: string): string[] {
@@ -48,6 +53,18 @@ function publicRuntimeFingerprint(): string {
 }
 
 const runtimeFingerprint=publicRuntimeFingerprint();
+// Inject into the running JS, not fetched from a potentially newer release.json.
+// Identifies source + lockfile + runtime bytes, including uncommitted changes.
+function sourceFingerprint() {
+  const hash = createHash('sha256').update(runtimeFingerprint).update(commit)
+    .update(process.env.ROBOEYE_BASE || '/').update(String(offlineBuild));
+  for (const path of [...publicTree(new URL('./src/', import.meta.url), 'src'),
+    'package-lock.json', 'vite.config.ts', 'drive.html', 'index.html'].sort()) {
+    hash.update(path).update(readFileSync(new URL(path, import.meta.url)));
+  }
+  return hash.digest('hex');
+}
+const runningSourceFingerprint = sourceFingerprint();
 
 // Research weights are explicitly local-only, never copied into a release.
 function localRoadModel(): Plugin {
@@ -105,7 +122,8 @@ self.addEventListener('fetch',event=>{
       this.emitFile({
         type: 'asset',
         fileName: 'release.json',
-        source: JSON.stringify({ name: 'roboeye', version: pkg.version, commit, base, offlineDepth: offlineBuild }, null, 2)
+        source: JSON.stringify({ name: 'roboeye', version: pkg.version, commit, base, offlineDepth: offlineBuild,
+          buildFingerprint, sourceFingerprint: runningSourceFingerprint, runtimeFingerprint }, null, 2)
       });
     }
   };
@@ -117,6 +135,7 @@ export default defineConfig({
   define: {
     __ROBOEYE_VERSION__: JSON.stringify(pkg.version),
     __ROBOEYE_COMMIT__: JSON.stringify(commit),
+    __ROBOEYE_SOURCE_FINGERPRINT__: JSON.stringify(runningSourceFingerprint),
     __ROBOEYE_OFFLINE__: JSON.stringify(offlineBuild)
   },
   plugins: [releaseArtifacts(), localRoadModel()],

@@ -1,0 +1,272 @@
+[
+  {
+    "id": "coreml",
+    "url": "https://developer.apple.com/machine-learning/models/",
+    "finalUrl": "https://developer.apple.com/machine-learning/models/",
+    "source": "Apple",
+    "snapshot": "coreml.html",
+    "bytes": 182896,
+    "sha256": "4dc459bac6ce4a3d5d5f6913370e8be5b899c65c61674e18f0a3f7eb837353e7",
+    "fetched_at": "2026-10-08T03:19:37.598Z"
+  },
+  {
+    "id": "coreml-compute",
+    "url": "https://developer.apple.com/tutorials/data/documentation/coreml/mlcomputeunits.json",
+    "finalUrl": "https://developer.apple.com/tutorials/data/documentation/coreml/mlcomputeunits.json",
+    "source": "Apple",
+    "snapshot": "coreml-compute.txt",
+    "bytes": 18629,
+    "sha256": "a8861ebc268c45a87ddea5a88e9d065d95e8d3323f3129398b60716007f0d438",
+    "fetched_at": "2026-10-08T03:19:38.489Z"
+  },
+  {
+    "id": "da2",
+    "url": "https://raw.githubusercontent.com/DepthAnything/Depth-Anything-V2/main/README.md",
+    "finalUrl": "https://raw.githubusercontent.com/DepthAnything/Depth-Anything-V2/main/README.md",
+    "source": "DepthAnything-authors",
+    "snapshot": "da2.txt",
+    "bytes": 9904,
+    "sha256": "987d1ab991c1b149276a0426bec7d8f3472d85c29ec976d96ea657aa960fad50",
+    "fetched_at": "2026-10-08T01:51:32.493Z"
+  },
+  {
+    "id": "da2-card",
+    "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf/raw/main/README.md",
+    "finalUrl": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf/raw/main/README.md",
+    "source": "DepthAnything-model-publisher",
+    "snapshot": "da2-card.txt",
+    "bytes": 4969,
+    "sha256": "77acb892732b6b7cb30798f85f985be7af26d420d93d06923cd7229b6176f7ac",
+    "fetched_at": "2026-10-08T01:51:33.348Z"
+  },
+  {
+    "id": "da2-metric",
+    "url": "https://raw.githubusercontent.com/DepthAnything/Depth-Anything-V2/main/metric_depth/README.md",
+    "finalUrl": "https://raw.githubusercontent.com/DepthAnything/Depth-Anything-V2/main/metric_depth/README.md",
+    "source": "DepthAnything-authors",
+    "snapshot": "da2-metric.txt",
+    "bytes": 4621,
+    "sha256": "659b050b538d5832899c093b83b5fb48e50c3431cf84f1f05bbdc8152b81c9d2",
+    "fetched_at": "2026-10-08T01:51:32.569Z"
+  },
+  {
+    "id": "da3",
+    "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/main/README.md",
+    "finalUrl": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/main/README.md",
+    "source": "ByteDance-DepthAnything3",
+    "snapshot": "da3.txt",
+    "bytes": 18759,
+    "sha256": "91679cf6df290b6af439c85f29a2440ce10353a1063ae4f599e9c734ec3096a8",
+    "fetched_at": "2026-10-08T01:51:33.004Z"
+  },
+  {
+    "id": "depthpro",
+    "url": "https://raw.githubusercontent.com/apple-aiml-research/ml-depth-pro/main/README.md",
+    "finalUrl": "https://raw.githubusercontent.com/apple-aiml-research/ml-depth-pro/main/README.md",
+    "source": "Apple-DepthPro",
+    "snapshot": "depthpro.txt",
+    "bytes": 3776,
+    "sha256": "5a10be5d4c040e382a82ffc356ce06f1f73a8f7ff4250e53efea98680b4ea1e0",
+    "fetched_at": "2026-10-08T01:51:32.896Z"
+  },
+  {
+    "id": "depthpro-license",
+    "url": "https://raw.githubusercontent.com/apple-aiml-research/ml-depth-pro/main/LICENSE",
+    "finalUrl": "https://raw.githubusercontent.com/apple-aiml-research/ml-depth-pro/main/LICENSE",
+    "source": "Apple-DepthPro",
+    "snapshot": "depthpro-license.txt",
+    "bytes": 2672,
+    "sha256": "21a6551d1f8f851d2d10b5c6cc56535956b983c3cb997d25f3db4dd6f59ef99f",
+    "fetched_at": "2026-10-08T01:51:32.896Z"
+  },
+  {
+    "id": "fastdepth",
+    "url": "https://raw.githubusercontent.com/dwofk/fast-depth/master/README.md",
+    "finalUrl": "https://raw.githubusercontent.com/dwofk/fast-depth/master/README.md",
+    "source": "FastDepth-authors",
+    "snapshot": "fastdepth.txt",
+    "bytes": 8394,
+    "sha256": "0edddfed47f7aa635422b923502a161a65154d1edd44c4ebafc7dcbb2302180b",
+    "fetched_at": "2026-10-08T01:51:32.834Z"
+  },
+  {
+    "id": "fastdepth-license",
+    "url": "https://raw.githubusercontent.com/dwofk/fast-depth/master/LICENSE",
+    "finalUrl": "https://raw.githubusercontent.com/dwofk/fast-depth/master/LICENSE",
+    "source": "FastDepth-authors",
+    "snapshot": "fastdepth-license.txt",
+    "bytes": 1067,
+    "sha256": "67d1622876eb6b7c904d2f21280289cf63a474ac979a4a712043b445df874136",
+    "fetched_at": "2026-10-08T01:51:32.832Z"
+  },
+  {
+    "id": "litemono",
+    "url": "https://raw.githubusercontent.com/noahzn/Lite-Mono/main/README.md",
+    "finalUrl": "https://raw.githubusercontent.com/noahzn/Lite-Mono/main/README.md",
+    "source": "LiteMono-authors",
+    "snapshot": "litemono.txt",
+    "bytes": 6000,
+    "sha256": "3d3e6f9b4ccdc881f3e811b31d75b12f94c81b524b6fda1394bf480e817a7f39",
+    "fetched_at": "2026-10-08T01:51:32.770Z"
+  },
+  {
+    "id": "litemono-eval",
+    "url": "https://raw.githubusercontent.com/noahzn/Lite-Mono/main/evaluate_depth.py",
+    "finalUrl": "https://raw.githubusercontent.com/noahzn/Lite-Mono/main/evaluate_depth.py",
+    "source": "LiteMono-authors",
+    "snapshot": "litemono-eval.txt",
+    "bytes": 8171,
+    "sha256": "1c9f2dc4537d82919ffa5ae15f3d672754331693dd8e832da87650081305671c",
+    "fetched_at": "2026-10-08T01:51:32.778Z"
+  },
+  {
+    "id": "moge2",
+    "url": "https://raw.githubusercontent.com/microsoft/MoGe/main/README.md",
+    "finalUrl": "https://raw.githubusercontent.com/microsoft/MoGe/main/README.md",
+    "source": "Microsoft-MoGe",
+    "snapshot": "moge2.txt",
+    "bytes": 15822,
+    "sha256": "b940dbb7c39bdc96cdd9a707b0ec7c19733c8ef92681b734ac4d9393adad5c21",
+    "fetched_at": "2026-10-08T01:51:33.002Z"
+  },
+  {
+    "id": "moge2-card",
+    "url": "https://huggingface.co/Ruicheng/moge-2-vits-normal/raw/main/README.md",
+    "finalUrl": "https://huggingface.co/Ruicheng/moge-2-vits-normal/raw/main/README.md",
+    "source": "MoGe2-model-publisher",
+    "snapshot": "moge2-card.txt",
+    "bytes": 87,
+    "sha256": "a0ff9e295aa3b2401702d4bfacb9011f1d3611b94169f9135d5edda92b47279d",
+    "fetched_at": "2026-10-08T03:19:34.096Z"
+  },
+  {
+    "id": "moge2-license",
+    "url": "https://raw.githubusercontent.com/microsoft/MoGe/main/LICENSE",
+    "finalUrl": "https://raw.githubusercontent.com/microsoft/MoGe/main/LICENSE",
+    "source": "Microsoft-MoGe",
+    "snapshot": "moge2-license.txt",
+    "bytes": 12500,
+    "sha256": "ad7d951c80c5fc2b2bce035f2041bc0a0dbf9028c8ecc4c9a8e1fba8130b6b59",
+    "fetched_at": "2026-10-08T01:51:33.071Z"
+  },
+  {
+    "id": "opencv-calibration",
+    "url": "https://raw.githubusercontent.com/opencv/opencv/4.x/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.markdown",
+    "finalUrl": "https://raw.githubusercontent.com/opencv/opencv/4.x/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.markdown",
+    "source": "OpenCV",
+    "snapshot": "opencv-calibration.txt",
+    "bytes": 10651,
+    "sha256": "72f48a264d331a7d81dcd9463b98f096871cb140105f96f08abdf954d84203c4",
+    "fetched_at": "2026-10-08T01:51:33.131Z"
+  },
+  {
+    "id": "opencv-flow",
+    "url": "https://raw.githubusercontent.com/opencv/opencv/4.x/doc/tutorials/others/optical_flow.markdown",
+    "finalUrl": "https://raw.githubusercontent.com/opencv/opencv/4.x/doc/tutorials/others/optical_flow.markdown",
+    "source": "OpenCV",
+    "snapshot": "opencv-flow.txt",
+    "bytes": 7673,
+    "sha256": "1824a017cd22ec92b7a0aa66693c30180990d2409933ad260bdcef22935021ef",
+    "fetched_at": "2026-10-08T03:21:31.020Z"
+  },
+  {
+    "id": "ort-coreml",
+    "url": "https://onnxruntime.ai/docs/execution-providers/CoreML-ExecutionProvider.html",
+    "finalUrl": "https://onnxruntime.ai/docs/execution-providers/CoreML-ExecutionProvider.html",
+    "source": "Microsoft-ONNXRuntime",
+    "snapshot": "ort-coreml.txt",
+    "bytes": 71664,
+    "sha256": "b31ce9ef6686e6910a54fe0b3d13cf7fcffe2543ccde517fd12b2b475c0b3fbf",
+    "fetched_at": "2026-10-08T01:51:32.524Z"
+  },
+  {
+    "id": "ort-env",
+    "url": "https://onnxruntime.ai/docs/tutorials/web/env-flags-and-session-options.html",
+    "finalUrl": "https://onnxruntime.ai/docs/tutorials/web/env-flags-and-session-options.html",
+    "source": "Microsoft-ONNXRuntime",
+    "snapshot": "ort-env.html",
+    "bytes": 66211,
+    "sha256": "5a36597417e19e924ffbdd04f396fbd7d832f9087cd5d22399dd434d024ae54e",
+    "fetched_at": "2026-10-08T03:19:34.444Z"
+  },
+  {
+    "id": "ort-gpu",
+    "url": "https://onnxruntime.ai/docs/tutorials/web/ep-webgpu.html",
+    "finalUrl": "https://onnxruntime.ai/docs/tutorials/web/ep-webgpu.html",
+    "source": "Microsoft-ONNXRuntime",
+    "snapshot": "ort-gpu.txt",
+    "bytes": 57764,
+    "sha256": "09311327edd7c6715e147b0213e4fa10cd678f17008169b426c7bef4d084c201",
+    "fetched_at": "2026-10-08T01:51:31.767Z"
+  },
+  {
+    "id": "ort-jsep-comments",
+    "url": "https://api.github.com/repos/microsoft/onnxruntime/issues/26827/comments",
+    "finalUrl": "https://api.github.com/repos/microsoft/onnxruntime/issues/26827/comments",
+    "source": "ONNXRuntime-issue-discussion",
+    "snapshot": "ort-jsep-comments.txt",
+    "bytes": 54325,
+    "sha256": "0a1be5d6d64a72e2fd077635185298642d7aa9da381132a042932ec4dce1900c",
+    "fetched_at": "2026-10-08T01:51:32.428Z"
+  },
+  {
+    "id": "ort-jsep-issue",
+    "url": "https://api.github.com/repos/microsoft/onnxruntime/issues/26827",
+    "finalUrl": "https://api.github.com/repos/microsoft/onnxruntime/issues/26827",
+    "source": "theopolis-first-hand-issue-report",
+    "snapshot": "ort-jsep-issue.txt",
+    "bytes": 7308,
+    "sha256": "8a0f49c577b11868e60d4f2146479d485c8e8d5a70f88267558ea363a1ca72a7",
+    "fetched_at": "2026-10-08T01:51:32.428Z"
+  },
+  {
+    "id": "ort-license",
+    "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/main/LICENSE",
+    "finalUrl": "https://raw.githubusercontent.com/microsoft/onnxruntime/main/LICENSE",
+    "source": "Microsoft-ONNXRuntime",
+    "snapshot": "ort-license.txt",
+    "bytes": 1073,
+    "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+    "fetched_at": "2026-10-08T01:51:31.804Z"
+  },
+  {
+    "id": "ort-native-design",
+    "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/main/docs/design/onnxruntime_web_remove_webgl_backend.md",
+    "finalUrl": "https://raw.githubusercontent.com/microsoft/onnxruntime/main/docs/design/onnxruntime_web_remove_webgl_backend.md",
+    "source": "Microsoft-ONNXRuntime",
+    "snapshot": "ort-native-design.txt",
+    "bytes": 8210,
+    "sha256": "d961e97c4680bb8d18fe2f05cf2f3bb0e99f11ed6a82bc29d6988466b5c3e7c4",
+    "fetched_at": "2026-10-08T01:51:32.616Z"
+  },
+  {
+    "id": "ort-web",
+    "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/main/js/web/README.md",
+    "finalUrl": "https://raw.githubusercontent.com/microsoft/onnxruntime/main/js/web/README.md",
+    "source": "Microsoft-ONNXRuntime",
+    "snapshot": "ort-web.txt",
+    "bytes": 5284,
+    "sha256": "3089f92ffb02d63365f05d870df5c6ac9bbaed096943b5b4fe55afd9b7a624f8",
+    "fetched_at": "2026-10-08T01:51:31.728Z"
+  },
+  {
+    "id": "zipdepth",
+    "url": "https://raw.githubusercontent.com/fabiotosi92/ZipDepth/main/README.md",
+    "finalUrl": "https://raw.githubusercontent.com/fabiotosi92/ZipDepth/main/README.md",
+    "source": "ZipDepth-authors",
+    "snapshot": "zipdepth.txt",
+    "bytes": 17104,
+    "sha256": "2c60d28b05ac697368b8c926a8fc776218842942effd6bc6cb2329016aee3f0f",
+    "fetched_at": "2026-10-08T01:51:32.662Z"
+  },
+  {
+    "id": "zipdepth-license",
+    "url": "https://raw.githubusercontent.com/fabiotosi92/ZipDepth/main/LICENSE",
+    "finalUrl": "https://raw.githubusercontent.com/fabiotosi92/ZipDepth/main/LICENSE",
+    "source": "ZipDepth-authors",
+    "snapshot": "zipdepth-license.txt",
+    "bytes": 1067,
+    "sha256": "0007e2ff761f1b89ad89327870b807cd4de00cb657b442b62de2f92fdc87d508",
+    "fetched_at": "2026-10-08T01:51:32.727Z"
+  }
+]

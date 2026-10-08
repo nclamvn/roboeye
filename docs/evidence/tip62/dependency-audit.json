@@ -1,0 +1,63 @@
+{
+  "atUtc": "2026-10-08T06:07:45.221Z",
+  "counts": {
+    "info": 0,
+    "low": 0,
+    "moderate": 5,
+    "high": 0,
+    "critical": 0,
+    "total": 5
+  },
+  "advisories": [
+    {
+      "name": "@huggingface/transformers",
+      "severity": "moderate",
+      "isDirect": true,
+      "fixAvailable": {
+        "name": "@huggingface/transformers",
+        "version": "4.3.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "global-agent",
+      "severity": "moderate",
+      "isDirect": false,
+      "fixAvailable": {
+        "name": "@huggingface/transformers",
+        "version": "4.3.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "onnxruntime-node",
+      "severity": "moderate",
+      "isDirect": false,
+      "fixAvailable": {
+        "name": "@huggingface/transformers",
+        "version": "4.3.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "roarr",
+      "severity": "moderate",
+      "isDirect": false,
+      "fixAvailable": {
+        "name": "@huggingface/transformers",
+        "version": "4.3.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "sprintf-js",
+      "severity": "moderate",
+      "isDirect": false,
+      "fixAvailable": {
+        "name": "@huggingface/transformers",
+        "version": "4.3.1",
+        "isSemVerMajor": true
+      }
+    }
+  ]
+}

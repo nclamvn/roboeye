@@ -1,4 +1,5 @@
 import type { DetBox } from '../detection-types';
+import type { MetricReasonCode } from './metric-diagnostics';
 
 export interface CameraProfile {
   version: 1;
@@ -19,6 +20,7 @@ export interface RangeEstimate {
   interval: [number, number] | null;
   intervalCalibrated: false;
   reason: string;
+  reasonCode?: MetricReasonCode;
 }
 export const unknownRange = (reason: string,kind:RangeEstimate['kind']='ground_contact_forward_m'): RangeEstimate => ({ kind,
   provenance:'none',distanceM: null, lateralM: null, sigmaM: null, interval: null, intervalCalibrated: false, reason });

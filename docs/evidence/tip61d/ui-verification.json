@@ -1,0 +1,12 @@
+{
+  "pass": true,
+  "checks": [
+    "portrait shape",
+    "per-object terminal reasons",
+    "published capture identity",
+    "orientation reset",
+    "balanced accounting",
+    "no JS errors"
+  ],
+  "scope": "Canvas stream and mock workers in real app. Not phone perception/metre accuracy."
+}

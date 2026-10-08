@@ -2,6 +2,7 @@ import type {DetBox} from '../detection-types';
 import {assertMetricMap,type MetricMap} from './metric-contract';
 import {unknownRange,type RangeEstimate} from './geometry';
 import type {DriveTrack} from './tracking';
+import type {DepthProbeEvidence,MetricReasonCode} from './metric-diagnostics';
 
 export interface LetterboxTransform {
   sourceWidth:number;sourceHeight:number;targetWidth:number;targetHeight:number;
@@ -30,35 +31,71 @@ const percentile=(sorted:number[],q:number)=>sorted[Math.min(sorted.length-1,Mat
  * statistically calibrated confidence interval.
  */
 export function estimateLearnedVehicleRange(map:MetricMap,box:DetBox,transform:LetterboxTransform):RangeEstimate {
-  const kind='learned_optical_axis_z_m' as const,fail=(reason:string)=>unknownRange(reason,kind);
-  assertMetricMap(map);
-  if(map.width!==transform.targetWidth||map.height!==transform.targetHeight)return fail('Depth và letterbox lệch shape');
-  if(![box.x0,box.y0,box.x1,box.y1,box.score].every(Number.isFinite)||box.x0<0||box.y0<0||box.x1>1||box.y1>1||box.x1<=box.x0||box.y1<=box.y0)return fail('Box không hợp lệ');
+  return probeLearnedVehicleRange(map,box,transform).range;
+}
+
+/** A connected depth-support probe, NOT semantic segmentation or tyre contact.
+ * It requires central evidence plus a dominant contiguous surface; it never
+ * selects the minimum depth pixel or discards a majority to manufacture metres. */
+export function probeLearnedVehicleRange(map:MetricMap,box:DetBox,transform:LetterboxTransform):{range:RangeEstimate;evidence:DepthProbeEvidence} {
+  const kind='learned_optical_axis_z_m' as const;
+  const evidence:DepthProbeEvidence={code:'accepted',boxWidthPx:null,boxHeightPx:null,roi:null,totalPixels:0,validPixels:0,supportPixels:0,
+    q20M:null,medianM:null,q80M:null,relativeSpread:null,supportFraction:null,method:'central-connected-depth-support-v2'};
+  const fail=(code:MetricReasonCode,reason:string)=>{evidence.code=code;return {range:{...unknownRange(reason,kind),reasonCode:code},evidence};};
+  try{assertMetricMap(map);}catch{return fail('invalid-map','Depth map sai contract');}
+  if(map.width!==transform.targetWidth||map.height!==transform.targetHeight)return fail('shape-mismatch','Depth và letterbox lệch shape');
+  if(![box.x0,box.y0,box.x1,box.y1,box.score].every(Number.isFinite)||box.x0<0||box.y0<0||box.x1>1||box.y1>1||box.x1<=box.x0||box.y1<=box.y0)return fail('invalid-box','Box không hợp lệ');
   // An overtaking vehicle frequently enters as a truncated side panel. An
   // interior-depth median there is neither its rear surface nor bumper clearance.
-  if(box.x0<=.01||box.x1>=.99||box.y0<=.01||box.y1>=.99)return fail('Xe bị cắt ở biên; không suy ra khoảng hở xe bên cạnh');
+  if(box.x0<=.01||box.x1>=.99||box.y0<=.01||box.y1>=.99)return fail('clipped-box','Xe bị cắt ở biên; không suy ra khoảng hở xe bên cạnh');
   const b=mapBoxToMetric(box,transform),bw=(b.x1-b.x0)*map.width,bh=(b.y1-b.y0)*map.height;
-  if(bw<10||bh<10)return fail('Xe quá nhỏ cho depth ROI; depth thấp phân giải dễ lẫn nền');
+  evidence.boxWidthPx=bw;evidence.boxHeightPx=bh;
+  if(bw<10||bh<10)return fail('tiny-roi','Xe quá nhỏ cho depth ROI; depth thấp phân giải dễ lẫn nền');
   const x0=Math.max(0,Math.ceil((b.x0+.22*(b.x1-b.x0))*map.width));
   const x1=Math.min(map.width-1,Math.floor((b.x1-.22*(b.x1-b.x0))*map.width));
   const y0=Math.max(0,Math.ceil((b.y0+.42*(b.y1-b.y0))*map.height));
   const y1=Math.min(map.height-1,Math.floor((b.y0+.82*(b.y1-b.y0))*map.height));
-  if(x1<x0||y1<y0)return fail('ROI xe không đủ pixel');
+  evidence.roi=[x0,y0,x1,y1];
+  if(x1<x0||y1<y0)return fail('empty-roi','ROI xe không đủ pixel');
   const values:number[]=[];let total=0;
   for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){total++;const z=map.depth[y*map.width+x];if(Number.isFinite(z)&&z>=.5&&z<=80)values.push(z);}
-  if(values.length<12||values.length/Math.max(1,total)<.7)return fail('Depth ROI thưa hoặc ngoài miền');
+  evidence.totalPixels=total;evidence.validPixels=values.length;
+  if(values.length<12||values.length/Math.max(1,total)<.7)return fail('sparse-roi','Depth ROI thưa hoặc ngoài miền');
   values.sort((a,b)=>a-b);
   const q20=percentile(values,.2),median=percentile(values,.5),q80=percentile(values,.8),spread=(q80-q20)/median;
-  if(!Number.isFinite(median)||median<.7||median>75)return fail('Depth ngoài phạm vi PoC');
-  if(spread>.55)return fail('Depth ROI không đồng nhất');
+  evidence.q20M=q20;evidence.medianM=median;evidence.q80M=q80;evidence.relativeSpread=spread;
+  if(!Number.isFinite(median)||median<.7||median>75)return fail('out-of-domain','Depth ngoài phạm vi PoC');
+  if(spread>.55)return fail('mixed-depth','Depth ROI không đồng nhất');
+  const rw=x1-x0+1,rh=y1-y0+1,cx=(x0+x1)/2,cy=(y0+y1)/2,central:number[]=[];
+  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++)if(Math.abs(x-cx)<=Math.max(1,rw*.2)&&Math.abs(y-cy)<=Math.max(1,rh*.2)){
+    const z=map.depth[y*map.width+x];if(Number.isFinite(z)&&z>=.5&&z<=80)central.push(z);
+  }
+  if(central.length<4)return fail('foreground-ambiguous','Thiếu bằng chứng bề mặt ở tâm xe');
+  central.sort((a,b)=>a-b);const seedZ=percentile(central,.5),tolerance=Math.max(.75,.16*seedZ);
+  let seed=-1,nearest=Infinity;
+  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){
+    const z=map.depth[y*map.width+x],d=Math.hypot(x-cx,y-cy);
+    if(Math.abs(z-seedZ)<=tolerance&&d<nearest){seed=(y-y0)*rw+x-x0;nearest=d;}
+  }
+  const visited=new Uint8Array(total),queue:number[]=seed<0?[]:[seed],support:number[]=[];if(seed>=0)visited[seed]=1;
+  for(let k=0;k<queue.length;k++){
+    const at=queue[k],x=at%rw,y=Math.floor(at/rw),z=map.depth[(y+y0)*map.width+x+x0];
+    if(!Number.isFinite(z)||z<.5||z>80||Math.abs(z-seedZ)>tolerance)continue;
+    support.push(z);
+    for(const next of [x>0?at-1:-1,x<rw-1?at+1:-1,y>0?at-rw:-1,y<rh-1?at+rw:-1])if(next>=0&&!visited[next]){visited[next]=1;queue.push(next);}
+  }
+  evidence.supportPixels=support.length;evidence.supportFraction=support.length/values.length;
+  if(support.length<12||evidence.supportFraction<.65)return fail('foreground-ambiguous','Depth tâm xe không có bề mặt liên tục chiếm ưu thế; có thể bị che/lẫn nền');
+  support.sort((a,b)=>a-b);const surface=percentile(support,.5);
+  if(surface<.7||surface>75)return fail('out-of-domain','Bề mặt xe ngoài phạm vi PoC');
   const sigma=Math.max(.75,.1*median,.65*(q80-q20));
-  return {kind,provenance:'learned-unverified',distanceM:median,lateralM:null,sigmaM:sigma,
-    interval:[Math.max(.5,median-2*sigma),Math.min(80,median+2*sigma)],intervalCalibrated:false,
-    reason:`AI metric chưa hiệu chuẩn thực địa · ROI ${values.length} px · độ phân tán ${Math.round(100*spread)}%`};
+  return {range:{kind,provenance:'learned-unverified',distanceM:surface,lateralM:null,sigmaM:sigma,
+    interval:[Math.max(.5,surface-2*sigma),Math.min(80,surface+2*sigma)],intervalCalibrated:false,reasonCode:'accepted',
+    reason:`AI metric chưa hiệu chuẩn thực địa · support ${support.length}/${values.length} px · độ phân tán ${Math.round(100*spread)}%`},evidence};
 }
 
-export const LEARNED_RANGE_POLICY='ground-contact-publication-invariant-v7';
-const invalidLearned=(reason:string)=>unknownRange(reason,'learned_optical_axis_z_m');
+export const LEARNED_RANGE_POLICY='central-support-temporal-v8-conservative-ordinal';
+const invalidLearned=(code:MetricReasonCode,reason:string)=>({...unknownRange(reason,'learned_optical_axis_z_m'),reasonCode:code});
 const ORDINAL_VEHICLE_LABELS=new Set(['car','bus','truck']);
 // The detector edge itself is not sub-pixel ground truth. Two source pixels is
 // the explicit resolution floor; it is intentionally expressed in source
@@ -85,7 +122,7 @@ export function validateLearnedRanges(boxes:readonly DetBox[],ranges:readonly (R
   if(!Number.isFinite(zoom)||zoom<1||zoom>4)throw Error('Zoom video cần nằm trong 1–4×.');
   if(!Number.isInteger(sourceHeight)||sourceHeight<1)throw Error('Chiều cao nguồn cần là số nguyên dương.');
   const out=boxes.map((_,i)=>ranges[i]?structuredClone(ranges[i]!):null);
-  if(zoom!==1)return out.map(range=>range?.kind==='learned_optical_axis_z_m'?invalidLearned('Video có zoom/crop; cần profile đúng tiêu cự hiệu dụng, không tự sửa scale AI'):range);
+  if(zoom!==1)return out.map(range=>range?.kind==='learned_optical_axis_z_m'?invalidLearned('zoom-unverified','Video có zoom/crop; cần profile đúng tiêu cự hiệu dụng, không tự sửa scale AI'):range);
   for(let i=0;i<boxes.length;i++){
     const far=boxes[i],range=out[i];if(range?.kind!=='learned_optical_axis_z_m'||range.distanceM==null)continue;
     const fh=far.y1-far.y0,fw=far.x1-far.x0;
@@ -97,7 +134,7 @@ export function validateLearnedRanges(boxes:readonly DetBox[],ranges:readonly (R
       // Vehicle dimensions are unknown, hence only reject severe disagreement.
       if(nh/fh>=1.8&&overlap>=.5&&near.y1-far.y1>=.015&&
         range.distanceM/nr.distanceM<.95*Math.sqrt(nh/fh)){
-        out[i]=invalidLearned('Depth xa–gần bị nén hoặc sai thứ tự so với phối cảnh; cần hình học/đối chứng');break;
+        out[i]=invalidLearned('perspective-compression','Depth xa–gần bị nén hoặc sai thứ tự so với phối cảnh; cần hình học/đối chứng');break;
       }
     }
   }
@@ -123,7 +160,7 @@ export function validateLearnedRanges(boxes:readonly DetBox[],ranges:readonly (R
     // HUD, swapping values, or inventing an isotonic metre correction.
     if(nearDistance>farDistance){conflicts.add(near);conflicts.add(far);}
   }
-  for(const index of conflicts)out[index]=invalidLearned('Depth đảo thứ tự gần–xa so với điểm chạm mặt đường; kích thước ảnh không phủ quyết; cần hình học hoặc model đối chứng');
+  for(const index of conflicts)out[index]=invalidLearned('ordinal-conflict','Depth đảo thứ tự gần–xa so với điểm chạm mặt đường; kích thước ảnh không phủ quyết; cần hình học hoặc model đối chứng');
   return out;
 }
 

@@ -1,12 +1,33 @@
 # PROJECT X-RAY · RoboEye
 
+## Current source-of-truth — 08/10/2026 / TIP-62
+
+Canonical checkout: `/Users/os/Documents/Codex/DriveSense-Mobile-Recovery-2026-10-06/roboeye`.
+Branch: `codex/tip61-mobile-reliability`; baseline HEAD `8219b578cb4e` plus preserved
+in-progress TIP-61/62 work. Release/source SHA identifies dirty prebuilt deployments;
+baseline Git HEAD alone does not identify deployed bytes.
+
+Run Node >=20.19, `npm ci`, `npm run qa:drive-partner`, then preview port 4192.
+DriveSense `/drive.html`; independent RoboEye `/`. Existing HTTPS Vercel alias:
+`https://roboeye-drivesense.vercel.app`. No phone dependency on a running laptop.
+
+Lifecycle ownership, hidden/muted resume, BFCache render recovery, best-effort
+screen lock and additive diagnostic schema are covered by TIP-62. Current scan:
+`docs/SCAN-TIP-62-PARTNER-READINESS.md`; owner rehearsal and numerical QA:
+`docs/PARTNER-REHEARSAL-TIP-62.md`, `docs/VERIFY-REPORT-TIP-62.md`.
+Physical phone coverage/thermal and independent road-distance truth remain open.
+
+---
+
+## Archived snapshot (not current setup instructions)
+
 Handover snapshot: 06/08/2026
 
 Source-of-truth correction: 20/09/2026
 
 Method: Vibecode Kit v6.1 · X-Ray Protocol
 
-Canonical repository: `/Users/os/Documents/Codex/2026-08-05/new-chat/roboeye-live`
+Historical canonical repository (no longer active): `/Users/os/Documents/Codex/2026-08-05/new-chat/roboeye-live`
 
 The former `/Users/os/Downloads/roboeye` and `/Users/os/Downloads/roboeye 2`
 paths no longer exist. Historical TIPs may still quote those paths as evidence of

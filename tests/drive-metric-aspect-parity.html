@@ -1,0 +1,34 @@
+<!doctype html><html><meta charset="utf-8"><title>Aspect graph native parity — local fixture</title>
+<pre id="result">Loading pinned metric graph…</pre><script type="module">
+const parameters=new URLSearchParams(location.search),portrait=parameters.get('orientation')==='portrait';
+const width=portrait?224:392,height=portrait?392:224,backend=parameters.get('backend')??'wasm';
+const reference=new Float32Array(await (await fetch(`/tests/.metric-cache/da2-drive-${width}x${height}-reference.f32`)).arrayBuffer());
+if(reference.length!==width*height)throw Error('Native reference missing or wrong shape');
+const rgba=new Uint8ClampedArray(width*height*4);
+for(let y=0;y<height;y++)for(let x=0;x<width;x++){
+  const k=4*(y*width+x);rgba[k]=Math.floor(255*x/(width-1)+.5);rgba[k+1]=Math.floor(255*y/(height-1)+.5);rgba[k+2]=Math.floor(255*(.35+.3*x/(width-1))+.5);rgba[k+3]=255;
+}
+const result={status:'running',orientation:portrait?'portrait':'landscape',backend,shape:[width,height],model:null,samples:[],wrongShapeRejected:false,recoveredAfterShapeError:false,error:null};
+let recovering=false;
+Object.assign(window,{aspectParity:result});
+const worker=new Worker(new URL('../src/worker/drive-range-worker.ts',import.meta.url),{type:'module'}),out=document.querySelector('#result');
+const finish=error=>{clearTimeout(timeout);result.error=error;result.status=error?'fail':'pass';out.textContent=JSON.stringify(result);worker.terminate();};
+const timeout=setTimeout(()=>finish('timeout'),120000);
+const send=()=>{const input=rgba.slice();worker.postMessage({type:'frame',id:result.samples.length+1,width,height,rgba:input.buffer},[input.buffer]);};
+worker.onmessage=({data:m})=>{
+ if(m.type==='status'){out.textContent=m.message;return;}
+ if(m.type==='ready'){result.model=m.model;send();return;}
+ if(m.type==='result'){
+  if(m.map.width!==width||m.map.height!==height){finish('Wrong model output shape');return;}
+  let maxAbsM=0;for(let i=0;i<reference.length;i++)maxAbsM=Math.max(maxAbsM,Math.abs(reference[i]-m.map.depth[i]));
+  result.samples.push({latencyMs:m.latencyMs,maxAbsM});
+  if(!(maxAbsM<.01)){finish(`Native mismatch: ${maxAbsM}`);return;}
+  if(recovering){result.recoveredAfterShapeError=true;finish(null);return;}
+  if(result.samples.length<3){send();return;}
+  const input=rgba.slice();worker.postMessage({type:'frame',id:999,width:height,height:width,rgba:input.buffer},[input.buffer]);return;
+ }
+ if(m.type==='error'){if(m.id===999&&m.stage==='infer'&&m.message.includes('shape')){result.wrongShapeRejected=true;recovering=true;send();}else finish(m.message);}
+};
+worker.onerror=e=>finish(e.message);
+worker.postMessage({type:'init',backend,orientation:result.orientation});
+</script></html>

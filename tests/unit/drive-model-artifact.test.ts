@@ -22,3 +22,8 @@ test('rejects a release asset that does not match the pinned contract',async()=>
   const fetcher:typeof fetch=async()=>new Response(new TextEncoder().encode('tampered'),{status:200});
   await assert.rejects(fetchVerifiedModelArtifact('https://app.example/','drive-metric',artifact,fetcher),/Không tải được model đã kiểm chứng/);
 });
+test('local-only native portrait graph fails closed instead of downloading an invented release',async()=>{
+  const urls:string[]=[];const fetcher:typeof fetch=async url=>{urls.push(String(url));return new Response('',{status:404});};
+  await assert.rejects(fetchVerifiedModelArtifact('https://app.example/','drive-metric',{...artifact,releaseUrl:undefined},fetcher),/Không tải/);
+  assert.equal(urls.length,1);
+});

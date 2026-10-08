@@ -1,0 +1,11 @@
+# Separate reproducible Python 3.12 export toolchain; not browser dependencies.
+torch==2.8.0
+transformers==4.50.3
+numpy==2.2.6
+scipy==1.16.1
+onnx==1.18.0
+onnxruntime==1.22.1
+pillow==11.3.0
+safetensors==0.5.3
+# Local TIP-61E GPU precision candidate; not a browser dependency.
+onnxconverter-common==1.16.0

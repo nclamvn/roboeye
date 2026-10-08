@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "base": "http://127.0.0.1:4192",
+  "release": {
+    "name": "roboeye",
+    "version": "1.5.0",
+    "commit": "8219b578cb4e",
+    "base": "/",
+    "offlineDepth": false,
+    "buildFingerprint": "c69258d99a4b",
+    "sourceFingerprint": "4662138bd50fe032473ad4ae89eca69013c82203cc9fa561b6da3eea5ef6fbfb",
+    "runtimeFingerprint": "e1fda66b8d99"
+  },
+  "verified": [
+    {
+      "file": "da2-outdoor-224x392.onnx",
+      "bytes": 99159816,
+      "sha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710"
+    },
+    {
+      "file": "da2-outdoor-392x224.onnx",
+      "bytes": 99159817,
+      "sha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f"
+    }
+  ],
+  "scope": "Actual local production build GET byte/hash checks; not deployment or mobile acceptance"
+}

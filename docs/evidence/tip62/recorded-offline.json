@@ -1,0 +1,152 @@
+{
+  "pass": true,
+  "clips": [
+    {
+      "source": {
+        "name": "Test1.mp4",
+        "bytes": 3258278,
+        "sha256": "83a2ee31d6bbdd205531f5c684b29d23d2573011ac988b12efb8058ffb9de93f"
+      },
+      "build": {
+        "name": "roboeye",
+        "version": "1.5.0",
+        "commit": "8219b578cb4e",
+        "base": "/",
+        "offlineDepth": false,
+        "buildFingerprint": "1b70083ec2c0",
+        "sourceFingerprint": "b3959cc788bf01d9de567d2cb164de6de43beedcd2c50ec846184b18781f950d",
+        "runtimeFingerprint": "e1fda66b8d99"
+      },
+      "mode": "analysed-replay",
+      "preset": {
+        "preset": "balanced",
+        "stepMs": 400,
+        "samplesPerSecond": 2.5,
+        "cacheHit": false,
+        "disclosure": "Giảm một nửa số inference so với chế độ Chi tiết."
+      },
+      "timing": {
+        "count": 50,
+        "detectorRequestP50Ms": 110.40000000596046,
+        "detectorRequestP95Ms": 162.29999999701977,
+        "metricInferenceP50Ms": 81.5,
+        "metricInferenceP95Ms": 155.90000000596046,
+        "seekP50Ms": 33.5,
+        "seekP95Ms": 73.5,
+        "sampleWallP50Ms": 242.6000000089407,
+        "sampleWallP95Ms": 332.20000000298023,
+        "depthAttempts": 50,
+        "depthSuccessfulRequests": 50,
+        "depthSkippedFrames": 0,
+        "depthFailedFrames": 0,
+        "droppedResults": 0,
+        "analysisElapsedMs": 8102.20000000298,
+        "analysedFramesPerSecond": 6.1711633877195835,
+        "mediaToProcessingRatio": 2.4067537212106376,
+        "scope": "Offline detector/depth overlap with an explicit sampling preset; not realtime sensor-to-display latency."
+      },
+      "detection": {
+        "sampledFrames": 50,
+        "boxes": 826,
+        "depthSuccess": 50,
+        "depthSkipped": 0,
+        "depthFailed": 0
+      },
+      "maxTimelineDeviationMs": 0.0010000000002037268,
+      "publishedAndMidpointViews": {
+        "measured": 117,
+        "unknown": 260,
+        "measuredFraction": 0.3103448275862069,
+        "conflicts": 0,
+        "interpolatedViews": 49,
+        "reasons": {
+          "ordinal-conflict": 139,
+          "accepted": 117,
+          "tiny-roi": 40,
+          "unconfirmed-track": 81
+        }
+      },
+      "accuracy": {
+        "referenceCount": 0,
+        "maeM": null,
+        "verdict": "UNVALIDATED: no independent distance ground truth"
+      },
+      "pageErrors": []
+    },
+    {
+      "source": {
+        "name": "Test2.mp4",
+        "bytes": 34210680,
+        "sha256": "85d59cccacf5e968df17d92dad570ddbb1a72854e2221e1842a669fdb8cf575d"
+      },
+      "build": {
+        "name": "roboeye",
+        "version": "1.5.0",
+        "commit": "8219b578cb4e",
+        "base": "/",
+        "offlineDepth": false,
+        "buildFingerprint": "1b70083ec2c0",
+        "sourceFingerprint": "b3959cc788bf01d9de567d2cb164de6de43beedcd2c50ec846184b18781f950d",
+        "runtimeFingerprint": "e1fda66b8d99"
+      },
+      "mode": "analysed-replay",
+      "preset": {
+        "preset": "fast",
+        "stepMs": 1000,
+        "samplesPerSecond": 1,
+        "cacheHit": false,
+        "disclosure": "Ưu tiên tốc độ; có thể bỏ lỡ sự kiện ngắn."
+      },
+      "timing": {
+        "count": 188,
+        "detectorRequestP50Ms": 108.40000000596046,
+        "detectorRequestP95Ms": 207.5,
+        "metricInferenceP50Ms": 81.6000000089407,
+        "metricInferenceP95Ms": 180.19999998807907,
+        "seekP50Ms": 29.200000002980232,
+        "seekP95Ms": 57.900000005960464,
+        "sampleWallP50Ms": 219.90000000596046,
+        "sampleWallP95Ms": 416.5,
+        "depthAttempts": 183,
+        "depthSuccessfulRequests": 183,
+        "depthSkippedFrames": 5,
+        "depthFailedFrames": 0,
+        "droppedResults": 0,
+        "analysisElapsedMs": 28023.60000000894,
+        "analysedFramesPerSecond": 6.7086312964765416,
+        "mediaToProcessingRatio": 6.663431286484977,
+        "scope": "Offline detector/depth overlap with an explicit sampling preset; not realtime sensor-to-display latency."
+      },
+      "detection": {
+        "sampledFrames": 188,
+        "boxes": 2707,
+        "depthSuccess": 183,
+        "depthSkipped": 5,
+        "depthFailed": 0
+      },
+      "maxTimelineDeviationMs": 0.0009999999892897904,
+      "publishedAndMidpointViews": {
+        "measured": 265,
+        "unknown": 553,
+        "measuredFraction": 0.32396088019559904,
+        "conflicts": 0,
+        "interpolatedViews": 187,
+        "reasons": {
+          "ordinal-conflict": 25,
+          "accepted": 265,
+          "tiny-roi": 319,
+          "temporal-reacquiring": 6,
+          "unconfirmed-track": 183,
+          "clipped-box": 20
+        }
+      },
+      "accuracy": {
+        "referenceCount": 0,
+        "maeM": null,
+        "verdict": "UNVALIDATED: no independent distance ground truth"
+      },
+      "pageErrors": []
+    }
+  ],
+  "scope": "Actual pinned models, recorded user road clips. Sampling/unknown counts are not accuracy or phone realtime acceptance. Owner clips/screenshots not copied to repository."
+}

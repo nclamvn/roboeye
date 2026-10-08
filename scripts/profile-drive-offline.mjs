@@ -7,6 +7,7 @@ import {tmpdir} from 'node:os';
 import {chromium} from 'playwright-core';
 import {browserLaunchOptions, resolveBrowserExecutable} from '../tests/helpers/browser.mjs';
 import {startDev, stopPreview, waitForPreview} from '../tests/helpers/preview-server.mjs';
+import {DRIVE_REPORT_VERSION} from '../src/drive/report-contract.ts';
 
 const presets = new Set(['quality', 'balanced', 'fast']);
 const videoPath = process.env.DRIVE_VIDEO;
@@ -45,6 +46,7 @@ try {
   const pageErrors = [];
   page.on('pageerror', error => pageErrors.push(String(error)));
   await page.goto(`${base}/drive.html?v=offline-profile-${preset}`, {waitUntil: 'domcontentloaded'});
+  const releaseIdentity=await page.evaluate(async()=>{const response=await fetch('/release.json',{cache:'no-store'});return response.ok?response.json():null;});
   await page.locator('#analysis-preset').evaluate((select, value) => {
     select.value = value;
     select.dispatchEvent(new Event('change', {bubbles: true}));
@@ -75,16 +77,19 @@ try {
   await download.saveAs(reportPath);
 
   const report = JSON.parse(await readFile(reportPath, 'utf8'));
-  assert.equal(report.version, 7);
+  assert.equal(report.version, DRIVE_REPORT_VERSION);
   assert.equal(report.mode, 'analysed-replay');
   assert.equal(report.offlineAnalysis?.preset, preset);
   assert.equal(report.offlineAnalysis?.cacheHit, false);
   assert.ok(report.frameTiming?.count > 0);
   assert.ok(report.frameTiming?.analysisElapsedMs > 0);
+  assert.equal(report.frameTiming?.depthFailedFrames,0,'Depth failures must not be hidden by completion');
+  assert.ok(report.samples.some(sample=>sample.boxes.length>0),'Real-video run must contain detected vehicles');
   const [sourceStat, sourceSha256] = await Promise.all([stat(videoPath), sha256(videoPath)]);
   const summary = {
     schemaVersion: 1,
     measuredAt: new Date().toISOString(),
+    releaseIdentity,
     source: {name: basename(videoPath), bytes: sourceStat.size, sha256: sourceSha256},
     state,
     runtime: report.runtime,

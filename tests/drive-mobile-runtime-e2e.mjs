@@ -18,7 +18,13 @@ try{
     page.on('requestfailed',request=>console.log(`[${backend}] request failed ${request.url()} ${request.failure()?.errorText}`));
     await page.route('**/*',route=>{const url=new URL(route.request().url());if(['http:','https:'].includes(url.protocol)&&url.hostname!=='127.0.0.1'&&url.hostname!=='localhost'){external.push(url.href);return route.abort();}return route.continue();});
     await page.goto(`http://127.0.0.1:${port}/tests/drive-model-smoke.html`);
-    await page.selectOption('#backend',backend==='wasm'?'wasm':'static');await page.click('#run');
+    await page.waitForFunction(()=>window.driveModelSmokeReady===true);
+    await page.selectOption('#backend',backend==='wasm'?'wasm':'static');
+    // This is a model fixture, not a pointer hit-test. Invoke the fixture's
+    // handler directly and assert that inference actually started; a dev-page
+    // reload while waiting must not become a silent 130-second no-op.
+    await page.evaluate(()=>document.querySelector('#run').click());
+    assert.notEqual(await page.textContent('#result'),'Chưa chạy','fixture was reloaded or click handler did not start');
     const progress=setInterval(()=>{void page.textContent('#result').then(value=>console.log(`[${backend}] ${value.slice(0,250)}`)).catch(()=>{});},10000);
     try{await page.waitForFunction(()=>/^\{|^FAIL/.test(document.querySelector('#result').textContent),null,{timeout:130000});}finally{clearInterval(progress);}
     assert.ok((await page.textContent('#result')).startsWith('{'),await page.textContent('#result'));

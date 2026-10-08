@@ -30,6 +30,12 @@ jobs:
       - run: npm run test:detection-e2e
       - run: npm run test:robohand-e2e
       - run: npm run test:drive-controls-e2e
+      - run: npm run test:drive-mobile-runtime-e2e
+      - run: npm run test:drive-mobile-live-e2e
+      - run: node tests/drive-tip61d-e2e.mjs
+      - run: npm run test:drive-metric-recovery-e2e
+      - run: npm run test:drive-session-journal-e2e
+      - run: npm run test:drive-source-lifecycle-e2e
       - run: npm run test:release-e2e
       - run: npm run release:verify
 

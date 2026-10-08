@@ -1,0 +1,25 @@
+{
+  "pass": true,
+  "verifiedUtc": "2026-10-08T06:20:47.209Z",
+  "release": {
+    "name": "roboeye",
+    "version": "1.5.0",
+    "commit": "8219b578cb4e",
+    "base": "/",
+    "offlineDepth": false,
+    "buildFingerprint": "1b70083ec2c0",
+    "sourceFingerprint": "b3959cc788bf01d9de567d2cb164de6de43beedcd2c50ec846184b18781f950d",
+    "runtimeFingerprint": "e1fda66b8d99"
+  },
+  "checks": [
+    "actual-production-workers-ready-for-portrait-source",
+    "compiled-hidden-return-resumes-new-frame-flow",
+    "compiled-track-interruption-recovers",
+    "compiled-explicit-playback-retry",
+    "exact-source-and-lifecycle-export",
+    "compiled-bfcache-restarts-ui-without-reopening-camera"
+  ],
+  "errors": [],
+  "external": [],
+  "scope": "Desktop Chromium, compiled HTTPS app + actual pinned model workers. Canvas source and visibility/mute/play faults are simulated. NOT physical iPhone/Xiaomi or metre accuracy."
+}

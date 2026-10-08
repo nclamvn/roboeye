@@ -41,4 +41,5 @@ button.onclick=async()=>{
  worker.postMessage({type:'init',engine:'rtdetr',queries:['car','bus','truck'],forceWasm:choice==='wasm',localModels:choice==='wasm',profile:'drive',driveDtype:choice==='wasm'?'q8':choice});
 };
 addEventListener('pagehide',()=>worker?.terminate());
+window.driveModelSmokeReady=true;
 </script></html>

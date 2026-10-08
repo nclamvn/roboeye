@@ -26,6 +26,40 @@ Màn hình đầu tiên có hai đường vào: **Mở camera** để dùng tr�
 **Demo 60 giây** để được dẫn qua RGB → Depth → Point Cloud → BEV. Thêm
 `?demo=1` vào URL nếu muốn CTA demo là hành động mặc định khi trình chiếu.
 
+## DriveSense — video và camera giao thông (TIP-62)
+
+Đường vào riêng: `/drive.html`. Khoảng cách và Làn có nút bật/tắt ngay trên video;
+Phân tích chứa chọn camera, video realtime fixture và báo cáo phiên tự lưu local.
+Mở video sẽ phân tích trước rồi phát lại; **Test realtime** phát clip theo đồng hồ
+thật qua pipeline camera, không phải phân tích trước và không phải camera vật lý.
+
+```bash
+npm ci
+npm run qa:drive-partner
+npm run preview -- --host 127.0.0.1 --port 4192 --strictPort
+```
+
+Mở `http://127.0.0.1:4192/drive.html` trên máy. Điện thoại dùng HTTPS production
+`https://roboeye-drivesense.vercel.app/drive.html`, **không dùng 127.0.0.1 của laptop**.
+Ứng dụng static và model chạy trên thiết bị; sau khi host đã deploy, không cần
+laptop bật. Lần đầu cần mạng tải detector/depth: khoảng 180 MB trên GPU hoặc
+120 MB nếu detector WASM. Có thể thêm ~100 MB khi đổi ảnh dọc/ngang.
+
+Camera 1×, mở quyền camera; khi chuyển tab hoặc nguồn bị mute, số đo cũ bị hủy.
+Khi trở lại, ứng dụng tiếp tục nguồn trước đó nếu browser cho phép; nếu không,
+bấm **Tiếp tục camera**. Wake lock chỉ best-effort; không bảo đảm OS không ngắt.
+Giữ máy tĩnh để rehearsal trước; người lái không thao tác ứng dụng khi lưu thông.
+
+```bash
+DRIVE_VIDEO=/duong/dan/video.mp4 DRIVE_PRESET=balanced npm run profile:drive-offline
+npm run test:drive-camera-hardware  # bỏ webcam giả; không tự coi stream là nghiệm thu đo mét
+```
+
+QA logic/browser/model không thay thế QA iPhone/Xiaomi thật. Số mét là ước lượng
+dọc trục camera, chưa kiểm chứng bằng khoảng cách thực; không phải khoảng hở
+cản xe, khoảng cách ngang, hay hệ thống điều khiển phanh/lái. Không nới TTL 1200 ms
+để giữ số cũ. Xem `docs/PARTNER-REHEARSAL-TIP-62.md` và `docs/VERIFY-REPORT-TIP-62.md`.
+
 ## Phím và điều khiển
 
 Phím 1 2 3 4 5 chuyển năm chế độ RGB, Depth, Point Cloud, BEV Grid và RoboHand. Phím F đóng băng khung hình để bay quanh, phím ? mở panel giải thích từng tầng pipeline. Ở chế độ Point Cloud, kéo chuột để orbit, lăn để zoom. Ở chế độ BEV, click lên grid để đặt đích: robot ảo chạy A* tìm đường né vật cản và replan theo thời gian thực; vật cản lọt vùng gần camera thì chip cảnh báo hiện góc phải trên ở mọi chế độ. Sidebar có slider Inference size (đánh đổi tốc độ với chi tiết), Point size, chọn camera và chọn dtype model (fp16 khoảng 50MB, q4f16 khoảng 18MB cho mạng yếu).

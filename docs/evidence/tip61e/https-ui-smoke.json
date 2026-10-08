@@ -1,0 +1,13 @@
+{
+  "verifiedAt": "2026-10-08T05:34:11.973Z",
+  "url": "https://roboeye-drivesense.vercel.app/drive.html?v=80142f1f649a",
+  "pass": true,
+  "scope": "Desktop Chromium HTTPS UI smoke at 430x932; no real camera/model inference, not physical iPhone acceptance.",
+  "checks": [
+    "production app loaded; camera entry visible/enabled",
+    "realtime clip input, loop and persisted session import/export wired",
+    "analysis opens/closes at 430x932 without JS errors"
+  ],
+  "journalStatus": "0 phiên local. Camera/test realtime sẽ tự lưu.",
+  "errors": []
+}

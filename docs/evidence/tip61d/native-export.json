@@ -1,0 +1,56 @@
+{
+  "portrait": {
+    "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+    "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+    "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+    "sha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+    "bytes": 99159816,
+    "width": 224,
+    "height": 392,
+    "maxDepthM": 80,
+    "unit": "metres",
+    "distanceKind": "optical-axis-z",
+    "input": "RGB NCHW float32 [0,1], normalization inside graph",
+    "output": "depth_metres [1,H,W]",
+    "torchVersion": "2.8.0",
+    "opset": 17,
+    "toolchain": {
+      "transformers": "4.50.3",
+      "numpy": "2.2.6",
+      "onnx": "1.18.0",
+      "onnxruntime": "1.22.1",
+      "safetensors": "0.5.3"
+    },
+    "fixture": "deterministic RGB gradient, rounded to uint8/255; not a real scene or distance ground truth",
+    "nativeReferenceSha256": "253b6be59589ee1c20c0aba79a04760585bd95d2638d6d6b88bae84f8b925199",
+    "nativeExportMaxAbsM": 0.00003147125244140625,
+    "scope": "Aspect-specific static browser PoC. Learned metric is not vehicle-distance ground-truth validated."
+  },
+  "landscape": {
+    "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+    "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+    "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+    "sha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+    "bytes": 99159817,
+    "width": 392,
+    "height": 224,
+    "maxDepthM": 80,
+    "unit": "metres",
+    "distanceKind": "optical-axis-z",
+    "input": "RGB NCHW float32 [0,1], normalization inside graph",
+    "output": "depth_metres [1,H,W]",
+    "torchVersion": "2.8.0",
+    "opset": 17,
+    "toolchain": {
+      "transformers": "4.50.3",
+      "numpy": "2.2.6",
+      "onnx": "1.18.0",
+      "onnxruntime": "1.22.1",
+      "safetensors": "0.5.3"
+    },
+    "fixture": "deterministic RGB gradient, rounded to uint8/255; not a real scene or distance ground truth",
+    "nativeReferenceSha256": "d4174d3a8cbb1d63fbe775d4af4c7d377d49f02d141555ef7c2aa3d43de0c78f",
+    "nativeExportMaxAbsM": 0.0000591278076171875,
+    "scope": "Aspect-specific static browser PoC. Learned metric is not vehicle-distance ground-truth validated."
+  }
+}

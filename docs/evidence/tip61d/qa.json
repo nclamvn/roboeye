@@ -1,0 +1,50 @@
+{
+  "generatedUtc": "2026-10-08T03:59:52.928Z",
+  "unit": {
+    "count": 305,
+    "passed": 305
+  },
+  "release": {
+    "name": "roboeye",
+    "version": "1.5.0",
+    "commit": "8219b578cb4e",
+    "base": "/",
+    "offlineDepth": false,
+    "buildFingerprint": "c69258d99a4b",
+    "sourceFingerprint": "4662138bd50fe032473ad4ae89eca69013c82203cc9fa561b6da3eea5ef6fbfb",
+    "runtimeFingerprint": "e1fda66b8d99"
+  },
+  "contract": {
+    "portraitSha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+    "metricMaxCaptureAgeMs": 1200
+  },
+  "fixtureReferenceHashes": [
+    {
+      "orientation": "landscape",
+      "backend": "wasm",
+      "maxAbsM": 0.0000514984130859375
+    },
+    {
+      "orientation": "portrait",
+      "backend": "wasm",
+      "maxAbsM": 0.000028133392333984375
+    },
+    {
+      "orientation": "landscape",
+      "backend": "webgpu",
+      "maxAbsM": 0.0000553131103515625
+    },
+    {
+      "orientation": "portrait",
+      "backend": "webgpu",
+      "maxAbsM": 0.00003814697265625
+    }
+  ],
+  "recipe": {
+    "bytes": 10111,
+    "sha256": "fa136e3fd22c10b76aefcf1d92a8c6ea5fb4180ae5b25a52b654ed7756fbee29"
+  },
+  "actualPhoneAcceptance": "not run; prior owner report remains baseline, not an after result",
+  "physicalDistanceAccuracy": null,
+  "roadPlaneApplicability": "deferred; current contradiction policy remains conservative"
+}

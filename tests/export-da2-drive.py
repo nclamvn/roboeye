@@ -5,7 +5,7 @@ inside the graph. The static 392x224 shape is a multiple of the DINOv2 patch siz
 and is close to 16:9; application preprocessing letterboxes without stretching.
 """
 from pathlib import Path
-import json, hashlib, urllib.request
+import json, hashlib, urllib.request, argparse, importlib.metadata
 import torch
 import numpy as np
 import onnxruntime as ort
@@ -36,26 +36,38 @@ class Wrapper(torch.nn.Module):
     def forward(self,image):
         return self.model(pixel_values=(image-self.mean)/self.std).predicted_depth
 
-height,width=224,392
+parser=argparse.ArgumentParser()
+parser.add_argument('--portrait',action='store_true',help='Export a separate static 224x392 graph, not a transposed landscape graph')
+parser.add_argument('--verify-existing-landscape',action='store_true',help='Compare the immutable landscape artifact with native weights without replacing it')
+args=parser.parse_args()
+assert not (args.portrait and args.verify_existing_landscape)
+height,width=(392,224) if args.portrait else (224,392)
 # Fixed deterministic fixture: gradient exposes channel/order and spatial mistakes.
 y,x=np.mgrid[0:height,0:width].astype(np.float32)
 rgb=np.stack((x/max(1,width-1),y/max(1,height-1),(.35+.3*x/max(1,width-1))),axis=0)[None]
+rgb=(np.floor(rgb*255+.5)/255).astype(np.float32) # exact browser RGBA fixture
 image=torch.from_numpy(rgb)
 wrapper=Wrapper().eval()
-target=cache/'da2-drive-392x224.onnx'
+target=(root/'public/models/drive-metric/da2-outdoor-392x224.onnx') if args.verify_existing_landscape else cache/f'da2-drive-{width}x{height}.onnx'
 with torch.no_grad(): expected=wrapper(image).numpy()
-torch.onnx.export(wrapper,(image,),str(target),input_names=['image'],output_names=['depth_metres'],opset_version=17,dynamo=False)
+if not args.verify_existing_landscape:
+    torch.onnx.export(wrapper,(image,),str(target),input_names=['image'],output_names=['depth_metres'],opset_version=17,dynamo=False)
 session=ort.InferenceSession(str(target),providers=['CPUExecutionProvider'])
 actual=session.run(None,{'image':rgb})[0]
 error=float(np.max(np.abs(actual-expected)))
 assert error<.01,error
+assert actual.shape==(1,height,width) and np.isfinite(actual).all() and (actual>0).all() and (actual<=80.001).all()
+(cache/f'da2-drive-{width}x{height}-reference.f32').write_bytes(expected.astype('<f4').tobytes())
 manifest={'id':model_id,'revision':revision,
           'sourceWeightsSha256':source_hash,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),
           'bytes':target.stat().st_size,'width':width,'height':height,'maxDepthM':80,
           'unit':'metres','distanceKind':'optical-axis-z',
           'input':'RGB NCHW float32 [0,1], normalization inside graph',
           'output':'depth_metres [1,H,W]','torchVersion':torch.__version__,'opset':17,
+          'toolchain':{name:importlib.metadata.version(name) for name in ['transformers','numpy','onnx','onnxruntime','safetensors']},
+          'fixture':'deterministic RGB gradient, rounded to uint8/255; not a real scene or distance ground truth',
+          'nativeReferenceSha256':hashlib.sha256((cache/f'da2-drive-{width}x{height}-reference.f32').read_bytes()).hexdigest(),
           'nativeExportMaxAbsM':error,
-          'scope':'Fixed landscape browser PoC. Learned metric is not vehicle-distance ground-truth validated.'}
-(cache/'da2-drive-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          'scope':'Aspect-specific static browser PoC. Learned metric is not vehicle-distance ground-truth validated.'}
+(cache/f'da2-drive-{width}x{height}-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 print(json.dumps(manifest,indent=2),flush=True)

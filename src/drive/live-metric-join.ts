@@ -26,10 +26,10 @@ export class LiveMetricJoin {
     if(this.entry?.id===id)this.entry.depth={map,latencyMs};
   }
   reset(){this.entry=null;}
-  take(now:number,epoch:number,w:number,h:number):{reason:'reset'|'stale';wall:number}|{reason:'ready';value:Joined}|null {
+  take(now:number,epoch:number,w:number,h:number):{reason:'reset'|'stale';wall:number;id:number}|{reason:'ready';value:Joined}|null {
     const entry=this.entry;if(!entry)return null;
-    if(entry.epoch!==epoch||entry.w!==w||entry.h!==h){this.reset();return {reason:'reset',wall:entry.wall};}
-    if(now<entry.wall||now-entry.wall>LIVE_METRIC_MAX_AGE_MS){this.reset();return {reason:'stale',wall:entry.wall};}
+    if(entry.epoch!==epoch||entry.w!==w||entry.h!==h){this.reset();return {reason:'reset',wall:entry.wall,id:entry.id};}
+    if(now<entry.wall||now-entry.wall>LIVE_METRIC_MAX_AGE_MS){this.reset();return {reason:'stale',wall:entry.wall,id:entry.id};}
     if(!entry.detection||!entry.depth)return null;
     this.reset();return {reason:'ready',value:{...entry,...entry.detection,...entry.depth}};
   }

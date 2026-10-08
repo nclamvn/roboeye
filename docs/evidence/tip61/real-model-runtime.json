@@ -1,0 +1,302 @@
+{
+  "pass": true,
+  "results": [
+    {
+      "backend": "wasm",
+      "detector": {
+        "pass": true,
+        "backend": "wasm",
+        "inferenceMs": [
+          1768,
+          1696.2000000001863,
+          1674.5,
+          1688.6000000005588
+        ],
+        "warmupRuns": 1,
+        "measuredRuns": 3,
+        "p50Ms": 1688.6000000005588,
+        "p95Ms": 1696.2000000001863,
+        "boxes": [
+          {
+            "label": "person",
+            "score": 0.9487360010209471,
+            "x0": 0.06041666666666667,
+            "y0": 0.36875,
+            "x1": 0.3020833333333333,
+            "y1": 0.8375
+          },
+          {
+            "label": "person",
+            "score": 0.9258375128290833,
+            "x0": 0.825,
+            "y0": 0.3640625,
+            "x1": 0.9979166666666667,
+            "y1": 0.8140625
+          },
+          {
+            "label": "bus",
+            "score": 0.9219414657383503,
+            "x0": 0.014583333333333334,
+            "y0": 0.2125,
+            "x1": 0.9895833333333334,
+            "y1": 0.6859375
+          },
+          {
+            "label": "person",
+            "score": 0.9084004603800478,
+            "x0": 0.27708333333333335,
+            "y0": 0.375,
+            "x1": 0.42083333333333334,
+            "y1": 0.7953125
+          },
+          {
+            "label": "person",
+            "score": 0.8049822825211671,
+            "x0": 0,
+            "y0": 0.5140625,
+            "x1": 0.09166666666666666,
+            "y1": 0.80625
+          },
+          {
+            "label": "handbag",
+            "score": 0.5238581774501959,
+            "x0": 0.275,
+            "y0": 0.55625,
+            "x1": 0.35625,
+            "y1": 0.6546875
+          },
+          {
+            "label": "handbag",
+            "score": 0.4549682586211271,
+            "x0": 0.3770833333333333,
+            "y0": 0.5296875,
+            "x1": 0.41875,
+            "y1": 0.6453125
+          },
+          {
+            "label": "stop sign",
+            "score": 0.3744227184339386,
+            "x0": 0,
+            "y0": 0.234375,
+            "x1": 0.03958333333333333,
+            "y1": 0.3
+          },
+          {
+            "label": "tie",
+            "score": 0.34839319670016744,
+            "x0": 0.35,
+            "y0": 0.4484375,
+            "x1": 0.37083333333333335,
+            "y1": 0.4828125
+          },
+          {
+            "label": "tie",
+            "score": 0.27822998080506145,
+            "x0": 0.16875,
+            "y0": 0.4390625,
+            "x1": 0.18125,
+            "y1": 0.4671875
+          },
+          {
+            "label": "person",
+            "score": 0.23500237493247003,
+            "x0": 0.04583333333333333,
+            "y0": 0.3828125,
+            "x1": 0.07916666666666666,
+            "y1": 0.446875
+          },
+          {
+            "label": "pottedplant",
+            "score": 0.21804368825985532,
+            "x0": 0.8,
+            "y0": 0.0328125,
+            "x1": 0.88125,
+            "y1": 0.0796875
+          },
+          {
+            "label": "cell phone",
+            "score": 0.20519267756934062,
+            "x0": 0.16875,
+            "y0": 0.4390625,
+            "x1": 0.18125,
+            "y1": 0.4671875
+          },
+          {
+            "label": "pottedplant",
+            "score": 0.20320353105132802,
+            "x0": 0.14166666666666666,
+            "y0": 0.165625,
+            "x1": 0.19791666666666666,
+            "y1": 0.2125
+          },
+          {
+            "label": "handbag",
+            "score": 0.19022526562208014,
+            "x0": 0,
+            "y0": 0.64375,
+            "x1": 0.07291666666666667,
+            "y1": 0.6953125
+          },
+          {
+            "label": "bus",
+            "score": 0.18818276187068209,
+            "x0": 0,
+            "y0": 0.33125,
+            "x1": 0.04583333333333333,
+            "y1": 0.525
+          },
+          {
+            "label": "pottedplant",
+            "score": 0.18078429672814675,
+            "x0": 0.6,
+            "y0": 0,
+            "x1": 0.75625,
+            "y1": 0.059375
+          },
+          {
+            "label": "pottedplant",
+            "score": 0.17040200801311345,
+            "x0": 0.46875,
+            "y0": 0,
+            "x1": 0.5604166666666667,
+            "y1": 0.028125
+          },
+          {
+            "label": "handbag",
+            "score": 0.16608632748346305,
+            "x0": 0.8895833333333333,
+            "y0": 0.4984375,
+            "x1": 0.9520833333333333,
+            "y1": 0.5515625
+          },
+          {
+            "label": "backpack",
+            "score": 0.16027373325439487,
+            "x0": 0.275,
+            "y0": 0.55625,
+            "x1": 0.35625,
+            "y1": 0.6546875
+          },
+          {
+            "label": "fire hydrant",
+            "score": 0.1573418357704919,
+            "x0": 0.8125,
+            "y0": 0.578125,
+            "x1": 0.85,
+            "y1": 0.659375
+          },
+          {
+            "label": "person",
+            "score": 0.15591042154768672,
+            "x0": 0.5791666666666667,
+            "y0": 0.38125,
+            "x1": 0.6541666666666667,
+            "y1": 0.471875
+          },
+          {
+            "label": "person",
+            "score": 0.15357415063019558,
+            "x0": 0.6958333333333333,
+            "y0": 0.334375,
+            "x1": 0.7916666666666666,
+            "y1": 0.453125
+          }
+        ],
+        "tracks": [
+          {
+            "id": 1,
+            "label": "bus",
+            "score": 0.9219414657383503,
+            "range": {
+              "kind": "ground_contact_forward_m",
+              "provenance": "none",
+              "distanceM": null,
+              "lateralM": null,
+              "sigmaM": null,
+              "interval": null,
+              "intervalCalibrated": false,
+              "reason": "Chưa hiệu chuẩn"
+            }
+          }
+        ],
+        "note": "Ảnh tĩnh kiểm tra model + tracker; không chứng minh video realtime hoặc accuracy mét."
+      },
+      "depth": {
+        "status": "pass",
+        "distanceM": 15.728523254394531,
+        "backend": "wasm",
+        "p50Ms": 821.7000000001863,
+        "p95Ms": 839.8999999994412,
+        "samples": 3,
+        "provenance": "learned-unverified",
+        "error": null
+      }
+    },
+    {
+      "backend": "webgpu",
+      "detector": {
+        "pass": true,
+        "backend": "webgpu",
+        "inferenceMs": [
+          59,
+          56.200000000186265,
+          56.80000000074506,
+          55.200000000186265
+        ],
+        "warmupRuns": 1,
+        "measuredRuns": 3,
+        "p50Ms": 56.200000000186265,
+        "p95Ms": 56.80000000074506,
+        "boxes": [
+          {
+            "label": "bus",
+            "score": 0.9263731322262735,
+            "x0": 0.012989282608032227,
+            "y0": 0.213621124625206,
+            "x1": 0.9927992820739746,
+            "y1": 0.6834605485200882
+          },
+          {
+            "label": "bus",
+            "score": 0.20297259116971597,
+            "x0": 0.0010713543742895126,
+            "y0": 0.33252541720867157,
+            "x1": 0.04705910570919514,
+            "y1": 0.5261768847703934
+          }
+        ],
+        "tracks": [
+          {
+            "id": 1,
+            "label": "bus",
+            "score": 0.9263731322262735,
+            "range": {
+              "kind": "ground_contact_forward_m",
+              "provenance": "none",
+              "distanceM": null,
+              "lateralM": null,
+              "sigmaM": null,
+              "interval": null,
+              "intervalCalibrated": false,
+              "reason": "Chưa hiệu chuẩn"
+            }
+          }
+        ],
+        "note": "Ảnh tĩnh kiểm tra model + tracker; không chứng minh video realtime hoặc accuracy mét."
+      },
+      "depth": {
+        "status": "pass",
+        "distanceM": 15.728529930114746,
+        "backend": "webgpu",
+        "p50Ms": 39.59999999962747,
+        "p95Ms": 43.5,
+        "samples": 21,
+        "provenance": "learned-unverified",
+        "error": null
+      }
+    }
+  ],
+  "external": [],
+  "errors": [],
+  "scope": "Real pinned detector/depth models on desktop Chrome, separate workers and public bus image. No iPhone/Android hardware, simultaneous-camera throughput, or physical metre accuracy acceptance."
+}

@@ -1,0 +1,13 @@
+{
+  "verifiedAt": "2026-10-08T03:24:02.829Z",
+  "pass": true,
+  "registrySha256": "c19045f1a830add21730e64ba45a8a76e83221977e9e0b9937b4c503d528b1e9",
+  "entities": 12,
+  "claims": 53,
+  "snapshots": 27,
+  "gates": "Provided refinery engine: span, tier, capture, no-inferred, independent re-derive/idempotence; applicable bites all exit2. Non-applicable gates explicitly N/A.",
+  "dispute": "Upstream iOS WebGPU support docs disagree; retained, not auto-resolved by tier or latest marketing.",
+  "deviceBenchmark": "All candidate model exact DriveSense/iPhone benchmark cells honest-null; owner session audit kept separate.",
+  "biteOutput": "CLEAN (positive control)         :  PASS exit0\n------------------------------------------------------------\nCAPTURE_MISSING                  :  CẮN ✓ (build dừng)\nSPAN_NOT_FOUND                   :  CẮN ✓ (build dừng)\nSOURCED_ATTR                     :  CẮN ✓ (build dừng)\nAMBIGUOUS_MERGE_UNFLAGGED        :  N/A (N/A · domain không khai cụm mơ hồ)\nDISTRIBUTION_NO_DENOMINATOR      :  CẮN ✓ (build dừng)\nIDEMPOTENT                       :  CẮN ✓ (build dừng)\nREQUIRED_FIELD                   :  N/A (N/A · domain không khai required_fields)\nORIGIN_EVIDENCE                  :  N/A (N/A · domain không khai origin_evidence)\nNO_INFERRED                      :  CẮN ✓ (build dừng)\nSTRATUM_MISMATCH                 :  N/A (N/A · domain không khai expected_stratum)\nSCOPE_PLACEMENT                  :  N/A (N/A · domain không khai allowed_scopes)\nCAUSE_SOURCED                    :  N/A (N/A · domain không khai cause_grounded)\nSEVERITY_SOURCED                 :  N/A (N/A · domain không khai severity_grounded)\nNO_BLAME_INFERRED                :  N/A (N/A · domain không khai no_blame_inferred)\n------------------------------------------------------------\nBITE SUITE: TẤT CẢ RĂNG CẮN ✓\n",
+  "hashOutput": "snapshots/coreml.html: OK\nsnapshots/coreml-compute.txt: OK\nsnapshots/da2.txt: OK\nsnapshots/da2-card.txt: OK\nsnapshots/da2-metric.txt: OK\nsnapshots/da3.txt: OK\nsnapshots/depthpro.txt: OK\nsnapshots/depthpro-license.txt: OK\nsnapshots/fastdepth.txt: OK\nsnapshots/fastdepth-license.txt: OK\nsnapshots/litemono.txt: OK\nsnapshots/litemono-eval.txt: OK\nsnapshots/moge2.txt: OK\nsnapshots/moge2-card.txt: OK\nsnapshots/moge2-license.txt: OK\nsnapshots/opencv-calibration.txt: OK\nsnapshots/opencv-flow.txt: OK\nsnapshots/ort-coreml.txt: OK\nsnapshots/ort-env.html: OK\nsnapshots/ort-gpu.txt: OK\nsnapshots/ort-jsep-comments.txt: OK\nsnapshots/ort-jsep-issue.txt: OK\nsnapshots/ort-license.txt: OK\nsnapshots/ort-native-design.txt: OK\nsnapshots/ort-web.txt: OK\nsnapshots/zipdepth.txt: OK\nsnapshots/zipdepth-license.txt: OK\n"
+}

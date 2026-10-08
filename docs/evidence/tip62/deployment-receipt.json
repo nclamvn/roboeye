@@ -1,0 +1,38 @@
+{
+  "verifiedUtc": "2026-10-08T06:22:33.234Z",
+  "approvedAction": "Existing HTTPS production deployment after passed local software QA",
+  "canonical": "https://roboeye-drivesense.vercel.app",
+  "release": {
+    "name": "roboeye",
+    "version": "1.5.0",
+    "commit": "8219b578cb4e",
+    "base": "/",
+    "offlineDepth": false,
+    "buildFingerprint": "1b70083ec2c0",
+    "sourceFingerprint": "b3959cc788bf01d9de567d2cb164de6de43beedcd2c50ec846184b18781f950d",
+    "runtimeFingerprint": "e1fda66b8d99"
+  },
+  "deployment": {
+    "id": "dpl_FkREpCfQkNaiJMdgZbArHUcF99nH",
+    "url": "https://roboeye-drivesense-3gtfonxcv-nclamvn-gmailcoms-projects.vercel.app",
+    "readyState": "READY"
+  },
+  "previous": {
+    "id": "dpl_F8nLUAwdfoxhaPyKbezQZG9Wbdr5",
+    "url": "roboeye-drivesense-hqcy1ko08-nclamvn-gmailcoms-projects.vercel.app",
+    "build": "80142f1f649a"
+  },
+  "checks": {
+    "localSoftwareStages": 14,
+    "unit": {
+      "tests": 319,
+      "passed": 319
+    },
+    "httpsAssets": 18,
+    "realCompiledMetricConfigurations": 4,
+    "compiledSourceCases": 6
+  },
+  "noNewCommitOrPush": true,
+  "physicalPhoneAcceptance": "NOT TESTED",
+  "distanceAccuracy": "UNVALIDATED without independent truth"
+}

@@ -150,6 +150,6 @@ test('empty stage has one primary source action and no meaningless disabled tran
   assert.match(html,/id="stage" data-source="none"/);
   for(const id of ['open-video','open-camera','demo'])assert.ok(html.includes(`id="${id}"`));
   assert.doesNotMatch(html,/class="dock-label"/);
-  assert.match(css,/\.stage:not\(\[data-source=file\]\) \.transport,\.stage:not\(\[data-source=file\]\) #play\{display:none\}/);
+  assert.match(css,/\.stage:not\(:is\(\[data-source=file\],\[data-source=fixture\]\)\) \.transport,\.stage:not\(:is\(\[data-source=file\],\[data-source=fixture\]\)\) #play\{display:none\}/);
   assert.match(css,/\.stage\[data-source=none\] #stop,\.stage\[data-source=none\] #enable-alerts/);
 });

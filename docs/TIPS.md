@@ -1,5 +1,44 @@
 # TIP-01 → TIP-04 · RoboEye
 
+## TIP-62 · Partner-test hardening
+
+- Source ownership, visibility/mute resume, explicit autoplay retry, BFCache
+  render recovery and best-effort screen wake; no threshold/model/TTL relaxation.
+- Central report version, partner QA command and CI lifecycle/journal regressions;
+  real historical road clips plus genuine camera-source probe.
+- Specification: `TIP-62-PARTNER-TEST-HARDENING.md`; rehearsal:
+  `PARTNER-REHEARSAL-TIP-62.md`. Physical phone/road-accuracy gates remain separate.
+
+## TIP-61E · Actual paired workloads and HTTPS delivery
+
+- Approved 2026-10-08: implement evidenced patches and deploy existing project.
+- Real simultaneous detector/depth bake-off, reusable bounded metric input,
+  error/recovery parity and complete HTTPS model/worker verification.
+- FP16 candidates evaluated, **not promoted**: common converter type mismatch;
+  ORT converter runs but exceeds numerical gate and paired controls drift.
+- Specification: `TIP-61E-RUNTIME-BAKEOFF-HTTPS.md`; evidence: `evidence/tip61e/`.
+- Phone realtime/thermal coverage and physical metre accuracy remain unaccepted.
+
+## TIP-61D · Evidenced mobile metric gaps
+
+- Approved 2026-10-08; pixel-free per-object evidence, independently exported
+  portrait/landscape graphs, connected depth support, variable-dt continuity
+  and bounded GPU phase alignment. Capture expiry stays 1200 ms.
+- Local verification complete; physical accuracy, actual-phone realtime/soak
+  and verified local road-plane/contact applicability are not accepted.
+- Specification: `TIP-61D-METRIC-GAP-REMOVAL.md`.
+- QA/limits: `COMPLETION-REPORT-TIP-61D.md`, `evidence/tip61d/`.
+
+## TIP-61 · Mobile Range Recovery (local implementation)
+
+- Dependencies: baseline main `8219b57`, approved incident recovery plan.
+- 61A/B: durable local evidence, per-attempt stage ledger and clearly-labelled
+  realtime video harness. 61C slice: bounded depth worker recovery; detector
+  lifecycle overhaul, scheduler/model bake-off and phone soak remain later gates.
+- Metric expiry/identity/ROI policies unchanged. Desktop orchestration/model
+  tests must not be presented as physical-distance or mobile acceptance.
+- Detail: `docs/TIP-61-MOBILE-RECOVERY.md`.
+
 Chủ thầu phát cho Thợ 01/08/2026, sau khi Chủ nhà approve PRD v1.0 bằng chỉ thị build trực tiếp.
 Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tương ứng bốn milestone M1–M4.
 

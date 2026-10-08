@@ -1,0 +1,57 @@
+{
+  "measuredUtc": "2026-10-08T06:09:12.786Z",
+  "fakeDeviceFlags": false,
+  "result": {
+    "status": "DEVICE OPEN ONLY",
+    "settings": {
+      "width": 640,
+      "height": 480,
+      "frameRate": 30
+    },
+    "reason": "Actual stream acquired without fake device; no distance/soak acceptance inferred"
+  },
+  "app": {
+    "status": "STREAM ADVANCES",
+    "frames": {
+      "start": 0,
+      "end": 4.70235,
+      "width": 1280,
+      "height": 720,
+      "paused": false
+    },
+    "execution": "actual-workers",
+    "backends": {
+      "detector": "webgpu",
+      "metric": "webgpu"
+    },
+    "accounting": {
+      "detector": {
+        "started": 55,
+        "completed": 55,
+        "inflight": 0,
+        "balanced": true,
+        "outcomes": {
+          "accepted-observed": 55
+        },
+        "stages": {
+          "capture": 55,
+          "dispatch": 55,
+          "result": 55,
+          "publication": 55
+        }
+      },
+      "metric": {
+        "started": 0,
+        "completed": 0,
+        "inflight": 0,
+        "balanced": true,
+        "outcomes": {},
+        "stages": {}
+      }
+    },
+    "errors": [],
+    "scope": "Browser-selected OS stream, actual workers. Not verified as built-in laptop camera; no traffic/distance ground truth or sustained soak"
+  },
+  "phone": "NOT TESTED: no tool-connected physical phone",
+  "scope": "No camera pixels captured to files or uploaded; acquisition/frame-flow proof only"
+}

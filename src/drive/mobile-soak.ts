@@ -158,6 +158,7 @@ interface ModelAttempt {
 
 /** Bounded, pixel-free long-session telemetry for mobile capability decisions. */
 export class MobileSoakTelemetry {
+  private provenance = 'live-camera-runtime';
   private epoch = 0;
   private active = false;
   private startedAt: number | null = null;
@@ -179,8 +180,9 @@ export class MobileSoakTelemetry {
 
   reset(epoch: number) { this.clear(epoch); }
 
-  cameraOpened(epoch: number, at: number, settings: unknown) {
+  cameraOpened(epoch: number, at: number, settings: unknown, provenance = 'live-camera-runtime') {
     this.clear(epoch); if (!finite(at)) return false;
+    this.provenance = provenance;
     this.active = true; this.startedAt = at; this.camera = safeCameraSettings(settings); return true;
   }
 
@@ -332,7 +334,7 @@ export class MobileSoakTelemetry {
   report(at: number) {
     const { durationMs, phase } = this.status(at);
     return { schema: 'drivesense-mobile-soak-v1', clock: 'performance.now monotonic milliseconds',
-      provenance: 'live-camera-runtime', active: this.active, epoch: this.epoch,
+      provenance: this.provenance, active: this.active, epoch: this.epoch,
       session: { durationMs, phase },
       privacy: { pixelFree: true, cameraSettingsAllowlist: true, excluded: ['pixels', 'video', 'camera-label', 'deviceId', 'groupId', 'local-path', 'gps'] },
       camera: { settings: { ...this.camera } },

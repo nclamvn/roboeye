@@ -1,0 +1,14 @@
+{
+  "reproduced": true,
+  "bug": "hidden → visible leaves camera video paused; camera Play handler cannot resume",
+  "frozen": {
+    "frames": 5,
+    "paused": true,
+    "measured": false
+  },
+  "actual": {
+    "paused": true,
+    "frames": 5
+  },
+  "scope": "Controlled visibility getter + canvas camera/mock workers; not physical OS/browser suspension."
+}

@@ -62,6 +62,7 @@
       </section>
       <div class="telemetry"><span>Phép đo <b id="method">Chưa hiệu chuẩn</b></span><span>Tuổi dữ liệu <b id="age">—</b></span><span>Xe đang bám <b id="count">0</b></span></div>
       <p id="status" role="status">Mở clip tối đa 5 phút để tự tải AI và phân tích. Video không rời thiết bị.</p><p id="range-status" class="range-status">Video đã phân tích có thể ước lượng mét bằng AI mà không cần profile; kết quả chưa hiệu chuẩn thực địa.</p>
+      <p id="metric-diagnostics" class="range-status" hidden>Chẩn đoán phép đo đang chờ.</p>
       <div class="legend"><span class="blue">Đang bám</span><span class="amber">Cần chú ý</span><span class="red">Nguy cơ cao</span><span>┄ Chưa đủ dữ liệu</span></div>
       <p class="fineprint"><strong>Màu khung = ID xe; góc vàng = cần chú ý; khung tô đỏ = nguy cơ cao.</strong> Giao diện chỉ công bố khoảng cách bằng mét. Tín hiệu chuyển động chỉ dùng nội bộ để xếp hạng nguy cơ; không được trình bày như phép đo khoảng cách. Không thay người lái và chưa được hiệu chuẩn xác suất.</p>
       <div id="track-list" aria-label="Danh sách xe"></div>
@@ -71,6 +72,9 @@
         <label>Camera<select id="camera-select"><option value="">Tự chọn camera phù hợp</option></select></label>
         <div class="row"><button id="refresh-cameras" type="button">Làm mới danh sách</button><button id="open-selected-camera" type="button">Mở camera đã chọn</button></div>
         <p id="camera-status">Cấp quyền camera để hiện tên đầy đủ của thiết bị.</p>
+        <label class="file-button secondary">Test realtime bằng video<input id="fixture-file" type="file" accept="video/*" aria-label="Test realtime bằng video"/></label>
+        <label class="check"><input id="fixture-loop" type="checkbox" checked/> Lặp clip để test dài; mỗi vòng là generation mới</label>
+        <p>Chế độ test phát theo thời gian thật qua pipeline camera, không phân tích trước. Không phải phiên camera hoặc kiểm chứng số mét.</p>
       </section>
       <section><h2>Nhận diện</h2><p>Camera live dùng detector và depth theo nhịp độc lập; video xử lý gối đầu rồi mới phát lại. Chọn mật độ thấp hơn để giảm số inference một cách minh bạch.</p><button id="model">Bật nhận diện xe</button><label class="check"><input id="wasm" type="checkbox"/> Ép WASM cho cả detector và depth</label>
         <label>Chế độ phân tích video<select id="analysis-preset"><option value="quality">Chi tiết · 5 mẫu/giây</option><option value="balanced" selected>Cân bằng · 2,5 mẫu/giây</option><option value="fast">Nhanh · 1 mẫu/giây</option></select></label>
@@ -100,7 +104,12 @@
         <p id="profile-status">Chưa có profile hình học; AI metric vẫn hoạt động độc lập trên video đã phân tích.</p>
         <details><summary>Tinh chỉnh bằng điểm đất đã đo</summary><p>Giữ nguyên intrinsics. JSON gồm u,v (pixel gốc), zM (mét dọc phía trước camera), split: fit hoặc check. Cần 6 điểm fit trải ≥8 m và 2 điểm check độc lập.</p><label class="file-button secondary">Nhập điểm fit + check<input id="ground-file" type="file" accept=".json,application/json"/></label><p id="fit-status">Huber + Gauss–Newton; holdout không đạt sẽ không áp dụng.</p></details>
       </section>
-      <section><h2>Đối chứng & báo cáo</h2><p>Nhập JSON với timeMs, trackId, distanceM đã đo độc lập. ID phải đối chiếu với đúng phiên video.</p><div class="report-actions"><label class="file-button secondary">Nhập đối chứng<input id="reference-file" type="file" accept=".json,application/json"/></label><button id="report">Xuất báo cáo JSON</button></div><p id="mobile-soak-status">Mobile soak chưa chạy · mở camera để thu telemetry cục bộ, không lưu pixel.</p><p id="reference-status">Chưa có đối chứng — chưa thể công bố độ chính xác.</p></section>
+      <section><h2>Đối chứng & báo cáo</h2><p>Nhập JSON với timeMs, trackId, distanceM đã đo độc lập. ID phải đối chiếu với đúng phiên video.</p><div class="report-actions"><label class="file-button secondary">Nhập đối chứng<input id="reference-file" type="file" accept=".json,application/json"/></label><button id="report">Xuất báo cáo JSON</button></div><p id="mobile-soak-status">Mobile soak chưa chạy · mở camera để thu telemetry cục bộ, không lưu pixel.</p><p id="reference-status">Chưa có đối chứng — chưa thể công bố độ chính xác.</p>
+        <h2>Phiên chẩn đoán đã lưu</h2><p id="journal-status" role="status">Đang đọc báo cáo local…</p>
+        <label>Phiên<select id="saved-session" aria-label="Phiên chẩn đoán đã lưu"><option value="">Chưa có phiên</option></select></label>
+        <div class="report-actions"><button id="saved-export" type="button">Xuất phiên đã lưu</button><label class="file-button secondary">Nhập phiên chẩn đoán<input id="journal-import" type="file" accept=".json,application/json"/></label></div>
+        <p>Checkpoint mỗi 2 giây, tối đa 10 phiên / 7 ngày / 10 MiB, không lưu hình ảnh. Có thể xuất sau reload. Trình duyệt xóa/thu hồi storage hoặc tắt trước checkpoint vẫn có thể mất dữ liệu. Không khôi phục được buổi test cũ đã mất JSON.</p>
+      </section>
     </aside>
       </div>
       </div>

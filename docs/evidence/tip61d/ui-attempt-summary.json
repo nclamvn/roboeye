@@ -1,0 +1,342 @@
+{
+  "execution": "mock-workers",
+  "sourceFingerprint": "4662138bd50fe032473ad4ae89eca69013c82203cc9fa561b6da3eea5ef6fbfb",
+  "sources": [
+    {
+      "dimensions": {
+        "width": 720,
+        "height": 1280
+      },
+      "epoch": 2,
+      "metric": {
+        "started": 1,
+        "completed": 1,
+        "inflight": 0,
+        "balanced": true,
+        "outcomes": {
+          "accepted-observed": 1
+        },
+        "stages": {
+          "capture": 1,
+          "dispatch": 1,
+          "result": 1,
+          "join": 1,
+          "roi": 1,
+          "policy": 1,
+          "binding": 1,
+          "filter": 1,
+          "publication": 1
+        }
+      },
+      "reasons": {
+        "accepted": 1,
+        "clipped-box": 1,
+        "tiny-roi": 1
+      },
+      "example": {
+        "kind": "metric",
+        "id": 2,
+        "epoch": 2,
+        "capturedAt": 373.20000000298023,
+        "stages": {
+          "capture": 373.20000000298023,
+          "dispatch": 380,
+          "result": 470.5,
+          "join": 470.59999999403954,
+          "roi": 471.3999999910593,
+          "policy": 471.3999999910593,
+          "binding": 471.70000000298023,
+          "filter": 471.70000000298023,
+          "publication": 471.79999999701977
+        },
+        "outcome": "accepted-observed",
+        "completedAt": 471.8999999910593,
+        "context": {
+          "sourceWidth": 720,
+          "sourceHeight": 1280,
+          "targetWidth": 224,
+          "targetHeight": 392,
+          "contentFraction": 0.9843750000000001,
+          "modelSha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+          "preparationMs": 6.5,
+          "requestedIntervalMs": 250
+        },
+        "objects": [
+          {
+            "index": 0,
+            "trackId": 1,
+            "label": "car",
+            "score": 0.99,
+            "box": [
+              0.4,
+              0.3,
+              0.45,
+              0.55
+            ],
+            "probe": {
+              "code": "accepted",
+              "boxWidthPx": 11.025000000000007,
+              "boxHeightPx": 98,
+              "roi": [
+                93,
+                159,
+                98,
+                197
+              ],
+              "totalPixels": 234,
+              "validPixels": 234,
+              "supportPixels": 234,
+              "q20M": 24,
+              "medianM": 24,
+              "q80M": 24,
+              "relativeSpread": 0,
+              "supportFraction": 1,
+              "method": "central-connected-depth-support-v2"
+            },
+            "rawM": 24,
+            "policyM": 24,
+            "filteredM": 24,
+            "publishedM": 24,
+            "terminalStage": "publication",
+            "code": "accepted"
+          },
+          {
+            "index": 1,
+            "trackId": 2,
+            "label": "car",
+            "score": 0.99,
+            "box": [
+              0,
+              0.3,
+              0.1,
+              0.55
+            ],
+            "probe": {
+              "code": "clipped-box",
+              "boxWidthPx": null,
+              "boxHeightPx": null,
+              "roi": null,
+              "totalPixels": 0,
+              "validPixels": 0,
+              "supportPixels": 0,
+              "q20M": null,
+              "medianM": null,
+              "q80M": null,
+              "relativeSpread": null,
+              "supportFraction": null,
+              "method": "central-connected-depth-support-v2"
+            },
+            "rawM": null,
+            "policyM": null,
+            "filteredM": null,
+            "publishedM": null,
+            "terminalStage": "roi",
+            "code": "clipped-box"
+          },
+          {
+            "index": 2,
+            "trackId": 3,
+            "label": "car",
+            "score": 0.99,
+            "box": [
+              0.7,
+              0.3,
+              0.71,
+              0.55
+            ],
+            "probe": {
+              "code": "tiny-roi",
+              "boxWidthPx": 2.2050000000000587,
+              "boxHeightPx": 98,
+              "roi": null,
+              "totalPixels": 0,
+              "validPixels": 0,
+              "supportPixels": 0,
+              "q20M": null,
+              "medianM": null,
+              "q80M": null,
+              "relativeSpread": null,
+              "supportFraction": null,
+              "method": "central-connected-depth-support-v2"
+            },
+            "rawM": null,
+            "policyM": null,
+            "filteredM": null,
+            "publishedM": null,
+            "terminalStage": "roi",
+            "code": "tiny-roi"
+          }
+        ]
+      }
+    },
+    {
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "epoch": 4,
+      "metric": {
+        "started": 4,
+        "completed": 4,
+        "inflight": 0,
+        "balanced": true,
+        "outcomes": {
+          "accepted-observed": 3,
+          "wrong-generation": 1
+        },
+        "stages": {
+          "capture": 4,
+          "dispatch": 4,
+          "result": 4,
+          "join": 3,
+          "roi": 3,
+          "policy": 3,
+          "binding": 3,
+          "filter": 3,
+          "publication": 3
+        }
+      },
+      "reasons": {
+        "accepted": 3,
+        "clipped-box": 3,
+        "tiny-roi": 3
+      },
+      "example": {
+        "kind": "metric",
+        "id": 2,
+        "epoch": 2,
+        "capturedAt": 373.20000000298023,
+        "stages": {
+          "capture": 373.20000000298023,
+          "dispatch": 380,
+          "result": 470.5,
+          "join": 470.59999999403954,
+          "roi": 471.3999999910593,
+          "policy": 471.3999999910593,
+          "binding": 471.70000000298023,
+          "filter": 471.70000000298023,
+          "publication": 471.79999999701977
+        },
+        "outcome": "accepted-observed",
+        "completedAt": 471.8999999910593,
+        "context": {
+          "sourceWidth": 720,
+          "sourceHeight": 1280,
+          "targetWidth": 224,
+          "targetHeight": 392,
+          "contentFraction": 0.9843750000000001,
+          "modelSha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+          "preparationMs": 6.5,
+          "requestedIntervalMs": 250
+        },
+        "objects": [
+          {
+            "index": 0,
+            "trackId": 1,
+            "label": "car",
+            "score": 0.99,
+            "box": [
+              0.4,
+              0.3,
+              0.45,
+              0.55
+            ],
+            "probe": {
+              "code": "accepted",
+              "boxWidthPx": 11.025000000000007,
+              "boxHeightPx": 98,
+              "roi": [
+                93,
+                159,
+                98,
+                197
+              ],
+              "totalPixels": 234,
+              "validPixels": 234,
+              "supportPixels": 234,
+              "q20M": 24,
+              "medianM": 24,
+              "q80M": 24,
+              "relativeSpread": 0,
+              "supportFraction": 1,
+              "method": "central-connected-depth-support-v2"
+            },
+            "rawM": 24,
+            "policyM": 24,
+            "filteredM": 24,
+            "publishedM": 24,
+            "terminalStage": "publication",
+            "code": "accepted"
+          },
+          {
+            "index": 1,
+            "trackId": 2,
+            "label": "car",
+            "score": 0.99,
+            "box": [
+              0,
+              0.3,
+              0.1,
+              0.55
+            ],
+            "probe": {
+              "code": "clipped-box",
+              "boxWidthPx": null,
+              "boxHeightPx": null,
+              "roi": null,
+              "totalPixels": 0,
+              "validPixels": 0,
+              "supportPixels": 0,
+              "q20M": null,
+              "medianM": null,
+              "q80M": null,
+              "relativeSpread": null,
+              "supportFraction": null,
+              "method": "central-connected-depth-support-v2"
+            },
+            "rawM": null,
+            "policyM": null,
+            "filteredM": null,
+            "publishedM": null,
+            "terminalStage": "roi",
+            "code": "clipped-box"
+          },
+          {
+            "index": 2,
+            "trackId": 3,
+            "label": "car",
+            "score": 0.99,
+            "box": [
+              0.7,
+              0.3,
+              0.71,
+              0.55
+            ],
+            "probe": {
+              "code": "tiny-roi",
+              "boxWidthPx": 2.2050000000000587,
+              "boxHeightPx": 98,
+              "roi": null,
+              "totalPixels": 0,
+              "validPixels": 0,
+              "supportPixels": 0,
+              "q20M": null,
+              "medianM": null,
+              "q80M": null,
+              "relativeSpread": null,
+              "supportFraction": null,
+              "method": "central-connected-depth-support-v2"
+            },
+            "rawM": null,
+            "policyM": null,
+            "filteredM": null,
+            "publishedM": null,
+            "terminalStage": "roi",
+            "code": "tiny-roi"
+          }
+        ]
+      }
+    }
+  ],
+  "scope": "Original canvas stream + mock workers, pixel-free aggregate/examples; not camera perception or physical distance evidence."
+}

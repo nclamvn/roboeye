@@ -1,0 +1,941 @@
+{
+  "aggregates": {
+    "cells_by_state": {
+      "disputed": 1,
+      "null": 56,
+      "sourced": 51
+    },
+    "coverage_pct": 100.0,
+    "n_entities": 12,
+    "rollup": {
+      "browser-runtime": 1,
+      "camera-calibration": 1,
+      "compact-depth-baseline": 1,
+      "metric-cross-check-candidate": 1,
+      "metric-model": 1,
+      "native-execution-option": 1,
+      "offline-metric-teacher": 2,
+      "relative-mobile-candidate": 2,
+      "runtime-risk": 1,
+      "temporal-propagation": 1
+    },
+    "rollup_field": "layer",
+    "universe_estimate": 12
+  },
+  "registry": {
+    "Apple Core ML": {
+      "entity_type": "native-execution-option",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Apple",
+              "tier": "A",
+              "value": "Native compute-unit selection can include Apple Neural Engine"
+            }
+          ],
+          "state": "sourced",
+          "value": "Native compute-unit selection can include Apple Neural Engine"
+        },
+        "code_license": {
+          "state": "null",
+          "value": null
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Apple",
+              "tier": "A",
+              "value": "native-execution-option"
+            }
+          ],
+          "state": "sourced",
+          "value": "native-execution-option"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "state": "null",
+          "value": null
+        },
+        "upstream_evidence_scope": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Apple",
+              "tier": "A",
+              "value": "Apple publishes native CoreML DepthAnythingV2SmallF16 package; not DriveSense metric weights/JS runtime"
+            }
+          ],
+          "state": "sourced",
+          "value": "Apple publishes native CoreML DepthAnythingV2SmallF16 package; not DriveSense metric weights/JS runtime"
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    },
+    "Apple Depth Pro": {
+      "entity_type": "offline-metric-teacher",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Apple-DepthPro",
+              "tier": "A",
+              "value": "Metric scale and focal estimation without supplied camera metadata"
+            }
+          ],
+          "state": "sourced",
+          "value": "Metric scale and focal estimation without supplied camera metadata"
+        },
+        "code_license": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Apple-DepthPro",
+              "tier": "A",
+              "value": "Apple custom licence with conditions; not labelled MIT/Apache"
+            }
+          ],
+          "state": "sourced",
+          "value": "Apple custom licence with conditions; not labelled MIT/Apache"
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Apple-DepthPro",
+              "tier": "A",
+              "value": "offline-metric-teacher"
+            }
+          ],
+          "state": "sourced",
+          "value": "offline-metric-teacher"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Apple-DepthPro",
+              "tier": "A",
+              "value": "Returns depth metres and focal length in pixels"
+            }
+          ],
+          "state": "sourced",
+          "value": "Returns depth metres and focal length in pixels"
+        },
+        "upstream_evidence_scope": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Apple-DepthPro",
+              "tier": "A",
+              "value": "Publisher 0.3-second claim is on a standard GPU, not iPhone browser"
+            }
+          ],
+          "state": "sourced",
+          "value": "Publisher 0.3-second claim is on a standard GPU, not iPhone browser"
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    },
+    "DA2 Metric Outdoor Small": {
+      "entity_type": "metric-model",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "DepthAnything-authors",
+              "tier": "A",
+              "value": "Metric encoder fine-tune plus DPT regression head, not the relative base checkpoint"
+            }
+          ],
+          "state": "sourced",
+          "value": "Metric encoder fine-tune plus DPT regression head, not the relative base checkpoint"
+        },
+        "code_license": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "DepthAnything-authors",
+              "tier": "A",
+              "value": "Apache-2.0 for Small; other scales have different terms"
+            }
+          ],
+          "state": "sourced",
+          "value": "Apache-2.0 for Small; other scales have different terms"
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "DepthAnything-authors",
+              "tier": "A",
+              "value": "metric-model"
+            }
+          ],
+          "state": "sourced",
+          "value": "metric-model"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "DepthAnything-model-publisher",
+              "tier": "A",
+              "value": "Outdoor checkpoint is fine-tuned using synthetic Virtual KITTI data"
+            }
+          ],
+          "state": "sourced",
+          "value": "Outdoor checkpoint is fine-tuned using synthetic Virtual KITTI data"
+        },
+        "upstream_evidence_scope": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "DepthAnything-authors",
+              "tier": "A",
+              "value": "Small model has 24.8M parameters; no DriveSense iPhone latency claim"
+            }
+          ],
+          "state": "sourced",
+          "value": "Small model has 24.8M parameters; no DriveSense iPhone latency claim"
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    },
+    "DA3 Metric Large": {
+      "entity_type": "offline-metric-teacher",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ByteDance-DepthAnything3",
+              "tier": "A",
+              "value": "Specialized monocular metric series, separate from DA3 Small/relative"
+            }
+          ],
+          "state": "sourced",
+          "value": "Specialized monocular metric series, separate from DA3 Small/relative"
+        },
+        "code_license": {
+          "state": "null",
+          "value": null
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ByteDance-DepthAnything3",
+              "tier": "A",
+              "value": "offline-metric-teacher"
+            }
+          ],
+          "state": "sourced",
+          "value": "offline-metric-teacher"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ByteDance-DepthAnything3",
+              "tier": "A",
+              "value": "Metres require focal-scaled output: focal * net_output / 300"
+            }
+          ],
+          "state": "sourced",
+          "value": "Metres require focal-scaled output: focal * net_output / 300"
+        },
+        "upstream_evidence_scope": {
+          "state": "null",
+          "value": null
+        },
+        "weights_terms": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ByteDance-DepthAnything3",
+              "tier": "A",
+              "value": "Apache-2.0 for DA3METRIC-LARGE; other checkpoints differ"
+            }
+          ],
+          "state": "sourced",
+          "value": "Apache-2.0 for DA3METRIC-LARGE; other checkpoints differ"
+        }
+      }
+    },
+    "FastDepth": {
+      "entity_type": "compact-depth-baseline",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "FastDepth-authors",
+              "tier": "A",
+              "value": "Pruned MobileNet encoder with depthwise decoder and additive skip connections"
+            }
+          ],
+          "state": "sourced",
+          "value": "Pruned MobileNet encoder with depthwise decoder and additive skip connections"
+        },
+        "code_license": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "FastDepth-authors",
+              "tier": "A",
+              "value": "MIT"
+            }
+          ],
+          "state": "sourced",
+          "value": "MIT"
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "FastDepth-authors",
+              "tier": "A",
+              "value": "compact-depth-baseline"
+            }
+          ],
+          "state": "sourced",
+          "value": "compact-depth-baseline"
+        },
+        "limitation": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "FastDepth-authors",
+              "tier": "A",
+              "value": "Indoor NYU-based pretrained baseline is not traffic-domain accuracy evidence"
+            }
+          ],
+          "state": "sourced",
+          "value": "Indoor NYU-based pretrained baseline is not traffic-domain accuracy evidence"
+        },
+        "metric_contract": {
+          "state": "null",
+          "value": null
+        },
+        "upstream_evidence_scope": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "FastDepth-authors",
+              "tier": "A",
+              "value": "Official dataset/evaluation is NYU Depth V2 and deployment targets Jetson TX2"
+            }
+          ],
+          "state": "sourced",
+          "value": "Official dataset/evaluation is NYU Depth V2 and deployment targets Jetson TX2"
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    },
+    "Lite-Mono": {
+      "entity_type": "relative-mobile-candidate",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "LiteMono-authors",
+              "tier": "A",
+              "value": "Tiny model 2.2M parameters; KITTI-oriented compact baseline"
+            }
+          ],
+          "state": "sourced",
+          "value": "Tiny model 2.2M parameters; KITTI-oriented compact baseline"
+        },
+        "code_license": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "LiteMono-authors",
+              "tier": "A",
+              "value": "MIT"
+            }
+          ],
+          "state": "sourced",
+          "value": "MIT"
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "LiteMono-authors",
+              "tier": "A",
+              "value": "relative-mobile-candidate"
+            }
+          ],
+          "state": "sourced",
+          "value": "relative-mobile-candidate"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "LiteMono-authors",
+              "tier": "A",
+              "value": "Mono evaluation uses ground-truth median scaling; cannot directly claim independent metres"
+            }
+          ],
+          "state": "sourced",
+          "value": "Mono evaluation uses ground-truth median scaling; cannot directly claim independent metres"
+        },
+        "upstream_evidence_scope": {
+          "state": "null",
+          "value": null
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    },
+    "MoGe2 Small": {
+      "entity_type": "metric-cross-check-candidate",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-MoGe",
+              "tier": "A",
+              "value": "Official repository offers MoGe2 small checkpoint and ONNX support"
+            }
+          ],
+          "state": "sourced",
+          "value": "Official repository offers MoGe2 small checkpoint and ONNX support"
+        },
+        "code_license": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-MoGe",
+              "tier": "A",
+              "value": "MIT, DINOv2 submodule Apache-2.0"
+            }
+          ],
+          "state": "sourced",
+          "value": "MIT, DINOv2 submodule Apache-2.0"
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "MoGe2-model-publisher",
+              "tier": "A",
+              "value": "metric-cross-check-candidate"
+            }
+          ],
+          "state": "sourced",
+          "value": "metric-cross-check-candidate"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-MoGe",
+              "tier": "A",
+              "value": "Model family includes metric depth and camera FOV; adapter/recovery must match chosen version"
+            }
+          ],
+          "state": "sourced",
+          "value": "Model family includes metric depth and camera FOV; adapter/recovery must match chosen version"
+        },
+        "upstream_evidence_scope": {
+          "state": "null",
+          "value": null
+        },
+        "weights_terms": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "MoGe2-model-publisher",
+              "tier": "A",
+              "value": "MIT model card for moge-2-vits-normal"
+            }
+          ],
+          "state": "sourced",
+          "value": "MIT model card for moge-2-vits-normal"
+        }
+      }
+    },
+    "ONNX Runtime Web": {
+      "entity_type": "browser-runtime",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-ONNXRuntime",
+              "tier": "A",
+              "value": "WASM threading is explicitly disabled by numThreads=1; isolation is required otherwise"
+            }
+          ],
+          "state": "sourced",
+          "value": "WASM threading is explicitly disabled by numThreads=1; isolation is required otherwise"
+        },
+        "code_license": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-ONNXRuntime",
+              "tier": "A",
+              "value": "MIT"
+            }
+          ],
+          "state": "sourced",
+          "value": "MIT"
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-ONNXRuntime",
+              "tier": "A",
+              "value": "2026 design document says Safari macOS/iOS WebGPU ships enabled by default"
+            },
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-ONNXRuntime",
+              "tier": "A",
+              "value": "README compatibility table marks iOS WebGPU unsupported"
+            }
+          ],
+          "state": "disputed",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-ONNXRuntime",
+              "tier": "A",
+              "value": "browser-runtime"
+            }
+          ],
+          "state": "sourced",
+          "value": "browser-runtime"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-ONNXRuntime",
+              "tier": "A",
+              "value": "Executes an ONNX model; the runtime itself provides no physical scale"
+            }
+          ],
+          "state": "sourced",
+          "value": "Executes an ONNX model; the runtime itself provides no physical scale"
+        },
+        "upstream_evidence_scope": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "Microsoft-ONNXRuntime",
+              "tier": "A",
+              "value": "Graph capture requires static shape and all kernels on WebGPU; speed improvement is conditional"
+            }
+          ],
+          "state": "sourced",
+          "value": "Graph capture requires static shape and all kernels on WebGPU; speed improvement is conditional"
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    },
+    "ORT JSEP/WebKit incident": {
+      "entity_type": "runtime-risk",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "theopolis-first-hand-issue-report",
+              "tier": "B",
+              "value": "Primary issue reporter observed runaway CPU/memory after inference on WebKit"
+            }
+          ],
+          "state": "sourced",
+          "value": "Primary issue reporter observed runaway CPU/memory after inference on WebKit"
+        },
+        "code_license": {
+          "state": "null",
+          "value": null
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "theopolis-first-hand-issue-report",
+              "tier": "B",
+              "value": "runtime-risk"
+            }
+          ],
+          "state": "sourced",
+          "value": "runtime-risk"
+        },
+        "limitation": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ONNXRuntime-issue-discussion",
+              "tier": "B",
+              "value": "Later report also implicates native WebGPU asyncify; WASM-only was stable for that workload"
+            }
+          ],
+          "state": "sourced",
+          "value": "Later report also implicates native WebGPU asyncify; WASM-only was stable for that workload"
+        },
+        "metric_contract": {
+          "state": "null",
+          "value": null
+        },
+        "upstream_evidence_scope": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "theopolis-first-hand-issue-report",
+              "tier": "B",
+              "value": "Original incident uses PaddleOCR v4, not DriveSense depth; not proof of this iPhone incident"
+            }
+          ],
+          "state": "sourced",
+          "value": "Original incident uses PaddleOCR v4, not DriveSense depth; not proof of this iPhone incident"
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    },
+    "OpenCV camera geometry": {
+      "entity_type": "camera-calibration",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "OpenCV",
+              "tier": "A",
+              "value": "Estimates camera matrix and distortion, reusable for that camera"
+            }
+          ],
+          "state": "sourced",
+          "value": "Estimates camera matrix and distortion, reusable for that camera"
+        },
+        "code_license": {
+          "state": "null",
+          "value": null
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "OpenCV",
+              "tier": "A",
+              "value": "camera-calibration"
+            }
+          ],
+          "state": "sourced",
+          "value": "camera-calibration"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "OpenCV",
+              "tier": "A",
+              "value": "Camera matrix gives pixel focal lengths and principal point, not scene distance by itself"
+            }
+          ],
+          "state": "sourced",
+          "value": "Camera matrix gives pixel focal lengths and principal point, not scene distance by itself"
+        },
+        "upstream_evidence_scope": {
+          "state": "null",
+          "value": null
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    },
+    "OpenCV optical flow": {
+      "entity_type": "temporal-propagation",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "OpenCV",
+              "tier": "A",
+              "value": "Tracks apparent image motion between consecutive frames"
+            }
+          ],
+          "state": "sourced",
+          "value": "Tracks apparent image motion between consecutive frames"
+        },
+        "code_license": {
+          "state": "null",
+          "value": null
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "OpenCV",
+              "tier": "A",
+              "value": "temporal-propagation"
+            }
+          ],
+          "state": "sourced",
+          "value": "temporal-propagation"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "OpenCV",
+              "tier": "A",
+              "value": "Produces image motion, not independent absolute metric scale"
+            }
+          ],
+          "state": "sourced",
+          "value": "Produces image motion, not independent absolute metric scale"
+        },
+        "upstream_evidence_scope": {
+          "state": "null",
+          "value": null
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    },
+    "ZipDepth": {
+      "entity_type": "relative-mobile-candidate",
+      "fields": {
+        "capability": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ZipDepth-authors",
+              "tier": "A",
+              "value": "Approximately 6.1M fused parameters with unfold-free NPU/mobile variant and ONNX export"
+            }
+          ],
+          "state": "sourced",
+          "value": "Approximately 6.1M fused parameters with unfold-free NPU/mobile variant and ONNX export"
+        },
+        "code_license": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ZipDepth-authors",
+              "tier": "A",
+              "value": "MIT"
+            }
+          ],
+          "state": "sourced",
+          "value": "MIT"
+        },
+        "device_benchmark": {
+          "state": "null",
+          "value": null
+        },
+        "ios_webgpu_support": {
+          "state": "null",
+          "value": null
+        },
+        "layer": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ZipDepth-authors",
+              "tier": "A",
+              "value": "relative-mobile-candidate"
+            }
+          ],
+          "state": "sourced",
+          "value": "relative-mobile-candidate"
+        },
+        "limitation": {
+          "state": "null",
+          "value": null
+        },
+        "metric_contract": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ZipDepth-authors",
+              "tier": "A",
+              "value": "Evaluation aligns predictions with ground-truth scale and shift; not independent zero-shot absolute metres"
+            }
+          ],
+          "state": "sourced",
+          "value": "Evaluation aligns predictions with ground-truth scale and shift; not independent zero-shot absolute metres"
+        },
+        "upstream_evidence_scope": {
+          "claims": [
+            {
+              "extraction": "normalized",
+              "source": "ZipDepth-authors",
+              "tier": "A",
+              "value": "Published deployment latency is RTX3090 profiling, not browser/iPhone metric acceptance"
+            }
+          ],
+          "state": "sourced",
+          "value": "Published deployment latency is RTX3090 profiling, not browser/iPhone metric acceptance"
+        },
+        "weights_terms": {
+          "state": "null",
+          "value": null
+        }
+      }
+    }
+  }
+}

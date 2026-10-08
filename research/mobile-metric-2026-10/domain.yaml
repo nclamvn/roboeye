@@ -1,0 +1,28 @@
+domain: drivesense_mobile_metric_2026_10
+entity_label: "Mobile range methods/runtimes independently assessed after stationary iPhone failure"
+schema:
+  type_field: layer
+  fields:
+    - layer
+    - capability
+    - metric_contract
+    - code_license
+    - weights_terms
+    - upstream_evidence_scope
+    - device_benchmark
+    - limitation
+    - ios_webgpu_support
+rollup_field: layer
+universe:
+  estimate: 12
+  basis: "Frozen shortlist: ORT Web, JSEP issue, DA2 metric Small, ZipDepth, Lite-Mono, FastDepth, Depth Pro, DA3 Metric, MoGe2, OpenCV camera geometry, OpenCV optical flow, Apple Core ML. Not the entire market."
+refresh_days:
+  default: 30
+alias_map: {}
+ambiguous_clusters: []
+domain_gates:
+  no_inferred_fields:
+    - code_license
+    - weights_terms
+    - upstream_evidence_scope
+    - device_benchmark

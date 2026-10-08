@@ -1,0 +1,1737 @@
+{
+  "schema": "drivesense-session-journal-v1",
+  "sessionId": "36ab98d6-047f-47f0-aee9-10b827ffe360",
+  "sequence": 4,
+  "updatedUtc": "2026-10-06T05:24:17.872Z",
+  "payload": {
+    "manifest": {
+      "sessionId": "36ab98d6-047f-47f0-aee9-10b827ffe360",
+      "source": "live-camera",
+      "execution": "mock-workers",
+      "startedUtc": "2026-10-06T05:24:12.068Z",
+      "timeOrigin": 1791264251758,
+      "build": {
+        "version": "1.5.0",
+        "commit": "8219b578cb4e",
+        "sourceFingerprint": "896d84b0039175ef28a5312cabff848d92a55136ae1749986c451b09ada53b1a"
+      },
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "capabilities": {
+        "webgpuPresent": true,
+        "crossOriginIsolated": false,
+        "videoFrameCallback": true
+      },
+      "models": {
+        "detectorGpuSha256": "86171edeb435bd3f113e82d1c6720a576932e6deca962426bb1bc794e7000458",
+        "detectorWasmSha256": "4b839c46187b77fc620c770de0be6790637b98afde9b386232b0fcf74382eb3c",
+        "metricSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f"
+      },
+      "metricMaxAgeMs": 1200,
+      "wasmThreads": 1
+    },
+    "status": "active",
+    "epoch": 2,
+    "elapsedMs": 5802.800000000745,
+    "ledger": {
+      "schema": "drivesense-attempt-ledger-v1",
+      "clock": "performance.now; within this page/session only",
+      "detector": {
+        "started": 58,
+        "completed": 57,
+        "inflight": 1,
+        "balanced": true,
+        "outcomes": {
+          "accepted-observed": 57
+        },
+        "stages": {
+          "capture": 58,
+          "dispatch": 58,
+          "result": 57,
+          "publication": 57
+        }
+      },
+      "metric": {
+        "started": 5,
+        "completed": 5,
+        "inflight": 0,
+        "balanced": true,
+        "outcomes": {
+          "accepted-observed": 4,
+          "worker-error": 1
+        },
+        "stages": {
+          "capture": 5,
+          "dispatch": 5,
+          "result": 4,
+          "join": 4,
+          "roi": 4,
+          "binding": 4,
+          "publication": 4
+        }
+      },
+      "notRequestedWithReason": {
+        "no-vehicle": 1,
+        "busy": 64,
+        "cadence": 37,
+        "not-ready": 10
+      },
+      "generations": 0,
+      "unmatchedResults": 0,
+      "availability": {
+        "observedMs": 5791.599999999999,
+        "visibleMs": 3820.7999999999997,
+        "fullSessionCoverage": 0.65971406865115,
+        "maxBlackoutMs": 1407.1999999999998,
+        "predictedOnlyPresentations": 225,
+        "eligibleCoverage": null,
+        "eligibility": "not annotated; no automatic exclusion based on model failure",
+        "freshAcceptedMeasurements": 4
+      },
+      "boundedState": {
+        "maxDetails": 128,
+        "retainedDetails": 63,
+        "discardedDetails": 0,
+        "maxInflight": 8
+      },
+      "firstFailure": {
+        "kind": "metric",
+        "id": 40,
+        "epoch": 2,
+        "capturedAt": 4242.800000000745,
+        "stages": {
+          "capture": 4242.800000000745,
+          "dispatch": 4249.4000000003725
+        },
+        "outcome": "worker-error",
+        "completedAt": 4350.700000000186
+      },
+      "details": [
+        {
+          "kind": "detector",
+          "id": 1,
+          "epoch": 2,
+          "capturedAt": 318.20000000018626,
+          "stages": {
+            "capture": 318.20000000018626,
+            "dispatch": 326.6000000005588,
+            "result": 407.80000000074506,
+            "publication": 408.6000000005588
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 408.6000000005588
+        },
+        {
+          "kind": "detector",
+          "id": 2,
+          "epoch": 2,
+          "capturedAt": 442.90000000037253,
+          "stages": {
+            "capture": 442.90000000037253,
+            "dispatch": 451,
+            "result": 532.6000000005588,
+            "publication": 533
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 533
+        },
+        {
+          "kind": "metric",
+          "id": 2,
+          "epoch": 2,
+          "capturedAt": 442.90000000037253,
+          "stages": {
+            "capture": 442.90000000037253,
+            "dispatch": 451,
+            "result": 551.8000000007451,
+            "join": 551.8000000007451,
+            "roi": 552.3000000007451,
+            "binding": 552.6000000005588,
+            "publication": 552.7000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 552.7000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 3,
+          "epoch": 2,
+          "capturedAt": 541.5,
+          "stages": {
+            "capture": 541.5,
+            "dispatch": 545.3000000007451,
+            "result": 627,
+            "publication": 627.2000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 627.2000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 4,
+          "epoch": 2,
+          "capturedAt": 642.5,
+          "stages": {
+            "capture": 642.5,
+            "dispatch": 646.6000000005588,
+            "result": 726.8000000007451,
+            "publication": 726.9000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 726.9000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 5,
+          "epoch": 2,
+          "capturedAt": 741.9000000003725,
+          "stages": {
+            "capture": 741.9000000003725,
+            "dispatch": 745.7000000001863,
+            "result": 826.5,
+            "publication": 826.6000000005588
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 826.6000000005588
+        },
+        {
+          "kind": "detector",
+          "id": 6,
+          "epoch": 2,
+          "capturedAt": 842.6000000005588,
+          "stages": {
+            "capture": 842.6000000005588,
+            "dispatch": 846.1000000005588,
+            "result": 928,
+            "publication": 928.2000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 928.2000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 7,
+          "epoch": 2,
+          "capturedAt": 941.6000000005588,
+          "stages": {
+            "capture": 941.6000000005588,
+            "dispatch": 945.2000000001863,
+            "result": 1025.6000000005588,
+            "publication": 1025.6000000005588
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1025.6000000005588
+        },
+        {
+          "kind": "detector",
+          "id": 8,
+          "epoch": 2,
+          "capturedAt": 1043.2000000001863,
+          "stages": {
+            "capture": 1043.2000000001863,
+            "dispatch": 1046.9000000003725,
+            "result": 1128.300000000745,
+            "publication": 1128.4000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1128.4000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 9,
+          "epoch": 2,
+          "capturedAt": 1141.9000000003725,
+          "stages": {
+            "capture": 1141.9000000003725,
+            "dispatch": 1145.7000000001863,
+            "result": 1226.6000000005588,
+            "publication": 1226.7000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1226.7000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 10,
+          "epoch": 2,
+          "capturedAt": 1243,
+          "stages": {
+            "capture": 1243,
+            "dispatch": 1246.9000000003725,
+            "result": 1328,
+            "publication": 1328.1000000005588
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1328.1000000005588
+        },
+        {
+          "kind": "detector",
+          "id": 11,
+          "epoch": 2,
+          "capturedAt": 1343,
+          "stages": {
+            "capture": 1343,
+            "dispatch": 1346.800000000745,
+            "result": 1427.5,
+            "publication": 1427.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1427.5
+        },
+        {
+          "kind": "detector",
+          "id": 12,
+          "epoch": 2,
+          "capturedAt": 1443,
+          "stages": {
+            "capture": 1443,
+            "dispatch": 1446.300000000745,
+            "result": 1526.5,
+            "publication": 1526.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1526.5
+        },
+        {
+          "kind": "detector",
+          "id": 13,
+          "epoch": 2,
+          "capturedAt": 1542.6000000005588,
+          "stages": {
+            "capture": 1542.6000000005588,
+            "dispatch": 1546.6000000005588,
+            "result": 1627.7000000001863,
+            "publication": 1627.800000000745
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1627.800000000745
+        },
+        {
+          "kind": "detector",
+          "id": 14,
+          "epoch": 2,
+          "capturedAt": 1643.300000000745,
+          "stages": {
+            "capture": 1643.300000000745,
+            "dispatch": 1650.4000000003725,
+            "result": 1733.5,
+            "publication": 1733.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1733.5
+        },
+        {
+          "kind": "metric",
+          "id": 14,
+          "epoch": 2,
+          "capturedAt": 1643.300000000745,
+          "stages": {
+            "capture": 1643.300000000745,
+            "dispatch": 1650.4000000003725,
+            "result": 1751.2000000001863,
+            "join": 1751.2000000001863,
+            "roi": 1752,
+            "binding": 1752.1000000005588,
+            "publication": 1752.1000000005588
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1752.1000000005588
+        },
+        {
+          "kind": "detector",
+          "id": 15,
+          "epoch": 2,
+          "capturedAt": 1743,
+          "stages": {
+            "capture": 1743,
+            "dispatch": 1746.800000000745,
+            "result": 1828.1000000005588,
+            "publication": 1828.2000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1828.2000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 16,
+          "epoch": 2,
+          "capturedAt": 1843,
+          "stages": {
+            "capture": 1843,
+            "dispatch": 1846.9000000003725,
+            "result": 1928.1000000005588,
+            "publication": 1928.2000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1928.2000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 17,
+          "epoch": 2,
+          "capturedAt": 1942.300000000745,
+          "stages": {
+            "capture": 1942.300000000745,
+            "dispatch": 1946.300000000745,
+            "result": 2026.5,
+            "publication": 2026.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2026.5
+        },
+        {
+          "kind": "detector",
+          "id": 18,
+          "epoch": 2,
+          "capturedAt": 2041.6000000005588,
+          "stages": {
+            "capture": 2041.6000000005588,
+            "dispatch": 2045.4000000003725,
+            "result": 2126.7000000001863,
+            "publication": 2126.7000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2126.7000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 19,
+          "epoch": 2,
+          "capturedAt": 2142.9000000003725,
+          "stages": {
+            "capture": 2142.9000000003725,
+            "dispatch": 2146.5,
+            "result": 2226.800000000745,
+            "publication": 2226.800000000745
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2226.800000000745
+        },
+        {
+          "kind": "detector",
+          "id": 20,
+          "epoch": 2,
+          "capturedAt": 2243.2000000001863,
+          "stages": {
+            "capture": 2243.2000000001863,
+            "dispatch": 2247.100000000559,
+            "result": 2327.800000000745,
+            "publication": 2327.800000000745
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2327.800000000745
+        },
+        {
+          "kind": "detector",
+          "id": 21,
+          "epoch": 2,
+          "capturedAt": 2343.100000000559,
+          "stages": {
+            "capture": 2343.100000000559,
+            "dispatch": 2347,
+            "result": 2428.300000000745,
+            "publication": 2428.4000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2428.4000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 22,
+          "epoch": 2,
+          "capturedAt": 2442.9000000003725,
+          "stages": {
+            "capture": 2442.9000000003725,
+            "dispatch": 2446.5,
+            "result": 2526.600000000559,
+            "publication": 2526.7000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2526.7000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 23,
+          "epoch": 2,
+          "capturedAt": 2543,
+          "stages": {
+            "capture": 2543,
+            "dispatch": 2547,
+            "result": 2628.300000000745,
+            "publication": 2628.300000000745
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2628.300000000745
+        },
+        {
+          "kind": "detector",
+          "id": 24,
+          "epoch": 2,
+          "capturedAt": 2641.600000000559,
+          "stages": {
+            "capture": 2641.600000000559,
+            "dispatch": 2645.5,
+            "result": 2726.800000000745,
+            "publication": 2726.800000000745
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2726.800000000745
+        },
+        {
+          "kind": "detector",
+          "id": 25,
+          "epoch": 2,
+          "capturedAt": 2743,
+          "stages": {
+            "capture": 2743,
+            "dispatch": 2747,
+            "result": 2828.2000000001863,
+            "publication": 2828.2000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2828.2000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 26,
+          "epoch": 2,
+          "capturedAt": 2843.2000000001863,
+          "stages": {
+            "capture": 2843.2000000001863,
+            "dispatch": 2846.800000000745,
+            "result": 2928,
+            "publication": 2928
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2928
+        },
+        {
+          "kind": "detector",
+          "id": 27,
+          "epoch": 2,
+          "capturedAt": 2943,
+          "stages": {
+            "capture": 2943,
+            "dispatch": 2949.9000000003725,
+            "result": 3031.600000000559,
+            "publication": 3031.600000000559
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3031.600000000559
+        },
+        {
+          "kind": "metric",
+          "id": 27,
+          "epoch": 2,
+          "capturedAt": 2943,
+          "stages": {
+            "capture": 2943,
+            "dispatch": 2949.9000000003725,
+            "result": 3050.2000000001863,
+            "join": 3050.2000000001863,
+            "roi": 3050.600000000559,
+            "binding": 3050.600000000559,
+            "publication": 3050.600000000559
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3050.600000000559
+        },
+        {
+          "kind": "detector",
+          "id": 28,
+          "epoch": 2,
+          "capturedAt": 3042.9000000003725,
+          "stages": {
+            "capture": 3042.9000000003725,
+            "dispatch": 3046.800000000745,
+            "result": 3128.300000000745,
+            "publication": 3128.300000000745
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3128.300000000745
+        },
+        {
+          "kind": "detector",
+          "id": 29,
+          "epoch": 2,
+          "capturedAt": 3141.7000000001863,
+          "stages": {
+            "capture": 3141.7000000001863,
+            "dispatch": 3145.800000000745,
+            "result": 3225.9000000003725,
+            "publication": 3226
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3226
+        },
+        {
+          "kind": "detector",
+          "id": 30,
+          "epoch": 2,
+          "capturedAt": 3241.9000000003725,
+          "stages": {
+            "capture": 3241.9000000003725,
+            "dispatch": 3245.800000000745,
+            "result": 3328.100000000559,
+            "publication": 3328.2000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3328.2000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 31,
+          "epoch": 2,
+          "capturedAt": 3343.300000000745,
+          "stages": {
+            "capture": 3343.300000000745,
+            "dispatch": 3347.100000000559,
+            "result": 3427.7000000001863,
+            "publication": 3427.7000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3427.7000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 32,
+          "epoch": 2,
+          "capturedAt": 3442.600000000559,
+          "stages": {
+            "capture": 3442.600000000559,
+            "dispatch": 3446.300000000745,
+            "result": 3528.2000000001863,
+            "publication": 3528.300000000745
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3528.300000000745
+        },
+        {
+          "kind": "detector",
+          "id": 33,
+          "epoch": 2,
+          "capturedAt": 3542.7000000001863,
+          "stages": {
+            "capture": 3542.7000000001863,
+            "dispatch": 3546,
+            "result": 3626.100000000559,
+            "publication": 3626.2000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3626.2000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 34,
+          "epoch": 2,
+          "capturedAt": 3642.100000000559,
+          "stages": {
+            "capture": 3642.100000000559,
+            "dispatch": 3645.9000000003725,
+            "result": 3728.4000000003725,
+            "publication": 3728.600000000559
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3728.600000000559
+        },
+        {
+          "kind": "detector",
+          "id": 35,
+          "epoch": 2,
+          "capturedAt": 3745,
+          "stages": {
+            "capture": 3745,
+            "dispatch": 3748.800000000745,
+            "result": 3829.600000000559,
+            "publication": 3829.7000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3829.7000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 36,
+          "epoch": 2,
+          "capturedAt": 3845.600000000559,
+          "stages": {
+            "capture": 3845.600000000559,
+            "dispatch": 3850.600000000559,
+            "result": 3933.100000000559,
+            "publication": 3933.2000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3933.2000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 37,
+          "epoch": 2,
+          "capturedAt": 3943.100000000559,
+          "stages": {
+            "capture": 3943.100000000559,
+            "dispatch": 3946.800000000745,
+            "result": 4027.600000000559,
+            "publication": 4027.7000000001863
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4027.7000000001863
+        },
+        {
+          "kind": "detector",
+          "id": 38,
+          "epoch": 2,
+          "capturedAt": 4044.100000000559,
+          "stages": {
+            "capture": 4044.100000000559,
+            "dispatch": 4047.7000000001863,
+            "result": 4128.4000000003725,
+            "publication": 4128.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4128.5
+        },
+        {
+          "kind": "detector",
+          "id": 39,
+          "epoch": 2,
+          "capturedAt": 4141.800000000745,
+          "stages": {
+            "capture": 4141.800000000745,
+            "dispatch": 4145.600000000559,
+            "result": 4226.4000000003725,
+            "publication": 4226.4000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4226.4000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 40,
+          "epoch": 2,
+          "capturedAt": 4242.800000000745,
+          "stages": {
+            "capture": 4242.800000000745,
+            "dispatch": 4249.4000000003725,
+            "result": 4332,
+            "publication": 4332.200000000186
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4332.200000000186
+        },
+        {
+          "kind": "metric",
+          "id": 40,
+          "epoch": 2,
+          "capturedAt": 4242.800000000745,
+          "stages": {
+            "capture": 4242.800000000745,
+            "dispatch": 4249.4000000003725
+          },
+          "outcome": "worker-error",
+          "completedAt": 4350.700000000186
+        },
+        {
+          "kind": "detector",
+          "id": 41,
+          "epoch": 2,
+          "capturedAt": 4345.4000000003725,
+          "stages": {
+            "capture": 4345.4000000003725,
+            "dispatch": 4350.4000000003725,
+            "result": 4431.800000000745,
+            "publication": 4432
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4432
+        },
+        {
+          "kind": "detector",
+          "id": 42,
+          "epoch": 2,
+          "capturedAt": 4445.100000000559,
+          "stages": {
+            "capture": 4445.100000000559,
+            "dispatch": 4448.700000000186,
+            "result": 4530.100000000559,
+            "publication": 4530.9000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4530.9000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 43,
+          "epoch": 2,
+          "capturedAt": 4542.9000000003725,
+          "stages": {
+            "capture": 4542.9000000003725,
+            "dispatch": 4548.4000000003725,
+            "result": 4631.300000000745,
+            "publication": 4631.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4631.5
+        },
+        {
+          "kind": "detector",
+          "id": 44,
+          "epoch": 2,
+          "capturedAt": 4641.9000000003725,
+          "stages": {
+            "capture": 4641.9000000003725,
+            "dispatch": 4645.4000000003725,
+            "result": 4726.5,
+            "publication": 4726.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4726.5
+        },
+        {
+          "kind": "detector",
+          "id": 45,
+          "epoch": 2,
+          "capturedAt": 4743,
+          "stages": {
+            "capture": 4743,
+            "dispatch": 4747.5,
+            "result": 4828.300000000745,
+            "publication": 4828.4000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4828.4000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 46,
+          "epoch": 2,
+          "capturedAt": 4841.4000000003725,
+          "stages": {
+            "capture": 4841.4000000003725,
+            "dispatch": 4845.200000000186,
+            "result": 4928.600000000559,
+            "publication": 4928.700000000186
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4928.700000000186
+        },
+        {
+          "kind": "detector",
+          "id": 47,
+          "epoch": 2,
+          "capturedAt": 4943,
+          "stages": {
+            "capture": 4943,
+            "dispatch": 4946.5,
+            "result": 5028.200000000186,
+            "publication": 5028.300000000745
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5028.300000000745
+        },
+        {
+          "kind": "detector",
+          "id": 48,
+          "epoch": 2,
+          "capturedAt": 5044.5,
+          "stages": {
+            "capture": 5044.5,
+            "dispatch": 5048.200000000186,
+            "result": 5130.300000000745,
+            "publication": 5130.4000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5130.4000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 49,
+          "epoch": 2,
+          "capturedAt": 5143,
+          "stages": {
+            "capture": 5143,
+            "dispatch": 5146.9000000003725,
+            "result": 5227.300000000745,
+            "publication": 5227.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5227.5
+        },
+        {
+          "kind": "detector",
+          "id": 50,
+          "epoch": 2,
+          "capturedAt": 5241.9000000003725,
+          "stages": {
+            "capture": 5241.9000000003725,
+            "dispatch": 5245.4000000003725,
+            "result": 5326.9000000003725,
+            "publication": 5326.9000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5326.9000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 51,
+          "epoch": 2,
+          "capturedAt": 5342.800000000745,
+          "stages": {
+            "capture": 5342.800000000745,
+            "dispatch": 5346.4000000003725,
+            "result": 5427.5,
+            "publication": 5427.700000000186
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5427.800000000745
+        },
+        {
+          "kind": "detector",
+          "id": 52,
+          "epoch": 2,
+          "capturedAt": 5444.600000000559,
+          "stages": {
+            "capture": 5444.600000000559,
+            "dispatch": 5454.200000000186,
+            "result": 5534.200000000186,
+            "publication": 5535
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5535
+        },
+        {
+          "kind": "metric",
+          "id": 52,
+          "epoch": 2,
+          "capturedAt": 5444.600000000559,
+          "stages": {
+            "capture": 5444.600000000559,
+            "dispatch": 5454.200000000186,
+            "result": 5554.700000000186,
+            "join": 5554.800000000745,
+            "roi": 5555,
+            "binding": 5555.100000000559,
+            "publication": 5555.100000000559
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5555.100000000559
+        },
+        {
+          "kind": "detector",
+          "id": 53,
+          "epoch": 2,
+          "capturedAt": 5544.700000000186,
+          "stages": {
+            "capture": 5544.700000000186,
+            "dispatch": 5550.100000000559,
+            "result": 5632.800000000745,
+            "publication": 5633
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5633
+        },
+        {
+          "kind": "detector",
+          "id": 54,
+          "epoch": 2,
+          "capturedAt": 5642.4000000003725,
+          "stages": {
+            "capture": 5642.4000000003725,
+            "dispatch": 5648.4000000003725,
+            "result": 5729.100000000559,
+            "publication": 5729.200000000186
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5729.200000000186
+        },
+        {
+          "kind": "detector",
+          "id": 55,
+          "epoch": 2,
+          "capturedAt": 5743.700000000186,
+          "stages": {
+            "capture": 5743.700000000186,
+            "dispatch": 5747.4000000003725,
+            "result": 5828.200000000186,
+            "publication": 5828.4000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5828.4000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 56,
+          "epoch": 2,
+          "capturedAt": 5842,
+          "stages": {
+            "capture": 5842,
+            "dispatch": 5846.300000000745,
+            "result": 5927.9000000003725,
+            "publication": 5928.100000000559
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5928.100000000559
+        },
+        {
+          "kind": "detector",
+          "id": 57,
+          "epoch": 2,
+          "capturedAt": 5944.9000000003725,
+          "stages": {
+            "capture": 5944.9000000003725,
+            "dispatch": 5950.700000000186,
+            "result": 6032.700000000186,
+            "publication": 6032.9000000003725
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6032.9000000003725
+        },
+        {
+          "kind": "detector",
+          "id": 58,
+          "epoch": 2,
+          "capturedAt": 6044.300000000745,
+          "stages": {
+            "capture": 6044.300000000745,
+            "dispatch": 6047.9000000003725
+          },
+          "outcome": null,
+          "completedAt": null
+        }
+      ],
+      "claims": {
+        "mobile": "unverified without actual device run",
+        "metres": "accuracy unvalidated without independent distance truth"
+      }
+    },
+    "mobileSoak": {
+      "schema": "drivesense-mobile-soak-v1",
+      "clock": "performance.now monotonic milliseconds",
+      "provenance": "live-camera-runtime",
+      "active": true,
+      "epoch": 2,
+      "session": {
+        "durationMs": 5803.100000000559,
+        "phase": "warming"
+      },
+      "privacy": {
+        "pixelFree": true,
+        "cameraSettingsAllowlist": true,
+        "excluded": [
+          "pixels",
+          "video",
+          "camera-label",
+          "deviceId",
+          "groupId",
+          "local-path",
+          "gps"
+        ]
+      },
+      "camera": {
+        "settings": {
+          "width": 1280,
+          "height": 720,
+          "frameRate": 20,
+          "aspectRatio": 1.7777777777777777,
+          "resizeMode": "none"
+        }
+      },
+      "models": [
+        {
+          "kind": "metric-depth",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "wasm",
+          "totalLoadMs": 0.5,
+          "warmupMs": 5,
+          "outcome": "ready"
+        },
+        {
+          "kind": "detector",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "wasm",
+          "totalLoadMs": 0.2999999998137355,
+          "warmupMs": null,
+          "outcome": "ready"
+        },
+        {
+          "kind": "metric-depth",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "wasm",
+          "totalLoadMs": 0.09999999962747097,
+          "warmupMs": 5,
+          "outcome": "ready"
+        }
+      ],
+      "lifecycle": {
+        "metricWorkerError": 1
+      },
+      "boundedState": {
+        "inflightTraces": 1,
+        "maxInflightTraces": 64,
+        "histogramResolutionMs": 1,
+        "histogramMaxMs": 5000,
+        "retainedFrameRows": 0
+      },
+      "overall": {
+        "counts": {
+          "presentedCallbacks": 117,
+          "presentedFrameGaps": 0,
+          "detectorStarted": 58,
+          "detectorAccepted": 57,
+          "detectorDropped": 0,
+          "detectorBusySkips": 59,
+          "overlays": 57,
+          "alertOverlays": 0,
+          "metricAttempts": 5,
+          "metricAccepted": 4,
+          "metricDropped": 1,
+          "trackSnapshots": 57,
+          "trackObservations": 57,
+          "trackBirths": 1,
+          "trackLosses": 0,
+          "dropReasons": {}
+        },
+        "rates": {
+          "detectorAccepted": 0.9827586206896551,
+          "detectorDropped": 0,
+          "busy": 0.5042735042735043,
+          "metricAccepted": 0.8,
+          "trackSetTurnoverProxy": 0.017543859649122806
+        },
+        "stages": {
+          "callbackVsExpectedDisplay": {
+            "samples": 117,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 0.0641025641025641,
+            "p50Ms": 0,
+            "p95Ms": 0,
+            "p99Ms": 0,
+            "maxMs": 7.5
+          },
+          "captureToCallback": {
+            "samples": 117,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 4.751282051282111,
+            "p50Ms": 5,
+            "p95Ms": 5,
+            "p99Ms": 6,
+            "maxMs": 13.199999999999989
+          },
+          "decodeProcessing": {
+            "samples": 0,
+            "unavailable": 117,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "requestToResult": {
+            "samples": 57,
+            "unavailable": 1,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 81.26666666668628,
+            "p50Ms": 81,
+            "p95Ms": 83,
+            "p99Ms": 83,
+            "maxMs": 83.40000000037253
+          },
+          "frameToOverlay": {
+            "samples": 57,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 92.8070175442354,
+            "p50Ms": 92,
+            "p95Ms": 95,
+            "p99Ms": 108,
+            "maxMs": 107.50000000074488
+          },
+          "metricInference": {
+            "samples": 4,
+            "unavailable": 1,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 100,
+            "p50Ms": 100,
+            "p95Ms": 100,
+            "p99Ms": 100,
+            "maxMs": 100
+          }
+        }
+      },
+      "windows": [
+        {
+          "id": "0-5m",
+          "startMs": 0,
+          "endMs": 300000,
+          "observedDurationMs": 5803.100000000559,
+          "counts": {
+            "presentedCallbacks": 117,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 58,
+            "detectorAccepted": 57,
+            "detectorDropped": 0,
+            "detectorBusySkips": 59,
+            "overlays": 57,
+            "alertOverlays": 0,
+            "metricAttempts": 5,
+            "metricAccepted": 4,
+            "metricDropped": 1,
+            "trackSnapshots": 57,
+            "trackObservations": 57,
+            "trackBirths": 1,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": 0.9827586206896551,
+            "detectorDropped": 0,
+            "busy": 0.5042735042735043,
+            "metricAccepted": 0.8,
+            "trackSetTurnoverProxy": 0.017543859649122806
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 117,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 0.0641025641025641,
+              "p50Ms": 0,
+              "p95Ms": 0,
+              "p99Ms": 0,
+              "maxMs": 7.5
+            },
+            "captureToCallback": {
+              "samples": 117,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 4.751282051282111,
+              "p50Ms": 5,
+              "p95Ms": 5,
+              "p99Ms": 6,
+              "maxMs": 13.199999999999989
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 117,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 57,
+              "unavailable": 1,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 81.26666666668628,
+              "p50Ms": 81,
+              "p95Ms": 83,
+              "p99Ms": 83,
+              "maxMs": 83.40000000037253
+            },
+            "frameToOverlay": {
+              "samples": 57,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 92.8070175442354,
+              "p50Ms": 92,
+              "p95Ms": 95,
+              "p99Ms": 108,
+              "maxMs": 107.50000000074488
+            },
+            "metricInference": {
+              "samples": 4,
+              "unavailable": 1,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 100,
+              "p50Ms": 100,
+              "p95Ms": 100,
+              "p99Ms": 100,
+              "maxMs": 100
+            }
+          }
+        },
+        {
+          "id": "5-10m",
+          "startMs": 300000,
+          "endMs": 600000,
+          "observedDurationMs": 0,
+          "counts": {
+            "presentedCallbacks": 0,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 0,
+            "detectorAccepted": 0,
+            "detectorDropped": 0,
+            "detectorBusySkips": 0,
+            "overlays": 0,
+            "alertOverlays": 0,
+            "metricAttempts": 0,
+            "metricAccepted": 0,
+            "metricDropped": 0,
+            "trackSnapshots": 0,
+            "trackObservations": 0,
+            "trackBirths": 0,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": null,
+            "detectorDropped": null,
+            "busy": null,
+            "metricAccepted": null,
+            "trackSetTurnoverProxy": null
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "frameToOverlay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "metricInference": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            }
+          }
+        },
+        {
+          "id": "10-20m",
+          "startMs": 600000,
+          "endMs": 1200000,
+          "observedDurationMs": 0,
+          "counts": {
+            "presentedCallbacks": 0,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 0,
+            "detectorAccepted": 0,
+            "detectorDropped": 0,
+            "detectorBusySkips": 0,
+            "overlays": 0,
+            "alertOverlays": 0,
+            "metricAttempts": 0,
+            "metricAccepted": 0,
+            "metricDropped": 0,
+            "trackSnapshots": 0,
+            "trackObservations": 0,
+            "trackBirths": 0,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": null,
+            "detectorDropped": null,
+            "busy": null,
+            "metricAccepted": null,
+            "trackSetTurnoverProxy": null
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "frameToOverlay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "metricInference": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            }
+          }
+        },
+        {
+          "id": "20m+",
+          "startMs": 1200000,
+          "endMs": null,
+          "observedDurationMs": 0,
+          "counts": {
+            "presentedCallbacks": 0,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 0,
+            "detectorAccepted": 0,
+            "detectorDropped": 0,
+            "detectorBusySkips": 0,
+            "overlays": 0,
+            "alertOverlays": 0,
+            "metricAttempts": 0,
+            "metricAccepted": 0,
+            "metricDropped": 0,
+            "trackSnapshots": 0,
+            "trackObservations": 0,
+            "trackBirths": 0,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": null,
+            "detectorDropped": null,
+            "busy": null,
+            "metricAccepted": null,
+            "trackSetTurnoverProxy": null
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "frameToOverlay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "metricInference": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            }
+          }
+        }
+      ],
+      "claims": {
+        "trackSetTurnover": "proxy-only; not ground-truth ID switches",
+        "captureTime": "browser metadata when exposed; otherwise unavailable",
+        "boundary": "Runtime capability evidence only; not distance accuracy, collision-warning safety or public-road validation."
+      }
+    },
+    "backends": {
+      "detector": "wasm",
+      "metric": "wasm"
+    },
+    "metricLifecycle": {
+      "scope": "page-runtime lifecycle; retry budget is not reset by source/clip changes",
+      "state": "READY",
+      "generation": 4,
+      "failures": 1,
+      "firstFailure": {
+        "at": 4350.700000000186,
+        "fault": "infer-error"
+      },
+      "retryBudget": {
+        "max": 2,
+        "windowMs": 60000,
+        "scheduledAt": [
+          4350.700000000186
+        ]
+      },
+      "events": [
+        {
+          "at": 172.5,
+          "generation": 1,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 311.40000000037253,
+          "generation": 2,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 311.40000000037253,
+          "generation": 2,
+          "state": "LOADING",
+          "fault": null
+        },
+        {
+          "at": 311.90000000037253,
+          "generation": 2,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 450.80000000074506,
+          "generation": 2,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 551.6000000005588,
+          "generation": 2,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 1650.4000000003725,
+          "generation": 2,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 1751.2000000001863,
+          "generation": 2,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 2949.800000000745,
+          "generation": 2,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 3050.2000000001863,
+          "generation": 2,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 4249.4000000003725,
+          "generation": 2,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 4350.800000000745,
+          "generation": 3,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 4350.700000000186,
+          "generation": 3,
+          "state": "RECOVERING",
+          "fault": "infer-error"
+        },
+        {
+          "at": 5353.800000000745,
+          "generation": 4,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 5353.800000000745,
+          "generation": 4,
+          "state": "LOADING",
+          "fault": null
+        },
+        {
+          "at": 5353.9000000003725,
+          "generation": 4,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 5454.100000000559,
+          "generation": 4,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 5554.700000000186,
+          "generation": 4,
+          "state": "READY",
+          "fault": null
+        }
+      ],
+      "droppedEvents": 0,
+      "maxEvents": 32
+    }
+  },
+  "sha256": "690a11e1a1d3d7d87b2a314f47686a8cc0904d8366f30516fe0ab81bd2b9e15f"
+}

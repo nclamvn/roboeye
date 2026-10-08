@@ -1,0 +1,1409 @@
+{
+  "verifiedAt": "2026-10-08T05:28:09.852Z",
+  "pass": true,
+  "results": [
+    {
+      "pass": true,
+      "orientation": "landscape",
+      "backend": "webgpu",
+      "precision": "fp32",
+      "coldStartMs": 4162.300000011921,
+      "model": {
+        "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+        "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+        "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+        "sha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+        "bytes": 99159817,
+        "file": "da2-outdoor-392x224.onnx",
+        "adapter": "da2-outdoor-letterbox-roi-v1",
+        "width": 392,
+        "height": 224,
+        "maxDepthM": 80,
+        "orientation": "landscape",
+        "releaseUrl": "https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/da2-outdoor-392x224.onnx",
+        "unit": "metres",
+        "distanceKind": "optical-axis-z",
+        "scope": "desktop-analysed-video-poc"
+      },
+      "results": [
+        {
+          "scene": "gradient",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 126.20000000298023,
+              "depthMs": 93.79999999701977,
+              "joinedMs": 129.8999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 118.59999999403954,
+              "depthMs": 97.20000000298023,
+              "joinedMs": 119.20000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 117.59999999403954,
+              "depthMs": 98.59999999403954,
+              "joinedMs": 118.20000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 117.79999999701977,
+              "depthMs": 98.8999999910593,
+              "joinedMs": 118.40000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 110.70000000298023,
+              "depthMs": 92.20000000298023,
+              "joinedMs": 111.20000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 120.20000000298023,
+              "depthMs": 102,
+              "joinedMs": 120.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 113.70000000298023,
+              "depthMs": 101,
+              "joinedMs": 114.29999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 108.69999998807907,
+              "depthMs": 96,
+              "joinedMs": 109,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 125.09999999403954,
+              "depthMs": 109,
+              "joinedMs": 125.90000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 117.59999999403954,
+              "depthMs": 100.30000001192093,
+              "joinedMs": 118.20000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 122.80000001192093,
+              "depthMs": 110.70000000298023,
+              "joinedMs": 123.59999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 119.5,
+              "depthMs": 101.59999999403954,
+              "joinedMs": 120.40000000596046,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 0.0000553131103515625,
+            "p99Relative": 0.0000018433477442163648,
+            "maxRelative": 0.000007279457983009418
+          },
+          "summary": {
+            "detectorP50Ms": 117.79999999701977,
+            "detectorP95Ms": 125.09999999403954,
+            "depthP50Ms": 100.30000001192093,
+            "depthP95Ms": 110.70000000298023,
+            "joinedP50Ms": 118.40000000596046,
+            "joinedP95Ms": 125.90000000596046,
+            "withinTtl": 11
+          }
+        },
+        {
+          "scene": "bus",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 194.1000000089407,
+              "depthMs": 110.20000000298023,
+              "joinedMs": 196.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 173.70000000298023,
+              "depthMs": 116.70000000298023,
+              "joinedMs": 174.30000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 214.79999999701977,
+              "depthMs": 150.09999999403954,
+              "joinedMs": 216,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 177.8999999910593,
+              "depthMs": 134,
+              "joinedMs": 178.80000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 192.1000000089407,
+              "depthMs": 148,
+              "joinedMs": 193.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 223.8999999910593,
+              "depthMs": 194,
+              "joinedMs": 224.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 297.20000000298023,
+              "depthMs": 249.29999999701977,
+              "joinedMs": 297.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 581.7000000029802,
+              "depthMs": 654.7999999970198,
+              "joinedMs": 655.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 558.8999999910593,
+              "depthMs": 532.7999999970198,
+              "joinedMs": 559.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 465,
+              "depthMs": 474.20000000298023,
+              "joinedMs": 474.59999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 286.90000000596046,
+              "depthMs": 261.5,
+              "joinedMs": 287.3999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 250.5,
+              "depthMs": 261.6000000089407,
+              "joinedMs": 262.5,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": null,
+          "summary": {
+            "detectorP50Ms": 250.5,
+            "detectorP95Ms": 581.7000000029802,
+            "depthP50Ms": 249.29999999701977,
+            "depthP95Ms": 654.7999999970198,
+            "joinedP50Ms": 262.5,
+            "joinedP95Ms": 655.5,
+            "withinTtl": 11
+          }
+        }
+      ],
+      "errors": [],
+      "order": "before"
+    },
+    {
+      "pass": true,
+      "orientation": "landscape",
+      "backend": "webgpu",
+      "precision": "fp16",
+      "coldStartMs": 3552,
+      "model": {
+        "shape": "392x224",
+        "sourceSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+        "candidateSha256": "66e290f358ce9891e7ed0089d4bf02cf31f8d80ea858d010f5e8b37a51549ed4",
+        "bytes": 49856455,
+        "keepIoTypes": true,
+        "converter": "ort",
+        "converterVersion": "1.22.1",
+        "scope": "local numerical/performance candidate, not promoted or physical accuracy evidence"
+      },
+      "results": [
+        {
+          "scene": "gradient",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 108.29999999701977,
+              "depthMs": 78.20000000298023,
+              "joinedMs": 109.59999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 104.70000000298023,
+              "depthMs": 91.5,
+              "joinedMs": 105.30000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 104.6000000089407,
+              "depthMs": 88,
+              "joinedMs": 105.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 95.09999999403954,
+              "depthMs": 73.5,
+              "joinedMs": 95.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 106.5,
+              "depthMs": 86.3999999910593,
+              "joinedMs": 107.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 92.6000000089407,
+              "depthMs": 65.6000000089407,
+              "joinedMs": 93.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 99,
+              "depthMs": 66.09999999403954,
+              "joinedMs": 99.6000000089407,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 89,
+              "depthMs": 76.5,
+              "joinedMs": 89.3999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 109,
+              "depthMs": 87.5,
+              "joinedMs": 109.3999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 86.3999999910593,
+              "depthMs": 55.29999999701977,
+              "joinedMs": 86.90000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 101.29999999701977,
+              "depthMs": 77.59999999403954,
+              "joinedMs": 102,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 99.20000000298023,
+              "depthMs": 77.70000000298023,
+              "joinedMs": 99.69999998807907,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 0.1695995330810547,
+            "p99Relative": 0.01744501611214464,
+            "maxRelative": 0.025512571159149722
+          },
+          "summary": {
+            "detectorP50Ms": 99.20000000298023,
+            "detectorP95Ms": 109,
+            "depthP50Ms": 77.59999999403954,
+            "depthP95Ms": 91.5,
+            "joinedP50Ms": 99.69999998807907,
+            "joinedP95Ms": 109.3999999910593,
+            "withinTtl": 11
+          }
+        },
+        {
+          "scene": "bus",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 110.29999999701977,
+              "depthMs": 73.70000000298023,
+              "joinedMs": 112.1000000089407,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 102,
+              "depthMs": 76.20000000298023,
+              "joinedMs": 102.80000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 103.90000000596046,
+              "depthMs": 84.40000000596046,
+              "joinedMs": 104.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 137.90000000596046,
+              "depthMs": 68.90000000596046,
+              "joinedMs": 138.40000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 114.29999999701977,
+              "depthMs": 79.79999999701977,
+              "joinedMs": 115.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 128.90000000596046,
+              "depthMs": 91,
+              "joinedMs": 129.69999998807907,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 144.79999999701977,
+              "depthMs": 85.20000000298023,
+              "joinedMs": 145.8999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 152,
+              "depthMs": 90.5,
+              "joinedMs": 152.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 136.20000000298023,
+              "depthMs": 102.1000000089407,
+              "joinedMs": 136.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 137.70000000298023,
+              "depthMs": 85.79999999701977,
+              "joinedMs": 140.29999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 169.79999999701977,
+              "depthMs": 101.59999999403954,
+              "joinedMs": 171.30000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 179.30000001192093,
+              "depthMs": 143.19999998807907,
+              "joinedMs": 180.09999999403954,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 1.7222671508789062,
+            "p99Relative": 0.030215133190463456,
+            "maxRelative": 0.1968909554562308
+          },
+          "summary": {
+            "detectorP50Ms": 137.70000000298023,
+            "detectorP95Ms": 179.30000001192093,
+            "depthP50Ms": 85.79999999701977,
+            "depthP95Ms": 143.19999998807907,
+            "joinedP50Ms": 138.40000000596046,
+            "joinedP95Ms": 180.09999999403954,
+            "withinTtl": 11
+          }
+        }
+      ],
+      "errors": [],
+      "order": "candidate"
+    },
+    {
+      "pass": true,
+      "orientation": "landscape",
+      "backend": "webgpu",
+      "precision": "fp32",
+      "coldStartMs": 2737.7000000029802,
+      "model": {
+        "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+        "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+        "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+        "sha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+        "bytes": 99159817,
+        "file": "da2-outdoor-392x224.onnx",
+        "adapter": "da2-outdoor-letterbox-roi-v1",
+        "width": 392,
+        "height": 224,
+        "maxDepthM": 80,
+        "orientation": "landscape",
+        "releaseUrl": "https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/da2-outdoor-392x224.onnx",
+        "unit": "metres",
+        "distanceKind": "optical-axis-z",
+        "scope": "desktop-analysed-video-poc"
+      },
+      "results": [
+        {
+          "scene": "gradient",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 134.40000000596046,
+              "depthMs": 126.40000000596046,
+              "joinedMs": 135.30000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 115.5,
+              "depthMs": 93.79999999701977,
+              "joinedMs": 116.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 113,
+              "depthMs": 92,
+              "joinedMs": 113.59999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 113.6000000089407,
+              "depthMs": 112,
+              "joinedMs": 114.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 115.70000000298023,
+              "depthMs": 100,
+              "joinedMs": 116.20000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 126.40000000596046,
+              "depthMs": 91,
+              "joinedMs": 127.20000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 112.79999999701977,
+              "depthMs": 101.40000000596046,
+              "joinedMs": 113.20000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 122.19999998807907,
+              "depthMs": 109.59999999403954,
+              "joinedMs": 122.6000000089407,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 123.20000000298023,
+              "depthMs": 106.80000001192093,
+              "joinedMs": 123.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 124,
+              "depthMs": 102.20000000298023,
+              "joinedMs": 124.3999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 118.20000000298023,
+              "depthMs": 109.59999999403954,
+              "joinedMs": 119.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 122.3999999910593,
+              "depthMs": 107,
+              "joinedMs": 123,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 0.0000553131103515625,
+            "p99Relative": 0.0000018433477442163648,
+            "maxRelative": 0.000007279457983009418
+          },
+          "summary": {
+            "detectorP50Ms": 118.20000000298023,
+            "detectorP95Ms": 126.40000000596046,
+            "depthP50Ms": 102.20000000298023,
+            "depthP95Ms": 112,
+            "joinedP50Ms": 119.09999999403954,
+            "joinedP95Ms": 127.20000000298023,
+            "withinTtl": 11
+          }
+        },
+        {
+          "scene": "bus",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 131.09999999403954,
+              "depthMs": 100.5,
+              "joinedMs": 131.90000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 121.3999999910593,
+              "depthMs": 110.3999999910593,
+              "joinedMs": 122.20000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 126.90000000596046,
+              "depthMs": 98.5,
+              "joinedMs": 127.6000000089407,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 147.59999999403954,
+              "depthMs": 108.29999999701977,
+              "joinedMs": 148.20000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 161.70000000298023,
+              "depthMs": 122.6000000089407,
+              "joinedMs": 162.30000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 143,
+              "depthMs": 114.1000000089407,
+              "joinedMs": 144.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 237.1000000089407,
+              "depthMs": 143.59999999403954,
+              "joinedMs": 237.90000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 205.90000000596046,
+              "depthMs": 126.40000000596046,
+              "joinedMs": 207.29999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 210.90000000596046,
+              "depthMs": 219.40000000596046,
+              "joinedMs": 219.8999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 284.70000000298023,
+              "depthMs": 301.70000000298023,
+              "joinedMs": 302.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 534.7000000029802,
+              "depthMs": 515.7000000029802,
+              "joinedMs": 535.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 607.2000000029802,
+              "depthMs": 573.5,
+              "joinedMs": 607.7999999970198,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 0,
+            "p99Relative": 0,
+            "maxRelative": 0
+          },
+          "summary": {
+            "detectorP50Ms": 205.90000000596046,
+            "detectorP95Ms": 607.2000000029802,
+            "depthP50Ms": 126.40000000596046,
+            "depthP95Ms": 573.5,
+            "joinedP50Ms": 207.29999999701977,
+            "joinedP95Ms": 607.7999999970198,
+            "withinTtl": 11
+          }
+        }
+      ],
+      "errors": [],
+      "order": "after"
+    },
+    {
+      "pass": true,
+      "orientation": "portrait",
+      "backend": "webgpu",
+      "precision": "fp32",
+      "coldStartMs": 2232.0999999940395,
+      "model": {
+        "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+        "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+        "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+        "sha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+        "bytes": 99159816,
+        "file": "da2-outdoor-224x392.onnx",
+        "adapter": "da2-outdoor-aspect-static-support-v2",
+        "width": 224,
+        "height": 392,
+        "maxDepthM": 80,
+        "orientation": "portrait",
+        "unit": "metres",
+        "distanceKind": "optical-axis-z",
+        "scope": "aspect-specific-browser-poc; metric accuracy and mobile throughput unvalidated"
+      },
+      "results": [
+        {
+          "scene": "gradient",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 140.59999999403954,
+              "depthMs": 127.70000000298023,
+              "joinedMs": 141.69999998807907,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 139.40000000596046,
+              "depthMs": 123.90000000596046,
+              "joinedMs": 139.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 112.70000000298023,
+              "depthMs": 96.09999999403954,
+              "joinedMs": 113.29999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 112.5,
+              "depthMs": 100.5,
+              "joinedMs": 113.30000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 114.90000000596046,
+              "depthMs": 105.29999999701977,
+              "joinedMs": 115.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 119.59999999403954,
+              "depthMs": 108.20000000298023,
+              "joinedMs": 120.29999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 116.29999999701977,
+              "depthMs": 108.5,
+              "joinedMs": 116.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 119.70000000298023,
+              "depthMs": 101.5,
+              "joinedMs": 120.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 115.19999998807907,
+              "depthMs": 104.19999998807907,
+              "joinedMs": 115.8999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 119.80000001192093,
+              "depthMs": 100.90000000596046,
+              "joinedMs": 120.40000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 116.59999999403954,
+              "depthMs": 107.70000000298023,
+              "joinedMs": 117.1000000089407,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 125.5,
+              "depthMs": 110.40000000596046,
+              "joinedMs": 126.29999999701977,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 0.00003814697265625,
+            "p99Relative": 0.0000021116773221904343,
+            "maxRelative": 0.0000056660930727415165
+          },
+          "summary": {
+            "detectorP50Ms": 116.59999999403954,
+            "detectorP95Ms": 139.40000000596046,
+            "depthP50Ms": 105.29999999701977,
+            "depthP95Ms": 123.90000000596046,
+            "joinedP50Ms": 117.1000000089407,
+            "joinedP95Ms": 139.79999999701977,
+            "withinTtl": 11
+          }
+        },
+        {
+          "scene": "bus",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 130.40000000596046,
+              "depthMs": 107.09999999403954,
+              "joinedMs": 131.80000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 124.20000000298023,
+              "depthMs": 108.20000000298023,
+              "joinedMs": 124.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 134.1000000089407,
+              "depthMs": 115,
+              "joinedMs": 135.19999998807907,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 141.5,
+              "depthMs": 119.20000000298023,
+              "joinedMs": 142.3999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 151.29999999701977,
+              "depthMs": 134.5,
+              "joinedMs": 152.30000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 159.1000000089407,
+              "depthMs": 138.40000000596046,
+              "joinedMs": 159.59999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 193.5,
+              "depthMs": 169.19999998807907,
+              "joinedMs": 194.30000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 210.70000000298023,
+              "depthMs": 170.70000000298023,
+              "joinedMs": 211.59999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 282.6000000089407,
+              "depthMs": 258.29999999701977,
+              "joinedMs": 284.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 487.90000000596046,
+              "depthMs": 499,
+              "joinedMs": 499.80000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 528.0999999940395,
+              "depthMs": 494.09999999403954,
+              "joinedMs": 528.7000000029802,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 400.30000001192093,
+              "depthMs": 371.20000000298023,
+              "joinedMs": 400.79999999701977,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": null,
+          "summary": {
+            "detectorP50Ms": 193.5,
+            "detectorP95Ms": 528.0999999940395,
+            "depthP50Ms": 169.19999998807907,
+            "depthP95Ms": 499,
+            "joinedP50Ms": 194.30000001192093,
+            "joinedP95Ms": 528.7000000029802,
+            "withinTtl": 11
+          }
+        }
+      ],
+      "errors": [],
+      "order": "before"
+    },
+    {
+      "pass": true,
+      "orientation": "portrait",
+      "backend": "webgpu",
+      "precision": "fp16",
+      "coldStartMs": 2268.8999999910593,
+      "model": {
+        "shape": "224x392",
+        "sourceSha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+        "candidateSha256": "36848c34c829f405388f365bf14e3b7ad4e8d4f8005ff0991b8d1d41e0a7e844",
+        "bytes": 49856454,
+        "keepIoTypes": true,
+        "converter": "ort",
+        "converterVersion": "1.22.1",
+        "scope": "local numerical/performance candidate, not promoted or physical accuracy evidence"
+      },
+      "results": [
+        {
+          "scene": "gradient",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 103.09999999403954,
+              "depthMs": 123.20000000298023,
+              "joinedMs": 125.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 100.8999999910593,
+              "depthMs": 79,
+              "joinedMs": 101.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 100.3999999910593,
+              "depthMs": 82,
+              "joinedMs": 100.90000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 101.30000001192093,
+              "depthMs": 85.70000000298023,
+              "joinedMs": 101.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 98.90000000596046,
+              "depthMs": 79.79999999701977,
+              "joinedMs": 99.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 97.5,
+              "depthMs": 79.29999999701977,
+              "joinedMs": 97.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 107.29999999701977,
+              "depthMs": 80.20000000298023,
+              "joinedMs": 107.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 97.69999998807907,
+              "depthMs": 81.5,
+              "joinedMs": 98.1000000089407,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 103.30000001192093,
+              "depthMs": 89.70000000298023,
+              "joinedMs": 103.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 95.29999999701977,
+              "depthMs": 74.90000000596046,
+              "joinedMs": 95.8999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 105.70000000298023,
+              "depthMs": 84,
+              "joinedMs": 106.19999998807907,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 111.59999999403954,
+              "depthMs": 78.29999999701977,
+              "joinedMs": 112.29999999701977,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 0.12310409545898438,
+            "p99Relative": 0.01345767990382009,
+            "maxRelative": 0.022085220577134097
+          },
+          "summary": {
+            "detectorP50Ms": 100.8999999910593,
+            "detectorP95Ms": 111.59999999403954,
+            "depthP50Ms": 80.20000000298023,
+            "depthP95Ms": 89.70000000298023,
+            "joinedP50Ms": 101.70000000298023,
+            "joinedP95Ms": 112.29999999701977,
+            "withinTtl": 11
+          }
+        },
+        {
+          "scene": "bus",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 103.20000000298023,
+              "depthMs": 67.1000000089407,
+              "joinedMs": 104.59999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 105.70000000298023,
+              "depthMs": 75.09999999403954,
+              "joinedMs": 106.29999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 105.70000000298023,
+              "depthMs": 72.09999999403954,
+              "joinedMs": 106.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 105.29999999701977,
+              "depthMs": 79.20000000298023,
+              "joinedMs": 106,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 110.70000000298023,
+              "depthMs": 85.5,
+              "joinedMs": 111.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 117.30000001192093,
+              "depthMs": 71.80000001192093,
+              "joinedMs": 118.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 113.1000000089407,
+              "depthMs": 84.30000001192093,
+              "joinedMs": 113.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 132,
+              "depthMs": 79.3999999910593,
+              "joinedMs": 132.59999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 128.70000000298023,
+              "depthMs": 87.69999998807907,
+              "joinedMs": 129.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 125.40000000596046,
+              "depthMs": 94.29999999701977,
+              "joinedMs": 126.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 139.29999999701977,
+              "depthMs": 100.79999999701977,
+              "joinedMs": 140.19999998807907,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 149.1000000089407,
+              "depthMs": 109.5,
+              "joinedMs": 149.90000000596046,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 1.12091064453125,
+            "p99Relative": 0.024142703984450613,
+            "maxRelative": 0.05159367246835346
+          },
+          "summary": {
+            "detectorP50Ms": 117.30000001192093,
+            "detectorP95Ms": 149.1000000089407,
+            "depthP50Ms": 84.30000001192093,
+            "depthP95Ms": 109.5,
+            "joinedP50Ms": 118.09999999403954,
+            "joinedP95Ms": 149.90000000596046,
+            "withinTtl": 11
+          }
+        }
+      ],
+      "errors": [],
+      "order": "candidate"
+    },
+    {
+      "pass": true,
+      "orientation": "portrait",
+      "backend": "webgpu",
+      "precision": "fp32",
+      "coldStartMs": 2385.9000000059605,
+      "model": {
+        "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+        "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+        "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+        "sha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+        "bytes": 99159816,
+        "file": "da2-outdoor-224x392.onnx",
+        "adapter": "da2-outdoor-aspect-static-support-v2",
+        "width": 224,
+        "height": 392,
+        "maxDepthM": 80,
+        "orientation": "portrait",
+        "unit": "metres",
+        "distanceKind": "optical-axis-z",
+        "scope": "aspect-specific-browser-poc; metric accuracy and mobile throughput unvalidated"
+      },
+      "results": [
+        {
+          "scene": "gradient",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 129.8999999910593,
+              "depthMs": 122.90000000596046,
+              "joinedMs": 131,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 114.6000000089407,
+              "depthMs": 104.40000000596046,
+              "joinedMs": 115.09999999403954,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 113.20000000298023,
+              "depthMs": 100.40000000596046,
+              "joinedMs": 113.69999998807907,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 109.6000000089407,
+              "depthMs": 101.90000000596046,
+              "joinedMs": 110.19999998807907,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 122.1000000089407,
+              "depthMs": 108.59999999403954,
+              "joinedMs": 122.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 106.6000000089407,
+              "depthMs": 105.29999999701977,
+              "joinedMs": 107.1000000089407,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 113.90000000596046,
+              "depthMs": 98.40000000596046,
+              "joinedMs": 114.3999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 121.20000000298023,
+              "depthMs": 109.40000000596046,
+              "joinedMs": 121.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 114.59999999403954,
+              "depthMs": 103,
+              "joinedMs": 115,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 115.19999998807907,
+              "depthMs": 98.59999999403954,
+              "joinedMs": 115.70000000298023,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 114.8999999910593,
+              "depthMs": 103.29999999701977,
+              "joinedMs": 115.5,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 116.79999999701977,
+              "depthMs": 106,
+              "joinedMs": 117.20000000298023,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 0.00003814697265625,
+            "p99Relative": 0.0000021116773221904343,
+            "maxRelative": 0.0000056660930727415165
+          },
+          "summary": {
+            "detectorP50Ms": 114.6000000089407,
+            "detectorP95Ms": 122.1000000089407,
+            "depthP50Ms": 103.29999999701977,
+            "depthP95Ms": 109.40000000596046,
+            "joinedP50Ms": 115.09999999403954,
+            "joinedP95Ms": 122.70000000298023,
+            "withinTtl": 11
+          }
+        },
+        {
+          "scene": "bus",
+          "warmupExcluded": 1,
+          "measuredRuns": 11,
+          "samples": [
+            {
+              "detectorMs": 115.29999999701977,
+              "depthMs": 108.3999999910593,
+              "joinedMs": 115.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 120.20000000298023,
+              "depthMs": 109.5,
+              "joinedMs": 120.80000001192093,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 123.3999999910593,
+              "depthMs": 108.79999999701977,
+              "joinedMs": 123.90000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 127.40000000596046,
+              "depthMs": 106.79999999701977,
+              "joinedMs": 128.1000000089407,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 135.40000000596046,
+              "depthMs": 124.6000000089407,
+              "joinedMs": 136.29999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 137.5,
+              "depthMs": 114,
+              "joinedMs": 138.40000000596046,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 143.19999998807907,
+              "depthMs": 124.09999999403954,
+              "joinedMs": 143.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 167.20000000298023,
+              "depthMs": 92.80000001192093,
+              "joinedMs": 169.6000000089407,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 178.09999999403954,
+              "depthMs": 137.19999998807907,
+              "joinedMs": 179,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 198.5,
+              "depthMs": 149.79999999701977,
+              "joinedMs": 199.3999999910593,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 248.29999999701977,
+              "depthMs": 217.5,
+              "joinedMs": 248.79999999701977,
+              "withinOriginalTtl": true
+            },
+            {
+              "detectorMs": 357.6000000089407,
+              "depthMs": 328.40000000596046,
+              "joinedMs": 358.30000001192093,
+              "withinOriginalTtl": true
+            }
+          ],
+          "parity": {
+            "maxAbsM": 0,
+            "p99Relative": 0,
+            "maxRelative": 0
+          },
+          "summary": {
+            "detectorP50Ms": 143.19999998807907,
+            "detectorP95Ms": 357.6000000089407,
+            "depthP50Ms": 124.09999999403954,
+            "depthP95Ms": 328.40000000596046,
+            "joinedP50Ms": 143.79999999701977,
+            "joinedP95Ms": 358.30000001192093,
+            "withinTtl": 11
+          }
+        }
+      ],
+      "errors": [],
+      "order": "after"
+    }
+  ],
+  "promotion": [
+    {
+      "orientation": "landscape",
+      "numerical": false,
+      "controlsStable": false,
+      "benefit": false,
+      "eligibleForFurtherDeviceTest": false,
+      "productionPromotion": false
+    },
+    {
+      "orientation": "portrait",
+      "numerical": false,
+      "controlsStable": false,
+      "benefit": false,
+      "eligibleForFurtherDeviceTest": false,
+      "productionPromotion": false
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "warnings": [
+    {
+      "backend": "webgpu",
+      "precision": "fp32",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:09.459900 [W:onnxruntime:, session_state.cc:1280 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp32",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:09.461400 [W:onnxruntime:, session_state.cc:1282 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:20.899300 [W:onnxruntime:, constant_folding.cc:278 ApplyImpl] Could not find a CPU kernel and hence can't constant fold Pow node '/model/backbone/embeddings/Pow'\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:20.994700 [W:onnxruntime:, constant_folding.cc:278 ApplyImpl] Could not find a CPU kernel and hence can't constant fold Pow node '/model/backbone/embeddings/Pow'\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:21.124400 [W:onnxruntime:, session_state.cc:1280 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:21.192399 [W:onnxruntime:, session_state.cc:1280 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:21.124600 [W:onnxruntime:, session_state.cc:1282 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:21.194099 [W:onnxruntime:, session_state.cc:1282 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp32",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:32.990899 [W:onnxruntime:, session_state.cc:1280 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp32",
+      "orientation": "landscape",
+      "text": "\u001b[0;93m2026-10-08 12:27:33.001599 [W:onnxruntime:, session_state.cc:1282 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp32",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:27:42.726399 [W:onnxruntime:, session_state.cc:1280 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp32",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:27:42.727999 [W:onnxruntime:, session_state.cc:1282 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:27:52.812300 [W:onnxruntime:, constant_folding.cc:278 ApplyImpl] Could not find a CPU kernel and hence can't constant fold Pow node '/model/backbone/embeddings/Pow'\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:27:52.906500 [W:onnxruntime:, constant_folding.cc:278 ApplyImpl] Could not find a CPU kernel and hence can't constant fold Pow node '/model/backbone/embeddings/Pow'\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:27:53.032300 [W:onnxruntime:, session_state.cc:1280 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:27:53.032800 [W:onnxruntime:, session_state.cc:1282 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:27:53.135900 [W:onnxruntime:, session_state.cc:1280 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp16",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:27:53.136499 [W:onnxruntime:, session_state.cc:1282 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp32",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:28:02.945698 [W:onnxruntime:, session_state.cc:1280 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+    },
+    {
+      "backend": "webgpu",
+      "precision": "fp32",
+      "orientation": "portrait",
+      "text": "\u001b[0;93m2026-10-08 12:28:02.948298 [W:onnxruntime:, session_state.cc:1282 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+    }
+  ],
+  "scope": "Actual simultaneous pinned detector+depth workers on local desktop Chrome. Static bus pixels plus native gradient; numerical/runtime experiment, not live-camera tracking, phone thermal behaviour or physical metre accuracy."
+}

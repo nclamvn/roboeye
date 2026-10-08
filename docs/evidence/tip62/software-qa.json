@@ -1,0 +1,105 @@
+{
+  "pass": true,
+  "softwareOnly": true,
+  "sourceBefore": "a7787f4977ba32f04abf014683c9769d5da4e5ec66dee0ab1e9a9de56db5544d",
+  "sourceAfter": "a7787f4977ba32f04abf014683c9769d5da4e5ec66dee0ab1e9a9de56db5544d",
+  "unchanged": true,
+  "lint": "NOT RUN: no configured lint task",
+  "physicalCamera": "Separate NOT TESTED unless real hardware evidence exists",
+  "results": [
+    {
+      "name": "typecheck",
+      "exitCode": 0,
+      "elapsedMs": 3681
+    },
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "elapsedMs": 2984
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "elapsedMs": 15296
+    },
+    {
+      "name": "security",
+      "exitCode": 0,
+      "elapsedMs": 2016
+    },
+    {
+      "name": "controls",
+      "exitCode": 0,
+      "elapsedMs": 9458
+    },
+    {
+      "name": "video-anchor",
+      "exitCode": 0,
+      "elapsedMs": 9618
+    },
+    {
+      "name": "model-smoke-real",
+      "exitCode": 0,
+      "elapsedMs": 39058
+    },
+    {
+      "name": "mobile-live-mock",
+      "exitCode": 0,
+      "elapsedMs": 30501
+    },
+    {
+      "name": "portrait-diagnostics-mock",
+      "exitCode": 0,
+      "elapsedMs": 10168
+    },
+    {
+      "name": "depth-recovery-mock",
+      "exitCode": 0,
+      "elapsedMs": 40314
+    },
+    {
+      "name": "journal",
+      "exitCode": 0,
+      "elapsedMs": 111362
+    },
+    {
+      "name": "source-lifecycle-mock",
+      "exitCode": 0,
+      "elapsedMs": 17984
+    },
+    {
+      "name": "release",
+      "exitCode": 0,
+      "elapsedMs": 6973
+    },
+    {
+      "name": "release-integrity",
+      "exitCode": 0,
+      "elapsedMs": 38
+    }
+  ],
+  "unit": {
+    "tests": 319,
+    "passed": 319
+  },
+  "release": {
+    "name": "roboeye",
+    "version": "1.5.0",
+    "commit": "8219b578cb4e",
+    "base": "/",
+    "offlineDepth": false,
+    "buildFingerprint": "1b70083ec2c0",
+    "sourceFingerprint": "b3959cc788bf01d9de567d2cb164de6de43beedcd2c50ec846184b18781f950d",
+    "runtimeFingerprint": "e1fda66b8d99"
+  },
+  "security": {
+    "info": 0,
+    "low": 0,
+    "moderate": 5,
+    "high": 0,
+    "critical": 0,
+    "total": 5
+  },
+  "captureExpiryMs": 1200,
+  "precision": "fp32"
+}

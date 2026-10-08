@@ -1,0 +1,151 @@
+{
+  "verifiedAt": "2026-10-08T06:15:53.665Z",
+  "base": "https://roboeye-drivesense.vercel.app",
+  "scope": "Public canonical HTTPS/static assets, exact bytes/fingerprints and security headers. Not physical iPhone acceptance.",
+  "pass": true,
+  "release": {
+    "name": "roboeye",
+    "version": "1.5.0",
+    "commit": "8219b578cb4e",
+    "base": "/",
+    "offlineDepth": false,
+    "buildFingerprint": "1b70083ec2c0",
+    "sourceFingerprint": "b3959cc788bf01d9de567d2cb164de6de43beedcd2c50ec846184b18781f950d",
+    "runtimeFingerprint": "e1fda66b8d99"
+  },
+  "checks": [
+    {
+      "path": "/release.json",
+      "status": 200,
+      "identity": {
+        "name": "roboeye",
+        "version": "1.5.0",
+        "commit": "8219b578cb4e",
+        "base": "/",
+        "offlineDepth": false,
+        "buildFingerprint": "1b70083ec2c0",
+        "sourceFingerprint": "b3959cc788bf01d9de567d2cb164de6de43beedcd2c50ec846184b18781f950d",
+        "runtimeFingerprint": "e1fda66b8d99"
+      }
+    },
+    {
+      "path": "/drive.html",
+      "status": 200,
+      "bytes": 19197,
+      "sha256": "16a208cdef65962e623a05a9ad1b081c200b57be8aaeb3e62d31b5711e04681d",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "check": "security-headers",
+      "csp": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; child-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://huggingface.co https://*.huggingface.co https://*.hf.co https://*.xethub.hf.co https://github.com https://release-assets.githubusercontent.com https://objects.githubusercontent.com",
+      "permissions": "camera=(self), microphone=(), geolocation=(), payment=(), usb=()",
+      "xFrameOptions": "DENY"
+    },
+    {
+      "path": "/assets/400-yMjjxJcV.js",
+      "status": 200,
+      "bytes": 711,
+      "sha256": "d2a32840421496e872ade591618d2fa5c33797605d1aec04301717e5a90757d0",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/drive-Cd-e2GWK.js",
+      "status": 200,
+      "bytes": 139473,
+      "sha256": "06a4838f7d15b2dc220922fe26f928d15187aac3dd88a4527c965e22eabed545",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/400-DnORaWRE.css",
+      "status": 200,
+      "bytes": 8124,
+      "sha256": "1488ea29a20ea8c3699e5f0f1a2373a601bb2c5131ded8400ba739582fe83069",
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "path": "/assets/drive-C3r90rz9.css",
+      "status": 200,
+      "bytes": 18993,
+      "sha256": "6c80bc747384e661cbb5b4f8fca68045b7ded01a6657371642f7b36637cf99c4",
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "path": "/ort/ort-wasm-simd-threaded.jsep.mjs",
+      "status": 200,
+      "bytes": 44484,
+      "sha256": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "path": "/ort/ort-wasm-simd-threaded.jsep.wasm",
+      "status": 200,
+      "bytes": 21596019,
+      "sha256": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39",
+      "contentType": "application/wasm"
+    },
+    {
+      "path": "/models/drive-metric/da2-outdoor-392x224.onnx",
+      "status": 200,
+      "bytes": 99159817,
+      "sha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "/models/onnx-community/rtdetr_v2_r18vd-ONNX/onnx/model_quantized.onnx",
+      "status": 200,
+      "bytes": 20991219,
+      "sha256": "4b839c46187b77fc620c770de0be6790637b98afde9b386232b0fcf74382eb3c",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "/models/onnx-community/rtdetr_v2_r18vd-ONNX/config.json",
+      "status": 200,
+      "bytes": 5731,
+      "sha256": "2146837ddc24e4ab5e7c39d96ffe986d1d9048fdd4d02b37a0af5b59b17821c1",
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "path": "/models/onnx-community/rtdetr_v2_r18vd-ONNX/preprocessor_config.json",
+      "status": 200,
+      "bytes": 444,
+      "sha256": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1",
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "path": "/assets/drive-range-worker-BnlB116w.js",
+      "status": 200,
+      "bytes": 399595,
+      "sha256": "41f0573de9f1cd1418eea799ca64dfea7ceab746a900049d98603a12c9ab9380",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/drive-detect-worker-D605lZ7T.js",
+      "status": 200,
+      "bytes": 400868,
+      "sha256": "6055d343b3c3a6aeb031a08ddb618f466a78b80c4d688f8f61ac741a8e19ace7",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/detect-worker-BqvEu2fw.js",
+      "status": 200,
+      "bytes": 872899,
+      "sha256": "ddcbfeb64a27ae837fd73efd689b54e43948143adaeef3e116da79bbbc86c318",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "path": "/models/drive-metric/da2-outdoor-224x392.onnx",
+      "status": 200,
+      "bytes": 99159816,
+      "sha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "/models/drive-detector/rtdetr-r18-640-webgpu.onnx",
+      "status": 200,
+      "bytes": 81033458,
+      "sha256": "86171edeb435bd3f113e82d1c6720a576932e6deca962426bb1bc794e7000458",
+      "contentType": "application/octet-stream"
+    }
+  ],
+  "failures": []
+}

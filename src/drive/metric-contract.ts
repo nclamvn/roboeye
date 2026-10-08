@@ -23,9 +23,23 @@ export const DA2_DRIVE = Object.freeze({
   sourceWeightsSha256:'ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124',
   sha256:'dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f',bytes:99159817,
   file:'da2-outdoor-392x224.onnx',adapter:'da2-outdoor-letterbox-roi-v1',width:392,height:224,maxDepthM:80,
+  orientation:'landscape',
   releaseUrl:'https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/da2-outdoor-392x224.onnx',
   unit:'metres',distanceKind:'optical-axis-z',scope:'desktop-analysed-video-poc',
 } as const);
+
+/** Separate native export of the same weights; never reshape landscape bytes. */
+export const DA2_DRIVE_PORTRAIT=Object.freeze({
+  ...DA2_DRIVE,orientation:'portrait',file:'da2-outdoor-224x392.onnx',width:224,height:392,
+  sha256:'102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710',bytes:99159816,
+  adapter:'da2-outdoor-aspect-static-support-v2',releaseUrl:undefined,
+  scope:'aspect-specific-browser-poc; metric accuracy and mobile throughput unvalidated',
+} as const);
+export type Da2DriveContract=typeof DA2_DRIVE|typeof DA2_DRIVE_PORTRAIT;
+export function selectDa2DriveContract(width:number,height:number):Da2DriveContract {
+  if(![width,height].every(n=>Number.isInteger(n)&&n>0))throw Error('Decoded source geometry invalid');
+  return height>width?DA2_DRIVE_PORTRAIT:DA2_DRIVE;
+}
 
 export interface MetricMap {
   width: number; height: number; depth: Float32Array;
@@ -40,9 +54,9 @@ export function decodeDa2Metric(depth:Float32Array,width:number,height:number):M
   return {depth:depth.slice(),width,height,unit:'metres',distanceKind:'optical-axis-z',provenance:'learned-unverified',focal:null,shift:null,reprojectionRmse:null};
 }
 
-export function decodeDa2DriveMetric(depth:Float32Array,width:number,height:number):MetricMap {
-  if(!(depth instanceof Float32Array)||width!==DA2_DRIVE.width||height!==DA2_DRIVE.height||depth.length!==width*height)
-    throw Error('DA2 Drive sai shape landscape đã khóa.');
+export function decodeDa2DriveMetric(depth:Float32Array,width:number,height:number,contract:Da2DriveContract=DA2_DRIVE):MetricMap {
+  if(!(depth instanceof Float32Array)||width!==contract.width||height!==contract.height||depth.length!==width*height)
+    throw Error('DA2 Drive sai shape graph đã khóa.');
   if(depth.some(z=>!Number.isFinite(z)||z<=0||z>DA2_DRIVE.maxDepthM+.001))throw Error('DA2 Drive ngoài hợp đồng (0,80 m].');
   return {depth:depth.slice(),width,height,unit:'metres',distanceKind:'optical-axis-z',provenance:'learned-unverified',focal:null,shift:null,reprojectionRmse:null};
 }

@@ -2,6 +2,62 @@
 
 ## Unreleased
 
+### DriveSense partner-test hardening (TIP-62)
+
+- Guard camera permission/enumeration with source ownership; stop late streams,
+  keep optional device-list errors from blocking a valid camera and make denied
+  camera permissions actionable.
+- Invalidate measurements on hidden/muted source, resume only owned playing
+  intent, show explicit playback retry and preserve manually paused fixtures.
+- Restart the render loop after BFCache return without silently reopening a
+  camera. Add feature-detected screen wake with late-acquisition disposal.
+- Add bounded source lifecycle diagnostics, preserving schema-10/old journals;
+  fix outdated offline profiling schema, dedicated partner QA/CI and current
+  setup/rehearsal docs. Keep 1200 ms freshness and FP32/model pins unchanged.
+
+### DriveSense measured runtime delivery (TIP-61E)
+
+- Reuse worker-owned metric RGB/tensor input across completed runs instead of
+  allocating a 1 MiB Float32 input and a tensor wrapper every frame. Preserve
+  independent transferred output storage and one in-flight request.
+- Validate warm-up output type/shape, release failed warm-up resources and test
+  real-model recovery after an invalid-shape frame on both orientations/backends.
+- Add concurrent real detector/depth workloads and reproducible FP16 export
+  experiments. Keep production FP32: candidates failed numerical/benefit gates;
+  no desktop numbers are advertised as phone performance or physical accuracy.
+- Include portrait model in immutable HTTPS caching and exact-byte deployment
+  checks; preserve earlier evidence by using a separate TIP-61E namespace.
+
+### DriveSense evidenced metric gap removal (TIP-61D, local verified)
+
+- Add a separately native-exported 224×392 portrait metric graph, pinned to the
+  same outdoor weights; choose shape by decoded source, reset on rotation and
+  reconstruct the exact artifact from a compact verified build recipe.
+- Record bounded per-object ROI/policy/binding/filter/publication diagnostics,
+  capture/shape/model identity and final HUD admission; preserve old journals.
+- Require central connected depth support; fix temporal-filter amnesia at slow
+  cadence, keep rejection history, and explicitly reacquire after long gaps.
+- Add measured-workload scheduling with at most 80 ms GPU phase alignment;
+  keep the 1200 ms expiry and conservative near/far publication checks.
+- Local code/model/orchestration QA passes. No new phone acceptance or physical
+  distance accuracy claim; road-plane applicability and model bake-off remain open.
+
+### DriveSense mobile recovery foundations (TIP-61A/B, depth lifecycle slice of 61C)
+
+- Save bounded, pixel-free diagnostic sessions in IndexedDB every two seconds,
+  with SHA-256 integrity, sequence, export/import and reopen support. Storage
+  denial is observable without stopping detection; browser eviction remains possible.
+- Inject source/runtime/lockfile fingerprint into the running app and include
+  Vercel commit metadata; report exact model/processor hashes and resolved backends.
+- Account for capture, dispatch, result, join, ROI, identity binding and publication
+  without double-counting late results or inventing model timings from watchdogs.
+- Add explicitly labelled local video realtime fixtures through the camera hot path,
+  with clip hash, wall-clock playback, generation reset on loops and no preanalysis.
+- Recover live depth failures with at most two automatic retries per 60 seconds,
+  1/3-second backoff, cancellation and old-worker guards. Keep the 1200 ms metric
+  deadline and all ROI/publication rules unchanged. No phone readiness claim.
+
+
 ### DriveSense mobile live join (TIP-60C)
 
 - Run detector and metric depth on the same capture, joining either completion

@@ -20,3 +20,6 @@ tests/.road-tools/
 *.log
 .DS_Store
 :memory:.ses
+.vercel
+.env*
+research/mobile-metric-2026-10/snapshots/

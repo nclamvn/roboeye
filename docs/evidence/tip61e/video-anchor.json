@@ -1,0 +1,118 @@
+{
+  "status": "pass",
+  "results": [
+    {
+      "name": "portrait-window",
+      "video": {
+        "x": 0,
+        "y": 423,
+        "w": 1504,
+        "h": 846
+      },
+      "icon": {
+        "x": 12,
+        "y": 435,
+        "w": 42,
+        "h": 42
+      },
+      "fullscreen": false
+    },
+    {
+      "name": "desktop",
+      "video": {
+        "x": 0,
+        "y": 45,
+        "w": 1440,
+        "h": 810
+      },
+      "icon": {
+        "x": 12,
+        "y": 69.5,
+        "w": 42,
+        "h": 42
+      },
+      "fullscreen": false
+    },
+    {
+      "name": "phone",
+      "video": {
+        "x": 0,
+        "y": 312.3125,
+        "w": 390,
+        "h": 219.375
+      },
+      "icon": {
+        "x": 12,
+        "y": 324.3125,
+        "w": 42,
+        "h": 42
+      },
+      "fullscreen": false
+    },
+    {
+      "name": "ultrawide",
+      "video": {
+        "x": 322.2222222222222,
+        "y": 0,
+        "w": 1155.5555555555557,
+        "h": 650
+      },
+      "icon": {
+        "x": 334.21875,
+        "y": 69.5,
+        "w": 42,
+        "h": 42
+      },
+      "fullscreen": false
+    },
+    {
+      "name": "fullscreen",
+      "video": {
+        "x": 322.2222222222222,
+        "y": 0,
+        "w": 1155.5555555555557,
+        "h": 650
+      },
+      "icon": {
+        "x": 334.21875,
+        "y": 69.5,
+        "w": 42,
+        "h": 42
+      },
+      "fullscreen": true
+    },
+    {
+      "name": "exit-fullscreen",
+      "video": {
+        "x": 322.2222222222222,
+        "y": 0,
+        "w": 1155.5555555555557,
+        "h": 650
+      },
+      "icon": {
+        "x": 334.21875,
+        "y": 69.5,
+        "w": 42,
+        "h": 42
+      },
+      "fullscreen": false
+    },
+    {
+      "name": "portrait-source",
+      "video": {
+        "x": 717.1875,
+        "y": 0,
+        "w": 365.625,
+        "h": 650
+      },
+      "icon": {
+        "x": 729.1875,
+        "y": 69.5,
+        "w": 42,
+        "h": 42
+      },
+      "fullscreen": false
+    }
+  ],
+  "errors": []
+}
