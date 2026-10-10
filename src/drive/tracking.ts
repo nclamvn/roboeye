@@ -205,7 +205,7 @@ export class VehicleTracker {
       // Association can preserve identity through occlusion, not a positive label
       // indefinitely. Old strong evidence cannot be refreshed by weak detections.
       if(age>visualHold||!a.confirmed||a.misses>2||(!paused&&wall-a.strongWall>visualHold))return [];
-      const rangeAge=paused?Math.max(0,t-a.rangeAt):Math.max(age,wall-a.rangeWall),rangeHold=paused?400:a.range.provenance==='learned-unverified'?LIVE_METRIC_MAX_AGE_MS:this.rangeHoldMs();
+      const rangeAge=paused?Math.max(0,t-a.rangeAt):Math.max(age,wall-a.rangeWall),rangeHold=paused?400:['learned-unverified','ground-anchor-geometry'].includes(a.range.provenance)?LIVE_METRIC_MAX_AGE_MS:this.rangeHoldMs();
       const range=rangeAge>rangeHold?unknownRange('Dữ liệu khoảng cách cũ',a.range.kind):a.range;
       const d=range.distanceM;
       // Experimental proximity ONLY. No lane, TTC or safe-distance claim.

@@ -1,0 +1,11 @@
+YOLOX-Nano by Megvii, Inc. and its affiliates.
+Official upstream: https://github.com/Megvii-BaseDetection/YOLOX
+Source revision: 6ddff4824372906469a7fae2dc3206c7aa4bbaee
+Unmodified ONNX weights: official 0.1.1rc0/yolox_nano.onnx
+SHA-256: c789161ed43c8269fcd4e67c67eeeb4e80c622da2eb296a20bc6007bd18a0b7d
+License: Apache-2.0, full text in yolox-nano-LICENSE.txt.
+
+DriveSense's TypeScript browser adapter implements BGR/top-left preprocessing,
+raw grid/exp decoding, continuous-coordinate IoU NMS, and a road-vehicle
+allowlist. These application adapters are not endorsed by upstream. A lighter
+detector is not a metric depth model or a road-safety certification.

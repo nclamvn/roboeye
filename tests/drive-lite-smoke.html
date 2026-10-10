@@ -1,0 +1,14 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><title>Nano actual model gate</title><pre id="result">Loading</pre>
+<script type="module">
+const worker=new Worker(new URL('../src/worker/drive-lite-worker.ts',import.meta.url),{type:'module'});
+const out=document.querySelector('#result'),latencies=[],choice=new URLSearchParams(location.search).get('backend');
+let pixels,backend;const finish=r=>{window.liteSmoke=r;out.textContent=JSON.stringify(r);worker.terminate();};
+worker.onerror=e=>finish({pass:false,error:e.message});
+worker.onmessage=async({data:m})=>{try{
+ if(m.type==='error')return finish({pass:false,error:m.message});
+ if(m.type==='ready'){backend=m.device;const img=new Image();img.src='./.detection-benchmark-cache/bus.jpg';await img.decode();const c=document.createElement('canvas');c.width=480;c.height=640;const ctx=c.getContext('2d');ctx.drawImage(img,0,0,c.width,c.height);pixels=ctx.getImageData(0,0,c.width,c.height).data;}
+ else if(m.type==='det'){latencies.push(m.detMs);if(latencies.length===12)return finish({pass:m.boxes.some(b=>b.label==='bus'&&b.score>.4),backend,latencies,boxes:m.boxes,scope:'Actual official Nano worker on desktop browser; bus fixture, not phone or physical metres.'});}
+ if(m.type==='ready'||m.type==='det'){const data=pixels.slice();worker.postMessage({type:'frame',width:480,height:640,rgba:data.buffer,capturedAt:latencies.length},[data.buffer]);}
+ }catch(e){finish({pass:false,error:String(e)});}};
+worker.postMessage({type:'init',forceWasm:choice==='wasm'});window.addEventListener('pagehide',()=>worker.terminate());
+</script></html>

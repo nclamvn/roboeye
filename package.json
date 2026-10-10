@@ -1,7 +1,7 @@
 {
   "name": "roboeye",
   "private": true,
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "RoboEye — biến camera laptop thành mắt robot, chạy toàn bộ trong trình duyệt",
   "type": "module",
   "engines": {
@@ -10,7 +10,7 @@
   "scripts": {
     "predev": "node scripts/copy-ort.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/fetch-drive-models.mjs && node scripts/derive-da2-portrait.mjs && node scripts/copy-ort.mjs",
+    "prebuild": "node scripts/fetch-drive-models.mjs && node scripts/fetch-drive-lite-model.mjs && node scripts/derive-da2-portrait.mjs && node scripts/copy-ort.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
@@ -87,6 +87,7 @@
     "@tensorflow/tfjs-core": "4.9.0",
     "@tensorflow/tfjs-tflite": "0.0.1-alpha.10",
     "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4",
+    "onnxruntime-web-mobile": "npm:onnxruntime-web@1.30.0",
     "three": "^0.185.1",
     "urdf-loader": "^0.13.1"
   },

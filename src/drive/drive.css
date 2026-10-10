@@ -9,6 +9,12 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible,.
 a{color:inherit}
 svg{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:0;width:100%;margin:0;padding:0}
+.range-path-chip{position:absolute;z-index:4;left:12px;top:100px;min-height:36px;padding:6px 10px;background:rgba(12,27,36,.92);color:var(--ice);font-size:12px;border-color:#527082}
+.range-path-chip[hidden]{display:none}
+.stage .anchor-view{position:relative;inset:auto;display:block;pointer-events:auto;width:100%;height:auto;object-fit:initial;margin:12px 0;touch-action:manipulation;border:1px solid var(--line);border-radius:6px;cursor:crosshair}
+.stage .anchor-view[hidden]{display:none}
+.anchor-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:4px 0;font-size:12px}
+.anchor-row button{min-height:32px;padding:3px 10px}
 .viewer{min-width:0;width:100%}
 /* One viewport shell. The video and canvas share the same contain transform. */
 .stage{position:relative;width:100%;min-width:0;height:100svh;height:100dvh;overflow:hidden;background:var(--cabin);isolation:isolate}

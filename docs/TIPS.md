@@ -483,3 +483,15 @@ Nguyên liệu gốc: registry fact F01–F11 trong PRD mục 4. Bốn TIP tươ
 - Detail: `docs/TIP-60C-MOBILE-LIVE-JOIN.md`.
 - Acceptance: unit/browser/runtime evidence; real phone smoke/soak remains a
   separate acceptance gate, not inferred from desktop Chrome.
+
+## TIP-63 · Mobile Lite Ranging
+
+- Dependencies: TIP-62 hardening and independent TIP-63Q mobile quality review.
+- Priority: P0 measurable metres on bounded mobile workloads.
+- Scope: pinned Apache Nano detector/isolated runtime, measured mobile workload
+  budget, real-reference planar calibration with independent holdouts, same-
+  capture geometry, source/crop invalidation and per-target coverage export.
+- Boundary: approximate camera-forward metres only in the calibrated road
+  domain; not bumper/lateral clearance. Actual phone accuracy/thermal soak
+  remains a separate gate. Model-only or mock UI success is not acceptance.
+- Detail: `TIP-63-MOBILE-LITE-RANGING.md`, `QA-TIP-63.md`.

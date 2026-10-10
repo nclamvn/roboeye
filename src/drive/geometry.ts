@@ -13,7 +13,7 @@ export interface CameraProfile {
 }
 export interface RangeEstimate {
   kind: 'ground_contact_forward_m' | 'learned_optical_axis_z_m';
-  provenance: 'none' | 'user-profile-geometry' | 'learned-unverified';
+  provenance: 'none' | 'user-profile-geometry' | 'ground-anchor-geometry' | 'learned-unverified';
   distanceM: number | null;
   lateralM: number | null;
   sigmaM: number | null;

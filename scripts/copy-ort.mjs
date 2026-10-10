@@ -16,6 +16,12 @@ for (const f of readdirSync(src)) {
 }
 console.log(`[copy-ort] đã copy ${n} file ORT runtime vào public/ort/`);
 
+// Isolated 1.30 runtime for Nano. Never serve the older Transformers WASM
+// files to this alias, or overwrite the RT-DETR/depth baseline runtime.
+const mobileSrc=`${root}node_modules/onnxruntime-web-mobile/dist/`,mobileDst=`${dst}mobile/`;
+mkdirSync(mobileDst,{recursive:true});
+for(const f of readdirSync(mobileSrc))if(f.startsWith('ort-wasm'))copyFileSync(mobileSrc+f,mobileDst+f);
+
 const mpSrc = `${root}node_modules/@mediapipe/tasks-vision/wasm/`;
 const mpDst = `${root}public/mediapipe/wasm/`;
 mkdirSync(mpDst, { recursive: true });

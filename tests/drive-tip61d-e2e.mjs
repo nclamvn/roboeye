@@ -3,7 +3,8 @@ import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {chromium} from 'playwright-core';
 import {browserLaunchOptions,resolveBrowserExecutable} from './helpers/browser.mjs';
 import {startDev,waitForPreview,stopPreview} from './helpers/preview-server.mjs';
-const root=new URL('..',import.meta.url).pathname,port=4226,out='/private/tmp/roboeye-tip61d-ui';await mkdir(out,{recursive:true});
+import {tmpdir} from 'node:os';import {join} from 'node:path';
+const root=new URL('..',import.meta.url).pathname,port=4226,out=join(tmpdir(),'roboeye-tip61d-ui');await mkdir(out,{recursive:true});
 const server=startDev(root,port);await waitForPreview(server,60000);
 const browser=await chromium.launch(browserLaunchOptions(await resolveBrowserExecutable()));
 try{

@@ -25,8 +25,21 @@ try{
     // reload while waiting must not become a silent 130-second no-op.
     await page.evaluate(()=>document.querySelector('#run').click());
     assert.notEqual(await page.textContent('#result'),'Chưa chạy','fixture was reloaded or click handler did not start');
-    const progress=setInterval(()=>{void page.textContent('#result').then(value=>console.log(`[${backend}] ${value.slice(0,250)}`)).catch(()=>{});},10000);
-    try{await page.waitForFunction(()=>/^\{|^FAIL/.test(document.querySelector('#result').textContent),null,{timeout:130000});}finally{clearInterval(progress);}
+    // Vite can discover a worker-only dependency after the first click and
+    // reload this fixture. Retry that explicit no-run state at most twice;
+    // keep the same total deadline and still require actual inference PASS.
+    const deadline=Date.now()+130000;let fixtureReloads=0,lastProgress=0;
+    while(Date.now()<deadline){
+      const value=await page.textContent('#result');if(/^\{|^FAIL/.test(value))break;
+      if(value==='Chưa chạy'){
+        assert.ok(++fixtureReloads<=2,'repeated Vite fixture reloads');
+        await page.waitForFunction(()=>window.driveModelSmokeReady===true);
+        await page.evaluate(()=>document.querySelector('#run').click());
+        console.log(`[${backend}] recovered fixture reload ${fixtureReloads}`);
+      }
+      if(Date.now()-lastProgress>10000){console.log(`[${backend}] ${value.slice(0,250)}`);lastProgress=Date.now();}
+      await page.waitForTimeout(500);
+    }
     assert.ok((await page.textContent('#result')).startsWith('{'),await page.textContent('#result'));
     const detector=JSON.parse(await page.textContent('#result'));assert.equal(detector.pass,true,detector.error);assert.equal(detector.backend,backend);
     await page.goto(`http://127.0.0.1:${port}/tests/drive-range-smoke.html?backend=${backend}`);

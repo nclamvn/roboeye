@@ -40,7 +40,7 @@ export function installMockWorkers() {
       const workerUrl = String(url);
       this.kind = workerUrl.includes('drive-road-worker') ? 'drive-road'
         : workerUrl.includes('drive-range-worker') ? 'drive-range'
-          : workerUrl.includes('detect-worker') ? 'detection'
+          : workerUrl.includes('detect-worker') || workerUrl.includes('drive-lite-worker') ? 'detection'
             : workerUrl.includes('air-hand-worker') ? 'air-hand'
           : workerUrl.includes('air-classifier-worker') ? 'air-classifier'
             : 'depth';
@@ -185,7 +185,7 @@ export function installMockWorkers() {
             type: 'det',
             detMs: 12,
             capturedAt: message.capturedAt,
-            boxes: [
+            boxes: window.__mockDetectionBoxes ?? [
               { label: 'person', score: 0.97, x0: 0.10, y0: 0.12, x1: 0.42, y1: 0.88 },
               { label: 'chair', score: 0.86, x0: 0.55, y0: 0.35, x1: 0.91, y1: 0.90 }
             ]

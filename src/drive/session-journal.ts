@@ -5,7 +5,7 @@ export interface SessionManifest {
   sessionId: string; source: DiagnosticSource; execution: 'actual-workers' | 'mock-workers';
   startedUtc: string; timeOrigin: number; build: { version: string; commit: string; sourceFingerprint: string };
   userAgent: string; capabilities: { webgpuPresent: boolean; crossOriginIsolated: boolean; videoFrameCallback: boolean };
-  models: { detectorGpuSha256: string; detectorWasmSha256: string; metricSha256: string;metricLandscapeSha256?:string;metricPortraitSha256?:string };
+  models: { detectorGpuSha256: string; detectorWasmSha256: string; metricSha256: string;metricLandscapeSha256?:string;metricPortraitSha256?:string;detectorLiteSha256?:string };
   metricMaxAgeMs: number; wasmThreads: number;
   policies?: { range: string; detector: string; metricAdapter: string; processorRevision: string; processorSha256: string };
   fixture?: { sha256: string | null; bytes: number; mime: string; rights: string };
@@ -16,6 +16,7 @@ export interface DiagnosticPayload {
   backends: { detector: string | null; metric: string | null };
   metricLifecycle?: object;
   sourceLifecycle?: object;
+  mobileRanging?: object;
 }
 export interface JournalRecord {
   schema: 'drivesense-session-journal-v1'; sessionId: string; sequence: number; updatedUtc: string;
@@ -43,7 +44,7 @@ export async function validateJournalRecord(input: unknown): Promise<JournalReco
   if (r.schema !== 'drivesense-session-journal-v1') throw Error('Schema báo cáo chưa được hỗ trợ; dữ liệu cũ không bị xóa.');
   const p = r.payload, m = p?.manifest;
   if (!fields(r, ['schema','sessionId','sequence','updatedUtc','payload','sha256']) || !p || !m ||
-      !fields(p, ['manifest','status','epoch','elapsedMs','ledger','mobileSoak','backends','metricLifecycle','sourceLifecycle']) ||
+      !fields(p, ['manifest','status','epoch','elapsedMs','ledger','mobileSoak','backends','metricLifecycle','sourceLifecycle','mobileRanging']) ||
       !fields(m, ['sessionId','source','execution','startedUtc','timeOrigin','build','userAgent','capabilities','models','metricMaxAgeMs','wasmThreads','fixture','policies']) ||
       !/^[a-zA-Z0-9-]{1,80}$/.test(r.sessionId) || m.sessionId !== r.sessionId ||
       !Number.isInteger(r.sequence) || r.sequence < 1 || !Number.isFinite(Date.parse(r.updatedUtc)) ||

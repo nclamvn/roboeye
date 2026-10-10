@@ -12,6 +12,7 @@
       <div class="stage" id="stage" data-source="none"><video id="video" muted playsinline aria-label="Video hành trình"></video><canvas id="overlay" aria-label="Khung xe và nhãn khoảng cách"></canvas>
         <header class="topbar"><a href="./">RoboEye</a><h1>DriveSense</h1><span class="safety">PoC · Không dùng để phanh/lái.</span></header>
         <div class="shadow-chip" id="hud-mode" role="status">Chọn nguồn</div>
+        <button id="range-path-chip" class="range-path-chip" type="button" hidden title="Chọn cách đo và hiệu chuẩn">Đo AI</button>
         <div class="road-chip" id="road-chip" role="status" aria-live="polite" aria-label="Làn: chưa đủ dữ liệu" title="Làn: chưa đủ dữ liệu" data-lane="unknown" hidden><svg viewBox="0 0 32 32" aria-hidden="true"><path class="lane-left" d="M5 27 11 5"/><path class="lane-right" d="m21 5 6 22"/><rect x="13" y="15" width="6" height="10" rx="2"/><path class="lane-direction" d="m15 7-4 3 4 3m-4-3h10"/></svg></div>
         <div class="proximity-warning" id="hud-warning" role="alert" aria-atomic="true" hidden><span class="warning-icon" aria-hidden="true">⚠</span><span id="hud-warning-text"></span></div>
         <section class="job-notice" id="job-notice" aria-label="Trạng thái xử lý video" hidden>
@@ -77,10 +78,23 @@
         <p>Chế độ test phát theo thời gian thật qua pipeline camera, không phân tích trước. Không phải phiên camera hoặc kiểm chứng số mét.</p>
       </section>
       <section><h2>Nhận diện</h2><p>Camera live dùng detector và depth theo nhịp độc lập; video xử lý gối đầu rồi mới phát lại. Chọn mật độ thấp hơn để giảm số inference một cách minh bạch.</p><button id="model">Bật nhận diện xe</button><label class="check"><input id="wasm" type="checkbox"/> Ép WASM cho cả detector và depth</label>
+        <label>Detector<select id="drive-detector"><option value="auto">Tự chọn · mobile ưu tiên nhẹ</option><option value="lite">YOLOX-Nano · 3,66 MB</option><option value="rtdetr">RT-DETR · baseline đầy đủ</option></select></label>
+        <label>Cách đo<select id="range-path"><option value="auto">Tự chọn · ưu tiên mốc đã kiểm</option><option value="ai">AI metric · thử nghiệm</option><option value="anchors">Theo mốc · không chạy depth AI</option></select></label>
+        <p id="mobile-budget" role="status">Chưa đo ngân sách thiết bị. GPU có mặt không đồng nghĩa đạt realtime.</p>
         <label>Chế độ phân tích video<select id="analysis-preset"><option value="quality">Chi tiết · 5 mẫu/giây</option><option value="balanced" selected>Cân bằng · 2,5 mẫu/giây</option><option value="fast">Nhanh · 1 mẫu/giây</option></select></label>
         <p id="analysis-preset-status">Cân bằng giảm một nửa số inference so với Chi tiết; vẫn phân tích toàn timeline.</p>
         <label>Zoom/crop video (×)<input id="video-zoom" type="number" value="1" min="1" max="4" step="0.1"/></label>
         <p id="zoom-status">1×: mét AI vẫn chưa kiểm chứng. Xe sát biên hoặc phối cảnh mâu thuẫn sẽ không hiện số đo.</p>
+      </section>
+      <section id="anchor-panel"><h2>Đo nhẹ theo mốc</h2><p>Không cần model depth hoặc đo FOV. Camera phải cố định, đường phẳng; nhập khoảng cách dọc phía trước đã đo thật, không phải khoảng cách ngang hay ước lượng bằng mắt.</p>
+        <button id="anchor-freeze" type="button">Chụp khung để đặt mốc</button>
+        <canvas id="anchor-view" class="anchor-view" hidden tabindex="0" aria-label="Ảnh camera local: chạm hoặc dùng phím mũi tên chọn mốc; Enter nhập mét"></canvas>
+        <div class="fields"><label>Mét đã đo<input id="anchor-metres" type="number" min="2" max="80" step="any" placeholder="Ví dụ mốc đã đo 10 m"/></label><label>Loại mốc<select id="anchor-split"><option value="fit">Fit · ít nhất 6 mốc</option><option value="check">Kiểm độc lập · ít nhất 2</option></select></label></div>
+        <button id="anchor-add" type="button">Thêm mốc đã chọn</button><div id="anchor-list" aria-label="Danh sách mốc"></div>
+        <label class="check"><input id="anchor-confirm" type="checkbox"/> Tôi đã đo mét, giữ camera/lens/crop cố định, đường phẳng. Các mốc kiểm là điểm độc lập.</label>
+        <div class="row"><button id="anchor-fit" type="button">Kiểm & áp dụng mốc</button><button id="anchor-reset" type="button">Xóa mốc</button></div>
+        <p id="anchor-status" role="status">Cần ≥6 mốc fit trải ≥8 m, ≥3 khoảng cách và ≥2 mốc kiểm. Chỉ hiện mét trong vùng đã kiểm.</p>
+        <div class="row"><button id="anchor-export" type="button">Xuất mốc</button><label class="file-button secondary">Nhập mốc<input id="anchor-import" type="file" accept=".json,application/json"/></label></div>
       </section>
       <section><h2>Shadow risk HUD</h2><p>Tốc độ chỉ là đầu vào thử nghiệm để chọn mốc khoảng cách theo Thông tư 38/2024. Mọi giá trị công bố trên HUD đều dùng mét; tín hiệu tiến gần được giữ bên trong risk engine.</p>
         <label>Tốc độ xe thử <output id="ego-speed-value">0 km/h</output><input id="ego-speed" type="range" min="0" max="120" step="1" value="0"/></label>

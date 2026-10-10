@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Mobile Lite Ranging (TIP-63)
+
+- Add selectable Apache-2.0 YOLOX-Nano (3.66 MB) with SHA-verified official
+  weights, BGR/raw-grid adapter and isolated ONNX Runtime Web 1.30. RT-DETR
+  remains available as the unchanged baseline; auto mobile starts Nano.
+- Add local camera-frame reference calibration: six measured fit points and
+  two independent checks, fixed camera/planar-road confirmation, bounded
+  domain, import re-fit and source/zoom invalidation. Geometry uses the
+  detector's own capture, without depth inference or freshness relaxation.
+- Measure detector and joined latency before promoting automatic mobile AI
+  workloads. Export per-target metre coverage/blackout separately from physical
+  accuracy and device acceptance. No road-safety readiness is claimed.
+
+
 ### DriveSense partner-test hardening (TIP-62)
 
 - Guard camera permission/enumeration with source ownership; stop late streams,
