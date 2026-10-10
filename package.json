@@ -15,6 +15,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test:unit": "tsx --test tests/unit/*.test.ts",
+    "test:assistive-lab": "node --import tsx tests/assistive-lab-e2e.mjs",
+    "qa:assistive-foundation": "node scripts/qa-assistive-foundation.mjs",
     "test:drive-range-e2e": "node tests/drive-range-e2e.mjs",
     "test:drive-mobile-live-e2e": "node tests/drive-mobile-live-e2e.mjs",
     "test:drive-session-journal-e2e": "node tests/drive-session-journal-e2e.mjs",

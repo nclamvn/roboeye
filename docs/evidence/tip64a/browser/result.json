@@ -1,0 +1,75 @@
+{
+  "pass": true,
+  "browser": "151.0.7922.34",
+  "fixtureCameraOnly": true,
+  "physicalPhoneTested": false,
+  "checks": [
+    {
+      "name": "R3/R6 no automatic camera/record/storage",
+      "pass": true
+    },
+    {
+      "name": "R2/R6 synthetic range and watermark",
+      "pass": true
+    },
+    {
+      "name": "R4/R6 nine scenarios seek with missing/stale/relative refusal",
+      "pass": true
+    },
+    {
+      "name": "R4 deterministic play/pause",
+      "pass": true
+    },
+    {
+      "name": "R3/R6 export/import never grants consent or starts camera",
+      "pass": true
+    },
+    {
+      "name": "R3/R6 corrupt and oversize imports rejected without losing replay",
+      "pass": true
+    },
+    {
+      "name": "R6 375/768/1440 layout without overflow or undersized buttons",
+      "pass": true
+    },
+    {
+      "name": "R3/R6 camera fake-device metadata consent/stop/export with no invented depth",
+      "pass": true
+    },
+    {
+      "name": "R3 revoke cancels an asynchronous in-flight export",
+      "pass": true
+    },
+    {
+      "name": "R3 revoke erases volatile capture, stop ends all tracks",
+      "pass": true
+    },
+    {
+      "name": "R3/R7 permission arriving after cancel is disposed",
+      "pass": true
+    },
+    {
+      "name": "R6 camera denial is actionable",
+      "pass": true
+    },
+    {
+      "name": "R3/R7 pagehide clears tracks/consent/data/UI; BFCache cannot retain old range",
+      "pass": true
+    },
+    {
+      "name": "R5/R6 imported provider/AI numbers never claim physical validation",
+      "pass": true
+    },
+    {
+      "name": "R5 collection plan has 24 slots, zero invented measurements",
+      "pass": true
+    },
+    {
+      "name": "R3/R7 clear removes source; no JS errors or external requests",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "scratchCleanup": "profile and downloads removed in finally"
+}

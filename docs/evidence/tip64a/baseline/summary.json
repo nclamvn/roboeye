@@ -1,0 +1,81 @@
+{
+  "pass": true,
+  "softwareOnly": true,
+  "sourceBefore": "3664677b1eca9c4bc527881b586633727384bbf88f9d7a25d09074c6cda74994",
+  "sourceAfter": "3664677b1eca9c4bc527881b586633727384bbf88f9d7a25d09074c6cda74994",
+  "unchanged": true,
+  "lint": "NOT RUN: no configured lint task",
+  "physicalCamera": "Separate NOT TESTED unless real hardware evidence exists",
+  "results": [
+    {
+      "name": "typecheck",
+      "exitCode": 0,
+      "elapsedMs": 3035
+    },
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "elapsedMs": 4446
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "elapsedMs": 14626
+    },
+    {
+      "name": "security",
+      "exitCode": 0,
+      "elapsedMs": 3293
+    },
+    {
+      "name": "controls",
+      "exitCode": 0,
+      "elapsedMs": 8002
+    },
+    {
+      "name": "video-anchor",
+      "exitCode": 0,
+      "elapsedMs": 8096
+    },
+    {
+      "name": "model-smoke-real",
+      "exitCode": 0,
+      "elapsedMs": 22772
+    },
+    {
+      "name": "mobile-live-mock",
+      "exitCode": 0,
+      "elapsedMs": 17185
+    },
+    {
+      "name": "portrait-diagnostics-mock",
+      "exitCode": 0,
+      "elapsedMs": 7424
+    },
+    {
+      "name": "depth-recovery-mock",
+      "exitCode": 0,
+      "elapsedMs": 37653
+    },
+    {
+      "name": "journal",
+      "exitCode": 0,
+      "elapsedMs": 109396
+    },
+    {
+      "name": "source-lifecycle-mock",
+      "exitCode": 0,
+      "elapsedMs": 17963
+    },
+    {
+      "name": "release",
+      "exitCode": 0,
+      "elapsedMs": 6990
+    },
+    {
+      "name": "release-integrity",
+      "exitCode": 0,
+      "elapsedMs": 39
+    }
+  ]
+}

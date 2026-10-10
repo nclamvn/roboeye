@@ -59,7 +59,7 @@ function sourceFingerprint() {
   const hash = createHash('sha256').update(runtimeFingerprint).update(commit)
     .update(process.env.ROBOEYE_BASE || '/').update(String(offlineBuild));
   for (const path of [...publicTree(new URL('./src/', import.meta.url), 'src'),
-    'package-lock.json', 'vite.config.ts', 'drive.html', 'index.html'].sort()) {
+    'package-lock.json', 'vite.config.ts', 'drive.html', 'index.html', 'assist.html'].sort()) {
     hash.update(path).update(readFileSync(new URL(path, import.meta.url)));
   }
   return hash.digest('hex');
@@ -140,7 +140,7 @@ export default defineConfig({
   },
   plugins: [releaseArtifacts(), localRoadModel()],
   build: {
-    rollupOptions: { input: { index: 'index.html', drive: 'drive.html' } },
+    rollupOptions: { input: { index: 'index.html', drive: 'drive.html', assist: 'assist.html' } },
     target: 'es2022',
     chunkSizeWarningLimit: 2500
   },

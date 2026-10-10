@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Assistive Vision evidence lab (TIP-64A)
+
+- Add independent `/assist.html`, vendor-neutral typed frame/recording contract,
+  original-pixel crop/rotation/mirror mapping, Z/ray unprojection and conservative
+  foreground/freshness reference gates. Native/learned/source declarations remain
+  physically unverified; relative depth cannot publish metres.
+- Add consent-bound metadata-only memory recorder, size/time/frame caps,
+  checksum import/export, deterministic replay, source cancellation and clear/
+  revoke controls. Browser camera supplies availability timestamps and geometry
+  only, no object model, depth, images, location or cloud upload.
+- Add nine synthetic scenarios, 24 uncollected physical measurement slots and
+  holdout error/coverage reporting that excludes synthetic truth and retains
+  unknown physical accuracy/phone latency. Preserve DriveSense behaviour.
+
 ### Mobile Lite Ranging (TIP-63)
 
 - Add selectable Apache-2.0 YOLOX-Nano (3.66 MB) with SHA-verified official

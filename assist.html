@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Khu kiểm thử dữ liệu camera và khoảng cách Assistive Vision. Không phải công cụ dẫn đường.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
+  <title>RoboEye · Assistive Vision Lab</title>
+</head>
+<body>
+  <header class="masthead"><a href="./">RoboEye</a><h1>Assistive Vision Lab</h1><a href="./drive.html">DriveSense</a></header>
+  <main>
+    <p class="scope">Nền kiểm thử TIP‑64A. Chưa phải công cụ dẫn đường; không thay gậy hoặc người hỗ trợ.</p>
+    <section class="stage" aria-label="Camera hoặc dữ liệu replay">
+      <video id="camera-video" muted playsinline hidden></video><canvas id="replay-canvas" width="960" height="720" aria-label="Hình học replay metadata, không phải video camera"></canvas>
+      <div class="stage-top"><span id="source-badge" class="badge">Mô phỏng · không phải camera</span><span id="record-badge" class="badge" hidden>Chưa ghi</span></div>
+      <div class="stage-summary"><strong id="range-value">Chọn tình huống</strong><span id="range-note">Không có mô hình đo khoảng cách trong camera ở bước này.</span></div>
+      <div class="transport">
+        <button id="play" type="button" aria-label="Phát replay" disabled>Phát</button>
+        <label class="scrubber">Thời điểm replay<input id="seek" type="range" min="0" max="4000" value="0" step="1" disabled></label>
+        <output id="time">0,0 s</output><button id="stop-camera" type="button" disabled>Dừng camera</button>
+      </div>
+    </section>
+    <div class="sources">
+      <label>Tình huống <select id="scenario"></select></label><button id="load-fixture" type="button">Xem mô phỏng</button>
+      <button id="open-camera" type="button">Mở camera thật</button>
+      <label class="file-button" for="import">Nhập JSON<input id="import" type="file" accept=".json,application/json"></label>
+    </div>
+    <p id="status" role="status" aria-live="polite">Chưa mở camera; không ghi hay tải hình ảnh lên mạng.</p>
+    <section class="recorder" aria-labelledby="record-title">
+      <div><h2 id="record-title">Ghi metadata tại máy</h2><p>Chỉ thời gian, hình học và bằng chứng đo. Không lưu hình, video, âm thanh, vị trí hay mã thiết bị. Tối đa 600 frame / 2 phút / 2 MiB.</p></div>
+      <label class="consent"><input id="consent" type="checkbox"> Tôi đồng ý ghi metadata của phiên này trong bộ nhớ tab.</label>
+      <div class="record-actions"><button id="record" type="button" disabled>Bắt đầu ghi</button><button id="stop-record" type="button" disabled>Dừng ghi</button><button id="export" type="button" disabled>Xuất JSON</button><button id="clear" type="button">Xóa & đóng camera</button></div>
+    </section>
+    <details class="details"><summary>Bằng chứng & kế hoạch đo thực</summary>
+      <p id="scenario-note"></p><dl id="evidence"></dl>
+      <p>Checksum chỉ phát hiện file bị sửa/hỏng, không xác thực thiết bị hoặc độ chính xác. Các số mô phỏng không được tính vào sai số đo thực. Camera trình duyệt hiện chỉ kiểm tra stream/lifecycle; ARCore, ARKit và nhận diện vật thể sẽ được nối ở bước sau.</p>
+      <h2>24 vị trí chưa thu thập</h2><p>Đo từ camera tới đúng điểm trên vật bằng thước hoặc laser; tách tập phát triển và tập kiểm tra. Không dùng khoảng cách AI làm ground truth.</p>
+      <button id="export-plan" type="button">Tải kế hoạch thu thập</button><ul id="collection-plan"></ul>
+    </details>
+    <footer id="build-id"></footer>
+  </main>
+  <script type="module" src="/src/assistive/app.ts"></script>
+</body>
+</html>

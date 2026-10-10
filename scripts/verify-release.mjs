@@ -8,6 +8,7 @@ const offline = process.argv.includes('--offline');
 const pkg = JSON.parse(await readFile(join(ROOT, 'package.json'), 'utf8'));
 const required = [
   'index.html',
+  'assist.html',
   'manifest.webmanifest',
   'icons/roboeye.svg',
   '_headers',

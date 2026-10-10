@@ -60,6 +60,30 @@ dọc trục camera, chưa kiểm chứng bằng khoảng cách thực; không p
 cản xe, khoảng cách ngang, hay hệ thống điều khiển phanh/lái. Không nới TTL 1200 ms
 để giữ số cũ. Xem `docs/PARTNER-REHEARSAL-TIP-62.md` và `docs/VERIFY-REPORT-TIP-62.md`.
 
+## Assistive Vision — nền kiểm thử TIP-64A
+
+Đường vào riêng: `/assist.html`. Khu lab có chín tình huống mô phỏng, replay/seek,
+nhập/xuất JSON kiểm tra checksum và camera thật **chỉ metadata RGB**. Camera ở
+bước này chưa chạy nhận diện vật thể hoặc đo mét. Mô phỏng không phải đo thực;
+không dùng làm công cụ dẫn đường cho người khiếm thị.
+
+Ghi metadata cần đồng ý từng phiên, chỉ giữ trong RAM, tối đa 600 frame / 2 phút /
+2 MiB JSON. Không lưu hay gửi pixels, video, âm thanh, vị trí hoặc mã thiết bị.
+Ẩn tab đóng camera; mở lại cần thao tác thủ công. Xóa/thu hồi đồng ý hủy metadata
+trong tab; file đã xuất cần tự xóa. Camera callback timestamp là thời điểm frame
+khả dụng trong browser, không được gọi là thời điểm phơi sáng cảm biến.
+
+```bash
+npm run build
+npm run test:assistive-lab  # Chrome camera giả; không chứng minh chất lượng trên phone
+npm run preview -- --host 127.0.0.1 --port 4197 --strictPort
+```
+
+Mở `http://127.0.0.1:4197/assist.html`. Kế hoạch 24 vị trí trong lab còn chưa thu
+thập; MAE/P95 vật lý vẫn null khi không có nhãn đo độc lập. ARCore/ARKit, model
+di động, cảnh báo giọng nói và test phần cứng là các bước kế tiếp, chưa tích hợp.
+Xem `docs/TIP-64A-ASSISTIVE-EVIDENCE-LAB.md` và `docs/ASSISTIVE-EVIDENCE-PROTOCOL.md`.
+
 ## Phím và điều khiển
 
 Phím 1 2 3 4 5 chuyển năm chế độ RGB, Depth, Point Cloud, BEV Grid và RoboHand. Phím F đóng băng khung hình để bay quanh, phím ? mở panel giải thích từng tầng pipeline. Ở chế độ Point Cloud, kéo chuột để orbit, lăn để zoom. Ở chế độ BEV, click lên grid để đặt đích: robot ảo chạy A* tìm đường né vật cản và replan theo thời gian thực; vật cản lọt vùng gần camera thì chip cảnh báo hiện góc phải trên ở mọi chế độ. Sidebar có slider Inference size (đánh đổi tốc độ với chi tiết), Point size, chọn camera và chọn dtype model (fp16 khoảng 50MB, q4f16 khoảng 18MB cho mạng yếu).

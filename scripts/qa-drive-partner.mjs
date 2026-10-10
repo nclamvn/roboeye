@@ -5,7 +5,7 @@ import {join} from 'node:path';
 const root=new URL('..',import.meta.url).pathname;
 const out=process.env.ROBOEYE_QA_OUTPUT??'/private/tmp/roboeye-tip62-partner-qa';await mkdir(out,{recursive:true});
 async function sourceSnapshot(){
- const hash=createHash('sha256'),files=['drive.html','index.html','vite.config.ts','package.json','package-lock.json'];
+ const hash=createHash('sha256'),files=['drive.html','index.html','assist.html','vite.config.ts','package.json','package-lock.json'];
  async function walk(dir){for(const entry of await readdir(join(root,dir),{withFileTypes:true})){const path=`${dir}/${entry.name}`;if(entry.isDirectory())await walk(path);else files.push(path);}}
  await walk('src');for(const file of files.sort()){hash.update(file);hash.update(await readFile(join(root,file)));}return hash.digest('hex');
 }

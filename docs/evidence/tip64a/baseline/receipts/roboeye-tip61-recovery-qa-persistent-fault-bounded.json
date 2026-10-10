@@ -1,0 +1,2958 @@
+{
+  "schema": "drivesense-session-journal-v1",
+  "sessionId": "c371273c-bbb3-4567-a853-ebada14f01db",
+  "sequence": 9,
+  "updatedUtc": "2026-10-10T08:20:20.761Z",
+  "payload": {
+    "manifest": {
+      "sessionId": "c371273c-bbb3-4567-a853-ebada14f01db",
+      "source": "live-camera",
+      "execution": "mock-workers",
+      "startedUtc": "2026-10-10T08:20:08.884Z",
+      "timeOrigin": 1791620408712.7,
+      "build": {
+        "version": "1.6.0",
+        "commit": "f1325bd4ba4d",
+        "sourceFingerprint": "bed1099779689689cc9955b1af09d8f62426a377ecb17dd4f09c900efebb58fc"
+      },
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "capabilities": {
+        "webgpuPresent": true,
+        "crossOriginIsolated": false,
+        "videoFrameCallback": true
+      },
+      "models": {
+        "detectorGpuSha256": "86171edeb435bd3f113e82d1c6720a576932e6deca962426bb1bc794e7000458",
+        "detectorWasmSha256": "4b839c46187b77fc620c770de0be6790637b98afde9b386232b0fcf74382eb3c",
+        "metricSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+        "metricLandscapeSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+        "metricPortraitSha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+        "detectorLiteSha256": "c789161ed43c8269fcd4e67c67eeeb4e80c622da2eb296a20bc6007bd18a0b7d"
+      },
+      "metricMaxAgeMs": 1200,
+      "wasmThreads": 1,
+      "policies": {
+        "range": "central-support-temporal-v8-conservative-ordinal",
+        "detector": "\"vehicle-exclusive-confirmed-v2\"",
+        "metricAdapter": "source-aspect-static-support-v2",
+        "processorRevision": "936f90b6a476c6da4dfe053fc521af55285976ba",
+        "processorSha256": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+      }
+    },
+    "status": "active",
+    "epoch": 2,
+    "elapsedMs": 11876.40000000596,
+    "ledger": {
+      "schema": "drivesense-attempt-ledger-v2",
+      "clock": "performance.now; within this page/session only",
+      "detector": {
+        "started": 119,
+        "completed": 118,
+        "inflight": 1,
+        "balanced": true,
+        "outcomes": {
+          "accepted-observed": 118
+        },
+        "stages": {
+          "capture": 119,
+          "dispatch": 119,
+          "result": 118,
+          "publication": 118
+        }
+      },
+      "metric": {
+        "started": 6,
+        "completed": 6,
+        "inflight": 0,
+        "balanced": true,
+        "outcomes": {
+          "accepted-observed": 3,
+          "worker-error": 3
+        },
+        "stages": {
+          "capture": 6,
+          "dispatch": 6,
+          "result": 3,
+          "join": 3,
+          "roi": 3,
+          "policy": 3,
+          "binding": 3,
+          "filter": 3,
+          "publication": 3
+        }
+      },
+      "notRequestedWithReason": {
+        "no-vehicle": 1,
+        "busy": 125,
+        "cadence": 24,
+        "not-ready": 82
+      },
+      "generations": 0,
+      "unmatchedResults": 0,
+      "availability": {
+        "observedMs": 11866.699999999999,
+        "visibleMs": 3091.7000000000003,
+        "fullSessionCoverage": 0.2605357850118399,
+        "maxBlackoutMs": 8566.6,
+        "predictedOnlyPresentations": 1041,
+        "eligibleCoverage": null,
+        "eligibility": "not annotated; no automatic exclusion based on model failure",
+        "freshAcceptedMeasurements": 3
+      },
+      "boundedState": {
+        "maxDetails": 128,
+        "retainedDetails": 125,
+        "discardedDetails": 0,
+        "maxInflight": 8,
+        "maxObjectsPerAttempt": 32,
+        "discardedObjects": 0
+      },
+      "objectTerminalReasons": {
+        "accepted": 3
+      },
+      "firstFailure": {
+        "kind": "metric",
+        "id": 32,
+        "epoch": 2,
+        "capturedAt": 3266.300000011921,
+        "stages": {
+          "capture": 3266.300000011921,
+          "dispatch": 3273.9000000059605
+        },
+        "outcome": "worker-error",
+        "completedAt": 3375.300000011921,
+        "context": {
+          "sourceWidth": 1280,
+          "sourceHeight": 720,
+          "targetWidth": 392,
+          "targetHeight": 224,
+          "contentFraction": 0.9843750000000001,
+          "modelSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+          "preparationMs": 7.4000000059604645,
+          "requestedIntervalMs": 1000
+        }
+      },
+      "details": [
+        {
+          "kind": "detector",
+          "id": 1,
+          "epoch": 2,
+          "capturedAt": 175.2000000178814,
+          "stages": {
+            "capture": 175.2000000178814,
+            "dispatch": 180.40000000596046,
+            "result": 261.40000000596046,
+            "publication": 262.40000000596046
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 262.40000000596046
+        },
+        {
+          "kind": "detector",
+          "id": 2,
+          "epoch": 2,
+          "capturedAt": 266.30000001192093,
+          "stages": {
+            "capture": 266.30000001192093,
+            "dispatch": 277.40000000596046,
+            "result": 358.40000000596046,
+            "publication": 358.7000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 358.7000000178814
+        },
+        {
+          "kind": "metric",
+          "id": 2,
+          "epoch": 2,
+          "capturedAt": 266.30000001192093,
+          "stages": {
+            "capture": 266.30000001192093,
+            "dispatch": 277.40000000596046,
+            "result": 379,
+            "join": 379.10000002384186,
+            "roi": 382.2000000178814,
+            "policy": 382.2000000178814,
+            "binding": 382.5,
+            "filter": 382.5,
+            "publication": 382.7000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 382.7000000178814,
+          "context": {
+            "sourceWidth": 1280,
+            "sourceHeight": 720,
+            "targetWidth": 392,
+            "targetHeight": 224,
+            "contentFraction": 0.9843750000000001,
+            "modelSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+            "preparationMs": 10.699999988079071,
+            "requestedIntervalMs": 1000
+          },
+          "objects": [
+            {
+              "index": 0,
+              "trackId": 1,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0.3,
+                0.3,
+                0.7,
+                0.8
+              ],
+              "probe": {
+                "code": "accepted",
+                "boxWidthPx": 156.8,
+                "boxHeightPx": 110.24999999999997,
+                "roi": [
+                  153,
+                  115,
+                  239,
+                  158
+                ],
+                "totalPixels": 3828,
+                "validPixels": 3828,
+                "supportPixels": 3828,
+                "q20M": 24,
+                "medianM": 24,
+                "q80M": 24,
+                "relativeSpread": 0,
+                "supportFraction": 1,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": 24,
+              "policyM": 24,
+              "filteredM": 24,
+              "publishedM": 24,
+              "terminalStage": "publication",
+              "code": "accepted"
+            }
+          ]
+        },
+        {
+          "kind": "detector",
+          "id": 3,
+          "epoch": 2,
+          "capturedAt": 366.40000000596046,
+          "stages": {
+            "capture": 366.40000000596046,
+            "dispatch": 371.40000000596046,
+            "result": 452.60000002384186,
+            "publication": 452.90000000596046
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 452.90000000596046
+        },
+        {
+          "kind": "detector",
+          "id": 4,
+          "epoch": 2,
+          "capturedAt": 466.30000001192093,
+          "stages": {
+            "capture": 466.30000001192093,
+            "dispatch": 471.2000000178814,
+            "result": 552.8000000119209,
+            "publication": 552.8000000119209
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 552.8000000119209
+        },
+        {
+          "kind": "detector",
+          "id": 5,
+          "epoch": 2,
+          "capturedAt": 566.3000000119209,
+          "stages": {
+            "capture": 566.3000000119209,
+            "dispatch": 569.9000000059605,
+            "result": 650,
+            "publication": 650.1000000238419
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 650.1000000238419
+        },
+        {
+          "kind": "detector",
+          "id": 6,
+          "epoch": 2,
+          "capturedAt": 666.3000000119209,
+          "stages": {
+            "capture": 666.3000000119209,
+            "dispatch": 671.7000000178814,
+            "result": 752.6000000238419,
+            "publication": 752.8000000119209
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 752.8000000119209
+        },
+        {
+          "kind": "detector",
+          "id": 7,
+          "epoch": 2,
+          "capturedAt": 766.3000000119209,
+          "stages": {
+            "capture": 766.3000000119209,
+            "dispatch": 771.4000000059605,
+            "result": 852.7000000178814,
+            "publication": 852.9000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 852.9000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 8,
+          "epoch": 2,
+          "capturedAt": 866.2000000178814,
+          "stages": {
+            "capture": 866.2000000178814,
+            "dispatch": 871.4000000059605,
+            "result": 952.7000000178814,
+            "publication": 952.8000000119209
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 952.8000000119209
+        },
+        {
+          "kind": "detector",
+          "id": 9,
+          "epoch": 2,
+          "capturedAt": 966.2000000178814,
+          "stages": {
+            "capture": 966.2000000178814,
+            "dispatch": 970.6000000238419,
+            "result": 1051.6000000238419,
+            "publication": 1051.7000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1051.7000000178814
+        },
+        {
+          "kind": "detector",
+          "id": 10,
+          "epoch": 2,
+          "capturedAt": 1066.2000000178814,
+          "stages": {
+            "capture": 1066.2000000178814,
+            "dispatch": 1070.800000011921,
+            "result": 1151.4000000059605,
+            "publication": 1151.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1151.5
+        },
+        {
+          "kind": "detector",
+          "id": 11,
+          "epoch": 2,
+          "capturedAt": 1166.2000000178814,
+          "stages": {
+            "capture": 1166.2000000178814,
+            "dispatch": 1170.7000000178814,
+            "result": 1251.300000011921,
+            "publication": 1251.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1251.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 12,
+          "epoch": 2,
+          "capturedAt": 1266.300000011921,
+          "stages": {
+            "capture": 1266.300000011921,
+            "dispatch": 1273,
+            "result": 1354,
+            "publication": 1354.1000000238419
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1354.1000000238419
+        },
+        {
+          "kind": "metric",
+          "id": 12,
+          "epoch": 2,
+          "capturedAt": 1266.300000011921,
+          "stages": {
+            "capture": 1266.300000011921,
+            "dispatch": 1273,
+            "result": 1373.6000000238419,
+            "join": 1373.6000000238419,
+            "roi": 1376.1000000238419,
+            "policy": 1376.1000000238419,
+            "binding": 1376.2000000178814,
+            "filter": 1376.2000000178814,
+            "publication": 1376.2000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1376.2000000178814,
+          "context": {
+            "sourceWidth": 1280,
+            "sourceHeight": 720,
+            "targetWidth": 392,
+            "targetHeight": 224,
+            "contentFraction": 0.9843750000000001,
+            "modelSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+            "preparationMs": 6.4000000059604645,
+            "requestedIntervalMs": 1000
+          },
+          "objects": [
+            {
+              "index": 0,
+              "trackId": 1,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0.3,
+                0.3,
+                0.7,
+                0.8
+              ],
+              "probe": {
+                "code": "accepted",
+                "boxWidthPx": 156.8,
+                "boxHeightPx": 110.24999999999997,
+                "roi": [
+                  153,
+                  115,
+                  239,
+                  158
+                ],
+                "totalPixels": 3828,
+                "validPixels": 3828,
+                "supportPixels": 3828,
+                "q20M": 24,
+                "medianM": 24,
+                "q80M": 24,
+                "relativeSpread": 0,
+                "supportFraction": 1,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": 24,
+              "policyM": 24,
+              "filteredM": 24,
+              "publishedM": 24,
+              "terminalStage": "publication",
+              "code": "accepted"
+            }
+          ]
+        },
+        {
+          "kind": "detector",
+          "id": 13,
+          "epoch": 2,
+          "capturedAt": 1366.300000011921,
+          "stages": {
+            "capture": 1366.300000011921,
+            "dispatch": 1370.300000011921,
+            "result": 1451.300000011921,
+            "publication": 1451.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1451.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 14,
+          "epoch": 2,
+          "capturedAt": 1466.2000000178814,
+          "stages": {
+            "capture": 1466.2000000178814,
+            "dispatch": 1470.800000011921,
+            "result": 1551.4000000059605,
+            "publication": 1551.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1551.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 15,
+          "epoch": 2,
+          "capturedAt": 1566.2000000178814,
+          "stages": {
+            "capture": 1566.2000000178814,
+            "dispatch": 1570.6000000238419,
+            "result": 1651.6000000238419,
+            "publication": 1651.7000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1651.7000000178814
+        },
+        {
+          "kind": "detector",
+          "id": 16,
+          "epoch": 2,
+          "capturedAt": 1665.5,
+          "stages": {
+            "capture": 1665.5,
+            "dispatch": 1669.300000011921,
+            "result": 1750.1000000238419,
+            "publication": 1750.2000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1750.2000000178814
+        },
+        {
+          "kind": "detector",
+          "id": 17,
+          "epoch": 2,
+          "capturedAt": 1766.300000011921,
+          "stages": {
+            "capture": 1766.300000011921,
+            "dispatch": 1771.5,
+            "result": 1853,
+            "publication": 1853.1000000238419
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1853.1000000238419
+        },
+        {
+          "kind": "detector",
+          "id": 18,
+          "epoch": 2,
+          "capturedAt": 1866.2000000178814,
+          "stages": {
+            "capture": 1866.2000000178814,
+            "dispatch": 1871.4000000059605,
+            "result": 1952.7000000178814,
+            "publication": 1952.7000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1952.7000000178814
+        },
+        {
+          "kind": "detector",
+          "id": 19,
+          "epoch": 2,
+          "capturedAt": 1966.2000000178814,
+          "stages": {
+            "capture": 1966.2000000178814,
+            "dispatch": 1970.4000000059605,
+            "result": 2057.300000011921,
+            "publication": 2057.300000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2057.300000011921
+        },
+        {
+          "kind": "detector",
+          "id": 20,
+          "epoch": 2,
+          "capturedAt": 2066.100000023842,
+          "stages": {
+            "capture": 2066.100000023842,
+            "dispatch": 2070.7000000178814,
+            "result": 2151.5,
+            "publication": 2151.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2151.5
+        },
+        {
+          "kind": "detector",
+          "id": 21,
+          "epoch": 2,
+          "capturedAt": 2165.300000011921,
+          "stages": {
+            "capture": 2165.300000011921,
+            "dispatch": 2168.9000000059605,
+            "result": 2250,
+            "publication": 2250.100000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2250.100000023842
+        },
+        {
+          "kind": "detector",
+          "id": 22,
+          "epoch": 2,
+          "capturedAt": 2266.300000011921,
+          "stages": {
+            "capture": 2266.300000011921,
+            "dispatch": 2277.600000023842,
+            "result": 2358.5,
+            "publication": 2358.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2358.600000023842
+        },
+        {
+          "kind": "metric",
+          "id": 22,
+          "epoch": 2,
+          "capturedAt": 2266.300000011921,
+          "stages": {
+            "capture": 2266.300000011921,
+            "dispatch": 2277.600000023842,
+            "result": 2379,
+            "join": 2379.100000023842,
+            "roi": 2380.7000000178814,
+            "policy": 2380.7000000178814,
+            "binding": 2380.800000011921,
+            "filter": 2380.800000011921,
+            "publication": 2380.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2380.800000011921,
+          "context": {
+            "sourceWidth": 1280,
+            "sourceHeight": 720,
+            "targetWidth": 392,
+            "targetHeight": 224,
+            "contentFraction": 0.9843750000000001,
+            "modelSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+            "preparationMs": 11.099999994039536,
+            "requestedIntervalMs": 1000
+          },
+          "objects": [
+            {
+              "index": 0,
+              "trackId": 1,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0.3,
+                0.3,
+                0.7,
+                0.8
+              ],
+              "probe": {
+                "code": "accepted",
+                "boxWidthPx": 156.8,
+                "boxHeightPx": 110.24999999999997,
+                "roi": [
+                  153,
+                  115,
+                  239,
+                  158
+                ],
+                "totalPixels": 3828,
+                "validPixels": 3828,
+                "supportPixels": 3828,
+                "q20M": 24,
+                "medianM": 24,
+                "q80M": 24,
+                "relativeSpread": 0,
+                "supportFraction": 1,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": 24,
+              "policyM": 24,
+              "filteredM": 24,
+              "publishedM": 24,
+              "terminalStage": "publication",
+              "code": "accepted"
+            }
+          ]
+        },
+        {
+          "kind": "detector",
+          "id": 23,
+          "epoch": 2,
+          "capturedAt": 2366.2000000178814,
+          "stages": {
+            "capture": 2366.2000000178814,
+            "dispatch": 2370.7000000178814,
+            "result": 2451.4000000059605,
+            "publication": 2451.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2451.5
+        },
+        {
+          "kind": "detector",
+          "id": 24,
+          "epoch": 2,
+          "capturedAt": 2466.300000011921,
+          "stages": {
+            "capture": 2466.300000011921,
+            "dispatch": 2470.800000011921,
+            "result": 2551.4000000059605,
+            "publication": 2551.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2551.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 25,
+          "epoch": 2,
+          "capturedAt": 2566.100000023842,
+          "stages": {
+            "capture": 2566.100000023842,
+            "dispatch": 2571.600000023842,
+            "result": 2652.600000023842,
+            "publication": 2652.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2652.800000011921
+        },
+        {
+          "kind": "detector",
+          "id": 26,
+          "epoch": 2,
+          "capturedAt": 2666.2000000178814,
+          "stages": {
+            "capture": 2666.2000000178814,
+            "dispatch": 2670.800000011921,
+            "result": 2751.2000000178814,
+            "publication": 2751.300000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2751.300000011921
+        },
+        {
+          "kind": "detector",
+          "id": 27,
+          "epoch": 2,
+          "capturedAt": 2766.300000011921,
+          "stages": {
+            "capture": 2766.300000011921,
+            "dispatch": 2770.9000000059605,
+            "result": 2852,
+            "publication": 2852.2000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2852.2000000178814
+        },
+        {
+          "kind": "detector",
+          "id": 28,
+          "epoch": 2,
+          "capturedAt": 2866.2000000178814,
+          "stages": {
+            "capture": 2866.2000000178814,
+            "dispatch": 2871.7000000178814,
+            "result": 2951.800000011921,
+            "publication": 2952
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 2952
+        },
+        {
+          "kind": "detector",
+          "id": 29,
+          "epoch": 2,
+          "capturedAt": 2966.2000000178814,
+          "stages": {
+            "capture": 2966.2000000178814,
+            "dispatch": 2970.5,
+            "result": 3051.4000000059605,
+            "publication": 3051.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3051.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 30,
+          "epoch": 2,
+          "capturedAt": 3066.300000011921,
+          "stages": {
+            "capture": 3066.300000011921,
+            "dispatch": 3070.600000023842,
+            "result": 3151.5,
+            "publication": 3151.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3151.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 31,
+          "epoch": 2,
+          "capturedAt": 3166.2000000178814,
+          "stages": {
+            "capture": 3166.2000000178814,
+            "dispatch": 3170.600000023842,
+            "result": 3251.4000000059605,
+            "publication": 3251.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3251.5
+        },
+        {
+          "kind": "detector",
+          "id": 32,
+          "epoch": 2,
+          "capturedAt": 3266.300000011921,
+          "stages": {
+            "capture": 3266.300000011921,
+            "dispatch": 3273.9000000059605,
+            "result": 3355.4000000059605,
+            "publication": 3355.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3355.5
+        },
+        {
+          "kind": "metric",
+          "id": 32,
+          "epoch": 2,
+          "capturedAt": 3266.300000011921,
+          "stages": {
+            "capture": 3266.300000011921,
+            "dispatch": 3273.9000000059605
+          },
+          "outcome": "worker-error",
+          "completedAt": 3375.300000011921,
+          "context": {
+            "sourceWidth": 1280,
+            "sourceHeight": 720,
+            "targetWidth": 392,
+            "targetHeight": 224,
+            "contentFraction": 0.9843750000000001,
+            "modelSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+            "preparationMs": 7.4000000059604645,
+            "requestedIntervalMs": 1000
+          }
+        },
+        {
+          "kind": "detector",
+          "id": 33,
+          "epoch": 2,
+          "capturedAt": 3366.300000011921,
+          "stages": {
+            "capture": 3366.300000011921,
+            "dispatch": 3371.2000000178814,
+            "result": 3452.300000011921,
+            "publication": 3452.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3452.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 34,
+          "epoch": 2,
+          "capturedAt": 3466.5,
+          "stages": {
+            "capture": 3466.5,
+            "dispatch": 3470.600000023842,
+            "result": 3551.300000011921,
+            "publication": 3551.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3551.5
+        },
+        {
+          "kind": "detector",
+          "id": 35,
+          "epoch": 2,
+          "capturedAt": 3566.2000000178814,
+          "stages": {
+            "capture": 3566.2000000178814,
+            "dispatch": 3570.600000023842,
+            "result": 3651.600000023842,
+            "publication": 3651.7000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3651.7000000178814
+        },
+        {
+          "kind": "detector",
+          "id": 36,
+          "epoch": 2,
+          "capturedAt": 3666.2000000178814,
+          "stages": {
+            "capture": 3666.2000000178814,
+            "dispatch": 3671.800000011921,
+            "result": 3752.5,
+            "publication": 3752.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3752.5
+        },
+        {
+          "kind": "detector",
+          "id": 37,
+          "epoch": 2,
+          "capturedAt": 3766.2000000178814,
+          "stages": {
+            "capture": 3766.2000000178814,
+            "dispatch": 3771.800000011921,
+            "result": 3852.800000011921,
+            "publication": 3852.9000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3852.9000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 38,
+          "epoch": 2,
+          "capturedAt": 3866.100000023842,
+          "stages": {
+            "capture": 3866.100000023842,
+            "dispatch": 3871.800000011921,
+            "result": 3952.600000023842,
+            "publication": 3952.7000000178814
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 3952.800000011921
+        },
+        {
+          "kind": "detector",
+          "id": 39,
+          "epoch": 2,
+          "capturedAt": 3966.2000000178814,
+          "stages": {
+            "capture": 3966.2000000178814,
+            "dispatch": 3971.300000011921,
+            "result": 4051.4000000059605,
+            "publication": 4051.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4051.5
+        },
+        {
+          "kind": "detector",
+          "id": 40,
+          "epoch": 2,
+          "capturedAt": 4066.2000000178814,
+          "stages": {
+            "capture": 4066.2000000178814,
+            "dispatch": 4070.600000023842,
+            "result": 4151.4000000059605,
+            "publication": 4151.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4151.5
+        },
+        {
+          "kind": "detector",
+          "id": 41,
+          "epoch": 2,
+          "capturedAt": 4166.200000017881,
+          "stages": {
+            "capture": 4166.200000017881,
+            "dispatch": 4170.4000000059605,
+            "result": 4251.4000000059605,
+            "publication": 4251.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4251.5
+        },
+        {
+          "kind": "detector",
+          "id": 42,
+          "epoch": 2,
+          "capturedAt": 4265.300000011921,
+          "stages": {
+            "capture": 4265.300000011921,
+            "dispatch": 4273.100000023842,
+            "result": 4354.700000017881,
+            "publication": 4354.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4354.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 43,
+          "epoch": 2,
+          "capturedAt": 4366.4000000059605,
+          "stages": {
+            "capture": 4366.4000000059605,
+            "dispatch": 4370.200000017881,
+            "result": 4451.4000000059605,
+            "publication": 4451.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4451.5
+        },
+        {
+          "kind": "detector",
+          "id": 44,
+          "epoch": 2,
+          "capturedAt": 4466.5,
+          "stages": {
+            "capture": 4466.5,
+            "dispatch": 4474.600000023842,
+            "result": 4556.700000017881,
+            "publication": 4556.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4556.800000011921
+        },
+        {
+          "kind": "metric",
+          "id": 44,
+          "epoch": 2,
+          "capturedAt": 4466.5,
+          "stages": {
+            "capture": 4466.5,
+            "dispatch": 4474.600000023842
+          },
+          "outcome": "worker-error",
+          "completedAt": 4575.100000023842,
+          "context": {
+            "sourceWidth": 1280,
+            "sourceHeight": 720,
+            "targetWidth": 392,
+            "targetHeight": 224,
+            "contentFraction": 0.9843750000000001,
+            "modelSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+            "preparationMs": 7.9000000059604645,
+            "requestedIntervalMs": 1000
+          }
+        },
+        {
+          "kind": "detector",
+          "id": 45,
+          "epoch": 2,
+          "capturedAt": 4566.200000017881,
+          "stages": {
+            "capture": 4566.200000017881,
+            "dispatch": 4571.4000000059605,
+            "result": 4652.5,
+            "publication": 4652.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4652.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 46,
+          "epoch": 2,
+          "capturedAt": 4666.200000017881,
+          "stages": {
+            "capture": 4666.200000017881,
+            "dispatch": 4670.700000017881,
+            "result": 4751.700000017881,
+            "publication": 4751.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4751.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 47,
+          "epoch": 2,
+          "capturedAt": 4766.4000000059605,
+          "stages": {
+            "capture": 4766.4000000059605,
+            "dispatch": 4771.5,
+            "result": 4852.9000000059605,
+            "publication": 4853
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4853
+        },
+        {
+          "kind": "detector",
+          "id": 48,
+          "epoch": 2,
+          "capturedAt": 4866.300000011921,
+          "stages": {
+            "capture": 4866.300000011921,
+            "dispatch": 4871.5,
+            "result": 4952.800000011921,
+            "publication": 4952.9000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 4952.9000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 49,
+          "epoch": 2,
+          "capturedAt": 4966.200000017881,
+          "stages": {
+            "capture": 4966.200000017881,
+            "dispatch": 4970.700000017881,
+            "result": 5051.300000011921,
+            "publication": 5051.300000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5051.300000011921
+        },
+        {
+          "kind": "detector",
+          "id": 50,
+          "epoch": 2,
+          "capturedAt": 5066.300000011921,
+          "stages": {
+            "capture": 5066.300000011921,
+            "dispatch": 5070.800000011921,
+            "result": 5151.5,
+            "publication": 5151.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5151.5
+        },
+        {
+          "kind": "detector",
+          "id": 51,
+          "epoch": 2,
+          "capturedAt": 5166.200000017881,
+          "stages": {
+            "capture": 5166.200000017881,
+            "dispatch": 5170.700000017881,
+            "result": 5251.4000000059605,
+            "publication": 5251.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5251.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 52,
+          "epoch": 2,
+          "capturedAt": 5266.200000017881,
+          "stages": {
+            "capture": 5266.200000017881,
+            "dispatch": 5271.100000023842,
+            "result": 5351.5,
+            "publication": 5351.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5351.5
+        },
+        {
+          "kind": "detector",
+          "id": 53,
+          "epoch": 2,
+          "capturedAt": 5366.300000011921,
+          "stages": {
+            "capture": 5366.300000011921,
+            "dispatch": 5371.4000000059605,
+            "result": 5452.600000023842,
+            "publication": 5452.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5452.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 54,
+          "epoch": 2,
+          "capturedAt": 5466.300000011921,
+          "stages": {
+            "capture": 5466.300000011921,
+            "dispatch": 5470.800000011921,
+            "result": 5551.200000017881,
+            "publication": 5551.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5551.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 55,
+          "epoch": 2,
+          "capturedAt": 5566.200000017881,
+          "stages": {
+            "capture": 5566.200000017881,
+            "dispatch": 5571.600000023842,
+            "result": 5652.700000017881,
+            "publication": 5652.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5652.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 56,
+          "epoch": 2,
+          "capturedAt": 5666.100000023842,
+          "stages": {
+            "capture": 5666.100000023842,
+            "dispatch": 5670.600000023842,
+            "result": 5751.300000011921,
+            "publication": 5751.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5751.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 57,
+          "epoch": 2,
+          "capturedAt": 5766.200000017881,
+          "stages": {
+            "capture": 5766.200000017881,
+            "dispatch": 5771.200000017881,
+            "result": 5852.600000023842,
+            "publication": 5852.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5852.800000011921
+        },
+        {
+          "kind": "detector",
+          "id": 58,
+          "epoch": 2,
+          "capturedAt": 5866.200000017881,
+          "stages": {
+            "capture": 5866.200000017881,
+            "dispatch": 5871.800000011921,
+            "result": 5952.600000023842,
+            "publication": 5952.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 5952.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 59,
+          "epoch": 2,
+          "capturedAt": 5966.300000011921,
+          "stages": {
+            "capture": 5966.300000011921,
+            "dispatch": 5969.800000011921,
+            "result": 6051.800000011921,
+            "publication": 6051.9000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6051.9000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 60,
+          "epoch": 2,
+          "capturedAt": 6066.200000017881,
+          "stages": {
+            "capture": 6066.200000017881,
+            "dispatch": 6070.200000017881,
+            "result": 6151.200000017881,
+            "publication": 6151.300000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6151.300000011921
+        },
+        {
+          "kind": "detector",
+          "id": 61,
+          "epoch": 2,
+          "capturedAt": 6165.200000017881,
+          "stages": {
+            "capture": 6165.200000017881,
+            "dispatch": 6168.800000011921,
+            "result": 6249.300000011921,
+            "publication": 6249.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6249.5
+        },
+        {
+          "kind": "detector",
+          "id": 62,
+          "epoch": 2,
+          "capturedAt": 6266.200000017881,
+          "stages": {
+            "capture": 6266.200000017881,
+            "dispatch": 6277.700000017881,
+            "result": 6358.5,
+            "publication": 6358.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6358.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 63,
+          "epoch": 2,
+          "capturedAt": 6366.300000011921,
+          "stages": {
+            "capture": 6366.300000011921,
+            "dispatch": 6370.700000017881,
+            "result": 6451.5,
+            "publication": 6451.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6451.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 64,
+          "epoch": 2,
+          "capturedAt": 6466.100000023842,
+          "stages": {
+            "capture": 6466.100000023842,
+            "dispatch": 6471.9000000059605,
+            "result": 6552.5,
+            "publication": 6552.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6552.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 65,
+          "epoch": 2,
+          "capturedAt": 6566.200000017881,
+          "stages": {
+            "capture": 6566.200000017881,
+            "dispatch": 6571.4000000059605,
+            "result": 6652.5,
+            "publication": 6652.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6652.5
+        },
+        {
+          "kind": "detector",
+          "id": 66,
+          "epoch": 2,
+          "capturedAt": 6666.200000017881,
+          "stages": {
+            "capture": 6666.200000017881,
+            "dispatch": 6670.5,
+            "result": 6751.4000000059605,
+            "publication": 6751.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6751.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 67,
+          "epoch": 2,
+          "capturedAt": 6766.200000017881,
+          "stages": {
+            "capture": 6766.200000017881,
+            "dispatch": 6771.600000023842,
+            "result": 6852.700000017881,
+            "publication": 6852.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6852.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 68,
+          "epoch": 2,
+          "capturedAt": 6866.100000023842,
+          "stages": {
+            "capture": 6866.100000023842,
+            "dispatch": 6871.5,
+            "result": 6952.5,
+            "publication": 6952.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 6952.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 69,
+          "epoch": 2,
+          "capturedAt": 6966.200000017881,
+          "stages": {
+            "capture": 6966.200000017881,
+            "dispatch": 6971.5,
+            "result": 7052.600000023842,
+            "publication": 7052.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7052.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 70,
+          "epoch": 2,
+          "capturedAt": 7066.300000011921,
+          "stages": {
+            "capture": 7066.300000011921,
+            "dispatch": 7071.200000017881,
+            "result": 7151.4000000059605,
+            "publication": 7151.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7151.5
+        },
+        {
+          "kind": "detector",
+          "id": 71,
+          "epoch": 2,
+          "capturedAt": 7166.100000023842,
+          "stages": {
+            "capture": 7166.100000023842,
+            "dispatch": 7170.600000023842,
+            "result": 7251.300000011921,
+            "publication": 7251.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7251.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 72,
+          "epoch": 2,
+          "capturedAt": 7266.200000017881,
+          "stages": {
+            "capture": 7266.200000017881,
+            "dispatch": 7270.700000017881,
+            "result": 7351.200000017881,
+            "publication": 7351.4000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7351.4000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 73,
+          "epoch": 2,
+          "capturedAt": 7366.200000017881,
+          "stages": {
+            "capture": 7366.200000017881,
+            "dispatch": 7370.600000023842,
+            "result": 7451.600000023842,
+            "publication": 7451.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7451.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 74,
+          "epoch": 2,
+          "capturedAt": 7466.5,
+          "stages": {
+            "capture": 7466.5,
+            "dispatch": 7471.100000023842,
+            "result": 7551.9000000059605,
+            "publication": 7551.9000000059605
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7551.9000000059605
+        },
+        {
+          "kind": "detector",
+          "id": 75,
+          "epoch": 2,
+          "capturedAt": 7566.200000017881,
+          "stages": {
+            "capture": 7566.200000017881,
+            "dispatch": 7570.600000023842,
+            "result": 7650.700000017881,
+            "publication": 7650.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7650.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 76,
+          "epoch": 2,
+          "capturedAt": 7666.200000017881,
+          "stages": {
+            "capture": 7666.200000017881,
+            "dispatch": 7675,
+            "result": 7755.300000011921,
+            "publication": 7755.300000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7755.300000011921
+        },
+        {
+          "kind": "metric",
+          "id": 76,
+          "epoch": 2,
+          "capturedAt": 7666.200000017881,
+          "stages": {
+            "capture": 7666.200000017881,
+            "dispatch": 7675
+          },
+          "outcome": "worker-error",
+          "completedAt": 7775.100000023842,
+          "context": {
+            "sourceWidth": 1280,
+            "sourceHeight": 720,
+            "targetWidth": 392,
+            "targetHeight": 224,
+            "contentFraction": 0.9843750000000001,
+            "modelSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+            "preparationMs": 8.699999988079071,
+            "requestedIntervalMs": 1000
+          }
+        },
+        {
+          "kind": "detector",
+          "id": 77,
+          "epoch": 2,
+          "capturedAt": 7765.700000017881,
+          "stages": {
+            "capture": 7765.700000017881,
+            "dispatch": 7771.200000017881,
+            "result": 7851.700000017881,
+            "publication": 7851.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7851.800000011921
+        },
+        {
+          "kind": "detector",
+          "id": 78,
+          "epoch": 2,
+          "capturedAt": 7866.200000017881,
+          "stages": {
+            "capture": 7866.200000017881,
+            "dispatch": 7871.800000011921,
+            "result": 7952.600000023842,
+            "publication": 7952.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 7952.800000011921
+        },
+        {
+          "kind": "detector",
+          "id": 79,
+          "epoch": 2,
+          "capturedAt": 7966.200000017881,
+          "stages": {
+            "capture": 7966.200000017881,
+            "dispatch": 7970.100000023842,
+            "result": 8051.5,
+            "publication": 8051.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8051.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 80,
+          "epoch": 2,
+          "capturedAt": 8066.200000017881,
+          "stages": {
+            "capture": 8066.200000017881,
+            "dispatch": 8070.5,
+            "result": 8151.200000017881,
+            "publication": 8151.200000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8151.200000017881
+        },
+        {
+          "kind": "detector",
+          "id": 81,
+          "epoch": 2,
+          "capturedAt": 8166.200000017881,
+          "stages": {
+            "capture": 8166.200000017881,
+            "dispatch": 8170.9000000059605,
+            "result": 8251.200000017881,
+            "publication": 8251.300000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8251.300000011921
+        },
+        {
+          "kind": "detector",
+          "id": 82,
+          "epoch": 2,
+          "capturedAt": 8266.200000017881,
+          "stages": {
+            "capture": 8266.200000017881,
+            "dispatch": 8271.100000023842,
+            "result": 8351.40000000596,
+            "publication": 8351.40000000596
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8351.40000000596
+        },
+        {
+          "kind": "detector",
+          "id": 83,
+          "epoch": 2,
+          "capturedAt": 8366.200000017881,
+          "stages": {
+            "capture": 8366.200000017881,
+            "dispatch": 8370.100000023842,
+            "result": 8451.40000000596,
+            "publication": 8451.40000000596
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8451.40000000596
+        },
+        {
+          "kind": "detector",
+          "id": 84,
+          "epoch": 2,
+          "capturedAt": 8466.200000017881,
+          "stages": {
+            "capture": 8466.200000017881,
+            "dispatch": 8470.800000011921,
+            "result": 8551.5,
+            "publication": 8551.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8551.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 85,
+          "epoch": 2,
+          "capturedAt": 8566.200000017881,
+          "stages": {
+            "capture": 8566.200000017881,
+            "dispatch": 8570.700000017881,
+            "result": 8651.200000017881,
+            "publication": 8651.300000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8651.300000011921
+        },
+        {
+          "kind": "detector",
+          "id": 86,
+          "epoch": 2,
+          "capturedAt": 8666.300000011921,
+          "stages": {
+            "capture": 8666.300000011921,
+            "dispatch": 8670.700000017881,
+            "result": 8751.40000000596,
+            "publication": 8751.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8751.5
+        },
+        {
+          "kind": "detector",
+          "id": 87,
+          "epoch": 2,
+          "capturedAt": 8766.300000011921,
+          "stages": {
+            "capture": 8766.300000011921,
+            "dispatch": 8772,
+            "result": 8852.5,
+            "publication": 8852.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8852.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 88,
+          "epoch": 2,
+          "capturedAt": 8866.200000017881,
+          "stages": {
+            "capture": 8866.200000017881,
+            "dispatch": 8871.700000017881,
+            "result": 8952.700000017881,
+            "publication": 8952.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 8952.800000011921
+        },
+        {
+          "kind": "detector",
+          "id": 89,
+          "epoch": 2,
+          "capturedAt": 8966,
+          "stages": {
+            "capture": 8966,
+            "dispatch": 8970.600000023842,
+            "result": 9051.300000011921,
+            "publication": 9051.40000000596
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9051.40000000596
+        },
+        {
+          "kind": "detector",
+          "id": 90,
+          "epoch": 2,
+          "capturedAt": 9066.200000017881,
+          "stages": {
+            "capture": 9066.200000017881,
+            "dispatch": 9070.600000023842,
+            "result": 9151.200000017881,
+            "publication": 9151.200000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9151.200000017881
+        },
+        {
+          "kind": "detector",
+          "id": 91,
+          "epoch": 2,
+          "capturedAt": 9166.200000017881,
+          "stages": {
+            "capture": 9166.200000017881,
+            "dispatch": 9171.300000011921,
+            "result": 9252.5,
+            "publication": 9252.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9252.5
+        },
+        {
+          "kind": "detector",
+          "id": 92,
+          "epoch": 2,
+          "capturedAt": 9266.200000017881,
+          "stages": {
+            "capture": 9266.200000017881,
+            "dispatch": 9271.90000000596,
+            "result": 9352.600000023842,
+            "publication": 9352.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9352.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 93,
+          "epoch": 2,
+          "capturedAt": 9366.200000017881,
+          "stages": {
+            "capture": 9366.200000017881,
+            "dispatch": 9370.700000017881,
+            "result": 9451.40000000596,
+            "publication": 9451.40000000596
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9451.40000000596
+        },
+        {
+          "kind": "detector",
+          "id": 94,
+          "epoch": 2,
+          "capturedAt": 9466.40000000596,
+          "stages": {
+            "capture": 9466.40000000596,
+            "dispatch": 9469.90000000596,
+            "result": 9550.200000017881,
+            "publication": 9550.300000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9550.300000011921
+        },
+        {
+          "kind": "detector",
+          "id": 95,
+          "epoch": 2,
+          "capturedAt": 9565.300000011921,
+          "stages": {
+            "capture": 9565.300000011921,
+            "dispatch": 9569.40000000596,
+            "result": 9650,
+            "publication": 9650
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9650
+        },
+        {
+          "kind": "detector",
+          "id": 96,
+          "epoch": 2,
+          "capturedAt": 9666.300000011921,
+          "stages": {
+            "capture": 9666.300000011921,
+            "dispatch": 9670.700000017881,
+            "result": 9751.40000000596,
+            "publication": 9751.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9751.5
+        },
+        {
+          "kind": "detector",
+          "id": 97,
+          "epoch": 2,
+          "capturedAt": 9766.100000023842,
+          "stages": {
+            "capture": 9766.100000023842,
+            "dispatch": 9771.100000023842,
+            "result": 9852.600000023842,
+            "publication": 9852.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9852.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 98,
+          "epoch": 2,
+          "capturedAt": 9866.200000017881,
+          "stages": {
+            "capture": 9866.200000017881,
+            "dispatch": 9871.600000023842,
+            "result": 9952.800000011921,
+            "publication": 9952.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 9952.800000011921
+        },
+        {
+          "kind": "detector",
+          "id": 99,
+          "epoch": 2,
+          "capturedAt": 9966.200000017881,
+          "stages": {
+            "capture": 9966.200000017881,
+            "dispatch": 9971.800000011921,
+            "result": 10053,
+            "publication": 10053.100000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10053.100000023842
+        },
+        {
+          "kind": "detector",
+          "id": 100,
+          "epoch": 2,
+          "capturedAt": 10066.200000017881,
+          "stages": {
+            "capture": 10066.200000017881,
+            "dispatch": 10070.800000011921,
+            "result": 10151.40000000596,
+            "publication": 10151.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10151.5
+        },
+        {
+          "kind": "detector",
+          "id": 101,
+          "epoch": 2,
+          "capturedAt": 10166.200000017881,
+          "stages": {
+            "capture": 10166.200000017881,
+            "dispatch": 10171.300000011921,
+            "result": 10252.600000023842,
+            "publication": 10252.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10252.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 102,
+          "epoch": 2,
+          "capturedAt": 10266.40000000596,
+          "stages": {
+            "capture": 10266.40000000596,
+            "dispatch": 10271.200000017881,
+            "result": 10352.5,
+            "publication": 10352.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10352.5
+        },
+        {
+          "kind": "detector",
+          "id": 103,
+          "epoch": 2,
+          "capturedAt": 10366.200000017881,
+          "stages": {
+            "capture": 10366.200000017881,
+            "dispatch": 10370.5,
+            "result": 10451.300000011921,
+            "publication": 10451.40000000596
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10451.40000000596
+        },
+        {
+          "kind": "detector",
+          "id": 104,
+          "epoch": 2,
+          "capturedAt": 10466.40000000596,
+          "stages": {
+            "capture": 10466.40000000596,
+            "dispatch": 10470.600000023842,
+            "result": 10551.40000000596,
+            "publication": 10551.40000000596
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10551.40000000596
+        },
+        {
+          "kind": "detector",
+          "id": 105,
+          "epoch": 2,
+          "capturedAt": 10566.200000017881,
+          "stages": {
+            "capture": 10566.200000017881,
+            "dispatch": 10571.300000011921,
+            "result": 10652.700000017881,
+            "publication": 10652.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10652.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 106,
+          "epoch": 2,
+          "capturedAt": 10666.100000023842,
+          "stages": {
+            "capture": 10666.100000023842,
+            "dispatch": 10671.5,
+            "result": 10753,
+            "publication": 10753
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10753
+        },
+        {
+          "kind": "detector",
+          "id": 107,
+          "epoch": 2,
+          "capturedAt": 10766.100000023842,
+          "stages": {
+            "capture": 10766.100000023842,
+            "dispatch": 10771.800000011921,
+            "result": 10852.600000023842,
+            "publication": 10852.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10852.800000011921
+        },
+        {
+          "kind": "detector",
+          "id": 108,
+          "epoch": 2,
+          "capturedAt": 10866.300000011921,
+          "stages": {
+            "capture": 10866.300000011921,
+            "dispatch": 10871.600000023842,
+            "result": 10952.5,
+            "publication": 10952.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 10952.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 109,
+          "epoch": 2,
+          "capturedAt": 10966.300000011921,
+          "stages": {
+            "capture": 10966.300000011921,
+            "dispatch": 10970.90000000596,
+            "result": 11051.5,
+            "publication": 11051.600000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11051.600000023842
+        },
+        {
+          "kind": "detector",
+          "id": 110,
+          "epoch": 2,
+          "capturedAt": 11066.300000011921,
+          "stages": {
+            "capture": 11066.300000011921,
+            "dispatch": 11070.700000017881,
+            "result": 11151.90000000596,
+            "publication": 11151.90000000596
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11152
+        },
+        {
+          "kind": "detector",
+          "id": 111,
+          "epoch": 2,
+          "capturedAt": 11166.100000023842,
+          "stages": {
+            "capture": 11166.100000023842,
+            "dispatch": 11170.5,
+            "result": 11251.700000017881,
+            "publication": 11251.800000011921
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11251.800000011921
+        },
+        {
+          "kind": "detector",
+          "id": 112,
+          "epoch": 2,
+          "capturedAt": 11266.200000017881,
+          "stages": {
+            "capture": 11266.200000017881,
+            "dispatch": 11272.800000011921,
+            "result": 11354,
+            "publication": 11354.100000023842
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11354.100000023842
+        },
+        {
+          "kind": "detector",
+          "id": 113,
+          "epoch": 2,
+          "capturedAt": 11366.200000017881,
+          "stages": {
+            "capture": 11366.200000017881,
+            "dispatch": 11370.600000023842,
+            "result": 11451.300000011921,
+            "publication": 11451.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11451.5
+        },
+        {
+          "kind": "detector",
+          "id": 114,
+          "epoch": 2,
+          "capturedAt": 11466.300000011921,
+          "stages": {
+            "capture": 11466.300000011921,
+            "dispatch": 11471.100000023842,
+            "result": 11551.40000000596,
+            "publication": 11551.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11551.5
+        },
+        {
+          "kind": "detector",
+          "id": 115,
+          "epoch": 2,
+          "capturedAt": 11566.200000017881,
+          "stages": {
+            "capture": 11566.200000017881,
+            "dispatch": 11570.90000000596,
+            "result": 11651.40000000596,
+            "publication": 11651.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11651.5
+        },
+        {
+          "kind": "detector",
+          "id": 116,
+          "epoch": 2,
+          "capturedAt": 11666.200000017881,
+          "stages": {
+            "capture": 11666.200000017881,
+            "dispatch": 11671.40000000596,
+            "result": 11752.5,
+            "publication": 11752.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11752.5
+        },
+        {
+          "kind": "detector",
+          "id": 117,
+          "epoch": 2,
+          "capturedAt": 11766.200000017881,
+          "stages": {
+            "capture": 11766.200000017881,
+            "dispatch": 11770.300000011921,
+            "result": 11851.200000017881,
+            "publication": 11851.40000000596
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11851.40000000596
+        },
+        {
+          "kind": "detector",
+          "id": 118,
+          "epoch": 2,
+          "capturedAt": 11866.200000017881,
+          "stages": {
+            "capture": 11866.200000017881,
+            "dispatch": 11871.700000017881,
+            "result": 11952.600000023842,
+            "publication": 11952.700000017881
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 11952.700000017881
+        },
+        {
+          "kind": "detector",
+          "id": 119,
+          "epoch": 2,
+          "capturedAt": 11966.200000017881,
+          "stages": {
+            "capture": 11966.200000017881,
+            "dispatch": 11970.40000000596
+          },
+          "outcome": null,
+          "completedAt": null
+        }
+      ],
+      "claims": {
+        "mobile": "unverified without actual device run",
+        "metres": "accuracy unvalidated without independent distance truth"
+      }
+    },
+    "mobileSoak": {
+      "schema": "drivesense-mobile-soak-v1",
+      "clock": "performance.now monotonic milliseconds",
+      "provenance": "live-camera-runtime",
+      "active": true,
+      "epoch": 2,
+      "session": {
+        "durationMs": 11876.59999999404,
+        "phase": "warming"
+      },
+      "privacy": {
+        "pixelFree": true,
+        "cameraSettingsAllowlist": true,
+        "excluded": [
+          "pixels",
+          "video",
+          "camera-label",
+          "deviceId",
+          "groupId",
+          "local-path",
+          "gps"
+        ]
+      },
+      "camera": {
+        "settings": {
+          "width": 1280,
+          "height": 720,
+          "frameRate": 20,
+          "aspectRatio": 1.7777777777777777,
+          "resizeMode": "none"
+        }
+      },
+      "models": [
+        {
+          "kind": "metric-depth",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "wasm",
+          "totalLoadMs": 0.4000000059604645,
+          "warmupMs": 5,
+          "outcome": "ready"
+        },
+        {
+          "kind": "detector",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "wasm",
+          "totalLoadMs": 0.5,
+          "warmupMs": null,
+          "outcome": "ready"
+        },
+        {
+          "kind": "metric-depth",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "wasm",
+          "totalLoadMs": 0.09999999403953552,
+          "warmupMs": 5,
+          "outcome": "ready"
+        },
+        {
+          "kind": "metric-depth",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "wasm",
+          "totalLoadMs": 0.10000002384185791,
+          "warmupMs": 5,
+          "outcome": "ready"
+        }
+      ],
+      "lifecycle": {
+        "metricWorkerError": 3
+      },
+      "boundedState": {
+        "inflightTraces": 1,
+        "maxInflightTraces": 64,
+        "histogramResolutionMs": 1,
+        "histogramMaxMs": 5000,
+        "retainedFrameRows": 0
+      },
+      "overall": {
+        "counts": {
+          "presentedCallbacks": 238,
+          "presentedFrameGaps": 0,
+          "detectorStarted": 119,
+          "detectorAccepted": 118,
+          "detectorDropped": 0,
+          "detectorBusySkips": 119,
+          "overlays": 118,
+          "alertOverlays": 0,
+          "metricAttempts": 6,
+          "metricAccepted": 3,
+          "metricDropped": 3,
+          "trackSnapshots": 118,
+          "trackObservations": 118,
+          "trackBirths": 1,
+          "trackLosses": 0,
+          "dropReasons": {}
+        },
+        "rates": {
+          "detectorAccepted": 0.9915966386554622,
+          "detectorDropped": 0,
+          "busy": 0.5,
+          "metricAccepted": 0.5,
+          "trackSetTurnoverProxy": 0.00847457627118644
+        },
+        "stages": {
+          "callbackVsExpectedDisplay": {
+            "samples": 238,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 0.013865546218487323,
+            "p50Ms": 0,
+            "p95Ms": 0,
+            "p99Ms": 0,
+            "maxMs": 3.299999999999983
+          },
+          "captureToCallback": {
+            "samples": 238,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 2.6987394957980064,
+            "p50Ms": 3,
+            "p95Ms": 3,
+            "p99Ms": 3,
+            "maxMs": 10.699999999999989
+          },
+          "decodeProcessing": {
+            "samples": 0,
+            "unavailable": 238,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "requestToResult": {
+            "samples": 118,
+            "unavailable": 1,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 80.94067796307095,
+            "p50Ms": 81,
+            "p95Ms": 82,
+            "p99Ms": 82,
+            "maxMs": 86.90000000596046
+          },
+          "frameToOverlay": {
+            "samples": 118,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 92.54067797989174,
+            "p50Ms": 92,
+            "p95Ms": 93,
+            "p99Ms": 105,
+            "maxMs": 105.70000002384188
+          },
+          "metricInference": {
+            "samples": 3,
+            "unavailable": 3,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 100,
+            "p50Ms": 100,
+            "p95Ms": 100,
+            "p99Ms": 100,
+            "maxMs": 100
+          }
+        }
+      },
+      "windows": [
+        {
+          "id": "0-5m",
+          "startMs": 0,
+          "endMs": 300000,
+          "observedDurationMs": 11876.59999999404,
+          "counts": {
+            "presentedCallbacks": 238,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 119,
+            "detectorAccepted": 118,
+            "detectorDropped": 0,
+            "detectorBusySkips": 119,
+            "overlays": 118,
+            "alertOverlays": 0,
+            "metricAttempts": 6,
+            "metricAccepted": 3,
+            "metricDropped": 3,
+            "trackSnapshots": 118,
+            "trackObservations": 118,
+            "trackBirths": 1,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": 0.9915966386554622,
+            "detectorDropped": 0,
+            "busy": 0.5,
+            "metricAccepted": 0.5,
+            "trackSetTurnoverProxy": 0.00847457627118644
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 238,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 0.013865546218487323,
+              "p50Ms": 0,
+              "p95Ms": 0,
+              "p99Ms": 0,
+              "maxMs": 3.299999999999983
+            },
+            "captureToCallback": {
+              "samples": 238,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 2.6987394957980064,
+              "p50Ms": 3,
+              "p95Ms": 3,
+              "p99Ms": 3,
+              "maxMs": 10.699999999999989
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 238,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 118,
+              "unavailable": 1,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 80.94067796307095,
+              "p50Ms": 81,
+              "p95Ms": 82,
+              "p99Ms": 82,
+              "maxMs": 86.90000000596046
+            },
+            "frameToOverlay": {
+              "samples": 118,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 92.54067797989174,
+              "p50Ms": 92,
+              "p95Ms": 93,
+              "p99Ms": 105,
+              "maxMs": 105.70000002384188
+            },
+            "metricInference": {
+              "samples": 3,
+              "unavailable": 3,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 100,
+              "p50Ms": 100,
+              "p95Ms": 100,
+              "p99Ms": 100,
+              "maxMs": 100
+            }
+          }
+        },
+        {
+          "id": "5-10m",
+          "startMs": 300000,
+          "endMs": 600000,
+          "observedDurationMs": 0,
+          "counts": {
+            "presentedCallbacks": 0,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 0,
+            "detectorAccepted": 0,
+            "detectorDropped": 0,
+            "detectorBusySkips": 0,
+            "overlays": 0,
+            "alertOverlays": 0,
+            "metricAttempts": 0,
+            "metricAccepted": 0,
+            "metricDropped": 0,
+            "trackSnapshots": 0,
+            "trackObservations": 0,
+            "trackBirths": 0,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": null,
+            "detectorDropped": null,
+            "busy": null,
+            "metricAccepted": null,
+            "trackSetTurnoverProxy": null
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "frameToOverlay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "metricInference": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            }
+          }
+        },
+        {
+          "id": "10-20m",
+          "startMs": 600000,
+          "endMs": 1200000,
+          "observedDurationMs": 0,
+          "counts": {
+            "presentedCallbacks": 0,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 0,
+            "detectorAccepted": 0,
+            "detectorDropped": 0,
+            "detectorBusySkips": 0,
+            "overlays": 0,
+            "alertOverlays": 0,
+            "metricAttempts": 0,
+            "metricAccepted": 0,
+            "metricDropped": 0,
+            "trackSnapshots": 0,
+            "trackObservations": 0,
+            "trackBirths": 0,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": null,
+            "detectorDropped": null,
+            "busy": null,
+            "metricAccepted": null,
+            "trackSetTurnoverProxy": null
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "frameToOverlay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "metricInference": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            }
+          }
+        },
+        {
+          "id": "20m+",
+          "startMs": 1200000,
+          "endMs": null,
+          "observedDurationMs": 0,
+          "counts": {
+            "presentedCallbacks": 0,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 0,
+            "detectorAccepted": 0,
+            "detectorDropped": 0,
+            "detectorBusySkips": 0,
+            "overlays": 0,
+            "alertOverlays": 0,
+            "metricAttempts": 0,
+            "metricAccepted": 0,
+            "metricDropped": 0,
+            "trackSnapshots": 0,
+            "trackObservations": 0,
+            "trackBirths": 0,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": null,
+            "detectorDropped": null,
+            "busy": null,
+            "metricAccepted": null,
+            "trackSetTurnoverProxy": null
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "frameToOverlay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "metricInference": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            }
+          }
+        }
+      ],
+      "claims": {
+        "trackSetTurnover": "proxy-only; not ground-truth ID switches",
+        "captureTime": "browser metadata when exposed; otherwise unavailable",
+        "boundary": "Runtime capability evidence only; not distance accuracy, collision-warning safety or public-road validation."
+      }
+    },
+    "backends": {
+      "detector": "wasm",
+      "metric": null
+    },
+    "metricLifecycle": {
+      "scope": "page-runtime lifecycle; retry budget is not reset by source/clip changes",
+      "state": "DEGRADED",
+      "generation": 8,
+      "failures": 3,
+      "firstFailure": {
+        "at": 3375.300000011921,
+        "fault": "infer-error"
+      },
+      "retryBudget": {
+        "max": 2,
+        "windowMs": 60000,
+        "scheduledAt": [
+          3375.300000011921,
+          4575.100000023842
+        ]
+      },
+      "events": [
+        {
+          "at": 103.5,
+          "generation": 1,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 103.5,
+          "generation": 2,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 172.5,
+          "generation": 3,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 172.5,
+          "generation": 3,
+          "state": "LOADING",
+          "fault": null
+        },
+        {
+          "at": 172.90000000596046,
+          "generation": 3,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 277.30000001192093,
+          "generation": 3,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 378.90000000596046,
+          "generation": 3,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 1272.800000011921,
+          "generation": 3,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 1373.6000000238419,
+          "generation": 3,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 2277.5,
+          "generation": 3,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 2379,
+          "generation": 3,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 3273.9000000059605,
+          "generation": 3,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 3375.300000011921,
+          "generation": 4,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 3375.300000011921,
+          "generation": 4,
+          "state": "RECOVERING",
+          "fault": "infer-error"
+        },
+        {
+          "at": 4377.100000023842,
+          "generation": 5,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 4377.100000023842,
+          "generation": 5,
+          "state": "LOADING",
+          "fault": null
+        },
+        {
+          "at": 4377.200000017881,
+          "generation": 5,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 4474.5,
+          "generation": 5,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 4575.100000023842,
+          "generation": 6,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 4575.100000023842,
+          "generation": 6,
+          "state": "RECOVERING",
+          "fault": "infer-error"
+        },
+        {
+          "at": 7577.5,
+          "generation": 7,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 7577.5,
+          "generation": 7,
+          "state": "LOADING",
+          "fault": null
+        },
+        {
+          "at": 7577.600000023842,
+          "generation": 7,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 7675,
+          "generation": 7,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 7775.200000017881,
+          "generation": 8,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 7775.100000023842,
+          "generation": 8,
+          "state": "DEGRADED",
+          "fault": "infer-error"
+        }
+      ],
+      "droppedEvents": 0,
+      "maxEvents": 32
+    },
+    "sourceLifecycle": {
+      "ticket": 1,
+      "kind": "camera",
+      "state": "running",
+      "hidden": false,
+      "muted": false,
+      "needsGesture": false,
+      "counts": {
+        "stop": 1,
+        "begin": 1,
+        "resume": 1,
+        "playing": 2
+      },
+      "events": [
+        {
+          "atMs": 103.40000000596046,
+          "event": "stop",
+          "state": "stopped"
+        },
+        {
+          "atMs": 117.60000002384186,
+          "event": "begin",
+          "state": "opening"
+        },
+        {
+          "atMs": 117.80000001192093,
+          "event": "resume",
+          "state": "resuming"
+        },
+        {
+          "atMs": 118.5,
+          "event": "playing",
+          "state": "running"
+        },
+        {
+          "atMs": 171.5,
+          "event": "playing",
+          "state": "running"
+        }
+      ],
+      "scope": "Source lifecycle only; not physical camera or road-distance acceptance",
+      "screenAwake": {
+        "state": "held",
+        "pending": false,
+        "held": true,
+        "failures": 0,
+        "scope": "Best-effort screen lock, not a camera availability guarantee"
+      }
+    },
+    "mobileRanging": {
+      "detector": "rtdetr",
+      "budget": {
+        "schema": "mobile-measured-budget-v1",
+        "count": 24,
+        "p95Ms": 86.89999997615814,
+        "limitMs": 300,
+        "state": "within-budget",
+        "scope": "Detector capture-to-result only; depth/accuracy/thermal and physical-device acceptance are separate."
+      },
+      "joinedBudget": {
+        "schema": "mobile-measured-budget-v1",
+        "count": 3,
+        "p95Ms": 112.80000001192093,
+        "limitMs": 300,
+        "state": "probing",
+        "scope": "Same-frame detector/depth capture-to-join including terminal failures; not physical metric accuracy or thermal acceptance."
+      },
+      "path": "metric-ai",
+      "anchorProfile": null,
+      "metres": {
+        "schema": "drivesense-target-metres-v1",
+        "targets": [
+          {
+            "id": 1,
+            "boxVisibleMs": 11775,
+            "metresVisibleMs": 3091.7000000000003,
+            "maxBlackoutMs": 8566.6,
+            "freshObservations": 3,
+            "boxVisibleCoverage": 0.2625647558386412
+          }
+        ],
+        "eligibleTargetCoverage": null,
+        "independentMetricAccuracy": null,
+        "targetCapacity": 256,
+        "omittedRowVisits": 0,
+        "coverageTruncated": false,
+        "productVerdict": "not-validated",
+        "scope": "Current timeline generation only; resets on source/seek/calibration changes. Time while each detected box is visible, not independently labelled road-user eligibility. Runtime/attempt success alone is not ranging acceptance."
+      }
+    }
+  },
+  "sha256": "18841bf30c784dd6cae854a698fc4987d2ed40c37e124c5ccdb460c9c694f68c"
+}

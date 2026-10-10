@@ -1,0 +1,30 @@
+{
+  "pass": true,
+  "softwareOnly": true,
+  "physicalPhoneAcceptance": "NOT TESTED",
+  "runs": [
+    {
+      "name": "drive-partner",
+      "exitCode": 0,
+      "elapsedMs": 253899
+    },
+    {
+      "name": "assistive-browser",
+      "exitCode": 0,
+      "elapsedMs": 8733
+    }
+  ],
+  "release": {
+    "name": "roboeye",
+    "version": "1.6.0",
+    "commit": "f1325bd4ba4d",
+    "base": "/",
+    "offlineDepth": false,
+    "buildFingerprint": "d2d3a2b59cfd",
+    "sourceFingerprint": "5fa4eac130c59aef0e5d0fc27d11adfb4fc12c519e27ed7e556a03b4837ab519",
+    "runtimeFingerprint": "0028d569a953"
+  },
+  "scratchDirectoryRemoved": "/var/folders/81/y445_2554tb49zsn_qtb_9v80000gn/T/codex-tmp-tip64a-20261010-qa-CwQLEU",
+  "modelDownloadsAdded": false,
+  "nativeProvidersImplemented": false
+}

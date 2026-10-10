@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "checks": [
+    "one-fault-recovers",
+    "persistent-fault-bounded",
+    "stop-during-backoff"
+  ],
+  "scope": "Real app/fake camera/mocked workers; validates lifecycle only, not phone or metric accuracy."
+}

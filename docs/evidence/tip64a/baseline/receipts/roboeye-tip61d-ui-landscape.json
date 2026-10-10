@@ -1,0 +1,2937 @@
+{
+  "version": 10,
+  "createdAt": "2026-10-10T08:19:55.196Z",
+  "source": "Local camera",
+  "sourceKind": "camera",
+  "session": 4,
+  "synthetic": false,
+  "mode": "live-or-synthetic",
+  "diagnostics": {
+    "manifest": {
+      "sessionId": "fbc91777-ec95-4ff4-b9cc-b4b86579eb7e",
+      "source": "live-camera",
+      "execution": "mock-workers",
+      "startedUtc": "2026-10-10T08:19:54.189Z",
+      "timeOrigin": 1791620393889.4,
+      "build": {
+        "version": "1.6.0",
+        "commit": "f1325bd4ba4d",
+        "sourceFingerprint": "bed1099779689689cc9955b1af09d8f62426a377ecb17dd4f09c900efebb58fc"
+      },
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "capabilities": {
+        "webgpuPresent": true,
+        "crossOriginIsolated": false,
+        "videoFrameCallback": true
+      },
+      "models": {
+        "detectorGpuSha256": "86171edeb435bd3f113e82d1c6720a576932e6deca962426bb1bc794e7000458",
+        "detectorWasmSha256": "4b839c46187b77fc620c770de0be6790637b98afde9b386232b0fcf74382eb3c",
+        "metricSha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+        "metricLandscapeSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+        "metricPortraitSha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+        "detectorLiteSha256": "c789161ed43c8269fcd4e67c67eeeb4e80c622da2eb296a20bc6007bd18a0b7d"
+      },
+      "metricMaxAgeMs": 1200,
+      "wasmThreads": 1,
+      "policies": {
+        "range": "central-support-temporal-v8-conservative-ordinal",
+        "detector": "\"vehicle-exclusive-confirmed-v2\"",
+        "metricAdapter": "source-aspect-static-support-v2",
+        "processorRevision": "936f90b6a476c6da4dfe053fc521af55285976ba",
+        "processorSha256": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+      }
+    },
+    "status": "active",
+    "epoch": 4,
+    "elapsedMs": 1006.8999999761581,
+    "ledger": {
+      "schema": "drivesense-attempt-ledger-v2",
+      "clock": "performance.now; within this page/session only",
+      "detector": {
+        "started": 11,
+        "completed": 10,
+        "inflight": 1,
+        "balanced": true,
+        "outcomes": {
+          "accepted-observed": 9,
+          "wrong-generation": 1
+        },
+        "stages": {
+          "capture": 11,
+          "dispatch": 11,
+          "result": 10,
+          "publication": 9
+        }
+      },
+      "metric": {
+        "started": 3,
+        "completed": 3,
+        "inflight": 0,
+        "balanced": true,
+        "outcomes": {
+          "accepted-observed": 3
+        },
+        "stages": {
+          "capture": 3,
+          "dispatch": 3,
+          "result": 3,
+          "join": 3,
+          "roi": 3,
+          "policy": 3,
+          "binding": 3,
+          "filter": 3,
+          "publication": 3
+        }
+      },
+      "notRequestedWithReason": {
+        "no-vehicle": 2,
+        "busy": 21,
+        "cadence": 3
+      },
+      "generations": 2,
+      "unmatchedResults": 0,
+      "availability": {
+        "observedMs": 983.3999999999999,
+        "visibleMs": 550.9,
+        "fullSessionCoverage": 0.5601993085214563,
+        "maxBlackoutMs": 216.59999999999997,
+        "predictedOnlyPresentations": 27,
+        "eligibleCoverage": null,
+        "eligibility": "not annotated; no automatic exclusion based on model failure",
+        "freshAcceptedMeasurements": 3
+      },
+      "boundedState": {
+        "maxDetails": 128,
+        "retainedDetails": 14,
+        "discardedDetails": 0,
+        "maxInflight": 8,
+        "maxObjectsPerAttempt": 32,
+        "discardedObjects": 0
+      },
+      "objectTerminalReasons": {
+        "accepted": 3,
+        "clipped-box": 3,
+        "tiny-roi": 3
+      },
+      "firstFailure": {
+        "kind": "detector",
+        "id": 4,
+        "epoch": 2,
+        "capturedAt": 592.8999999761581,
+        "stages": {
+          "capture": 592.8999999761581,
+          "dispatch": 596.5,
+          "result": 675.8999999761581
+        },
+        "outcome": "wrong-generation",
+        "completedAt": 676.1999999880791
+      },
+      "details": [
+        {
+          "kind": "detector",
+          "id": 1,
+          "epoch": 2,
+          "capturedAt": 326.69999998807907,
+          "stages": {
+            "capture": 326.69999998807907,
+            "dispatch": 337.69999998807907,
+            "result": 408.09999999403954,
+            "publication": 409.19999998807907
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 409.19999998807907
+        },
+        {
+          "kind": "detector",
+          "id": 2,
+          "epoch": 2,
+          "capturedAt": 412.09999999403954,
+          "stages": {
+            "capture": 412.09999999403954,
+            "dispatch": 420.69999998807907,
+            "result": 494.5,
+            "publication": 494.7999999821186
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 494.7999999821186
+        },
+        {
+          "kind": "metric",
+          "id": 2,
+          "epoch": 2,
+          "capturedAt": 412.09999999403954,
+          "stages": {
+            "capture": 412.09999999403954,
+            "dispatch": 420.59999999403954,
+            "result": 511.5,
+            "join": 511.5,
+            "roi": 512.3999999761581,
+            "policy": 512.3999999761581,
+            "binding": 512.5999999940395,
+            "filter": 512.5999999940395,
+            "publication": 512.6999999880791
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 512.6999999880791,
+          "context": {
+            "sourceWidth": 720,
+            "sourceHeight": 1280,
+            "targetWidth": 224,
+            "targetHeight": 392,
+            "contentFraction": 0.9843750000000001,
+            "modelSha256": "102c3b87a5610f57b7c337e0e7364d774b4648d5d6e2fb2cba6ed11fe60b6710",
+            "preparationMs": 8.199999988079071,
+            "requestedIntervalMs": 250
+          },
+          "objects": [
+            {
+              "index": 0,
+              "trackId": 1,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0.4,
+                0.3,
+                0.45,
+                0.55
+              ],
+              "probe": {
+                "code": "accepted",
+                "boxWidthPx": 11.025000000000007,
+                "boxHeightPx": 98,
+                "roi": [
+                  93,
+                  159,
+                  98,
+                  197
+                ],
+                "totalPixels": 234,
+                "validPixels": 234,
+                "supportPixels": 234,
+                "q20M": 24,
+                "medianM": 24,
+                "q80M": 24,
+                "relativeSpread": 0,
+                "supportFraction": 1,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": 24,
+              "policyM": 24,
+              "filteredM": 24,
+              "publishedM": 24,
+              "terminalStage": "publication",
+              "code": "accepted"
+            },
+            {
+              "index": 1,
+              "trackId": 2,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0,
+                0.3,
+                0.1,
+                0.55
+              ],
+              "probe": {
+                "code": "clipped-box",
+                "boxWidthPx": null,
+                "boxHeightPx": null,
+                "roi": null,
+                "totalPixels": 0,
+                "validPixels": 0,
+                "supportPixels": 0,
+                "q20M": null,
+                "medianM": null,
+                "q80M": null,
+                "relativeSpread": null,
+                "supportFraction": null,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": null,
+              "policyM": null,
+              "filteredM": null,
+              "publishedM": null,
+              "terminalStage": "roi",
+              "code": "clipped-box"
+            },
+            {
+              "index": 2,
+              "trackId": 3,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0.7,
+                0.3,
+                0.71,
+                0.55
+              ],
+              "probe": {
+                "code": "tiny-roi",
+                "boxWidthPx": 2.2050000000000587,
+                "boxHeightPx": 98,
+                "roi": null,
+                "totalPixels": 0,
+                "validPixels": 0,
+                "supportPixels": 0,
+                "q20M": null,
+                "medianM": null,
+                "q80M": null,
+                "relativeSpread": null,
+                "supportFraction": null,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": null,
+              "policyM": null,
+              "filteredM": null,
+              "publishedM": null,
+              "terminalStage": "roi",
+              "code": "tiny-roi"
+            }
+          ]
+        },
+        {
+          "kind": "detector",
+          "id": 3,
+          "epoch": 2,
+          "capturedAt": 502.5,
+          "stages": {
+            "capture": 502.5,
+            "dispatch": 506.19999998807907,
+            "result": 585.6999999880791,
+            "publication": 585.8999999761581
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 585.8999999761581
+        },
+        {
+          "kind": "detector",
+          "id": 4,
+          "epoch": 2,
+          "capturedAt": 592.8999999761581,
+          "stages": {
+            "capture": 592.8999999761581,
+            "dispatch": 596.5,
+            "result": 675.8999999761581
+          },
+          "outcome": "wrong-generation",
+          "completedAt": 676.1999999880791
+        },
+        {
+          "kind": "detector",
+          "id": 5,
+          "epoch": 4,
+          "capturedAt": 709.8999999761581,
+          "stages": {
+            "capture": 709.8999999761581,
+            "dispatch": 712,
+            "result": 783,
+            "publication": 783.1999999880791
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 783.1999999880791
+        },
+        {
+          "kind": "detector",
+          "id": 6,
+          "epoch": 4,
+          "capturedAt": 801.3999999761581,
+          "stages": {
+            "capture": 801.3999999761581,
+            "dispatch": 804.0999999940395,
+            "result": 874.7999999821186,
+            "publication": 875
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 875
+        },
+        {
+          "kind": "metric",
+          "id": 6,
+          "epoch": 4,
+          "capturedAt": 801.3999999761581,
+          "stages": {
+            "capture": 801.3999999761581,
+            "dispatch": 804.0999999940395,
+            "result": 895,
+            "join": 895,
+            "roi": 895.3999999761581,
+            "policy": 895.3999999761581,
+            "binding": 895.3999999761581,
+            "filter": 895.3999999761581,
+            "publication": 895.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 895.5,
+          "context": {
+            "sourceWidth": 1280,
+            "sourceHeight": 720,
+            "targetWidth": 392,
+            "targetHeight": 224,
+            "contentFraction": 0.9843750000000001,
+            "modelSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+            "preparationMs": 2.5,
+            "requestedIntervalMs": 250
+          },
+          "objects": [
+            {
+              "index": 0,
+              "trackId": 1,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0.4,
+                0.3,
+                0.45,
+                0.55
+              ],
+              "probe": {
+                "code": "accepted",
+                "boxWidthPx": 19.599999999999994,
+                "boxHeightPx": 55.125,
+                "roi": [
+                  162,
+                  92,
+                  172,
+                  113
+                ],
+                "totalPixels": 242,
+                "validPixels": 242,
+                "supportPixels": 242,
+                "q20M": 24,
+                "medianM": 24,
+                "q80M": 24,
+                "relativeSpread": 0,
+                "supportFraction": 1,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": 24,
+              "policyM": 24,
+              "filteredM": 24,
+              "publishedM": 24,
+              "terminalStage": "publication",
+              "code": "accepted"
+            },
+            {
+              "index": 1,
+              "trackId": 2,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0,
+                0.3,
+                0.1,
+                0.55
+              ],
+              "probe": {
+                "code": "clipped-box",
+                "boxWidthPx": null,
+                "boxHeightPx": null,
+                "roi": null,
+                "totalPixels": 0,
+                "validPixels": 0,
+                "supportPixels": 0,
+                "q20M": null,
+                "medianM": null,
+                "q80M": null,
+                "relativeSpread": null,
+                "supportFraction": null,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": null,
+              "policyM": null,
+              "filteredM": null,
+              "publishedM": null,
+              "terminalStage": "roi",
+              "code": "clipped-box"
+            },
+            {
+              "index": 2,
+              "trackId": 3,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0.7,
+                0.3,
+                0.71,
+                0.55
+              ],
+              "probe": {
+                "code": "tiny-roi",
+                "boxWidthPx": 3.91999999999996,
+                "boxHeightPx": 55.125,
+                "roi": null,
+                "totalPixels": 0,
+                "validPixels": 0,
+                "supportPixels": 0,
+                "q20M": null,
+                "medianM": null,
+                "q80M": null,
+                "relativeSpread": null,
+                "supportFraction": null,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": null,
+              "policyM": null,
+              "filteredM": null,
+              "publishedM": null,
+              "terminalStage": "roi",
+              "code": "tiny-roi"
+            }
+          ]
+        },
+        {
+          "kind": "detector",
+          "id": 7,
+          "epoch": 4,
+          "capturedAt": 892.7999999821186,
+          "stages": {
+            "capture": 892.7999999821186,
+            "dispatch": 894.5,
+            "result": 965.0999999940395,
+            "publication": 965.2999999821186
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 965.2999999821186
+        },
+        {
+          "kind": "detector",
+          "id": 8,
+          "epoch": 4,
+          "capturedAt": 985.5,
+          "stages": {
+            "capture": 985.5,
+            "dispatch": 987.1999999880791,
+            "result": 1065.5,
+            "publication": 1065.5999999940395
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1065.5999999940395
+        },
+        {
+          "kind": "detector",
+          "id": 9,
+          "epoch": 4,
+          "capturedAt": 1101.2999999821186,
+          "stages": {
+            "capture": 1101.2999999821186,
+            "dispatch": 1103.5999999940395,
+            "result": 1175.7999999821186,
+            "publication": 1175.8999999761581
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1175.8999999761581
+        },
+        {
+          "kind": "metric",
+          "id": 9,
+          "epoch": 4,
+          "capturedAt": 1101.2999999821186,
+          "stages": {
+            "capture": 1101.2999999821186,
+            "dispatch": 1103.5999999940395,
+            "result": 1196.199999988079,
+            "join": 1196.199999988079,
+            "roi": 1196.3999999761581,
+            "policy": 1196.3999999761581,
+            "binding": 1196.5,
+            "filter": 1196.5,
+            "publication": 1196.5
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1196.5,
+          "context": {
+            "sourceWidth": 1280,
+            "sourceHeight": 720,
+            "targetWidth": 392,
+            "targetHeight": 224,
+            "contentFraction": 0.9843750000000001,
+            "modelSha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+            "preparationMs": 2.0999999940395355,
+            "requestedIntervalMs": 250
+          },
+          "objects": [
+            {
+              "index": 0,
+              "trackId": 1,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0.4,
+                0.3,
+                0.45,
+                0.55
+              ],
+              "probe": {
+                "code": "accepted",
+                "boxWidthPx": 19.599999999999994,
+                "boxHeightPx": 55.125,
+                "roi": [
+                  162,
+                  92,
+                  172,
+                  113
+                ],
+                "totalPixels": 242,
+                "validPixels": 242,
+                "supportPixels": 242,
+                "q20M": 24,
+                "medianM": 24,
+                "q80M": 24,
+                "relativeSpread": 0,
+                "supportFraction": 1,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": 24,
+              "policyM": 24,
+              "filteredM": 24,
+              "publishedM": 24,
+              "terminalStage": "publication",
+              "code": "accepted"
+            },
+            {
+              "index": 1,
+              "trackId": 2,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0,
+                0.3,
+                0.1,
+                0.55
+              ],
+              "probe": {
+                "code": "clipped-box",
+                "boxWidthPx": null,
+                "boxHeightPx": null,
+                "roi": null,
+                "totalPixels": 0,
+                "validPixels": 0,
+                "supportPixels": 0,
+                "q20M": null,
+                "medianM": null,
+                "q80M": null,
+                "relativeSpread": null,
+                "supportFraction": null,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": null,
+              "policyM": null,
+              "filteredM": null,
+              "publishedM": null,
+              "terminalStage": "roi",
+              "code": "clipped-box"
+            },
+            {
+              "index": 2,
+              "trackId": 3,
+              "label": "car",
+              "score": 0.99,
+              "box": [
+                0.7,
+                0.3,
+                0.71,
+                0.55
+              ],
+              "probe": {
+                "code": "tiny-roi",
+                "boxWidthPx": 3.91999999999996,
+                "boxHeightPx": 55.125,
+                "roi": null,
+                "totalPixels": 0,
+                "validPixels": 0,
+                "supportPixels": 0,
+                "q20M": null,
+                "medianM": null,
+                "q80M": null,
+                "relativeSpread": null,
+                "supportFraction": null,
+                "method": "central-connected-depth-support-v2"
+              },
+              "rawM": null,
+              "policyM": null,
+              "filteredM": null,
+              "publishedM": null,
+              "terminalStage": "roi",
+              "code": "tiny-roi"
+            }
+          ]
+        },
+        {
+          "kind": "detector",
+          "id": 10,
+          "epoch": 4,
+          "capturedAt": 1193.8999999761581,
+          "stages": {
+            "capture": 1193.8999999761581,
+            "dispatch": 1195.5,
+            "result": 1267.3999999761581,
+            "publication": 1267.5999999940395
+          },
+          "outcome": "accepted-observed",
+          "completedAt": 1267.5999999940395
+        },
+        {
+          "kind": "detector",
+          "id": 11,
+          "epoch": 4,
+          "capturedAt": 1285.5,
+          "stages": {
+            "capture": 1285.5,
+            "dispatch": 1287.5
+          },
+          "outcome": null,
+          "completedAt": null
+        }
+      ],
+      "claims": {
+        "mobile": "unverified without actual device run",
+        "metres": "accuracy unvalidated without independent distance truth"
+      }
+    },
+    "mobileSoak": {
+      "schema": "drivesense-mobile-soak-v1",
+      "clock": "performance.now monotonic milliseconds",
+      "provenance": "live-camera-runtime",
+      "active": true,
+      "epoch": 4,
+      "session": {
+        "durationMs": 1007,
+        "phase": "warming"
+      },
+      "privacy": {
+        "pixelFree": true,
+        "cameraSettingsAllowlist": true,
+        "excluded": [
+          "pixels",
+          "video",
+          "camera-label",
+          "deviceId",
+          "groupId",
+          "local-path",
+          "gps"
+        ]
+      },
+      "camera": {
+        "settings": {
+          "width": 720,
+          "height": 1280,
+          "frameRate": 30,
+          "aspectRatio": 0.5625,
+          "resizeMode": "none"
+        }
+      },
+      "models": [
+        {
+          "kind": "metric-depth",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "webgpu",
+          "totalLoadMs": 0.7000000178813934,
+          "warmupMs": 1,
+          "outcome": "ready"
+        },
+        {
+          "kind": "detector",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "webgpu",
+          "totalLoadMs": 2.2999999821186066,
+          "warmupMs": null,
+          "outcome": "ready"
+        },
+        {
+          "kind": "metric-depth",
+          "requestedBackend": "webgpu",
+          "resolvedBackend": "webgpu",
+          "totalLoadMs": 0.5,
+          "warmupMs": 1,
+          "outcome": "ready"
+        }
+      ],
+      "lifecycle": {
+        "timelineReset": 2
+      },
+      "boundedState": {
+        "inflightTraces": 1,
+        "maxInflightTraces": 64,
+        "histogramResolutionMs": 1,
+        "histogramMaxMs": 5000,
+        "retainedFrameRows": 0
+      },
+      "overall": {
+        "counts": {
+          "presentedCallbacks": 31,
+          "presentedFrameGaps": 0,
+          "detectorStarted": 11,
+          "detectorAccepted": 9,
+          "detectorDropped": 1,
+          "detectorBusySkips": 18,
+          "overlays": 9,
+          "alertOverlays": 0,
+          "metricAttempts": 3,
+          "metricAccepted": 3,
+          "metricDropped": 0,
+          "trackSnapshots": 9,
+          "trackObservations": 27,
+          "trackBirths": 6,
+          "trackLosses": 0,
+          "dropReasons": {
+            "geometry-change": 1
+          }
+        },
+        "rates": {
+          "detectorAccepted": 0.8181818181818182,
+          "detectorDropped": 0.09090909090909091,
+          "busy": 0.6206896551724138,
+          "metricAccepted": 1,
+          "trackSetTurnoverProxy": 0.2222222222222222
+        },
+        "stages": {
+          "callbackVsExpectedDisplay": {
+            "samples": 31,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 0.05161290322580719,
+            "p50Ms": 0,
+            "p95Ms": 0,
+            "p99Ms": 2,
+            "maxMs": 1.6000000000000227
+          },
+          "captureToCallback": {
+            "samples": 0,
+            "unavailable": 31,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "decodeProcessing": {
+            "samples": 0,
+            "unavailable": 31,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "requestToResult": {
+            "samples": 10,
+            "unavailable": 1,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 73.77999999523163,
+            "p50Ms": 72,
+            "p95Ms": 80,
+            "p99Ms": 80,
+            "maxMs": 79.5
+          },
+          "frameToOverlay": {
+            "samples": 9,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 83.34444442987439,
+            "p50Ms": 77,
+            "p95Ms": 96,
+            "p99Ms": 96,
+            "maxMs": 96.29999997615812
+          },
+          "metricInference": {
+            "samples": 3,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 90,
+            "p50Ms": 90,
+            "p95Ms": 90,
+            "p99Ms": 90,
+            "maxMs": 90
+          }
+        }
+      },
+      "windows": [
+        {
+          "id": "0-5m",
+          "startMs": 0,
+          "endMs": 300000,
+          "observedDurationMs": 1007,
+          "counts": {
+            "presentedCallbacks": 31,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 11,
+            "detectorAccepted": 9,
+            "detectorDropped": 1,
+            "detectorBusySkips": 18,
+            "overlays": 9,
+            "alertOverlays": 0,
+            "metricAttempts": 3,
+            "metricAccepted": 3,
+            "metricDropped": 0,
+            "trackSnapshots": 9,
+            "trackObservations": 27,
+            "trackBirths": 6,
+            "trackLosses": 0,
+            "dropReasons": {
+              "geometry-change": 1
+            }
+          },
+          "rates": {
+            "detectorAccepted": 0.8181818181818182,
+            "detectorDropped": 0.09090909090909091,
+            "busy": 0.6206896551724138,
+            "metricAccepted": 1,
+            "trackSetTurnoverProxy": 0.2222222222222222
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 31,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 0.05161290322580719,
+              "p50Ms": 0,
+              "p95Ms": 0,
+              "p99Ms": 2,
+              "maxMs": 1.6000000000000227
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 31,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 31,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 10,
+              "unavailable": 1,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 73.77999999523163,
+              "p50Ms": 72,
+              "p95Ms": 80,
+              "p99Ms": 80,
+              "maxMs": 79.5
+            },
+            "frameToOverlay": {
+              "samples": 9,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 83.34444442987439,
+              "p50Ms": 77,
+              "p95Ms": 96,
+              "p99Ms": 96,
+              "maxMs": 96.29999997615812
+            },
+            "metricInference": {
+              "samples": 3,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": 90,
+              "p50Ms": 90,
+              "p95Ms": 90,
+              "p99Ms": 90,
+              "maxMs": 90
+            }
+          }
+        },
+        {
+          "id": "5-10m",
+          "startMs": 300000,
+          "endMs": 600000,
+          "observedDurationMs": 0,
+          "counts": {
+            "presentedCallbacks": 0,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 0,
+            "detectorAccepted": 0,
+            "detectorDropped": 0,
+            "detectorBusySkips": 0,
+            "overlays": 0,
+            "alertOverlays": 0,
+            "metricAttempts": 0,
+            "metricAccepted": 0,
+            "metricDropped": 0,
+            "trackSnapshots": 0,
+            "trackObservations": 0,
+            "trackBirths": 0,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": null,
+            "detectorDropped": null,
+            "busy": null,
+            "metricAccepted": null,
+            "trackSetTurnoverProxy": null
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "frameToOverlay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "metricInference": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            }
+          }
+        },
+        {
+          "id": "10-20m",
+          "startMs": 600000,
+          "endMs": 1200000,
+          "observedDurationMs": 0,
+          "counts": {
+            "presentedCallbacks": 0,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 0,
+            "detectorAccepted": 0,
+            "detectorDropped": 0,
+            "detectorBusySkips": 0,
+            "overlays": 0,
+            "alertOverlays": 0,
+            "metricAttempts": 0,
+            "metricAccepted": 0,
+            "metricDropped": 0,
+            "trackSnapshots": 0,
+            "trackObservations": 0,
+            "trackBirths": 0,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": null,
+            "detectorDropped": null,
+            "busy": null,
+            "metricAccepted": null,
+            "trackSetTurnoverProxy": null
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "frameToOverlay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "metricInference": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            }
+          }
+        },
+        {
+          "id": "20m+",
+          "startMs": 1200000,
+          "endMs": null,
+          "observedDurationMs": 0,
+          "counts": {
+            "presentedCallbacks": 0,
+            "presentedFrameGaps": 0,
+            "detectorStarted": 0,
+            "detectorAccepted": 0,
+            "detectorDropped": 0,
+            "detectorBusySkips": 0,
+            "overlays": 0,
+            "alertOverlays": 0,
+            "metricAttempts": 0,
+            "metricAccepted": 0,
+            "metricDropped": 0,
+            "trackSnapshots": 0,
+            "trackObservations": 0,
+            "trackBirths": 0,
+            "trackLosses": 0,
+            "dropReasons": {}
+          },
+          "rates": {
+            "detectorAccepted": null,
+            "detectorDropped": null,
+            "busy": null,
+            "metricAccepted": null,
+            "trackSetTurnoverProxy": null
+          },
+          "stages": {
+            "callbackVsExpectedDisplay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "captureToCallback": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "decodeProcessing": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "requestToResult": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "frameToOverlay": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            },
+            "metricInference": {
+              "samples": 0,
+              "unavailable": 0,
+              "resolutionMs": 1,
+              "histogramMaxMs": 5000,
+              "clipped": 0,
+              "meanMs": null,
+              "p50Ms": null,
+              "p95Ms": null,
+              "p99Ms": null,
+              "maxMs": null
+            }
+          }
+        }
+      ],
+      "claims": {
+        "trackSetTurnover": "proxy-only; not ground-truth ID switches",
+        "captureTime": "browser metadata when exposed; otherwise unavailable",
+        "boundary": "Runtime capability evidence only; not distance accuracy, collision-warning safety or public-road validation."
+      }
+    },
+    "backends": {
+      "detector": "webgpu",
+      "metric": "webgpu"
+    },
+    "metricLifecycle": {
+      "scope": "page-runtime lifecycle; retry budget is not reset by source/clip changes",
+      "state": "READY",
+      "generation": 4,
+      "failures": 0,
+      "firstFailure": null,
+      "retryBudget": {
+        "max": 2,
+        "windowMs": 60000,
+        "scheduledAt": []
+      },
+      "events": [
+        {
+          "at": 223.39999997615814,
+          "generation": 1,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 223.5,
+          "generation": 2,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 301.39999997615814,
+          "generation": 3,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 301.39999997615814,
+          "generation": 3,
+          "state": "LOADING",
+          "fault": null
+        },
+        {
+          "at": 302.09999999403954,
+          "generation": 3,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 420.5,
+          "generation": 3,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 511.39999997615814,
+          "generation": 3,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 685.5,
+          "generation": 4,
+          "state": "IDLE",
+          "fault": null
+        },
+        {
+          "at": 685.5,
+          "generation": 4,
+          "state": "LOADING",
+          "fault": null
+        },
+        {
+          "at": 686,
+          "generation": 4,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 803.8999999761581,
+          "generation": 4,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 895,
+          "generation": 4,
+          "state": "READY",
+          "fault": null
+        },
+        {
+          "at": 1103.5,
+          "generation": 4,
+          "state": "RUNNING",
+          "fault": null
+        },
+        {
+          "at": 1196.199999988079,
+          "generation": 4,
+          "state": "READY",
+          "fault": null
+        }
+      ],
+      "droppedEvents": 0,
+      "maxEvents": 32
+    },
+    "sourceLifecycle": {
+      "ticket": 1,
+      "kind": "camera",
+      "state": "running",
+      "hidden": false,
+      "muted": false,
+      "needsGesture": false,
+      "counts": {
+        "stop": 1,
+        "begin": 1,
+        "resume": 1,
+        "playing": 2
+      },
+      "events": [
+        {
+          "atMs": 223.2999999821186,
+          "event": "stop",
+          "state": "stopped"
+        },
+        {
+          "atMs": 224.5,
+          "event": "begin",
+          "state": "opening"
+        },
+        {
+          "atMs": 224.69999998807907,
+          "event": "resume",
+          "state": "resuming"
+        },
+        {
+          "atMs": 281.69999998807907,
+          "event": "playing",
+          "state": "running"
+        },
+        {
+          "atMs": 300.39999997615814,
+          "event": "playing",
+          "state": "running"
+        }
+      ],
+      "scope": "Source lifecycle only; not physical camera or road-distance acceptance",
+      "screenAwake": {
+        "state": "held",
+        "pending": false,
+        "held": true,
+        "failures": 0,
+        "scope": "Best-effort screen lock, not a camera availability guarantee"
+      }
+    },
+    "mobileRanging": {
+      "detector": "rtdetr",
+      "budget": {
+        "schema": "mobile-measured-budget-v1",
+        "count": 10,
+        "p95Ms": 83.19999998807907,
+        "limitMs": 300,
+        "state": "within-budget",
+        "scope": "Detector capture-to-result only; depth/accuracy/thermal and physical-device acceptance are separate."
+      },
+      "joinedBudget": {
+        "schema": "mobile-measured-budget-v1",
+        "count": 3,
+        "p95Ms": 99.40000000596046,
+        "limitMs": 300,
+        "state": "probing",
+        "scope": "Same-frame detector/depth capture-to-join including terminal failures; not physical metric accuracy or thermal acceptance."
+      },
+      "path": "metric-ai",
+      "anchorProfile": null,
+      "metres": {
+        "schema": "drivesense-target-metres-v1",
+        "targets": [
+          {
+            "id": 1,
+            "boxVisibleMs": 517.5999999999999,
+            "metresVisibleMs": 400.79999999999995,
+            "maxBlackoutMs": 116.79999999999995,
+            "freshObservations": 2,
+            "boxVisibleCoverage": 0.7743431221020093
+          },
+          {
+            "id": 2,
+            "boxVisibleMs": 517.5999999999999,
+            "metresVisibleMs": 0,
+            "maxBlackoutMs": 517.5999999999999,
+            "freshObservations": 0,
+            "boxVisibleCoverage": 0
+          },
+          {
+            "id": 3,
+            "boxVisibleMs": 517.5999999999999,
+            "metresVisibleMs": 0,
+            "maxBlackoutMs": 517.5999999999999,
+            "freshObservations": 0,
+            "boxVisibleCoverage": 0
+          }
+        ],
+        "eligibleTargetCoverage": null,
+        "independentMetricAccuracy": null,
+        "targetCapacity": 256,
+        "omittedRowVisits": 0,
+        "coverageTruncated": false,
+        "productVerdict": "not-validated",
+        "scope": "Current timeline generation only; resets on source/seek/calibration changes. Time while each detected box is visible, not independently labelled road-user eligibility. Runtime/attempt success alone is not ranging acceptance."
+      }
+    }
+  },
+  "runtime": {
+    "app": "RoboEye DriveSense",
+    "appVersion": "1.6.0",
+    "sourceDimensions": {
+      "width": 1280,
+      "height": 720
+    },
+    "devicePixelRatio": 1,
+    "capabilities": {
+      "requestVideoFrameCallback": true,
+      "webgpu": true,
+      "offscreenCanvas": true,
+      "crossOriginIsolated": false
+    },
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36"
+  },
+  "distanceKinds": [
+    "learned_optical_axis_z_m",
+    "ground_contact_forward_m"
+  ],
+  "distanceDefinition": "Forward Z from camera; NOT bumper clearance, lateral separation or inter-vehicle B-C gap",
+  "videoZoom": 1,
+  "rangePolicy": "central-support-temporal-v8-conservative-ordinal",
+  "model": {
+    "name": "RT-DETRv2 R18",
+    "backend": "webgpu",
+    "gpuArtifact": {
+      "id": "onnx-community/rtdetr_v2_r18vd-ONNX",
+      "revision": "936f90b6a476c6da4dfe053fc521af55285976ba",
+      "sourceSha256": "583a236ac21c95a7fd94f284fc21485e42355bfef82c27011ba78fbc09ee87e2",
+      "sha256": "86171edeb435bd3f113e82d1c6720a576932e6deca962426bb1bc794e7000458",
+      "bytes": 81033458,
+      "file": "rtdetr-r18-640-webgpu.onnx",
+      "width": 640,
+      "height": 640,
+      "dtype": "fp32",
+      "releaseUrl": "https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/rtdetr-r18-640-webgpu.onnx",
+      "adapter": "rtdetr-r18-static-equivalent-averagepool-v1",
+      "license": "Apache-2.0"
+    },
+    "wasmArtifact": null,
+    "decoder": "rtdetr-focal-sigmoid-topk-v1",
+    "candidatePolicy": "vehicle-exclusive-confirmed-v2"
+  },
+  "rangeModel": {
+    "id": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+    "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+    "sourceWeightsSha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+    "sha256": "dc868d88c5b97570f59863641092f7a517b85ef567de883a988d7df0e8b7250f",
+    "bytes": 99159817,
+    "file": "da2-outdoor-392x224.onnx",
+    "adapter": "da2-outdoor-letterbox-roi-v1",
+    "width": 392,
+    "height": 224,
+    "maxDepthM": 80,
+    "orientation": "landscape",
+    "releaseUrl": "https://github.com/nclamvn/roboeye/releases/download/drivesense-models-v1/da2-outdoor-392x224.onnx",
+    "unit": "metres",
+    "distanceKind": "optical-axis-z",
+    "scope": "desktop-analysed-video-poc",
+    "artifactSource": null,
+    "cacheHit": null,
+    "kernelPlacement": "not profiled; backend does not prove every kernel is on GPU",
+    "backend": "webgpu",
+    "validation": "learned-unverified"
+  },
+  "offlineAnalysis": null,
+  "liveMetric": {
+    "scheduler": {
+      "policy": "measured-workload-v2",
+      "intervalMs": 250,
+      "detectorP50Ms": 73.40000000596046,
+      "depthP50Ms": 90,
+      "terminalAgeP95Ms": 94.90000000596046,
+      "targetAdmissionMs": 300,
+      "targetAnchorHz": 3,
+      "deadlineFeasible": true,
+      "targetLatencyMet": true,
+      "note": "Runtime budget only; actual cadence, coverage and device acceptance are measured separately."
+    },
+    "attempts": 2,
+    "accepted": 2,
+    "droppedOrUnmatched": 0,
+    "rejectionReasons": {},
+    "lastReason": "Đã ghép depth và xe cùng frame · mét AI chưa kiểm chứng.",
+    "detectorError": "",
+    "metricError": "",
+    "maxCaptureAgeMs": 1200,
+    "policy": "parallel same-frame snapshot; immutable track binding; metres expire 1200 ms after capture; warnings use original capture age; never overrides a supplied camera profile"
+  },
+  "profile": null,
+  "anchorProfile": null,
+  "mobileRanging": {
+    "detector": "rtdetr",
+    "budget": {
+      "schema": "mobile-measured-budget-v1",
+      "count": 10,
+      "p95Ms": 83.19999998807907,
+      "limitMs": 300,
+      "state": "within-budget",
+      "scope": "Detector capture-to-result only; depth/accuracy/thermal and physical-device acceptance are separate."
+    },
+    "joinedBudget": {
+      "schema": "mobile-measured-budget-v1",
+      "count": 3,
+      "p95Ms": 99.40000000596046,
+      "limitMs": 300,
+      "state": "probing",
+      "scope": "Same-frame detector/depth capture-to-join including terminal failures; not physical metric accuracy or thermal acceptance."
+    },
+    "metres": {
+      "schema": "drivesense-target-metres-v1",
+      "targets": [
+        {
+          "id": 1,
+          "boxVisibleMs": 517.5999999999999,
+          "metresVisibleMs": 400.79999999999995,
+          "maxBlackoutMs": 116.79999999999995,
+          "freshObservations": 2,
+          "boxVisibleCoverage": 0.7743431221020093
+        },
+        {
+          "id": 2,
+          "boxVisibleMs": 517.5999999999999,
+          "metresVisibleMs": 0,
+          "maxBlackoutMs": 517.5999999999999,
+          "freshObservations": 0,
+          "boxVisibleCoverage": 0
+        },
+        {
+          "id": 3,
+          "boxVisibleMs": 517.5999999999999,
+          "metresVisibleMs": 0,
+          "maxBlackoutMs": 517.5999999999999,
+          "freshObservations": 0,
+          "boxVisibleCoverage": 0
+        }
+      ],
+      "eligibleTargetCoverage": null,
+      "independentMetricAccuracy": null,
+      "targetCapacity": 256,
+      "omittedRowVisits": 0,
+      "coverageTruncated": false,
+      "productVerdict": "not-validated",
+      "scope": "Current timeline generation only; resets on source/seek/calibration changes. Time while each detected box is visible, not independently labelled road-user eligibility. Runtime/attempt success alone is not ranging acceptance."
+    }
+  },
+  "risk": {
+    "config": {
+      "speedKph": 0,
+      "adverse": false
+    },
+    "policy": "shadow-risk-v1",
+    "events": [],
+    "latest": {
+      "evidenceMode": "live",
+      "tracks": [
+        {
+          "track": {
+            "id": 1,
+            "box": {
+              "label": "car",
+              "score": 0.99,
+              "x0": 0.4,
+              "x1": 0.45,
+              "y0": 0.3,
+              "y1": 0.55
+            },
+            "ageMs": 34.40000002384181,
+            "evidenceAgeMs": 107.90000002384181,
+            "rangeAgeMs": 200.50000001788135,
+            "range": {
+              "kind": "learned_optical_axis_z_m",
+              "provenance": "learned-unverified",
+              "distanceM": 24,
+              "lateralM": null,
+              "sigmaM": 2.4000000000000004,
+              "interval": [
+                19.2,
+                28.8
+              ],
+              "intervalCalibrated": false,
+              "reasonCode": "accepted",
+              "reason": "AI metric chưa hiệu chuẩn thực địa · support 242/242 px · độ phân tán 0%"
+            },
+            "closingSpeed": null,
+            "opticalTtcS": null,
+            "rangeTtcS": null,
+            "motionConfidence": 0.580049999973178,
+            "status": "tracked"
+          },
+          "inPath": true,
+          "pathScore": 0.7808139534883722,
+          "ttcS": null,
+          "ttcAgreement": "none",
+          "headwayS": null,
+          "referenceDistanceM": null,
+          "confidence": 0.3735962999776948,
+          "level": "monitor",
+          "reason": "Đang bám trong hành lang ước lượng",
+          "score": 13.823255813953487
+        },
+        {
+          "track": {
+            "id": 2,
+            "box": {
+              "label": "car",
+              "score": 0.99,
+              "x0": 0,
+              "x1": 0.1,
+              "y0": 0.3,
+              "y1": 0.55
+            },
+            "ageMs": 34.40000002384181,
+            "evidenceAgeMs": 107.90000002384181,
+            "rangeAgeMs": 107.90000002384181,
+            "range": {
+              "kind": "ground_contact_forward_m",
+              "provenance": "none",
+              "distanceM": null,
+              "lateralM": null,
+              "sigmaM": null,
+              "interval": null,
+              "intervalCalibrated": false,
+              "reason": "Chưa hiệu chuẩn"
+            },
+            "closingSpeed": null,
+            "opticalTtcS": null,
+            "rangeTtcS": null,
+            "motionConfidence": 0.580049999973178,
+            "status": "unknown"
+          },
+          "inPath": false,
+          "pathScore": 0,
+          "ttcS": null,
+          "ttcAgreement": "none",
+          "headwayS": null,
+          "referenceDistanceM": null,
+          "confidence": 0.349361099978757,
+          "level": "clear",
+          "reason": "Ngoài hành lang chạy ước lượng",
+          "score": 0
+        },
+        {
+          "track": {
+            "id": 3,
+            "box": {
+              "label": "car",
+              "score": 0.99,
+              "x0": 0.7,
+              "x1": 0.71,
+              "y0": 0.3,
+              "y1": 0.55
+            },
+            "ageMs": 34.40000002384181,
+            "evidenceAgeMs": 107.90000002384181,
+            "rangeAgeMs": 107.90000002384181,
+            "range": {
+              "kind": "ground_contact_forward_m",
+              "provenance": "none",
+              "distanceM": null,
+              "lateralM": null,
+              "sigmaM": null,
+              "interval": null,
+              "intervalCalibrated": false,
+              "reason": "Chưa hiệu chuẩn"
+            },
+            "closingSpeed": null,
+            "opticalTtcS": null,
+            "rangeTtcS": null,
+            "motionConfidence": 0.580049999973178,
+            "status": "unknown"
+          },
+          "inPath": false,
+          "pathScore": 0.050891472868217345,
+          "ttcS": null,
+          "ttcAgreement": "none",
+          "headwayS": null,
+          "referenceDistanceM": null,
+          "confidence": 0.349361099978757,
+          "level": "clear",
+          "reason": "Ngoài hành lang chạy ước lượng",
+          "score": 0.20356589147286938
+        }
+      ],
+      "primary": {
+        "track": {
+          "id": 1,
+          "box": {
+            "label": "car",
+            "score": 0.99,
+            "x0": 0.4,
+            "x1": 0.45,
+            "y0": 0.3,
+            "y1": 0.55
+          },
+          "ageMs": 34.40000002384181,
+          "evidenceAgeMs": 107.90000002384181,
+          "rangeAgeMs": 200.50000001788135,
+          "range": {
+            "kind": "learned_optical_axis_z_m",
+            "provenance": "learned-unverified",
+            "distanceM": 24,
+            "lateralM": null,
+            "sigmaM": 2.4000000000000004,
+            "interval": [
+              19.2,
+              28.8
+            ],
+            "intervalCalibrated": false,
+            "reasonCode": "accepted",
+            "reason": "AI metric chưa hiệu chuẩn thực địa · support 242/242 px · độ phân tán 0%"
+          },
+          "closingSpeed": null,
+          "opticalTtcS": null,
+          "rangeTtcS": null,
+          "motionConfidence": 0.580049999973178,
+          "status": "tracked"
+        },
+        "inPath": true,
+        "pathScore": 0.7808139534883722,
+        "ttcS": null,
+        "ttcAgreement": "none",
+        "headwayS": null,
+        "referenceDistanceM": null,
+        "confidence": 0.3735962999776948,
+        "level": "monitor",
+        "reason": "Đang bám trong hành lang ước lượng",
+        "score": 13.823255813953487
+      },
+      "referenceDistanceM": null,
+      "referenceLabel": "Chưa có mốc cố định"
+    }
+  },
+  "summary": {
+    "referenceCount": 0,
+    "matchedMeasurements": 0,
+    "coverage": null,
+    "maeM": null,
+    "biasM": null,
+    "p95AbsoluteErrorM": null,
+    "captureToResultP95Ms": 80,
+    "note": "Đối chứng phải độc lập, đúng ID/timestamp và khoảng cách tới điểm đất, không tâm hộp/cản xe. Không chứng nhận an toàn."
+  },
+  "liveTiming": {
+    "schema": "drivesense-live-timing-v1",
+    "epoch": 4,
+    "clock": "performance.now monotonic milliseconds",
+    "provenance": "live-camera",
+    "session": {
+      "durationMs": 575.8,
+      "firstFrameAvailableAt": 709.3,
+      "lastFrameAvailableAt": 1285.1
+    },
+    "percentileWindow": {
+      "retained": 7,
+      "limit": 5000,
+      "policy": "most-recent traces; lifetime counters remain cumulative"
+    },
+    "counts": {
+      "started": 7,
+      "accepted": 6,
+      "dropped": 0,
+      "alertFrames": 0,
+      "overlays": 6,
+      "audioRequests": 0,
+      "inflightRetained": 1,
+      "skipped": 11,
+      "dropReasons": {},
+      "skipReasons": {
+        "busy": 11
+      }
+    },
+    "stages": {
+      "frameCallbackToCapture": {
+        "samples": 7,
+        "unavailable": 0,
+        "p50Ms": 2.400000000000091,
+        "p95Ms": 2.999999976158165,
+        "p99Ms": 2.999999976158165,
+        "maxMs": 2.999999976158165
+      },
+      "captureToDispatch": {
+        "samples": 7,
+        "unavailable": 0,
+        "p50Ms": 0,
+        "p95Ms": 0.20000001788139343,
+        "p99Ms": 0.20000001788139343,
+        "maxMs": 0.20000001788139343
+      },
+      "requestToResult": {
+        "samples": 6,
+        "unavailable": 1,
+        "p50Ms": 71,
+        "p95Ms": 78.30000001192093,
+        "p99Ms": 78.30000001192093,
+        "maxMs": 78.30000001192093
+      },
+      "frameAgeAtAcceptance": {
+        "samples": 6,
+        "unavailable": 0,
+        "p50Ms": 74.10000000000002,
+        "p95Ms": 80.59999998807905,
+        "p99Ms": 80.59999998807905,
+        "maxMs": 80.59999998807905
+      },
+      "resultToRisk": {
+        "samples": 6,
+        "unavailable": 0,
+        "p50Ms": 1.5999999940395355,
+        "p95Ms": 3,
+        "p99Ms": 3,
+        "maxMs": 3
+      },
+      "riskToOverlay": {
+        "samples": 6,
+        "unavailable": 0,
+        "p50Ms": 0.09999999403953552,
+        "p95Ms": 0.20000001788139343,
+        "p99Ms": 0.20000001788139343,
+        "maxMs": 0.20000001788139343
+      },
+      "frameToOverlay": {
+        "samples": 6,
+        "unavailable": 0,
+        "p50Ms": 75.69999998807907,
+        "p95Ms": 82.99999999403951,
+        "p99Ms": 82.99999999403951,
+        "maxMs": 82.99999999403951
+      },
+      "riskToAlertOverlay": {
+        "samples": 0,
+        "unavailable": 0,
+        "p50Ms": null,
+        "p95Ms": null,
+        "p99Ms": null,
+        "maxMs": null
+      },
+      "frameToAlertOverlay": {
+        "samples": 0,
+        "unavailable": 0,
+        "p50Ms": null,
+        "p95Ms": null,
+        "p99Ms": null,
+        "maxMs": null
+      },
+      "riskToAudioRequest": {
+        "samples": 0,
+        "unavailable": 0,
+        "p50Ms": null,
+        "p95Ms": null,
+        "p99Ms": null,
+        "maxMs": null
+      },
+      "frameToAudioRequest": {
+        "samples": 0,
+        "unavailable": 0,
+        "p50Ms": null,
+        "p95Ms": null,
+        "p99Ms": null,
+        "maxMs": null
+      }
+    },
+    "traceRows": [
+      {
+        "id": 5,
+        "mediaTimeMs": 422.34,
+        "droppedReason": null,
+        "hasAlert": false,
+        "frameCallbackToCaptureMs": 2.5999999761581876,
+        "requestToResultMs": 71,
+        "frameToOverlayMs": 75.39999998807912,
+        "frameToAlertOverlayMs": null,
+        "frameToAudioRequestMs": null
+      },
+      {
+        "id": 6,
+        "mediaTimeMs": 512.2529999999999,
+        "droppedReason": null,
+        "hasAlert": false,
+        "frameCallbackToCaptureMs": 2.999999976158165,
+        "requestToResultMs": 70.69999998807907,
+        "frameToOverlayMs": 76.89999998211863,
+        "frameToAlertOverlayMs": null,
+        "frameToAudioRequestMs": null
+      },
+      {
+        "id": 7,
+        "mediaTimeMs": 602.483,
+        "droppedReason": null,
+        "hasAlert": false,
+        "frameCallbackToCaptureMs": 2,
+        "requestToResultMs": 70.59999999403954,
+        "frameToOverlayMs": 75.69999998807907,
+        "frameToAlertOverlayMs": null,
+        "frameToAudioRequestMs": null
+      },
+      {
+        "id": 8,
+        "mediaTimeMs": 693.8720000000001,
+        "droppedReason": null,
+        "hasAlert": false,
+        "frameCallbackToCaptureMs": 2.0999999880790483,
+        "requestToResultMs": 78.30000001192093,
+        "frameToOverlayMs": 82.99999999403951,
+        "frameToAlertOverlayMs": null,
+        "frameToAudioRequestMs": null
+      },
+      {
+        "id": 9,
+        "mediaTimeMs": 813.115,
+        "droppedReason": null,
+        "hasAlert": false,
+        "frameCallbackToCaptureMs": 2.499999976158051,
+        "requestToResultMs": 72.19999998807907,
+        "frameToOverlayMs": 76.69999999403944,
+        "frameToAlertOverlayMs": null,
+        "frameToAudioRequestMs": null
+      },
+      {
+        "id": 10,
+        "mediaTimeMs": 903.959,
+        "droppedReason": null,
+        "hasAlert": false,
+        "frameCallbackToCaptureMs": 2.099999999999909,
+        "requestToResultMs": 71.89999997615814,
+        "frameToOverlayMs": 75.39999998211852,
+        "frameToAlertOverlayMs": null,
+        "frameToAudioRequestMs": null
+      },
+      {
+        "id": 11,
+        "mediaTimeMs": 992.816,
+        "droppedReason": null,
+        "hasAlert": false,
+        "frameCallbackToCaptureMs": 2.400000000000091,
+        "requestToResultMs": null,
+        "frameToOverlayMs": null,
+        "frameToAlertOverlayMs": null,
+        "frameToAudioRequestMs": null
+      }
+    ]
+  },
+  "mobileSoak": {
+    "schema": "drivesense-mobile-soak-v1",
+    "clock": "performance.now monotonic milliseconds",
+    "provenance": "live-camera-runtime",
+    "active": true,
+    "epoch": 4,
+    "session": {
+      "durationMs": 1007.2999999821186,
+      "phase": "warming"
+    },
+    "privacy": {
+      "pixelFree": true,
+      "cameraSettingsAllowlist": true,
+      "excluded": [
+        "pixels",
+        "video",
+        "camera-label",
+        "deviceId",
+        "groupId",
+        "local-path",
+        "gps"
+      ]
+    },
+    "camera": {
+      "settings": {
+        "width": 720,
+        "height": 1280,
+        "frameRate": 30,
+        "aspectRatio": 0.5625,
+        "resizeMode": "none"
+      }
+    },
+    "models": [
+      {
+        "kind": "metric-depth",
+        "requestedBackend": "webgpu",
+        "resolvedBackend": "webgpu",
+        "totalLoadMs": 0.7000000178813934,
+        "warmupMs": 1,
+        "outcome": "ready"
+      },
+      {
+        "kind": "detector",
+        "requestedBackend": "webgpu",
+        "resolvedBackend": "webgpu",
+        "totalLoadMs": 2.2999999821186066,
+        "warmupMs": null,
+        "outcome": "ready"
+      },
+      {
+        "kind": "metric-depth",
+        "requestedBackend": "webgpu",
+        "resolvedBackend": "webgpu",
+        "totalLoadMs": 0.5,
+        "warmupMs": 1,
+        "outcome": "ready"
+      }
+    ],
+    "lifecycle": {
+      "timelineReset": 2
+    },
+    "boundedState": {
+      "inflightTraces": 1,
+      "maxInflightTraces": 64,
+      "histogramResolutionMs": 1,
+      "histogramMaxMs": 5000,
+      "retainedFrameRows": 0
+    },
+    "overall": {
+      "counts": {
+        "presentedCallbacks": 31,
+        "presentedFrameGaps": 0,
+        "detectorStarted": 11,
+        "detectorAccepted": 9,
+        "detectorDropped": 1,
+        "detectorBusySkips": 18,
+        "overlays": 9,
+        "alertOverlays": 0,
+        "metricAttempts": 3,
+        "metricAccepted": 3,
+        "metricDropped": 0,
+        "trackSnapshots": 9,
+        "trackObservations": 27,
+        "trackBirths": 6,
+        "trackLosses": 0,
+        "dropReasons": {
+          "geometry-change": 1
+        }
+      },
+      "rates": {
+        "detectorAccepted": 0.8181818181818182,
+        "detectorDropped": 0.09090909090909091,
+        "busy": 0.6206896551724138,
+        "metricAccepted": 1,
+        "trackSetTurnoverProxy": 0.2222222222222222
+      },
+      "stages": {
+        "callbackVsExpectedDisplay": {
+          "samples": 31,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 0.05161290322580719,
+          "p50Ms": 0,
+          "p95Ms": 0,
+          "p99Ms": 2,
+          "maxMs": 1.6000000000000227
+        },
+        "captureToCallback": {
+          "samples": 0,
+          "unavailable": 31,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": null,
+          "p50Ms": null,
+          "p95Ms": null,
+          "p99Ms": null,
+          "maxMs": null
+        },
+        "decodeProcessing": {
+          "samples": 0,
+          "unavailable": 31,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": null,
+          "p50Ms": null,
+          "p95Ms": null,
+          "p99Ms": null,
+          "maxMs": null
+        },
+        "requestToResult": {
+          "samples": 10,
+          "unavailable": 1,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 73.77999999523163,
+          "p50Ms": 72,
+          "p95Ms": 80,
+          "p99Ms": 80,
+          "maxMs": 79.5
+        },
+        "frameToOverlay": {
+          "samples": 9,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 83.34444442987439,
+          "p50Ms": 77,
+          "p95Ms": 96,
+          "p99Ms": 96,
+          "maxMs": 96.29999997615812
+        },
+        "metricInference": {
+          "samples": 3,
+          "unavailable": 0,
+          "resolutionMs": 1,
+          "histogramMaxMs": 5000,
+          "clipped": 0,
+          "meanMs": 90,
+          "p50Ms": 90,
+          "p95Ms": 90,
+          "p99Ms": 90,
+          "maxMs": 90
+        }
+      }
+    },
+    "windows": [
+      {
+        "id": "0-5m",
+        "startMs": 0,
+        "endMs": 300000,
+        "observedDurationMs": 1007.2999999821186,
+        "counts": {
+          "presentedCallbacks": 31,
+          "presentedFrameGaps": 0,
+          "detectorStarted": 11,
+          "detectorAccepted": 9,
+          "detectorDropped": 1,
+          "detectorBusySkips": 18,
+          "overlays": 9,
+          "alertOverlays": 0,
+          "metricAttempts": 3,
+          "metricAccepted": 3,
+          "metricDropped": 0,
+          "trackSnapshots": 9,
+          "trackObservations": 27,
+          "trackBirths": 6,
+          "trackLosses": 0,
+          "dropReasons": {
+            "geometry-change": 1
+          }
+        },
+        "rates": {
+          "detectorAccepted": 0.8181818181818182,
+          "detectorDropped": 0.09090909090909091,
+          "busy": 0.6206896551724138,
+          "metricAccepted": 1,
+          "trackSetTurnoverProxy": 0.2222222222222222
+        },
+        "stages": {
+          "callbackVsExpectedDisplay": {
+            "samples": 31,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 0.05161290322580719,
+            "p50Ms": 0,
+            "p95Ms": 0,
+            "p99Ms": 2,
+            "maxMs": 1.6000000000000227
+          },
+          "captureToCallback": {
+            "samples": 0,
+            "unavailable": 31,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "decodeProcessing": {
+            "samples": 0,
+            "unavailable": 31,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "requestToResult": {
+            "samples": 10,
+            "unavailable": 1,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 73.77999999523163,
+            "p50Ms": 72,
+            "p95Ms": 80,
+            "p99Ms": 80,
+            "maxMs": 79.5
+          },
+          "frameToOverlay": {
+            "samples": 9,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 83.34444442987439,
+            "p50Ms": 77,
+            "p95Ms": 96,
+            "p99Ms": 96,
+            "maxMs": 96.29999997615812
+          },
+          "metricInference": {
+            "samples": 3,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": 90,
+            "p50Ms": 90,
+            "p95Ms": 90,
+            "p99Ms": 90,
+            "maxMs": 90
+          }
+        }
+      },
+      {
+        "id": "5-10m",
+        "startMs": 300000,
+        "endMs": 600000,
+        "observedDurationMs": 0,
+        "counts": {
+          "presentedCallbacks": 0,
+          "presentedFrameGaps": 0,
+          "detectorStarted": 0,
+          "detectorAccepted": 0,
+          "detectorDropped": 0,
+          "detectorBusySkips": 0,
+          "overlays": 0,
+          "alertOverlays": 0,
+          "metricAttempts": 0,
+          "metricAccepted": 0,
+          "metricDropped": 0,
+          "trackSnapshots": 0,
+          "trackObservations": 0,
+          "trackBirths": 0,
+          "trackLosses": 0,
+          "dropReasons": {}
+        },
+        "rates": {
+          "detectorAccepted": null,
+          "detectorDropped": null,
+          "busy": null,
+          "metricAccepted": null,
+          "trackSetTurnoverProxy": null
+        },
+        "stages": {
+          "callbackVsExpectedDisplay": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "captureToCallback": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "decodeProcessing": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "requestToResult": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "frameToOverlay": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "metricInference": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          }
+        }
+      },
+      {
+        "id": "10-20m",
+        "startMs": 600000,
+        "endMs": 1200000,
+        "observedDurationMs": 0,
+        "counts": {
+          "presentedCallbacks": 0,
+          "presentedFrameGaps": 0,
+          "detectorStarted": 0,
+          "detectorAccepted": 0,
+          "detectorDropped": 0,
+          "detectorBusySkips": 0,
+          "overlays": 0,
+          "alertOverlays": 0,
+          "metricAttempts": 0,
+          "metricAccepted": 0,
+          "metricDropped": 0,
+          "trackSnapshots": 0,
+          "trackObservations": 0,
+          "trackBirths": 0,
+          "trackLosses": 0,
+          "dropReasons": {}
+        },
+        "rates": {
+          "detectorAccepted": null,
+          "detectorDropped": null,
+          "busy": null,
+          "metricAccepted": null,
+          "trackSetTurnoverProxy": null
+        },
+        "stages": {
+          "callbackVsExpectedDisplay": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "captureToCallback": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "decodeProcessing": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "requestToResult": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "frameToOverlay": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "metricInference": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          }
+        }
+      },
+      {
+        "id": "20m+",
+        "startMs": 1200000,
+        "endMs": null,
+        "observedDurationMs": 0,
+        "counts": {
+          "presentedCallbacks": 0,
+          "presentedFrameGaps": 0,
+          "detectorStarted": 0,
+          "detectorAccepted": 0,
+          "detectorDropped": 0,
+          "detectorBusySkips": 0,
+          "overlays": 0,
+          "alertOverlays": 0,
+          "metricAttempts": 0,
+          "metricAccepted": 0,
+          "metricDropped": 0,
+          "trackSnapshots": 0,
+          "trackObservations": 0,
+          "trackBirths": 0,
+          "trackLosses": 0,
+          "dropReasons": {}
+        },
+        "rates": {
+          "detectorAccepted": null,
+          "detectorDropped": null,
+          "busy": null,
+          "metricAccepted": null,
+          "trackSetTurnoverProxy": null
+        },
+        "stages": {
+          "callbackVsExpectedDisplay": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "captureToCallback": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "decodeProcessing": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "requestToResult": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "frameToOverlay": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          },
+          "metricInference": {
+            "samples": 0,
+            "unavailable": 0,
+            "resolutionMs": 1,
+            "histogramMaxMs": 5000,
+            "clipped": 0,
+            "meanMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "p99Ms": null,
+            "maxMs": null
+          }
+        }
+      }
+    ],
+    "claims": {
+      "trackSetTurnover": "proxy-only; not ground-truth ID switches",
+      "captureTime": "browser metadata when exposed; otherwise unavailable",
+      "boundary": "Runtime capability evidence only; not distance accuracy, collision-warning safety or public-road validation."
+    }
+  },
+  "frameTiming": {
+    "count": 6,
+    "detectorRequestP50Ms": 73.40000000596046,
+    "detectorRequestP95Ms": 80,
+    "metricInferenceP50Ms": 90,
+    "metricInferenceP95Ms": 90,
+    "seekP50Ms": null,
+    "seekP95Ms": null,
+    "sampleWallP50Ms": null,
+    "sampleWallP95Ms": null,
+    "droppedResults": 0,
+    "analysisElapsedMs": null,
+    "analysedFramesPerSecond": null,
+    "mediaToProcessingRatio": null,
+    "scope": "liveTiming measures camera callback to overlay/audio; live metric depth is same-frame, bounded and unverified."
+  },
+  "observations": [
+    {
+      "timeMs": 422.34,
+      "trackId": 1,
+      "distanceM": null,
+      "latencyMs": 73.10000002384186,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 422.34,
+      "trackId": 2,
+      "distanceM": null,
+      "latencyMs": 73.10000002384186,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 422.34,
+      "trackId": 3,
+      "distanceM": null,
+      "latencyMs": 73.10000002384186,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 512.2529999999999,
+      "trackId": 1,
+      "distanceM": null,
+      "latencyMs": 73.40000000596046,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 512.2529999999999,
+      "trackId": 2,
+      "distanceM": null,
+      "latencyMs": 73.40000000596046,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 512.2529999999999,
+      "trackId": 3,
+      "distanceM": null,
+      "latencyMs": 73.40000000596046,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 602.483,
+      "trackId": 1,
+      "distanceM": 24,
+      "latencyMs": 72.30000001192093,
+      "reason": "AI metric chưa hiệu chuẩn thực địa · support 242/242 px · độ phân tán 0%"
+    },
+    {
+      "timeMs": 602.483,
+      "trackId": 2,
+      "distanceM": null,
+      "latencyMs": 72.30000001192093,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 602.483,
+      "trackId": 3,
+      "distanceM": null,
+      "latencyMs": 72.30000001192093,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 693.8720000000001,
+      "trackId": 1,
+      "distanceM": 24,
+      "latencyMs": 80,
+      "reason": "AI metric chưa hiệu chuẩn thực địa · support 242/242 px · độ phân tán 0%"
+    },
+    {
+      "timeMs": 693.8720000000001,
+      "trackId": 2,
+      "distanceM": null,
+      "latencyMs": 80,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 693.8720000000001,
+      "trackId": 3,
+      "distanceM": null,
+      "latencyMs": 80,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 813.115,
+      "trackId": 1,
+      "distanceM": 24,
+      "latencyMs": 74.5,
+      "reason": "AI metric chưa hiệu chuẩn thực địa · support 242/242 px · độ phân tán 0%"
+    },
+    {
+      "timeMs": 813.115,
+      "trackId": 2,
+      "distanceM": null,
+      "latencyMs": 74.5,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 813.115,
+      "trackId": 3,
+      "distanceM": null,
+      "latencyMs": 74.5,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 903.959,
+      "trackId": 1,
+      "distanceM": 24,
+      "latencyMs": 73.5,
+      "reason": "AI metric chưa hiệu chuẩn thực địa · support 242/242 px · độ phân tán 0%"
+    },
+    {
+      "timeMs": 903.959,
+      "trackId": 2,
+      "distanceM": null,
+      "latencyMs": 73.5,
+      "reason": "Chưa hiệu chuẩn"
+    },
+    {
+      "timeMs": 903.959,
+      "trackId": 3,
+      "distanceM": null,
+      "latencyMs": 73.5,
+      "reason": "Chưa hiệu chuẩn"
+    }
+  ],
+  "references": [],
+  "samples": [],
+  "evidencePlaneCandidate": null,
+  "limits": "PoC desktop shadow-mode. Absolute metres/zoom/near-side/far-vehicle accuracy remain ground-truth unvalidated; not for braking/steering.",
+  "liveAcceptance": {
+    "schema": "drivesense-live-acceptance-v1",
+    "status": "smoke-pending",
+    "runtimeSmoke": {
+      "pass": false,
+      "checks": [
+        {
+          "id": "camera-source",
+          "pass": true,
+          "actual": "camera",
+          "expected": "camera and non-synthetic"
+        },
+        {
+          "id": "source-dimensions",
+          "pass": true,
+          "actual": "1280x720",
+          "expected": "positive width and height"
+        },
+        {
+          "id": "accepted-rate",
+          "pass": false,
+          "actual": 0.8571428571428571,
+          "expected": ">= 0.99"
+        },
+        {
+          "id": "dropped-rate",
+          "pass": true,
+          "actual": 0,
+          "expected": "<= 0.01"
+        },
+        {
+          "id": "frame-to-overlay-p95",
+          "pass": true,
+          "actual": 82.99999999403951,
+          "expected": "<= 150 ms"
+        },
+        {
+          "id": "no-worker-or-geometry-drop",
+          "pass": true,
+          "actual": 0,
+          "expected": "0"
+        },
+        {
+          "id": "smoke-duration",
+          "pass": false,
+          "actual": 575.8,
+          "expected": ">= 60000 ms"
+        },
+        {
+          "id": "smoke-accepted-frames",
+          "pass": false,
+          "actual": 6,
+          "expected": ">= 100"
+        }
+      ]
+    },
+    "runtimeSoak": {
+      "pass": false,
+      "checks": [
+        {
+          "id": "camera-source",
+          "pass": true,
+          "actual": "camera",
+          "expected": "camera and non-synthetic"
+        },
+        {
+          "id": "source-dimensions",
+          "pass": true,
+          "actual": "1280x720",
+          "expected": "positive width and height"
+        },
+        {
+          "id": "accepted-rate",
+          "pass": false,
+          "actual": 0.8571428571428571,
+          "expected": ">= 0.99"
+        },
+        {
+          "id": "dropped-rate",
+          "pass": true,
+          "actual": 0,
+          "expected": "<= 0.01"
+        },
+        {
+          "id": "frame-to-overlay-p95",
+          "pass": true,
+          "actual": 82.99999999403951,
+          "expected": "<= 150 ms"
+        },
+        {
+          "id": "no-worker-or-geometry-drop",
+          "pass": true,
+          "actual": 0,
+          "expected": "0"
+        },
+        {
+          "id": "soak-duration",
+          "pass": false,
+          "actual": 575.8,
+          "expected": ">= 1800000 ms"
+        },
+        {
+          "id": "soak-accepted-frames",
+          "pass": false,
+          "actual": 6,
+          "expected": ">= 3000"
+        }
+      ]
+    },
+    "metricPath": {
+      "status": "fail",
+      "checks": [
+        {
+          "id": "metric-model-loaded",
+          "pass": true,
+          "actual": true,
+          "expected": "true"
+        },
+        {
+          "id": "metric-attempts",
+          "pass": false,
+          "actual": 2,
+          "expected": ">= 10"
+        },
+        {
+          "id": "metric-accepted-rate",
+          "pass": true,
+          "actual": 1,
+          "expected": ">= 0.8"
+        },
+        {
+          "id": "metric-dropped-rate",
+          "pass": true,
+          "actual": 0,
+          "expected": "<= 0.2"
+        }
+      ]
+    },
+    "claimBoundary": "Runtime-only evidence. It does not validate distance accuracy, collision-warning safety, sensor exposure latency or public-road readiness."
+  }
+}
