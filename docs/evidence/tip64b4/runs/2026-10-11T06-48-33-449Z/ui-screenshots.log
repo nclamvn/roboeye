@@ -1,0 +1,60 @@
+Exported 1 attachment for: ProbeUITests/testAutomaticAmbiguousDepthNeverInventsMetric():
+File: 4084708F-F076-4623-BDB3-3E945ECB7FE7.png, suggested name: "objects-ambiguous-no-metric_0_85BBC81F-6F60-412C-8207-1AAAE8E0B605.png"
+
+Exported 1 attachment for: ProbeUITests/testAutomaticBackgroundClearsWithoutRestart():
+File: 5F397DC6-C176-4B97-A4C2-DD54508774EA.png, suggested name: "objects-background-clear_0_8C21702A-2D26-4980-89CA-58DE281C4451.png"
+
+Exported 1 attachment for: ProbeUITests/testAutomaticManualModeAndDiagnosticsRemainAvailable():
+File: 6883625A-FEC6-4824-9417-54046B1EEF93.png, suggested name: "objects-modes-diagnostics_0_A0E1C021-8688-49C3-A191-69B08759A906.png"
+
+Exported 1 attachment for: ProbeUITests/testAutomaticRecognitionShowsTwoVietnameseBoxesWithoutManualSelection():
+File: 4EE66018-50DD-4BC4-924E-F3413AF8A039.png, suggested name: "objects-auto-two-vietnamese_0_DDC5447F-A1ED-4E02-9D24-A7EC6E8562FF.png"
+
+Exported 1 attachment for: ProbeUITests/testAutomaticStaleBoxesCannotKeepOldMetres():
+File: C308E8CC-EFF1-4851-B0B9-5061FC4E9F79.png, suggested name: "objects-stale-no-metric_0_775C9C00-AD93-4DE0-BAEE-5D2F19804AA0.png"
+
+Exported 1 attachment for: ProbeUITests/testAutomaticStopRemovesBoxesAndFreshRange():
+File: 93572ABB-82DF-4DEA-8C96-E6A105E81BD6.png, suggested name: "objects-stopped-clear_0_DCF767A6-CFA3-4D9D-B889-06B2539564C8.png"
+
+Exported 1 attachment for: ProbeUITests/testBackgroundClearsAndNeverAutoRestarts():
+File: 5BB4D965-34A9-46EE-A3C2-83858850C3BB.png, suggested name: "background-cleared_0_15805DB8-8EF4-4526-A83B-F8CB18BA9468.png"
+
+Exported 2 attachments for: ProbeUITests/testDenseLargeTypePreservesAccessibleObjectsAndReadableInstruments():
+File: 8E33B714-8202-4E70-9415-FF1D44B39768.png, suggested name: "scientific-dense-accessible-landscape_0_83D206D7-2085-48C0-92C2-1F722DFF80D6.png"
+File: C2B87765-66F7-4698-89BC-B62B2B75283A.png, suggested name: "scientific-dense-accessible-portrait_0_FC270E15-C61B-4F8F-B03E-55E8C446EA14.png"
+
+Exported 1 attachment for: ProbeUITests/testDenseSceneRetainsTwelveUniqueIdentitiesWithoutBadgeOrHUDCollisions():
+File: 00DD2EE5-E9EE-4988-B175-E6EBE5C6D0A7.png, suggested name: "scientific-dense-twelve-ids_0_44FC2DBA-2C78-4236-91B4-22C01AF521D1.png"
+
+Exported 2 attachments for: ProbeUITests/testEdgeObjectsCannotPlaceBadgesOverCameraInstrumentsAfterRotation():
+File: 5D0B33E4-AAA9-4829-A165-4C148E31801F.png, suggested name: "scientific-edge-bright-landscape_0_5BDC105C-B927-4D8C-ADFD-515DC72190BC.png"
+File: A079B53E-EC3D-4270-9541-D651B3D12B4E.png, suggested name: "scientific-edge-bright-portrait_0_F077C9AF-705C-4573-9782-19CBA60D39CB.png"
+
+Exported 2 attachments for: ProbeUITests/testJitterAndReducedMotionKeepIdentityAndNeverExtendStaleMetres():
+File: 1A823B60-04BA-47C2-83D3-EF5315BF55A3.png, suggested name: "scientific-jitter-expired_0_C6996576-14CD-4356-9C93-54A514D5220B.png"
+File: 858DB872-C73B-47DE-B1CF-B5E4C104CD40.png, suggested name: "scientific-jitter-reduced-motion_0_D16054C5-34E9-449F-B16B-E77659FD8AAD.png"
+
+Exported 1 attachment for: ProbeUITests/testLandscapeAndLargeTypeControlsReachable():
+File: 1164AD68-3FBC-405A-A4EB-2C72BBEE625E.png, suggested name: "landscape-large-type_0_00A465C9-2F17-4519-B71E-5A5D00395381.png"
+
+Exported 1 attachment for: ProbeUITests/testRetargetAndRotationRequireFreshSurfaceConfirmation():
+File: C833467A-1A0C-4C76-B37B-DEC4AD4CE110.png, suggested name: "rotation-invalidated_0_0FF6A28C-431A-4DD9-8EC5-C8D7B12E159E.png"
+
+Exported 1 attachment for: ProbeUITests/testScientificPortraitInstrumentIsCompactAndRecordingIsExplicit():
+File: BD6D3297-11C6-464F-8D6A-895355433BBD.png, suggested name: "scientific-compact-bright-portrait_0_3A119943-277D-417E-BF79-D2F38B71F13C.png"
+
+Exported 2 attachments for: ProbeUITests/testSelectedSurfaceConfirmationAndStaleReset():
+File: C7FFB184-3724-40BC-BE11-3CE8589CD71C.png, suggested name: "fixture-stale_0_021CA64E-8F38-4CB7-B24B-6D6286B30519.png"
+File: 10C0E9F0-3D09-4853-A0A4-41EE35116EED.png, suggested name: "fixture-selected_0_E1EF7E62-EF6A-4C67-BACE-41FC0662904C.png"
+
+Exported 1 attachment for: ProbeUITests/testSevenClassesHaveActualDistinctChromaticFillsOnBrightCamera():
+File: C8F46C3B-880C-4332-8F6E-D78112E636AA.png, suggested name: "class-fills-seven-bright-measured_0_9B62322C-A569-400B-BC31-04268D84D592.png"
+
+Exported 1 attachment for: ProbeUITests/testUnknownMetresAndReduceTransparencyKeepTheSameOpaqueClassFills():
+File: 6C09F038-FDAB-4EFF-97FD-52391341AE68.png, suggested name: "class-fills-seven-unknown-reduce-transparency_0_93EDDA11-CBAF-44C3-93E1-D74B6909A5FB.png"
+
+Exported 1 attachment for: ProbeUITests/testUnsupportedSimulatorDoesNotInventMetresOrEnableRecording():
+File: E9B01462-EA29-4F5C-ACBE-F5C21C31F829.png, suggested name: "unsupported_0_561E1424-EE8D-48CC-8AE9-2760FD616B4C.png"
+
+Generated manifest file with attachment details: /Users/os/Documents/Codex/DriveSense-Mobile-Recovery-2026-10-06/roboeye/docs/evidence/tip64b4/runs/2026-10-11T06-48-33-449Z/screenshots/manifest.json
+

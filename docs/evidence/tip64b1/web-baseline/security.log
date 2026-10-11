@@ -1,0 +1,9 @@
+
+> roboeye@1.6.0 security:audit
+> node scripts/security-audit.mjs
+
+[security] npm audit: 0 critical, 0 high
+[security] không còn advisory high/critical thuộc accepted-risk
+[security] browser export: ./dist/transformers.web.js
+[security] source/bundle sharp exposure: 0
+[security] PASS

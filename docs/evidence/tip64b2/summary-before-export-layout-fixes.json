@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 2,
+  "pass": false,
+  "confidencePolicy": "classificationConfidence * observationConfidence >=0.25 for expectedclass",
+  "scope": "native object QA gates",
+  "sourceBefore": "cc5ccd9cfd0e68c0bbdd962739ebfc14555c5f044f82d978ccdd8567e147add1",
+  "sourceAfter": "75b276a1390db00d24d7c0df81e668c391581cfa74264391d5f6aa9c3053dd61",
+  "unchanged": false,
+  "results": [
+    {
+      "name": "asset-integrity",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 176
+    },
+    {
+      "name": "model-compile",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 848
+    },
+    {
+      "name": "model-runner-compile",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 1567
+    },
+    {
+      "name": "real-model-bird",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 2060
+    },
+    {
+      "name": "real-model-person",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 346
+    },
+    {
+      "name": "real-model-user-photo",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 269
+    },
+    {
+      "name": "generator-preserves-existing-project",
+      "exitCode": 0,
+      "projectBefore": "68760ce8ce132881889e949f1cc9620a11959a9511354991af6ac0d5ce1cfb30",
+      "projectAfter": "68760ce8ce132881889e949f1cc9620a11959a9511354991af6ac0d5ce1cfb30"
+    },
+    {
+      "name": "swift-unit",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 2528
+    },
+    {
+      "name": "interop",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 481
+    },
+    {
+      "name": "ios-release-unsigned",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 5615
+    },
+    {
+      "name": "release-offline-model-and-license",
+      "exitCode": 0,
+      "compiledModel": "YOLOv3FP16.mlmodelc",
+      "licenseIdentical": true
+    },
+    {
+      "name": "ios-static-analysis",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 2523
+    },
+    {
+      "name": "simulator-selection",
+      "deviceName": "iPhone 18 Pro",
+      "initialState": "Shutdown",
+      "created": false
+    },
+    {
+      "name": "simulator-ui",
+      "exitCode": null,
+      "timedOut": false,
+      "elapsedMs": 538770
+    },
+    {
+      "name": "exception",
+      "message": "simulator-ui failed; inspect its TIP64B2 log."
+    }
+  ],
+  "uiPassed": null,
+  "modelFingerprint": "276afae53da362e25ad21c827f8a929a8512254b1343433d970e725a0de57d8f",
+  "physicalDeviceInstallation": "NOT VERIFIED BY THIS SCRIPT",
+  "phoneDetectionRecall": "NOT TESTED",
+  "phoneLatency": "NOT TESTED",
+  "physicalRangeAccuracy": "NOT TESTED",
+  "thermal30Minutes": "NOT TESTED",
+  "privatePixelsCopied": false,
+  "privatePixelsUploaded": false,
+  "scratchDirectoriesCreated": [],
+  "extraDependenciesInstalled": false,
+  "diskBeforeFreeKiB": 61130136
+}

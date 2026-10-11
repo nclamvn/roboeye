@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-11",
+  "status": "ready-for-controlled-device-test",
+  "device": "iPhone 16 Pro Max",
+  "os": "iOS 27.0.1",
+  "configuration": "Signed Release; no debugger",
+  "app": {
+    "name": "RoboEye Assist",
+    "bundleIdentifier": "com.roboeye.assistive.depthprobe",
+    "version": "0.2.0",
+    "build": "3"
+  },
+  "signedBuildExitCode": 0,
+  "codesignVerificationExitCode": 0,
+  "installed": true,
+  "installedVersionVerified": true,
+  "initialPhysicalLaunchSucceeded": true,
+  "sourceMatchesFinalQA": true,
+  "sourceFingerprint": "df538f7244d2378c670205b9f04b778c48ba937dddb74d9bb8ab3c7a8336be98",
+  "physicalCameraSummary": {
+    "source": "NSLog from connected physical Release app, --qa-live-camera opt-in",
+    "reportedLocalTime": "2026-10-11 12:45:38.360 +0700",
+    "reportedAfterAtLeastCaptureMs": 15000,
+    "modelLoaded": true,
+    "detectorCalls": 63,
+    "trackerCalls": 109,
+    "lastObjectCount": 1,
+    "lastMeasuredObjectCount": 1,
+    "maxDetectorInferenceMsObserved": 67.4,
+    "thermalStateAtSummary": "nominal",
+    "note": "A real camera/model/depth execution smoke, not physical distance accuracy, coverage, semantic recall or end-to-end latency proof. Counts are final snapshot; no object identities/labels/pixels retained."
+  },
+  "consoleBridge": {
+    "exitCode": 2,
+    "timeoutSeconds": 45,
+    "reason": "--console waits for app exit; its bounded wait timed out AFTER real aggregate output. Not reported as an application/model crash."
+  },
+  "defaultRelaunchAfterSmoke": {
+    "success": false,
+    "errorDomain": "com.apple.dt.CoreDeviceError",
+    "errorCode": 10002,
+    "reason": "Device Locked; iOS denied foreground launch. User unlock/open required; no lock bypass attempted."
+  },
+  "physicalRangeAccuracy": "NOT TESTED",
+  "detectionRecall": "NOT MEASURED",
+  "rangeCoverage": "NOT MEASURED",
+  "endToEndLatencyP95": "NOT MEASURED",
+  "thermal30Minutes": "NOT TESTED",
+  "metadataRecordingAutomaticallyEnabled": false,
+  "cameraPixelsSavedOrUploaded": false,
+  "deviceIdentifiersRetainedInThisReceipt": false,
+  "signingTeamChanged": false,
+  "bundleIdentifierChanged": false
+}

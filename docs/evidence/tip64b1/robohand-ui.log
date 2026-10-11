@@ -1,0 +1,17 @@
+[robohand-e2e:mock] PASS · mode 5 mở RoboHand và dùng WebGL2 fallback
+[robohand-e2e:mock] PASS · RoboHand dựng MediaPipe graph với hai tay
+[robohand-e2e:mock] PASS · RoboHand dùng profile continuity riêng mà không hạ confidence phát hiện ban đầu
+[robohand-e2e:mock] PASS · proof camera nằm trong HUD, video dùng cùng local stream
+[robohand-e2e:mock] PASS · worker → solver → rig giữ một tay độc lập · {"hand":"1 TAY","pose":"Một tay đang đồng bộ","latency":"6 ms","canvasWidth":328,"metrics":{"pipeline":{"samples":1,"p50":12.699999994039558,"p95":12.699999994039558},"render":{"samples":9,"p50":8.5,"p95":104.19999998807907},"droppedVideoFrames":3}}
+[robohand-e2e:mock] PASS · PiP đã vẽ skeleton 21 điểm
+[robohand-e2e:mock] PASS · camera-to-render và cadence có sample p50/p95 · {"pipeline":{"samples":1,"p50":12.699999994039558,"p95":12.699999994039558},"render":{"samples":9,"p50":8.5,"p95":104.19999998807907},"droppedVideoFrames":3}
+[robohand-e2e:mock] PASS · HUD công khai latency hiện tại · 6 ms
+[robohand-e2e:mock] PASS · hai bàn tay đi qua cùng một worker và hai controller độc lập
+[robohand-e2e:mock] PASS · pinch acquires the phone at its palm station
+[robohand-e2e:mock] PASS · stable OPEN releases the phone into falling state
+[robohand-e2e:mock] PASS · mất tracking trả studio về trạng thái an toàn
+[robohand-e2e:mock] PASS · RoboHand mobile không tràn ngang
+[robohand-e2e:mock] PASS · camera proof view còn nhìn được trên mobile
+[robohand-e2e:mock] PASS · rời mode dừng controller và ẩn HUD
+[robohand-e2e:mock] PASS · không có lỗi runtime nghiêm trọng
+[robohand-e2e:mock] TẤT CẢ PASS

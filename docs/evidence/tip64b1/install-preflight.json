@@ -1,0 +1,21 @@
+{
+  "checkedUtc": "2026-10-11T05:37:52.265Z",
+  "scope": "read-only local install preflight",
+  "xcode": "Xcode 27.0\nBuild version 27A266a",
+  "deviceDiscovery": "available",
+  "physicalDevices": [
+    {
+      "model": "iPhone 16 Pro Max",
+      "developerMode": "enabled"
+    }
+  ],
+  "physicalDeviceCount": 1,
+  "signingTeamConfigured": true,
+  "signedBuild": "NOT VERIFIED",
+  "installed": false,
+  "readyForPhysicalRehearsal": false,
+  "reason": "Run a signed build on the selected phone, then complete the device rehearsal.",
+  "identifiersRetained": false,
+  "credentialsRead": false,
+  "scratchRemoved": true
+}

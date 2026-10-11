@@ -1,0 +1,231 @@
+{
+  "confidencePolicy": "classificationConfidence * observationConfidence >= 0.38 for expected class",
+  "configuration": {
+    "confidenceThreshold": 0.38,
+    "cropAndScale": "scaleFill",
+    "iouThreshold": 0.45
+  },
+  "detections": [
+    {
+      "classificationConfidence": 1,
+      "combinedConfidence": 1,
+      "label": "person",
+      "observationConfidence": 1,
+      "visionBottomLeftBox": [
+        0.0091552734375,
+        0.376953125,
+        0.234619140625,
+        0.5361328125
+      ]
+    },
+    {
+      "classificationConfidence": 1,
+      "combinedConfidence": 1,
+      "label": "person",
+      "observationConfidence": 1,
+      "visionBottomLeftBox": [
+        0.366455078125,
+        0.033203125,
+        0.54443359375,
+        0.9072265625
+      ]
+    },
+    {
+      "classificationConfidence": 1,
+      "combinedConfidence": 0.998046875,
+      "label": "person",
+      "observationConfidence": 0.998046875,
+      "visionBottomLeftBox": [
+        0.1934814453125,
+        0.4901123046875,
+        0.127197265625,
+        0.422607421875
+      ]
+    },
+    {
+      "classificationConfidence": 0.9985001683235168,
+      "combinedConfidence": 0.9599609505535227,
+      "label": "backpack",
+      "observationConfidence": 0.9614028930664062,
+      "visionBottomLeftBox": [
+        0.641845703125,
+        0.46142578125,
+        0.29248046875,
+        0.35205078125
+      ]
+    },
+    {
+      "classificationConfidence": 0.9960891604423523,
+      "combinedConfidence": 0.9560546931479621,
+      "label": "person",
+      "observationConfidence": 0.959808349609375,
+      "visionBottomLeftBox": [
+        0.935943603515625,
+        0.70806884765625,
+        0.06170654296875,
+        0.1151123046875
+      ]
+    },
+    {
+      "classificationConfidence": 0.9917086362838745,
+      "combinedConfidence": 0.9472656236820853,
+      "label": "person",
+      "observationConfidence": 0.9551854133605957,
+      "visionBottomLeftBox": [
+        0.392822265625,
+        0.615966796875,
+        0.1611328125,
+        0.271484375
+      ]
+    },
+    {
+      "classificationConfidence": 0.998047947883606,
+      "combinedConfidence": 0.9189452933571403,
+      "label": "person",
+      "observationConfidence": 0.9207426309585571,
+      "visionBottomLeftBox": [
+        0.87420654296875,
+        0.716278076171875,
+        0.0709228515625,
+        0.09405517578125
+      ]
+    },
+    {
+      "classificationConfidence": 1,
+      "combinedConfidence": 0.8017578125,
+      "label": "person",
+      "observationConfidence": 0.8017578125,
+      "visionBottomLeftBox": [
+        -0.00006103515625,
+        0.4000244140625,
+        0.0626220703125,
+        0.483642578125
+      ]
+    },
+    {
+      "classificationConfidence": 0.9927014708518982,
+      "combinedConfidence": 0.5117187421096219,
+      "label": "suitcase",
+      "observationConfidence": 0.5154809951782227,
+      "visionBottomLeftBox": [
+        0.168212890625,
+        0.30224609375,
+        0.161376953125,
+        0.14453125
+      ]
+    },
+    {
+      "classificationConfidence": 1,
+      "combinedConfidence": 0.434326171875,
+      "label": "person",
+      "observationConfidence": 0.434326171875,
+      "visionBottomLeftBox": [
+        0.7096405029296875,
+        0.79388427734375,
+        0.031890869140625,
+        0.0340576171875
+      ]
+    },
+    {
+      "classificationConfidence": 0.9951227307319641,
+      "combinedConfidence": 0.4023437534804515,
+      "label": "bottle",
+      "observationConfidence": 0.404315710067749,
+      "visionBottomLeftBox": [
+        0.478515625,
+        0.445709228515625,
+        0.037109375,
+        0.09002685546875
+      ]
+    }
+  ],
+  "expectedClass": "person",
+  "imageHeight": 3263,
+  "imageWidth": 2552,
+  "macInferenceMs": [
+    71.05450000381097,
+    37.1293333300855,
+    38.16295831347816
+  ],
+  "modelInputs": [
+    {
+      "name": "confidenceThreshold",
+      "type": "MLFeatureType(rawValue: 2)"
+    },
+    {
+      "height": 416,
+      "name": "image",
+      "type": "MLFeatureType(rawValue: 4)",
+      "width": 416
+    },
+    {
+      "name": "iouThreshold",
+      "type": "MLFeatureType(rawValue: 2)"
+    }
+  ],
+  "modelLoadMs": 109.89091664669104,
+  "modelMetadata": {
+    "MLModelAuthorKey": "Joseph Redmon, Ali Farhadi ",
+    "MLModelCreatorDefinedKey": "{\n    \"com.apple.developer.machine-learning.models.category\" = image;\n    \"com.apple.developer.machine-learning.models.name\" = \"YOLOv3FP16.mlmodel\";\n    \"com.apple.developer.machine-learning.models.version\" = \"2.0\";\n}",
+    "MLModelDescriptionKey": "A neural network for fast object detection that detects 80 different classes of objects. Given an RGB image, with the dimensions 416x416, the model outputs three arrays (one for each layer) of arbitrary length; each containing confidence scores for each cell and the normalised coordaintes for the bounding box around the detected object(s). Refer to the original paper for more details. YOLOv3: An Incremental Improvement - https://pjreddie.com/media/files/papers/YOLOv3.pdf ",
+    "MLModelLicenseKey": "Please see https://github.com/pjreddie/darknet for license information.",
+    "MLModelVersionStringKey": "YOLOv3"
+  },
+  "modelOutputs": [
+    {
+      "dataType": "MLMultiArrayDataType(rawValue: 65600)",
+      "name": "confidence",
+      "shape": [
+        0,
+        80
+      ],
+      "type": "MLFeatureType(rawValue: 5)"
+    },
+    {
+      "dataType": "MLMultiArrayDataType(rawValue: 65600)",
+      "name": "coordinates",
+      "shape": [
+        0,
+        4
+      ],
+      "type": "MLFeatureType(rawValue: 5)"
+    }
+  ],
+  "pass": true,
+  "phoneLatency": "NOT TESTED",
+  "physicalRangeAccuracy": "NOT TESTED",
+  "platform": "Mac CoreML + Vision — NOT iPhone",
+  "schemaVersion": 3,
+  "semanticRecall": "NOT MEASURED: one smoke photo",
+  "fixture": {
+    "id": "person",
+    "file": "person.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Man_with_marini%C3%A8re_t-shirt_and_backpack.jpg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Man_with_marini%C3%A8re_t-shirt_and_backpack.jpg",
+    "author": "DimiTalen",
+    "license": "CC0 1.0 Universal Public Domain Dedication",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "changes": "None; original JPEG downloaded unchanged. Vision scales only in memory.",
+    "sha256": "de9565c79063bb83b9eeac059b7732b97865c8102e19c63e847962593a580d9f",
+    "bytes": 3940030,
+    "expectedClass": "person"
+  },
+  "sourceModel": {
+    "file": "YOLOv3FP16.mlmodel",
+    "url": "https://ml-assets.apple.com/coreml/models/Image/ObjectDetection/YOLOv3/YOLOv3FP16.mlmodel",
+    "sha256": "276afae53da362e25ad21c827f8a929a8512254b1343433d970e725a0de57d8f",
+    "bytes": 124207764,
+    "modelCard": "https://huggingface.co/apple/coreml-YOLOv3/raw/main/README.md",
+    "modelCardLicenseDeclaration": "MIT",
+    "embeddedModelLicense": "Please see https://github.com/pjreddie/darknet for license information.",
+    "originalLicenseUrl": "https://raw.githubusercontent.com/pjreddie/darknet/master/LICENSE",
+    "originalLicenseDeclaration": "Darknet is public domain. YOLO LICENSE Version 2, July 29 2016.",
+    "licenseNote": "Keep both upstream statements; do not fabricate an MIT copyright holder or conflate this with unrelated YOLO distributions.",
+    "vocabulary": "80 COCO classes; not an all-object detector",
+    "imageInput": [
+      416,
+      416
+    ],
+    "reviewedAt": "2026-10-11"
+  }
+}

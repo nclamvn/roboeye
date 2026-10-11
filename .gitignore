@@ -23,3 +23,9 @@ tests/.road-tools/
 .vercel
 .env*
 research/mobile-metric-2026-10/snapshots/
+native/ios/.build/
+native/ios/.build-xcode/
+native/ios/Models/*.mlmodel
+native/ios/Models/*.download-partial
+native/ios/**/xcuserdata/
+native/ios/**/*.xcuserstate

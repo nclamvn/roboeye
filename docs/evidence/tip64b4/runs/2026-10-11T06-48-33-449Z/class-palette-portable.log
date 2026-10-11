@@ -1,0 +1,88 @@
+{
+  "pass": true,
+  "scope": "Portable source-token contrast/integration checks, NOT rendered UI or semantic recognition proof",
+  "tokenCount": 13,
+  "distinctCommonClasses": 7,
+  "minimumWhiteContrast": 5.645401743403657,
+  "tokens": [
+    {
+      "id": "person",
+      "name": "azure",
+      "hex": "085A9C",
+      "whiteContrast": 7.111772065032103
+    },
+    {
+      "id": "phone",
+      "name": "violet",
+      "hex": "7238AC",
+      "whiteContrast": 7.299619265070517
+    },
+    {
+      "id": "remote",
+      "name": "ochre",
+      "hex": "8E5D09",
+      "whiteContrast": 5.645401743403657
+    },
+    {
+      "id": "furniture",
+      "name": "teal",
+      "hex": "0A7162",
+      "whiteContrast": 5.913285445683682
+    },
+    {
+      "id": "book",
+      "name": "indigo",
+      "hex": "3F4DAD",
+      "whiteContrast": 7.300972255266327
+    },
+    {
+      "id": "container",
+      "name": "berry",
+      "hex": "963E79",
+      "whiteContrast": 6.437864822043437
+    },
+    {
+      "id": "appliance",
+      "name": "petrol",
+      "hex": "33677C",
+      "whiteContrast": 6.2279282125416815
+    },
+    {
+      "id": "transport",
+      "name": "steel",
+      "hex": "45577A",
+      "whiteContrast": 7.248007652042107
+    },
+    {
+      "id": "animal",
+      "name": "copper",
+      "hex": "805827",
+      "whiteContrast": 6.281735956251616
+    },
+    {
+      "id": "plant",
+      "name": "olive",
+      "hex": "666225",
+      "whiteContrast": 6.289791506577851
+    },
+    {
+      "id": "food",
+      "name": "russet",
+      "hex": "855342",
+      "whiteContrast": 6.338127888994767
+    },
+    {
+      "id": "accessory",
+      "name": "lilac",
+      "hex": "715185",
+      "whiteContrast": 6.526187934560127
+    },
+    {
+      "id": "other",
+      "name": "slate",
+      "hex": "4A5577",
+      "whiteContrast": 7.350493824907367
+    }
+  ]
+}
+

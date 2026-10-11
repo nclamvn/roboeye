@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 3,
+  "passed": true,
+  "cases": [
+    {
+      "mode": "synthetic",
+      "passed": true,
+      "physicalCapture": false
+    },
+    {
+      "mode": "native-declaration",
+      "passed": true,
+      "physicalCapture": false
+    },
+    {
+      "mode": "nulls",
+      "passed": true,
+      "physicalCapture": false
+    },
+    {
+      "mode": "low",
+      "passed": true,
+      "physicalCapture": false
+    },
+    {
+      "mode": "float",
+      "passed": true,
+      "physicalCapture": false
+    },
+    {
+      "mode": "objects",
+      "passed": true,
+      "physicalCapture": false
+    },
+    {
+      "mode": "objects-empty",
+      "passed": true,
+      "physicalCapture": false
+    }
+  ],
+  "caseCount": 7,
+  "hardwareTested": false,
+  "note": "Swift-generated contract fixtures, not ARKit hardware captures. Checks strict v1 fields/nulls, canonical float SHA, range parity and tamper rejection."
+}

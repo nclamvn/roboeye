@@ -1,0 +1,41 @@
+Apple-distributed YOLOv3FP16 Core ML model
+Source: https://ml-assets.apple.com/coreml/models/Image/ObjectDetection/YOLOv3/YOLOv3FP16.mlmodel
+Model card: https://huggingface.co/apple/coreml-YOLOv3/raw/main/README.md
+Model card declares: license: mit
+Model metadata author: Joseph Redmon, Ali Farhadi
+Embedded license: Please see https://github.com/pjreddie/darknet for license information.
+
+The Apple model card declaration and the model's embedded original-source
+reference are recorded separately, not silently rewritten as the same license.
+Apple's model-card repository had no standalone LICENSE file at review time.
+The original-source license notice follows verbatim:
+
+                                  YOLO LICENSE
+                             Version 2, July 29 2016
+
+THIS SOFTWARE LICENSE IS PROVIDED "ALL CAPS" SO THAT YOU KNOW IT IS SUPER
+SERIOUS AND YOU DON'T MESS AROUND WITH COPYRIGHT LAW BECAUSE YOU WILL GET IN
+TROUBLE HERE ARE SOME OTHER BUZZWORDS COMMONLY IN THESE THINGS WARRANTIES
+LIABILITY CONTRACT TORT LIABLE CLAIMS RESTRICTION MERCHANTABILITY. NOW HERE'S
+THE REAL LICENSE:
+
+0. Darknet is public domain.
+1. Do whatever you want with it.
+2. Stop emailing me about it!
+
+Original notice: https://raw.githubusercontent.com/pjreddie/darknet/master/LICENSE
+Reviewed 2026-10-11. No endorsement by Apple, Wikimedia or upstream authors.
+
+QA photos are not bundled in the app:
+- Gull portrait ca usa.jpg, Dschwen, Wikimedia Commons, CC BY 2.5.
+  https://commons.wikimedia.org/wiki/File:Gull_portrait_ca_usa.jpg
+  https://creativecommons.org/licenses/by/2.5/
+  Unmodified original JPEG; inference resizing occurs only in memory.
+- Man with mariniere t-shirt and backpack.jpg, DimiTalen, Wikimedia Commons,
+  CC0 1.0 Universal Public Domain Dedication.
+  https://commons.wikimedia.org/wiki/File:Man_with_marini%C3%A8re_t-shirt_and_backpack.jpg
+  https://creativecommons.org/publicdomain/zero/1.0/
+  Unmodified original JPEG; inference resizing occurs only in memory.
+
+These limited smoke fixtures do not establish full-vocabulary recall, phone
+performance, metric accuracy or readiness for navigation.

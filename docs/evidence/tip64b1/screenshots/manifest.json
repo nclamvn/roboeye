@@ -1,0 +1,86 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E7A1775A-F1CE-450E-AD49-48FD26863648",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "C2DDD0B9-5417-4C2B-9651-19423DB113CE.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "background-cleared_0_ED2EDFBF-B0B9-4070-8332-19B4E39629BB.png",
+        "timestamp" : 1791624890.578
+      }
+    ],
+    "testIdentifier" : "ProbeUITests/testBackgroundClearsAndNeverAutoRestarts()",
+    "testIdentifierURL" : "test://com.apple.xcode/AssistiveDepthProbe/ProbeUITests/ProbeUITests/testBackgroundClearsAndNeverAutoRestarts"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E7A1775A-F1CE-450E-AD49-48FD26863648",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "A144817D-D159-4F5B-9F72-31C806D681C1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "landscape-large-type_0_8BDECDEC-9481-4BC2-A9CF-62CA7256C1E1.png",
+        "timestamp" : 1791624901.133
+      }
+    ],
+    "testIdentifier" : "ProbeUITests/testLandscapeAndLargeTypeControlsReachable()",
+    "testIdentifierURL" : "test://com.apple.xcode/AssistiveDepthProbe/ProbeUITests/ProbeUITests/testLandscapeAndLargeTypeControlsReachable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E7A1775A-F1CE-450E-AD49-48FD26863648",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "0C15C3B3-4219-432A-9075-06ED73A64970.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rotation-invalidated_0_3A53E8B0-6928-478F-887E-034758D97F2B.png",
+        "timestamp" : 1791624912.047
+      }
+    ],
+    "testIdentifier" : "ProbeUITests/testRetargetAndRotationRequireFreshSurfaceConfirmation()",
+    "testIdentifierURL" : "test://com.apple.xcode/AssistiveDepthProbe/ProbeUITests/ProbeUITests/testRetargetAndRotationRequireFreshSurfaceConfirmation"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E7A1775A-F1CE-450E-AD49-48FD26863648",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "7DFAF4A6-22E2-4D7C-867A-B611138E6CE6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "fixture-stale_0_1624A6D6-32BC-42D5-9AEA-632C4D8BCF77.png",
+        "timestamp" : 1791624922.846
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E7A1775A-F1CE-450E-AD49-48FD26863648",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "BD53C5C8-E11C-4A19-B388-A0DE1A2AAD8F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "fixture-selected_0_B7F57AAB-4221-4F40-B24E-CAE59C2D6073.png",
+        "timestamp" : 1791624919.617
+      }
+    ],
+    "testIdentifier" : "ProbeUITests/testSelectedSurfaceConfirmationAndStaleReset()",
+    "testIdentifierURL" : "test://com.apple.xcode/AssistiveDepthProbe/ProbeUITests/ProbeUITests/testSelectedSurfaceConfirmationAndStaleReset"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E7A1775A-F1CE-450E-AD49-48FD26863648",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "A79EB65F-AAFA-469D-B3EA-6FCF3A04EAFF.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "unsupported_0_56F5B561-1A7D-495E-AC0F-36E818FF64B9.png",
+        "timestamp" : 1791624928.789
+      }
+    ],
+    "testIdentifier" : "ProbeUITests/testUnsupportedSimulatorDoesNotInventMetresOrEnableRecording()",
+    "testIdentifierURL" : "test://com.apple.xcode/AssistiveDepthProbe/ProbeUITests/ProbeUITests/testUnsupportedSimulatorDoesNotInventMetresOrEnableRecording"
+  }
+]

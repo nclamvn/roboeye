@@ -1,0 +1,145 @@
+Test Suite 'All tests' started at 2026-10-11 12:39:41.367.
+Test Suite 'AssistiveCoreTests.xctest' started at 2026-10-11 12:39:41.368.
+Test Suite 'CoreTests' started at 2026-10-11 12:39:41.368.
+Test Case '-[AssistiveCoreTests.CoreTests testCameraRangeNotOpticalZ]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testCameraRangeNotOpticalZ]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testClockFailuresAndNaNCapStopInsteadOfHanging]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testClockFailuresAndNaNCapStopInsteadOfHanging]' passed (0.003 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testClockStaleSkewReusedAndTracking]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testClockStaleSkewReusedAndTracking]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testConfidenceIsOrdinalNotProbability]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testConfidenceIsOrdinalNotProbability]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testConsentRebaseAndRevoke]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testConsentRebaseAndRevoke]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testCropRemainsInsideOriginalImageAtFloatingPointEdges]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testCropRemainsInsideOriginalImageAtFloatingPointEdges]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testDisplayRoundTripAllRotationsMirrors]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testDisplayRoundTripAllRotationsMirrors]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testDomainAndNoHoldLastValue]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testDomainAndNoHoldLastValue]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testExportClosedExplicitNullPrivacyAndChecksum]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testExportClosedExplicitNullPrivacyAndChecksum]' passed (0.007 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testExportErrorPropagatesAndNextExportCanRecover]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testExportErrorPropagatesAndNextExportCanRecover]' passed (0.010 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testExportIsOffMainSingleFlightAndRevokedCompletionCannotPublish]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testExportIsOffMainSingleFlightAndRevokedCompletionCannotPublish]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testFrameClockRejectsDuplicateBackwardAndIncompatibleClocks]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testFrameClockRejectsDuplicateBackwardAndIncompatibleClocks]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testFrameTimeByteCapsAndEmptyTimeCap]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testFrameTimeByteCapsAndEmptyTimeCap]' passed (0.002 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testLowDuplicateAndMixedSupport]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testLowDuplicateAndMixedSupport]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testMissingRelativeAndAssociationCannotBecomeMetres]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testMissingRelativeAndAssociationCannotBecomeMetres]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testPoseChiralityAndTranslation]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testPoseChiralityAndTranslation]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testQueuedStaleOrInvalidCameraFrameIsDroppedBeforeSampling]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testQueuedStaleOrInvalidCameraFrameIsDroppedBeforeSampling]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testRayRangeDoesNotDoubleConvert]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testRayRangeDoesNotDoubleConvert]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testRejectShearOffImageAndSingularTransform]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testRejectShearOffImageAndSingularTransform]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testRepeatedRecordRevokeCyclesAndLargestRecordingStayBounded]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testRepeatedRecordRevokeCyclesAndLargestRecordingStayBounded]' passed (0.773 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testRGBDepthPixelCentres]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testRGBDepthPixelCentres]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testSourceOrderAndDepthIdentityCannotBeRewritten]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testSourceOrderAndDepthIdentityCannotBeRewritten]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testTruthBindingRejectsRevokedOrReplacedRecordingEvenWithSameFrameID]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testTruthBindingRejectsRevokedOrReplacedRecordingEvenWithSameFrameID]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testTruthOnlyStoppedMeasuredExactLastFrame]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testTruthOnlyStoppedMeasuredExactLastFrame]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testUnknownDepthKindAndCorruptSupportDoNotCreateMetres]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testUnknownDepthKindAndCorruptSupportDoNotCreateMetres]' passed (0.000 seconds).
+Test Suite 'CoreTests' passed at 2026-10-11 12:39:42.177.
+	 Executed 25 tests, with 0 failures (0 unexpected) in 0.805 (0.808) seconds
+Test Suite 'ObjectTrackingTests' started at 2026-10-11 12:39:42.177.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testAllCOCO80VietnameseLabelsAndAliases]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testAllCOCO80VietnameseLabelsAndAliases]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testAmbiguousSameClassAssociationDoesNotReusePriorRange]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testAmbiguousSameClassAssociationDoesNotReusePriorRange]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testBackgroundMajorityCannotOverrideCredibleNearForeground]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testBackgroundMajorityCannotOverrideCredibleNearForeground]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testClassChangeCreatesNewIdentityInsteadOfRangeTransfer]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testClassChangeCreatesNewIdentityInsteadOfRangeTransfer]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testCoherentDepthWithoutSpatialSpreadRemainsUnknown]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testCoherentDepthWithoutSpatialSpreadRemainsUnknown]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDepthSameFrameFreshnessAndIntrinsicsMandatory]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDepthSameFrameFreshnessAndIntrinsicsMandatory]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDisplayAffineRotatesAllFourCorners]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDisplayAffineRotatesAllFourCorners]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDisplayCropClipsViewportAndRejectsInvalidTransforms]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDisplayCropClipsViewportAndRejectsInvalidTransforms]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDuplicateDetectorRowsDoNotCreateDuplicateObjects]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDuplicateDetectorRowsDoNotCreateDuplicateObjects]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDuplicateNonFiniteAndLowConfidenceSupportCannotCreateMetres]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testDuplicateNonFiniteAndLowConfidenceSupportCannotCreateMetres]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testEveryCOCOLabelProjectsIntoClosedV1VocabularyOnly]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testEveryCOCOLabelProjectsIntoClosedV1VocabularyOnly]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testExportProjectionKeepsMissingDepthTargetsWithoutInventingSupports]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testExportProjectionKeepsMissingDepthTargetsWithoutInventingSupports]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testExportProjectionRejectsOffBoxCorruptionAndDuplicateIdentities]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testExportProjectionRejectsOffBoxCorruptionAndDuplicateIdentities]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testExportProjectionRejectsSubMillipixelBoxesAndClampsFloatingEdges]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testExportProjectionRejectsSubMillipixelBoxesAndClampsFloatingEdges]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testExportProjectionTwelveObjectsUsesClosedV1LabelsAnd128TotalSupports]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testExportProjectionTwelveObjectsUsesClosedV1LabelsAnd128TotalSupports]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testFailedCurrentDepthClearsPreviousMetric]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testFailedCurrentDepthClearsPreviousMetric]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testInteriorSupportConvertsMetricZToEuclideanMetres]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testInteriorSupportConvertsMetricZToEuclideanMetres]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testInvalidOrReversedTimeCannotAdvanceTracks]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testInvalidOrReversedTimeCannotAdvanceTracks]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMediumConfidenceNeedsMoreAndDistributedSupport]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMediumConfidenceNeedsMoreAndDistributedSupport]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMetricDomainAndBoundedSupportBudget]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMetricDomainAndBoundedSupportBudget]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMetricExpiresExactlyAfter300MillisecondsWithoutHoldingLast]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMetricExpiresExactlyAfter300MillisecondsWithoutHoldingLast]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMissingIDRangeDoesNotTransferFromAnotherPerson]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMissingIDRangeDoesNotTransferFromAnotherPerson]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMissingObservationCoastsBoxButImmediatelyClearsMetric]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMissingObservationCoastsBoxButImmediatelyClearsMetric]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMultiplePeopleMatchOneToOneEvenIfObservationOrderChanges]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testMultiplePeopleMatchOneToOneEvenIfObservationOrderChanges]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testNearTieBimodalForegroundBackgroundMustRemainUnknown]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testNearTieBimodalForegroundBackgroundMustRemainUnknown]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testNewPositionClearsMetricUntilCurrentFrameDepthArrives]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testNewPositionClearsMetricUntilCurrentFrameDepthArrives]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testNormalizedBoxUsesRGBPixelDimensionsNotDepthMapDimensions]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testNormalizedBoxUsesRGBPixelDimensionsNotDepthMapDimensions]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testOffBoxAndRGBOutOfBoundsSupportCannotCreateMetres]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testOffBoxAndRGBOutOfBoundsSupportCannotCreateMetres]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testRawBoxClipsWithoutInvertingOrInventingOffImage]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testRawBoxClipsWithoutInvertingOrInventingOffImage]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testStableSameClassIDAndRawBoxNotSmoothed]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testStableSameClassIDAndRawBoxNotSmoothed]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testTrackBudgetAndMalformedDetectionsStayBounded]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testTrackBudgetAndMalformedDetectionsStayBounded]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testTrackingLimitedRejectsEvenPerfectDepth]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testTrackingLimitedRejectsEvenPerfectDepth]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testVisionBottomLeftConvertsToRawTopLeft]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testVisionBottomLeftConvertsToRawTopLeft]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testVisionKnownCardinalBoxesNoPortraitSidewaysMixup]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testVisionKnownCardinalBoxesNoPortraitSidewaysMixup]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testVisionRawRoundtripAllCardinalRotations]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testVisionRawRoundtripAllCardinalRotations]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testVisionTrackingDoesNotRenewDetectorTTL]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testVisionTrackingDoesNotRenewDetectorTTL]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testWineGlassConservativeButOpaqueBottleAndCupAllowed]' started.
+Test Case '-[AssistiveCoreTests.ObjectTrackingTests testWineGlassConservativeButOpaqueBottleAndCupAllowed]' passed (0.000 seconds).
+Test Suite 'ObjectTrackingTests' passed at 2026-10-11 12:39:42.192.
+	 Executed 37 tests, with 0 failures (0 unexpected) in 0.012 (0.015) seconds
+Test Suite 'AssistiveCoreTests.xctest' passed at 2026-10-11 12:39:42.192.
+	 Executed 62 tests, with 0 failures (0 unexpected) in 0.818 (0.824) seconds
+Test Suite 'All tests' passed at 2026-10-11 12:39:42.192.
+	 Executed 62 tests, with 0 failures (0 unexpected) in 0.818 (0.825) seconds
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.
+
+Building for debugging...
+[Starting]
+[1 / 5]
+Build complete! (0,61 secs)

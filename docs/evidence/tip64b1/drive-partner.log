@@ -1,0 +1,885 @@
+
+QA typecheck
+
+> roboeye@1.6.0 typecheck
+> tsc --noEmit
+
+
+QA unit
+
+> roboeye@1.6.0 test:unit
+> tsx --test tests/unit/*.test.ts
+
+✔ AirDesk exposes five fingertip affordances and pinch edges (1.457167ms)
+✔ AirDesk keeps image drag, scale, rotation, flip and annotation independent (0.287875ms)
+✔ AirDesk two-finger transform moves across the stage, scales, rotates and flips naturally (0.856084ms)
+✔ pinch dùng hysteresis để hạ/nhấc bút và mirror con trỏ (0.614875ms)
+✔ giữ hai ngón chỉ undo một lần, bàn tay mở giữ lâu mới clear (0.157375ms)
+✔ tài liệu nét vẽ bỏ tap rỗng, hỗ trợ undo và clear (0.178834ms)
+✔ benchmark báo p50/p95 định lượng và readiness (0.179292ms)
+✔ static clutch: pinch draws, open palm held enters manipulation, pinch grabs (1.050125ms)
+✔ từ nắm tay/idle vẫn xòe tay để cầm rồi đặt object đã vẽ (0.194666ms)
+✔ pinch giữ nguyên điểm điều khiển ở đầu ngón trỏ và nắm được khi bàn tay vẫn mở (1.00425ms)
+✔ đang vẽ chỉ nhấc bút khi nhả pinch, không đứt nét vì pose các ngón khác chớp sai (0.125916ms)
+✔ mất landmark ngắn được giữ nhưng mất quá cửa sổ liên tục thì nhả an toàn (0.090083ms)
+✔ open-palm dwell resets when the hand changes pose (0.083292ms)
+✔ nắm tay hạ bút; index hover không vẽ, pinch mới bắt đầu nét mới (0.119292ms)
+✔ pinch hysteresis giữ nét ổn định và adaptive filter triệt jitter mà vẫn bám chuyển động nhanh (0.154458ms)
+✔ bù timestamp worker làm con trỏ đuổi kịp khung hình trễ nhưng không vượt biên (0.0945ms)
+✔ có thể vẽ và đặt nhiều object liên tiếp bằng clutch, không cần double-flick (0.33725ms)
+✔ scene hit-test, move and depth scale preserve the completed stroke (0.26325ms)
+✔ scene có pickup halo cho hình nhỏ nhưng vẫn giới hạn (0.05875ms)
+✔ pinch bắt đầu trên object được nâng trực tiếp thành grab rồi trả về idle (0.08625ms)
+✔ phủ đủ 345 nhãn QuickDraw bằng tiếng Việt (0.519458ms)
+✔ nhãn lạ không âm thầm rơi về tiếng Anh (0.069417ms)
+✔ nhận diện trái tim khi model 345 lớp không có heart (0.335542ms)
+✔ confidence yêu cầu cả xác suất và khoảng cách top-2 (0.076208ms)
+✔ YOLO export keeps first-seen class order and normalized xywh (0.828958ms)
+✔ COCO export maps duplicate labels to stable category IDs and pixel xywh (0.195125ms)
+✔ 3D export is explicitly relative and preserves missing fused boxes (0.24825ms)
+✔ empty annotation input produces empty deterministic payloads (0.073916ms)
+✔ R1 closed frame parser rejects private/unknown data at each boundary (10.039167ms)
+✔ R1 malformed/nonfinite temporal and geometric fields fail loudly (7.850666ms)
+✔ R1 pose rejects scale, reflection, nonrigid/homogeneous and invalid dimensions (2.568291ms)
+✔ R1 provider/unit/timestamp declarations cannot contradict their channel (2.648625ms)
+✔ R2 Z and ray range unprojection differ at camera edge (0.522417ms)
+✔ R2 all rotations/mirror/crop round-trip without modifying intrinsics or range (7.933459ms)
+✔ R2 relative, missing K, stale, future clock and RGB-depth skew never yield metres (2.788625ms)
+✔ R2 bbox-only, weak, mixed foreground and outside-domain depth rejected (2.580042ms)
+✔ R3 invalid budgets/calendar and relative unprojection cannot bypass validation (0.578791ms)
+✔ R2 learned/native/fixture values are never physically accepted (17.82375ms)
+✔ R3 recorder requires consent and rejects fixture/provider replacement (10.423209ms)
+✔ R3 recorder enforces actual frame/time/byte limits and includes stop reason (579.489375ms)
+✔ R3 unknown privacy fields/order and inconsistent reused depth IDs rejected (344.202208ms)
+✔ R3 JSON checksum round-trip/tamper/oversize and import isolation (74.93425ms)
+✔ R3 CameraLease stops late/cancelled/previous streams (0.255791ms)
+✔ R4 every deterministic scenario parses and remains synthetic (13.892125ms)
+✔ R4 camera motion fixture keeps supported world point stationary (0.582083ms)
+✔ R4 binary seek clamps time and handles empty/single recording (1.367084ms)
+✔ R4 depth ID cannot be refreshed by playback or seek; occlusion drops metres (0.874792ms)
+✔ R5 24 physical collection slots stay uncollected, synthetic scores excluded (1.231625ms)
+✔ R5 matching measured holdouts produce error but no acceptance; missing/duplicate/mixed truth rejected (12.679583ms)
+✔ R5 coverage reports refused measured holdouts instead of hiding misses (1.502958ms)
+✔ depth infer error releases busy state and keeps the loaded model ready (0.719875ms)
+✔ depth load error stops frames and exposes explicit retry (0.074833ms)
+✔ boxIoU computes overlap and handles disjoint boxes (0.469375ms)
+✔ quality matching is class-aware, score-ordered and one-to-one (0.51975ms)
+✔ quality aggregation uses micro-averaged TP, FP and FN (0.159292ms)
+✔ latency summary uses nearest-rank p50/p95 and rejects invalid input (0.272417ms)
+✔ class-aware NMS removes overlapping duplicate but keeps another class (0.919666ms)
+✔ containment suppression removes a small same-class box inside a larger detection (0.119375ms)
+✔ post-processing clamps coordinates, rejects invalid boxes and enforces cap (0.08975ms)
+✔ OWL prompt plan deduplicates labels, adds natural prompt template and caps queries (0.205708ms)
+✔ xác nhận liên tiếp trước khi hiển thị và giữ track đã xác nhận qua mất detection ngắn (0.755375ms)
+✔ dự báo vận tốc giữ khung theo vật di chuyển nhanh giữa các lần inference (0.190042ms)
+✔ bù độ trễ inference trước khi hiệu chỉnh khung đang hiển thị (0.107625ms)
+✔ một miss làm reset chuỗi xác nhận của track chưa xác nhận (0.090583ms)
+✔ frame inference errors release busy state and keep the loaded engine ready (0.717ms)
+✔ model loading errors release busy state but do not mark the engine ready (0.076291ms)
+✔ three-minute metadata plans 901 samples before workers can start (29.776542ms)
+✔ unsupported metadata fails preflight without running any inference initializer (0.160417ms)
+✔ errors remain visible rather than being overwritten by idle status polling (0.638417ms)
+✔ partial completion is not ready; cancelled/stale progress cannot resume itself (0.202417ms)
+✔ metadata timeout and source reset cannot retain the previous file notice (0.076875ms)
+✔ progress is bounded and the displayed ETA uses actual elapsed work, not rounded seconds (0.108292ms)
+✔ HERE fixture normalizes stable originalId, source time and semantic enums (1.395416ms)
+✔ TomTom fixture maps GeoJSON, documented icon and delay enums without escalation (0.26875ms)
+✔ both provider contracts are advisory-only and carry explicit unverified rights (0.19175ms)
+✔ freshness fails closed for planned, expired, future-received and over-age evidence (0.197833ms)
+✔ route match accepts nearby aligned events and rejects distance and direction conflicts (0.452542ms)
+✔ dedup merges only fresh same-road/type/time events and chooses deterministic stronger evidence (25.01825ms)
+✔ dedup does not merge conflicting road names or event kinds (0.213417ms)
+✔ malformed provider rows are rejected independently and do not poison valid rows (0.234958ms)
+✔ adapters and dedup are deterministic and do not mutate offline fixtures (0.195375ms)
+✔ RFI gate keeps every mandatory commercial decision honest-null for both providers (1.470792ms)
+✔ adapter context cannot claim verified rights without an attributable policy reference (0.2905ms)
+✔ focal decoding rejects negative-background queries that generic softmax inflates (0.945875ms)
+✔ focal decoder preserves last class, uses global top num_queries and correct xy/target scaling (0.130459ms)
+✔ focal decoding validates shape, finite data, threshold and batch target size (0.261292ms)
+✔ decoder adapter is instance-scoped and refuses a non-focal model (0.111709ms)
+✔ vehicle hypotheses compete across labels without removing a distinct occluded vehicle (1.068875ms)
+✔ vehicle candidate validation and cap cannot promote NaN or out-of-frame boxes (0.073958ms)
+✔ vehicle confirmation rejects a weak flash and requires two adjacent strong samples (0.233542ms)
+✔ weak association keeps ID briefly but cannot keep a ghost alive indefinitely (0.166291ms)
+✔ drive GPU preprocessing preserves RGB channel order/rescale and the 640-square contract (3.517ms)
+✔ late inference cannot turn a stale attempt into an accepted measurement (1.005375ms)
+✔ reset accounts every pending request once without inventing inference result timing (0.178959ms)
+✔ availability observes 250 ms lifespan and sparse cadence, not 60 Hz paints as new measurements (0.110166ms)
+✔ bounded two-hour accounting retains cumulative totals and first failure (43.761917ms)
+✔ pause does not invent availability over hidden/background time (0.128916ms)
+✔ common plane compares detection, continuity, primary target and performance without choosing a winner (2.296584ms)
+✔ candidate cannot hide a miss by dropping or changing a source frame (0.661792ms)
+✔ candidate run is bound to source hash, dimensions and complete journey set (0.516542ms)
+✔ closed schema rejects hidden paths, duplicate candidates and unbound primary IDs (0.723041ms)
+✔ commercial approval and reviewed truth are both required for promotion review eligibility (0.765625ms)
+✔ uploaded-video adapter exports exact sample index/time and honest telemetry nulls (0.786833ms)
+✔ single-journey assembler binds report fragments and re-runs the closed parser (0.653667ms)
+✔ minimal HUD publishes metres only and abstains on absent or invalid range (0.54175ms)
+✔ only the primary warning target receives risk corner brackets (0.078958ms)
+✔ red HUD requires a fresh accepted high-risk target, including non-primary vehicles (0.416333ms)
+✔ proximity warning never substitutes optical approach for a measured gap (0.235208ms)
+✔ minimal HUD never mislabels synthetic or analysed playback as live sensing (0.086917ms)
+✔ playback affordance follows actual media state, including completion and reset (0.390083ms)
+✔ analysis is closed by default, with all existing DOM targets unique and available (0.495208ms)
+✔ single viewport shell contains video without cropping; warning respects reduced motion (0.254292ms)
+✔ edge-to-edge video contains its toolbar; icon controls retain accessible names (0.663625ms)
+✔ file processing feedback remains visible outside the collapsed analysis panel (0.321916ms)
+✔ analysis is an in-video overlay with its own scroll surface and accessible close action (0.308416ms)
+✔ empty stage has one primary source action and no meaningless disabled transport row (0.206958ms)
+✔ Nano initial mobile hint is selectable, not an acceptance verdict (1.760541ms)
+✔ Nano consumes BGR raw bytes, not normalized RGB (2.120833ms)
+✔ Nano decodes raw grid/exp sizes and removes top-left padding (0.584292ms)
+✔ Nano class winner excludes signs, global NMS suppresses duplicate vehicles (1.656833ms)
+✔ Anchor fit independently checks known metre scale, domain and ordinal direction (0.577791ms)
+✔ Anchor import ignores forged coefficients and rechecks original measured references (0.891167ms)
+✔ Anchor calibration fails closed for missing/rank/span/duplicate references (0.204458ms)
+✔ Anchor ranging rejects mismatched crop, clipped/small/off-domain vehicles (0.237709ms)
+✔ Anchor tracker publishes on detector capture and expires at unchanged 1200ms (2.001459ms)
+✔ Mobile budget needs 10 measured samples and uses rolling P95, not UA (0.185166ms)
+✔ Target coverage counts blank boxes, unique captured anchors and no physical acceptance (0.280625ms)
+✔ Bounded target report discloses truncation instead of claiming complete coverage (0.620417ms)
+✔ one-minute camera evidence passes runtime smoke but not soak (1.277ms)
+✔ thirty-minute camera evidence can pass soak (0.103708ms)
+✔ metric path remains explicitly unobserved when no vehicle triggered depth (0.071292ms)
+✔ latency, stale drops and non-camera reports fail closed (0.086708ms)
+✔ explicit worker or geometry drops fail even when the aggregate rate is low (0.081209ms)
+✔ new unknown detector observation must not block delayed same-frame depth (1.549125ms)
+✔ join depth-first keeps a single same-frame capture (3.130125ms)
+✔ join detector-first keeps a single same-frame capture (2.289791ms)
+✔ join rejects source, geometry, clock and age mismatches (4.161917ms)
+✔ identity binding rejects moved, missing, weak, replaced and duplicate vehicle measurements (0.435333ms)
+✔ slow detector boxes are visual-only and cannot be relabelled fresh danger evidence (0.392041ms)
+✔ worker backend probe fails safely without browser-name assumptions (0.261709ms)
+✔ live depth yields CPU to a dual-WASM detector on mobile (0.50225ms)
+✔ GPU detector keeps a bounded faster depth cadence and ignores invalid samples (0.090458ms)
+✔ normal live trace exposes exact capture, inference, risk and overlay durations (0.801125ms)
+✔ busy callback and stale result are counted without fabricating alert latency (0.1965ms)
+✔ source reset invalidates old traces and missing risk/audio stay unavailable (0.188792ms)
+✔ timestamps and epochs fail closed (0.06125ms)
+✔ two-hour-like stream keeps bounded trace rows and cumulative totals (33.079334ms)
+✔ camera inventory keeps concrete laptop/phone devices and safe fallback labels (0.811ms)
+✔ offline presets disclose deterministic quality/speed tradeoff for a three-minute clip (0.374541ms)
+✔ same-frame learned range enriches the current track without advancing identity or time (1.117834ms)
+✔ decoded portrait chooses a separate pinned graph and recovers usable spatial support without lowering the ROI gate (3.594583ms)
+✔ ROI evidence explicitly distinguishes tiny, clipped, invalid shape, sparse and out-of-domain (2.484833ms)
+✔ connected support keeps a coherent surface, rejects minority centre occlusion and mixed depths (6.385125ms)
+✔ 1050 ms cadence no longer erases filter history; repeated outliers do not reset identity in tracker (3.411417ms)
+✔ long gaps require two new observations; no single arbitrary reset or duplicate timestamp (0.098542ms)
+✔ bounded per-object reasons survive detail eviction and cannot reverse a terminal attempt (3.365792ms)
+✔ scheduler uses both workloads and exposes missed latency target rather than changing freshness (0.178292ms)
+✔ GPU phase alignment holds at most 80 ms and cannot stall detection for hung/CPU depth (0.085917ms)
+✔ metric input uses planar RGB [0,1], not alpha/BGR (1.326125ms)
+✔ metric storage remains bounded and every channel is replaced (502.596375ms)
+✔ wrong shape/length does not corrupt the last input, and recovery works (0.358166ms)
+✔ invalid input dimensions fail before allocation (0.087666ms)
+✔ transferring an output cannot detach input or alter the next output (4.248166ms)
+✔ depth retry is bounded to two in 60 seconds even after successful warmup (0.528667ms)
+✔ stop/reset cancels an old recovery token and preserves retry budget (0.086166ms)
+✔ disabled baseline mode exposes degraded state rather than pretending recovery (0.0895ms)
+✔ lifecycle event history is bounded without losing failure totals (4.775083ms)
+✔ complete one-minute report is smoke-observed and identifies detector request (0.692416ms)
+✔ twenty-minute slowdown is reported as a trend, not a safety claim (0.161959ms)
+✔ missing camera evidence and mismatched window totals fail closed (0.10025ms)
+✔ expired metric join counts one outcome without fabricating execution time (1.518125ms)
+✔ camera settings use a closed privacy allowlist (0.426125ms)
+✔ mobile soak assigns events to four deterministic time windows (1.637625ms)
+✔ busy, drop, lifecycle and unavailable metadata remain explicit (0.425ms)
+✔ 72,000-frame session keeps bounded trace state and cumulative histograms (27.072958ms)
+✔ falls back from absent same-origin model to verified immutable release (30.2735ms)
+✔ rejects a release asset that does not match the pinned contract (10.082917ms)
+✔ local-only native portrait graph fails closed instead of downloading an invented release (1.535125ms)
+✔ offline pipeline overlaps next detector with prior depth; keeps snapshots and ordered output (2.753709ms)
+✔ cancel or produce failure cannot commit unfinished/stale frame or open extra depth requests (4.787208ms)
+✔ depth failure is observed, not swallowed or committed as a completed analysis (0.168375ms)
+✔ real-clip profiling evidence is complete, hash-bound and privacy-bounded (1.707666ms)
+✔ overtaker truncation and tiny distant ROI do not produce convincing but unsupported metres (0.85725ms)
+✔ known zoom fails closed without dividing neural metres; centred crop updates K mathematically (1.848875ms)
+✔ compressed A-B / A-C depth is flagged, never force-corrected by adding imagined B-C metres (0.935625ms)
+✔ cross-lane screenshot inversion abstains instead of swapping or publishing wrong metres (0.140458ms)
+✔ cross-lane ground-contact ordering catches the 57 m / 52 m regression when apparent heights are neutral (0.095417ms)
+✔ vehicle subclass flicker cannot bypass the 51 m / 45 m ground-contact regression (0.06725ms)
+✔ ordinal publication invariant uses source-pixel contact resolution and reviewed vehicle labels (0.317209ms)
+✔ Test1.mp4 runtime trace rejects the exact 51.23 m / 44.68 m side-vehicle inversion (0.103292ms)
+✔ applied geometry takes priority, even if learned depth claims a plausible wrong distance (1.530875ms)
+✔ replay sampling is bounded, monotonic, includes the tail and rejects unsupported clips (1.100292ms)
+✔ three-minute clips retain 5 Hz sampling through the complete duration without truncation (69.755625ms)
+✔ replay recomputes calibration without inference and does not mutate raw samples (0.446292ms)
+✔ replay uses learned metric ranges without a camera profile and filters them per track (0.294ms)
+✔ replay interpolates matching IDs only, retains sampled range and cannot mutate cache (0.230834ms)
+✔ final replay publication revalidates filtered ranges against the boxes actually shown (0.4015ms)
+✔ replay does not fabricate boxes through missed detections, different IDs or long gaps (2.462792ms)
+✔ replay seeking is deterministic, hides out-of-timeline values and suppresses invalid next range (0.724792ms)
+✔ decoded seek waits for the requested frame and cancellation cannot advance another source (0.675208ms)
+✔ optical expansion produces a scale-free TTC without metric range (1.616708ms)
+✔ corridor grows toward camera and rejects a side-lane target (0.149667ms)
+✔ TT38 reference table abstains where no fixed value exists (0.06625ms)
+✔ risk policy selects the in-path threat and never turns conflicting TTC red (0.335916ms)
+✔ distance and ego speed expose headway without pretending unknown speed is known (0.096166ms)
+✔ analysed replay cannot flicker red at the 5 Hz sample cadence; live freshness remains intact (0.179917ms)
+✔ recorded risk still fails closed for out-of-window, conflicting, weak and absent evidence (0.139542ms)
+✔ synthetic presentation also preserves sample confidence only within its 100 ms cadence (0.091792ms)
+✔ reopen reads original session/checksum and later checkpoints increase sequence (22.888709ms)
+✔ quota failure is observable, does not throw to inference caller, and can recover (1.457916ms)
+✔ tampered/unsupported/private payload is rejected; stored original survives (9.55775ms)
+✔ retention protects active summary and never keeps more than ten sessions (18.435291ms)
+✔ integrity export/import round trip, duplicate old checkpoints never regress counts (1.403334ms)
+✔ busy storage keeps latest checkpoint rather than growing an unbounded queue (5.654708ms)
+✔ additive source lifecycle round trips while old checkpoints remain valid (1.116125ms)
+▶ source lifecycle ownership
+  ✔ resumes only the active previously playing source (0.944583ms)
+  ✔ preserves a manually paused fixture across hide and return (0.1105ms)
+  ✔ requires both visibility and track availability; denied autoplay needs a gesture (0.093667ms)
+  ✔ bounds evidence without retaining device IDs or pixels (0.171458ms)
+  ✔ ignores obsolete pause events during opening/resuming; unexpected camera pause has retry (0.074417ms)
+✔ source lifecycle ownership (1.90475ms)
+▶ screen wake ownership
+  ✔ releases a late acquisition and does not duplicate pending requests (2.878083ms)
+  ✔ treats unsupported/denied wake locks as nonfatal (1.629291ms)
+  ✔ acquires once for a replacement source after cancelling a pending lock (0.408084ms)
+✔ screen wake ownership (5.0845ms)
+✔ consecutive vehicle IDs receive distinct stable colours (0.497667ms)
+✔ track colour mapping stays deterministic for defensive inputs (0.082709ms)
+✔ independent object IDs, misses, roadside FP, range coverage and ID switches score deterministically (2.117708ms)
+✔ incompatible distance definitions never enter metre errors (0.380166ms)
+✔ all unknown predictions leave quality null, not fabricated zero error (1.984792ms)
+✔ missing/late observations are false negatives and unmatched predictions are false positives (0.247166ms)
+✔ corpus rejects duplicate journeys, cross-split source leakage and missing rights (0.483959ms)
+✔ corpus rejects invalid boxes, non-finite numbers, IDs and hidden video bytes (0.2775ms)
+✔ real replay pipeline holds one red warning across 120 rendered frames, without resetting measured age (7.001042ms)
+✔ a recorded missing vehicle breaks interpolation and cannot leave a red warning behind (0.451625ms)
+✔ loss of depth clears metres and range-derived TTC during interpolation (0.329833ms)
+✔ a known weak endpoint cannot lend its interpolated box old strong motion evidence (0.338084ms)
+✔ depth loss does not erase independently supported optical approach or invent metres (0.352ms)
+✔ end-of-replay hold reports its actual measurement age and expires after 80 ms (0.367917ms)
+✔ fractional playback timestamps retain actual age and never precede the first observation (2.21675ms)
+✔ interpolated evidence is endpoint-bounded and cannot acquire a future motion signal early (0.9335ms)
+✔ random-access playback cannot mutate cached risk evidence or leak a warning beyond the timeline (0.940625ms)
+✔ drive calibration rejects NaN, unsupported distortion, dimensions and unbounded inputs (2.967208ms)
+✔ drive ray/plane agrees with independent projection over yaw position, pitch, roll and Brown distortion (3.803541ms)
+✔ drive geometry reproduces 2D ideal distances without using car dimensions (2.700625ms)
+✔ drive fails closed for missing calibration, changed source geometry, clipped/tiny boxes and horizon (1.467417ms)
+✔ drive sensitivity grows with pitch uncertainty; unsafe uncertainty suppresses meter labels (0.166542ms)
+✔ drive robust mount refinement has held-out ground truth, tolerates one fit outlier (1.177959ms)
+✔ drive Hungarian finds global assignment and respects dummy unmatched columns (0.206584ms)
+✔ drive two-stage association preserves ID through low confidence and reordered vehicles (1.140875ms)
+✔ drive associates a fast non-overlapping vehicle and resists one-frame subclass flicker (0.242958ms)
+✔ drive missed detection and stale data never retain a current distance (0.249375ms)
+✔ drive tracking remains readable at mobile WASM cadence without reviving ghosts (0.154042ms)
+✔ drive reordered/duplicate time is ignored; reset does not transfer old range to a new source (0.178666ms)
+✔ drive Kalman follows closing motion, suppresses jitter and rejects large innovations (0.197166ms)
+✔ drive optical TTC resets after a miss instead of preserving stale motion (0.157667ms)
+✔ drive report exposes missing ground truth and includes abstention in coverage (0.408667ms)
+✔ drive report indexed matching consumes nearest samples once and respects the 80 ms window (22.656875ms)
+✔ metric reconstruction matches independent analytic perspective for portrait/landscape/scale (85.688417ms)
+✔ metric mask and bad output contracts fail closed (3.779875ms)
+✔ single flight, epoch invalidation, wrong replies and expired results (0.144917ms)
+✔ DA2 fixed metric contract rejects relative bytes, wrong shape and unbounded values (1.390834ms)
+✔ landscape preprocessing letterboxes without distortion and maps source boxes (0.176583ms)
+✔ vehicle metric ROI returns robust learned Z and rejects tiny/noisy/sparse regions (5.466167ms)
+✔ benchmark does not align scale, omit misses, or count stale/invalid estimates (0.411166ms)
+✔ recognizes Vite preview output using localhost (0.539958ms)
+✔ recognizes Vite dev output using 127.0.0.1 (0.122666ms)
+✔ strips ANSI colors before matching Vite output (0.062291ms)
+✔ does not accept unrelated process output (0.089542ms)
+✔ 1€ filter reduces stationary landmark jitter without freezing fast motion (1.024541ms)
+✔ nearest target acquisition enlarges small controls but selects only the closest (0.140583ms)
+✔ blind task creates a hash-bound draft with the exact raw frames (1.29625ms)
+✔ closed schemas reject prediction leakage, unsafe image paths and physical-boundary roles (0.42475ms)
+✔ task/image hash mismatch and self-review fail closed (0.134375ms)
+✔ annotation revision is bounded and legacy draft migrates to revision zero (0.098375ms)
+✔ only independently reviewed annotations can become benchmark truth (0.20175ms)
+✔ road artifact contract accepts a fully pinned, static, commercially cleared manifest (1.641125ms)
+✔ road artifact contract rejects unknown fields, paths and dynamic tensor shapes (0.366666ms)
+✔ self-declared manifest cannot bypass registry pinning or commercial rights (0.281292ms)
+✔ artifact purpose controls the promotion gate (0.139833ms)
+✔ runtime proof is independently hash-bound and covers every declared provider (0.189667ms)
+✔ runtime proof rejects fabricated passed rows and invalid latency order (0.157042ms)
+✔ tracked OpenVINO research evidence remains internally hash-bound and commercially blocked (20.166042ms)
+✔ road scorer counts lane/boundary misses, false positives, stale evidence and corridor completeness (5.846875ms)
+✔ road corpus rejects hidden bytes, invalid geometry, duplicate IDs, missing rights and split leakage (0.745125ms)
+✔ unmatched frame and mixed synthetic/physical corpus fail honestly (1.474959ms)
+✔ polyline matching is invariant to sampling density and point order (0.314958ms)
+✔ quiet lane HUD waits for three distinct good frames over dwell duration (0.87625ms)
+✔ stationary off-centre start is not a departure; both warning sides require prior tracking (0.553292ms)
+✔ short proximity jitter never becomes a warning; recovery has separate threshold/dwell (0.135375ms)
+✔ missing one lane, weak/nonfinite diagnostics, crossing and narrow geometry fail closed (0.1885ms)
+✔ stale, future, generation changes and gaps clear tracking and require reacquisition (0.176583ms)
+✔ opposite-side identity switch cannot jump directly from left to right warning (0.076167ms)
+✔ lane icon anchors inside vertically letterboxed video, not viewport header (0.741958ms)
+✔ lane icon follows pillarboxing and avoids overlapping chrome (0.080917ms)
+✔ lane icon clamps inside very small images instead of escaping below them (0.120833ms)
+✔ road model registry is internally valid but fail-closes every unverified commercial candidate (1.029042ms)
+✔ registry rejects duplicate IDs and rights claims without provenance (0.193166ms)
+✔ road UI preprocessing preserves canonical planar BGR 0..255 (0.830834ms)
+✔ road UI argmax is class-first and rejects invalid outputs (0.12625ms)
+✔ road UI media freshness rejects future, stale, old-generation and missing samples (0.089375ms)
+✔ road UI blank mask does not fabricate lanes or drivable geometry (0.05075ms)
+✔ vectorizer extracts drivable polygon and typed ego corridor from a four-class mask (24.862584ms)
+✔ vectorizer fails closed for invalid shape and empty evidence (1.250625ms)
+✔ v2 bridges dashed curved lanes without switching to adjacent distractors (14.090166ms)
+✔ v2 fails closed for short or horizontally implausible mark evidence (0.617875ms)
+✔ v2 abstains when two materially different left paths have equivalent evidence (27.185083ms)
+✔ pose solver emits one finite fixed-length link for every MediaPipe hand segment (1.532125ms)
+✔ source world scale cannot stretch the fixed robot skeleton (0.9655ms)
+✔ mirrored hands preserve canonical articulation while retaining chirality for the renderer (0.275125ms)
+✔ solver rejects incomplete and degenerate palms without leaking NaN (0.104541ms)
+✔ robot finger sockets remain registered to the palm across source proportions and cupping (0.311417ms)
+✔ depth scale compensates yaw/pitch foreshortening at both square and widescreen aspect ratios (1.565167ms)
+precision before/after [{"fingers":[0,1],"before":0.1649950261330502,"after":0.002391558920884454},{"fingers":[0,2],"before":0.13304086759929254,"after":0.0026420135823281912},{"fingers":[0,3],"before":0.0570203297929262,"after":0.0001361394582872974},{"fingers":[0,4],"before":0.11125400912369204,"after":0.0013746183676386116},{"fingers":[0,1,2],"before":0.1649950261330502,"after":0.003293724840640888},{"fingers":[0,1,2,3],"before":0.1649950261330502,"after":0.01678283776112669},{"fingers":[1,2],"before":0.014769892038530887,"after":0.0035628794950600465}]
+✔ precision contacts close despite different palm/finger proportions, including 3/4 fingertips (10.252917ms)
+✔ contact remains closed at rendered shell endpoints after filtering and moving the pinch (54.652125ms)
+✔ open and release do not retain contact; invalid observations are rejected (4.378458ms)
+✔ precision gestures survive both hands, source scale and out-of-plane rotation (19.551334ms)
+✔ fist preserves deep flexion and bounded consecutive joint angles (0.507583ms)
+✔ anatomical projection preserves an open chain and repairs an opposing DIP branch (0.755667ms)
+✔ continuous measured curl keeps an occluded fist compact without selecting a canned pose (0.178042ms)
+✔ contact hysteresis bridges one dropped landmark frame then releases deliberately (2.684125ms)
+✔ palm grip socket follows the smoothed rig transform and scale (10.762041ms)
+✔ render interpolation from open to fist never crosses an opposing joint plane (19.027167ms)
+✔ millimetre-like small target motion is continuous and no contact is inferred from a 2D crossing alone (10.698375ms)
+✔ task-space pipeline suppresses small contact jitter without losing fast contact motion (13.954208ms)
+✔ adaptive pose filter suppresses stationary direction jitter while preserving fixed lengths (6.647834ms)
+✔ adaptive pose filter follows an intentional fast finger movement (1.907125ms)
+✔ gesture labels cover demo poses and ignore a single-frame label glitch (0.226ms)
+✔ realtime controller holds a short tracking miss and releases after 220 ms (0.287958ms)
+✔ realtime controller predicts through a short miss, brakes motion, then expires safely (0.22925ms)
+✔ reacquisition blends from predicted output instead of snapping in one frame (0.247833ms)
+✔ metrics report bounded nearest-rank p50/p95 snapshots (0.204292ms)
+✔ native left and right rigs keep positive world scale while fallback chirality stays discrete (39.490792ms)
+✔ humanoid shells keep finite rigid transforms through flexion and palm rotation (15.991584ms)
+✔ shell roll remains continuous while crossing the transverse-axis singularity (16.186542ms)
+✔ humanoid resources stay bounded and every shared geometry is disposed once (13.413833ms)
+✔ vendored Wave URDFs resolve every browser visual mesh locally (3.670125ms)
+✔ Wave distribution records immutable source and Apache attribution (2.579125ms)
+✔ Wave joint mapping covers the native rig and respects every URDF limit (2.653292ms)
+✔ closed-hand evidence creates a compact forward-flexing chain (0.335667ms)
+✔ thumb-index contact increases opposition without exceeding mechanics (0.230917ms)
+✔ two hands independently grab, manipulate and release props (10.772833ms)
+✔ ambiguous tracking retains ownership; a deliberate open palm falls under gravity and rests (0.260584ms)
+✔ free pointing hand swipes a held phone and page-turns a held book (0.298667ms)
+✔ intent descriptor is normalized by palm width (0.195792ms)
+✔ two observations always receive opposite identities when handedness briefly duplicates (0.438583ms)
+✔ observation-centric identity survives a crossing even when handedness labels flip (0.262417ms)
+✔ identity tracker expires stale trajectories instead of reviving a ghost hand (0.077708ms)
+✔ diagnostics are bounded, local-only and sanitize nested detail (1.945125ms)
+✔ allows only the reviewed advisory before its deadline (0.986ms)
+✔ rejects a new high advisory propagated through the same dependency (0.097833ms)
+✔ rejects an accepted advisory after its review deadline (0.125292ms)
+✔ rejects an advisory when package or severity no longer matches (0.068458ms)
+✔ detects sharp imports in application source (0.2685ms)
+✔ detects native sharp/libvips markers in a browser bundle (0.163083ms)
+ℹ tests 353
+ℹ suites 2
+ℹ pass 353
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1809.177917
+
+QA build
+
+> roboeye@1.6.0 prebuild
+> node scripts/fetch-drive-models.mjs && node scripts/fetch-drive-lite-model.mjs && node scripts/derive-da2-portrait.mjs && node scripts/copy-ort.mjs
+
+[drive-models] verified da2-outdoor-392x224.onnx
+[drive-models] verified rtdetr-r18-640-webgpu.onnx
+[drive-models] verified config.json
+[drive-models] verified preprocessor_config.json
+[drive-models] verified onnx/model_quantized.onnx
+[drive-lite] pinned official Nano verified
+[drive-models] verified portrait
+[copy-ort] đã copy 2 file ORT runtime vào public/ort/
+[copy-ort] đã copy 7 file MediaPipe runtime vào public/mediapipe/
+[copy-ort] đã copy 14 file TFLite runtime vào public/tflite/
+
+> roboeye@1.6.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 104 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/release.json                                                   0.28 kB │ gzip:     0.20 kB
+dist/assist.html                                                    4.35 kB │ gzip:     1.95 kB
+dist/assets/inter-vietnamese-400-normal-DMkecbls.woff2              4.97 kB
+dist/assets/inter-vietnamese-600-normal-Cc8MFFhd.woff2              5.10 kB
+dist/assets/inter-vietnamese-500-normal-DOriooB6.woff2              5.11 kB
+dist/assets/noto-serif-vietnamese-400-normal-B2Tmka3c.woff2         5.24 kB
+dist/assets/inter-greek-ext-400-normal-DGGRlc-M.woff2               5.26 kB
+dist/assets/inter-greek-ext-500-normal-C4iEst2y.woff2               5.43 kB
+dist/assets/inter-greek-ext-600-normal-DRtmH8MT.woff2               5.43 kB
+dist/assets/noto-serif-greek-ext-400-normal-fffGn9To.woff2          5.50 kB
+dist/assets/noto-serif-greek-ext-600-normal-H_XqbSqa.woff2          5.58 kB
+dist/assets/noto-serif-vietnamese-600-normal-BqcqYJsL.woff2         6.00 kB
+dist/assets/inter-vietnamese-400-normal-Bbgyi5SW.woff               6.50 kB
+dist/assets/inter-vietnamese-500-normal-mJboJaSs.woff               6.60 kB
+dist/assets/inter-vietnamese-600-normal-BuLX-rYi.woff               6.64 kB
+dist/assets/noto-serif-greek-ext-400-normal-8V3SQMVO.woff           7.02 kB
+dist/assets/noto-serif-vietnamese-400-normal-I93X-UPO.woff          7.03 kB
+dist/assets/inter-greek-ext-400-normal-KugGGMne.woff                7.06 kB
+dist/assets/noto-serif-greek-ext-600-normal-BrzorZ1O.woff           7.15 kB
+dist/assets/inter-greek-ext-500-normal-2j5mBUwD.woff                7.19 kB
+dist/assets/inter-greek-ext-600-normal-B8X0CLgF.woff                7.21 kB
+dist/sw.js                                                          7.71 kB
+dist/assets/inter-cyrillic-400-normal-obahsSVq.woff2                7.71 kB
+dist/assets/inter-greek-400-normal-B4URO6DV.woff2                   7.78 kB
+dist/assets/noto-serif-vietnamese-600-normal-DsVT_aBB.woff          7.78 kB
+dist/assets/noto-serif-cyrillic-400-normal-aKKVvgXJ.woff2           7.80 kB
+dist/assets/inter-cyrillic-500-normal-BasfLYem.woff2                7.90 kB
+dist/assets/inter-greek-500-normal-BIZE56-Y.woff2                   7.92 kB
+dist/assets/inter-greek-600-normal-plRanbMR.woff2                   7.94 kB
+dist/assets/inter-cyrillic-600-normal-CWCymEST.woff2                7.97 kB
+dist/assets/noto-serif-cyrillic-600-normal-CE_QG8yp.woff2           8.39 kB
+dist/assets/noto-serif-greek-400-normal-B3ECBf8v.woff2              9.37 kB
+dist/assets/noto-serif-cyrillic-400-normal-CoUCwD1R.woff            9.63 kB
+dist/assets/inter-cyrillic-400-normal-HOLc17fK.woff                 9.78 kB
+dist/assets/inter-greek-400-normal-q2sYcFCs.woff                    9.92 kB
+dist/assets/inter-cyrillic-600-normal-4D_pXhcN.woff                 9.94 kB
+dist/assets/inter-cyrillic-500-normal-CxZf_p3X.woff                 9.94 kB
+dist/assets/inter-greek-500-normal-Xzm54t5V.woff                    9.98 kB
+dist/assets/noto-serif-greek-600-normal-DBvOifPv.woff2             10.00 kB
+dist/assets/inter-greek-600-normal-BZpKdvQh.woff                   10.03 kB
+dist/assets/noto-serif-cyrillic-600-normal-CjN4Xn4-.woff           10.10 kB
+dist/assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2           10.23 kB
+dist/assets/inter-cyrillic-ext-500-normal-B0yAr1jD.woff2           10.43 kB
+dist/assets/inter-cyrillic-ext-600-normal-Dfes3d0z.woff2           10.48 kB
+dist/assets/noto-serif-greek-400-normal-i7vYTb6g.woff              11.68 kB
+dist/assets/noto-serif-greek-600-normal-9xoLLDe_.woff              12.14 kB
+dist/assets/inter-cyrillic-ext-400-normal-DQukG94-.woff            13.34 kB
+dist/assets/inter-cyrillic-ext-500-normal-BmqWE9Dz.woff            13.45 kB
+dist/assets/inter-cyrillic-ext-600-normal-Bcila6Z-.woff            13.46 kB
+dist/assets/noto-serif-latin-400-normal-BV_iYGc9.woff2             14.40 kB
+dist/assets/noto-serif-latin-600-normal-BiuDA9L7.woff2             15.31 kB
+dist/assets/noto-serif-latin-400-normal-DT0cwSa_.woff              17.81 kB
+dist/assets/noto-serif-latin-600-normal-RZopCp-J.woff              18.68 kB
+dist/index.html                                                    21.74 kB │ gzip:     6.72 kB
+dist/drive.html                                                    21.84 kB │ gzip:     7.11 kB
+dist/assets/inter-latin-400-normal-C38fXH4l.woff2                  23.66 kB
+dist/assets/inter-latin-500-normal-Cerq10X2.woff2                  24.27 kB
+dist/assets/inter-latin-600-normal-LgqL8muc.woff2                  24.45 kB
+dist/assets/noto-serif-cyrillic-ext-400-normal-2InBkf9u.woff2      25.39 kB
+dist/assets/noto-serif-math-400-normal-DimicZOx.woff2              27.19 kB
+dist/assets/noto-serif-math-600-normal-CghiApFM.woff2              28.26 kB
+dist/assets/noto-serif-cyrillic-ext-600-normal-CKHvwRBP.woff2      28.57 kB
+dist/assets/inter-latin-400-normal-CyCys3Eg.woff                   30.70 kB
+dist/assets/inter-latin-600-normal-CiBQ2DWP.woff                   31.26 kB
+dist/assets/inter-latin-500-normal-BL9OpVg8.woff                   31.28 kB
+dist/assets/noto-serif-cyrillic-ext-400-normal-BijI9M04.woff       32.22 kB
+dist/assets/noto-serif-math-400-normal-B8cPkepj.woff               32.89 kB
+dist/assets/noto-serif-math-600-normal-DIBRmk6D.woff               33.98 kB
+dist/assets/noto-serif-cyrillic-ext-600-normal-BtIp3siU.woff       34.92 kB
+dist/assets/inter-latin-ext-400-normal-C1nco2VV.woff2              35.00 kB
+dist/assets/inter-latin-ext-500-normal-CV4jyFjo.woff2              36.02 kB
+dist/assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2              36.26 kB
+dist/assets/inter-latin-ext-400-normal-77YHD8bZ.woff               47.56 kB
+dist/assets/inter-latin-ext-500-normal-BxGbmqWO.woff               48.49 kB
+dist/assets/inter-latin-ext-600-normal-CIVaiw4L.woff               48.67 kB
+dist/assets/noto-serif-latin-ext-400-normal-CMAsOjEZ.woff2         60.24 kB
+dist/assets/noto-serif-latin-ext-600-normal-B-yZwSOa.woff2         66.86 kB
+dist/assets/noto-serif-latin-ext-400-normal-DmIgJaL_.woff          86.23 kB
+dist/assets/noto-serif-latin-ext-600-normal-j_oVvSzn.woff          93.25 kB
+dist/assets/drive-lite-worker-CdaD2oeh.js                         122.35 kB
+dist/assets/drive-range-worker-BnlB116w.js                        399.60 kB
+dist/assets/drive-road-worker-9qsyZgTa.js                         400.84 kB
+dist/assets/drive-detect-worker-D605lZ7T.js                       400.87 kB
+dist/assets/depth-worker-Bmm3IfxH.js                              868.43 kB
+dist/assets/metric-worker-BkKCSr7u.js                             868.61 kB
+dist/assets/detect-worker-BqvEu2fw.js                             872.90 kB
+dist/assets/ort-wasm-simd-threaded.jsep-B0T3yYHD.wasm          21,596.02 kB │ gzip: 5,087.10 kB
+dist/assets/ort-wasm-simd-threaded.asyncify-D5D0fo7z.wasm      26,781.91 kB │ gzip: 6,673.53 kB
+dist/assets/400-DnORaWRE.css                                        8.12 kB │ gzip:     1.43 kB
+dist/assets/assist-Bx1F15XO.css                                     9.46 kB │ gzip:     2.52 kB
+dist/assets/drive-ZOvUEeBX.css                                     19.64 kB │ gzip:     5.14 kB
+dist/assets/index-BSo-Ue_1.css                                     35.58 kB │ gzip:     7.92 kB
+dist/assets/modulepreload-polyfill-B5Qt9EMX.js                      0.71 kB │ gzip:     0.40 kB
+dist/assets/assist-CDvJpETw.js                                     28.05 kB │ gzip:    10.95 kB
+dist/assets/drive-DIAfZyJp.js                                     157.47 kB │ gzip:    56.31 kB
+dist/assets/index-BI0AxbsR.js                                   1,140.93 kB │ gzip:   328.07 kB
+✓ built in 5.77s
+
+QA security
+
+> roboeye@1.6.0 security:audit
+> node scripts/security-audit.mjs
+
+[security] npm audit: 0 critical, 0 high
+[security] không còn advisory high/critical thuộc accepted-risk
+[security] browser export: ./dist/transformers.web.js
+[security] source/bundle sharp exposure: 0
+[security] PASS
+
+QA controls
+PASS feature toggle browser checks: /var/folders/81/y445_2554tb49zsn_qtb_9v80000gn/T/codex-tmp-tip64b1-20261010-qa-kuBN3a/roboeye-drive-feature-toggle-qa
+
+QA video-anchor
+PASS 7 video-anchor browser cases: /var/folders/81/y445_2554tb49zsn_qtb_9v80000gn/T/codex-tmp-tip64b1-20261010-qa-kuBN3a/roboeye-road-icon-anchor-qa
+
+QA model-smoke-real
+[wasm] Đang tải model
+[webgpu] Đang tải model
+[webgpu] [0;93m2026-10-10 16:25:40.474999 [W:onnxruntime:, session_state.cc:1280 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.[m
+[webgpu] [0;93m2026-10-10 16:25:40.484499 [W:onnxruntime:, session_state.cc:1282 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.[m
+{
+  "pass": true,
+  "results": [
+    {
+      "backend": "wasm",
+      "detector": {
+        "pass": true,
+        "backend": "wasm",
+        "inferenceMs": [
+          2005.5,
+          1834.699999988079,
+          1853.7999999821186,
+          1730.5999999940395
+        ],
+        "warmupRuns": 1,
+        "measuredRuns": 3,
+        "p50Ms": 1834.699999988079,
+        "p95Ms": 1853.7999999821186,
+        "boxes": [
+          {
+            "label": "person",
+            "score": 0.9487360010209471,
+            "x0": 0.06041666666666667,
+            "y0": 0.36875,
+            "x1": 0.3020833333333333,
+            "y1": 0.8375
+          },
+          {
+            "label": "person",
+            "score": 0.9258375128290833,
+            "x0": 0.825,
+            "y0": 0.3640625,
+            "x1": 0.9979166666666667,
+            "y1": 0.8140625
+          },
+          {
+            "label": "bus",
+            "score": 0.9219414657383503,
+            "x0": 0.014583333333333334,
+            "y0": 0.2125,
+            "x1": 0.9895833333333334,
+            "y1": 0.6859375
+          },
+          {
+            "label": "person",
+            "score": 0.9084004603800478,
+            "x0": 0.27708333333333335,
+            "y0": 0.375,
+            "x1": 0.42083333333333334,
+            "y1": 0.7953125
+          },
+          {
+            "label": "person",
+            "score": 0.8049822825211671,
+            "x0": 0,
+            "y0": 0.5140625,
+            "x1": 0.09166666666666666,
+            "y1": 0.80625
+          },
+          {
+            "label": "handbag",
+            "score": 0.5238581774501959,
+            "x0": 0.275,
+            "y0": 0.55625,
+            "x1": 0.35625,
+            "y1": 0.6546875
+          },
+          {
+            "label": "handbag",
+            "score": 0.4549682586211271,
+            "x0": 0.3770833333333333,
+            "y0": 0.5296875,
+            "x1": 0.41875,
+            "y1": 0.6453125
+          },
+          {
+            "label": "stop sign",
+            "score": 0.3744227184339386,
+            "x0": 0,
+            "y0": 0.234375,
+            "x1": 0.03958333333333333,
+            "y1": 0.3
+          },
+          {
+            "label": "tie",
+            "score": 0.34839319670016744,
+            "x0": 0.35,
+            "y0": 0.4484375,
+            "x1": 0.37083333333333335,
+            "y1": 0.4828125
+          },
+          {
+            "label": "tie",
+            "score": 0.27822998080506145,
+            "x0": 0.16875,
+            "y0": 0.4390625,
+            "x1": 0.18125,
+            "y1": 0.4671875
+          },
+          {
+            "label": "person",
+            "score": 0.23500237493247003,
+            "x0": 0.04583333333333333,
+            "y0": 0.3828125,
+            "x1": 0.07916666666666666,
+            "y1": 0.446875
+          },
+          {
+            "label": "pottedplant",
+            "score": 0.21804368825985532,
+            "x0": 0.8,
+            "y0": 0.0328125,
+            "x1": 0.88125,
+            "y1": 0.0796875
+          },
+          {
+            "label": "cell phone",
+            "score": 0.20519267756934062,
+            "x0": 0.16875,
+            "y0": 0.4390625,
+            "x1": 0.18125,
+            "y1": 0.4671875
+          },
+          {
+            "label": "pottedplant",
+            "score": 0.20320353105132802,
+            "x0": 0.14166666666666666,
+            "y0": 0.165625,
+            "x1": 0.19791666666666666,
+            "y1": 0.2125
+          },
+          {
+            "label": "handbag",
+            "score": 0.19022526562208014,
+            "x0": 0,
+            "y0": 0.64375,
+            "x1": 0.07291666666666667,
+            "y1": 0.6953125
+          },
+          {
+            "label": "bus",
+            "score": 0.18818276187068209,
+            "x0": 0,
+            "y0": 0.33125,
+            "x1": 0.04583333333333333,
+            "y1": 0.525
+          },
+          {
+            "label": "pottedplant",
+            "score": 0.18078429672814675,
+            "x0": 0.6,
+            "y0": 0,
+            "x1": 0.75625,
+            "y1": 0.059375
+          },
+          {
+            "label": "pottedplant",
+            "score": 0.17040200801311345,
+            "x0": 0.46875,
+            "y0": 0,
+            "x1": 0.5604166666666667,
+            "y1": 0.028125
+          },
+          {
+            "label": "handbag",
+            "score": 0.16608632748346305,
+            "x0": 0.8895833333333333,
+            "y0": 0.4984375,
+            "x1": 0.9520833333333333,
+            "y1": 0.5515625
+          },
+          {
+            "label": "backpack",
+            "score": 0.16027373325439487,
+            "x0": 0.275,
+            "y0": 0.55625,
+            "x1": 0.35625,
+            "y1": 0.6546875
+          },
+          {
+            "label": "fire hydrant",
+            "score": 0.1573418357704919,
+            "x0": 0.8125,
+            "y0": 0.578125,
+            "x1": 0.85,
+            "y1": 0.659375
+          },
+          {
+            "label": "person",
+            "score": 0.15591042154768672,
+            "x0": 0.5791666666666667,
+            "y0": 0.38125,
+            "x1": 0.6541666666666667,
+            "y1": 0.471875
+          },
+          {
+            "label": "person",
+            "score": 0.15357415063019558,
+            "x0": 0.6958333333333333,
+            "y0": 0.334375,
+            "x1": 0.7916666666666666,
+            "y1": 0.453125
+          }
+        ],
+        "tracks": [
+          {
+            "id": 1,
+            "label": "bus",
+            "score": 0.9219414657383503,
+            "range": {
+              "kind": "ground_contact_forward_m",
+              "provenance": "none",
+              "distanceM": null,
+              "lateralM": null,
+              "sigmaM": null,
+              "interval": null,
+              "intervalCalibrated": false,
+              "reason": "Chưa hiệu chuẩn"
+            }
+          }
+        ],
+        "note": "Ảnh tĩnh kiểm tra model + tracker; không chứng minh video realtime hoặc accuracy mét."
+      },
+      "depth": {
+        "status": "pass",
+        "distanceM": 15.887191772460938,
+        "backend": "wasm",
+        "p50Ms": 847.2000000178814,
+        "p95Ms": 852.9000000059605,
+        "samples": 3,
+        "provenance": "learned-unverified",
+        "error": null
+      }
+    },
+    {
+      "backend": "webgpu",
+      "detector": {
+        "pass": true,
+        "backend": "webgpu",
+        "inferenceMs": [
+          66.2000000178814,
+          67.09999999403954,
+          60.80000001192093,
+          61
+        ],
+        "warmupRuns": 1,
+        "measuredRuns": 3,
+        "p50Ms": 61,
+        "p95Ms": 67.09999999403954,
+        "boxes": [
+          {
+            "label": "bus",
+            "score": 0.9263731322262735,
+            "x0": 0.012989282608032227,
+            "y0": 0.213621124625206,
+            "x1": 0.9927992820739746,
+            "y1": 0.6834605485200882
+          },
+          {
+            "label": "bus",
+            "score": 0.20297259116971597,
+            "x0": 0.0010713543742895126,
+            "y0": 0.33252541720867157,
+            "x1": 0.04705910570919514,
+            "y1": 0.5261768847703934
+          }
+        ],
+        "tracks": [
+          {
+            "id": 1,
+            "label": "bus",
+            "score": 0.9263731322262735,
+            "range": {
+              "kind": "ground_contact_forward_m",
+              "provenance": "none",
+              "distanceM": null,
+              "lateralM": null,
+              "sigmaM": null,
+              "interval": null,
+              "intervalCalibrated": false,
+              "reason": "Chưa hiệu chuẩn"
+            }
+          }
+        ],
+        "note": "Ảnh tĩnh kiểm tra model + tracker; không chứng minh video realtime hoặc accuracy mét."
+      },
+      "depth": {
+        "status": "pass",
+        "distanceM": 15.887187957763672,
+        "backend": "webgpu",
+        "p50Ms": 43.900000005960464,
+        "p95Ms": 47.599999994039536,
+        "samples": 21,
+        "provenance": "learned-unverified",
+        "error": null
+      }
+    }
+  ],
+  "external": [],
+  "errors": [],
+  "scope": "Real pinned detector/depth models on desktop Chrome, separate workers and public bus image. No iPhone/Android hardware, simultaneous-camera throughput, or physical metre accuracy acceptance."
+}
+
+QA mobile-live-mock
+PASS 6 mobile live cases: /var/folders/81/y445_2554tb49zsn_qtb_9v80000gn/T/codex-tmp-tip64b1-20261010-qa-kuBN3a/roboeye-tip60c-live-qa
+
+QA portrait-diagnostics-mock
+PASS TIP-61D UI: /var/folders/81/y445_2554tb49zsn_qtb_9v80000gn/T/codex-tmp-tip64b1-20261010-qa-kuBN3a/roboeye-tip61d-ui
+
+QA depth-recovery-mock
+PASS one-fault-recovers
+PASS persistent-fault-bounded
+PASS stop-during-backoff
+
+QA journal
+START reopen-after-minute · real-clock 65000 ms
+PASS reopen-after-minute
+START detector-1691ms-stale-join · real-clock 10500 ms
+PASS detector-1691ms-stale-join
+START three-successes-then-depth-stops · real-clock 8500 ms
+PASS three-successes-then-depth-stops
+START storage-denied-ai-continues · real-clock 4500 ms
+PASS storage-denied-ai-continues
+PASS 4 journal/realtime fixture cases: /var/folders/81/y445_2554tb49zsn_qtb_9v80000gn/T/codex-tmp-tip64b1-20261010-qa-kuBN3a/roboeye-tip61-journal-qa
+
+QA source-lifecycle-mock
+PASS 15 source lifecycle cases
+
+QA release
+[release-e2e:mock] browser: /Users/os/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing
+[release-e2e:mock] PASS· UI hiển thị version 1.6.0
+[release-e2e:mock] PASS· boot rail có bốn tầng thật
+[release-e2e:mock] PASS· demo mode đánh dấu CTA khuyến nghị
+[release-e2e:mock] PASS· lỗi tải depth hiện hướng dẫn và cho retry
+[release-e2e:mock] PASS· tour bước 1 mở rgb
+[release-e2e:mock] PASS· tour bước 2 mở depth
+[release-e2e:mock] PASS· tour bước 3 mở cloud
+[release-e2e:mock] PASS· tour bước 4 mở bev
+[release-e2e:mock] PASS· telemetry A* nằm ngoài canvas trong sidebar
+[release-e2e:mock] PASS· telemetry A* dùng cỡ chữ nhỏ
+[release-e2e:mock] PASS· tour hoàn tất và đóng
+[release-e2e:mock] PASS· diagnostics ghi localOnly và version
+[release-e2e:mock] PASS· diagnostics có sự kiện tour/runtime
+[release-e2e:mock] PASS· mobile không tràn ngang
+[release-e2e:mock] PASS· tablet không tràn ngang
+[release-e2e:mock] PASS· desktop không tràn ngang
+[release-e2e:mock] PASS· mobile có nút mở điều khiển
+[release-e2e:mock] PASS· mobile mở được controls
+[release-e2e:mock] PASS· service worker đã cache JS/CSS app shell
+[release-e2e:mock] PASS· service worker phục vụ asset khi mất mạng
+[release-e2e:mock] PASS· app shell mở được trong tab mới khi offline
+[release-e2e:mock] PASS· không có lỗi console nghiêm trọng
+[release-e2e:mock] ──────────────────────────────
+[release-e2e:mock] KẾT QUẢ: TẤT CẢ PASS (release contract, không phải model quality)
+
+QA release-integrity
+[release] PASS release version
+[release] PASS service worker version
+[release] PASS CSP in HTML
+[release] PASS permissions header
+[release] PASS versioned JS assets
+[release] PASS RoboEye v1.6.0

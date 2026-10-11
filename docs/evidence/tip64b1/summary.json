@@ -1,0 +1,85 @@
+{
+  "pass": true,
+  "sourceBefore": "b95b9cac9ecd1f9565cf057985cd699af19778ae0760dd5e513cf27163a33cd6",
+  "sourceAfter": "b95b9cac9ecd1f9565cf057985cd699af19778ae0760dd5e513cf27163a33cd6",
+  "unchanged": true,
+  "results": [
+    {
+      "name": "simulator-selection",
+      "deviceName": "iPhone 18 Pro",
+      "initialState": "Shutdown",
+      "created": false
+    },
+    {
+      "name": "web-baseline-reuse",
+      "exitCode": 0,
+      "sourceFingerprint": "5fc3f5be390160f31b7b6ce7e2371ebaff415edfc6b6f311d03a5a096c0e4eba",
+      "gates": 14,
+      "note": "Exact unchanged web source, prior 14-gate and 16 browser receipts. Native outputs are retested below."
+    },
+    {
+      "name": "swift-unit",
+      "exitCode": 0,
+      "elapsedMs": 2104,
+      "timedOut": false
+    },
+    {
+      "name": "interop",
+      "exitCode": 0,
+      "elapsedMs": 197,
+      "timedOut": false
+    },
+    {
+      "name": "ios-release-unsigned",
+      "exitCode": 0,
+      "elapsedMs": 1642,
+      "timedOut": false
+    },
+    {
+      "name": "ios-static-analysis",
+      "exitCode": 0,
+      "elapsedMs": 1179,
+      "timedOut": false
+    },
+    {
+      "name": "simulator-ui",
+      "exitCode": 0,
+      "elapsedMs": 80284,
+      "timedOut": false
+    },
+    {
+      "name": "ui-screenshots",
+      "exitCode": 0,
+      "elapsedMs": 55,
+      "timedOut": false
+    },
+    {
+      "name": "detection-ui",
+      "exitCode": 0,
+      "elapsedMs": 8156,
+      "timedOut": false
+    },
+    {
+      "name": "airsketch-ui",
+      "exitCode": 0,
+      "elapsedMs": 11342,
+      "timedOut": false
+    },
+    {
+      "name": "robohand-ui",
+      "exitCode": 0,
+      "elapsedMs": 8570,
+      "timedOut": false
+    }
+  ],
+  "uiPassed": 5,
+  "physicalDevice": "NOT TESTED: no connected iPhone/signing verified",
+  "accuracy": "NOT TESTED",
+  "phoneLatency": "NOT TESTED",
+  "thermal30Minutes": "NOT TESTED",
+  "nativeCodeInstalledOnPhysicalPhone": false,
+  "scratchDirectoryRemoved": "/var/folders/81/y445_2554tb49zsn_qtb_9v80000gn/T/codex-tmp-tip64b1-20261010-qa-sw9Hfj",
+  "extraDependenciesInstalled": false,
+  "diskBeforeFreeKiB": 67108428,
+  "lint": "NOT RUN: no configured native/web lint task"
+}

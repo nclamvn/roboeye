@@ -1,0 +1,88 @@
+{
+  "confidencePolicy": "classificationConfidence * observationConfidence >= 0.25 for expected class",
+  "detections": [
+    {
+      "classificationConfidence": 0.9961048364639282,
+      "combinedConfidence": 0.8872070490490813,
+      "label": "refrigerator",
+      "observationConfidence": 0.8906763792037964,
+      "visionBottomLeftBox": [
+        0.6300048828125,
+        0.4727783203125,
+        0.260498046875,
+        0.215087890625
+      ]
+    },
+    {
+      "classificationConfidence": 0.9926615953445435,
+      "combinedConfidence": 0.8305664281116805,
+      "label": "pottedplant",
+      "observationConfidence": 0.8367065191268921,
+      "visionBottomLeftBox": [
+        0.68353271484375,
+        0.674041748046875,
+        0.2198486328125,
+        0.09625244140625
+      ]
+    }
+  ],
+  "expectedClass": "refrigerator",
+  "imageHeight": 1887,
+  "imageWidth": 868,
+  "macInferenceMs": [
+    75.48137500998564,
+    36.55970832915045,
+    33.31533333403058
+  ],
+  "modelInputs": [
+    {
+      "name": "confidenceThreshold",
+      "type": "MLFeatureType(rawValue: 2)"
+    },
+    {
+      "height": 416,
+      "name": "image",
+      "type": "MLFeatureType(rawValue: 4)",
+      "width": 416
+    },
+    {
+      "name": "iouThreshold",
+      "type": "MLFeatureType(rawValue: 2)"
+    }
+  ],
+  "modelLoadMs": 162.16270832228474,
+  "modelMetadata": {
+    "MLModelAuthorKey": "Joseph Redmon, Ali Farhadi ",
+    "MLModelCreatorDefinedKey": "{\n    \"com.apple.developer.machine-learning.models.category\" = image;\n    \"com.apple.developer.machine-learning.models.name\" = \"YOLOv3FP16.mlmodel\";\n    \"com.apple.developer.machine-learning.models.version\" = \"2.0\";\n}",
+    "MLModelDescriptionKey": "A neural network for fast object detection that detects 80 different classes of objects. Given an RGB image, with the dimensions 416x416, the model outputs three arrays (one for each layer) of arbitrary length; each containing confidence scores for each cell and the normalised coordaintes for the bounding box around the detected object(s). Refer to the original paper for more details. YOLOv3: An Incremental Improvement - https://pjreddie.com/media/files/papers/YOLOv3.pdf ",
+    "MLModelLicenseKey": "Please see https://github.com/pjreddie/darknet for license information.",
+    "MLModelVersionStringKey": "YOLOv3"
+  },
+  "modelOutputs": [
+    {
+      "dataType": "MLMultiArrayDataType(rawValue: 65600)",
+      "name": "confidence",
+      "shape": [
+        0,
+        80
+      ],
+      "type": "MLFeatureType(rawValue: 5)"
+    },
+    {
+      "dataType": "MLMultiArrayDataType(rawValue: 65600)",
+      "name": "coordinates",
+      "shape": [
+        0,
+        4
+      ],
+      "type": "MLFeatureType(rawValue: 5)"
+    }
+  ],
+  "pass": true,
+  "phoneLatency": "NOT TESTED",
+  "physicalRangeAccuracy": "NOT TESTED",
+  "platform": "Mac CoreML + Vision — NOT iPhone",
+  "schemaVersion": 2,
+  "semanticRecall": "NOT MEASURED: one smoke photo",
+  "privateInput": "User-provided local attachment2; pixels not copied, uploaded or published."
+}

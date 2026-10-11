@@ -8,7 +8,7 @@ import { startPreview, stopPreview, waitForPreview } from './helpers/preview-ser
 import { syntheticScenario, SCENARIOS } from '../src/assistive/corpus.ts';
 import { exportRecording } from '../src/assistive/contract.ts';
 
-const root = new URL('..', import.meta.url).pathname, out = join(root, 'docs/evidence/tip64a/browser');
+const root = new URL('..', import.meta.url).pathname, out = process.env.ROBOEYE_ASSISTIVE_QA_OUTPUT ?? join(root, 'docs/evidence/tip64a/browser');
 await mkdir(out, { recursive: true });
 const profile = await mkdtemp(join(tmpdir(), 'codex-tmp-tip64a-20261010-chrome-'));
 const server = startPreview(root, Number(process.env.ROBOEYE_TEST_PORT || 4210));

@@ -1,0 +1,66 @@
+Building for debugging...
+[1 / 4]
+Build complete! (0,32 secs)
+Test Suite 'All tests' started at 2026-10-10 16:34:08.800.
+Test Suite 'AssistiveCoreTests.xctest' started at 2026-10-10 16:34:08.801.
+Test Suite 'CoreTests' started at 2026-10-10 16:34:08.801.
+Test Case '-[AssistiveCoreTests.CoreTests testCameraRangeNotOpticalZ]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testCameraRangeNotOpticalZ]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testClockFailuresAndNaNCapStopInsteadOfHanging]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testClockFailuresAndNaNCapStopInsteadOfHanging]' passed (0.002 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testClockStaleSkewReusedAndTracking]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testClockStaleSkewReusedAndTracking]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testConfidenceIsOrdinalNotProbability]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testConfidenceIsOrdinalNotProbability]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testConsentRebaseAndRevoke]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testConsentRebaseAndRevoke]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testCropRemainsInsideOriginalImageAtFloatingPointEdges]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testCropRemainsInsideOriginalImageAtFloatingPointEdges]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testDisplayRoundTripAllRotationsMirrors]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testDisplayRoundTripAllRotationsMirrors]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testDomainAndNoHoldLastValue]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testDomainAndNoHoldLastValue]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testExportClosedExplicitNullPrivacyAndChecksum]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testExportClosedExplicitNullPrivacyAndChecksum]' passed (0.005 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testExportErrorPropagatesAndNextExportCanRecover]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testExportErrorPropagatesAndNextExportCanRecover]' passed (0.002 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testExportIsOffMainSingleFlightAndRevokedCompletionCannotPublish]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testExportIsOffMainSingleFlightAndRevokedCompletionCannotPublish]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testFrameClockRejectsDuplicateBackwardAndIncompatibleClocks]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testFrameClockRejectsDuplicateBackwardAndIncompatibleClocks]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testFrameTimeByteCapsAndEmptyTimeCap]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testFrameTimeByteCapsAndEmptyTimeCap]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testLowDuplicateAndMixedSupport]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testLowDuplicateAndMixedSupport]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testMissingRelativeAndAssociationCannotBecomeMetres]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testMissingRelativeAndAssociationCannotBecomeMetres]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testPoseChiralityAndTranslation]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testPoseChiralityAndTranslation]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testQueuedStaleOrInvalidCameraFrameIsDroppedBeforeSampling]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testQueuedStaleOrInvalidCameraFrameIsDroppedBeforeSampling]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testRayRangeDoesNotDoubleConvert]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testRayRangeDoesNotDoubleConvert]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testRejectShearOffImageAndSingularTransform]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testRejectShearOffImageAndSingularTransform]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testRepeatedRecordRevokeCyclesAndLargestRecordingStayBounded]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testRepeatedRecordRevokeCyclesAndLargestRecordingStayBounded]' passed (0.254 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testRGBDepthPixelCentres]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testRGBDepthPixelCentres]' passed (0.000 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testSourceOrderAndDepthIdentityCannotBeRewritten]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testSourceOrderAndDepthIdentityCannotBeRewritten]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testTruthBindingRejectsRevokedOrReplacedRecordingEvenWithSameFrameID]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testTruthBindingRejectsRevokedOrReplacedRecordingEvenWithSameFrameID]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testTruthOnlyStoppedMeasuredExactLastFrame]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testTruthOnlyStoppedMeasuredExactLastFrame]' passed (0.001 seconds).
+Test Case '-[AssistiveCoreTests.CoreTests testUnknownDepthKindAndCorruptSupportDoNotCreateMetres]' started.
+Test Case '-[AssistiveCoreTests.CoreTests testUnknownDepthKindAndCorruptSupportDoNotCreateMetres]' passed (0.000 seconds).
+Test Suite 'CoreTests' passed at 2026-10-10 16:34:09.076.
+	 Executed 25 tests, with 0 failures (0 unexpected) in 0.273 (0.275) seconds
+Test Suite 'AssistiveCoreTests.xctest' passed at 2026-10-10 16:34:09.076.
+	 Executed 25 tests, with 0 failures (0 unexpected) in 0.273 (0.275) seconds
+Test Suite 'All tests' passed at 2026-10-10 16:34:09.076.
+	 Executed 25 tests, with 0 failures (0 unexpected) in 0.273 (0.276) seconds
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

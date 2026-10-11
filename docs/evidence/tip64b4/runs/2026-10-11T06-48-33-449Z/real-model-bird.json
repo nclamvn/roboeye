@@ -1,0 +1,111 @@
+{
+  "confidencePolicy": "classificationConfidence * observationConfidence >= 0.38 for expected class",
+  "configuration": {
+    "confidenceThreshold": 0.38,
+    "cropAndScale": "scaleFill",
+    "iouThreshold": 0.45
+  },
+  "detections": [
+    {
+      "classificationConfidence": 0.998529314994812,
+      "combinedConfidence": 0.984863262939939,
+      "label": "bird",
+      "observationConfidence": 0.9863138198852539,
+      "visionBottomLeftBox": [
+        0.123046875,
+        0.002197265625,
+        0.8603515625,
+        0.87841796875
+      ]
+    }
+  ],
+  "expectedClass": "bird",
+  "imageHeight": 1704,
+  "imageWidth": 2272,
+  "macInferenceMs": [
+    102.60841666604392,
+    34.2021249816753,
+    26.61604166496545
+  ],
+  "modelInputs": [
+    {
+      "name": "confidenceThreshold",
+      "type": "MLFeatureType(rawValue: 2)"
+    },
+    {
+      "height": 416,
+      "name": "image",
+      "type": "MLFeatureType(rawValue: 4)",
+      "width": 416
+    },
+    {
+      "name": "iouThreshold",
+      "type": "MLFeatureType(rawValue: 2)"
+    }
+  ],
+  "modelLoadMs": 1733.4216666640714,
+  "modelMetadata": {
+    "MLModelAuthorKey": "Joseph Redmon, Ali Farhadi ",
+    "MLModelCreatorDefinedKey": "{\n    \"com.apple.developer.machine-learning.models.category\" = image;\n    \"com.apple.developer.machine-learning.models.name\" = \"YOLOv3FP16.mlmodel\";\n    \"com.apple.developer.machine-learning.models.version\" = \"2.0\";\n}",
+    "MLModelDescriptionKey": "A neural network for fast object detection that detects 80 different classes of objects. Given an RGB image, with the dimensions 416x416, the model outputs three arrays (one for each layer) of arbitrary length; each containing confidence scores for each cell and the normalised coordaintes for the bounding box around the detected object(s). Refer to the original paper for more details. YOLOv3: An Incremental Improvement - https://pjreddie.com/media/files/papers/YOLOv3.pdf ",
+    "MLModelLicenseKey": "Please see https://github.com/pjreddie/darknet for license information.",
+    "MLModelVersionStringKey": "YOLOv3"
+  },
+  "modelOutputs": [
+    {
+      "dataType": "MLMultiArrayDataType(rawValue: 65600)",
+      "name": "confidence",
+      "shape": [
+        0,
+        80
+      ],
+      "type": "MLFeatureType(rawValue: 5)"
+    },
+    {
+      "dataType": "MLMultiArrayDataType(rawValue: 65600)",
+      "name": "coordinates",
+      "shape": [
+        0,
+        4
+      ],
+      "type": "MLFeatureType(rawValue: 5)"
+    }
+  ],
+  "pass": true,
+  "phoneLatency": "NOT TESTED",
+  "physicalRangeAccuracy": "NOT TESTED",
+  "platform": "Mac CoreML + Vision — NOT iPhone",
+  "schemaVersion": 3,
+  "semanticRecall": "NOT MEASURED: one smoke photo",
+  "fixture": {
+    "id": "bird",
+    "file": "gull.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Gull_portrait_ca_usa.jpg",
+    "author": "Dschwen",
+    "license": "CC BY 2.5 (selected from the author's available licenses)",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5/",
+    "changes": "None; original JPEG downloaded unchanged. Vision scales only in memory.",
+    "sha256": "524368d286d63cd02c319b7447a664f15d434fec594f1849fc9b73de68d40f14",
+    "bytes": 718902,
+    "expectedClass": "bird"
+  },
+  "sourceModel": {
+    "file": "YOLOv3FP16.mlmodel",
+    "url": "https://ml-assets.apple.com/coreml/models/Image/ObjectDetection/YOLOv3/YOLOv3FP16.mlmodel",
+    "sha256": "276afae53da362e25ad21c827f8a929a8512254b1343433d970e725a0de57d8f",
+    "bytes": 124207764,
+    "modelCard": "https://huggingface.co/apple/coreml-YOLOv3/raw/main/README.md",
+    "modelCardLicenseDeclaration": "MIT",
+    "embeddedModelLicense": "Please see https://github.com/pjreddie/darknet for license information.",
+    "originalLicenseUrl": "https://raw.githubusercontent.com/pjreddie/darknet/master/LICENSE",
+    "originalLicenseDeclaration": "Darknet is public domain. YOLO LICENSE Version 2, July 29 2016.",
+    "licenseNote": "Keep both upstream statements; do not fabricate an MIT copyright holder or conflate this with unrelated YOLO distributions.",
+    "vocabulary": "80 COCO classes; not an all-object detector",
+    "imageInput": [
+      416,
+      416
+    ],
+    "reviewedAt": "2026-10-11"
+  }
+}

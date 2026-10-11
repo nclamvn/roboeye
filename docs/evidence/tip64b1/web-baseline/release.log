@@ -1,0 +1,25 @@
+[release-e2e:mock] browser: /Users/os/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing
+[release-e2e:mock] PASS· UI hiển thị version 1.6.0
+[release-e2e:mock] PASS· boot rail có bốn tầng thật
+[release-e2e:mock] PASS· demo mode đánh dấu CTA khuyến nghị
+[release-e2e:mock] PASS· lỗi tải depth hiện hướng dẫn và cho retry
+[release-e2e:mock] PASS· tour bước 1 mở rgb
+[release-e2e:mock] PASS· tour bước 2 mở depth
+[release-e2e:mock] PASS· tour bước 3 mở cloud
+[release-e2e:mock] PASS· tour bước 4 mở bev
+[release-e2e:mock] PASS· telemetry A* nằm ngoài canvas trong sidebar
+[release-e2e:mock] PASS· telemetry A* dùng cỡ chữ nhỏ
+[release-e2e:mock] PASS· tour hoàn tất và đóng
+[release-e2e:mock] PASS· diagnostics ghi localOnly và version
+[release-e2e:mock] PASS· diagnostics có sự kiện tour/runtime
+[release-e2e:mock] PASS· mobile không tràn ngang
+[release-e2e:mock] PASS· tablet không tràn ngang
+[release-e2e:mock] PASS· desktop không tràn ngang
+[release-e2e:mock] PASS· mobile có nút mở điều khiển
+[release-e2e:mock] PASS· mobile mở được controls
+[release-e2e:mock] PASS· service worker đã cache JS/CSS app shell
+[release-e2e:mock] PASS· service worker phục vụ asset khi mất mạng
+[release-e2e:mock] PASS· app shell mở được trong tab mới khi offline
+[release-e2e:mock] PASS· không có lỗi console nghiêm trọng
+[release-e2e:mock] ──────────────────────────────
+[release-e2e:mock] KẾT QUẢ: TẤT CẢ PASS (release contract, không phải model quality)

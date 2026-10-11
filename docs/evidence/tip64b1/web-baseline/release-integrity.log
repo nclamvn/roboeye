@@ -1,0 +1,6 @@
+[release] PASS release version
+[release] PASS service worker version
+[release] PASS CSP in HTML
+[release] PASS permissions header
+[release] PASS versioned JS assets
+[release] PASS RoboEye v1.6.0

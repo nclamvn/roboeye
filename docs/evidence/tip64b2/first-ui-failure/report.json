@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "pass": false,
+  "source": "Actual XCTest runner stdout from in-flight xcresult/Staging",
+  "xcresult": "native/ios/.build-xcode/Logs/Test/Test-AssistiveDepthProbe-2026.10.11_12-28-21-+0700.xcresult",
+  "runnerSource": "native/ios/.build-xcode/Logs/Test/Test-AssistiveDepthProbe-2026.10.11_12-28-21-+0700.xcresult/Staging/1_Test/Diagnostics/ProbeUITests-8C32F08A-582D-4EBB-A717-48DF8DB2785F-Configuration-Test Scheme Action-Iteration-1/ProbeUITests-383DD24E-528D-4D70-890C-5B7FE4EBE709/StandardOutputAndStandardError.txt",
+  "passed": 10,
+  "failed": 1,
+  "total": 11,
+  "failureLines": [
+    "/Users/os/Documents/Codex/DriveSense-Mobile-Recovery-2026-10-06/roboeye/native/ios/UITests/ProbeUITests.swift:41: error: -[ProbeUITests.ProbeUITests testRetargetAndRotationRequireFreshSurfaceConfirmation] : Failed to get matching snapshot: No matches found for Elements matching predicate '\"range\" IN identifiers' from input {(",
+    "Test Case '-[ProbeUITests.ProbeUITests testRetargetAndRotationRequireFreshSurfaceConfirmation]' failed (13.356 seconds)."
+  ],
+  "collector": "Parent xcodebuild remained in simctl diagnose after tests finished; no active assertion loop",
+  "repair": "Restore compact landscape range/readout visibility and reset viewport scroll position; retain all11 assertions",
+  "sourceFingerprint": "See first full-QA summary sourceBefore; it remained in the running parent script until termination",
+  "privatePixelsCopied": false
+}

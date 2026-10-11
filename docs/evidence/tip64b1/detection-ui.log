@@ -1,0 +1,24 @@
+[detect-e2e:mock] browser: /Users/os/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing
+[detect-e2e:mock] PASS· detection là opt-in
+[detect-e2e:mock] PASS· label tools ẩn trước opt-in
+[detect-e2e:mock] PASS· mock depth mở được luồng camera/UI
+[detect-e2e:mock] PASS· lỗi tải model tự retry bằng worker WASM sạch
+[detect-e2e:mock] PASS· detection mặc định ưu tiên WebGPU và giữ fallback sạch
+[detect-e2e:mock] PASS· infer error phục hồi về trạng thái sẵn sàng
+[detect-e2e:mock] PASS· hiển thị hai detection cố định
+[detect-e2e:mock] PASS· overlay có hai bounding box
+[detect-e2e:mock] PASS· mỗi khung khóa có một badge nhãn bám cạnh trên
+[detect-e2e:mock] PASS· detection giữ nguồn 384 px độc lập với depth WASM 140 px
+[detect-e2e:mock] PASS· panel vật thể căn giữa theo trục Y
+[detect-e2e:mock] PASS· chuyển engine bật query control
+[detect-e2e:mock] PASS· worker contract nhận engine OWL-ViT
+[detect-e2e:mock] PASS· preset mobility cấp query canonical cho worker
+[detect-e2e:mock] PASS· preset đồng bộ lại ô query
+[detect-e2e:mock] PASS· sửa query tay chuyển preset sang tuỳ chỉnh
+[detect-e2e:mock] PASS· relabel và delete giữ một annotation
+[detect-e2e:mock] PASS· annotation đã đổi nhãn
+[detect-e2e:mock] PASS· COCO export có một annotation
+[detect-e2e:mock] PASS· COCO export giữ nhãn operator
+[detect-e2e:mock] PASS· không có lỗi console ngoài lỗi phục hồi chủ đích
+[detect-e2e:mock] ──────────────────────────────
+[detect-e2e:mock] KẾT QUẢ: TẤT CẢ PASS (mock contract, không phải model quality)

@@ -1,0 +1,22 @@
+[airsketch-e2e:mock] PASS · sidecar dành chỗ riêng, không phủ camera
+[airsketch-e2e:mock] PASS · AirSketch ép về RGB để nét khớp camera
+[airsketch-e2e:mock] PASS · canvas pointer fallback được bật
+[airsketch-e2e:mock] PASS · pinch liên tục không bị pose các ngón khác chớp sai làm đứt nét
+[airsketch-e2e:mock] PASS · object đã đặt có thể xòe tay, pinch để cầm và thả để đặt lại
+[airsketch-e2e:mock] PASS · pipeline hand đo toàn tuyến capture → worker → UI
+[airsketch-e2e:mock] PASS · classifier nhận raster QuickDraw chuẩn 28×28 RGBA · {"width":28,"height":28,"bytes":3136}
+[airsketch-e2e:mock] PASS · top-3 dự đoán được hiển thị
+[airsketch-e2e:mock] PASS · dự đoán ghép được vào câu AAC
+[airsketch-e2e:mock] PASS · TTS đọc đúng câu đã ghép
+[airsketch-e2e:mock] PASS · vẽ lại xóa toàn bộ stroke/point
+[airsketch-e2e:mock] PASS · AirDesk hiện đủ năm điểm đầu ngón, ngón duỗi có halo vàng
+[airsketch-e2e:mock] PASS · hai ngón kéo ảnh theo biên độ lớn trên toàn stage · {"x":0.5003,"scale":1.6889,"rotation":111.45,"flip":"true","held":true}
+[airsketch-e2e:mock] PASS · khoảng cách hai ngón zoom liên tục mà không làm rơi ảnh · {"x":0.5003,"scale":1.6889,"rotation":111.45,"flip":"true","held":true}
+[airsketch-e2e:mock] PASS · góc bàn tay xoay ảnh và đổi mặt lật ảnh · {"x":0.5003,"scale":1.6889,"rotation":111.45,"flip":"true","held":true}
+[airsketch-e2e:mock] PASS · xòe cả bàn tay có xác nhận mới đặt ảnh
+[airsketch-e2e:mock] PASS · AirDesk có canvas ảnh để xoay/lật/vẽ độc lập
+[airsketch-e2e:mock] PASS · AirDesk có đề xuất sửa chính tả trong editor nội bộ
+[airsketch-e2e:mock] PASS · geometry fallback nâng trái tim lên đầu dù model không có lớp heart
+[airsketch-e2e:mock] PASS · mobile sidecar xuống dưới và không tràn ngang · {"noOverflow":true,"dockBelow":true}
+[airsketch-e2e:mock] PASS · không có console error
+[airsketch-e2e:mock] KẾT QUẢ: TẤT CẢ PASS

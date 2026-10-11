@@ -1,0 +1,9 @@
+START reopen-after-minute · real-clock 65000 ms
+PASS reopen-after-minute
+START detector-1691ms-stale-join · real-clock 10500 ms
+PASS detector-1691ms-stale-join
+START three-successes-then-depth-stops · real-clock 8500 ms
+PASS three-successes-then-depth-stops
+START storage-denied-ai-continues · real-clock 4500 ms
+PASS storage-denied-ai-continues
+PASS 4 journal/realtime fixture cases: /var/folders/81/y445_2554tb49zsn_qtb_9v80000gn/T/codex-tmp-tip64b1-20261010-qa-kuBN3a/roboeye-tip61-journal-qa

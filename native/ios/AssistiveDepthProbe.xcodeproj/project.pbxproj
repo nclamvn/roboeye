@@ -1,0 +1,377 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F164B3000000000000000001 /* Core/ObjectRuntimePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164B3000000000000000011; };
+		F164B3000000000000000002 /* Core/ObjectPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164B3000000000000000012; };
+		F164B2000000000000000001 /* Core/ObjectTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164B2000000000000000011; };
+		F164B2000000000000000002 /* App/ObjectPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164B2000000000000000012; };
+		F164B2000000000000000003 /* App/ObjectOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164B2000000000000000013; };
+		F164B2000000000000000004 /* Models/YOLOv3FP16.mlmodel in Resources */ = {isa = PBXBuildFile; fileRef = F164B2000000000000000014; settings = {COREML_CODEGEN_LANGUAGE = None; }; };
+		F164B2000000000000000005 /* Models/LICENSE-NOTICE.txt in Resources */ = {isa = PBXBuildFile; fileRef = F164B2000000000000000015; };
+		0F712749825F0D60209921BD /* App/DepthSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20024645971672D1A103F859 /* App/DepthSession.swift */; };
+		132E682249E1B9A19883A31C /* Core/Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C791EFB0FC40EA693F01807 /* Core/Metadata.swift */; };
+		46508BDD9EE70D5DE19C3478 /* App/AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C0B7176178B015A70EA482 /* App/AppDelegate.swift */; };
+		7CCFE7C80852B725B2B9FFF6 /* Core/Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57040C77679F641F2D53529E /* Core/Geometry.swift */; };
+		97CD82AB55069D3CB54BC13A /* Core/Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBF79089448E951A7816AF1 /* Core/Recorder.swift */; };
+		C590ED0534DB6FAE62584038 /* App/ProbeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A1EB0167C238DC53E02DD /* App/ProbeViewController.swift */; };
+		ED8D79974316AEF29115B78D /* UITests/ProbeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C845375A3C8E06016C453B2 /* UITests/ProbeUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1241936D4DD3AAD68FE7BFBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 244210E48437B6556980A702 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A172CEDCAE47474B615C54D5;
+			remoteInfo = AssistiveDepthProbe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F164B3000000000000000011 /* Core/ObjectRuntimePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/ObjectRuntimePolicy.swift; sourceTree = "<group>"; };
+		F164B3000000000000000012 /* Core/ObjectPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/ObjectPresentation.swift; sourceTree = "<group>"; };
+		F164B2000000000000000011 /* Core/ObjectTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/ObjectTracking.swift; sourceTree = "<group>"; };
+		F164B2000000000000000012 /* App/ObjectPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/ObjectPipeline.swift; sourceTree = "<group>"; };
+		F164B2000000000000000013 /* App/ObjectOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/ObjectOverlay.swift; sourceTree = "<group>"; };
+		F164B2000000000000000014 /* Models/YOLOv3FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Models/YOLOv3FP16.mlmodel; sourceTree = "<group>"; };
+		F164B2000000000000000015 /* Models/LICENSE-NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Models/LICENSE-NOTICE.txt; sourceTree = "<group>"; };
+		00444E2C37DD529B70E931A2 /* ProbeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ProbeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20024645971672D1A103F859 /* App/DepthSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/DepthSession.swift; sourceTree = "<group>"; };
+		35EF1D121F4E145A5E44095C /* App/Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = App/Info.plist; sourceTree = "<group>"; };
+		4CBF79089448E951A7816AF1 /* Core/Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Recorder.swift; sourceTree = "<group>"; };
+		57040C77679F641F2D53529E /* Core/Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Geometry.swift; sourceTree = "<group>"; };
+		577A1EB0167C238DC53E02DD /* App/ProbeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/ProbeViewController.swift; sourceTree = "<group>"; };
+		6C791EFB0FC40EA693F01807 /* Core/Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Metadata.swift; sourceTree = "<group>"; };
+		763D774377779C412BB71F6F /* AssistiveDepthProbe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = AssistiveDepthProbe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C845375A3C8E06016C453B2 /* UITests/ProbeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests/ProbeUITests.swift; sourceTree = "<group>"; };
+		E1C0B7176178B015A70EA482 /* App/AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/AppDelegate.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0A3E27B8CA818264D75C8D81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				763D774377779C412BB71F6F /* AssistiveDepthProbe.app */,
+				00444E2C37DD529B70E931A2 /* ProbeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD936FCBED631FA67E05C3EA = {
+			isa = PBXGroup;
+			children = (
+				F164B3000000000000000011 /* Core/ObjectRuntimePolicy.swift */,
+				F164B3000000000000000012 /* Core/ObjectPresentation.swift */,
+				F164B2000000000000000011 /* Core/ObjectTracking.swift */,
+				F164B2000000000000000012 /* App/ObjectPipeline.swift */,
+				F164B2000000000000000013 /* App/ObjectOverlay.swift */,
+				F164B2000000000000000014 /* Models/YOLOv3FP16.mlmodel */,
+				F164B2000000000000000015 /* Models/LICENSE-NOTICE.txt */,
+				57040C77679F641F2D53529E /* Core/Geometry.swift */,
+				6C791EFB0FC40EA693F01807 /* Core/Metadata.swift */,
+				4CBF79089448E951A7816AF1 /* Core/Recorder.swift */,
+				E1C0B7176178B015A70EA482 /* App/AppDelegate.swift */,
+				20024645971672D1A103F859 /* App/DepthSession.swift */,
+				577A1EB0167C238DC53E02DD /* App/ProbeViewController.swift */,
+				7C845375A3C8E06016C453B2 /* UITests/ProbeUITests.swift */,
+				35EF1D121F4E145A5E44095C /* App/Info.plist */,
+				0A3E27B8CA818264D75C8D81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9F86D081884C7D659A2FEAA0 /* ProbeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F489A4BEBC491051A5E73AB /* Build configuration list for PBXNativeTarget "ProbeUITests" */;
+			buildPhases = (
+				B2298129A58493C45A5D7D9A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F26350DAFE3F19AABFD69AC4 /* PBXTargetDependency */,
+			);
+			name = ProbeUITests;
+			productName = ProbeUITests;
+			productReference = 00444E2C37DD529B70E931A2 /* ProbeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A172CEDCAE47474B615C54D5 /* AssistiveDepthProbe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23DA22B635A4AA194832CCC9 /* Build configuration list for PBXNativeTarget "AssistiveDepthProbe" */;
+			buildPhases = (
+				D8AFF257B45D0C513672EC45 /* Sources */,
+				F164B2000000000000000021 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AssistiveDepthProbe;
+			productName = AssistiveDepthProbe;
+			productReference = 763D774377779C412BB71F6F /* AssistiveDepthProbe.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		244210E48437B6556980A702 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					9F86D081884C7D659A2FEAA0 = {
+						TestTargetID = A172CEDCAE47474B615C54D5;
+					};
+				};
+			};
+			buildConfigurationList = 5E5822C924B61AE2B9A1EF24 /* Build configuration list for PBXProject "AssistiveDepthProbe" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = vi;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				vi,
+				en,
+				Base,
+			);
+			mainGroup = AD936FCBED631FA67E05C3EA;
+			productRefGroup = 0A3E27B8CA818264D75C8D81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A172CEDCAE47474B615C54D5 /* AssistiveDepthProbe */,
+				9F86D081884C7D659A2FEAA0 /* ProbeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F164B2000000000000000021 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F164B2000000000000000004 /* Models/YOLOv3FP16.mlmodel in Resources */,
+				F164B2000000000000000005 /* Models/LICENSE-NOTICE.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2298129A58493C45A5D7D9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED8D79974316AEF29115B78D /* UITests/ProbeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8AFF257B45D0C513672EC45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F164B3000000000000000001 /* Core/ObjectRuntimePolicy.swift in Sources */,
+				F164B3000000000000000002 /* Core/ObjectPresentation.swift in Sources */,
+				F164B2000000000000000001 /* Core/ObjectTracking.swift in Sources */,
+				F164B2000000000000000002 /* App/ObjectPipeline.swift in Sources */,
+				F164B2000000000000000003 /* App/ObjectOverlay.swift in Sources */,
+				7CCFE7C80852B725B2B9FFF6 /* Core/Geometry.swift in Sources */,
+				132E682249E1B9A19883A31C /* Core/Metadata.swift in Sources */,
+				97CD82AB55069D3CB54BC13A /* Core/Recorder.swift in Sources */,
+				46508BDD9EE70D5DE19C3478 /* App/AppDelegate.swift in Sources */,
+				0F712749825F0D60209921BD /* App/DepthSession.swift in Sources */,
+				C590ED0534DB6FAE62584038 /* App/ProbeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F26350DAFE3F19AABFD69AC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A172CEDCAE47474B615C54D5 /* AssistiveDepthProbe */;
+			targetProxy = 1241936D4DD3AAD68FE7BFBD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07CA1E69F6068DEA30A4DA6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		1E2E67F111F111E446D58E6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 55UDK8Q785;
+				CURRENT_PROJECT_VERSION = 5;
+				MARKETING_VERSION = 0.2.2;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.roboeye.assistive.depthprobe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2B23A31EEC75B029432F2445 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_TESTABILITY = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8617DF137A9B97CF1A31A959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 55UDK8Q785;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.roboeye.assistive.depthprobe.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = AssistiveDepthProbe;
+			};
+			name = Debug;
+		};
+		90E60CB84C8CDC20C93E6F85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 55UDK8Q785;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.roboeye.assistive.depthprobe.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = AssistiveDepthProbe;
+			};
+			name = Release;
+		};
+		AA9B1D3BE1353EBD76471D11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 55UDK8Q785;
+				CURRENT_PROJECT_VERSION = 5;
+				MARKETING_VERSION = 0.2.2;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.roboeye.assistive.depthprobe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		23DA22B635A4AA194832CCC9 /* Build configuration list for PBXNativeTarget "AssistiveDepthProbe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA9B1D3BE1353EBD76471D11 /* Debug */,
+				1E2E67F111F111E446D58E6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E5822C924B61AE2B9A1EF24 /* Build configuration list for PBXProject "AssistiveDepthProbe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B23A31EEC75B029432F2445 /* Debug */,
+				07CA1E69F6068DEA30A4DA6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F489A4BEBC491051A5E73AB /* Build configuration list for PBXNativeTarget "ProbeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8617DF137A9B97CF1A31A959 /* Debug */,
+				90E60CB84C8CDC20C93E6F85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 244210E48437B6556980A702 /* Project object */;
+}

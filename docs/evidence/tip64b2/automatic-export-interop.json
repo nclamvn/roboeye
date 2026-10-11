@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "mode": "objects",
+      "passed": true,
+      "physicalCapture": false
+    },
+    {
+      "mode": "objects-empty",
+      "passed": true,
+      "physicalCapture": false
+    }
+  ],
+  "hardwareTested": false,
+  "input": {
+    "objects": 12,
+    "liveSamplesPerObject": 64,
+    "totalLiveSamples": 768
+  },
+  "projection": {
+    "sampleLimit": 128,
+    "exportedSamples": 120,
+    "closedLabels": 8,
+    "support": "bbox-only"
+  },
+  "note": "Fixtures invoke the SAME ObjectExportProjection helper used by ObjectPipeline, then unchanged TypeScript importRecording validates exported envelope, labels, caps, indices and SHA. This is automatic-export contract proof, NOT camera capture or live accuracy proof."
+}

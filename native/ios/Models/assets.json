@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "model": {
+    "file": "YOLOv3FP16.mlmodel",
+    "url": "https://ml-assets.apple.com/coreml/models/Image/ObjectDetection/YOLOv3/YOLOv3FP16.mlmodel",
+    "sha256": "276afae53da362e25ad21c827f8a929a8512254b1343433d970e725a0de57d8f",
+    "bytes": 124207764,
+    "modelCard": "https://huggingface.co/apple/coreml-YOLOv3/raw/main/README.md",
+    "modelCardLicenseDeclaration": "MIT",
+    "embeddedModelLicense": "Please see https://github.com/pjreddie/darknet for license information.",
+    "originalLicenseUrl": "https://raw.githubusercontent.com/pjreddie/darknet/master/LICENSE",
+    "originalLicenseDeclaration": "Darknet is public domain. YOLO LICENSE Version 2, July 29 2016.",
+    "licenseNote": "Keep both upstream statements; do not fabricate an MIT copyright holder or conflate this with unrelated YOLO distributions.",
+    "vocabulary": "80 COCO classes; not an all-object detector",
+    "imageInput": [416, 416],
+    "reviewedAt": "2026-10-11"
+  },
+  "qaFixtures": [
+    {
+      "id": "bird",
+      "file": "gull.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Gull_portrait_ca_usa.jpg",
+      "author": "Dschwen",
+      "license": "CC BY 2.5 (selected from the author's available licenses)",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5/",
+      "changes": "None; original JPEG downloaded unchanged. Vision scales only in memory.",
+      "sha256": "524368d286d63cd02c319b7447a664f15d434fec594f1849fc9b73de68d40f14",
+      "bytes": 718902,
+      "expectedClass": "bird"
+    },
+    {
+      "id": "person",
+      "file": "person.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Man_with_marini%C3%A8re_t-shirt_and_backpack.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Man_with_marini%C3%A8re_t-shirt_and_backpack.jpg",
+      "author": "DimiTalen",
+      "license": "CC0 1.0 Universal Public Domain Dedication",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "None; original JPEG downloaded unchanged. Vision scales only in memory.",
+      "sha256": "de9565c79063bb83b9eeac059b7732b97865c8102e19c63e847962593a580d9f",
+      "bytes": 3940030,
+      "expectedClass": "person"
+    }
+  ]
+}

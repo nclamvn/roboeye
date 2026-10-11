@@ -1,0 +1,81 @@
+{
+  "confidencePolicy" : "classificationConfidence * observationConfidence >= 0.38 for expected class",
+  "configuration" : {
+    "confidenceThreshold" : 0.38,
+    "cropAndScale" : "scaleFill",
+    "iouThreshold" : 0.45000000000000001
+  },
+  "detections" : [
+    {
+      "classificationConfidence" : 0.99852931499481201,
+      "combinedConfidence" : 0.98486326293993898,
+      "label" : "bird",
+      "observationConfidence" : 0.98631381988525391,
+      "visionBottomLeftBox" : [
+        0.123046875,
+        0.002197265625,
+        0.8603515625,
+        0.87841796875
+      ]
+    }
+  ],
+  "expectedClass" : "bird",
+  "imageHeight" : 1704,
+  "imageWidth" : 2272,
+  "macInferenceMs" : [
+    102.60841666604392,
+    34.202124981675297,
+    26.616041664965451
+  ],
+  "modelInputs" : [
+    {
+      "name" : "confidenceThreshold",
+      "type" : "MLFeatureType(rawValue: 2)"
+    },
+    {
+      "height" : 416,
+      "name" : "image",
+      "type" : "MLFeatureType(rawValue: 4)",
+      "width" : 416
+    },
+    {
+      "name" : "iouThreshold",
+      "type" : "MLFeatureType(rawValue: 2)"
+    }
+  ],
+  "modelLoadMs" : 1733.4216666640714,
+  "modelMetadata" : {
+    "MLModelAuthorKey" : "Joseph Redmon, Ali Farhadi ",
+    "MLModelCreatorDefinedKey" : "{\n    \"com.apple.developer.machine-learning.models.category\" = image;\n    \"com.apple.developer.machine-learning.models.name\" = \"YOLOv3FP16.mlmodel\";\n    \"com.apple.developer.machine-learning.models.version\" = \"2.0\";\n}",
+    "MLModelDescriptionKey" : "A neural network for fast object detection that detects 80 different classes of objects. Given an RGB image, with the dimensions 416x416, the model outputs three arrays (one for each layer) of arbitrary length; each containing confidence scores for each cell and the normalised coordaintes for the bounding box around the detected object(s). Refer to the original paper for more details. YOLOv3: An Incremental Improvement - https:\/\/pjreddie.com\/media\/files\/papers\/YOLOv3.pdf ",
+    "MLModelLicenseKey" : "Please see https:\/\/github.com\/pjreddie\/darknet for license information.",
+    "MLModelVersionStringKey" : "YOLOv3"
+  },
+  "modelOutputs" : [
+    {
+      "dataType" : "MLMultiArrayDataType(rawValue: 65600)",
+      "name" : "confidence",
+      "shape" : [
+        0,
+        80
+      ],
+      "type" : "MLFeatureType(rawValue: 5)"
+    },
+    {
+      "dataType" : "MLMultiArrayDataType(rawValue: 65600)",
+      "name" : "coordinates",
+      "shape" : [
+        0,
+        4
+      ],
+      "type" : "MLFeatureType(rawValue: 5)"
+    }
+  ],
+  "pass" : true,
+  "phoneLatency" : "NOT TESTED",
+  "physicalRangeAccuracy" : "NOT TESTED",
+  "platform" : "Mac CoreML + Vision — NOT iPhone",
+  "schemaVersion" : 3,
+  "semanticRecall" : "NOT MEASURED: one smoke photo"
+}
+

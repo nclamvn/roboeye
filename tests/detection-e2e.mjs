@@ -63,6 +63,12 @@ try {
   await page.evaluate(() => { window.__allowMockDetection = true; });
   await page.waitForFunction(() => document.querySelectorAll('.obj-row').length === 2);
   check('hiển thị hai detection cố định', (await page.locator('.obj-row').count()) === 2);
+  // Raw annotation rows update on the worker callback. Overlay locks are
+  // confirmed/smoothed and presented on RAF, so raw-list readiness is not the
+  // overlay's completion signal. Keep the exact two-box requirement and bound
+  // its presentation wait; a missing box still fails rather than being ignored.
+  await page.waitForFunction(() => !document.getElementById('det-overlay').hasAttribute('hidden')
+    && document.querySelectorAll('#det-overlay > rect.det-lock').length === 2, null, { timeout: 2000 });
   check('overlay có hai bounding box', (await page.locator('#det-overlay > rect:not(.det-label-bg)').count()) === 2);
   check('mỗi khung khóa có một badge nhãn bám cạnh trên', await page.evaluate(() => {
     const locks = [...document.querySelectorAll('#det-overlay .det-lock')];

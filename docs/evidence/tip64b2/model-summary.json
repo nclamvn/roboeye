@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 2,
+  "pass": true,
+  "confidencePolicy": "classificationConfidence * observationConfidence >=0.25 for expectedclass",
+  "scope": "real-model smoke and provenance ONLY",
+  "sourceBefore": "8181dd7ffeabdec9f4baef1413278884f48eb382928822cbc4c22ec844b4ecfa",
+  "sourceAfter": "8181dd7ffeabdec9f4baef1413278884f48eb382928822cbc4c22ec844b4ecfa",
+  "unchanged": true,
+  "results": [
+    {
+      "name": "asset-integrity",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 203
+    },
+    {
+      "name": "model-compile",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 1177
+    },
+    {
+      "name": "model-runner-compile",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 1859
+    },
+    {
+      "name": "real-model-bird",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 2474
+    },
+    {
+      "name": "real-model-person",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 358
+    },
+    {
+      "name": "real-model-user-photo",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 294
+    },
+    {
+      "name": "generator-preserves-existing-project",
+      "exitCode": 0,
+      "projectBefore": "68760ce8ce132881889e949f1cc9620a11959a9511354991af6ac0d5ce1cfb30",
+      "projectAfter": "68760ce8ce132881889e949f1cc9620a11959a9511354991af6ac0d5ce1cfb30"
+    }
+  ],
+  "uiPassed": null,
+  "modelFingerprint": "276afae53da362e25ad21c827f8a929a8512254b1343433d970e725a0de57d8f",
+  "physicalDeviceInstallation": "NOT VERIFIED BY THIS SCRIPT",
+  "phoneDetectionRecall": "NOT TESTED",
+  "phoneLatency": "NOT TESTED",
+  "physicalRangeAccuracy": "NOT TESTED",
+  "thermal30Minutes": "NOT TESTED",
+  "privatePixelsCopied": false,
+  "privatePixelsUploaded": false,
+  "scratchDirectoriesCreated": [],
+  "extraDependenciesInstalled": false,
+  "diskBeforeFreeKiB": 61176600
+}

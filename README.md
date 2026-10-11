@@ -1,5 +1,46 @@
 # RoboEye
 
+## RoboEye Assist trên iPhone (TIP-64B4)
+
+Native **RoboEye Assist 0.2.2 / build 5** có nhận diện tự động 80 nhóm COCO,
+bám bounding box, nhãn tiếng Việt và khoảng cách xấp xỉ tới bề mặt trong box bằng
+ARKit/LiDAR. Mở app → **Tự động → Mở camera**; không cần chọn điểm. Chế độ
+**Đo điểm** giữ lại phép đo thủ công và bộ ghi metadata vào lab `/assist.html`.
+
+Model Core ML được đóng gói để chạy offline, không gọi API hay tải camera lên
+mạng. Phạm vi thử đo **0,5–5 m**; không phải mọi vật thể (quạt chưa thuộc 80 nhóm),
+không phải khoảng trống đi bộ và **không dùng để dẫn đường**. Đây là app riêng,
+cài qua Xcode trên iPhone hỗ trợ sceneDepth/LiDAR; link browser không tự có chức
+năng native này và DriveSense không bị thay thế.
+
+[Hướng dẫn cài và thử](native/ios/README.md) ·
+[Audit kiến trúc, bottleneck và phương án model](docs/ARCHITECTURE-AUDIT-TIP-64B3.md) ·
+[Kết quả QA, màu badge và xác nhận cài bản hiện tại](docs/COMPLETION-VERIFY-TIP-64B4.md) ·
+[Đối soát model điện thoại/điều khiển/quạt](docs/MODEL-DECISION-TIP-64B4.md) ·
+[Kế hoạch thử iPhone có đối soát](docs/TEST-PLAN-TIP-64B3-DEVICE.md) ·
+[Lịch sử cài 0.2.1/build4 lên iPhone](docs/COMPLETION-VERIFY-TIP-64B3-I.md).
+
+B4 tô nền badge theo loại vật: điện thoại tím, điều khiển vàng đất, người xanh
+dương; mất số đo không làm đổi màu lớp. Sửa khung trùng phone/remote ở cùng vị trí
+không đồng nghĩa model đã chọn đúng nhãn. Quạt vẫn chưa thuộc vocabulary;
+106/106 Swift,18/18 UI và7/7 interop đạt không thay thế benchmark nhận diện thật.
+
+B3 sửa khung trùng do ghép identity mơ hồ, thêm bộ lọc **chỉ cho đồ hoạ**, nhãn
+tránh chồng nhau và HUD gọn. Số mét không được lọc/giữ giả: mất hỗ trợ hoặc quá
+300 ms phải trở về chưa đo. Chẩn đoán có P50/P95 các bước xử lý, chỉ dùng metadata
+tổng hợp cục bộ. Model YOLOv3 vẫn là baseline; chưa thay bằng model nghiên cứu
+chưa vượt kiểm thử trên chính điện thoại.
+
+`npm run assets:assistive-objects` lấy model đúng checksum trước build;
+`npm run qa:assistive-objects` kiểm tra model thật, Swift core, JSON xuyên ngôn ngữ,
+Release, static analysis và UI simulator. `qa:assistive-ios` cũng chuyển tới gate
+hiện hành; không còn đếm cố định bộ test 0.1.x. Receipt mới nằm trong TIP-64B3,
+không ghi đè bằng chứng B1/B2. QA phần mềm không thay
+thế kiểm chứng độ chính xác, độ trễ và nhiệt độ trên iPhone thật.
+`npm run preflight:assistive-ios` kiểm tra chỉ đọc iPhone/signing trước cài thử.
+
+## Web RoboEye
+
 Biến camera laptop thành mắt robot, chạy toàn bộ trong một tab trình duyệt. Webcam sang depth map sang point cloud 3D sang BEV occupancy grid. Không server, không cài đặt, camera không rời máy.
 
 Model: Depth Anything V2 Small (apache-2.0, bản ONNX của onnx-community) qua transformers.js, inference WebGPU trong Web Worker riêng. Render: three.js WebGPURenderer, tự fallback WebGL2. Điểm: 150k trên WebGPU, khoảng 28k trên fallback.

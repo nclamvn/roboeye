@@ -1,6 +1,75 @@
 # Changelog
 
+## TIP-64B4 — Class badges and bounded phone/remote conflict repair (2026-10-11)
+
+- Add opaque class-owned badge fills with white contrast >=5.645:1; measured,
+  unknown and Reduce Transparency states retain the class hue.
+- Retire obsolete high-overlap phone/remote coast boxes without borrowing metres;
+  preserve separate objects and unrelated nested classes.
+- Ship native0.2.2/build5; frozen QA passes106 Swift,18 UI and7 interop cases.
+  Signed Release installation and default launch verified on the user's iPhone.
+- Fan remains absent from the baseline vocabulary; phone semantic accuracy,
+  physical range error and sustained device performance are not claimed fixed.
+
+## TIP-64B3 — Perception quality and stable scientific HUD (2026-10-11)
+
+- Replace confidence-greedy matching with bounded global assignment; retire
+  ambiguous old identities rather than stacking ghost boxes or borrowing metres.
+- Add display-only adaptive jitter filtering, attached collision-aware badges,
+  stable ID/VoiceOver elements and restrained camera-first controls. Fresh metres
+  keep their independent 300 ms limit; no numerical smoothing or stale hold.
+- Cache the model request; validate its schema, back off transient failures and
+  surface incompatible models explicitly. One depth/confidence lock pair per
+  frame; construct interchange metadata only during consent-bound recording.
+- One bounded UI presentation/expiry owner, local rolling64 stage diagnostics,
+  current-count QA and isolated B3 receipts preserving B1/B2 evidence.
+- Release identity 0.2.1/build4, existing Team/bundle preserved. YOLOv3 remains the
+  validated baseline; RF-DETR/YOLO26/YOLOX/FastVLM are researched candidates, not
+  shipped replacements or evidence of accuracy/latency on an iPhone.
+- See the architecture audit and B3 completion report for exact software gates,
+  synthetic measurements and physical-device tests still outstanding.
+
+## TIP-64B2 — Native automatic objects and LiDAR ranges (2026-10-11)
+
+- Replace the manual-only default with offline Core ML/Vision object detection,
+  bounded same-class association and intermediate Vision tracking; preserve the
+  explicit manual point-measurement mode. Vietnamese boxes and fresh approximate
+  surface metres appear without point selection.
+- Use one ARKit camera owner, one background inference in flight, verified
+  orientation mapping and same-frame RGB/depth/intrinsics. Reject ambiguous,
+  stale, unsupported and out-of-domain measurements; independently expire metres
+  after 300 ms and clear output on stop/background/rotation.
+- Full-camera UI, compact default controls and expandable diagnostics; preserve
+  consent-bound recording with a tested closed-label/128-support v1 projection.
+- Bundle Apple YOLOv3 FP16 with checksum, source and upstream license notice;
+  test actual model inference, portable algorithms, cross-language exports and
+  native UI. Release identity: RoboEye Assist 0.2.0/build 3, same bundle/signing.
+- 80 COCO classes and approximate 0.5–5 m box-interior surface ranges only; not
+  universal recognition, segmentation-confirmed object distance or navigation.
+  See the TIP-64B2 completion report for physical-install and device-test evidence.
+
+## TIP-64B1-H — Native demo hardening (2026-10-10)
+
+- Coalesced UI presentation, independent recording deadline, explicit cancellable camera start, inactivity/memory/thermal handling and idle-timer restoration.
+- Single-flight background JSON export with revoked-result suppression; measured labels bind to the original recording/frame/target.
+- Stricter support bounds, portable simulator discovery, read-only iPhone installation preflight and device rehearsal guide. Physical installation/performance/accuracy remain unverified; no full semantic assistive-perception claim.
+
 ## Unreleased
+
+### iPhone native depth probe (TIP-64B1)
+
+- Add independent dependency-free UIKit/ARKit project and portable Swift core;
+  runtime capability/permission guards, one camera owner, direct sceneDepth and
+  confidence support, calibrated original RGB geometry and pose convention.
+- Select/acknowledge a small surface patch, compute Euclidean camera-to-point
+  range with confidence/mixed-support/freshness/pose/domain refusal; no guessed
+  FOV, smoothed-depth freshness claim or semantic object tracking.
+- Add consent-bound memory recorder, strict caps, exact stopped-frame tape
+  labels, metadata-only canonical v1 checksum export to existing web lab,
+  lifecycle erasure and share-file cleanup. No pixels, GPS, device IDs or cloud.
+- Add Swift/schema interoperability tests, native simulator UI QA and installation
+  guide. Unsigned builds/software fixtures are not real-phone accuracy evidence;
+  signing/install and physical measurements remain user-device gates.
 
 ### Assistive Vision evidence lab (TIP-64A)
 
