@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import type { HandLandmark } from '../../src/airsketch-types';
+import type { HandLandmark } from '../../src/hand-tracking-types';
 import { classifyRobotHandGesture, RobotHandGestureStabilizer } from '../../src/robohand-gestures';
 import { RobotHandMetrics, RobotHandPoseFilter, RobotHandRealtimeController } from '../../src/robohand-realtime';
 import { solveRobotHandPose } from '../../src/robohand-pose';

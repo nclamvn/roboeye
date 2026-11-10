@@ -1,5 +1,5 @@
 // RoboHand worker-to-DOM/render contract. Deterministic workers prove wiring,
-// state and telemetry; real-model latency remains covered by hand smoke.
+// state and telemetry; they do not measure real-model latency.
 import { chromium } from 'playwright-core';
 import { browserLaunchOptions, resolveBrowserExecutable } from './helpers/browser.mjs';
 import { installMockWorkers } from './helpers/mock-workers.mjs';

@@ -1,4 +1,4 @@
-import type { AirPoint } from './airsketch-types';
+interface TimedPoint { x: number; y: number; t: number; }
 
 export interface RealtimePointFilterOptions {
   minCutoff: number;
@@ -10,8 +10,8 @@ export interface RealtimePointFilterOptions {
 }
 
 export interface FilteredPoint {
-  stable: AirPoint;
-  display: AirPoint;
+  stable: TimedPoint;
+  display: TimedPoint;
   velocity: { x: number; y: number };
 }
 
@@ -92,7 +92,7 @@ export class RealtimePointFilter {
   private readonly options: RealtimePointFilterOptions;
   private readonly x: OneEuroScalar;
   private readonly y: OneEuroScalar;
-  private previousStable: AirPoint | null = null;
+  private previousStable: TimedPoint | null = null;
   private velocity = { x: 0, y: 0 };
 
   constructor(options: Partial<RealtimePointFilterOptions> = {}) {
@@ -108,8 +108,8 @@ export class RealtimePointFilter {
     this.velocity = { x: 0, y: 0 };
   }
 
-  update(raw: Pick<AirPoint, 'x' | 'y'>, capturedAt: number, receivedAt = capturedAt): FilteredPoint {
-    const stable: AirPoint = {
+  update(raw: Pick<TimedPoint, 'x' | 'y'>, capturedAt: number, receivedAt = capturedAt): FilteredPoint {
+    const stable: TimedPoint = {
       x: this.x.update(raw.x, capturedAt),
       y: this.y.update(raw.y, capturedAt),
       t: capturedAt

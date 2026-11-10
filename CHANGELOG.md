@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Remove AirDesk Media, AirDesk and AirSketch from the current web application,
+  including the dedicated QuickDraw/TFLite pipeline and release checks.
+- Keep RoboHand's two-hand MediaPipe tracking. Web builds include the verified
+  Hand Landmarker at `models/hand/hand_landmarker.task`.
+
 ## TIP-64B4 — Class badges and bounded phone/remote conflict repair (2026-10-11)
 
 - Add opaque class-owned badge fills with white contrast >=5.645:1; measured,

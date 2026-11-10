@@ -1,4 +1,4 @@
-import type { HandLandmark } from './airsketch-types';
+import type { HandLandmark } from './hand-tracking-types';
 
 export type RobotHandGesture = 'OPEN' | 'FIST' | 'POINT' | 'PINCH' | 'V SIGN' | 'OK' | 'FREE POSE'
   | 'CHỤM 3 NGÓN' | 'CHỤM 4 NGÓN' | 'CHỤM 5 NGÓN' | 'CÁI–GIỮA' | 'CÁI–ÁP ÚT' | 'CÁI–ÚT';

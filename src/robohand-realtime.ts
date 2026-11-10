@@ -1,7 +1,7 @@
 import { RealtimeValueFilter } from './realtime-point-filter';
 import { classifyRobotHandGesture, RobotHandGestureStabilizer, type RobotHandGesture } from './robohand-gestures';
 import { ROBOT_HAND_SEGMENTS, type Quaternion, type RobotFingerCurls, type RobotHandPose, type Vec3 } from './robohand-types';
-import type { HandLandmark } from './airsketch-types';
+import type { HandLandmark } from './hand-tracking-types';
 import { constrainHandAnatomy, retargetHand, directionsFromPoints, type HandContact } from './robohand-retarget';
 
 function clamp(value: number, min: number, max: number): number {

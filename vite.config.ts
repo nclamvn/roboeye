@@ -35,7 +35,6 @@ function publicRuntimeFingerprint(): string {
     new URL('./public/workers/',import.meta.url),
     new URL('./public/mediapipe/',import.meta.url),
     new URL('./public/ort/',import.meta.url),
-    new URL('./public/tflite/',import.meta.url)
   ];
   const visit=(directory:URL,prefix:string)=>{
     for(const entry of readdirSync(directory,{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name))){

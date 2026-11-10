@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { access, readFile, stat } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,20 +9,29 @@ const offline = process.argv.includes('--offline');
 const pkg = JSON.parse(await readFile(join(ROOT, 'package.json'), 'utf8'));
 const required = [
   'index.html',
+  'drive.html',
   'assist.html',
   'manifest.webmanifest',
   'icons/roboeye.svg',
   '_headers',
   'workers/air-hand-worker.js',
-  'workers/air-classifier-worker.js',
   'mediapipe/vision_bundle.js',
   'mediapipe/wasm/vision_wasm_internal.wasm',
-  'tflite/tflite_web_api_cc_simd.wasm',
   'sw.js',
   'release.json'
 ];
 
 for (const file of required) await access(join(DIST, file));
+
+const retired = ['media.html', 'media', 'models/airsketch', 'tflite', 'workers/air-classifier-worker.js'];
+for (const path of retired) {
+  const exists = await access(join(DIST, path)).then(() => true, (error) => {
+    if (error.code !== 'ENOENT') throw error;
+    return false;
+  });
+  if (exists) throw new Error(`Retired asset leaked into release: ${path}`);
+}
+console.log('[release] PASS retired assets absent');
 
 const [html, sw, headers, releaseText] = await Promise.all([
   readFile(join(DIST, 'index.html'), 'utf8'),
@@ -39,21 +49,20 @@ const checks = [
   ['versioned JS assets', /assets\/index-[A-Za-z0-9_-]+\.js/.test(html)]
 ];
 
+const { model: hand } = JSON.parse(await readFile(join(ROOT, 'tests', 'fixtures', 'hand-tracking.manifest.json'), 'utf8'));
+const handBytes = await readFile(join(DIST, 'models', 'hand', hand.path));
+checks.push(['pinned hand model', handBytes.length === hand.bytes && createHash('sha256').update(handBytes).digest('hex') === hand.sha256]);
+
 if (offline) {
   await access(join(DIST, 'offline.json'));
   const manifest = JSON.parse(await readFile(join(ROOT, 'tests', 'fixtures', 'depth-q8.manifest.json'), 'utf8'));
-  const airManifest = JSON.parse(await readFile(join(ROOT, 'tests', 'fixtures', 'airsketch.manifest.json'), 'utf8'));
   for (const file of manifest.files) {
     const path = join(DIST, 'models', manifest.repository, file.path);
     const info = await stat(path);
     checks.push([`offline ${file.path}`, info.size === file.bytes]);
   }
-  for (const file of airManifest.files) {
-    const info = await stat(join(DIST, 'models', 'airsketch', file.path));
-    checks.push([`offline AirSketch ${file.path}`, info.size === file.bytes]);
-  }
   checks.push(['offline release flag', release.offlineDepth === true]);
-  checks.push(['offline AirSketch flag', release.offlineAirSketch === true]);
+  checks.push(['offline hand tracking flag', release.offlineHandTracking === true]);
 }
 
 const failed = checks.filter(([, ok]) => !ok);

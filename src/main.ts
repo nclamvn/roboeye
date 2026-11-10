@@ -16,23 +16,9 @@ import { recoverDetectionError } from './detection-state';
 import { recoverDepthError } from './depth-state';
 import { createRuntimeDiagnostics } from './runtime-diagnostics';
 import { OWL_QUERY_PRESETS } from './detection-presets';
-import { AIRSKETCH_CONFIG } from './airsketch-config';
-import { AirInkDocument, drawAirStrokes, rasterizeAirStrokes } from './airsketch-ink';
-import { AirInteractionController } from './airsketch-interaction';
-import { AirSketchScene } from './airsketch-scene';
-import { AirSketchMetrics } from './airsketch-metrics';
-import { AirDeskController, type AirDeskAction, type AirDeskHandSample } from './airdesk';
-import { nearestTargetWithin, type TargetRect } from './airdesk-targeting';
-import { localizeSketchLabel } from './airsketch-labels';
-import { assessSketchConfidence } from './airsketch-confidence';
-import { detectHeartSketch, mergeSpecialSketchPrediction } from './airsketch-shapes';
+import { HAND_TRACKING_CONFIG } from './hand-tracking-config';
 import type { WorkerToMain, Dtype } from './types';
-import type {
-  AirPoint,
-  AirSketchClassifierWorkerToMain,
-  AirSketchHandWorkerToMain,
-  SketchPrediction
-} from './airsketch-types';
+import type { HandWorkerToMain, MainToHandWorker } from './hand-tracking-types';
 import type {
   DetBox,
   DetectionBenchmarkAPI,
@@ -101,14 +87,6 @@ let fovDeg = 60;
 // Test hook: verify toán metric lift bằng synthetic depth (dùng trong smoke, vô hại)
 (window as unknown as { __roboeyeMetric?: unknown }).__roboeyeMetric = { metricLift, toKittiLines, focalFromFov };
 
-// T16: hand tracking → air ink → sketch classifier → AAC/TTS.
-const airInteraction = new AirInteractionController();
-const airInk = new AirInkDocument();
-const airScene = new AirSketchScene();
-const airMetrics = new AirSketchMetrics();
-const airDesk = new AirDeskController();
-let airSketchOn = false;
-let airDeskOn = false;
 let roboHandOn = false;
 const roboHandRealtime = new Map<string,RobotHandRealtimeController>();
 const roboHandStudio = new RoboHandStudioController();
@@ -116,34 +94,13 @@ const roboHandIdentity = new StudioHandIdentityTracker();
 const roboHandMemory = new Map<string,{gesture:RobotHandGesture;pinchStrength:number;gripStrength:number}>();
 const roboHandMetrics = new RobotHandMetrics();
 let airHandWorker: Worker | null = null;
-let airHandMaxHands:1|2=1;
 let airHandReady = false;
-let airHandStage = 'idle';
 let airHandBusy = false;
-let airHandWarmupRemaining = 3;
-let airClassifierWorker: Worker | null = null;
-let airClassifierReady = false;
-let airClassifierBusy = false;
-let airClassifierLoading = false;
-let airClassifierLoadRetries = 0;
-let airClassifierRetryTimer: ReturnType<typeof setTimeout> | null = null;
-let airPredictions: SketchPrediction[] = [];
-let airPhrase: string[] = [];
 let airLastCaptureAt = 0;
 let airVideoFrameCallbackId: number | null = null;
 let airVideoFrameGeneration = 0;
 let airLastPresentedFrame = 0;
 let airUsesVideoFrameCallback = false;
-let airLastInkAt = 0;
-let airLastClassifiedRevision = -1;
-let airPointerActive = false;
-let airPenWasDown = false;
-let airBenchmarkRevision = -1_000;
-const airBenchmarkClassifications = new Map<number, {
-  resolve: (predictions: SketchPrediction[]) => void;
-  reject: (error: Error) => void;
-  timer: ReturnType<typeof setTimeout>;
-}>();
 
 interface BenchmarkPending<T> {
   resolve: (value: T) => void;
@@ -370,305 +327,68 @@ const shell = createShell({
       'application/json'
     );
   },
-  onAirSketch: (on) => setAirSketch(on),
-  onAirDesk: (on) => setAirDesk(on),
-  onAirUndo: () => undoAirStroke(),
-  onAirClear: () => clearAirDrawing(),
-  onAirAddPrediction: (index) => addAirPrediction(index),
-  onAirSpeak: () => speakAirPhrase(),
-  onAirClearPhrase: () => {
-    airPhrase = [];
-    shell.setAirSketchPhrase(airPhrase);
-  }
 }, { version: __ROBOEYE_VERSION__, demoMode, offlineMode: __ROBOEYE_OFFLINE__ });
 
-const airCanvas = document.getElementById('airsketch-overlay') as HTMLCanvasElement;
-const airStage = document.getElementById('stage') as HTMLElement;
-const airCtx = airCanvas.getContext('2d');
-const airDeskFingerLayer = document.getElementById('airdesk-fingers') as HTMLElement;
-const airDeskPinchLine = document.getElementById('airdesk-pinch-line') as HTMLElement;
-const airDeskGestureHud = document.getElementById('airdesk-gesture-hud') as HTMLElement;
-const airDeskGestureMode = document.getElementById('airdesk-gesture-mode') as HTMLElement;
-const airDeskGestureValues = document.getElementById('airdesk-gesture-values') as HTMLElement;
-const airDeskImage = document.getElementById('airdesk-image') as HTMLElement;
-const airDeskDrawings = document.getElementById('airdesk-drawings') as unknown as SVGSVGElement;
-const airDeskEditor = document.getElementById('airdesk-editor') as HTMLElement;
-
-function resizeAirCanvas() {
-  const dpr = Math.min(window.devicePixelRatio, 2);
-  const width = Math.max(1, Math.round(airStage.clientWidth * dpr));
-  const height = Math.max(1, Math.round(airStage.clientHeight * dpr));
-  if (airCanvas.width === width && airCanvas.height === height) return;
-  airCanvas.width = width;
-  airCanvas.height = height;
-  renderAirInk();
-}
-
-function renderAirInk() {
-  if (!airCtx) return;
-  airCtx.clearRect(0, 0, airCanvas.width, airCanvas.height);
-  if (!airSketchOn) return;
-  airScene.render(airCtx, airCanvas.width, airCanvas.height);
-  drawAirStrokes(airCtx, airInk.currentSnapshot(), airCanvas.width, airCanvas.height, {
-    color: '#ffffff',
-    width: Math.max(5, airCanvas.width / Math.max(280, airStage.clientWidth) * 4.2),
-    shadow: 'rgba(255, 255, 255, 0.55)'
-  });
-}
-
-function noteAirInkChanged() {
-  airLastInkAt = performance.now();
-  renderAirInk();
-}
-
-function undoAirStroke() {
-  const wasDrawing = airInk.isDrawing();
-  airInk.undo();
-  if (!wasDrawing) airScene.undo();
-  airPenWasDown = false;
-  noteAirInkChanged();
-  shell.setAirSketchStatus('Đã hoàn tác nét gần nhất');
-}
-
-function clearAirDrawing() {
-  airInk.clear();
-  airScene.clear();
-  airInteraction.reset();
-  airPenWasDown = false;
-  airPredictions = [];
-  airLastClassifiedRevision = -1;
-  renderAirInk();
-  shell.setAirSketchPredictions([]);
-  shell.setAirSketchStatus('Khung vẽ đã sạch · giơ trỏ để định vị, chụm cái + trỏ để vẽ');
-}
-
-function addAirPrediction(index: number) {
-  const prediction = airPredictions[index];
-  if (!prediction) return;
-  airPhrase.push(localizeSketchLabel(prediction.label));
-  shell.setAirSketchPhrase(airPhrase);
-  diagnostics.record('airsketch.word.add', { label: prediction.label });
-}
-
-function speakAirPhrase() {
-  const text = airPhrase.join(' ');
-  if (!text) {
-    shell.setAirSketchStatus('Hãy vẽ và chọn ít nhất một từ trước khi nói');
-    return;
-  }
-  if (!('speechSynthesis' in window)) {
-    shell.setAirSketchStatus('Trình duyệt này chưa hỗ trợ đọc thành tiếng');
-    return;
-  }
-  speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'vi-VN';
-  utterance.rate = 0.92;
-  speechSynthesis.speak(utterance);
-  shell.setAirSketchStatus(`Đang nói: “${text}”`);
-  diagnostics.record('airsketch.speak', { words: text.split(/\s+/).length });
-}
-
-function spawnAirWorkers() {
-  // Cold start tuần tự: ONNX classifier hoàn tất trước khi MediaPipe dựng graph,
-  // tránh hai runtime WASM tranh bộ nhớ/compile rồi báo network error giả.
-  const handNeeded = airSketchOn || airDeskOn || roboHandOn;
-  const classifierSettled = !airSketchOn || airClassifierReady || (airClassifierWorker != null && !airClassifierLoading);
-  const desiredHands:1|2=roboHandOn?2:1;
-  // MediaPipe fixes numHands when constructing the graph. Reuse across
-  // AirSketch/AirDesk is valuable, but entering/leaving Studio must rebuild
-  // exactly once or a worker first opened in single-hand mode stays single.
-  if(airHandWorker&&handNeeded&&airHandMaxHands!==desiredHands){
-    airHandWorker.terminate();
-    airHandWorker=null;airHandReady=false;airHandBusy=false;airHandStage='reconfigure';
-  }
-  if (!airHandWorker && handNeeded && classifierSettled) {
-    const runtimeBase = new URL(import.meta.env.BASE_URL, location.href);
-    // MediaPipe loader vẫn dùng importScripts nội bộ; classic worker là contract
-    // tương thích chính thức, đồng thời giữ inference khỏi main thread.
-    const instance = new Worker(new URL('workers/air-hand-worker.js', runtimeBase));
-    airHandWorker = instance;
-    airHandMaxHands=desiredHands;
-    airHandReady = false;
-    airHandWarmupRemaining = 3;
-    instance.onmessage = (event: MessageEvent<AirSketchHandWorkerToMain>) => {
-      if (airHandWorker !== instance) return;
-      const message = event.data;
-      if (message.type === 'loading') {
-        airHandReady = false;
-        airHandStage = message.stage;
-        const label = message.stage === 'runtime' ? 'runtime WASM' : message.stage === 'model' ? 'model bàn tay' : 'đồ thị tracking';
-        shell.setAirSketchStatus(`Đang chuẩn bị ${label}…`);
-        if (airDeskOn) shell.setAirDeskStatus(`Đang chuẩn bị ${label}…`);
-        if (roboHandOn) shell.setRoboHandStatus(`Đang chuẩn bị ${label}…`);
-      } else if (message.type === 'ready') {
-        airHandStage = 'ready';
-        airHandReady = true;
-        const delegate = message.delegate ?? 'CPU';
-        shell.setAirSketchStatus(`Tracking tay ${delegate} sẵn sàng · chụm lên vật thể để cầm, chụm vùng trống để vẽ`);
-        if (airDeskOn) shell.setAirDeskStatus(`Tracking tay ${delegate} sẵn sàng · các đầu ngón vàng đã hoạt động.`);
-        if (roboHandOn) shell.setRoboHandStatus(`Tracking ${delegate} sẵn sàng · đưa một hoặc hai bàn tay trọn vẹn vào camera.`);
-        diagnostics.record('airsketch.hand.ready', { model: AIRSKETCH_CONFIG.handModel.version, delegate });
-      } else if (message.type === 'landmarks') {
-        airHandBusy = false;
-        const resultAt = performance.now();
-        if (airHandWarmupRemaining > 0) airHandWarmupRemaining--;
-        else {
-          airMetrics.addHand(message.inferMs);
-          if (message.captureStartedAt != null && message.sentAt != null) {
-            airMetrics.addCapture(message.sentAt - message.captureStartedAt);
-          }
-          // Source-frame age includes bitmap conversion, worker transit,
-          // inference and reply. The previous timestamp started only after
-          // conversion and therefore materially under-reported felt latency.
-          airMetrics.addPipeline(resultAt - message.capturedAt);
-        }
-        if (airSketchOn) handleAirLandmarks(message.landmarks, message.capturedAt, resultAt);
-        else if (airDeskOn) handleAirDeskLandmarks(message.landmarks, message.capturedAt, resultAt);
-        else if (roboHandOn) handleRoboHandLandmarks(message, resultAt);
-      } else {
-        airHandBusy = false;
-        if (message.stage === 'load') airHandReady = false;
-        airHandStage = `error:${message.stage}:${message.message}`;
-        shell.setAirSketchStatus(`Tracking tay chưa sẵn sàng · dùng chuột/chạm (${message.message})`);
-        if (airDeskOn) shell.setAirDeskStatus(`Tracking tay chưa sẵn sàng · dùng chuột/chạm (${message.message})`);
-        if (roboHandOn) shell.setRoboHandStatus(`Tracking tay gặp lỗi: ${message.message}`);
-        diagnostics.record('airsketch.hand.error', { stage: message.stage, message: message.message });
-      }
-    };
-    instance.onerror = (event) => {
-      airHandBusy = false;
+function spawnHandWorker() {
+  if (!roboHandOn || airHandWorker) return;
+  const runtimeBase = new URL(import.meta.env.BASE_URL, location.href);
+  // MediaPipe loads the local WASM runtime from a classic worker.
+  const instance = new Worker(new URL('workers/air-hand-worker.js', runtimeBase));
+  airHandWorker = instance;
+  airHandReady = false;
+  instance.onmessage = (event: MessageEvent<HandWorkerToMain>) => {
+    if (airHandWorker !== instance) return;
+    const message = event.data;
+    if (message.type === 'loading') {
       airHandReady = false;
-      airHandStage = 'crash';
-      shell.setAirSketchStatus('Tracking tay gặp lỗi · chuột/chạm vẫn dùng được');
-      if (airDeskOn) shell.setAirDeskStatus('Tracking tay gặp lỗi · chuột/chạm vẫn dùng được');
-      if (roboHandOn) shell.setRoboHandStatus('Hand Worker bị dừng · chuyển mode rồi quay lại để thử lại.');
-      diagnostics.record('airsketch.hand.crash', { message: event.message });
-    };
-    instance.postMessage({
-      type: 'init',
-      modelUrl: localModels
-        ? new URL('models/airsketch/hand_landmarker.task', runtimeBase).href
-        : AIRSKETCH_CONFIG.handModel.url,
-      expectedBytes: AIRSKETCH_CONFIG.handModel.bytes,
-      expectedSha256: AIRSKETCH_CONFIG.handModel.sha256,
-      visionBundleUrl: new URL('mediapipe/vision_bundle.js', runtimeBase).href,
-      wasmBase: new URL('mediapipe/wasm', runtimeBase).href,
-      preferredDelegate: 'GPU',
-      gpuFallbackInferMs: AIRSKETCH_CONFIG.tracking.gpuFallbackInferMs,
-      gpuFallbackSlowSamples: AIRSKETCH_CONFIG.tracking.gpuFallbackSlowSamples,
-      numHands: desiredHands,
-      // In Studio, accept a lower consecutive-frame IoU/presence score so a
-      // fast turn stays on the lightweight tracker instead of repeatedly
-      // paying full-frame palm re-detection. Initial detection remains strict.
-      confidence:roboHandOn?{detection:.5,presence:.42,tracking:.35}:{detection:.5,presence:.5,tracking:.5}
-    });
-  }
-
-  if (airSketchOn && !airClassifierWorker) {
-    const runtimeBase = new URL(import.meta.env.BASE_URL, location.href);
-    const instance = new Worker(new URL('workers/air-classifier-worker.js', runtimeBase));
-    airClassifierWorker = instance;
-    airClassifierReady = false;
-    airClassifierLoading = true;
-    instance.onmessage = (event: MessageEvent<AirSketchClassifierWorkerToMain>) => {
-      if (airClassifierWorker !== instance) return;
-      const message = event.data;
-      if (message.type === 'progress') {
-        shell.setAirSketchStatus(`Đang chuẩn bị bộ não đoán hình · ${Math.round(message.progress)}%`);
-      } else if (message.type === 'ready') {
-        airClassifierLoadRetries = 0;
-        airClassifierReady = true;
-        airClassifierLoading = false;
-        if (!airHandReady) shell.setAirSketchStatus(`Bộ đoán hình sẵn sàng · tracking tay: ${airHandStage}…`);
-        diagnostics.record('airsketch.classifier.ready', { model: AIRSKETCH_CONFIG.classifier.model });
-        spawnAirWorkers();
-      } else if (message.type === 'prediction') {
-        airClassifierBusy = false;
-        airMetrics.addClassify(message.inferMs);
-        const benchmark = airBenchmarkClassifications.get(message.revision);
-        if (benchmark) {
-          clearTimeout(benchmark.timer);
-          airBenchmarkClassifications.delete(message.revision);
-          benchmark.resolve(message.predictions);
-          return;
-        }
-        if (message.revision !== airInk.revision) return;
-        const specialHeart = detectHeartSketch(airInk.snapshot());
-        airPredictions = mergeSpecialSketchPrediction(message.predictions, specialHeart == null
-          ? null
-          : { label: 'heart', score: specialHeart }, AIRSKETCH_CONFIG.classifier.topK);
-        shell.setAirSketchPredictions(airPredictions);
-        const top = airPredictions[0];
-        const confidence = assessSketchConfidence(airPredictions);
-        shell.setAirSketchStatus(!top
-          ? 'Chưa nhận ra · thử thêm vài nét'
-          : confidence === 'confident'
-            ? `Gợi ý rõ trong ${Math.round(message.inferMs)} ms · hãy chạm để xác nhận`
-            : confidence === 'possible'
-              ? `Kết quả còn gần nhau · chọn đúng trong 5 gợi ý hoặc vẽ thêm chi tiết`
-              : 'Không đủ chắc chắn · không dùng kết quả này nếu chưa xác nhận');
-        diagnostics.record('airsketch.prediction', { inferMs: Math.round(message.inferMs), top: top?.label ?? null });
-      } else {
-        airClassifierBusy = false;
-        console.error('[roboeye-airsketch-classifier]', message.stage, message.message);
-        if (message.revision != null) {
-          const benchmark = airBenchmarkClassifications.get(message.revision);
-          if (benchmark) {
-            clearTimeout(benchmark.timer);
-            airBenchmarkClassifications.delete(message.revision);
-            benchmark.reject(new Error(message.message));
-          }
-        }
-        if (message.stage === 'load') {
-          airClassifierReady = false;
-          if (airSketchOn && airClassifierLoadRetries < 1) {
-            airClassifierLoadRetries++;
-            instance.terminate();
-            if (airClassifierWorker === instance) airClassifierWorker = null;
-            shell.setAirSketchStatus('Tải bộ đoán hình lỗi · đang thử lại một lần…');
-            airClassifierRetryTimer = setTimeout(() => {
-              airClassifierRetryTimer = null;
-              if (airSketchOn && !airClassifierWorker) spawnAirWorkers();
-            }, 800);
-            return;
-          }
-          airClassifierLoading = false;
-          spawnAirWorkers();
-        }
-        if (message.revision != null) airLastClassifiedRevision = -1;
-        shell.setAirSketchStatus(`Chưa thể đoán hình · nét vẽ vẫn hoạt động (${message.message})`);
-        diagnostics.record('airsketch.classifier.error', { stage: message.stage, message: message.message });
+      const label = message.stage === 'runtime' ? 'runtime WASM' : message.stage === 'model' ? 'model bàn tay' : 'đồ thị tracking';
+      if (roboHandOn) shell.setRoboHandStatus(`Đang chuẩn bị ${label}…`);
+    } else if (message.type === 'ready') {
+      airHandReady = true;
+      const delegate = message.delegate ?? 'CPU';
+      if (roboHandOn) shell.setRoboHandStatus(`Tracking ${delegate} sẵn sàng · đưa một hoặc hai bàn tay trọn vẹn vào camera.`);
+      diagnostics.record('robohand.tracking.ready', { model: HAND_TRACKING_CONFIG.handModel.version, delegate });
+    } else if (message.type === 'landmarks') {
+      airHandBusy = false;
+      if (roboHandOn) handleRoboHandLandmarks(message, performance.now());
+    } else {
+      airHandBusy = false;
+      if (message.stage === 'load') {
+        airHandReady = false;
+        airHandWorker = null;
+        instance.terminate();
       }
-    };
-    instance.onerror = (event) => {
-      airClassifierBusy = false;
-      airClassifierReady = false;
-      airClassifierLoading = false;
-      spawnAirWorkers();
-      shell.setAirSketchStatus('Bộ đoán hình gặp lỗi · nét vẽ vẫn hoạt động');
-      diagnostics.record('airsketch.classifier.crash', { message: event.message });
-    };
-    instance.postMessage({
-      type: 'init',
-      localModels,
-      modelUrl: localModels
-        ? new URL('models/airsketch/quickdraw_model.tflite', runtimeBase).href
-        : AIRSKETCH_CONFIG.classifier.url,
-      expectedBytes: AIRSKETCH_CONFIG.classifier.bytes,
-      expectedSha256: AIRSKETCH_CONFIG.classifier.sha256,
-      labelsUrl: localModels
-        ? new URL('models/airsketch/labels.txt', runtimeBase).href
-        : AIRSKETCH_CONFIG.classifier.labelsUrl,
-      expectedLabelsBytes: AIRSKETCH_CONFIG.classifier.labelsBytes,
-      expectedLabelsSha256: AIRSKETCH_CONFIG.classifier.labelsSha256,
-      tfliteBase: new URL('tflite/', runtimeBase).href,
-      topK: AIRSKETCH_CONFIG.classifier.topK
-    });
-  }
+      if (roboHandOn) shell.setRoboHandStatus(`Tracking tay gặp lỗi: ${message.message}`);
+      diagnostics.record('robohand.tracking.error', { stage: message.stage, message: message.message });
+    }
+  };
+  instance.onerror = (event) => {
+    if (airHandWorker !== instance) return;
+    airHandBusy = false;
+    airHandReady = false;
+    airHandWorker = null;
+    instance.terminate();
+    if (roboHandOn) shell.setRoboHandStatus('Hand Worker bị dừng · chuyển mode rồi quay lại để thử lại.');
+    diagnostics.record('robohand.tracking.crash', { message: event.message });
+  };
+  instance.postMessage({
+    type: 'init',
+    modelUrl: localModels || import.meta.env.PROD
+      ? new URL('models/hand/hand_landmarker.task', runtimeBase).href
+      : HAND_TRACKING_CONFIG.handModel.url,
+    expectedBytes: HAND_TRACKING_CONFIG.handModel.bytes,
+    expectedSha256: HAND_TRACKING_CONFIG.handModel.sha256,
+    visionBundleUrl: new URL('mediapipe/vision_bundle.js', runtimeBase).href,
+    wasmBase: new URL('mediapipe/wasm', runtimeBase).href,
+    preferredDelegate: 'GPU',
+    gpuFallbackInferMs: HAND_TRACKING_CONFIG.tracking.gpuFallbackInferMs,
+    gpuFallbackSlowSamples: HAND_TRACKING_CONFIG.tracking.gpuFallbackSlowSamples,
+    numHands: 2,
+    confidence: { detection: .5, presence: .42, tracking: .35 }
+  } satisfies MainToHandWorker);
 }
 
-function handleRoboHandLandmarks(message: Extract<AirSketchHandWorkerToMain, { type: 'landmarks' }>, receivedAt: number) {
+function handleRoboHandLandmarks(message: Extract<HandWorkerToMain, { type: 'landmarks' }>, receivedAt: number) {
   if (!roboHandOn) return;
   const observations=message.hands?.length?message.hands:message.landmarks&&message.worldLandmarks?[{
     landmarks:message.landmarks,worldLandmarks:message.worldLandmarks,
@@ -725,10 +445,6 @@ function handleRoboHandLandmarks(message: Extract<AirSketchHandWorkerToMain, { t
 
 function setRoboHand(on: boolean, selectMode = true) {
   if (on === roboHandOn) return;
-  if (on) {
-    if (airSketchOn) setAirSketch(false);
-    if (airDeskOn) setAirDesk(false);
-  }
   roboHandOn = on;
   shell.setRoboHandActive(on);
   if (on) {
@@ -741,7 +457,7 @@ function setRoboHand(on: boolean, selectMode = true) {
     roboHandMetrics.reset();
     // Showcase phải hoạt động độc lập camera. Chỉ dựng MediaPipe graph sau
     // khi đã có source video; nếu không một lỗi worker có thể chặn cả scene 3D.
-    if (video?.srcObject) spawnAirWorkers();
+    if (video?.srcObject) spawnHandWorker();
   } else {
     roboHandRealtime.forEach(controller=>controller.reset());
     roboHandRealtime.clear();roboHandMemory.clear();roboHandStudio.reset();roboHandIdentity.reset();
@@ -750,496 +466,6 @@ function setRoboHand(on: boolean, selectMode = true) {
   }
   diagnostics.record('robohand.toggle', { on });
 }
-
-function setAirSketch(on: boolean) {
-  if (on && airDeskOn) setAirDesk(false);
-  airSketchOn = on;
-  shell.setAirSketchActive(on);
-  airCanvas.classList.toggle('active', on);
-  if (on) {
-    if (!airClassifierWorker && airClassifierRetryTimer == null) airClassifierLoadRetries = 0;
-    shell.setMode('rgb');
-    resizeAirCanvas();
-    spawnAirWorkers();
-    shell.setAirSketchStatus(__ROBOEYE_OFFLINE__
-      ? 'Bản offline: đang mở tracking tay và bộ đoán hình tại thiết bị…'
-      : 'Đang chuẩn bị tracking tay và bộ đoán hình…');
-  } else {
-    if (airClassifierRetryTimer != null) clearTimeout(airClassifierRetryTimer);
-    airClassifierRetryTimer = null;
-    applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
-    airPointerActive = false;
-    airInteraction.release();
-    shell.setAirSketchCursor(null);
-  }
-  diagnostics.record('airsketch.toggle', { on });
-  requestAnimationFrame(() => {
-    sceneApi?.resize();
-    resizeAirCanvas();
-  });
-}
-
-let airDeskGesture: 'transform' | 'move' | 'scale' | 'rotate' | 'draw' | 'text' | null = null;
-let airDeskTextAnchor: Range | null = null;
-let airDeskLastSeenAt = -Infinity;
-let airDeskLossTimer: ReturnType<typeof setTimeout> | null = null;
-let airDeskRenderedDrawingRevision = -1;
-let airDeskRenderedTransform = '';
-const airDeskFingerElements = new Map<number, HTMLElement>();
-const airDeskPathElements: SVGPolylineElement[] = [];
-const airDeskRenderedPathLengths: number[] = [];
-
-function airDeskClientPoint(point: Pick<AirPoint, 'x' | 'y'>): { x: number; y: number } {
-  const rect = airStage.getBoundingClientRect();
-  return { x: rect.left + point.x * rect.width, y: rect.top + point.y * rect.height };
-}
-
-function airDeskImagePoint(client: { x: number; y: number }, at: number): AirPoint | null {
-  const rect = airDeskImage.getBoundingClientRect();
-  if (client.x < rect.left || client.x > rect.right || client.y < rect.top || client.y > rect.bottom) return null;
-  return { x: (client.x - rect.left) / rect.width, y: (client.y - rect.top) / rect.height, t: at };
-}
-
-function pickAirDeskTarget(client: { x: number; y: number }): HTMLElement | null {
-  const exact = document.elementFromPoint(client.x, client.y) as HTMLElement | null;
-  if (exact?.closest('[data-airdesk-action], [data-airdesk-text-action], [data-airdesk-handle], #airdesk-image, #airdesk-editor')) {
-    return exact;
-  }
-  const targets: TargetRect<HTMLElement>[] = [];
-  for (const element of document.querySelectorAll<HTMLElement>('[data-airdesk-action], [data-airdesk-text-action], [data-airdesk-handle]')) {
-    const rect = element.getBoundingClientRect();
-    if (rect.width === 0 || rect.height === 0) continue;
-    targets.push({ target: element, left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom });
-  }
-  const stageRect = airStage.getBoundingClientRect();
-  const radius = Math.min(38, Math.max(22, Math.hypot(stageRect.width, stageRect.height) * 0.022));
-  return nearestTargetWithin(client, targets, radius);
-}
-
-function renderAirDeskImage(): void {
-  const transform = airDesk.getTransform();
-  const transformKey = `${transform.x}|${transform.y}|${transform.scale}|${transform.rotation}|${transform.flipX}|${transform.flipY}|${airStage.clientWidth}|${airStage.clientHeight}`;
-  if (transformKey !== airDeskRenderedTransform) {
-    airDeskRenderedTransform = transformKey;
-    airDeskImage.style.setProperty('--image-x', `${transform.x * airStage.clientWidth}px`);
-    airDeskImage.style.setProperty('--image-y', `${transform.y * airStage.clientHeight}px`);
-    airDeskImage.style.setProperty('--image-scale', String(transform.scale));
-    airDeskImage.style.setProperty('--image-rotation', `${transform.rotation}deg`);
-    airDeskImage.style.setProperty('--image-flip-x', transform.flipX ? '-1' : '1');
-    airDeskImage.style.setProperty('--image-flip-y', transform.flipY ? '-1' : '1');
-    airDeskImage.dataset.transformX = transform.x.toFixed(4);
-    airDeskImage.dataset.transformY = transform.y.toFixed(4);
-    airDeskImage.dataset.transformScale = transform.scale.toFixed(4);
-    airDeskImage.dataset.transformRotation = transform.rotation.toFixed(2);
-    airDeskImage.dataset.transformFlipX = String(transform.flipX);
-  }
-  airDeskImage.classList.toggle('gesture-held', airDesk.isSpatialTransforming());
-  const drawingRevision = airDesk.getDrawingRevision();
-  if (drawingRevision !== airDeskRenderedDrawingRevision) {
-    airDeskRenderedDrawingRevision = drawingRevision;
-    const svgNs = 'http://www.w3.org/2000/svg';
-    const paths = airDesk.getRenderablePaths();
-    while (airDeskPathElements.length < paths.length) {
-      const line = document.createElementNS(svgNs, 'polyline');
-      line.setAttribute('fill', 'none');
-      line.setAttribute('stroke', '#f2c94c');
-      line.setAttribute('stroke-width', '3');
-      line.setAttribute('stroke-linecap', 'round');
-      line.setAttribute('stroke-linejoin', 'round');
-      airDeskDrawings.appendChild(line);
-      airDeskPathElements.push(line);
-      airDeskRenderedPathLengths.push(-1);
-    }
-    while (airDeskPathElements.length > paths.length) {
-      airDeskPathElements.pop()?.remove();
-      airDeskRenderedPathLengths.pop();
-    }
-    for (let index = 0; index < paths.length; index++) {
-      const path = paths[index];
-      if (airDeskRenderedPathLengths[index] === path.length) continue;
-      airDeskRenderedPathLengths[index] = path.length;
-      airDeskPathElements[index].setAttribute('points', path.map((point) => `${point.x * 320},${point.y * 210}`).join(' '));
-    }
-  }
-  document.getElementById('airdesk-draw-btn')?.classList.toggle('active', airDesk.getTool() === 'draw');
-}
-
-function renderAirDeskFingers(fingertips: AirDeskHandSample['fingertips']): void {
-  airDeskFingerLayer.hidden = false;
-  const width = airDeskFingerLayer.clientWidth;
-  const height = airDeskFingerLayer.clientHeight;
-  for (const finger of fingertips) {
-    let dot = airDeskFingerElements.get(finger.index);
-    if (!dot) {
-      dot = document.createElement('i');
-      dot.dataset.finger = String(finger.index);
-      airDeskFingerElements.set(finger.index, dot);
-      airDeskFingerLayer.appendChild(dot);
-    }
-    dot.className = `airdesk-finger${finger.extended ? ' extended' : ''}`;
-    dot.style.transform = `translate3d(${finger.point.x * width}px, ${finger.point.y * height}px, 0)`;
-  }
-}
-
-function renderAirDeskGesture(sample: AirDeskHandSample): void {
-  const labels = { hover: 'THEO DÕI', open: 'BÀN TAY MỞ', pinch: 'CHỤM', transform: 'BIẾN ĐỔI 2 NGÓN' } as const;
-  const mode = airDesk.isSpatialTransforming() && sample.pinch ? 'transform' : sample.gesture;
-  airDeskGestureMode.textContent = labels[mode];
-  airDeskGestureHud.dataset.active = String(mode === 'transform');
-  // Absolute palm/back naming depends on camera mirroring and handedness.
-  // Expose the measured face as A/B; the transform recognizer uses a relative
-  // face transition, which is the reliable signal for a natural flip.
-  const facing = sample.transformPose.palmFacing < 0 ? 'A' : 'B';
-  airDeskGestureValues.textContent = `TÂM ${Math.round(sample.transformPose.center.x * 100)},${Math.round(sample.transformPose.center.y * 100)} · MỞ ${sample.transformPose.pinchRatio.toFixed(2)} · GÓC ${Math.round(sample.transformPose.palmAngle * 180 / Math.PI)}° · MẶT ${facing}`;
-  const thumb = sample.fingertips.find((finger) => finger.index === 4)?.point;
-  const index = sample.fingertips.find((finger) => finger.index === 8)?.point;
-  if (!thumb || !index || (!sample.pinch && !airDesk.isSpatialTransforming())) {
-    airDeskPinchLine.hidden = true;
-    return;
-  }
-  const width = airDeskFingerLayer.clientWidth;
-  const height = airDeskFingerLayer.clientHeight;
-  const x1 = thumb.x * width;
-  const y1 = thumb.y * height;
-  const dx = index.x * width - x1;
-  const dy = index.y * height - y1;
-  airDeskPinchLine.hidden = false;
-  airDeskPinchLine.style.width = `${Math.hypot(dx, dy)}px`;
-  airDeskPinchLine.style.transform = `translate3d(${x1}px, ${y1}px, 0) rotate(${Math.atan2(dy, dx)}rad)`;
-}
-
-function clearAirDeskFingers(): void {
-  airDeskFingerLayer.hidden = true;
-  airDeskPinchLine.hidden = true;
-  airDeskGestureMode.textContent = 'MẤT TAY';
-  airDeskGestureValues.textContent = 'TÂM — · MỞ — · GÓC — · MẶT —';
-  airDeskGestureHud.dataset.active = 'false';
-}
-
-function pointRangeAt(client: { x: number; y: number }): Range | null {
-  const documentWithCaret = document as Document & { caretRangeFromPoint?: (x: number, y: number) => Range | null };
-  return documentWithCaret.caretRangeFromPoint?.(client.x, client.y) ?? null;
-}
-
-function updateAirDeskTextSelection(client: { x: number; y: number }): void {
-  if (!airDeskTextAnchor) return;
-  const focus = pointRangeAt(client);
-  if (!focus || !airDeskEditor.contains(focus.startContainer)) return;
-  const selection = window.getSelection();
-  if (!selection) return;
-  selection.setBaseAndExtent(
-    airDeskTextAnchor.startContainer, airDeskTextAnchor.startOffset,
-    focus.startContainer, focus.startOffset
-  );
-}
-
-function performAirDeskTextAction(action: string): void {
-  airDeskEditor.focus();
-  const selection = window.getSelection();
-  if (action === 'spell') {
-    airDeskEditor.textContent = (airDeskEditor.textContent ?? '').replace(/tập kêt/g, 'tập kết');
-    shell.setAirDeskStatus('Đã áp dụng đề xuất: “tập kết”.');
-    return;
-  }
-  if (!selection?.toString()) {
-    const range = document.createRange();
-    range.selectNodeContents(airDeskEditor);
-    selection?.removeAllRanges();
-    selection?.addRange(range);
-  }
-  if (action === 'copy') {
-    const text = selection?.toString() ?? '';
-    void navigator.clipboard?.writeText(text).catch(() => undefined);
-    document.execCommand('copy');
-    shell.setAirDeskStatus('Đã sao chép phần chữ đang chọn.');
-  } else if (action === 'cut') {
-    document.execCommand('cut');
-    shell.setAirDeskStatus('Đã cắt phần chữ đang chọn.');
-  } else if (action === 'delete') {
-    document.execCommand('delete');
-    shell.setAirDeskStatus('Đã xóa phần chữ đang chọn.');
-  }
-}
-
-function handleAirDeskLandmarks(
-  landmarks: import('./airsketch-types').HandLandmark[] | null,
-  capturedAt = performance.now(),
-  receivedAt = performance.now()
-): void {
-  if (!airDeskOn) return;
-  if (!landmarks) {
-    // A worker may return an occasional empty sample during a turn or brief
-    // blur. Do not make all five markers flash out, or drop an active drag,
-    // until the same bounded continuity window used by AirSketch has elapsed.
-    if (receivedAt - airDeskLastSeenAt < AIRSKETCH_CONFIG.tracking.lostHandGraceMs) {
-      if (airDeskLossTimer == null) {
-        airDeskLossTimer = setTimeout(() => {
-          airDeskLossTimer = null;
-          if (airDeskOn && performance.now() - airDeskLastSeenAt >= AIRSKETCH_CONFIG.tracking.lostHandGraceMs) {
-            clearAirDeskFingers();
-            airDesk.end();
-            airDeskGesture = null;
-          }
-        }, AIRSKETCH_CONFIG.tracking.lostHandGraceMs);
-      }
-      return;
-    }
-    clearAirDeskFingers();
-    airDesk.end();
-    airDeskGesture = null;
-    return;
-  }
-  airDeskLastSeenAt = receivedAt;
-  if (airDeskLossTimer != null) {
-    clearTimeout(airDeskLossTimer);
-    airDeskLossTimer = null;
-  }
-  const sample = airDesk.hand(landmarks, capturedAt, receivedAt);
-  if (!sample) return;
-  renderAirDeskFingers(sample.fingertips);
-  renderAirDeskGesture(sample);
-  const client = airDeskClientPoint(sample.pointer);
-  const target = pickAirDeskTarget(client);
-  if (sample.justPinched) {
-    const imageAction = target?.closest<HTMLElement>('[data-airdesk-action]')?.dataset.airdeskAction as AirDeskAction | undefined;
-    const textAction = target?.closest<HTMLElement>('[data-airdesk-text-action]')?.dataset.airdeskTextAction;
-    if (imageAction) {
-      airDesk.perform(imageAction);
-      renderAirDeskImage();
-      shell.setAirDeskStatus(imageAction === 'toggle-draw' ? (airDesk.getTool() === 'draw' ? 'Chế độ vẽ trên ảnh đã bật.' : 'Chế độ di chuyển ảnh đã bật.') : 'Đã cập nhật ảnh.');
-    } else if (textAction) {
-      performAirDeskTextAction(textAction);
-    } else if (target?.closest('[data-airdesk-handle="scale"]')) {
-      airDesk.begin(sample.controlPointer, 'scale');
-      airDeskGesture = 'scale';
-      shell.setAirDeskStatus('Đang phóng to / thu nhỏ ảnh…');
-    } else if (target?.closest('[data-airdesk-handle="rotate"]')) {
-      airDesk.begin(sample.controlPointer, 'rotate');
-      airDeskGesture = 'rotate';
-      shell.setAirDeskStatus('Đang xoay ảnh…');
-    } else if (target?.closest('#airdesk-image')) {
-      const imagePoint = airDeskImagePoint(client, capturedAt);
-      if (airDesk.getTool() === 'draw' && imagePoint) {
-        airDesk.beginDrawing(imagePoint);
-        airDeskGesture = 'draw';
-        shell.setAirDeskStatus('Đang vẽ trực tiếp lên ảnh…');
-      } else {
-        airDesk.beginSpatialTransform(sample);
-        airDeskGesture = 'transform';
-        // Reflect pickup in the same camera result. Waiting for the next
-        // inference frame makes a successful clutch feel one frame late.
-        renderAirDeskGesture(sample);
-        shell.setAirDeskStatus('Đã cầm · tâm=kéo · mở hai ngón=zoom · xoay/lật bàn tay');
-      }
-    } else if (target?.closest('#airdesk-editor')) {
-      airDeskTextAnchor = pointRangeAt(client);
-      airDeskGesture = 'text';
-      updateAirDeskTextSelection(client);
-      shell.setAirDeskStatus('Đang chọn văn bản…');
-    }
-  }
-  if (sample.pinch) {
-    if (airDeskGesture === 'draw') {
-      const imagePoint = airDeskImagePoint(client, capturedAt);
-      if (imagePoint) airDesk.draw(imagePoint);
-    } else if (airDeskGesture === 'transform') {
-      airDesk.moveSpatialTransform(sample);
-    } else if (airDeskGesture === 'move' || airDeskGesture === 'scale' || airDeskGesture === 'rotate') {
-      airDesk.move(sample.controlPointer);
-    } else if (airDeskGesture === 'text') {
-      updateAirDeskTextSelection(client);
-    }
-    renderAirDeskImage();
-  }
-  if (sample.justReleased) {
-    airDesk.end();
-    airDeskGesture = null;
-    airDeskTextAnchor = null;
-    renderAirDeskImage();
-    shell.setAirDeskStatus('Đã đặt · chụm trên ảnh để cầm lại.');
-  }
-}
-
-function setAirDesk(on: boolean): void {
-  if (on && airSketchOn) setAirSketch(false);
-  airDeskOn = on;
-  shell.setAirDeskActive(on);
-  if (on) {
-    shell.setMode('rgb');
-    renderAirDeskImage();
-    spawnAirWorkers();
-    shell.setAirDeskStatus('Đang chuẩn bị tracking tay · các đầu ngón sẽ hiện màu vàng.');
-  } else {
-    airDesk.reset();
-    airDeskGesture = null;
-    airDeskTextAnchor = null;
-    airDeskLastSeenAt = -Infinity;
-    if (airDeskLossTimer != null) clearTimeout(airDeskLossTimer);
-    airDeskLossTimer = null;
-    clearAirDeskFingers();
-  }
-  diagnostics.record('airdesk.toggle', { on });
-}
-
-for (const control of document.querySelectorAll<HTMLButtonElement>('[data-airdesk-action]')) {
-  control.addEventListener('click', () => {
-    airDesk.perform(control.dataset.airdeskAction as AirDeskAction);
-    renderAirDeskImage();
-  });
-}
-for (const control of document.querySelectorAll<HTMLButtonElement>('[data-airdesk-text-action]')) {
-  control.addEventListener('click', () => performAirDeskTextAction(control.dataset.airdeskTextAction ?? ''));
-}
-
-function applyAirPen(point: AirPoint, down: boolean) {
-  if (down) {
-    if (!airPenWasDown) airInk.begin(point);
-    else airInk.move(point);
-    airPenWasDown = true;
-    noteAirInkChanged();
-  } else if (airPenWasDown) {
-    const completed = airInk.currentSnapshot()[0];
-    airInk.end();
-    if (completed && completed.points.length >= 2) airScene.addStroke(completed);
-    airPenWasDown = false;
-    noteAirInkChanged();
-  }
-}
-
-function handleAirLandmarks(
-  landmarks: import('./airsketch-types').HandLandmark[] | null,
-  capturedAt = performance.now(),
-  receivedAt = performance.now()
-) {
-  if (!airSketchOn || airPointerActive) return;
-  if (!landmarks) {
-    // Tracker confidence can briefly disappear during fast movement or motion
-    // blur. Do not end the active stroke/object on one missing observation.
-    if (!airInteraction.shouldReleaseAfterMissing(receivedAt)) return;
-    applyAirPen({ x: 0, y: 0, t: performance.now() }, false);
-    airInteraction.release();
-    shell.setAirSketchCursor(null);
-    return;
-  }
-  const sample = airInteraction.update(landmarks, capturedAt, receivedAt);
-  if (!sample || !sceneApi) return;
-  const rect = sceneApi.imageRectPx();
-  const point = {
-    x: (rect.x + sample.cursor.x * rect.w) / Math.max(1, airStage.clientWidth),
-    y: (rect.y + sample.cursor.y * rect.h) / Math.max(1, airStage.clientHeight),
-    t: sample.cursor.t
-  };
-  const grabPoint = {
-    x: (rect.x + sample.grabCursor.x * rect.w) / Math.max(1, airStage.clientWidth),
-    y: (rect.y + sample.grabCursor.y * rect.h) / Math.max(1, airStage.clientHeight),
-    t: sample.grabCursor.t
-  };
-  let interactionNotice: string | null = null;
-  // A pinch that begins on an existing scene object means “pick this up”. A
-  // pinch on empty space remains the pen clutch. Spatial intent is more
-  // reliable than forcing an open-palm timing gesture before every pickup.
-  if (sample.justPinched && sample.mode === 'drawing') {
-    const object = airScene.beginGrab(point, grabPoint, sample.palmSpan);
-    if (object && airInteraction.promotePinchToGrab()) {
-      sample.mode = 'grabbing';
-      sample.penDown = false;
-      interactionNotice = 'Đang cầm vật thể · đưa tay gần/xa để đổi kích thước';
-    } else if (object) {
-      airScene.release();
-    }
-  }
-  // The interaction controller decides whether the pen is down; this bridge
-  // is the sole path that turns a tracked hand sample into an ink stroke.
-  // Keep it before scene manipulation so releasing a stroke first commits it
-  // as a selectable object.
-  applyAirPen(point, sample.penDown);
-  const cursorGesture = sample.mode === 'drawing' ? 'draw' : sample.mode === 'grabbing' ? 'grab' : sample.mode === 'manipulating' ? 'manipulate' : 'hover';
-  shell.setAirSketchCursor(sample.fist ? null : point, cursorGesture);
-  if (sample.justGrabbed) {
-    const object = airScene.beginGrab(point, grabPoint, sample.palmSpan);
-    interactionNotice = object ? 'Đang cầm vật thể · đưa tay gần/xa để đổi kích thước' : 'Không có vật thể trong vùng nhón';
-  }
-  if (sample.mode === 'grabbing') airScene.moveGrab(grabPoint, sample.palmSpan);
-  if (sample.justReleased) {
-    airScene.release();
-    interactionNotice = 'Đã đặt vật thể · xòe bàn tay để cầm vật khác';
-  }
-  if (interactionNotice) shell.setAirSketchStatus(interactionNotice);
-  else if (sample.mode === 'drawing') shell.setAirSketchStatus('Đang vẽ · nới ngón cái + trỏ để nhấc bút');
-  else if (sample.mode === 'manipulating') shell.setAirSketchStatus('Chế độ cầm · chụm ngón cái + trỏ gần vật thể để cầm');
-  else if (sample.mode === 'idle') shell.setAirSketchStatus(sample.fist
-    ? 'Bút đã hạ · giơ trỏ để định vị, chụm cái + trỏ để vẽ'
-    : sample.openPalm
-      ? `Giữ bàn tay mở để vào chế độ cầm · ${Math.round(sample.manipulationProgress * 100)}%`
-      : 'Giơ trỏ để định vị · chụm cái + trỏ để vẽ');
-  // Ink writes already render in applyAirPen(). Only scene manipulation needs
-  // an explicit redraw here; the old unconditional call painted every drawing
-  // sample twice and competed with hand tracking on the main thread.
-  if (sample.mode === 'grabbing' || sample.justGrabbed || sample.justReleased) renderAirInk();
-}
-
-function pointerPoint(event: PointerEvent): AirPoint {
-  const rect = airCanvas.getBoundingClientRect();
-  return {
-    x: Math.min(1, Math.max(0, (event.clientX - rect.left) / Math.max(1, rect.width))),
-    y: Math.min(1, Math.max(0, (event.clientY - rect.top) / Math.max(1, rect.height))),
-    t: performance.now()
-  };
-}
-
-airCanvas.addEventListener('pointerdown', (event) => {
-  if (!airSketchOn) return;
-  airPointerActive = true;
-  airCanvas.setPointerCapture(event.pointerId);
-  applyAirPen(pointerPoint(event), true);
-});
-airCanvas.addEventListener('pointermove', (event) => {
-  if (airPointerActive) applyAirPen(pointerPoint(event), true);
-});
-const endPointer = (event: PointerEvent) => {
-  if (!airPointerActive) return;
-  applyAirPen(pointerPoint(event), false);
-  airPointerActive = false;
-};
-airCanvas.addEventListener('pointerup', endPointer);
-airCanvas.addEventListener('pointercancel', endPointer);
-
-function maybeClassifyAirSketch(now: number) {
-  if (!airSketchOn || !airClassifierReady || airClassifierBusy || airInk.isDrawing() || !airInk.hasInk()) return;
-  if (airLastClassifiedRevision === airInk.revision || now - airLastInkAt < AIRSKETCH_CONFIG.recognition.idleMs) return;
-  const image = rasterizeAirStrokes(airInk.snapshot());
-  if (!image) return;
-  airClassifierBusy = true;
-  airLastClassifiedRevision = airInk.revision;
-  shell.setAirSketchStatus('Đang đoán hình bạn vừa vẽ…');
-  const rgba = image.data.slice().buffer;
-  airClassifierWorker?.postMessage({
-    type: 'classify', rgba, width: image.width, height: image.height, revision: airInk.revision
-  }, [rgba]);
-}
-
-window.__roboeyeAirSketchBenchmark = {
-  snapshot: () => airMetrics.snapshot(
-    airInk.strokeCount(),
-    airInk.pointCount(),
-    { hand: airHandReady, classifier: airClassifierReady, handStage: airHandStage },
-    airScene.snapshot().length
-  ),
-  classifyImage: (rgba, width, height) => new Promise((resolve, reject) => {
-    if (!airClassifierWorker || !airClassifierReady) {
-      reject(new Error('AirSketch classifier chưa sẵn sàng'));
-      return;
-    }
-    const revision = airBenchmarkRevision--;
-    const buffer = rgba.slice().buffer;
-    const timer = setTimeout(() => {
-      airBenchmarkClassifications.delete(revision);
-      reject(new Error('AirSketch benchmark inference timeout'));
-    }, 30_000);
-    airBenchmarkClassifications.set(revision, { resolve, reject, timer });
-    airClassifierWorker.postMessage({ type: 'classify', rgba: buffer, width, height, revision }, [buffer]);
-  })
-};
 
 function spawnDetectWorker() {
   const instance = new Worker(new URL('./worker/detect-worker.ts', import.meta.url), { type: 'module' });
@@ -1584,18 +810,18 @@ function retryDepthWorker() {
 
 function captureAirHandFrame(sourceAt: number, callbackAt = performance.now()): void {
   const currentVideo = video;
-  const interval = 1_000 / AIRSKETCH_CONFIG.tracking.maxFps;
-  if ((!airSketchOn && !airDeskOn && !roboHandOn) || !airHandReady || (airSketchOn && airClassifierLoading) || airHandBusy || frozen ||
+  const interval = 1_000 / HAND_TRACKING_CONFIG.tracking.maxFps;
+  if (!roboHandOn || !airHandReady || airHandBusy || frozen ||
       !airHandWorker || !currentVideo || currentVideo.readyState < 2 || callbackAt - airLastCaptureAt < interval) return;
   airHandBusy = true;
   airLastCaptureAt = callbackAt;
   const aspect = currentVideo.videoWidth / Math.max(1, currentVideo.videoHeight);
-  const width = AIRSKETCH_CONFIG.tracking.captureWidth;
+  const width = HAND_TRACKING_CONFIG.tracking.captureWidth;
   const height = Math.max(2, Math.round(width / Math.max(0.1, aspect)));
   const captureStartedAt = performance.now();
   void createImageBitmap(currentVideo, { resizeWidth: width, resizeHeight: height, resizeQuality: 'medium' })
     .then((bitmap) => {
-      if ((!airSketchOn && !airDeskOn && !roboHandOn) || !airHandWorker || currentVideo !== video) {
+      if (!roboHandOn || !airHandWorker || currentVideo !== video) {
         bitmap.close();
         airHandBusy = false;
         return;
@@ -1607,7 +833,7 @@ function captureAirHandFrame(sourceAt: number, callbackAt = performance.now()): 
     })
     .catch((error) => {
       airHandBusy = false;
-      diagnostics.record('airsketch.capture.error', { message: error instanceof Error ? error.message : String(error) });
+      diagnostics.record('robohand.capture.error', { message: error instanceof Error ? error.message : String(error) });
     });
 }
 
@@ -1623,10 +849,9 @@ function startAirVideoFrameLoop(): void {
   const onFrame = (now: DOMHighResTimeStamp, metadata: VideoFrameCallbackMetadata) => {
     if (generation !== airVideoFrameGeneration || currentVideo !== video) return;
     airVideoFrameCallbackId = currentVideo.requestVideoFrameCallback(onFrame);
-    if ((airSketchOn || airDeskOn || roboHandOn) && airLastPresentedFrame > 0 && metadata.presentedFrames > airLastPresentedFrame + 1) {
+    if (roboHandOn && airLastPresentedFrame > 0 && metadata.presentedFrames > airLastPresentedFrame + 1) {
       const dropped = metadata.presentedFrames - airLastPresentedFrame - 1;
-      airMetrics.addDroppedVideoFrames(dropped);
-      if (roboHandOn) roboHandMetrics.addDroppedVideoFrames(dropped);
+      roboHandMetrics.addDroppedVideoFrames(dropped);
     }
     airLastPresentedFrame = metadata.presentedFrames;
     // captureTime is available for camera-backed media in supporting browsers;
@@ -1713,7 +938,7 @@ async function start() {
   if (roboHandOn) {
     shell.hideBoot();
     shell.setRoboHandStatus('Camera đã mở · đang khởi động tracking tối đa 42 khớp…');
-    spawnAirWorkers();
+    spawnHandWorker();
   } else {
     spawnWorker();
   }
@@ -1746,7 +971,6 @@ async function boot() {
   }
   window.addEventListener('resize', () => {
     sceneApi?.resize();
-    resizeAirCanvas();
   });
 
   let lastT = performance.now();
@@ -1757,9 +981,9 @@ async function boot() {
     renderDtEma = renderDtEma * 0.9 + dt * 0.1;
 
     // Depth đọc pixel rất tốn tài nguyên. Khi người dùng đang xem RGB với
-    // detection hoặc AirSketch, video texture vẫn cập nhật trực tiếp còn depth
+    // detection hoặc RoboHand, video texture vẫn cập nhật trực tiếp còn depth
     // được nhường tài nguyên cho model tương tác thời gian thực.
-    if (workerReady && !workerBusy && !frozen && worker && !airSketchOn && !airDeskOn && !roboHandOn &&
+    if (workerReady && !workerBusy && !frozen && worker && !roboHandOn &&
         (!detectOn || shell.currentMode() !== 'rgb')) {
       const img = captureFrame(captureW, depthCapture);
       if (img) {
@@ -1796,7 +1020,6 @@ async function boot() {
       const presentedCaptureAt = sceneApi?.consumeRobotHandPresentedFrame();
       if (presentedCaptureAt != null) roboHandMetrics.addPipeline(now - presentedCaptureAt);
     }
-    maybeClassifyAirSketch(now);
 
     // Overlay 2D box: chỉ ở chế độ RGB và Depth (cloud dùng 3D box, BEV ẩn)
     if (sceneApi) {

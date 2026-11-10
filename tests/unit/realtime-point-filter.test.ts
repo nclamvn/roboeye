@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { distanceToRect, nearestTargetWithin } from '../../src/airdesk-targeting';
 import { RealtimePointFilter } from '../../src/realtime-point-filter';
 
 test('1€ filter reduces stationary landmark jitter without freezing fast motion', () => {
@@ -21,15 +20,4 @@ test('1€ filter reduces stationary landmark jitter without freezing fast motio
   assert.ok(moved.stable.x > 0.64, 'speed-adaptive cutoff follows an intentional movement');
   assert.ok(moved.display.x >= moved.stable.x, 'display point compensates measured result age');
   assert.ok(moved.display.x - moved.stable.x <= 0.035001, 'prediction stays bounded');
-});
-
-test('nearest target acquisition enlarges small controls but selects only the closest', () => {
-  const targets = [
-    { target: 'left', left: 10, top: 10, right: 20, bottom: 20 },
-    { target: 'right', left: 40, top: 10, right: 50, bottom: 20 }
-  ];
-  assert.equal(distanceToRect({ x: 26, y: 15 }, targets[0]), 6);
-  assert.equal(nearestTargetWithin({ x: 26, y: 15 }, targets, 20), 'left');
-  assert.equal(nearestTargetWithin({ x: 34, y: 15 }, targets, 20), 'right');
-  assert.equal(nearestTargetWithin({ x: 80, y: 80 }, targets, 20), null);
 });

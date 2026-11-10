@@ -152,34 +152,6 @@ Các định dạng xuất:
 - **YOLO:** `class cx cy width height` đã chuẩn hóa, kèm `classes.txt`.
 - **3D JSON:** box 2D và box 3D trong không gian view theo tỷ lệ tương đối. Đây không phải tọa độ mét thật.
 
-## AirSketch — Vẽ · Đoán · Nói
-
-Nhấn **AirSketch** sau khi mở camera. Chụm ngón cái và ngón trỏ để hạ bút,
-di chuyển ngón trỏ để vẽ, thả chụm để nhấc bút. Giữ hai ngón để hoàn tác;
-giữ bàn tay mở để xóa. Chuột và cảm ứng dùng cùng đường nét vẽ khi tracking
-chưa sẵn sàng.
-
-Sau 650 ms dừng nét, QuickDraw SE-ResNet trả năm gợi ý tiếng Việt. Chạm một gợi ý
-để xác nhận và ghép vào câu, rồi chọn **Nói câu này** để trình duyệt đọc bằng giọng Việt.
-Sidecar dự đoán nằm ngoài vùng camera trên desktop và xuống dưới stage trên
-mobile, nên chữ không che nét vẽ/vật thể.
-
-MediaPipe Hand Landmarker và QuickDraw đều chạy local trong worker; frame camera
-không được upload. Bộ đoán dùng raster 28×28 đúng pipeline QuickDraw và phủ tiếng
-Việt cho đủ 345 lớp. Kết quả mơ hồ được báo “chưa đủ chắc chắn”; hệ thống không tự
-đọc gợi ý chưa được chọn. Đây là AAC, không phải trình dịch ngôn ngữ ký hiệu, không
-phải kênh cứu hộ duy nhất và không đảm bảo đoán đúng mọi kiểu vẽ.
-
-Kiểm thử riêng:
-
-```bash
-npm run test:airsketch-e2e     # contract bằng worker fixture
-npm run test:airsketch-models  # model thật + latency p50/p95
-npm run test:airsketch-quality # top-1/top-3 trên mẫu QuickDraw chính thức
-```
-
-Smoke local giữ ngân sách hand p95 mặc định 80 ms. Shared CI dùng trần 250 ms để phát hiện treo/hồi quy lớn mà không biến độ nhiễu phần cứng runner thành lỗi tương thích model; có thể ghi đè bằng `AIRSKETCH_HAND_P95_MAX_MS`.
-
 ## RoboHand Mirror — sao chép bàn tay sang robot 3D
 
 Nhấn mode **5 · RoboHand** sau khi mở camera. Bàn tay exoskeleton PBR ở vùng
@@ -191,8 +163,8 @@ Open, fist, point, pinch, V và OK được hiện như telemetry, không phải
 giới hạn chuyển động. Pose trung gian vẫn được retarget. Solver dùng world
 landmarks cho articulation, normalized landmarks cho vị trí/kích thước, rồi
 đưa kết quả qua adaptive filtering, root prediction bị chặn và tracking-loss
-hold 220 ms. Depth, detection và QuickDraw được nhường tài nguyên khi mode này
-hoạt động. Mô hình robot được tạo hoàn toàn bằng code và không tải asset 3D ngoài.
+hold 220 ms. Depth và detection được nhường tài nguyên khi mode này hoạt động.
+RoboHand Studio dùng mô hình Sharpa Wave; xem giấy phép và nguồn trong thư mục asset.
 
 ```bash
 npm run test:robohand-e2e  # worker → pose → HUD/render contract
@@ -212,12 +184,9 @@ npm run build:offline
 npm run preview
 ```
 
-Lệnh này kiểm revision + SHA-256, đóng model depth q8 cùng Hand Landmarker,
-QuickDraw TFLite và 345 nhãn vào `dist/models/`, rồi đặt ứng dụng sang WASM/local
-model ngay từ build. Vì vậy tracking ngón tay và nhận diện AirSketch vẫn cold-start
-khi không có Internet. Detection bị khóa trong artifact offline vì RT-DETR/OWL-ViT
-chưa có manifest được phê duyệt. Model sinh ra chỉ nằm trong `dist/` và cache bị
-ignore, không được commit.
+Lệnh này kiểm revision + SHA-256, đóng model depth q8 và Hand Landmarker vào
+`dist/models/`, rồi đặt ứng dụng sang WASM/local model. Detection bị khóa
+trong artifact offline chuẩn. Model và cache sinh ra không được commit.
 
 Với demo offline, giữ nguyên cấu trúc snapshot của từng model dưới `public/models/`:
 
@@ -229,10 +198,9 @@ public/models/Xenova/owlvit-base-patch32/
 
 Mỗi snapshot phải gồm config, preprocessor/tokenizer liên quan và các file ONNX mà Transformers.js chọn theo dtype/device. Nếu chỉ chuẩn bị model depth, bốn chế độ perception vẫn chạy nhưng không bật được detection offline. Mặc định không có `?localmodels=1`, trình duyệt tải model cần dùng từ Hugging Face và cache lại.
 
-Runtime WASM của onnxruntime, MediaPipe và TFLite được tự host trong `/ort/`,
-`/mediapipe/` và `/tflite/` (`scripts/copy-ort.mjs` chạy tự động trước dev/build),
-không phụ thuộc CDN runtime. Bản online tải hai model AirSketch từ nguồn đã pin;
-bản `build:offline` mang model đã kiểm checksum theo artifact.
+Runtime WASM của ONNX Runtime và MediaPipe được tự host trong `/ort/` và
+`/mediapipe/`. Để chạy RoboHand với `?localmodels=1` trong dev, dùng
+`npm run assets:hand`. Bản build tự chuẩn bị model đã kiểm checksum.
 
 ## Kịch bản demo 5 phút
 

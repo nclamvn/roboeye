@@ -1,4 +1,4 @@
-import type { HandLandmark } from './airsketch-types';
+import type { HandLandmark } from './hand-tracking-types';
 import type { HandTask } from './robohand-retarget';
 
 export interface Vec3 {

@@ -6,7 +6,6 @@ export function installMockWorkers() {
   window.__detectionInits = [];
   window.__lastDetectionFrame = null;
   window.__detectionInitCount = 0;
-  window.__lastAirClassify = null;
   window.__lastAirHandInit = null;
   // E2E can queue deterministic MediaPipe-shaped hand landmarks.  A frame is
   // consumed only when the application asks the hand worker to infer, so this
@@ -42,7 +41,6 @@ export function installMockWorkers() {
         : workerUrl.includes('drive-range-worker') ? 'drive-range'
           : workerUrl.includes('detect-worker') || workerUrl.includes('drive-lite-worker') ? 'detection'
             : workerUrl.includes('air-hand-worker') ? 'air-hand'
-          : workerUrl.includes('air-classifier-worker') ? 'air-classifier'
             : 'depth';
       window.__mockWorkerKinds.push(this.kind);
       this.onmessage = null;
@@ -116,23 +114,6 @@ export function installMockWorkers() {
             sentAt: message.sentAt,
             delegate: 'CPU'
           });
-        }
-        return;
-      }
-      if (this.kind === 'air-classifier') {
-        if (message.type === 'init') this.emit({ type: 'ready', device: 'wasm' }, 5);
-        else if (message.type === 'classify') {
-          window.__lastAirClassify = { width: message.width, height: message.height, bytes: message.rgba.byteLength };
-          this.emit({
-            type: 'prediction',
-            revision: message.revision,
-            inferMs: 42,
-            predictions: [
-              { label: 'house', score: 0.91 },
-              { label: 'tree', score: 0.06 },
-              { label: 'car', score: 0.03 }
-            ]
-          }, 8);
         }
         return;
       }

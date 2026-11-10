@@ -4,10 +4,7 @@
 import type { Mode, InferDevice } from '../types';
 import type { DetBox, DetectionEngine } from '../detection-types';
 import { OWL_QUERY_PRESETS, type OwlQueryPresetId } from '../detection-presets';
-import type { AirGesture, SketchPrediction } from '../airsketch-types';
-import type { HandLandmark } from '../airsketch-types';
-import { localizeSketchLabel } from '../airsketch-labels';
-import { assessSketchConfidence } from '../airsketch-confidence';
+import type { HandLandmark } from '../hand-tracking-types';
 
 export interface ShellCallbacks {
   onMode(mode: Mode): void;
@@ -30,13 +27,6 @@ export interface ShellCallbacks {
   onDemoStart(): void;
   onRetryDepth(): void;
   onDiagnostics(): void;
-  onAirSketch(on: boolean): void;
-  onAirDesk(on: boolean): void;
-  onAirUndo(): void;
-  onAirClear(): void;
-  onAirAddPrediction(index: number): void;
-  onAirSpeak(): void;
-  onAirClearPhrase(): void;
 }
 
 export interface ShellOptions {
@@ -71,13 +61,6 @@ export interface ShellAPI {
   startTour(): void;
   isFrozen(): boolean;
   currentMode(): Mode;
-  setAirSketchActive(on: boolean): void;
-  setAirDeskActive(on: boolean): void;
-  setAirDeskStatus(text: string): void;
-  setAirSketchStatus(text: string): void;
-  setAirSketchPredictions(predictions: SketchPrediction[]): void;
-  setAirSketchPhrase(words: string[]): void;
-  setAirSketchCursor(point: { x: number; y: number } | null, gesture?: AirGesture, progress?: number): void;
   setRoboHandActive(on: boolean): void;
   setRoboHandStatus(text: string): void;
   drawRoboHandLandmarks(
@@ -188,16 +171,6 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   const startBtn = $<HTMLButtonElement>('#start-btn');
   const demoStartBtn = $<HTMLButtonElement>('#demo-start-btn');
   const viewport = $('#viewport');
-  const airSketchBtn = $<HTMLButtonElement>('#airsketch-btn');
-  const airDeskBtn = $<HTMLButtonElement>('#airdesk-btn');
-  const airDock = $('#airsketch-dock');
-  const airDesk = $('#airdesk');
-  const airDeskStatus = $('#airdesk-status');
-  const airStatus = $('#air-status');
-  const airGuess = $('#air-guess');
-  const airPredictions = $('#air-predictions');
-  const airPhrase = $('#air-phrase');
-  const airCursor = $('#airsketch-cursor');
   const roboHandHud = $('#robohand-hud');
   const roboHandStatus = $('#robohand-status');
   const roboHandHandedness = $('#robohand-handedness');
@@ -206,8 +179,6 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
   const roboHandCameraLabel = $('#robohand-camera-label');
   const roboHandCameraStart = $<HTMLButtonElement>('#robohand-camera-start');
   const roboHandLandmarks = $<HTMLCanvasElement>('#robohand-landmarks');
-  let airSketchActive = false;
-  let airDeskActive = false;
 
   const tourSteps: Array<{ mode: Mode; title: string; copy: string }> = [
     { mode: 'rgb', title: 'Camera là điểm xuất phát', copy: 'Đây là tín hiệu thô duy nhất robot nhận được. Camera không rời khỏi thiết bị này.' },
@@ -271,15 +242,6 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
     mobileControlsBtn.setAttribute('aria-expanded', String(open));
   });
   diagnosticsBtn.addEventListener('click', () => cb.onDiagnostics());
-  airSketchBtn.addEventListener('click', () => cb.onAirSketch(!airSketchActive));
-  airDeskBtn.addEventListener('click', () => cb.onAirDesk(!airDeskActive));
-  $<HTMLButtonElement>('#airdesk-close-btn').addEventListener('click', () => cb.onAirDesk(false));
-  $<HTMLButtonElement>('#air-close-btn').addEventListener('click', () => cb.onAirSketch(false));
-  $<HTMLButtonElement>('#air-undo-btn').addEventListener('click', () => cb.onAirUndo());
-  $<HTMLButtonElement>('#air-clear-btn').addEventListener('click', () => cb.onAirClear());
-  $<HTMLButtonElement>('#air-add-btn').addEventListener('click', () => cb.onAirAddPrediction(0));
-  $<HTMLButtonElement>('#air-speak-btn').addEventListener('click', () => cb.onAirSpeak());
-  $<HTMLButtonElement>('#air-clear-phrase-btn').addEventListener('click', () => cb.onAirClearPhrase());
   runtimeRetryBtn.addEventListener('click', () => cb.onRetryDepth());
   runtimeDismissBtn.addEventListener('click', () => { runtimeNotice.hidden = true; });
 
@@ -330,7 +292,6 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
     if (keyToMode[e.key]) applyMode(keyToMode[e.key]);
     else if (e.key === 'f' || e.key === 'F') toggleFreeze();
     else if (e.key === '?' || e.key === '/') togglePanel();
-    else if (e.key === 'Escape' && airSketchActive) cb.onAirSketch(false);
     else if (e.key === 'Escape') togglePanel(false);
   });
 
@@ -523,63 +484,6 @@ export function createShell(cb: ShellCallbacks, options: ShellOptions): ShellAPI
         row.appendChild(del);
         objList.appendChild(row);
       });
-    },
-    setAirSketchActive(on) {
-      airSketchActive = on;
-      airSketchBtn.classList.toggle('active', on);
-      airSketchBtn.setAttribute('aria-pressed', String(on));
-      airDock.hidden = !on;
-      viewport.classList.toggle('airsketch-active', on);
-      airCursor.hidden = true;
-    },
-    setAirDeskActive(on) {
-      airDeskActive = on;
-      airDeskBtn.classList.toggle('active', on);
-      airDeskBtn.setAttribute('aria-pressed', String(on));
-      airDesk.hidden = !on;
-      viewport.classList.toggle('airdesk-active', on);
-    },
-    setAirDeskStatus(text) {
-      airDeskStatus.textContent = text;
-    },
-    setAirSketchStatus(text) {
-      airStatus.textContent = text;
-    },
-    setAirSketchPredictions(predictions) {
-      airPredictions.replaceChildren();
-      const confidence = assessSketchConfidence(predictions);
-      airGuess.dataset.confidence = confidence;
-      airGuess.textContent = !predictions[0]
-        ? 'Vẽ một vật thể'
-        : confidence === 'uncertain'
-          ? 'Chưa đủ chắc chắn'
-          : localizeSketchLabel(predictions[0].label);
-      predictions.forEach((prediction, index) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.dataset.label = prediction.label;
-        button.dataset.score = String(prediction.score);
-        const name = document.createElement('span');
-        name.textContent = localizeSketchLabel(prediction.label);
-        const score = document.createElement('small');
-        score.textContent = `${Math.round(prediction.score * 100)}%`;
-        button.append(name, score);
-        button.setAttribute('aria-label', `Thêm ${name.textContent} vào câu`);
-        button.addEventListener('click', () => cb.onAirAddPrediction(index));
-        airPredictions.appendChild(button);
-      });
-    },
-    setAirSketchPhrase(words) {
-      airPhrase.textContent = words.length ? words.join(' · ') : 'Chưa có từ nào';
-      airPhrase.classList.toggle('empty', words.length === 0);
-    },
-    setAirSketchCursor(point, gesture = 'hover', progress = 0) {
-      airCursor.hidden = !airSketchActive || point == null;
-      if (!point) return;
-      airCursor.style.left = `${point.x * 100}%`;
-      airCursor.style.top = `${point.y * 100}%`;
-      airCursor.style.setProperty('--hold-progress', `${Math.round(progress * 360)}deg`);
-      airCursor.dataset.gesture = gesture;
     },
     setRoboHandActive(on) {
       roboHandHud.hidden = !on;

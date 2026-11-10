@@ -1,4 +1,4 @@
-import type { HandLandmark } from './airsketch-types';
+import type { HandLandmark } from './hand-tracking-types';
 import { createHandTask } from './robohand-retarget';
 import {
   ROBOT_HAND_SEGMENTS,
