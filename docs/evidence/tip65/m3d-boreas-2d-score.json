@@ -1,0 +1,426 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "bb6ae7284c7ed86a57b25f80382dfbd19735e1e95820033271091ddb3ed38fe1",
+  "reviewSha256": "0a01de1bfe2132b8fe82dc6162a5950f75fd7ffa65f7eb0c53abe1d213d2a246",
+  "review": {
+    "method": "agent visual review of source RGB proposals, blind to model outputs",
+    "scope": "checkpoint boxes only; no human QA; no exhaustive per-frame labels"
+  },
+  "unit": "reviewed target-keyframe",
+  "truthKind": {
+    "ABC": "object motion relative to world",
+    "DS": "relative approach"
+  },
+  "totals": {
+    "A": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 30,
+      "tn": 1,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 6,
+      "unscoredFrameReports": 20,
+      "scoredKeyframes": 15,
+      "framesAbstained": 128
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 32,
+      "tn": 1,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 6,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 15,
+      "framesAbstained": 150
+    },
+    "C": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 32,
+      "tn": 1,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 6,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 15,
+      "framesAbstained": 150
+    },
+    "D": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 25,
+      "tn": 8,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 6,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 15,
+      "framesAbstained": 150
+    },
+    "S": {
+      "tp": 7,
+      "fp": 0,
+      "fn": 18,
+      "tn": 8,
+      "unmatchedReports": 9,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 1,
+      "unknownTargets": 6,
+      "unscoredFrameReports": 135,
+      "scoredKeyframes": 15,
+      "framesAbstained": 41
+    }
+  },
+  "clips": [
+    {
+      "id": "boreas-m3d-traffic",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 11,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 11,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 11,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "D": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 3,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "S": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 3,
+          "tn": 3,
+          "unmatchedReports": 5,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 1,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 52,
+          "scoredKeyframes": 5,
+          "framesAbstained": 10
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-or-gap": 1,
+          "weak-consensus": 49
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 49
+        },
+        "C": {
+          "warming-up": 3,
+          "valid": 34,
+          "long-background-mismatch": 13
+        },
+        "D": {
+          "first-frame": 1,
+          "valid": 44,
+          "insufficient-background-agreement": 5
+        },
+        "S": {
+          "valid": 50
+        }
+      },
+      "boxOverlapDiagnostic": {
+        "motion.moving": 11,
+        "motion.moving.with_overlap": 11,
+        "approach.unknown": 3,
+        "approach.unknown.with_overlap": 3,
+        "approach.approaching": 5,
+        "approach.approaching.with_overlap": 5,
+        "approach.not-approaching": 3,
+        "approach.not-approaching.with_overlap": 3
+      }
+    },
+    {
+      "id": "boreas-m3d-urban",
+      "lanes": {
+        "A": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 15,
+          "tn": 1,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 20,
+          "scoredKeyframes": 5,
+          "framesAbstained": 28
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 17,
+          "tn": 1,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 17,
+          "tn": 1,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "D": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 5,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "S": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 8,
+          "tn": 5,
+          "unmatchedReports": 2,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 60,
+          "scoredKeyframes": 5,
+          "framesAbstained": 4
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-or-gap": 1,
+          "valid": 47,
+          "localized-consensus": 2
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 47,
+          "insufficient-background-agreement": 2
+        },
+        "C": {
+          "warming-up": 5,
+          "valid": 40,
+          "adjacent-background-mismatch": 2,
+          "long-background-mismatch": 3
+        },
+        "D": {
+          "first-frame": 1,
+          "valid": 44,
+          "insufficient-background-agreement": 5
+        },
+        "S": {
+          "valid": 50
+        }
+      },
+      "boxOverlapDiagnostic": {
+        "motion.moving": 17,
+        "motion.moving.with_overlap": 12,
+        "approach.approaching": 13,
+        "approach.approaching.with_overlap": 8,
+        "approach.not-approaching": 5,
+        "approach.not-approaching.with_overlap": 2,
+        "approach.unknown": 3,
+        "approach.unknown.with_overlap": 3,
+        "motion.unknown": 3,
+        "motion.unknown.with_overlap": 1,
+        "motion.stationary": 1,
+        "motion.stationary.with_overlap": 0
+      }
+    },
+    {
+      "id": "boreas-m3d-crossing",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "D": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 7,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 7,
+          "tn": 0,
+          "unmatchedReports": 2,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 23,
+          "scoredKeyframes": 5,
+          "framesAbstained": 27
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-or-gap": 1,
+          "weak-consensus": 40,
+          "localized-consensus": 1,
+          "valid": 7,
+          "scale-ambiguous": 1
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 49
+        },
+        "C": {
+          "warming-up": 3,
+          "valid": 47
+        },
+        "D": {
+          "first-frame": 1,
+          "valid": 49
+        },
+        "S": {
+          "valid": 50
+        }
+      },
+      "boxOverlapDiagnostic": {
+        "motion.moving": 4,
+        "motion.moving.with_overlap": 4,
+        "approach.approaching": 7,
+        "approach.approaching.with_overlap": 6,
+        "motion.unknown": 3,
+        "motion.unknown.with_overlap": 2
+      }
+    }
+  ],
+  "stageMs": {
+    "detector": {
+      "p50": 42.29,
+      "p95": 188.0
+    },
+    "A": {
+      "p50": 10.28,
+      "p95": 23.1
+    },
+    "B": {
+      "p50": 32.28,
+      "p95": 54.93
+    },
+    "C": {
+      "p50": 54.12,
+      "p95": 88.83
+    },
+    "D": {
+      "p50": 16.12,
+      "p95": 26.8
+    },
+    "S": {
+      "p50": 0.06,
+      "p95": 0.1
+    }
+  },
+  "receiptSha256": "38e1dcc1a792e158f1740743b38fb56031eb3d95dec0d59b45df4878447b41ed",
+  "truthSha256": "3588a79921f2904e1e07c01231bdf301f2663e51b85d2c58a313d2eee7641494"
+}

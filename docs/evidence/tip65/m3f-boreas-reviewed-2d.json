@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "3d27e148f26a7f33178a871b174e1172450095afda9552a77c312aa22f587234",
+  "candidatesSha256": "4ca24212f50be8c0943bceb8519dcddd0af64df7b564661c6f718a442434f7e8",
+  "review": {
+    "method": "Agent visual review of ten RGB checkpoints before running any M3F inference. Corrected visible boxes; omitted ambiguous or heavily occluded objects.",
+    "scope": "Checkpoints only, not exhaustive per-frame labels, no human QA. Pose/LiDAR defines relative approach outside runtime. Heldout windows selected by source camera cadence and speed only."
+  },
+  "frames": {
+    "boreas-m3f-city-05": {"1":[185,435,378,543],"2":[443,399,524,490],"3":null,"4":null,"5":[698,409,719,464]},
+    "boreas-m3f-city-08": {"1":[196,435,379,541],"2":[0,405,221,512],"3":[452,400,524,482],"4":[743,410,765,474]},
+    "boreas-m3f-city-11": {"1":[192,436,376,541],"2":[807,408,840,489],"3":null,"4":null},
+    "boreas-m3f-city-14": {"1":[185,433,379,550],"2":[47,427,162,484],"3":[594,409,672,484],"4":null,"5":null},
+    "boreas-m3f-city-17": {"1":[173,432,373,551],"2":[625,408,717,497],"3":[469,397,522,463],"4":null,"5":null},
+    "boreas-m3f-stop-05": {"1":[386,427,556,560],"2":[636,421,824,541],"3":null,"4":[270,420,343,442]},
+    "boreas-m3f-stop-08": {"1":[385,427,556,560],"2":[585,409,691,485],"3":null,"4":[224,420,303,443],"5":null},
+    "boreas-m3f-stop-11": {"1":[385,427,556,560],"2":[554,408,616,459],"3":null,"4":[325,419,376,440]},
+    "boreas-m3f-stop-14": {"1":[385,427,556,560],"2":null,"3":[112,420,201,443],"4":[292,418,357,440]},
+    "boreas-m3f-stop-17": {"1":[628,419,857,587],"2":[385,427,556,560],"3":null,"4":[251,418,329,440]}
+  }
+}

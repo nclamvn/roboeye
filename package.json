@@ -18,6 +18,7 @@
     "test:assistive-lab": "node --import tsx tests/assistive-lab-e2e.mjs",
     "qa:assistive-foundation": "node scripts/qa-assistive-foundation.mjs",
     "qa:assistive-ios": "node scripts/qa-assistive-ios.mjs",
+    "qa:assist-scene-mac": "node scripts/qa-assist-scene-mac.mjs",
     "assets:assistive-objects": "node scripts/download-assistive-object-model.mjs",
     "qa:assistive-objects": "node scripts/qa-assistive-objects.mjs",
     "preflight:assistive-ios": "node scripts/preflight-assistive-ios.mjs",

@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 1,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "split": "exploratory-public-fixtures-not-holdout",
+  "pilotSha256": "003fb1fe279e45b59bd04b3b57bd11517661f48be80b5b02933ecb6e8671906d",
+  "runnerSha256": "acfd47b56daa3738d33db991107bcda6ecc79988dc493b7196717d2600803fee",
+  "detectorSourceSha256": "caeab779f8be15e4fb3b759a59c11159c353da71f5c5d76248dcc690db21a0a2",
+  "vlm": {
+    "id": "mlx-community/SmolVLM2-500M-Video-Instruct-mlx",
+    "revision": "fa57db46815177fbdfd65cc85a2b3416a8332268",
+    "weightsSha256": "a9839c8f79ecc93e54a00dc73cc0e68ba477debcd065d50c1c289fbb1075f981",
+    "modelLoadMs": 281.504,
+    "maxTokens": 96,
+    "temperature": 0,
+    "configSha256": "36159a671d8834df337219b588c03a1dde01e4b472f1e305746e837aaf75ec5d",
+    "versions": {
+      "mlx": "0.32.4",
+      "mlx-vlm": "0.7.12",
+      "transformers": "5.23.0",
+      "pillow": "13.0.0"
+    }
+  },
+  "fixtures": [
+    {
+      "id": "person",
+      "file": "person.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Man_with_marini%C3%A8re_t-shirt_and_backpack.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Man_with_marini%C3%A8re_t-shirt_and_backpack.jpg",
+      "author": "DimiTalen",
+      "license": "CC0 1.0 Universal Public Domain Dedication",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "None; original JPEG downloaded unchanged. Vision scales only in memory.",
+      "sha256": "de9565c79063bb83b9eeac059b7732b97865c8102e19c63e847962593a580d9f",
+      "bytes": 3940030,
+      "expectedClass": "person"
+    },
+    {
+      "id": "bird",
+      "file": "gull.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Gull_portrait_ca_usa.jpg",
+      "author": "Dschwen",
+      "license": "CC BY 2.5 (selected from the author's available licenses)",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5/",
+      "changes": "None; original JPEG downloaded unchanged. Vision scales only in memory.",
+      "sha256": "524368d286d63cd02c319b7447a664f15d434fec594f1849fc9b73de68d40f14",
+      "bytes": 718902,
+      "expectedClass": "bird"
+    }
+  ],
+  "detector": {
+    "configuration": {
+      "computeUnits": "all",
+      "confidenceThreshold": 0.38,
+      "coordinates": "EXIF-upright normalized top-left",
+      "cropAndScale": "scaleFill",
+      "detectionTiming": "VNImageRequestHandler.perform only",
+      "iouThreshold": 0.45,
+      "modelId": "apple-yolov3-fp16"
+    },
+    "images": [
+      {
+        "detectionMs": 84.55991675145924,
+        "height": 3263,
+        "orientation": 1,
+        "path": "person.jpg",
+        "peopleRight": "Nhận diện được ít nhất 4 người ở bên phải khung hình.",
+        "rawHeight": 3263,
+        "rawWidth": 2552,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 8 người, ba lô, vali.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.5361328125,
+              "width": 0.234619140625,
+              "x": 0.0091552734375,
+              "y": 0.0869140625
+            },
+            "id": 1,
+            "label": "person",
+            "score": 1
+          },
+          {
+            "box": {
+              "height": 0.9072265625,
+              "width": 0.54443359375,
+              "x": 0.366455078125,
+              "y": 0.0595703125
+            },
+            "id": 2,
+            "label": "person",
+            "score": 1
+          },
+          {
+            "box": {
+              "height": 0.422607421875,
+              "width": 0.127197265625,
+              "x": 0.1934814453125,
+              "y": 0.0872802734375
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.998046875
+          },
+          {
+            "box": {
+              "height": 0.35205078125,
+              "width": 0.29248046875,
+              "x": 0.641845703125,
+              "y": 0.1865234375
+            },
+            "id": 4,
+            "label": "backpack",
+            "score": 0.9599609505535227
+          },
+          {
+            "box": {
+              "height": 0.1151123046875,
+              "width": 0.06170654296875,
+              "x": 0.935943603515625,
+              "y": 0.17681884765625
+            },
+            "id": 5,
+            "label": "person",
+            "score": 0.9560546931479621
+          },
+          {
+            "box": {
+              "height": 0.271484375,
+              "width": 0.1611328125,
+              "x": 0.392822265625,
+              "y": 0.112548828125
+            },
+            "id": 6,
+            "label": "person",
+            "score": 0.9472656236820853
+          },
+          {
+            "box": {
+              "height": 0.09405517578125,
+              "width": 0.0709228515625,
+              "x": 0.87420654296875,
+              "y": 0.189666748046875
+            },
+            "id": 7,
+            "label": "person",
+            "score": 0.9189452933571403
+          },
+          {
+            "box": {
+              "height": 0.483642578125,
+              "width": 0.06256103515625,
+              "x": 0,
+              "y": 0.1163330078125
+            },
+            "id": 8,
+            "label": "person",
+            "score": 0.8017578125
+          },
+          {
+            "box": {
+              "height": 0.14453125,
+              "width": 0.161376953125,
+              "x": 0.168212890625,
+              "y": 0.55322265625
+            },
+            "id": 9,
+            "label": "suitcase",
+            "score": 0.5117187421096219
+          },
+          {
+            "box": {
+              "height": 0.0340576171875,
+              "width": 0.031890869140625,
+              "x": 0.7096405029296875,
+              "y": 0.17205810546875
+            },
+            "id": 10,
+            "label": "person",
+            "score": 0.434326171875
+          },
+          {
+            "box": {
+              "height": 0.09002685546875,
+              "width": 0.037109375,
+              "x": 0.478515625,
+              "y": 0.464263916015625
+            },
+            "id": 11,
+            "label": "bottle",
+            "score": 0.4023437534804515
+          }
+        ],
+        "width": 2552
+      },
+      {
+        "detectionMs": 50.632791593670845,
+        "height": 1704,
+        "orientation": 1,
+        "path": "gull.jpg",
+        "peopleRight": "Chưa nhận diện được người ở bên phải khung hình.",
+        "rawHeight": 1704,
+        "rawWidth": 2272,
+        "sceneOverview": "Trong khung hình nhận diện được chim.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.87841796875,
+              "width": 0.8603515625,
+              "x": 0.123046875,
+              "y": 0.119384765625
+            },
+            "id": 1,
+            "label": "bird",
+            "score": 0.984863262939939
+          }
+        ],
+        "width": 2272
+      }
+    ],
+    "inputKind": "independent static JPEGs; no depth or temporal evidence",
+    "modelLoadMs": 146.26883331220597,
+    "platform": "macOS Core ML + Vision",
+    "schemaVersion": 1
+  },
+  "detectorSourceWeightSha256": "276afae53da362e25ad21c827f8a929a8512254b1343433d970e725a0de57d8f",
+  "cases": [
+    {
+      "id": "crowd-summary",
+      "fixture": "person",
+      "question": "Trong khung hình có gì đáng chú ý?",
+      "baseline": "sceneOverview",
+      "expected": "Ảnh có nhiều người; người bên phải mặc áo sọc và đeo ba lô đen; có xe đẩy phía trước. Không tự đoán địa điểm, danh tính hoặc số người chính xác trong đám đông bị che."
+    },
+    {
+      "id": "crowd-right",
+      "fixture": "person",
+      "question": "Có người ở bên phải khung hình không? Cho một chi tiết dễ nhận ra.",
+      "baseline": "peopleRight",
+      "expected": "Có. Người nổi bật ở bên phải mặc áo sọc trắng và xanh đậm, đeo ba lô đen. Không yêu cầu đếm chính xác."
+    },
+    {
+      "id": "bird-summary",
+      "fixture": "bird",
+      "question": "Trong khung hình có gì đáng chú ý?",
+      "baseline": "sceneOverview",
+      "expected": "Cận cảnh một con chim đầu trắng, mỏ vàng, nền xanh. Không khẳng định đang có hành động hay có gì ngoài ảnh."
+    },
+    {
+      "id": "bird-right",
+      "fixture": "bird",
+      "question": "Có thấy người ở bên phải khung hình không?",
+      "baseline": "peopleRight",
+      "expected": "Không thấy người ở bên phải ảnh. Không suy ra ngoài khung hình không có người."
+    },
+    {
+      "id": "crowd-no-depth",
+      "fixture": "person",
+      "question": "Người mặc áo sọc cách camera bao nhiêu mét?",
+      "baseline": null,
+      "expected": "Không xác định được số mét từ ảnh RGB này, không có dữ liệu đo khoảng cách."
+    },
+    {
+      "id": "crowd-no-time",
+      "fixture": "person",
+      "question": "Vừa có người nào bước vào khung hình từ bên phải không?",
+      "baseline": null,
+      "expected": "Không xác định được có ai vừa bước vào hay không từ một ảnh tĩnh."
+    }
+  ],
+  "runs": [
+    {
+      "case": "crowd-summary",
+      "mode": "A",
+      "order": 1,
+      "answer": "Trong khung hình, nói chưa xác định được. Trong khung hình, nói chưa xác định được.",
+      "error": null,
+      "firstTextMs": 5371.375,
+      "elapsedMs": 8773.321,
+      "tokens": 67
+    },
+    {
+      "case": "crowd-summary",
+      "mode": "B",
+      "order": 2,
+      "answer": "Trả lời câu hỏi bằng tiếng Việt, tối đà hai câu ngắn, dựa trên ảnh. Trái/phải theo góc nhìn ảnh. Chỉ nói điều nhìn",
+      "error": null,
+      "firstTextMs": 2625.823,
+      "elapsedMs": 7240.587,
+      "tokens": 96
+    },
+    {
+      "case": "crowd-summary",
+      "mode": "C",
+      "answer": "Trong khung hình nhận diện được ít nhất 8 người, ba lô, vali.",
+      "status": "computed",
+      "detectionMs": 84.55991675145924
+    },
+    {
+      "case": "crowd-right",
+      "mode": "B",
+      "order": 4,
+      "answer": "Trả lời câu hỏi bằng tiếng Việt, tối đà hành động, dựa trên ảnh. Trái/phải theo góc nhìn ảnh. Chỉ nói điều nhìn",
+      "error": null,
+      "firstTextMs": 2879.152,
+      "elapsedMs": 6210.711,
+      "tokens": 96
+    },
+    {
+      "case": "crowd-right",
+      "mode": "A",
+      "order": 5,
+      "answer": "Trả lời câu hỏi bằng tiếng Việt, tối đà hai câu ngắn, dựa trên ảnh. Trái/phải theo góc nhìn ảnh. Chỉ nói điều nhìn",
+      "error": null,
+      "firstTextMs": 2600.613,
+      "elapsedMs": 6283.23,
+      "tokens": 96
+    },
+    {
+      "case": "crowd-right",
+      "mode": "C",
+      "answer": "Nhận diện được ít nhất 4 người ở bên phải khung hình.",
+      "status": "computed",
+      "detectionMs": 84.55991675145924
+    },
+    {
+      "case": "bird-summary",
+      "mode": "A",
+      "order": 7,
+      "answer": "Trong khung hình có gì đáng chú ý, đường định có gì đáng chú ý. Trong khung hình có gì đáng chú ý, đường định có gì đáng chú ý.",
+      "error": null,
+      "firstTextMs": 2085.399,
+      "elapsedMs": 6240.406,
+      "tokens": 95
+    },
+    {
+      "case": "bird-summary",
+      "mode": "B",
+      "order": 8,
+      "answer": "Trong khung hình có gì đáng chú ý?",
+      "error": null,
+      "firstTextMs": 1761.288,
+      "elapsedMs": 2807.253,
+      "tokens": 22
+    },
+    {
+      "case": "bird-summary",
+      "mode": "C",
+      "answer": "Trong khung hình nhận diện được chim.",
+      "status": "computed",
+      "detectionMs": 50.632791593670845
+    },
+    {
+      "case": "bird-right",
+      "mode": "B",
+      "order": 10,
+      "answer": "Các bổ sung từ bộ phát hiện vật thể (có thể sai hoặc bỏ sót; không phải số đo hay đáp án): bird (giữa, 0.98).",
+      "error": null,
+      "firstTextMs": 2299.23,
+      "elapsedMs": 6116.628,
+      "tokens": 81
+    },
+    {
+      "case": "bird-right",
+      "mode": "A",
+      "order": 11,
+      "answer": "Các bộ tài khoang có thể được để điều nhìn thấy rõ. Có thể được để điều nhìn thấy rõ, có thể được để đ",
+      "error": null,
+      "firstTextMs": 1831.553,
+      "elapsedMs": 5894.461,
+      "tokens": 96
+    },
+    {
+      "case": "bird-right",
+      "mode": "C",
+      "answer": "Chưa nhận diện được người ở bên phải khung hình.",
+      "status": "computed",
+      "detectionMs": 50.632791593670845
+    },
+    {
+      "case": "crowd-no-depth",
+      "mode": "A",
+      "order": 13,
+      "answer": "Nhận được câu hỏi bằng chứng, nói chưa xác định được.",
+      "error": null,
+      "firstTextMs": 2583.709,
+      "elapsedMs": 5616.313,
+      "tokens": 53
+    },
+    {
+      "case": "crowd-no-depth",
+      "mode": "B",
+      "order": 14,
+      "answer": "Trả lời câu hỏi bằng tiếng Việt, tối đà hai câu ngắn, dựa trên ảnh. Trái/phải theo góc nhìn ảnh. Chỉ nói điều nhìn",
+      "error": null,
+      "firstTextMs": 2517.755,
+      "elapsedMs": 6754.39,
+      "tokens": 96
+    },
+    {
+      "case": "crowd-no-depth",
+      "mode": "C",
+      "answer": null,
+      "status": "not supported by this static baseline",
+      "detectionMs": 84.55991675145924
+    },
+    {
+      "case": "crowd-no-time",
+      "mode": "B",
+      "order": 16,
+      "answer": "Trả lời câu hỏi bằng tiếng Việt, tối đà hai câu ngắn, dựa trên ảnh. Trái/phải theo góc nhìn ảnh. Chỉ nói điều nhìn",
+      "error": null,
+      "firstTextMs": 2541.56,
+      "elapsedMs": 6709.995,
+      "tokens": 96
+    },
+    {
+      "case": "crowd-no-time",
+      "mode": "A",
+      "order": 17,
+      "answer": "Vừa có người nào bước vào khung hình từ bên phải không.",
+      "error": null,
+      "firstTextMs": 2339.219,
+      "elapsedMs": 4338.503,
+      "tokens": 45
+    },
+    {
+      "case": "crowd-no-time",
+      "mode": "C",
+      "answer": null,
+      "status": "not supported by this static baseline",
+      "detectionMs": 84.55991675145924
+    }
+  ],
+  "phoneEvidence": null,
+  "note": "Sample questions are not independent. No speech, no camera, no LiDAR, no video."
+}

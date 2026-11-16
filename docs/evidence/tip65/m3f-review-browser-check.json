@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "dateLocal": "2026-11-16",
+  "scope": "Actual loopback Mac review UI in headless installed Google Chrome via Playwright; not an iPhone or semantic acceptance run",
+  "url": "http://127.0.0.1:4198/",
+  "inputSha256": "3d27e148f26a7f33178a871b174e1172450095afda9552a77c312aa22f587234",
+  "pass": true,
+  "checks": [
+    "Both recorded A/B canvases render an actual verified source image",
+    "Seek and next-frame update the selected frame",
+    "Switch between two 50-frame clips",
+    "Explicit play and pause advance and stop playback",
+    "Folded diagnostics expose current frame timing and reasons",
+    "390-pixel viewport has no horizontal document overflow",
+    "No observed pageerror",
+    "All observed requests remain on the loopback review origin"
+  ],
+  "viewports": [
+    {"width": 1440, "height": 1000},
+    {"width": 390, "height": 844}
+  ],
+  "screenshots": [
+    "native/ios/.build-xcode/scene-qa/m3f-review-desktop.png",
+    "native/ios/.build-xcode/scene-qa/m3f-review-narrow.png"
+  ],
+  "visualReview": "Main agent viewed both screenshots. Raw detector errors, including a car box on the camera vehicle bonnet, remain visible rather than being hidden to make the demo attractive.",
+  "semanticQualityCertified": false,
+  "liveCameraTested": false,
+  "phoneTested": false,
+  "externalRequestsObserved": false
+}

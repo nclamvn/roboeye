@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "dataset": "Boreas-real",
+  "inputSha256": "b26871bf543042b143572f3fc46bc3fd8eb677ab7a48f87f24a0badb377f43cb",
+  "review": {
+    "method": "Direct agent visual review of 10 RGB checkpoints blinded to YOLO and lane predictions; adjusted visible edges, rejected ambiguous or heavily occluded candidates.",
+    "scope": "Not exhaustive per frame, not human review. Independent pose and LiDAR set relative-approach state, not the visual reviewer."
+  },
+  "reviewSha256": "b56c3f0616ee6bdb61441006f1a6fa25709c9584da901337b9e557acc8f541c5",
+  "unit": "target-frame",
+  "frames": 100,
+  "noMetreChecks": 500,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "opencv": "5.0.0",
+  "codeSha256": {
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_scale_approach_m3e.py": "3bfaac464710becaffa3590ffcf59ea8195f5e7ba2f57c874bd8138988fb3f2b",
+    "assist_scene_m3d_study.py": "db37a3b6fdbb81cb5c1bddee820838a0b82f44571ae30ad658be33e84a71b225",
+    "assist_scene_m3e_study.py": "6801000ec0dbd4026067727a7aecf4250cbdbd0d435bd7aba1b29f6368914617"
+  },
+  "detectorConfiguration": {
+    "computeUnits": "all",
+    "confidenceThreshold": 0.38,
+    "coordinates": "EXIF-upright normalized top-left",
+    "cropAndScale": "scaleFill",
+    "detectionTiming": "VNImageRequestHandler.perform only",
+    "iouThreshold": 0.45,
+    "modelId": "apple-yolov3-fp16"
+  },
+  "totals": {
+    "A": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 9,
+      "tn": 8,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 1,
+      "scoredKeyframes": 10,
+      "framesAbstained": 99
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 9,
+      "tn": 8,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 1,
+      "scoredKeyframes": 10,
+      "framesAbstained": 99
+    },
+    "detail": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 9,
+      "tn": 8,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 1,
+      "scoredKeyframes": 10,
+      "framesAbstained": 99
+    },
+    "relink": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 9,
+      "tn": 8,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 1,
+      "scoredKeyframes": 10,
+      "framesAbstained": 99
+    },
+    "S": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 4,
+      "tn": 8,
+      "unmatchedReports": 9,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 125,
+      "scoredKeyframes": 10,
+      "framesAbstained": 40
+    }
+  },
+  "clips": [
+    {
+      "id": "boreas-m3e-turn",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 3,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 1,
+          "scoredKeyframes": 5,
+          "framesAbstained": 49
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 3,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 1,
+          "scoredKeyframes": 5,
+          "framesAbstained": 49
+        },
+        "detail": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 3,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 1,
+          "scoredKeyframes": 5,
+          "framesAbstained": 49
+        },
+        "relink": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 3,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 1,
+          "scoredKeyframes": 5,
+          "framesAbstained": 49
+        },
+        "S": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 0,
+          "tn": 3,
+          "unmatchedReports": 8,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 106,
+          "scoredKeyframes": 5,
+          "framesAbstained": 4
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 41,
+          "insufficient-background-agreement": 8
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 41,
+          "insufficient-background-agreement": 8
+        },
+        "detail": {
+          "first-frame": 1,
+          "valid": 41,
+          "insufficient-background-agreement": 8
+        },
+        "relink": {
+          "first-frame": 1,
+          "valid": 41,
+          "insufficient-background-agreement": 8
+        },
+        "S": {
+          "valid": 50
+        }
+      },
+      "instrumentation": {
+        "A": {},
+        "B": {
+          "detailAttempts": 63,
+          "detailEvidencePairs": 3,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "detail": {
+          "detailAttempts": 63,
+          "detailEvidencePairs": 3,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "relink": {
+          "detailAttempts": 0,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "approaching": 5,
+        "approaching.withYolo": 5,
+        "not-approaching": 3,
+        "not-approaching.withYolo": 3,
+        "unknown": 2,
+        "unknown.withYolo": 2
+      },
+      "gapControl": {}
+    },
+    {
+      "id": "boreas-m3e-stop",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 5,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 5,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "detail": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 5,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "relink": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 5,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 5,
+          "unmatchedReports": 1,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 19,
+          "scoredKeyframes": 5,
+          "framesAbstained": 36
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 49
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 49
+        },
+        "detail": {
+          "first-frame": 1,
+          "valid": 49
+        },
+        "relink": {
+          "first-frame": 1,
+          "valid": 49
+        },
+        "S": {
+          "valid": 50
+        }
+      },
+      "instrumentation": {
+        "A": {},
+        "B": {
+          "detailAttempts": 119,
+          "detailEvidencePairs": 1,
+          "relinkAttempts": 2,
+          "relinkedTracks": 0
+        },
+        "detail": {
+          "detailAttempts": 114,
+          "detailEvidencePairs": 1,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "relink": {
+          "detailAttempts": 0,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 1,
+          "relinkedTracks": 0
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "not-approaching": 5,
+        "not-approaching.withYolo": 5,
+        "approaching": 4,
+        "approaching.withYolo": 3,
+        "unknown": 3,
+        "unknown.withYolo": 3
+      },
+      "gapControl": {}
+    }
+  ],
+  "stageMs": {
+    "detector": {
+      "p50": 35.5,
+      "p95": 93.0
+    },
+    "sharedPrep": {
+      "p50": 1.59,
+      "p95": 1.88
+    },
+    "nativeDecode": {
+      "p50": 66.3,
+      "p95": 73.16
+    },
+    "A": {
+      "p50": 18.94,
+      "p95": 27.67
+    },
+    "B": {
+      "p50": 20.96,
+      "p95": 29.12
+    },
+    "detail": {
+      "p50": 20.55,
+      "p95": 29.91
+    },
+    "relink": {
+      "p50": 18.47,
+      "p95": 26.6
+    },
+    "S": {
+      "p50": 0.08,
+      "p95": 0.12
+    },
+    "BPlusNativeDecode": {
+      "p50": 88.78,
+      "p95": 95.77
+    }
+  },
+  "receiptSha256": "219fd94a4339e9c0baec9194d46eab03cdc4f75def6da36d1e74a776e9ac661f",
+  "truthSha256": "f4a9bf03c7527103db921ff6ebd791c1c96e06df0f2c9bc6bc32f2fb8d781cd0"
+}

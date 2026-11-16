@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "7b6508c348920c1105438994e30779e087c777fcd599885e1c518e8a7be3bbe7",
+  "candidatesSha256": "ead08df9058d9da8cdc7831059632b1f1d1b4fedb0d57a1b0fbfb597d8c49ce1",
+  "review": {
+    "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles before any M3K inference, adjusting projected boxes to visible extents without model predictions.",
+    "scope": "Selected target-checkpoints, not exhaustive labels or independent human certification. Small, dark, crowded and partly truncated objects retained when a visible extent can be assigned. Physical approach labels unchanged; motion is relative to the camera, not a claim that the object itself is moving.",
+    "omissions": {"boreas-m3k-urban-17.3": "Distant vehicle is occluded behind foreground car; cannot assign an independent visible extent. Original unknown candidate preserved in candidates.json; omission is not successful abstention."},
+    "selection": "Two intervals selected by pose/cadence metadata before RGB inspection, disjoint from previous study intervals but adjacent in the same recording; not an independent cross-domain population. Labels frozen before development replay."
+  },
+  "frames": {
+    "boreas-m3k-urban-05": {"1": [371,391,414,431], "2": [462,410,501,438], "3": [638,400,648,428], "4": [216,412,228,438], "5": [441,408,459,423]},
+    "boreas-m3k-urban-08": {"1": [326,385,388,439], "2": [461,410,501,440], "3": [668,402,681,437]},
+    "boreas-m3k-urban-11": {"1": [231,376,353,465], "2": [458,412,500,443], "3": [718,403,733,446]},
+    "boreas-m3k-urban-14": {"1": [823,402,849,466], "2": [455,410,501,444], "3": [671,400,684,435]},
+    "boreas-m3k-urban-17": {"1": [453,413,504,450], "2": [728,400,743,451], "3": null},
+    "boreas-m3k-traffic-05": {"1": [216,419,279,438], "2": [285,418,296,447], "3": [486,413,501,426]},
+    "boreas-m3k-traffic-08": {"1": [368,413,422,437], "2": [181,424,201,468], "3": [480,411,495,424]},
+    "boreas-m3k-traffic-11": {"1": [293,415,367,442], "2": [621,408,632,448], "3": [478,409,496,423]},
+    "boreas-m3k-traffic-14": {"1": [172,420,267,454], "2": [686,411,700,472]},
+    "boreas-m3k-traffic-17": {"1": [804,417,960,472], "2": [831,423,866,519], "3": [483,415,501,428]}
+  }
+}

@@ -1,0 +1,850 @@
+{
+  "schemaVersion": 1,
+  "dataset": "synthetic-m3c",
+  "inputSha256": "2779f2a80f7d046f83b6fe490be3157699123eb12a44f0d4ed43a87fbfd29238",
+  "review": {
+    "method": "authored transformations of pinned Boreas RGB; ROI manually checked before replay",
+    "sourceSha256": "3e45e456ce59de59bc748a7f5cc5bb93cbf97d8ecd8e70a60ef2a1a2d73945e5",
+    "scope": "not independently recorded or human certified"
+  },
+  "reviewSha256": null,
+  "unit": "target-frame",
+  "frames": 80,
+  "noMetreChecks": 400,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "opencv": "5.0.0",
+  "codeSha256": {
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_scale_approach_m3e.py": "3bfaac464710becaffa3590ffcf59ea8195f5e7ba2f57c874bd8138988fb3f2b",
+    "assist_scene_m3d_study.py": "db37a3b6fdbb81cb5c1bddee820838a0b82f44571ae30ad658be33e84a71b225",
+    "assist_scene_m3e_study.py": "6801000ec0dbd4026067727a7aecf4250cbdbd0d435bd7aba1b29f6368914617"
+  },
+  "detectorConfiguration": {
+    "computeUnits": "all",
+    "confidenceThreshold": 0.38,
+    "coordinates": "EXIF-upright normalized top-left",
+    "cropAndScale": "scaleFill",
+    "detectionTiming": "VNImageRequestHandler.perform only",
+    "iouThreshold": 0.45,
+    "modelId": "apple-yolov3-fp16"
+  },
+  "totals": {
+    "A": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13,
+      "tn": 144,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 3,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13,
+      "tn": 144,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 3,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "detail": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13,
+      "tn": 144,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 3,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "relink": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13,
+      "tn": 144,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 3,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "S": {
+      "tp": 2,
+      "fp": 23,
+      "fn": 11,
+      "tn": 121,
+      "unmatchedReports": 31,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 3,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 66,
+      "allSceneFalseNotices": 54
+    }
+  },
+  "clips": [
+    {
+      "id": "m3e-static",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "detail": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "relink": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "detail": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "relink": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "S": {
+          "valid": 16
+        }
+      },
+      "instrumentation": {
+        "A": {},
+        "B": {
+          "detailAttempts": 45,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "detail": {
+          "detailAttempts": 45,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "relink": {
+          "detailAttempts": 0,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "not-approaching": 32,
+        "not-approaching.withYolo": 32
+      },
+      "gapControl": {}
+    },
+    {
+      "id": "m3e-zoom",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "detail": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "relink": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 23,
+          "fn": 0,
+          "tn": 9,
+          "unmatchedReports": 31,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 4,
+          "allSceneFalseNotices": 54
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "scale-ambiguous": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "scale-ambiguous": 15
+        },
+        "detail": {
+          "first-frame": 1,
+          "scale-ambiguous": 15
+        },
+        "relink": {
+          "first-frame": 1,
+          "scale-ambiguous": 15
+        },
+        "S": {
+          "valid": 16
+        }
+      },
+      "instrumentation": {
+        "A": {},
+        "B": {
+          "detailAttempts": 0,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "detail": {
+          "detailAttempts": 0,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "relink": {
+          "detailAttempts": 0,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "not-approaching": 32,
+        "not-approaching.withYolo": 32
+      },
+      "gapControl": {}
+    },
+    {
+      "id": "m3e-pan",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "detail": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "relink": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "detail": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "relink": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "S": {
+          "valid": 16
+        }
+      },
+      "instrumentation": {
+        "A": {},
+        "B": {
+          "detailAttempts": 31,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "detail": {
+          "detailAttempts": 31,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "relink": {
+          "detailAttempts": 0,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "not-approaching": 32,
+        "not-approaching.withYolo": 32
+      },
+      "gapControl": {}
+    },
+    {
+      "id": "m3e-shake",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "detail": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "relink": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "detail": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "relink": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "S": {
+          "valid": 16
+        }
+      },
+      "instrumentation": {
+        "A": {},
+        "B": {
+          "detailAttempts": 34,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "detail": {
+          "detailAttempts": 34,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "relink": {
+          "detailAttempts": 0,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "not-approaching": 32,
+        "not-approaching.withYolo": 28
+      },
+      "gapControl": {}
+    },
+    {
+      "id": "m3e-approach-gap",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 16,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 16,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16
+        },
+        "detail": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 16,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16
+        },
+        "relink": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 16,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16
+        },
+        "S": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 11,
+          "tn": 16,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 14
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "detail": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "relink": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "S": {
+          "valid": 16
+        }
+      },
+      "instrumentation": {
+        "A": {},
+        "B": {
+          "detailAttempts": 42,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 3,
+          "relinkedTracks": 3
+        },
+        "detail": {
+          "detailAttempts": 40,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 0,
+          "relinkedTracks": 0
+        },
+        "relink": {
+          "detailAttempts": 0,
+          "detailEvidencePairs": 0,
+          "relinkAttempts": 2,
+          "relinkedTracks": 2
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "unknown": 3,
+        "unknown.withYolo": 3,
+        "not-approaching": 16,
+        "not-approaching.withYolo": 16,
+        "approaching": 13,
+        "approaching.withYolo": 8
+      },
+      "gapControl": {
+        "A": {
+          "4": {
+            "matchedTrackId": 34,
+            "epoch": 0,
+            "notices": 0
+          },
+          "5": {
+            "matchedTrackId": null,
+            "epoch": 0,
+            "notices": 0
+          },
+          "6": {
+            "matchedTrackId": 42,
+            "epoch": 0,
+            "notices": 0
+          },
+          "sameReferenceIdentity": false
+        },
+        "B": {
+          "4": {
+            "matchedTrackId": 26,
+            "epoch": 0,
+            "notices": 0
+          },
+          "5": {
+            "matchedTrackId": null,
+            "epoch": 0,
+            "notices": 0
+          },
+          "6": {
+            "matchedTrackId": 31,
+            "epoch": 0,
+            "notices": 0
+          },
+          "sameReferenceIdentity": false
+        },
+        "detail": {
+          "4": {
+            "matchedTrackId": 26,
+            "epoch": 0,
+            "notices": 0
+          },
+          "5": {
+            "matchedTrackId": null,
+            "epoch": 0,
+            "notices": 0
+          },
+          "6": {
+            "matchedTrackId": 33,
+            "epoch": 0,
+            "notices": 0
+          },
+          "sameReferenceIdentity": false
+        },
+        "relink": {
+          "4": {
+            "matchedTrackId": 34,
+            "epoch": 0,
+            "notices": 0
+          },
+          "5": {
+            "matchedTrackId": null,
+            "epoch": 0,
+            "notices": 0
+          },
+          "6": {
+            "matchedTrackId": 41,
+            "epoch": 0,
+            "notices": 0
+          },
+          "sameReferenceIdentity": false
+        },
+        "S": {
+          "4": {
+            "matchedTrackId": 3,
+            "epoch": 0,
+            "notices": 1
+          },
+          "5": {
+            "matchedTrackId": null,
+            "epoch": 0,
+            "notices": 0
+          },
+          "6": {
+            "matchedTrackId": 11,
+            "epoch": 0,
+            "notices": 0
+          },
+          "sameReferenceIdentity": false
+        }
+      }
+    }
+  ],
+  "stageMs": {
+    "detector": {
+      "p50": 39.7,
+      "p95": 118.7
+    },
+    "sharedPrep": {
+      "p50": 1.92,
+      "p95": 2.65
+    },
+    "nativeDecode": {
+      "p50": 10.89,
+      "p95": 14.97
+    },
+    "A": {
+      "p50": 19.02,
+      "p95": 28.52
+    },
+    "B": {
+      "p50": 21.57,
+      "p95": 30.97
+    },
+    "detail": {
+      "p50": 21.22,
+      "p95": 29.62
+    },
+    "relink": {
+      "p50": 19.17,
+      "p95": 27.44
+    },
+    "S": {
+      "p50": 0.08,
+      "p95": 0.11
+    },
+    "BPlusNativeDecode": {
+      "p50": 31.6,
+      "p95": 43.87
+    }
+  },
+  "receiptSha256": "aedfd974489a22340686e43fa8ad7ab532986ae4e9f66ce233f5d8476e287d7a",
+  "truthSha256": "be606f069ef0dda9a69e713cd2619192c7b05f425e47661362d105b137c26c8f"
+}

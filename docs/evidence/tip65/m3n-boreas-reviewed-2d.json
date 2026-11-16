@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "2c359c6296bcd191277a881280aa105044ff937cf189d2fe4ec61252bb75c8d5",
+  "candidatesSha256": "3e6c81c6abf5e8d13b6c61a247ff57e111f1024a2a08428c9948cabe4ae32e89",
+  "review": {
+    "method": "Contractor assistant visually inspected all ten fixed 960x803 checkpoint RGB tiles, before M3N development or holdout inference; projected cuboids corrected to visible 2D extents.",
+    "scope": "Sparse selected checkpoints, not exhaustive labels or independent human certification. Keep small/dark/partly occluded visible objects. Physical approach states unchanged, relative to camera, not object self-motion.",
+    "selection": "Intervals selected from timestamps/cadence/speed before RGB or model outputs; all source exposures disjoint from earlier study windows but from the same recording/domain. No candidate omission based on inference outputs.",
+    "omissions": {
+      "boreas-m3n-city-05.3": "Projected distant vehicle lies behind the foreground black car/windscreen; cannot assign a separately identifiable visible extent.",
+      "boreas-m3n-city-08.3": "Projected distant vehicle is occluded by the foreground black car; separately identifiable visible extent unavailable.",
+      "boreas-m3n-city-11.4": "Projected vehicle lies in foreground car windscreen/body, not a separately identifiable visible object.",
+      "boreas-m3n-city-14.4": "Only an ambiguous roof-sized sliver overlaps the foreground car; no separately identifiable visible 2D extent at the minimum review size.",
+      "boreas-m3n-city-17.4": "Projected person lies behind the oncoming black SUV/windscreen. No separately identifiable body extent can be assigned. Original positive remains in candidates.json, not counted as a successful abstention.",
+      "boreas-m3n-city-17.5": "Projected distant vehicle has no separately identifiable visible extent behind foreground car/roof overlap.",
+      "boreas-m3n-turn-14.3": "Projected vehicle lies inside foreground car windscreen/body; no separately identifiable visible extent.",
+      "boreas-m3n-turn-17.3": "Projected vehicle lies inside foreground car windscreen/body; no separately identifiable visible extent."
+    },
+    "omissionDisposition": "All original candidates preserved. Visibility omissions are unscorable, not true negatives; frozen before inference. No physical motion or metric labels invented from image appearance."
+  },
+  "frames": {
+    "boreas-m3n-city-05": {"1": [43,412,255,511], "2": [443,411,495,453], "3": null, "4": [432,408,455,426]},
+    "boreas-m3n-city-08": {"1": [212,420,322,477], "2": [444,413,495,455], "3": null},
+    "boreas-m3n-city-11": {"1": [444,413,496,456], "2": [357,409,406,442], "3": [166,415,179,447], "4": null},
+    "boreas-m3n-city-14": {"1": [297,409,371,454], "2": [444,412,495,453], "3": [99,416,116,453], "4": null},
+    "boreas-m3n-city-17": {"1": [173,409,310,483], "2": [447,413,499,454], "3": [638,403,652,434], "4": null, "5": null},
+    "boreas-m3n-turn-05": {"1": [668,412,960,570], "2": [465,414,529,469], "3": [689,411,706,452]},
+    "boreas-m3n-turn-08": {"1": [466,415,526,466], "2": [763,412,794,464]},
+    "boreas-m3n-turn-11": {},
+    "boreas-m3n-turn-14": {"1": [464,412,516,456], "2": [697,411,722,469], "3": null, "4": [436,405,454,424]},
+    "boreas-m3n-turn-17": {"1": [789,411,834,501], "2": [463,412,517,457], "3": null, "4": [296,405,343,422], "5": [422,408,452,432]}
+  }
+}

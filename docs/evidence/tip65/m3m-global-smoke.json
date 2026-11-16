@@ -1,0 +1,24 @@
+{
+  "kind": "actual-local-authored-MPS-smoke-not-holdout",
+  "capture": "Contractor copied numeric results from actual tool stdout; not a dataset score or independent human review.",
+  "providerSha256AtSmoke": "f110e069b115d8e534ac4b9a9378cf383ba11fa27ec81edc37d153f772e51134",
+  "revisionNote": "Subsequent pre-freeze change added malformed restore_flow argument guards. Dataset inference must bind its own current source hashes; this smoke is not relabeled as a run of the later revision.",
+  "fixture": "numpy default_rng(650513), 642x768 uint8 noise, GaussianBlur5x5, affine translation(4,2), BORDER_REFLECT_101",
+  "shape": [642,768,2],
+  "medianFlowInterior": [4.019140243530273,1.932628870010376],
+  "calls": 2,
+  "last_call": {
+    "roiShape": [642,768],
+    "processedShape": [535,640],
+    "paddedShape": [536,640],
+    "scaleXY": [0.8333333333333334,0.8333333333333334],
+    "device": "mps",
+    "modelDirectionCalls": 2,
+    "flowUpdatesPerDirection": 12,
+    "status": "field-supported",
+    "outputShape": [642,768,2],
+    "wallMs": 1998.245417024009
+  },
+  "peakResidentBytes": 544849920,
+  "limits": "One cold pair on authored texture. Process RSS is not a calibrated GPU peak. No claim about approach recall, phone performance or real-time throughput."
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "split": "exploratory-public-fixtures-not-holdout",
+  "fixtureManifest": "native/ios/Models/assets.json",
+  "truthProvenance": "Assistant visually annotated before first VLM run; not independent or participant-reviewed.",
+  "cases": [
+    {
+      "id": "crowd-summary",
+      "fixture": "person",
+      "question": "Trong khung hình có gì đáng chú ý?",
+      "baseline": "sceneOverview",
+      "expected": "Ảnh có nhiều người; người bên phải mặc áo sọc và đeo ba lô đen; có xe đẩy phía trước. Không tự đoán địa điểm, danh tính hoặc số người chính xác trong đám đông bị che."
+    },
+    {
+      "id": "crowd-right",
+      "fixture": "person",
+      "question": "Có người ở bên phải khung hình không? Cho một chi tiết dễ nhận ra.",
+      "baseline": "peopleRight",
+      "expected": "Có. Người nổi bật ở bên phải mặc áo sọc trắng và xanh đậm, đeo ba lô đen. Không yêu cầu đếm chính xác."
+    },
+    {
+      "id": "bird-summary",
+      "fixture": "bird",
+      "question": "Trong khung hình có gì đáng chú ý?",
+      "baseline": "sceneOverview",
+      "expected": "Cận cảnh một con chim đầu trắng, mỏ vàng, nền xanh. Không khẳng định đang có hành động hay có gì ngoài ảnh."
+    },
+    {
+      "id": "bird-right",
+      "fixture": "bird",
+      "question": "Có thấy người ở bên phải khung hình không?",
+      "baseline": "peopleRight",
+      "expected": "Không thấy người ở bên phải ảnh. Không suy ra ngoài khung hình không có người."
+    },
+    {
+      "id": "crowd-no-depth",
+      "fixture": "person",
+      "question": "Người mặc áo sọc cách camera bao nhiêu mét?",
+      "baseline": null,
+      "expected": "Không xác định được số mét từ ảnh RGB này, không có dữ liệu đo khoảng cách."
+    },
+    {
+      "id": "crowd-no-time",
+      "fixture": "person",
+      "question": "Vừa có người nào bước vào khung hình từ bên phải không?",
+      "baseline": null,
+      "expected": "Không xác định được có ai vừa bước vào hay không từ một ảnh tĩnh."
+    }
+  ]
+}

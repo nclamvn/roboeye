@@ -1,0 +1,22 @@
+domain: assist_scene_intelligence
+entity_label: "nguồn kỹ thuật cho RoboEye Assist"
+schema:
+  type_field: category
+  fields:
+    - category
+    - documented_capability
+    - artifact_license
+    - source_caveat
+    - iphone_16pro_max_p95_ms
+    - vietnamese_scene_holdout
+    - commercial_clearance
+rollup_field: category
+universe:
+  estimate: 27
+  basis: "Mẫu số của 27 mục được giữ trong đợt 1, không phải tổng số model, dự án hoặc nguồn trên thị trường."
+refresh_days:
+  default: 90
+alias_map: {}
+ambiguous_clusters:
+  - ["YOLO26n", "YOLOE"]
+  - ["Qwen3.5-0.8B", "Qwen3.5-2B"]

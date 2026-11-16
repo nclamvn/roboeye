@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "be77119bb740204ccc5d2e020deae1b3409b577155cfd749452775e83c352b05",
+  "candidatesSha256": "e45ff812279af04420b10644fbfc44c8ec2f73ba272432649c000d0f273549a6",
+  "review": {
+    "method": "Contractor assistant visually inspected all ten fixed 960x803 RGB checkpoint tiles before any M3M model outputs or development inference. Projected cuboids corrected to visible 2D extents.",
+    "scope": "Sparse selected checkpoints, not exhaustive object labels or independent human certification. Physical approach labels unchanged and relative to camera, not object self-motion. Dark and image-truncated visible objects retained.",
+    "selection": "Two disjoint four-second intervals preregistered from timestamps and cadence, same recording/domain as earlier studies. No input, checkpoint or candidate selected from inference outcomes.",
+    "omissions": {
+      "boreas-m3m-turn-05.2": "Projected vehicle lies behind foreground black Hyundai; no separately identifiable visible extent can be assigned.",
+      "boreas-m3m-turn-05.3": "Projected distant vehicle lies in foreground Hyundai windscreen; not a separately identifiable visible object extent.",
+      "boreas-m3m-turn-08.2": "Projected vehicle lies inside foreground Hyundai body/windscreen; separately identifiable 2D extent unavailable.",
+      "boreas-m3m-turn-08.4": "Projected distant vehicle falls in foreground Hyundai windscreen; separately identifiable visible extent unavailable.",
+      "boreas-m3m-turn-11.4": "Projected vehicle is occluded by foreground Hyundai; cannot assign separately identifiable visible extent.",
+      "boreas-m3m-turn-14.4": "Projected vehicle lies within foreground Hyundai windscreen/body; no separately identifiable 2D extent."
+    },
+    "omissionDisposition": "All original candidates remain in candidates.json; omissions are unscorable visibility cases, not correct abstentions or successful negatives. Frozen before inference."
+  },
+  "frames": {
+    "boreas-m3m-city-05": {"1": [137,400,362,538], "2": [457,389,503,446], "3": [512,400,542,424]},
+    "boreas-m3m-city-08": {"1": [180,420,345,540], "2": [457,399,503,455], "3": [512,410,541,432]},
+    "boreas-m3m-city-11": {"1": [206,415,347,505], "2": [458,397,503,451]},
+    "boreas-m3m-city-14": {"1": [275,416,391,486], "2": [459,393,503,450]},
+    "boreas-m3m-city-17": {"1": [0,434,320,607], "2": [459,398,503,451]},
+    "boreas-m3m-turn-05": {"1": [400,410,574,581], "2": null, "3": null, "4": [391,407,438,441], "5": [240,405,253,434]},
+    "boreas-m3m-turn-08": {"1": [403,414,568,573], "2": null, "3": [352,411,416,456], "4": null, "5": [248,406,261,434]},
+    "boreas-m3m-turn-11": {"1": [411,415,561,554], "2": [289,415,386,481], "3": [587,406,669,467], "4": null, "5": [255,406,267,434]},
+    "boreas-m3m-turn-14": {"1": [38,432,321,580], "2": [420,416,555,543], "3": [587,408,669,469], "4": null, "5": [260,408,272,435]},
+    "boreas-m3m-turn-17": {"1": [425,416,552,535], "2": [588,407,669,469], "3": [331,404,408,455], "4": [265,408,277,434]}
+  }
+}

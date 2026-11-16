@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "study": "M3H",
+  "status": "NOT_READY_FOR_APPROACH_PRODUCT",
+  "method": "Independent QA agent read frozen stored diagnostics; Contractor separately recomputed lifecycle counts. No full causal replay or human MOT adjudication.",
+  "receiptPath": "native/ios/.build-xcode/scene-qa/m3h-boreas-receipt.json",
+  "receiptSha256": "b7a28585abc8f3f1199b64a12c7c0e2acaf219a340fd0584670c9d7e131aa913",
+  "engineSha256": "b7915e194867e09a218742f8b779631fb00ec631ddfdd39b784eaa5e1bb4bea4",
+  "runnerSha256": "a0fdb7a3f436c131a61d0fd66bf47614b345b2778d13608d6143eda41ca6810a",
+  "actualLifecycleObservations": {
+    "frames": 100,
+    "identityObservationRowsRetainedWhileCohortsRetired": 69,
+    "cohortsRetiredInThoseRows": 80,
+    "warningsInThoseRows": 0,
+    "retirementReasons": {"insufficient-object-flow": 47, "incoherent-object-flow": 10, "object-scale-disagreement": 8, "localized-object-flow": 7, "small-or-truncated": 6, "cohort-expired": 2},
+    "rowsWithOtherMatureCurrentCohortsNotNecessarilyConfirmed": 5,
+    "internalIds": {"A": 603, "B": 411},
+    "scope": "Internal lifecycle behavior, not proof of correct physical identities or MOT accuracy"
+  },
+  "positiveCheckpointAudit": {
+    "total": 21,
+    "A": {"tp": 0, "fn": 21},
+    "B": {"tp": 0, "fn": 21},
+    "C": {"tp": 0, "fn": 21},
+    "S": {"tp": 4, "fn": 17},
+    "detectorOverlapAtLeast035": 16,
+    "cameraStatus": {"valid": 14, "insufficient-background-agreement": 7},
+    "exclusiveFirstObservedPartition": {"no-same-family-detector-overlap": 5, "matched-but-camera-invalid": 6, "matched-camera-valid-small-or-truncated": 1, "matched-camera-valid-identity-unverified": 1, "matched-camera-valid-kept-identity-without-mature-support": 8},
+    "lastCategory": {"immature-cohorts": 6, "no-cohorts": 2},
+    "scope": "Current stored checkpoint evidence; detector/camera marginal counts overlap and must not be added. Exclusive partition is first-observed veto, not a complete causal root-cause assignment."
+  },
+  "freshAuthoredNegativeControls": {"frames": 80, "A": 0, "B": 0, "C": 0, "S": 18, "SByScenario": {"static": 0, "zoom": 15, "pan": 3, "shake": 0}, "unit": "all-scene false notices, not per-object FP/TN", "scope": "Four authored transforms of one new-source photo, not independent real field clips"},
+  "disposition": "Lifecycle separation implemented and exercised; no useful approach-recall improvement demonstrated. Do not promote to app or infer metres, real-time, phone quality or navigation safety."
+}

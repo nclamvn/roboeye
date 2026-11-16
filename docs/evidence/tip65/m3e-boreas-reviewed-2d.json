@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "b26871bf543042b143572f3fc46bc3fd8eb677ab7a48f87f24a0badb377f43cb",
+  "candidatesSha256": "7d5a64fa89f54c15a459336d2cf44920f00e18b871614b36eb15a0fb735e19b4",
+  "review": {
+    "method": "Direct agent visual review of 10 RGB checkpoints blinded to YOLO and lane predictions; adjusted visible edges, rejected ambiguous or heavily occluded candidates.",
+    "scope": "Not exhaustive per frame, not human review. Independent pose and LiDAR set relative-approach state, not the visual reviewer."
+  },
+  "frames": {
+    "boreas-m3e-turn-05": {"1":[610,422,726,478],"2":[478,406,501,429]},
+    "boreas-m3e-turn-08": {"1":[624,420,775,504],"2":[475,405,500,426]},
+    "boreas-m3e-turn-11": {"1":[568,406,624,449],"2":[478,404,502,427]},
+    "boreas-m3e-turn-14": {"1":[609,413,727,478],"2":[479,404,505,428]},
+    "boreas-m3e-turn-17": {"1":[635,419,783,496],"2":[476,403,503,428]},
+    "boreas-m3e-stop-05": {"1":[413,438,609,603],"2":[182,393,277,435],"3":null,"4":null},
+    "boreas-m3e-stop-08": {"1":[413,438,609,603],"2":null,"3":[286,402,359,466]},
+    "boreas-m3e-stop-11": {"1":[413,438,609,603],"2":[390,401,517,439],"3":[336,402,406,467]},
+    "boreas-m3e-stop-14": {"1":[411,438,607,603],"2":[53,402,202,446],"3":[548,403,656,451],"4":null},
+    "boreas-m3e-stop-17": {"1":[414,438,608,603],"2":[216,396,353,441],"3":null,"4":null}
+  }
+}

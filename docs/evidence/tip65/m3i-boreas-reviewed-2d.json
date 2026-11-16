@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "67d0b9841623f3f177f8a2bb6e8ee95d701f7d81b7b19e2353643073d39397dd",
+  "candidatesSha256": "b26304d6fc44314d779321946d9dd859aa8f34437fa21b617246e37ecc01c7b3",
+  "review": {
+    "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles before any M3I detector or approach inference. Corrected projected boxes to visible target extents, independently of detector output.",
+    "scope": "Selected target-checkpoints only, not exhaustive labels, independent human adjudication or physical safety certification. Dark, small, partially occluded and truncated targets retained where a distinct visible target is identifiable. Cyclist vehicle targets cover the visible rider/bicycle aggregate; person targets cover the visible person. Physical approach labels unchanged.",
+    "omissions": {"boreas-m3i-urban-05.2": "Behind the oncoming vehicle, insufficient independently identifiable visible extent to assign a reliable 2D box.", "boreas-m3i-following-14.3": "Dark far-right projected person cannot be distinguished reliably from plants/occluding structures in this review tile.", "boreas-m3i-following-14.5": "Second vehicle is obscured by the foreground oncoming vehicle; no reliable independent visible 2D extent."},
+    "selection": "Two source intervals fixed from pose/cadence metadata before RGB inspection, disjoint from M3C-H. Same Boreas recording, not cross-domain. Omissions are review uncertainty, not model successes; all candidates and omission reasons preserved."
+  },
+  "frames": {
+    "boreas-m3i-urban-05": {"1": [368, 405, 432, 447], "2": null, "3": [346, 402, 362, 432]},
+    "boreas-m3i-urban-08": {"1": [212, 412, 361, 505], "2": [365, 397, 404, 429], "3": [312, 404, 330, 442], "4": [591, 405, 603, 434]},
+    "boreas-m3i-urban-11": {"1": [351, 397, 400, 433], "2": [275, 406, 293, 453], "3": [615, 405, 633, 445]},
+    "boreas-m3i-urban-14": {"1": [189, 408, 216, 471], "2": [330, 399, 383, 439], "3": [660, 406, 678, 453]},
+    "boreas-m3i-urban-17": {"1": [743, 404, 774, 473], "2": [299, 399, 369, 446]},
+    "boreas-m3i-following-05": {"1": [422, 406, 499, 476], "2": [311, 410, 398, 475], "3": [815, 406, 853, 450], "4": [535, 410, 549, 440]},
+    "boreas-m3i-following-08": {"1": [146, 403, 346, 528], "2": [422, 405, 499, 474], "3": [806, 405, 833, 443], "4": [545, 409, 560, 442]},
+    "boreas-m3i-following-11": {"1": [422, 404, 499, 472], "2": [912, 399, 946, 453], "3": [348, 415, 399, 456], "4": [554, 408, 575, 445], "5": [164, 412, 181, 455]},
+    "boreas-m3i-following-14": {"1": [240, 416, 365, 499], "2": [424, 402, 500, 471], "3": null, "4": [837, 409, 867, 463], "5": null},
+    "boreas-m3i-following-17": {"1": [902, 403, 957, 522], "2": [432, 399, 504, 468], "3": [594, 405, 622, 464], "4": [212, 415, 255, 464], "5": [382, 407, 425, 442], "6": [192, 416, 205, 458], "7": [663, 409, 680, 452]}
+  }
+}

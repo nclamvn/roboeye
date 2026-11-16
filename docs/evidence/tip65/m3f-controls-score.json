@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "dataset": "synthetic-m3c",
+  "inputSha256": "2779f2a80f7d046f83b6fe490be3157699123eb12a44f0d4ed43a87fbfd29238",
+  "review": {
+    "method": "authored transformations of pinned Boreas RGB; ROI manually checked before replay",
+    "sourceSha256": "3e45e456ce59de59bc748a7f5cc5bb93cbf97d8ecd8e70a60ef2a1a2d73945e5",
+    "scope": "not independently recorded or human certified"
+  },
+  "reviewSha256": null,
+  "unit": "target-keyframe",
+  "frames": 80,
+  "noMetreChecks": 160,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "opencv": "5.0.0",
+  "codeSha256": {
+    "assist_scene_roi_redetect.py": "9bd4ff4a824b7f26f9265f055790c65483007451ae529be8650d6772e08dd17b",
+    "assist_scene_m3f_study.py": "5d97ce10027b4303ae665597b5148705facc2ffe8fa7d427a46ba79a0c8c4133",
+    "assist_scene_scale_approach_m3e.py": "3bfaac464710becaffa3590ffcf59ea8195f5e7ba2f57c874bd8138988fb3f2b",
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_m3e_study.py": "6801000ec0dbd4026067727a7aecf4250cbdbd0d435bd7aba1b29f6368914617",
+    "assist_scene_motion_m3b.py": "036305b33a4d09c224035bee407e4cf670802f8e17284079c06337c894ea73f9"
+  },
+  "detectorConfiguration": {
+    "computeUnits": "all",
+    "confidenceThreshold": 0.38,
+    "coordinates": "EXIF-upright normalized top-left",
+    "cropAndScale": "scaleFill",
+    "detectionTiming": "VNImageRequestHandler.perform only",
+    "iouThreshold": 0.45,
+    "modelId": "apple-yolov3-fp16"
+  },
+  "totals": {
+    "A": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13,
+      "tn": 144,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 3,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13,
+      "tn": 144,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 3,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    }
+  },
+  "clips": [
+    {
+      "id": "m3e-static",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 15
+        }
+      },
+      "detectionOverlap": {
+        "A": {
+          "not-approaching": 32,
+          "not-approaching.overlapped": 32,
+          "unmatchedBoxesNotFalsePositiveLabel": 112
+        },
+        "B": {
+          "not-approaching": 32,
+          "not-approaching.overlapped": 32,
+          "unmatchedBoxesNotFalsePositiveLabel": 112
+        }
+      },
+      "roi": {
+        "cropImages": 32,
+        "cropDispatches": 16,
+        "crop-edge": 48,
+        "class-or-score": 16,
+        "replaced": 32,
+        "recovered": 0
+      }
+    },
+    {
+      "id": "m3e-zoom",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "scale-ambiguous": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "scale-ambiguous": 15
+        }
+      },
+      "detectionOverlap": {
+        "A": {
+          "not-approaching": 32,
+          "not-approaching.overlapped": 32,
+          "unmatchedBoxesNotFalsePositiveLabel": 91
+        },
+        "B": {
+          "not-approaching": 32,
+          "not-approaching.overlapped": 32,
+          "unmatchedBoxesNotFalsePositiveLabel": 92
+        }
+      },
+      "roi": {
+        "cropImages": 32,
+        "cropDispatches": 16,
+        "crop-edge": 25,
+        "class-or-score": 15,
+        "replaced": 28,
+        "recovered": 1,
+        "current-ambiguity": 1,
+        "prior-no-longer-missing": 2
+      }
+    },
+    {
+      "id": "m3e-pan",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 15
+        }
+      },
+      "detectionOverlap": {
+        "A": {
+          "not-approaching": 32,
+          "not-approaching.overlapped": 32,
+          "unmatchedBoxesNotFalsePositiveLabel": 80
+        },
+        "B": {
+          "not-approaching": 32,
+          "not-approaching.overlapped": 32,
+          "unmatchedBoxesNotFalsePositiveLabel": 86
+        }
+      },
+      "roi": {
+        "cropImages": 32,
+        "cropDispatches": 16,
+        "crop-edge": 46,
+        "class-or-score": 21,
+        "replaced": 14,
+        "recovered": 6,
+        "prior-no-longer-missing": 6,
+        "no-anchor-match": 5,
+        "current-ambiguity": 1
+      }
+    },
+    {
+      "id": "m3e-shake",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 32,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 15
+        }
+      },
+      "detectionOverlap": {
+        "A": {
+          "not-approaching": 32,
+          "not-approaching.overlapped": 28,
+          "unmatchedBoxesNotFalsePositiveLabel": 95
+        },
+        "B": {
+          "not-approaching": 32,
+          "not-approaching.overlapped": 28,
+          "unmatchedBoxesNotFalsePositiveLabel": 98
+        }
+      },
+      "roi": {
+        "cropImages": 32,
+        "cropDispatches": 16,
+        "crop-edge": 44,
+        "class-or-score": 13,
+        "replaced": 6,
+        "recovered": 3,
+        "no-anchor-match": 22,
+        "prior-no-longer-missing": 1
+      }
+    },
+    {
+      "id": "m3e-approach-gap",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 16,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 16,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 16,
+          "framesAbstained": 16
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 15
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 15
+        }
+      },
+      "detectionOverlap": {
+        "A": {
+          "unknown": 3,
+          "unknown.overlapped": 3,
+          "not-approaching": 16,
+          "not-approaching.overlapped": 15,
+          "unmatchedBoxesNotFalsePositiveLabel": 105,
+          "approaching": 13,
+          "approaching.overlapped": 7
+        },
+        "B": {
+          "unknown": 3,
+          "unknown.overlapped": 3,
+          "not-approaching": 16,
+          "not-approaching.overlapped": 15,
+          "unmatchedBoxesNotFalsePositiveLabel": 105,
+          "approaching": 13,
+          "approaching.overlapped": 8
+        }
+      },
+      "roi": {
+        "cropImages": 30,
+        "cropDispatches": 15,
+        "crop-edge": 57,
+        "class-or-score": 16,
+        "replaced": 29,
+        "recovered": 1
+      }
+    }
+  ],
+  "stageMs": {
+    "detector": {
+      "p50": 41.27,
+      "p95": 89.84
+    },
+    "sharedPrep": {
+      "p50": 21.47,
+      "p95": 53.6
+    },
+    "roiPreparation": {
+      "p50": 2.06,
+      "p95": 7.88
+    },
+    "roiInferenceWall": {
+      "p50": 429.18,
+      "p95": 720.59
+    },
+    "roiMerge": {
+      "p50": 0.42,
+      "p95": 1.36
+    },
+    "A": {
+      "p50": 32.52,
+      "p95": 80.47
+    },
+    "B": {
+      "p50": 28.79,
+      "p95": 79.01
+    },
+    "candidateExtraToReady": {
+      "p50": 460.67,
+      "p95": 857.41
+    }
+  },
+  "limits": "Checkpoint labels are not exhaustive; unmatched detections are not certified false positives. ROI per-frame process launch is included in wall time; full detector uses batches. No end-to-end phone latency measurement.",
+  "receiptSha256": "9f7e127bc3c0ab189b8059ad9f593bf9cbdfa40db3b5c19b9f1894d7eeaab00a",
+  "truthSha256": "be606f069ef0dda9a69e713cd2619192c7b05f425e47661362d105b137c26c8f"
+}

@@ -1,0 +1,348 @@
+{
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "runnerSha256": "834e9c4aeaf7649eff012ab370e1bf46b6686039cc1ebd41e7d5c0ccd0fad5a7",
+  "manifestSha256": "23f49323139b5f117a4593e0765c938976d875f264b6c740fe222b62d97c6ba3",
+  "answerCodeSha256": {
+    "assist_scene_evidence.py": "c84229ef30f9e84f3c649091f0f4f5140de8f5caf62401a2bf7fd27ee3180975",
+    "assist_scene_rgb_output.py": "93793da87fa383b0abcda4f26fc7ba99c63a6487e580e64ba10871235c8ba8fe"
+  },
+  "model": {
+    "computeUnits": "all",
+    "confidenceThreshold": 0.38,
+    "coordinates": "EXIF-upright normalized top-left",
+    "cropAndScale": "scaleFill",
+    "detectionTiming": "VNImageRequestHandler.perform only",
+    "iouThreshold": 0.45,
+    "modelId": "apple-yolov3-fp16"
+  },
+  "clips": [
+    {
+      "id": "pedestrians-fixed",
+      "sha256": "2f2447f6629cabb9f5c7436e3c26727730161229ce0568f451c54df67cb9558d",
+      "sampledFrames": 20,
+      "registrationAttempts": 19,
+      "registrationValid": 19,
+      "registrationStatusCounts": {
+        "first-frame": 1,
+        "valid": 19
+      },
+      "compensatedEventFrames": 9,
+      "naiveEventFrames": 10,
+      "compensatedEventDetections": 12,
+      "naiveEventDetections": 13,
+      "compensatedEvents": [
+        [
+          600,
+          8,
+          "person",
+          "image-left"
+        ],
+        [
+          800,
+          8,
+          "person",
+          "image-left"
+        ],
+        [
+          1200,
+          8,
+          "person",
+          "image-left"
+        ],
+        [
+          1400,
+          5,
+          "person",
+          "image-left"
+        ],
+        [
+          1800,
+          27,
+          "person",
+          "image-left"
+        ],
+        [
+          1800,
+          26,
+          "person",
+          "image-left"
+        ],
+        [
+          2000,
+          26,
+          "person",
+          "image-left"
+        ],
+        [
+          2800,
+          48,
+          "person",
+          "image-right"
+        ],
+        [
+          2800,
+          51,
+          "handbag",
+          "image-left"
+        ],
+        [
+          3000,
+          54,
+          "person",
+          "image-left"
+        ],
+        [
+          3000,
+          48,
+          "person",
+          "image-right"
+        ],
+        [
+          3800,
+          73,
+          "person",
+          "image-left"
+        ]
+      ],
+      "naiveEventTimesMs": [
+        600,
+        800,
+        1200,
+        1400,
+        1800,
+        2000,
+        2800,
+        3000,
+        3400,
+        3800
+      ]
+    },
+    {
+      "id": "pedestrians-sim-pan",
+      "sha256": "80029af2f3353ad5b2aebd48699cb66829513f438b85249f9ce976d9b275d0e9",
+      "sampledFrames": 20,
+      "registrationAttempts": 19,
+      "registrationValid": 18,
+      "registrationStatusCounts": {
+        "first-frame": 1,
+        "localized-consensus": 1,
+        "valid": 18
+      },
+      "compensatedEventFrames": 7,
+      "naiveEventFrames": 8,
+      "compensatedEventDetections": 8,
+      "naiveEventDetections": 9,
+      "compensatedEvents": [
+        [
+          800,
+          5,
+          "person",
+          "image-left"
+        ],
+        [
+          1000,
+          5,
+          "person",
+          "image-left"
+        ],
+        [
+          1000,
+          13,
+          "person",
+          "image-up"
+        ],
+        [
+          1200,
+          15,
+          "person",
+          "image-right"
+        ],
+        [
+          3000,
+          49,
+          "person",
+          "image-right"
+        ],
+        [
+          3200,
+          55,
+          "person",
+          "image-right"
+        ],
+        [
+          3400,
+          56,
+          "handbag",
+          "image-right"
+        ],
+        [
+          3600,
+          56,
+          "handbag",
+          "image-right"
+        ]
+      ],
+      "naiveEventTimesMs": [
+        800,
+        1000,
+        1200,
+        1400,
+        3000,
+        3200,
+        3400,
+        3600
+      ]
+    },
+    {
+      "id": "frozen-sim-pan",
+      "sha256": "01caa5229d2de33e0b6874c9a09df3521d52288ebc8dc715a01d400c0df7b450",
+      "sampledFrames": 20,
+      "registrationAttempts": 19,
+      "registrationValid": 19,
+      "registrationStatusCounts": {
+        "first-frame": 1,
+        "valid": 19
+      },
+      "compensatedEventFrames": 0,
+      "naiveEventFrames": 0,
+      "compensatedEventDetections": 0,
+      "naiveEventDetections": 0,
+      "compensatedEvents": [],
+      "naiveEventTimesMs": []
+    },
+    {
+      "id": "frozen-sim-shake",
+      "sha256": "3285293243b5404110be0ebb79f5fac2cdf5e2aacbe766ebd8c526e290f058dc",
+      "sampledFrames": 20,
+      "registrationAttempts": 19,
+      "registrationValid": 19,
+      "registrationStatusCounts": {
+        "first-frame": 1,
+        "valid": 19
+      },
+      "compensatedEventFrames": 0,
+      "naiveEventFrames": 0,
+      "compensatedEventDetections": 0,
+      "naiveEventDetections": 0,
+      "compensatedEvents": [],
+      "naiveEventTimesMs": []
+    },
+    {
+      "id": "frozen-steady-pan",
+      "sha256": "a1ba94609dd0d230636b454f33ddf9fe83e6c0aec0dbd9467277b8ffc2115978",
+      "sampledFrames": 20,
+      "registrationAttempts": 19,
+      "registrationValid": 19,
+      "registrationStatusCounts": {
+        "first-frame": 1,
+        "valid": 19
+      },
+      "compensatedEventFrames": 2,
+      "naiveEventFrames": 16,
+      "compensatedEventDetections": 2,
+      "naiveEventDetections": 34,
+      "compensatedEvents": [
+        [
+          800,
+          4,
+          "person",
+          "image-left"
+        ],
+        [
+          1000,
+          4,
+          "person",
+          "image-left"
+        ]
+      ],
+      "naiveEventTimesMs": [
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
+      ],
+      "falseEventDiagnostics": [
+        {
+          "timeMs": 800,
+          "trackId": 4,
+          "backgroundMedianErrorPx": 0.03020796185833284,
+          "boxResidualPx": 25.773315548024737
+        },
+        {
+          "timeMs": 1000,
+          "trackId": 4,
+          "backgroundMedianErrorPx": 0.033093916334449774,
+          "boxResidualPx": 28.992932819364167
+        }
+      ]
+    },
+    {
+      "id": "frozen-untextured",
+      "sha256": "5bb5441820bc41d69df5807cb225de8a7321f9a00ba49a0ebecfd05b3de963c0",
+      "sampledFrames": 20,
+      "registrationAttempts": 19,
+      "registrationValid": 0,
+      "registrationStatusCounts": {
+        "first-frame": 1,
+        "low-texture": 19
+      },
+      "compensatedEventFrames": 0,
+      "naiveEventFrames": 0,
+      "compensatedEventDetections": 0,
+      "naiveEventDetections": 0,
+      "compensatedEvents": [],
+      "naiveEventTimesMs": []
+    },
+    {
+      "id": "cut-interleave",
+      "sha256": "2608afb5416d723bc936613aceae22cc7c6a2e80f545214dd435869ff7e434ec",
+      "sampledFrames": 20,
+      "registrationAttempts": 19,
+      "registrationValid": 10,
+      "registrationStatusCounts": {
+        "first-frame": 1,
+        "too-few-consistent-points": 9,
+        "valid": 10
+      },
+      "compensatedEventFrames": 0,
+      "naiveEventFrames": 0,
+      "compensatedEventDetections": 0,
+      "naiveEventDetections": 0,
+      "compensatedEvents": [],
+      "naiveEventTimesMs": []
+    },
+    {
+      "id": "bus-real-pan",
+      "sha256": "143be21527d43e384ad1627bcfc1d9648fef1ef5fa75e9e8e42b41752602e476",
+      "sampledFrames": 20,
+      "registrationAttempts": 19,
+      "registrationValid": 0,
+      "registrationStatusCounts": {
+        "first-frame": 1,
+        "insufficient-background": 2,
+        "too-few-consistent-points": 7,
+        "weak-consensus": 10
+      },
+      "compensatedEventFrames": 0,
+      "naiveEventFrames": 0,
+      "compensatedEventDetections": 0,
+      "naiveEventDetections": 0,
+      "compensatedEvents": [],
+      "naiveEventTimesMs": []
+    }
+  ],
+  "rawReceiptSha256": "3dad88b8257a3be6e75471b6c4ff2c20d6406e1e5423c1f4b3820e9de2a319e2",
+  "decision": "Fail on frozen-steady-pan: two false reports from bbox drift despite valid background alignments"
+}

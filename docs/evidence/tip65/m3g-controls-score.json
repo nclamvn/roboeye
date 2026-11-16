@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "dataset": "synthetic-m3c",
+  "status": "NOT_READY",
+  "kind": "arithmetic-aggregation-of-two-scored-control-groups",
+  "unit": "authored target-frame, not independent episodes",
+  "frames": 120,
+  "noMetreChecks": 720,
+  "inputs": [
+    {"score": "m3g-controls-negatives-score.json", "sha256": "e3f61f7f1bdb084cb75d690c41baf2c0e5df6cdea932e27d4c7eb7d7e4c359a1"},
+    {"score": "m3g-controls-positives-score.json", "sha256": "1660a318b4bdcb4e25525373cffeeaacbe4c5ad993a4648965ab1cd35db1622e"}
+  ],
+  "review": {"method": "Fixed real-photo ROI and authored transformations before inference; no human physical review", "scope": "120 transformed frames from one photo; six scenarios, not 120 independent trials"},
+  "totals": {
+    "A": {"tp": 0, "fn": 30, "fp": 0, "tn": 200, "unmatchedReports": 0, "allSceneFalseNotices": 0},
+    "B": {"tp": 4, "fn": 26, "fp": 0, "tn": 200, "unmatchedReports": 29, "allSceneFalseNotices": 0},
+    "C": {"tp": 4, "fn": 26, "fp": 0, "tn": 200, "unmatchedReports": 2, "allSceneFalseNotices": 0},
+    "D": {"tp": 4, "fn": 26, "fp": 0, "tn": 200, "unmatchedReports": 26, "allSceneFalseNotices": 0},
+    "E": {"tp": 4, "fn": 26, "fp": 0, "tn": 200, "unmatchedReports": 18, "allSceneFalseNotices": 0},
+    "S": {"tp": 2, "fn": 28, "fp": 4, "tn": 196, "unmatchedReports": 80, "allSceneFalseNotices": 53}
+  },
+  "negativeWholeScene": {"frames": 80, "S": {"static": 0, "zoom": 50, "pan": 2, "shake": 1}, "AtoE": 0},
+  "positiveDetectorOverlap": {"matched": 13, "total": 30, "scope": "same-family IoU >= 0.35 at positive target frames, not detector recall on exhaustively labelled scenes"},
+  "limits": "allSceneFalseNotices applies only to the 80 known-negative frames. Positive controls affect a local image envelope, potentially changing unreviewed neighbours; unmatched reports there are not certified true or false. Percentiles are not pooled or added. See source score artifacts for individual timings, unknowns and provenance. No physical metres, phone speed or navigation safety has been established."
+}

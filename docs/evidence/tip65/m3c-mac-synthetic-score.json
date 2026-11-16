@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "dataset": "synthetic-m3c",
+  "truthSha256": "a5fb3646531a04e7910001a06531e4c7ffc0ee8efc01f2759531a9d168207c80",
+  "receiptSha256": "993f1c9384a19c6670a4dc62f3d2c15dbc2edc8464803ab995b27920b0fa51f7",
+  "matchingIoU": 0.35,
+  "margin": 0.08,
+  "unit": "labeled target-keyframe",
+  "totals": {
+    "A": {
+      "tp": 20,
+      "fp": 1,
+      "fn": 7,
+      "tn": 8,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 23,
+      "scoredKeyframes": 36,
+      "framesAbstained": 48
+    },
+    "B": {
+      "tp": 9,
+      "fp": 0,
+      "fn": 18,
+      "tn": 9,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 11,
+      "scoredKeyframes": 36,
+      "framesAbstained": 72
+    }
+  },
+  "clips": [
+    {
+      "id": "stationary-parallax",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "tn": 8,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 4,
+          "scoredKeyframes": 9,
+          "framesAbstained": 18
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 9,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 9,
+          "framesAbstained": 23
+        }
+      }
+    },
+    {
+      "id": "cross-epipolar",
+      "lanes": {
+        "A": {
+          "tp": 8,
+          "fp": 0,
+          "fn": 1,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 7,
+          "scoredKeyframes": 9,
+          "framesAbstained": 8
+        },
+        "B": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 11,
+          "scoredKeyframes": 9,
+          "framesAbstained": 3
+        }
+      }
+    },
+    {
+      "id": "along-epipolar",
+      "lanes": {
+        "A": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 5,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 5,
+          "scoredKeyframes": 9,
+          "framesAbstained": 14
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 9,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 9,
+          "framesAbstained": 23
+        }
+      }
+    },
+    {
+      "id": "pose-dropout",
+      "lanes": {
+        "A": {
+          "tp": 8,
+          "fp": 0,
+          "fn": 1,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 7,
+          "scoredKeyframes": 9,
+          "framesAbstained": 8
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 9,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 9,
+          "framesAbstained": 23
+        }
+      }
+    }
+  ],
+  "proofClass": "Synthetic trajectories and labels; real images as textures and actual local YOLO for both branches; no nuScenes media evaluated."
+}

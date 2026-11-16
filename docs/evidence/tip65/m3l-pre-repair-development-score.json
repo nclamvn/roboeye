@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "study": "M3L",
+  "dataset": "Boreas-real",
+  "inputSha256": "7b6508c348920c1105438994e30779e087c777fcd599885e1c518e8a7be3bbe7",
+  "developmentOnly": true,
+  "unit": "reviewed target-keyframe",
+  "frames": 99,
+  "noMetreChecks": 396,
+  "totals": {
+    "A": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 23,
+      "tn": 1,
+      "unmatchedReports": 1,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 13,
+      "scoredKeyframes": 10,
+      "framesAbstained": 86
+    },
+    "B": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 21,
+      "tn": 1,
+      "unmatchedReports": 1,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 21,
+      "scoredKeyframes": 10,
+      "framesAbstained": 78
+    },
+    "C": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 23,
+      "tn": 1,
+      "unmatchedReports": 1,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 3,
+      "scoredKeyframes": 10,
+      "framesAbstained": 95
+    },
+    "S": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 16,
+      "tn": 1,
+      "unmatchedReports": 8,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 1,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 137,
+      "scoredKeyframes": 10,
+      "framesAbstained": 14
+    }
+  },
+  "clips": [
+    {
+      "id": "boreas-m3k-urban",
+      "lanes": {
+        "A": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 12,
+          "tn": 1,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 7,
+          "scoredKeyframes": 5,
+          "framesAbstained": 41
+        },
+        "B": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 12,
+          "tn": 1,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 10,
+          "scoredKeyframes": 5,
+          "framesAbstained": 39
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 1,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 2,
+          "scoredKeyframes": 5,
+          "framesAbstained": 47
+        },
+        "S": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 9,
+          "tn": 1,
+          "unmatchedReports": 4,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 1,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 58,
+          "scoredKeyframes": 5,
+          "framesAbstained": 9
+        }
+      },
+      "identityLifecycle": {
+        "A": {
+          "observedInternalIds": 248,
+          "repeatedObservedIds": 81,
+          "maxObservedIdSpanMs": 1360.5930000000003,
+          "identityDecisionCounts": {
+            "new-or-appearance-unverified": 248,
+            "fresh-appearance-and-reciprocal-box": 148,
+            "fresh-one-pair-pixel-identity": 32
+          },
+          "retiredCohortReasons": {
+            "insufficient-object-flow": 19,
+            "small-or-truncated": 1,
+            "incoherent-object-flow": 1,
+            "cohort-rotation": 3,
+            "cohort-expired": 1,
+            "object-scale-disagreement": 1
+          },
+          "maxReportedBounds": {
+            "identityCount": 12,
+            "cohortCount": 12,
+            "cohortPoints": 688,
+            "retainedIdentityCount": 8,
+            "retiredCohortCount": 8,
+            "seededCohortCount": 9
+          },
+          "maxObservedCohortAgeMs": 720.665,
+          "maxWarningMeasurementAgeMs": 720.665,
+          "scope": "Internal observed-ID/cohort diagnostics, NOT GT ID-switch or MOT accuracy"
+        },
+        "B": {
+          "observedInternalIds": 255,
+          "repeatedObservedIds": 80,
+          "maxObservedIdSpanMs": 1360.5930000000003,
+          "identityDecisionCounts": {
+            "new-or-appearance-unverified": 255,
+            "fresh-appearance-and-reciprocal-box": 148,
+            "fresh-one-pair-pixel-identity": 25
+          },
+          "retiredCohortReasons": {
+            "insufficient-object-flow": 24,
+            "small-or-truncated": 1,
+            "incoherent-object-flow": 2,
+            "cohort-rotation": 3,
+            "cohort-expired": 1,
+            "object-scale-disagreement": 1
+          },
+          "maxReportedBounds": {
+            "identityCount": 12,
+            "cohortCount": 12,
+            "cohortPoints": 647,
+            "retainedIdentityCount": 8,
+            "retiredCohortCount": 7,
+            "seededCohortCount": 9
+          },
+          "maxObservedCohortAgeMs": 720.665,
+          "maxWarningMeasurementAgeMs": 720.665,
+          "scope": "Internal observed-ID/cohort diagnostics, NOT GT ID-switch or MOT accuracy"
+        }
+      }
+    },
+    {
+      "id": "boreas-m3k-traffic",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 11,
+          "tn": 0,
+          "unmatchedReports": 1,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 6,
+          "scoredKeyframes": 5,
+          "framesAbstained": 45
+        },
+        "B": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 9,
+          "tn": 0,
+          "unmatchedReports": 1,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 11,
+          "scoredKeyframes": 5,
+          "framesAbstained": 39
+        },
+        "C": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 10,
+          "tn": 0,
+          "unmatchedReports": 1,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 1,
+          "scoredKeyframes": 5,
+          "framesAbstained": 48
+        },
+        "S": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 7,
+          "tn": 0,
+          "unmatchedReports": 4,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 79,
+          "scoredKeyframes": 5,
+          "framesAbstained": 5
+        }
+      },
+      "identityLifecycle": {
+        "A": {
+          "observedInternalIds": 270,
+          "repeatedObservedIds": 66,
+          "maxObservedIdSpanMs": 1760.015,
+          "identityDecisionCounts": {
+            "new-or-appearance-unverified": 270,
+            "fresh-appearance-and-reciprocal-box": 169,
+            "fresh-one-pair-pixel-identity": 41
+          },
+          "retiredCohortReasons": {
+            "insufficient-object-flow": 11,
+            "small-or-truncated": 3,
+            "object-scale-disagreement": 12,
+            "localized-object-flow": 3,
+            "cohort-expired": 1,
+            "cohort-rotation": 3
+          },
+          "maxReportedBounds": {
+            "identityCount": 12,
+            "cohortCount": 13,
+            "cohortPoints": 729,
+            "retainedIdentityCount": 7,
+            "retiredCohortCount": 7,
+            "seededCohortCount": 9
+          },
+          "maxObservedCohortAgeMs": 799.5800000000002,
+          "maxWarningMeasurementAgeMs": 559.75,
+          "scope": "Internal observed-ID/cohort diagnostics, NOT GT ID-switch or MOT accuracy"
+        },
+        "B": {
+          "observedInternalIds": 274,
+          "repeatedObservedIds": 68,
+          "maxObservedIdSpanMs": 1760.015,
+          "identityDecisionCounts": {
+            "new-or-appearance-unverified": 274,
+            "fresh-appearance-and-reciprocal-box": 169,
+            "fresh-one-pair-pixel-identity": 37
+          },
+          "retiredCohortReasons": {
+            "insufficient-object-flow": 21,
+            "small-or-truncated": 3,
+            "object-scale-disagreement": 9,
+            "cohort-rotation": 2,
+            "localized-object-flow": 1
+          },
+          "maxReportedBounds": {
+            "identityCount": 12,
+            "cohortCount": 14,
+            "cohortPoints": 722,
+            "retainedIdentityCount": 7,
+            "retiredCohortCount": 9,
+            "seededCohortCount": 9
+          },
+          "maxObservedCohortAgeMs": 640.3520000000001,
+          "maxWarningMeasurementAgeMs": 639.5630000000001,
+          "scope": "Internal observed-ID/cohort diagnostics, NOT GT ID-switch or MOT accuracy"
+        }
+      }
+    }
+  ],
+  "stageMs": {
+    "fullPreparation": {
+      "p50": 118.16,
+      "p95": 164.0
+    },
+    "sharedPrep": {
+      "p50": 78.5,
+      "p95": 124.03
+    },
+    "workingDecode": {
+      "p50": 1.78,
+      "p95": 2.92
+    },
+    "nativeDecode": {
+      "p50": 76.83,
+      "p95": 120.63
+    },
+    "A": {
+      "p50": 42.88,
+      "p95": 85.39
+    },
+    "B": {
+      "p50": 725.74,
+      "p95": 3080.42
+    },
+    "C": {
+      "p50": 1023.05,
+      "p95": 3449.69
+    },
+    "S": {
+      "p50": 0.07,
+      "p95": 0.14
+    },
+    "APairedProduct": {
+      "p50": 281.47,
+      "p95": 379.29
+    },
+    "BPairedProduct": {
+      "p50": 1011.85,
+      "p95": 3460.02
+    },
+    "CPairedProduct": {
+      "p50": 1365.47,
+      "p95": 3736.99
+    },
+    "SPairedProduct": {
+      "p50": 225.55,
+      "p95": 310.03
+    }
+  },
+  "codeSha256": {
+    "assist_scene_m3g_study.py": "af27a473fc03d47543ac21c7d45a8c69d4e22c74ca0b0ad4df518d2758b72ca1",
+    "assist_scene_window_loom.py": "4981561eed510a7be889744bd20c23e4ed9d6d91704cb3d22dddcea24c873217",
+    "assist_scene_dense_window.py": "98c5a0f021ae3faa9abeee634690d43b21447dec8b0525709d37680e163374d0",
+    "assist_scene_scale_approach_m3e.py": "3bfaac464710becaffa3590ffcf59ea8195f5e7ba2f57c874bd8138988fb3f2b",
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_m3d_study.py": "db37a3b6fdbb81cb5c1bddee820838a0b82f44571ae30ad658be33e84a71b225",
+    "assist_scene_m3e_study.py": "6801000ec0dbd4026067727a7aecf4250cbdbd0d435bd7aba1b29f6368914617",
+    "assist_scene_m3f_study.py": "5d97ce10027b4303ae665597b5148705facc2ffe8fa7d427a46ba79a0c8c4133",
+    "assist_scene_motion_m3b.py": "036305b33a4d09c224035bee407e4cf670802f8e17284079c06337c894ea73f9",
+    "assist_scene_motion_m3c.py": "119471b4544367431dd62b051ed557e8fe092ea8230fdee47b73fb99a671592e",
+    "assist_scene_pose_motion.py": "df6b22ae9da80a8a75dae2049de3b848c839527a7aebcb95954cc6fbbd0b0df9",
+    "assist_scene_motion.py": "330340ea5469d4f6f2a559dbe9b4090529a1da0d313e68a1b7fe82ef889d50bb",
+    "score-assist-scene-motion-m3c.py": "90875862ef6774832164776b27a54981d4253dfd9341c8d1e8fb18aeadd05f16",
+    "assist_scene_m3h_study.py": "a0fdb7a3f436c131a61d0fd66bf47614b345b2778d13608d6143eda41ca6810a",
+    "assist_scene_cohort_loom.py": "b7915e194867e09a218742f8b779631fb00ec631ddfdd39b784eaa5e1bb4bea4",
+    "assist_scene_m3k_study.py": "bbe5892b9c69ab9d249543ecaac0a322ff3fea9427da66e371bc04f876f3b894",
+    "assist_scene_learned_detector.py": "4258c1c7164b5c16ac0e48173dc932a8a2577709a19822adc42e9b564300bb9a",
+    "assist_scene_learned_region.py": "594c9c52cdc4e79db0fad19432fae99b23b0a064321f6b4b44607fbaadf7092a",
+    "audit_assist_scene_m3k.py": "eadbda5e716b053723fa18dd40bc39720c1fcd441e704cca5b0389f157b5f6ba",
+    "assist_scene_m3l_study.py": "86af251c66bc4639909b634a8eed377631e921b56a4ef68e4a8c37798424cb66",
+    "assist_scene_direct_window.py": "101e2934f5fdd368993c55881910c1b173cad3828f079c12ece16169cc8290cd"
+  },
+  "detectorProvenance": {
+    "kind": "development-historical-M3K-A-C-plus-fresh-direct",
+    "cacheSha256": "c65028c0697cd70b321db6f62e00622c8782a02ec34262f5ef334c607a94c138",
+    "baselineTimings": "historical, not current execution"
+  },
+  "learnedFlowModel": {
+    "kind": "actual-local-pretrained-torchvision",
+    "algorithm": "torchvision-raft-small",
+    "weights": "C_T_V2",
+    "weightUrl": "https://download.pytorch.org/models/raft_small_C_T_V2-01064c6d.pth",
+    "weightsSha256": "01064c6dba73b0fc9fc8edf772248560a00a3acfd62ac6677e9eeebad9680e27",
+    "weightBytes": 4006189,
+    "torch": "2.14.0",
+    "torchvision": "0.29.1",
+    "device": "mps",
+    "policy": {
+      "algorithm": "torchvision-raft-small",
+      "weights": "C_T_V2",
+      "weightUrl": "https://download.pytorch.org/models/raft_small_C_T_V2-01064c6d.pth",
+      "weightSha256": "01064c6dba73b0fc9fc8edf772248560a00a3acfd62ac6677e9eeebad9680e27",
+      "flowUpdates": 12,
+      "minInputSide": 128,
+      "inputMultiple": 8,
+      "maxInputSide": 384,
+      "padding": "bottom-right-replicate-crop-back",
+      "input": "gray-repeated-RGB-minus1-plus1",
+      "directionsPerField": 2,
+      "maxTraceRows": 12,
+      "fallback": "none; CPU must be explicitly selected"
+    }
+  },
+  "timingScope": "Development A/B/S engine and detector samples are historical, not new execution. Fresh A/B/S product samples sum current lane detector sample, staging, shared pixel preparation and complete engine wall. CoreML sample only measures Vision perform, so totals are lower bounds. C consumes A camera/identity surface and must include A wall as dependency; C product sums detector+prep+A+C. B includes RAFT inside engine wall, not added twice. Startup/study wall remain separate; no phone or real-time claim.",
+  "limits": "Physical approach labels unchanged; optical expansion is not metric range or universal radial closing. Unknown/unmatched/unreviewed remain separate. Development is not unseen evidence. No phone, real-time, commercial clearance or safety acceptance.",
+  "receiptSha256": "05d2799da27a59ed8d171df7eb8228b13340114901759e136b0f089de39f6750",
+  "truthSha256": "48f7031e5548810b82b2990c0d5d1652718a2c8d40b6d9198a9709029cca0ffc"
+}

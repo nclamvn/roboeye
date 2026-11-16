@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "study": "M3K-independent-artifact-audit",
+  "status": "PASS",
+  "inputSha256": "7b6508c348920c1105438994e30779e087c777fcd599885e1c518e8a7be3bbe7",
+  "developmentOnly": false,
+  "checks": {
+    "frames": 99,
+    "tracks": 4959,
+    "events": 278,
+    "cohortWarnings": 124,
+    "baselineFramesChecked": 0,
+    "CDirectionCalls": 588,
+    "DDirectionCalls": 592
+  },
+  "fieldToWarningAttribution": "NOT INDEPENDENTLY ATTRIBUTABLE",
+  "limits": [
+    "Learned trace identifies a frame, not a track/cohort: a particular field cannot independently be attributed to each warning.",
+    "Artifact consistency is not proof of numerical model correctness, independent semantic review, accuracy or commercial clearance."
+  ],
+  "receiptSha256": "c65028c0697cd70b321db6f62e00622c8782a02ec34262f5ef334c607a94c138",
+  "oldCacheSha256": null
+}

@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "dataset": "PandaSet-real",
+  "truthSha256": "a0833a76c69cfef7e2bedc2edc3d08d12d3498c8c21d921f0be4fabb302cdfa7",
+  "receiptSha256": "04a5c5f4271cb06a8c06ed65371f5c8e112c7acd8ec3e90b9672c8b3e01175c2",
+  "matchingIoU": 0.35,
+  "margin": 0.08,
+  "unit": "labeled target-keyframe",
+  "totals": {
+    "A": {
+      "tp": 0,
+      "fp": 6,
+      "fn": 41,
+      "tn": 3567,
+      "unmatchedReports": 71,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 41,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 123,
+      "framesAbstained": 75
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 41,
+      "tn": 3573,
+      "unmatchedReports": 8,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 41,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 123,
+      "framesAbstained": 115
+    }
+  },
+  "clips": [
+    {
+      "id": "001",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 1293,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 41,
+          "framesAbstained": 41
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 1293,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 41,
+          "framesAbstained": 41
+        }
+      },
+      "rawDetectionCoverage": {
+        "vehicle.stationary": {
+          "targets": 1293,
+          "overlapped": 326,
+          "gateAValid": 15,
+          "gateBValid": 320
+        }
+      }
+    },
+    {
+      "id": "002",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "tn": 655,
+          "unmatchedReports": 40,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 41,
+          "framesAbstained": 8
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 656,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 41,
+          "framesAbstained": 41
+        }
+      },
+      "rawDetectionCoverage": {
+        "vehicle.stationary": {
+          "targets": 656,
+          "overlapped": 248,
+          "gateAValid": 242,
+          "gateBValid": 127
+        }
+      }
+    },
+    {
+      "id": "011",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 5,
+          "fn": 41,
+          "tn": 1619,
+          "unmatchedReports": 31,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 41,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 41,
+          "framesAbstained": 26
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 41,
+          "tn": 1624,
+          "unmatchedReports": 8,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 41,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 41,
+          "framesAbstained": 33
+        }
+      },
+      "rawDetectionCoverage": {
+        "vehicle.stationary": {
+          "targets": 1624,
+          "overlapped": 121,
+          "gateAValid": 75,
+          "gateBValid": 118
+        },
+        "vehicle.unknown": {
+          "targets": 41,
+          "overlapped": 0,
+          "gateAValid": 0,
+          "gateBValid": 0
+        },
+        "vehicle.moving": {
+          "targets": 41,
+          "overlapped": 0,
+          "gateAValid": 0,
+          "gateBValid": 0
+        }
+      }
+    }
+  ]
+}

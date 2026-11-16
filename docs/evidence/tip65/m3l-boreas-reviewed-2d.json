@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "c08ee5c9b42dd9bb1befc1325987e615107577635447c74045302d2823afecd4",
+  "candidatesSha256": "5be8caaf8389a6c7860967bcf3d3b6c2620a36df337e7708d1e7601c33c4832d",
+  "review": {
+    "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles, without detector/model results, before M3L development or holdout inference. Projected cuboids adjusted to visible extents.",
+    "scope": "Selected checkpoints, not exhaustive labels or independent human certification. Very dark, small and sensor-truncated visible objects retained. Physical approach labels unchanged, relative to camera, not object self-motion.",
+    "omissions": {"boreas-m3l-turn-17.3": "Projected person falls behind the foreground white van/windscreen region; no separately identifiable visible person extent can be assigned. Positive candidate retained in candidates.json, not counted as successful abstention."},
+    "selection": "Two four-second intervals fixed from cadence/pose/speed metadata before RGB review; disjoint from prior study windows, same recording and not an independent domain. No candidate removed after seeing inference outcomes."
+  },
+  "frames": {
+    "boreas-m3l-city-05": {"1": [145,419,261,469], "2": [472,396,526,450], "3": [768,410,794,487], "4": [529,413,561,438]},
+    "boreas-m3l-city-08": {"1": [146,415,314,493]},
+    "boreas-m3l-city-11": {"1": [0,432,214,589]},
+    "boreas-m3l-city-14": {"1": [467,394,518,449]},
+    "boreas-m3l-city-17": {"1": [187,420,333,503], "2": [467,393,518,450]},
+    "boreas-m3l-turn-05": {"1": [558,401,633,449], "2": [469,403,510,435]},
+    "boreas-m3l-turn-08": {"1": [578,403,689,469], "2": [366,400,421,442]},
+    "boreas-m3l-turn-11": {"1": [59,402,336,559], "2": [632,405,840,534]},
+    "boreas-m3l-turn-14": {"1": [228,415,370,497], "2": [547,400,588,430]},
+    "boreas-m3l-turn-17": {"1": [58,402,247,488], "2": [556,400,609,437], "3": null}
+  }
+}

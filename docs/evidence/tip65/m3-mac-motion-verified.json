@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "kind": "Compact verification receipt derived from real runner output",
+  "rawReceiptSha256": "f2de36e789069e3c74f9826811599d2f4fe040ecb7d93b16e83baffcbc003987",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "cv2": "5.0.0",
+  "numpy": "2.5.4",
+  "manifestSha256": "23f49323139b5f117a4593e0765c938976d875f264b6c740fe222b62d97c6ba3",
+  "runnerSha256": "330340ea5469d4f6f2a559dbe9b4090529a1da0d313e68a1b7fe82ef889d50bb",
+  "answerCodeSha256": {
+    "assist_scene_evidence.py": "c84229ef30f9e84f3c649091f0f4f5140de8f5caf62401a2bf7fd27ee3180975",
+    "assist_scene_rgb_output.py": "93793da87fa383b0abcda4f26fc7ba99c63a6487e580e64ba10871235c8ba8fe"
+  },
+  "detectorCliSha256": "0cc5354270cd4ff617f852909d860d2dc1641b6bf7eb8a17f23b6203c1c62c63",
+  "detector": {
+    "computeUnits": "all",
+    "confidenceThreshold": 0.38,
+    "coordinates": "EXIF-upright normalized top-left",
+    "cropAndScale": "scaleFill",
+    "detectionTiming": "VNImageRequestHandler.perform only",
+    "iouThreshold": 0.45,
+    "modelId": "apple-yolov3-fp16"
+  },
+  "policy": {
+    "minInliers": 24,
+    "minInlierRatio": 0.65,
+    "minOccupiedCells": 5,
+    "minAxisSpan": 0.42,
+    "minHullFraction": 0.1,
+    "maxMedianErrorPixelsAt768": 1.8,
+    "maxRotationDeg": 12,
+    "minScale": 0.88,
+    "maxScale": 1.12,
+    "maxTranslationDiagonal": 0.24,
+    "minSteps": 3,
+    "minPersistenceMs": 480,
+    "maxHistoryMs": 1050,
+    "maxGapMs": 300,
+    "minDisplacementDiagonal": 0.013,
+    "minDisplacementObjectDiagonal": 0.1,
+    "minCoherence": 0.75,
+    "localInsetFraction": 0.18,
+    "localMinPoints": 6,
+    "localMinConsensus": 0.65,
+    "localSpanFraction": 0.16,
+    "localMinAlongPixelsAt768": 1.8,
+    "localDirectionCosine": 0.65,
+    "localWindowSteps": 3,
+    "localMinAgree": 2,
+    "localMinSummedAgreementFraction": 0.25
+  },
+  "rgbFrameCount": 160,
+  "nullDistances": 160,
+  "phoneEvidence": null,
+  "medianMs": {
+    "detector": 25.766,
+    "registration": 5.052,
+    "associationPlusLocal": 2.769,
+    "sumPerFrame": 34.176
+  },
+  "clips": [
+    {
+      "id": "pedestrians-fixed",
+      "sha256": "2f2447f6629cabb9f5c7436e3c26727730161229ce0568f451c54df67cb9558d",
+      "sampleFps": 5,
+      "timestampBasis": "declared-CFR-index+decoder-pts-crosscheck",
+      "summary": {
+        "sampledFrames": 20,
+        "registrationAttempts": 19,
+        "registrationValid": 19,
+        "registrationStatusCounts": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "compensatedEventFrames": 2,
+        "naiveEventFrames": 10,
+        "bboxCompensatedEventFrames": 9,
+        "compensatedEventDetections": 2,
+        "naiveEventDetections": 13,
+        "bboxCompensatedEventDetections": 12
+      },
+      "detectorWallMs": 809.051,
+      "decodeAndPrepareMs": 71.837,
+      "registrationByFrame": [
+        "0|1|first-frame",
+        "200|1|valid",
+        "400|1|valid",
+        "600|1|valid",
+        "800|1|valid",
+        "1000|1|valid",
+        "1200|1|valid",
+        "1400|1|valid",
+        "1600|1|valid",
+        "1800|1|valid",
+        "2000|1|valid",
+        "2200|1|valid",
+        "2400|1|valid",
+        "2600|1|valid",
+        "2800|1|valid",
+        "3000|1|valid",
+        "3200|1|valid",
+        "3400|1|valid",
+        "3600|1|valid",
+        "3800|1|valid"
+      ],
+      "naiveEventTimesMs": [
+        600,
+        800,
+        1200,
+        1400,
+        1800,
+        2000,
+        2800,
+        3000,
+        3400,
+        3800
+      ],
+      "bboxOnlyEventTimesMs": [
+        600,
+        800,
+        1200,
+        1400,
+        1800,
+        2000,
+        2800,
+        3000,
+        3800
+      ],
+      "emitted": [
+        {
+          "timeMs": 3000,
+          "events": [
+            {
+              "epoch": 1,
+              "timeMs": 3000,
+              "trackId": 54,
+              "label": "person",
+              "direction": "image-left",
+              "netPixels": 32.641427151042656,
+              "travelPixels": 38.442794468323754,
+              "coherence": 0.8490909051353868,
+              "durationMs": 600,
+              "netFrameDiagonalFraction": 0.04445229594012789,
+              "localEvidence": {
+                "agreeingSteps": 2,
+                "windowSteps": 3,
+                "minSupportingPoints": 16,
+                "positiveAxisPixels": 35.71592464307611
+              }
+            }
+          ],
+          "answer": {
+            "status": "observed-frame-change",
+            "trackNotices": [
+              {
+                "trackId": 54,
+                "label": "person",
+                "status": "observed-frame-change",
+                "reason": "accepted",
+                "textVi": "Vị trí của đối tượng thay đổi so với nền đã căn chỉnh; chưa xác định được chuyển động ngoài đời."
+              }
+            ],
+            "textVi": "Vị trí của đối tượng thay đổi so với nền đã căn chỉnh; chưa xác định được chuyển động ngoài đời."
+          }
+        },
+        {
+          "timeMs": 3800,
+          "events": [
+            {
+              "epoch": 1,
+              "timeMs": 3800,
+              "trackId": 73,
+              "label": "person",
+              "direction": "image-left",
+              "netPixels": 50.74385282588335,
+              "travelPixels": 54.66783666846922,
+              "coherence": 0.9282213439982507,
+              "durationMs": 600,
+              "netFrameDiagonalFraction": 0.06910484497263807,
+              "localEvidence": {
+                "agreeingSteps": 2,
+                "windowSteps": 3,
+                "minSupportingPoints": 6,
+                "positiveAxisPixels": 41.112700139919596
+              }
+            }
+          ],
+          "answer": {
+            "status": "observed-frame-change",
+            "trackNotices": [
+              {
+                "trackId": 73,
+                "label": "person",
+                "status": "observed-frame-change",
+                "reason": "accepted",
+                "textVi": "Vị trí của đối tượng thay đổi so với nền đã căn chỉnh; chưa xác định được chuyển động ngoài đời."
+              }
+            ],
+            "textVi": "Vị trí của đối tượng thay đổi so với nền đã căn chỉnh; chưa xác định được chuyển động ngoài đời."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pedestrians-sim-pan",
+      "sha256": "80029af2f3353ad5b2aebd48699cb66829513f438b85249f9ce976d9b275d0e9",
+      "sampleFps": 5,
+      "timestampBasis": "declared-CFR-index+decoder-pts-crosscheck",
+      "summary": {
+        "sampledFrames": 20,
+        "registrationAttempts": 19,
+        "registrationValid": 18,
+        "registrationStatusCounts": {
+          "first-frame": 1,
+          "localized-consensus": 1,
+          "valid": 18
+        },
+        "compensatedEventFrames": 2,
+        "naiveEventFrames": 8,
+        "bboxCompensatedEventFrames": 7,
+        "compensatedEventDetections": 2,
+        "naiveEventDetections": 9,
+        "bboxCompensatedEventDetections": 8
+      },
+      "detectorWallMs": 765.653,
+      "decodeAndPrepareMs": 42.545,
+      "registrationByFrame": [
+        "0|1|first-frame",
+        "200|1|valid",
+        "400|1|valid",
+        "600|1|valid",
+        "800|1|valid",
+        "1000|1|valid",
+        "1200|1|valid",
+        "1400|1|valid",
+        "1600|1|valid",
+        "1800|1|valid",
+        "2000|1|valid",
+        "2200|1|valid",
+        "2400|1|valid",
+        "2600|1|valid",
+        "2800|1|valid",
+        "3000|1|valid",
+        "3200|1|valid",
+        "3400|1|valid",
+        "3600|1|valid",
+        "3800|2|localized-consensus"
+      ],
+      "naiveEventTimesMs": [
+        800,
+        1000,
+        1200,
+        1400,
+        3000,
+        3200,
+        3400,
+        3600
+      ],
+      "bboxOnlyEventTimesMs": [
+        800,
+        1000,
+        1200,
+        3000,
+        3200,
+        3400,
+        3600
+      ],
+      "emitted": [
+        {
+          "timeMs": 3000,
+          "events": [
+            {
+              "epoch": 1,
+              "timeMs": 3000,
+              "trackId": 49,
+              "label": "person",
+              "direction": "image-right",
+              "netPixels": 98.44655160088807,
+              "travelPixels": 100.28974033457936,
+              "coherence": 0.9816213629874584,
+              "durationMs": 600,
+              "netFrameDiagonalFraction": 0.13406813451500574,
+              "localEvidence": {
+                "agreeingSteps": 3,
+                "windowSteps": 3,
+                "minSupportingPoints": 10,
+                "positiveAxisPixels": 104.66654376385287
+              }
+            }
+          ],
+          "answer": {
+            "status": "observed-frame-change",
+            "trackNotices": [
+              {
+                "trackId": 49,
+                "label": "person",
+                "status": "observed-frame-change",
+                "reason": "accepted",
+                "textVi": "Vị trí của đối tượng thay đổi so với nền đã căn chỉnh; chưa xác định được chuyển động ngoài đời."
+              }
+            ],
+            "textVi": "Vị trí của đối tượng thay đổi so với nền đã căn chỉnh; chưa xác định được chuyển động ngoài đời."
+          }
+        },
+        {
+          "timeMs": 3400,
+          "events": [
+            {
+              "epoch": 1,
+              "timeMs": 3400,
+              "trackId": 56,
+              "label": "handbag",
+              "direction": "image-right",
+              "netPixels": 93.99226509041705,
+              "travelPixels": 94.28516421387914,
+              "coherence": 0.9968934760213424,
+              "durationMs": 600,
+              "netFrameDiagonalFraction": 0.12800212333083322,
+              "localEvidence": {
+                "agreeingSteps": 3,
+                "windowSteps": 3,
+                "minSupportingPoints": 6,
+                "positiveAxisPixels": 90.81325083859869
+              }
+            }
+          ],
+          "answer": {
+            "status": "observed-frame-change",
+            "trackNotices": [
+              {
+                "trackId": 56,
+                "label": "handbag",
+                "status": "observed-frame-change",
+                "reason": "accepted",
+                "textVi": "Vị trí của đối tượng thay đổi so với nền đã căn chỉnh; chưa xác định được chuyển động ngoài đời."
+              }
+            ],
+            "textVi": "Vị trí của đối tượng thay đổi so với nền đã căn chỉnh; chưa xác định được chuyển động ngoài đời."
+          }
+        }
+      ]
+    },
+    {
+      "id": "frozen-sim-pan",
+      "sha256": "01caa5229d2de33e0b6874c9a09df3521d52288ebc8dc715a01d400c0df7b450",
+      "sampleFps": 5,
+      "timestampBasis": "declared-CFR-index+decoder-pts-crosscheck",
+      "summary": {
+        "sampledFrames": 20,
+        "registrationAttempts": 19,
+        "registrationValid": 19,
+        "registrationStatusCounts": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "compensatedEventFrames": 0,
+        "naiveEventFrames": 0,
+        "bboxCompensatedEventFrames": 0,
+        "compensatedEventDetections": 0,
+        "naiveEventDetections": 0,
+        "bboxCompensatedEventDetections": 0
+      },
+      "detectorWallMs": 707.594,
+      "decodeAndPrepareMs": 40.432,
+      "registrationByFrame": [
+        "0|1|first-frame",
+        "200|1|valid",
+        "400|1|valid",
+        "600|1|valid",
+        "800|1|valid",
+        "1000|1|valid",
+        "1200|1|valid",
+        "1400|1|valid",
+        "1600|1|valid",
+        "1800|1|valid",
+        "2000|1|valid",
+        "2200|1|valid",
+        "2400|1|valid",
+        "2600|1|valid",
+        "2800|1|valid",
+        "3000|1|valid",
+        "3200|1|valid",
+        "3400|1|valid",
+        "3600|1|valid",
+        "3800|1|valid"
+      ],
+      "naiveEventTimesMs": [],
+      "bboxOnlyEventTimesMs": [],
+      "emitted": []
+    },
+    {
+      "id": "frozen-sim-shake",
+      "sha256": "3285293243b5404110be0ebb79f5fac2cdf5e2aacbe766ebd8c526e290f058dc",
+      "sampleFps": 5,
+      "timestampBasis": "declared-CFR-index+decoder-pts-crosscheck",
+      "summary": {
+        "sampledFrames": 20,
+        "registrationAttempts": 19,
+        "registrationValid": 19,
+        "registrationStatusCounts": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "compensatedEventFrames": 0,
+        "naiveEventFrames": 0,
+        "bboxCompensatedEventFrames": 0,
+        "compensatedEventDetections": 0,
+        "naiveEventDetections": 0,
+        "bboxCompensatedEventDetections": 0
+      },
+      "detectorWallMs": 737.456,
+      "decodeAndPrepareMs": 40.615,
+      "registrationByFrame": [
+        "0|1|first-frame",
+        "200|1|valid",
+        "400|1|valid",
+        "600|1|valid",
+        "800|1|valid",
+        "1000|1|valid",
+        "1200|1|valid",
+        "1400|1|valid",
+        "1600|1|valid",
+        "1800|1|valid",
+        "2000|1|valid",
+        "2200|1|valid",
+        "2400|1|valid",
+        "2600|1|valid",
+        "2800|1|valid",
+        "3000|1|valid",
+        "3200|1|valid",
+        "3400|1|valid",
+        "3600|1|valid",
+        "3800|1|valid"
+      ],
+      "naiveEventTimesMs": [],
+      "bboxOnlyEventTimesMs": [],
+      "emitted": []
+    },
+    {
+      "id": "frozen-steady-pan",
+      "sha256": "a1ba94609dd0d230636b454f33ddf9fe83e6c0aec0dbd9467277b8ffc2115978",
+      "sampleFps": 5,
+      "timestampBasis": "declared-CFR-index+decoder-pts-crosscheck",
+      "summary": {
+        "sampledFrames": 20,
+        "registrationAttempts": 19,
+        "registrationValid": 19,
+        "registrationStatusCounts": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "compensatedEventFrames": 0,
+        "naiveEventFrames": 16,
+        "bboxCompensatedEventFrames": 2,
+        "compensatedEventDetections": 0,
+        "naiveEventDetections": 34,
+        "bboxCompensatedEventDetections": 2
+      },
+      "detectorWallMs": 868.696,
+      "decodeAndPrepareMs": 58.915,
+      "registrationByFrame": [
+        "0|1|first-frame",
+        "200|1|valid",
+        "400|1|valid",
+        "600|1|valid",
+        "800|1|valid",
+        "1000|1|valid",
+        "1200|1|valid",
+        "1400|1|valid",
+        "1600|1|valid",
+        "1800|1|valid",
+        "2000|1|valid",
+        "2200|1|valid",
+        "2400|1|valid",
+        "2600|1|valid",
+        "2800|1|valid",
+        "3000|1|valid",
+        "3200|1|valid",
+        "3400|1|valid",
+        "3600|1|valid",
+        "3800|1|valid"
+      ],
+      "naiveEventTimesMs": [
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
+      ],
+      "bboxOnlyEventTimesMs": [
+        800,
+        1000
+      ],
+      "emitted": []
+    },
+    {
+      "id": "frozen-untextured",
+      "sha256": "5bb5441820bc41d69df5807cb225de8a7321f9a00ba49a0ebecfd05b3de963c0",
+      "sampleFps": 5,
+      "timestampBasis": "declared-CFR-index+decoder-pts-crosscheck",
+      "summary": {
+        "sampledFrames": 20,
+        "registrationAttempts": 19,
+        "registrationValid": 0,
+        "registrationStatusCounts": {
+          "first-frame": 1,
+          "low-texture": 19
+        },
+        "compensatedEventFrames": 0,
+        "naiveEventFrames": 0,
+        "bboxCompensatedEventFrames": 0,
+        "compensatedEventDetections": 0,
+        "naiveEventDetections": 0,
+        "bboxCompensatedEventDetections": 0
+      },
+      "detectorWallMs": 699.027,
+      "decodeAndPrepareMs": 27.794,
+      "registrationByFrame": [
+        "0|1|first-frame",
+        "200|2|low-texture",
+        "400|3|low-texture",
+        "600|4|low-texture",
+        "800|5|low-texture",
+        "1000|6|low-texture",
+        "1200|7|low-texture",
+        "1400|8|low-texture",
+        "1600|9|low-texture",
+        "1800|10|low-texture",
+        "2000|11|low-texture",
+        "2200|12|low-texture",
+        "2400|13|low-texture",
+        "2600|14|low-texture",
+        "2800|15|low-texture",
+        "3000|16|low-texture",
+        "3200|17|low-texture",
+        "3400|18|low-texture",
+        "3600|19|low-texture",
+        "3800|20|low-texture"
+      ],
+      "naiveEventTimesMs": [],
+      "bboxOnlyEventTimesMs": [],
+      "emitted": []
+    },
+    {
+      "id": "cut-interleave",
+      "sha256": "2608afb5416d723bc936613aceae22cc7c6a2e80f545214dd435869ff7e434ec",
+      "sampleFps": 5,
+      "timestampBasis": "declared-CFR-index+decoder-pts-crosscheck",
+      "summary": {
+        "sampledFrames": 20,
+        "registrationAttempts": 19,
+        "registrationValid": 10,
+        "registrationStatusCounts": {
+          "first-frame": 1,
+          "too-few-consistent-points": 9,
+          "valid": 10
+        },
+        "compensatedEventFrames": 0,
+        "naiveEventFrames": 0,
+        "bboxCompensatedEventFrames": 0,
+        "compensatedEventDetections": 0,
+        "naiveEventDetections": 0,
+        "bboxCompensatedEventDetections": 0
+      },
+      "detectorWallMs": 763.872,
+      "decodeAndPrepareMs": 45.496,
+      "registrationByFrame": [
+        "0|1|first-frame",
+        "200|1|valid",
+        "400|2|too-few-consistent-points",
+        "600|2|valid",
+        "800|3|too-few-consistent-points",
+        "1000|3|valid",
+        "1200|4|too-few-consistent-points",
+        "1400|4|valid",
+        "1600|5|too-few-consistent-points",
+        "1800|5|valid",
+        "2000|6|too-few-consistent-points",
+        "2200|6|valid",
+        "2400|7|too-few-consistent-points",
+        "2600|7|valid",
+        "2800|8|too-few-consistent-points",
+        "3000|8|valid",
+        "3200|9|too-few-consistent-points",
+        "3400|9|valid",
+        "3600|10|too-few-consistent-points",
+        "3800|10|valid"
+      ],
+      "naiveEventTimesMs": [],
+      "bboxOnlyEventTimesMs": [],
+      "emitted": []
+    },
+    {
+      "id": "bus-real-pan",
+      "sha256": "143be21527d43e384ad1627bcfc1d9648fef1ef5fa75e9e8e42b41752602e476",
+      "sampleFps": 5,
+      "timestampBasis": "declared-CFR-index+decoder-pts-crosscheck",
+      "summary": {
+        "sampledFrames": 20,
+        "registrationAttempts": 19,
+        "registrationValid": 0,
+        "registrationStatusCounts": {
+          "first-frame": 1,
+          "insufficient-background": 2,
+          "too-few-consistent-points": 7,
+          "weak-consensus": 10
+        },
+        "compensatedEventFrames": 0,
+        "naiveEventFrames": 0,
+        "bboxCompensatedEventFrames": 0,
+        "compensatedEventDetections": 0,
+        "naiveEventDetections": 0,
+        "bboxCompensatedEventDetections": 0
+      },
+      "detectorWallMs": 761.457,
+      "decodeAndPrepareMs": 38.676,
+      "registrationByFrame": [
+        "0|1|first-frame",
+        "200|2|weak-consensus",
+        "400|3|weak-consensus",
+        "600|4|weak-consensus",
+        "800|5|weak-consensus",
+        "1000|6|too-few-consistent-points",
+        "1200|7|insufficient-background",
+        "1400|8|insufficient-background",
+        "1600|9|too-few-consistent-points",
+        "1800|10|too-few-consistent-points",
+        "2000|11|too-few-consistent-points",
+        "2200|12|too-few-consistent-points",
+        "2400|13|too-few-consistent-points",
+        "2600|14|too-few-consistent-points",
+        "2800|15|weak-consensus",
+        "3000|16|weak-consensus",
+        "3200|17|weak-consensus",
+        "3400|18|weak-consensus",
+        "3600|19|weak-consensus",
+        "3800|20|weak-consensus"
+      ],
+      "naiveEventTimesMs": [],
+      "bboxOnlyEventTimesMs": [],
+      "emitted": []
+    }
+  ]
+}

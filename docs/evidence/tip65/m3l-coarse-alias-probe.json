@@ -1,0 +1,1003 @@
+{
+  "schemaVersion": 1,
+  "kind": "posthoc-read-only-CPU-two-old-development-pairs",
+  "noticesOrRecallRecomputed": false,
+  "sourceEdits": false,
+  "gpuUsed": false,
+  "opencv": "5.0.0",
+  "numpy": "2.5.4",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "receiptSha256": "05d2799da27a59ed8d171df7eb8228b13340114901759e136b0f089de39f6750",
+  "inputSha256": "7b6508c348920c1105438994e30779e087c777fcd599885e1c518e8a7be3bbe7",
+  "codeSha256": {
+    "assist_scene_direct_window.py": "101e2934f5fdd368993c55881910c1b173cad3828f079c12ece16169cc8290cd",
+    "assist_scene_region_motion.py": "bcd0219a7f7303bb533f8bc90d5a221a5efed7379235ce00b142c27257eb72d7",
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d"
+  },
+  "policy": {
+    "maxTracks": 12,
+    "maxSnapshots": 8,
+    "maxAnchors": 7,
+    "anchorCadenceMs": 160,
+    "minWindowMs": 320,
+    "maxWindowMs": 800,
+    "maxGapMs": 300,
+    "maxWorkingSide": 256,
+    "maxNativeSide": 384,
+    "maxAnchorChecks": 2,
+    "minPoints": 9,
+    "minSupport": 0.7,
+    "gridSide": 10,
+    "minTextureVariance": 16,
+    "maxCyclePx": 1.3,
+    "minSpan": 0.24,
+    "minHull": 0.035,
+    "minCorrelation": 0.7,
+    "maxAnisotropyLog": 0.2,
+    "maxRotationDeg": 15,
+    "maxLinearLogGrowth": 0.4,
+    "maxBoxLogDisagreement": 0.12,
+    "minNetLinearGrowth": 0.04,
+    "minCurrentLinearGrowth": 0.0005,
+    "eccIterations": 60,
+    "eccEpsilon": 0.0001,
+    "method": "direct-template-window",
+    "bankCadenceMs": 160,
+    "maxBankTimestamps": 7,
+    "maxSparseTimestamps": 6,
+    "minFreshMs": 12,
+    "logScales": [
+      -0.4,
+      -0.35000000000000003,
+      -0.30000000000000004,
+      -0.25,
+      -0.2,
+      -0.15000000000000002,
+      -0.09999999999999998,
+      -0.04999999999999999,
+      0,
+      0.04999999999999999,
+      0.09999999999999998,
+      0.15000000000000002,
+      0.20000000000000007,
+      0.25,
+      0.30000000000000004,
+      0.35,
+      0.4
+    ],
+    "rotationsDeg": [
+      -10,
+      0,
+      10
+    ],
+    "maxCandidatesPerObject": 3,
+    "spatialCenterDiagonals": 1.5,
+    "associationMargin": 0.08,
+    "minInitializerCorrelation": 0.7,
+    "minPeakMargin": 0.04,
+    "equivalentTranslationPx": 2,
+    "equivalentTranslationFraction": 0.03,
+    "equivalentLogScale": 0.075,
+    "equivalentRotationDeg": 12,
+    "maxPairsPerOrigin": 36,
+    "maxPairsPerFrame": 72,
+    "maxInitializerWarpsPerDirection": 51,
+    "maxTemplateCallsPerWarp": 4,
+    "maxEccCallsPerPair": 2,
+    "maxCenterFraction": 0.28
+  },
+  "cases": [
+    {
+      "clip": "boreas-m3k-traffic",
+      "frameIndex": 20,
+      "currentTrackId": "70",
+      "roiShape": [
+        165,
+        242
+      ],
+      "startToken": "boreas-boreas-m3k-traffic-1598991450654605",
+      "endToken": "boreas-boreas-m3k-traffic-1598991450734476",
+      "startSha256": "e4c89a77a9126673cfc91711de8b6b4d1a9a9416e828462ee05b1e9090592ab9",
+      "endSha256": "9b62a718c2818e12b1ab542f95e8c51ec742873eb2cd9d9aa6888b570d446826",
+      "startDetectionIndex": 1,
+      "endDetectionIndex": 2,
+      "startMs": 1520.251,
+      "endMs": 1600.122,
+      "loggedNccReproducedWithin1e6": true,
+      "forwardSearch": {
+        "reason": "ambiguous-template-peak",
+        "correlation": 0.9491687417030334,
+        "runnerUpCorrelation": 0.9104570150375366,
+        "peakMargin": 0.038711726665496826,
+        "logScale": 0.04999999999999999,
+        "rotationDeg": 0,
+        "center": [
+          117,
+          84
+        ],
+        "affine": [
+          [
+            1.0512710963760241,
+            0,
+            -19.66524252888314
+          ],
+          [
+            0,
+            1.0512710963760241,
+            -3.7811365473980203
+          ]
+        ]
+      },
+      "reverseSearch": {
+        "reason": "template-initialized",
+        "correlation": 0.9498615860939026,
+        "runnerUpCorrelation": 0.9073876142501831,
+        "peakMargin": 0.04247397184371948,
+        "logScale": -0.04999999999999999,
+        "rotationDeg": 0,
+        "center": [
+          127,
+          82
+        ],
+        "affine": [
+          [
+            0.951229424500714,
+            0,
+            18.084230894668252
+          ],
+          [
+            0,
+            0.951229424500714,
+            3.5235724786910936
+          ]
+        ]
+      },
+      "forwardCandidates": {
+        "best": {
+          "score": 0.9491687417030334,
+          "center": [
+            117,
+            84
+          ],
+          "logScale": 0.04999999999999999,
+          "rotationDeg": 0,
+          "affine": [
+            [
+              1.0512710963760241,
+              0,
+              -19.66524252888314
+            ],
+            [
+              0,
+              1.0512710963760241,
+              -3.7811365473980203
+            ]
+          ]
+        },
+        "other": {
+          "score": 0.9104570150375366,
+          "center": [
+            117,
+            84
+          ],
+          "logScale": -0.04999999999999999,
+          "rotationDeg": 0,
+          "affine": [
+            [
+              0.951229424500714,
+              0,
+              -6.659825185092828
+            ],
+            [
+              0,
+              0.951229424500714,
+              4.572343054190384
+            ]
+          ]
+        },
+        "distinctModesWithinMargin": [
+          {
+            "score": 0.9491687417030334,
+            "center": [
+              117,
+              84
+            ],
+            "logScale": 0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                1.0512710963760241,
+                0,
+                -19.66524252888314
+              ],
+              [
+                0,
+                1.0512710963760241,
+                -3.7811365473980203
+              ]
+            ]
+          },
+          {
+            "score": 0.9104570150375366,
+            "center": [
+              117,
+              84
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                -6.659825185092828
+              ],
+              [
+                0,
+                0.951229424500714,
+                4.572343054190384
+              ]
+            ]
+          }
+        ]
+      },
+      "reverseCandidates": {
+        "best": {
+          "score": 0.9498615860939026,
+          "center": [
+            127,
+            82
+          ],
+          "logScale": -0.04999999999999999,
+          "rotationDeg": 0,
+          "affine": [
+            [
+              0.951229424500714,
+              0,
+              18.084230894668252
+            ],
+            [
+              0,
+              0.951229424500714,
+              3.5235724786910936
+            ]
+          ]
+        },
+        "other": {
+          "score": 0.9073876142501831,
+          "center": [
+            127,
+            82
+          ],
+          "logScale": 0.04999999999999999,
+          "rotationDeg": 0,
+          "affine": [
+            [
+              1.0512710963760241,
+              0,
+              6.629459464945242
+            ],
+            [
+              0,
+              1.0512710963760241,
+              -4.729865451021993
+            ]
+          ]
+        },
+        "distinctModesWithinMargin": [
+          {
+            "score": 0.9498615860939026,
+            "center": [
+              127,
+              82
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                18.084230894668252
+              ],
+              [
+                0,
+                0.951229424500714,
+                3.5235724786910936
+              ]
+            ]
+          }
+        ]
+      },
+      "refined": [
+        {
+          "direction": "forward",
+          "which": "best",
+          "coarse": {
+            "score": 0.9491687417030334,
+            "center": [
+              117,
+              84
+            ],
+            "logScale": 0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                1.0512710963760241,
+                0,
+                -19.66524252888314
+              ],
+              [
+                0,
+                1.0512710963760241,
+                -3.7811365473980203
+              ]
+            ]
+          },
+          "correlation": 0.9786532868009497,
+          "affine": [
+            [
+              1.0572657585144043,
+              0.025633160024881363,
+              -22.240371704101562
+            ],
+            [
+              -0.006473872810602188,
+              1.0111415386199951,
+              0.6913808584213257
+            ]
+          ],
+          "linearLogGrowth": 0.03346061102328205,
+          "shapeValid": true
+        },
+        {
+          "direction": "forward",
+          "which": "other",
+          "coarse": {
+            "score": 0.9104570150375366,
+            "center": [
+              117,
+              84
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                -6.659825185092828
+              ],
+              [
+                0,
+                0.951229424500714,
+                4.572343054190384
+              ]
+            ]
+          },
+          "correlation": 0.9786431064034024,
+          "affine": [
+            [
+              1.056850552558899,
+              0.026101984083652496,
+              -22.22846794128418
+            ],
+            [
+              -0.007101384457200766,
+              1.0111390352249146,
+              0.772434413433075
+            ]
+          ],
+          "linearLogGrowth": 0.03327209701600841,
+          "shapeValid": true
+        },
+        {
+          "direction": "reverse",
+          "which": "best",
+          "coarse": {
+            "score": 0.9498615860939026,
+            "center": [
+              127,
+              82
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                18.084230894668252
+              ],
+              [
+                0,
+                0.951229424500714,
+                3.5235724786910936
+              ]
+            ]
+          },
+          "correlation": 0.9803454919125097,
+          "affine": [
+            [
+              0.9558383822441101,
+              -0.01761946640908718,
+              19.341217041015625
+            ],
+            [
+              0.0010833740234375,
+              0.9803310036659241,
+              0.7857839465141296
+            ]
+          ],
+          "linearLogGrowth": -0.032505541516852705,
+          "shapeValid": true
+        },
+        {
+          "direction": "reverse",
+          "which": "other",
+          "coarse": {
+            "score": 0.9073876142501831,
+            "center": [
+              127,
+              82
+            ],
+            "logScale": 0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                1.0512710963760241,
+                0,
+                6.629459464945242
+              ],
+              [
+                0,
+                1.0512710963760241,
+                -4.729865451021993
+              ]
+            ]
+          },
+          "correlation": 0.9789805255266327,
+          "affine": [
+            [
+              0.9527056217193604,
+              -0.02135295607149601,
+              20.032310485839844
+            ],
+            [
+              0.004998017102479935,
+              0.987445592880249,
+              -0.2898644208908081
+            ]
+          ],
+          "linearLogGrowth": -0.03048488123077135,
+          "shapeValid": true
+        }
+      ],
+      "forwardBestVsRivalMaxGridPx": 0.04411089417934736,
+      "separateGrid": {
+        "seeds": 61,
+        "cyclePass": 61,
+        "nccPass": 57,
+        "ownMaskPass": 54,
+        "jointPass": 50,
+        "required": 42.699999999999996,
+        "maxCycle": 0.6759568536630508
+      }
+    },
+    {
+      "clip": "boreas-m3k-urban",
+      "frameIndex": 35,
+      "currentTrackId": "180",
+      "roiShape": [
+        318,
+        245
+      ],
+      "startToken": "boreas-boreas-m3k-urban-1598989117852174",
+      "endToken": "boreas-boreas-m3k-urban-1598989117933399",
+      "startSha256": "534b09973c8c37e710eb84924a78489c11b877e33a7421311dc76a0a6d67c5fd",
+      "endSha256": "57fc16851ab4cba9ffd26f8f069ff3b621ce0163b7ce4fd6f1164bc7b2f6a32a",
+      "startDetectionIndex": 2,
+      "endDetectionIndex": 3,
+      "startMs": 2760.74,
+      "endMs": 2841.965,
+      "loggedNccReproducedWithin1e6": true,
+      "forwardSearch": {
+        "reason": "ambiguous-template-peak",
+        "correlation": 0.941846489906311,
+        "runnerUpCorrelation": 0.9268882870674133,
+        "peakMargin": 0.014958202838897705,
+        "logScale": 0.04999999999999999,
+        "rotationDeg": 0,
+        "center": [
+          149,
+          159
+        ],
+        "affine": [
+          [
+            1.0512710963760241,
+            0,
+            43.872890362397584
+          ],
+          [
+            0,
+            1.0512710963760241,
+            1.8349710917843822
+          ]
+        ]
+      },
+      "reverseSearch": {
+        "reason": "ambiguous-template-peak",
+        "correlation": 0.9406375885009766,
+        "runnerUpCorrelation": 0.9118382930755615,
+        "peakMargin": 0.02879929542541504,
+        "logScale": -0.04999999999999999,
+        "rotationDeg": 0,
+        "center": [
+          95,
+          153
+        ],
+        "affine": [
+          [
+            0.951229424500714,
+            0,
+            -41.97703712810281
+          ],
+          [
+            0,
+            0.951229424500714,
+            -2.526010905866741
+          ]
+        ]
+      },
+      "forwardCandidates": {
+        "best": {
+          "score": 0.941846489906311,
+          "center": [
+            149,
+            159
+          ],
+          "logScale": 0.04999999999999999,
+          "rotationDeg": 0,
+          "affine": [
+            [
+              1.0512710963760241,
+              0,
+              43.872890362397584
+            ],
+            [
+              0,
+              1.0512710963760241,
+              1.8349710917843822
+            ]
+          ]
+        },
+        "other": {
+          "score": 0.9268882870674133,
+          "center": [
+            150,
+            158
+          ],
+          "logScale": -0.04999999999999999,
+          "rotationDeg": 0,
+          "affine": [
+            [
+              0.951229424500714,
+              0,
+              54.877057549928594
+            ],
+            [
+              0,
+              0.951229424500714,
+              15.791201037143253
+            ]
+          ]
+        },
+        "distinctModesWithinMargin": [
+          {
+            "score": 0.941846489906311,
+            "center": [
+              149,
+              159
+            ],
+            "logScale": 0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                1.0512710963760241,
+                0,
+                43.872890362397584
+              ],
+              [
+                0,
+                1.0512710963760241,
+                1.8349710917843822
+              ]
+            ]
+          },
+          {
+            "score": 0.9268882870674133,
+            "center": [
+              150,
+              158
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                54.877057549928594
+              ],
+              [
+                0,
+                0.951229424500714,
+                15.791201037143253
+              ]
+            ]
+          },
+          {
+            "score": 0.914073646068573,
+            "center": [
+              142,
+              160
+            ],
+            "logScale": 0.04999999999999999,
+            "rotationDeg": 10,
+            "affine": [
+              [
+                1.0352999262287528,
+                -0.18255131011961248,
+                65.76142824000678
+              ],
+              [
+                0.18255131011961248,
+                1.0352999262287528,
+                -13.032469983159785
+              ]
+            ]
+          },
+          {
+            "score": 0.9131119251251221,
+            "center": [
+              149,
+              162
+            ],
+            "logScale": 0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                1.0512710963760241,
+                0,
+                43.872890362397584
+              ],
+              [
+                0,
+                1.0512710963760241,
+                4.834971091784382
+              ]
+            ]
+          },
+          {
+            "score": 0.9105203151702881,
+            "center": [
+              150,
+              155
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                54.877057549928594
+              ],
+              [
+                0,
+                0.951229424500714,
+                12.791201037143253
+              ]
+            ]
+          }
+        ]
+      },
+      "reverseCandidates": {
+        "best": {
+          "score": 0.9406375885009766,
+          "center": [
+            95,
+            153
+          ],
+          "logScale": -0.04999999999999999,
+          "rotationDeg": 0,
+          "affine": [
+            [
+              0.951229424500714,
+              0,
+              -41.97703712810281
+            ],
+            [
+              0,
+              0.951229424500714,
+              -2.526010905866741
+            ]
+          ]
+        },
+        "other": {
+          "score": 0.9118382930755615,
+          "center": [
+            96,
+            155
+          ],
+          "logScale": -0.04999999999999999,
+          "rotationDeg": 0,
+          "affine": [
+            [
+              0.951229424500714,
+              0,
+              -40.97703712810281
+            ],
+            [
+              0,
+              0.951229424500714,
+              -0.526010905866741
+            ]
+          ]
+        },
+        "distinctModesWithinMargin": [
+          {
+            "score": 0.9406375885009766,
+            "center": [
+              95,
+              153
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                -41.97703712810281
+              ],
+              [
+                0,
+                0.951229424500714,
+                -2.526010905866741
+              ]
+            ]
+          },
+          {
+            "score": 0.9118382930755615,
+            "center": [
+              96,
+              155
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                -40.97703712810281
+              ],
+              [
+                0,
+                0.951229424500714,
+                -0.526010905866741
+              ]
+            ]
+          },
+          {
+            "score": 0.9083485007286072,
+            "center": [
+              96,
+              150
+            ],
+            "logScale": -0.09999999999999998,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.9048374180359596,
+                0,
+                -34.29658819717818
+              ],
+              [
+                0,
+                0.9048374180359596,
+                2.059082151120606
+              ]
+            ]
+          },
+          {
+            "score": 0.9021492004394531,
+            "center": [
+              94,
+              156
+            ],
+            "logScale": 0,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                1,
+                0,
+                -50
+              ],
+              [
+                0,
+                1,
+                -7.5
+              ]
+            ]
+          }
+        ]
+      },
+      "refined": [
+        {
+          "direction": "forward",
+          "which": "best",
+          "coarse": {
+            "score": 0.941846489906311,
+            "center": [
+              149,
+              159
+            ],
+            "logScale": 0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                1.0512710963760241,
+                0,
+                43.872890362397584
+              ],
+              [
+                0,
+                1.0512710963760241,
+                1.8349710917843822
+              ]
+            ]
+          },
+          "correlation": 0.9590908783547378,
+          "affine": [
+            [
+              1.0320088863372803,
+              -0.014147385954856873,
+              47.71506881713867
+            ],
+            [
+              -0.02744697779417038,
+              1.0471867322921753,
+              5.696228981018066
+            ]
+          ],
+          "linearLogGrowth": 0.03862759878208869,
+          "shapeValid": true
+        },
+        {
+          "direction": "forward",
+          "which": "other",
+          "coarse": {
+            "score": 0.9268882870674133,
+            "center": [
+              150,
+              158
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                54.877057549928594
+              ],
+              [
+                0,
+                0.951229424500714,
+                15.791201037143253
+              ]
+            ]
+          },
+          "correlation": 0.958722696935638,
+          "affine": [
+            [
+              1.0336238145828247,
+              -0.027262918651103973,
+              48.99224853515625
+            ],
+            [
+              -0.026282882317900658,
+              1.0447113513946533,
+              5.8727192878723145
+            ]
+          ],
+          "linearLogGrowth": 0.03807384934646223,
+          "shapeValid": true
+        },
+        {
+          "direction": "reverse",
+          "which": "best",
+          "coarse": {
+            "score": 0.9406375885009766,
+            "center": [
+              95,
+              153
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                -41.97703712810281
+              ],
+              [
+                0,
+                0.951229424500714,
+                -2.526010905866741
+              ]
+            ]
+          },
+          "correlation": 0.9647579244871477,
+          "affine": [
+            [
+              0.9854433536529541,
+              0.020853940397500992,
+              -49.66646957397461
+            ],
+            [
+              0.010157108306884766,
+              0.9347109198570251,
+              -1.86703360080719
+            ]
+          ],
+          "linearLogGrowth": -0.04120580354139692,
+          "shapeValid": true
+        },
+        {
+          "direction": "reverse",
+          "which": "other",
+          "coarse": {
+            "score": 0.9118382930755615,
+            "center": [
+              96,
+              155
+            ],
+            "logScale": -0.04999999999999999,
+            "rotationDeg": 0,
+            "affine": [
+              [
+                0.951229424500714,
+                0,
+                -40.97703712810281
+              ],
+              [
+                0,
+                0.951229424500714,
+                -0.526010905866741
+              ]
+            ]
+          },
+          "correlation": 0.9647984696472867,
+          "affine": [
+            [
+              0.9852215647697449,
+              0.021693099290132523,
+              -49.73166275024414
+            ],
+            [
+              0.010076558217406273,
+              0.935217559337616,
+              -1.9169621467590332
+            ]
+          ],
+          "linearLogGrowth": -0.04105103803255546,
+          "shapeValid": true
+        }
+      ],
+      "forwardBestVsRivalMaxGridPx": 1.3744900598417829,
+      "separateGrid": {
+        "seeds": 63,
+        "cyclePass": 43,
+        "nccPass": 33,
+        "ownMaskPass": 59,
+        "jointPass": 30,
+        "required": 44.099999999999994,
+        "maxCycle": 2.3557499526791137
+      }
+    }
+  ]
+}

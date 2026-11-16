@@ -1,0 +1,1418 @@
+{
+  "schemaVersion": 1,
+  "experiment": "TIP-65-M2B-Mac",
+  "caseSubset": null,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "network": "local-only; Python socket guard; no service/API",
+  "manifestSha256": "538039922de74589810d4caab6c5a64e87549f63a593e82ecd1092498275a2be",
+  "runnerSha256": "533e2f75ad4552fe930c79dadd0bc466e15f892ffaa5169acb8665f555b3c461",
+  "detectorCliSha256": "0cc5354270cd4ff617f852909d860d2dc1641b6bf7eb8a17f23b6203c1c62c63",
+  "detectorSourceSha256": "caeab779f8be15e4fb3b759a59c11159c353da71f5c5d76248dcc690db21a0a2",
+  "vlm": {
+    "id": "mlx-community/Qwen3.5-0.8B-4bit",
+    "revision": "fd570aaf3873cf796abf524f7cc3f340d9dcf539",
+    "weightsSha256": "f5a0d9dd3efa73510542a8023d610ff26be2b4b020d181cfc4bedaa1fcc5dd9e",
+    "artifactSha256": {
+      "chat_template.jinja": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80",
+      "config.json": "ba7770da23eae5ebd6827571f086e331956b33f4442a9e876fb4aa10969a6772",
+      "model.safetensors": "f5a0d9dd3efa73510542a8023d610ff26be2b4b020d181cfc4bedaa1fcc5dd9e",
+      "model.safetensors.index.json": "6e48f2fa5d6f033a6d77bf833abfa9698ca24d1715ecea4c67447bcfaee44650",
+      "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+      "processor_config.json": "14932921ca485d458a04dafd8069fbb0a4505622a48208d19ed247115801385b",
+      "tokenizer.json": "87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4",
+      "tokenizer_config.json": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182",
+      "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+      "vocab.json": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+    },
+    "temperature": 0,
+    "enableThinking": false,
+    "maxTokens": 96,
+    "versions": {
+      "mlx": "0.32.4",
+      "mlx-vlm": "0.7.12",
+      "transformers": "5.23.0",
+      "pillow": "13.0.0"
+    },
+    "loadMs": 1710.673
+  },
+  "detector": {
+    "configuration": {
+      "computeUnits": "all",
+      "confidenceThreshold": 0.38,
+      "coordinates": "EXIF-upright normalized top-left",
+      "cropAndScale": "scaleFill",
+      "detectionTiming": "VNImageRequestHandler.perform only",
+      "iouThreshold": 0.45,
+      "modelId": "apple-yolov3-fp16"
+    },
+    "images": [
+      {
+        "detectionMs": 103.7023332901299,
+        "height": 768,
+        "orientation": 1,
+        "path": "person.jpg",
+        "peopleRight": "Nhận diện được ít nhất 4 người ở bên phải khung hình.",
+        "rawHeight": 768,
+        "rawWidth": 601,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 8 người, ba lô, vali.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.53759765625,
+              "width": 0.2353515625,
+              "x": 0.0091552734375,
+              "y": 0.086669921875
+            },
+            "id": 1,
+            "label": "person",
+            "score": 1
+          },
+          {
+            "box": {
+              "height": 0.91015625,
+              "width": 0.5419921875,
+              "x": 0.36767578125,
+              "y": 0.05859375
+            },
+            "id": 2,
+            "label": "person",
+            "score": 1
+          },
+          {
+            "box": {
+              "height": 0.419677734375,
+              "width": 0.126953125,
+              "x": 0.193603515625,
+              "y": 0.0882568359375
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.998046875
+          },
+          {
+            "box": {
+              "height": 0.11468505859375,
+              "width": 0.06170654296875,
+              "x": 0.935943603515625,
+              "y": 0.177032470703125
+            },
+            "id": 4,
+            "label": "person",
+            "score": 0.9570312566362418
+          },
+          {
+            "box": {
+              "height": 0.350830078125,
+              "width": 0.292236328125,
+              "x": 0.6414794921875,
+              "y": 0.1881103515625
+            },
+            "id": 5,
+            "label": "backpack",
+            "score": 0.9541015808873325
+          },
+          {
+            "box": {
+              "height": 0.2724609375,
+              "width": 0.16015625,
+              "x": 0.394287109375,
+              "y": 0.1121826171875
+            },
+            "id": 6,
+            "label": "person",
+            "score": 0.9428711014744522
+          },
+          {
+            "box": {
+              "height": 0.095458984375,
+              "width": 0.0716552734375,
+              "x": 0.87335205078125,
+              "y": 0.18896484375
+            },
+            "id": 7,
+            "label": "person",
+            "score": 0.9189453193745294
+          },
+          {
+            "box": {
+              "height": 0.484619140625,
+              "width": 0.062744140625,
+              "x": 0,
+              "y": 0.1160888671875
+            },
+            "id": 8,
+            "label": "person",
+            "score": 0.80126953125
+          },
+          {
+            "box": {
+              "height": 0.147705078125,
+              "width": 0.1636962890625,
+              "x": 0.16717529296875,
+              "y": 0.5516357421875
+            },
+            "id": 9,
+            "label": "suitcase",
+            "score": 0.47216796925433613
+          },
+          {
+            "box": {
+              "height": 0.034088134765625,
+              "width": 0.032440185546875,
+              "x": 0.7093658447265625,
+              "y": 0.1720428466796875
+            },
+            "id": 10,
+            "label": "person",
+            "score": 0.406494140625
+          }
+        ],
+        "width": 601
+      },
+      {
+        "detectionMs": 36.191791645251215,
+        "height": 576,
+        "orientation": 1,
+        "path": "gull.jpg",
+        "peopleRight": "Chưa nhận diện được người ở bên phải khung hình.",
+        "rawHeight": 576,
+        "rawWidth": 768,
+        "sceneOverview": "Trong khung hình nhận diện được chim.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.87255859375,
+              "width": 0.8681640625,
+              "x": 0.11962890625,
+              "y": 0.120849609375
+            },
+            "id": 1,
+            "label": "bird",
+            "score": 0.9848632716766303
+          }
+        ],
+        "width": 768
+      },
+      {
+        "detectionMs": 36.221624934114516,
+        "height": 432,
+        "orientation": 1,
+        "path": "crossing-0.jpg",
+        "peopleRight": "Nhận diện được ít nhất 1 người ở bên phải khung hình.",
+        "rawHeight": 432,
+        "rawWidth": 768,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 3 người, một chiếc xe buýt, một chiếc ô tô.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.191650390625,
+              "width": 0.1112060546875,
+              "x": 0.75006103515625,
+              "y": 0.5462646484375
+            },
+            "id": 1,
+            "label": "bus",
+            "score": 0.9848633082634279
+          },
+          {
+            "box": {
+              "height": 0.11822509765625,
+              "width": 0.0236358642578125,
+              "x": 0.9144515991210938,
+              "y": 0.740692138671875
+            },
+            "id": 2,
+            "label": "person",
+            "score": 0.6958007746450221
+          },
+          {
+            "box": {
+              "height": 0.0540771484375,
+              "width": 0.01348114013671875,
+              "x": 0.09646987915039062,
+              "y": 0.44073486328125
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.5942382656791025
+          },
+          {
+            "box": {
+              "height": 0.0302276611328125,
+              "width": 0.0254058837890625,
+              "x": 0.46410369873046875,
+              "y": 0.32155609130859375
+            },
+            "id": 4,
+            "label": "car",
+            "score": 0.5307617241814171
+          },
+          {
+            "box": {
+              "height": 0.0284576416015625,
+              "width": 0.0220794677734375,
+              "x": 0.13520050048828125,
+              "y": 0.36223602294921875
+            },
+            "id": 5,
+            "label": "traffic light",
+            "score": 0.45263671875
+          },
+          {
+            "box": {
+              "height": 0.44677734375,
+              "width": 0.93896484375,
+              "x": 0.031005859375,
+              "y": 0.268310546875
+            },
+            "id": 6,
+            "label": "person",
+            "score": 0.38452147626699684
+          }
+        ],
+        "width": 768
+      },
+      {
+        "detectionMs": 33.64283335395157,
+        "height": 432,
+        "orientation": 1,
+        "path": "crossing-1.jpg",
+        "peopleRight": "Nhận diện được ít nhất 1 người ở bên phải khung hình.",
+        "rawHeight": 432,
+        "rawWidth": 768,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 7 người, một chiếc xe buýt, đèn giao thông.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.1968994140625,
+              "width": 0.114990234375,
+              "x": 0.7481689453125,
+              "y": 0.54266357421875
+            },
+            "id": 1,
+            "label": "bus",
+            "score": 0.9770507659234227
+          },
+          {
+            "box": {
+              "height": 0.11859130859375,
+              "width": 0.02142333984375,
+              "x": 0.915069580078125,
+              "y": 0.741485595703125
+            },
+            "id": 2,
+            "label": "person",
+            "score": 0.8906250259606168
+          },
+          {
+            "box": {
+              "height": 0.425048828125,
+              "width": 0.94580078125,
+              "x": 0.031494140625,
+              "y": 0.2791748046875
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.6577148300773743
+          },
+          {
+            "box": {
+              "height": 0.09197998046875,
+              "width": 0.023651123046875,
+              "x": 0.1732330322265625,
+              "y": 0.537506103515625
+            },
+            "id": 4,
+            "label": "person",
+            "score": 0.6562500000095497
+          },
+          {
+            "box": {
+              "height": 0.08856201171875,
+              "width": 0.020050048828125,
+              "x": 0.0979461669921875,
+              "y": 0.545074462890625
+            },
+            "id": 5,
+            "label": "person",
+            "score": 0.5932617094722445
+          },
+          {
+            "box": {
+              "height": 0.087646484375,
+              "width": 0.01861572265625,
+              "x": 0.152557373046875,
+              "y": 0.5264892578125
+            },
+            "id": 6,
+            "label": "person",
+            "score": 0.465576171875
+          },
+          {
+            "box": {
+              "height": 0.04443359375,
+              "width": 0.01210784912109375,
+              "x": 0.3032722473144531,
+              "y": 0.467041015625
+            },
+            "id": 7,
+            "label": "person",
+            "score": 0.4465332108928024
+          },
+          {
+            "box": {
+              "height": 0.02685546875,
+              "width": 0.023712158203125,
+              "x": 0.1349945068359375,
+              "y": 0.363037109375
+            },
+            "id": 8,
+            "label": "traffic light",
+            "score": 0.3818359375
+          },
+          {
+            "box": {
+              "height": 0.043853759765625,
+              "width": 0.01148223876953125,
+              "x": 0.2532920837402344,
+              "y": 0.4468231201171875
+            },
+            "id": 9,
+            "label": "person",
+            "score": 0.3811035119844419
+          }
+        ],
+        "width": 768
+      },
+      {
+        "detectionMs": 31.91991662606597,
+        "height": 432,
+        "orientation": 1,
+        "path": "crossing-2.jpg",
+        "peopleRight": "Nhận diện được ít nhất 2 người ở bên phải khung hình.",
+        "rawHeight": 432,
+        "rawWidth": 768,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 5 người, một chiếc xe buýt.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.1966552734375,
+              "width": 0.1160888671875,
+              "x": 0.74713134765625,
+              "y": 0.54229736328125
+            },
+            "id": 1,
+            "label": "bus",
+            "score": 0.9858398386761422
+          },
+          {
+            "box": {
+              "height": 0.459228515625,
+              "width": 0.908203125,
+              "x": 0.05029296875,
+              "y": 0.2579345703125
+            },
+            "id": 2,
+            "label": "person",
+            "score": 0.8105468673602445
+          },
+          {
+            "box": {
+              "height": 0.08172607421875,
+              "width": 0.023773193359375,
+              "x": 0.2062530517578125,
+              "y": 0.542633056640625
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.7158203025706342
+          },
+          {
+            "box": {
+              "height": 0.10662841796875,
+              "width": 0.021148681640625,
+              "x": 0.9152069091796875,
+              "y": 0.747467041015625
+            },
+            "id": 4,
+            "label": "person",
+            "score": 0.542968742517246
+          },
+          {
+            "box": {
+              "height": 0.12548828125,
+              "width": 0.0213165283203125,
+              "x": 0.9766464233398438,
+              "y": 0.678466796875
+            },
+            "id": 5,
+            "label": "person",
+            "score": 0.5180663911883556
+          },
+          {
+            "box": {
+              "height": 0.0738525390625,
+              "width": 0.0215911865234375,
+              "x": 0.5419387817382812,
+              "y": 0.55291748046875
+            },
+            "id": 6,
+            "label": "person",
+            "score": 0.3811035126312632
+          }
+        ],
+        "width": 768
+      },
+      {
+        "detectionMs": 38.659958401694894,
+        "height": 432,
+        "orientation": 1,
+        "path": "crossing-3.jpg",
+        "peopleRight": "Nhận diện được ít nhất 1 người ở bên phải khung hình.",
+        "rawHeight": 432,
+        "rawWidth": 768,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 3 người, một chiếc xe buýt, đèn giao thông.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.1956787109375,
+              "width": 0.1141357421875,
+              "x": 0.74859619140625,
+              "y": 0.54327392578125
+            },
+            "id": 1,
+            "label": "bus",
+            "score": 0.9863280986064638
+          },
+          {
+            "box": {
+              "height": 0.4423828125,
+              "width": 0.87548828125,
+              "x": 0.067626953125,
+              "y": 0.26416015625
+            },
+            "id": 2,
+            "label": "person",
+            "score": 0.8359375110342171
+          },
+          {
+            "box": {
+              "height": 0.11175537109375,
+              "width": 0.022064208984375,
+              "x": 0.9147491455078125,
+              "y": 0.744415283203125
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.7841797009149332
+          },
+          {
+            "box": {
+              "height": 0.06964111328125,
+              "width": 0.02294921875,
+              "x": 0.513427734375,
+              "y": 0.553070068359375
+            },
+            "id": 4,
+            "label": "person",
+            "score": 0.5229492210431204
+          },
+          {
+            "box": {
+              "height": 0.027374267578125,
+              "width": 0.023162841796875,
+              "x": 0.1344146728515625,
+              "y": 0.3627777099609375
+            },
+            "id": 5,
+            "label": "traffic light",
+            "score": 0.434814453125
+          }
+        ],
+        "width": 768
+      },
+      {
+        "detectionMs": 31.145624932833016,
+        "height": 432,
+        "orientation": 1,
+        "path": "frozen-0.jpg",
+        "peopleRight": "Nhận diện được ít nhất 1 người ở bên phải khung hình.",
+        "rawHeight": 432,
+        "rawWidth": 768,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 2 người, một chiếc xe buýt, một chiếc ô tô.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.191650390625,
+              "width": 0.11175537109375,
+              "x": 0.749786376953125,
+              "y": 0.5462646484375
+            },
+            "id": 1,
+            "label": "bus",
+            "score": 0.9858398458969759
+          },
+          {
+            "box": {
+              "height": 0.11773681640625,
+              "width": 0.023529052734375,
+              "x": 0.9154815673828125,
+              "y": 0.740936279296875
+            },
+            "id": 2,
+            "label": "person",
+            "score": 0.7089843721382607
+          },
+          {
+            "box": {
+              "height": 0.054107666015625,
+              "width": 0.01357269287109375,
+              "x": 0.09672927856445312,
+              "y": 0.4404754638671875
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.6225586000290946
+          },
+          {
+            "box": {
+              "height": 0.02996826171875,
+              "width": 0.0253448486328125,
+              "x": 0.46413421630859375,
+              "y": 0.321441650390625
+            },
+            "id": 4,
+            "label": "car",
+            "score": 0.5493163938869827
+          },
+          {
+            "box": {
+              "height": 0.028350830078125,
+              "width": 0.0222930908203125,
+              "x": 0.13521575927734375,
+              "y": 0.3622894287109375
+            },
+            "id": 5,
+            "label": "traffic light",
+            "score": 0.461669921875
+          }
+        ],
+        "width": 768
+      },
+      {
+        "detectionMs": 32.36954170279205,
+        "height": 432,
+        "orientation": 1,
+        "path": "frozen-1.jpg",
+        "peopleRight": "Nhận diện được ít nhất 1 người ở bên phải khung hình.",
+        "rawHeight": 432,
+        "rawWidth": 768,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 3 người, một chiếc xe buýt, một chiếc ô tô.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.191650390625,
+              "width": 0.1116943359375,
+              "x": 0.74981689453125,
+              "y": 0.5462646484375
+            },
+            "id": 1,
+            "label": "bus",
+            "score": 0.9858398458969759
+          },
+          {
+            "box": {
+              "height": 0.11773681640625,
+              "width": 0.023529052734375,
+              "x": 0.9154815673828125,
+              "y": 0.740936279296875
+            },
+            "id": 2,
+            "label": "person",
+            "score": 0.7089843721382607
+          },
+          {
+            "box": {
+              "height": 0.0540771484375,
+              "width": 0.01357269287109375,
+              "x": 0.09672927856445312,
+              "y": 0.44049072265625
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.6235351561227134
+          },
+          {
+            "box": {
+              "height": 0.0299530029296875,
+              "width": 0.0253448486328125,
+              "x": 0.46413421630859375,
+              "y": 0.32144927978515625
+            },
+            "id": 4,
+            "label": "car",
+            "score": 0.550781250079126
+          },
+          {
+            "box": {
+              "height": 0.0283355712890625,
+              "width": 0.022308349609375,
+              "x": 0.1352081298828125,
+              "y": 0.36229705810546875
+            },
+            "id": 5,
+            "label": "traffic light",
+            "score": 0.464599609375
+          },
+          {
+            "box": {
+              "height": 0.444580078125,
+              "width": 0.9404296875,
+              "x": 0.02978515625,
+              "y": 0.2694091796875
+            },
+            "id": 6,
+            "label": "person",
+            "score": 0.3911132720516548
+          }
+        ],
+        "width": 768
+      },
+      {
+        "detectionMs": 31.837500049732625,
+        "height": 432,
+        "orientation": 1,
+        "path": "frozen-2.jpg",
+        "peopleRight": "Nhận diện được ít nhất 1 người ở bên phải khung hình.",
+        "rawHeight": 432,
+        "rawWidth": 768,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 3 người, một chiếc xe buýt, một chiếc ô tô.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.191650390625,
+              "width": 0.11175537109375,
+              "x": 0.749786376953125,
+              "y": 0.5462646484375
+            },
+            "id": 1,
+            "label": "bus",
+            "score": 0.9858398458969759
+          },
+          {
+            "box": {
+              "height": 0.11773681640625,
+              "width": 0.0235443115234375,
+              "x": 0.9154739379882812,
+              "y": 0.740936279296875
+            },
+            "id": 2,
+            "label": "person",
+            "score": 0.7089843721382607
+          },
+          {
+            "box": {
+              "height": 0.054107666015625,
+              "width": 0.01357269287109375,
+              "x": 0.09672927856445312,
+              "y": 0.4404754638671875
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.6245117091948842
+          },
+          {
+            "box": {
+              "height": 0.02996826171875,
+              "width": 0.025360107421875,
+              "x": 0.4641265869140625,
+              "y": 0.321441650390625
+            },
+            "id": 4,
+            "label": "car",
+            "score": 0.5502929797566338
+          },
+          {
+            "box": {
+              "height": 0.0283203125,
+              "width": 0.022308349609375,
+              "x": 0.1352081298828125,
+              "y": 0.3623046875
+            },
+            "id": 5,
+            "label": "traffic light",
+            "score": 0.46484375
+          },
+          {
+            "box": {
+              "height": 0.443603515625,
+              "width": 0.9404296875,
+              "x": 0.0302734375,
+              "y": 0.2696533203125
+            },
+            "id": 6,
+            "label": "person",
+            "score": 0.3952636709218815
+          }
+        ],
+        "width": 768
+      },
+      {
+        "detectionMs": 32.438583322800696,
+        "height": 432,
+        "orientation": 1,
+        "path": "frozen-3.jpg",
+        "peopleRight": "Nhận diện được ít nhất 1 người ở bên phải khung hình.",
+        "rawHeight": 432,
+        "rawWidth": 768,
+        "sceneOverview": "Trong khung hình nhận diện được ít nhất 3 người, một chiếc xe buýt, một chiếc ô tô.",
+        "tracks": [
+          {
+            "box": {
+              "height": 0.191650390625,
+              "width": 0.11181640625,
+              "x": 0.749755859375,
+              "y": 0.5462646484375
+            },
+            "id": 1,
+            "label": "bus",
+            "score": 0.9853515448877488
+          },
+          {
+            "box": {
+              "height": 0.11785888671875,
+              "width": 0.0235443115234375,
+              "x": 0.9154739379882812,
+              "y": 0.740875244140625
+            },
+            "id": 2,
+            "label": "person",
+            "score": 0.7021484315133648
+          },
+          {
+            "box": {
+              "height": 0.053924560546875,
+              "width": 0.0135955810546875,
+              "x": 0.09671783447265625,
+              "y": 0.4408111572265625
+            },
+            "id": 3,
+            "label": "person",
+            "score": 0.6118164077413581
+          },
+          {
+            "box": {
+              "height": 0.030029296875,
+              "width": 0.0253448486328125,
+              "x": 0.46413421630859375,
+              "y": 0.3214111328125
+            },
+            "id": 4,
+            "label": "car",
+            "score": 0.5659179612328913
+          },
+          {
+            "box": {
+              "height": 0.0282745361328125,
+              "width": 0.022247314453125,
+              "x": 0.1352386474609375,
+              "y": 0.36232757568359375
+            },
+            "id": 5,
+            "label": "traffic light",
+            "score": 0.46923828125
+          },
+          {
+            "box": {
+              "height": 0.44482421875,
+              "width": 0.94091796875,
+              "x": 0.030029296875,
+              "y": 0.269287109375
+            },
+            "id": 6,
+            "label": "person",
+            "score": 0.3876953064604436
+          }
+        ],
+        "width": 768
+      }
+    ],
+    "inputKind": "independent static JPEGs; no depth or temporal evidence",
+    "modelLoadMs": 229.979999945499,
+    "platform": "macOS Core ML + Vision",
+    "schemaVersion": 1
+  },
+  "detectorWallMs": 1133.706,
+  "frames": [
+    {
+      "path": "person.jpg",
+      "sha256": "de9565c79063bb83b9eeac059b7732b97865c8102e19c63e847962593a580d9f",
+      "width": 601,
+      "height": 768,
+      "sourceOrientation": 1,
+      "preparedSha256": "ebec2f5faa8e9a0b2773b05e2f481bd92f20d94cfa0ccced1bdbf9084c2ec16c"
+    },
+    {
+      "path": "gull.jpg",
+      "sha256": "524368d286d63cd02c319b7447a664f15d434fec594f1849fc9b73de68d40f14",
+      "width": 768,
+      "height": 576,
+      "sourceOrientation": 1,
+      "preparedSha256": "46f4e4195a7a13fe2dcb5422c2aaf5e8b9b24243ad761f44f917ac583f181e3e"
+    },
+    {
+      "path": "crossing-0.jpg",
+      "sha256": "a0c1239cd6785b197b556363920665e0850688fde79c21fb290df81f79f0e0be",
+      "width": 768,
+      "height": 432,
+      "sourceOrientation": 1,
+      "preparedSha256": "37eca8990d07f298221b1356e6268a8e4dc9942512db1a14fb409fab332952c3"
+    },
+    {
+      "path": "crossing-1.jpg",
+      "sha256": "6d05b6ea2aba466d96788e468c0628235cd63b55e74e5a699bc12fd0f8965743",
+      "width": 768,
+      "height": 432,
+      "sourceOrientation": 1,
+      "preparedSha256": "ccd2955d1d5f57a56405145c8cb648f0dc07e62ee2b4a453afb7052a4eed066a"
+    },
+    {
+      "path": "crossing-2.jpg",
+      "sha256": "8b77c9f971d9fc9545653211664e24b8448dc5b88ed19257c444d7a17fc174a2",
+      "width": 768,
+      "height": 432,
+      "sourceOrientation": 1,
+      "preparedSha256": "be714c6c3b054b90905d94c5b85d7ee2bb86ebd102bffdda98824c0be5c467a5"
+    },
+    {
+      "path": "crossing-3.jpg",
+      "sha256": "eea2d376387a61784035d420fd1cb3bfd6267652d4096ab97359dfb45d32eae1",
+      "width": 768,
+      "height": 432,
+      "sourceOrientation": 1,
+      "preparedSha256": "dad1f56f4689f355ca2be9e89be1c0d86fe20cc5396c108f60929a6893312c56"
+    },
+    {
+      "path": "frozen-0.jpg",
+      "sha256": "09c5feae52c399a1e58b0da506b3587532a15dbc2b7bc3566a1c3c4efd403f49",
+      "width": 768,
+      "height": 432,
+      "sourceOrientation": 1,
+      "preparedSha256": "eaa48d777af1fd6d33ec8fe6dd96de34029d053591d59b1d4f759319bfcde1ef"
+    },
+    {
+      "path": "frozen-1.jpg",
+      "sha256": "28ac63345331d6aefa3ef7facc485adfcbeb0f60f8d0d051499ebcce6f1a94ac",
+      "width": 768,
+      "height": 432,
+      "sourceOrientation": 1,
+      "preparedSha256": "b122095a2368860281206c5cc94cc9259e2c8887e2e31f6f3358c5658816bb74"
+    },
+    {
+      "path": "frozen-2.jpg",
+      "sha256": "e87fa04ec58267adc447472f9306cb08c48116d5ff827fceb00c56426ac029f8",
+      "width": 768,
+      "height": 432,
+      "sourceOrientation": 1,
+      "preparedSha256": "55f3bbbab372098b8672df0d61d989c1e4acc03a75fc783d6bf8c8688ce19fc6"
+    },
+    {
+      "path": "frozen-3.jpg",
+      "sha256": "92012165af127ae167a81d43b0fba1830408458c90f5d1289484c75add1bd7c9",
+      "width": 768,
+      "height": 432,
+      "sourceOrientation": 1,
+      "preparedSha256": "442b03cad43a6924b53cc4188c615c27fa8f8061ea35635cc65e7156b3b2b63d"
+    }
+  ],
+  "cases": [
+    {
+      "id": "crowd-summary",
+      "question": "Trong khung hình có gì đáng chú ý?",
+      "askedAtMs": 0,
+      "frames": [
+        {
+          "path": "person.jpg",
+          "timeMs": 0
+        }
+      ]
+    },
+    {
+      "id": "crowd-right",
+      "question": "Có người ở bên phải khung hình không? Cho một chi tiết dễ nhận ra.",
+      "askedAtMs": 0,
+      "frames": [
+        {
+          "path": "person.jpg",
+          "timeMs": 0
+        }
+      ]
+    },
+    {
+      "id": "bird-summary",
+      "question": "Trong khung hình có gì đáng chú ý?",
+      "askedAtMs": 0,
+      "frames": [
+        {
+          "path": "gull.jpg",
+          "timeMs": 0
+        }
+      ]
+    },
+    {
+      "id": "bird-right",
+      "question": "Có thấy người ở bên phải khung hình không?",
+      "askedAtMs": 0,
+      "frames": [
+        {
+          "path": "gull.jpg",
+          "timeMs": 0
+        }
+      ]
+    },
+    {
+      "id": "street-bus",
+      "question": "Chiếc xe lớn phía dưới bên phải ảnh là xe gì, có màu gì?",
+      "askedAtMs": 0,
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "timeMs": 0
+        }
+      ]
+    },
+    {
+      "id": "street-scene",
+      "question": "Mô tả ngắn cảnh cả đoạn và một chi tiết dễ nhận ra.",
+      "askedAtMs": 3000,
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "timeMs": 0
+        },
+        {
+          "path": "crossing-1.jpg",
+          "timeMs": 1000
+        },
+        {
+          "path": "crossing-2.jpg",
+          "timeMs": 2000
+        },
+        {
+          "path": "crossing-3.jpg",
+          "timeMs": 3000
+        }
+      ]
+    },
+    {
+      "id": "crowd-no-depth",
+      "question": "Người mặc áo sọc cách camera bao nhiêu mét?",
+      "askedAtMs": 0,
+      "frames": [
+        {
+          "path": "person.jpg",
+          "timeMs": 0
+        }
+      ]
+    },
+    {
+      "id": "street-no-depth",
+      "question": "Xe buýt đỏ trắng cách camera khoảng bao nhiêu mét? Nếu không chắc, thử ước lượng.",
+      "askedAtMs": 3000,
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "timeMs": 0
+        },
+        {
+          "path": "crossing-1.jpg",
+          "timeMs": 1000
+        },
+        {
+          "path": "crossing-2.jpg",
+          "timeMs": 2000
+        },
+        {
+          "path": "crossing-3.jpg",
+          "timeMs": 3000
+        }
+      ]
+    },
+    {
+      "id": "crowd-no-time",
+      "question": "Vừa có người nào bước vào khung hình từ bên phải không?",
+      "askedAtMs": 0,
+      "frames": [
+        {
+          "path": "person.jpg",
+          "timeMs": 0
+        }
+      ]
+    },
+    {
+      "id": "crossing-people",
+      "question": "Vị trí của người trên vạch kẻ đường có thay đổi qua các khung hình không?",
+      "askedAtMs": 3000,
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "timeMs": 0
+        },
+        {
+          "path": "crossing-1.jpg",
+          "timeMs": 1000
+        },
+        {
+          "path": "crossing-2.jpg",
+          "timeMs": 2000
+        },
+        {
+          "path": "crossing-3.jpg",
+          "timeMs": 3000
+        }
+      ]
+    },
+    {
+      "id": "frozen-people",
+      "question": "Vị trí của người trên vạch kẻ đường có thay đổi qua các khung hình không?",
+      "askedAtMs": 3000,
+      "frames": [
+        {
+          "path": "frozen-0.jpg",
+          "timeMs": 0
+        },
+        {
+          "path": "frozen-1.jpg",
+          "timeMs": 1000
+        },
+        {
+          "path": "frozen-2.jpg",
+          "timeMs": 2000
+        },
+        {
+          "path": "frozen-3.jpg",
+          "timeMs": 3000
+        }
+      ]
+    },
+    {
+      "id": "crossing-bus",
+      "question": "Riêng xe buýt đỏ trắng phía dưới bên phải có đổi vị trí đáng kể trong các khung không?",
+      "askedAtMs": 3000,
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "timeMs": 0
+        },
+        {
+          "path": "crossing-1.jpg",
+          "timeMs": 1000
+        },
+        {
+          "path": "crossing-2.jpg",
+          "timeMs": 2000
+        },
+        {
+          "path": "crossing-3.jpg",
+          "timeMs": 3000
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "case": "crowd-summary",
+      "mode": "A",
+      "order": 1,
+      "answer": "Trong khung hình có một người đàn ông mặc áo thun xanh trắng chạy qua, kéo một chiếc xe đẩy trẻ em.\n</think>\n\nTrong khung hình có một người đàn ông mặc áo thun xanh trắng chạy qua, kéo một chiếc xe đẩy trẻ em.",
+      "error": null,
+      "firstTextMs": 6352.262,
+      "elapsedMs": 7584.497,
+      "tokens": 52,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crowd-summary",
+      "mode": "B",
+      "order": 2,
+      "answer": "Trong khung hình có một cặp người đi qua, một người đang đẩy xe đẩy trẻ em và một người khác đi qua bên cạnh.",
+      "error": null,
+      "firstTextMs": 1371.427,
+      "elapsedMs": 1790.704,
+      "tokens": 28,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crowd-summary",
+      "mode": "C",
+      "answer": "Trong khung hình nhận diện được ít nhất 8 người, ba lô, vali.",
+      "detectionMs": 103.7023332901299,
+      "status": "static baseline"
+    },
+    {
+      "case": "crowd-right",
+      "mode": "B",
+      "order": 4,
+      "answer": "Có, người ở bên phải khung hình là một người đàn ông mặc áo thun có dòng chữ \"Mummy & Pages\" đang đi qua.",
+      "error": null,
+      "firstTextMs": 1340.229,
+      "elapsedMs": 1786.04,
+      "tokens": 30,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crowd-right",
+      "mode": "A",
+      "order": 5,
+      "answer": "Có, người ở bên phải khung hình là một người đàn ông mặc áo thun có dòng chữ \"Mamma & Pape\" đang đi qua.",
+      "error": null,
+      "firstTextMs": 1181.514,
+      "elapsedMs": 1900.254,
+      "tokens": 31,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crowd-right",
+      "mode": "C",
+      "answer": "Nhận diện được ít nhất 4 người ở bên phải khung hình.",
+      "detectionMs": 103.7023332901299,
+      "status": "static baseline"
+    },
+    {
+      "case": "bird-summary",
+      "mode": "A",
+      "order": 7,
+      "answer": "Trong khung hình có một con cá heo trắng với chiếc lá vàng và mắt đen, đang nhìn về phía bên trái trên nền trời xanh.",
+      "error": null,
+      "firstTextMs": 1233.309,
+      "elapsedMs": 1638.165,
+      "tokens": 29,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "bird-summary",
+      "mode": "B",
+      "order": 8,
+      "answer": "Trong khung hình có một con cá heo trắng với chiếc lá vàng và mắt đen.",
+      "error": null,
+      "firstTextMs": 992.439,
+      "elapsedMs": 1232.38,
+      "tokens": 18,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "bird-summary",
+      "mode": "C",
+      "answer": "Trong khung hình nhận diện được chim.",
+      "detectionMs": 36.191791645251215,
+      "status": "static baseline"
+    },
+    {
+      "case": "bird-right",
+      "mode": "B",
+      "order": 10,
+      "answer": "Có, người ở bên phải khung hình.",
+      "error": null,
+      "firstTextMs": 1072.488,
+      "elapsedMs": 1209.036,
+      "tokens": 10,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "bird-right",
+      "mode": "A",
+      "order": 11,
+      "answer": "Không, không thấy người ở bên phải khung hình.",
+      "error": null,
+      "firstTextMs": 1139.758,
+      "elapsedMs": 1393.076,
+      "tokens": 12,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "bird-right",
+      "mode": "C",
+      "answer": "Chưa nhận diện được người ở bên phải khung hình.",
+      "detectionMs": 36.191791645251215,
+      "status": "static baseline"
+    },
+    {
+      "case": "street-bus",
+      "mode": "A",
+      "order": 13,
+      "answer": "Xe đó là một xe buýt màu đỏ và trắng.",
+      "error": null,
+      "firstTextMs": 969.823,
+      "elapsedMs": 1397.817,
+      "tokens": 12,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "street-bus",
+      "mode": "B",
+      "order": 14,
+      "answer": "Xe đó là một xe buýt màu đỏ.\n</think>\n\nXe buýt màu đỏ đang di chuyển trên đường.",
+      "error": null,
+      "firstTextMs": 1029.662,
+      "elapsedMs": 1297.624,
+      "tokens": 23,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "street-scene",
+      "mode": "B",
+      "order": 15,
+      "answer": "Mặc dù đông đúc, người dân vẫn di chuyển qua lại một cách tự do trên đường phố.",
+      "error": null,
+      "firstTextMs": 3550.797,
+      "elapsedMs": 3913.055,
+      "tokens": 22,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "street-scene",
+      "mode": "A",
+      "order": 16,
+      "answer": "Đoàn lưu lan rộng qua đường phố, với một xe buýt màu đỏ nổi bật trên đường bên trái.",
+      "error": null,
+      "firstTextMs": 2767.73,
+      "elapsedMs": 3351.922,
+      "tokens": 24,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crowd-no-depth",
+      "mode": "A",
+      "order": 17,
+      "answer": "Người mặc áo sọc cách camera khoảng 1.5 mét.",
+      "error": null,
+      "firstTextMs": 917.544,
+      "elapsedMs": 1386.943,
+      "tokens": 15,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crowd-no-depth",
+      "mode": "B",
+      "order": 18,
+      "answer": "Người mặc áo sọc cách camera khoảng 1.00 mét.",
+      "error": null,
+      "firstTextMs": 1142.134,
+      "elapsedMs": 1660.134,
+      "tokens": 16,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "street-no-depth",
+      "mode": "B",
+      "order": 19,
+      "answer": "0 ms: Xe buýt đỏ trắng cách camera khoảng 10 mét.\n1000 ms: Xe buýt đỏ trắng cách camera khoảng 15 mét.\n2000 ms: Xe buýt đỏ trắng cách camera khoảng 18 mét.\n3000 ms: Xe buýt đỏ trắng cách camera khoảng 20 mét.",
+      "error": null,
+      "firstTextMs": 3120.507,
+      "elapsedMs": 4090.291,
+      "tokens": 73,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "street-no-depth",
+      "mode": "A",
+      "order": 20,
+      "answer": "Xe buýt đỏ trắng cách camera khoảng 10 mét.",
+      "error": null,
+      "firstTextMs": 3082.46,
+      "elapsedMs": 3382.312,
+      "tokens": 13,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crowd-no-time",
+      "mode": "A",
+      "order": 21,
+      "answer": "Không có người nào bước vào khung hình từ bên phải.\n</think>\n\nKhông có người nào bước vào khung hình từ bên phải.",
+      "error": null,
+      "firstTextMs": 1352.751,
+      "elapsedMs": 1756.806,
+      "tokens": 28,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crowd-no-time",
+      "mode": "B",
+      "order": 22,
+      "answer": "Không có người nào bước vào khung hình từ bên phải.\n</think>\n\nKhông có người nào bước vào khung hình từ bên phải.",
+      "error": null,
+      "firstTextMs": 1163.712,
+      "elapsedMs": 1449.642,
+      "tokens": 28,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crossing-people",
+      "mode": "B",
+      "order": 23,
+      "answer": "Không, người trên vạch kẻ đường không thay đổi qua các khung hình.",
+      "error": null,
+      "firstTextMs": 3343.117,
+      "elapsedMs": 3638.71,
+      "tokens": 16,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crossing-people",
+      "mode": "A",
+      "order": 24,
+      "answer": "Đúng, người trên vạch kẻ đường có thay đổi qua các khung hình.\n</think>\n\nĐúng, người trên vạch kẻ đường có thay đổi qua các khung hình.",
+      "error": null,
+      "firstTextMs": 2559.24,
+      "elapsedMs": 3494.593,
+      "tokens": 36,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "frozen-people",
+      "mode": "A",
+      "order": 25,
+      "answer": "Đúng, người trên vạch kẻ đường có thay đổi qua các khung hình.\n</think>\n\nĐúng, người trên vạch kẻ đường có thay đổi qua các khung hình.",
+      "error": null,
+      "firstTextMs": 3447.639,
+      "elapsedMs": 4074.73,
+      "tokens": 36,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "frozen-people",
+      "mode": "B",
+      "order": 26,
+      "answer": "Không, người trên vạch kẻ đường không thay đổi qua các khung hình.",
+      "error": null,
+      "firstTextMs": 3482.107,
+      "elapsedMs": 3970.285,
+      "tokens": 16,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crossing-bus",
+      "mode": "B",
+      "order": 27,
+      "answer": "Không, xe buýt đỏ trắng phía dưới bên phải không đổi vị trí đáng kể trong các khung.",
+      "error": null,
+      "firstTextMs": 4139.721,
+      "elapsedMs": 4498.332,
+      "tokens": 21,
+      "reachedTokenLimit": false
+    },
+    {
+      "case": "crossing-bus",
+      "mode": "A",
+      "order": 28,
+      "answer": "Đúng, xe buýt đỏ trắng phía dưới bên phải đã đổi vị trí đáng kể trong các khung.",
+      "error": null,
+      "firstTextMs": 2904.698,
+      "elapsedMs": 3352.681,
+      "tokens": 22,
+      "reachedTokenLimit": false
+    }
+  ],
+  "phoneEvidence": null,
+  "limits": "Still and ordered JPEGs only; no streaming, camera, LiDAR, voices or physical-phone QA."
+}

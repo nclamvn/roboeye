@@ -1,0 +1,3763 @@
+{
+  "schemaVersion": 1,
+  "study": "M3O-detector-diagnostics",
+  "inputSha256": "2c359c6296bcd191277a881280aa105044ff937cf189d2fe4ec61252bb75c8d5",
+  "unit": "reviewed target-keyframe, not independent physical instances or COCO AP",
+  "warningIoU": 0.35,
+  "warningMargin": 0.08,
+  "totals": {
+    "rtdetr": {
+      "reviewedFrames": 10,
+      "targets": 26,
+      "approachingTargets": 17,
+      "approachingQualified": 12,
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 21,
+          "missedTargets": 5,
+          "approachingMatchedTargets": 12,
+          "approachingMissedTargets": 5,
+          "unreviewedDetections": 66,
+          "outOfScopeDetections": 33,
+          "nonExhaustiveFrames": 10,
+          "falsePositiveDetections": null
+        },
+        "0.50": {
+          "matchedTargets": 21,
+          "missedTargets": 5,
+          "approachingMatchedTargets": 12,
+          "approachingMissedTargets": 5,
+          "unreviewedDetections": 66,
+          "outOfScopeDetections": 33,
+          "nonExhaustiveFrames": 10,
+          "falsePositiveDetections": null
+        },
+        "0.75": {
+          "matchedTargets": 16,
+          "missedTargets": 10,
+          "approachingMatchedTargets": 7,
+          "approachingMissedTargets": 10,
+          "unreviewedDetections": 71,
+          "outOfScopeDetections": 33,
+          "nonExhaustiveFrames": 10,
+          "falsePositiveDetections": null
+        }
+      },
+      "precisionState": "UNMEASURED-SPARSE-GT"
+    },
+    "yolov3": {
+      "reviewedFrames": 10,
+      "targets": 26,
+      "approachingTargets": 17,
+      "approachingQualified": 11,
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 20,
+          "missedTargets": 6,
+          "approachingMatchedTargets": 11,
+          "approachingMissedTargets": 6,
+          "unreviewedDetections": 41,
+          "outOfScopeDetections": 21,
+          "nonExhaustiveFrames": 10,
+          "falsePositiveDetections": null
+        },
+        "0.50": {
+          "matchedTargets": 20,
+          "missedTargets": 6,
+          "approachingMatchedTargets": 11,
+          "approachingMissedTargets": 6,
+          "unreviewedDetections": 41,
+          "outOfScopeDetections": 21,
+          "nonExhaustiveFrames": 10,
+          "falsePositiveDetections": null
+        },
+        "0.75": {
+          "matchedTargets": 15,
+          "missedTargets": 11,
+          "approachingMatchedTargets": 6,
+          "approachingMissedTargets": 11,
+          "unreviewedDetections": 46,
+          "outOfScopeDetections": 21,
+          "nonExhaustiveFrames": 10,
+          "falsePositiveDetections": null
+        }
+      },
+      "precisionState": "UNMEASURED-SPARSE-GT"
+    }
+  },
+  "frames": [
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 13,
+      "token": "boreas-boreas-m3n-city-1598989122093719",
+      "timestampUs": 1598989122093719,
+      "sourceSha256": "d5866e38bdfd5a3bea38f855e3b0046dd507d095dc19ff8e27f06bba8d2bf994",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "ccddf9b4-07ee-4386-869b-b83746a51cef",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.04479166666666667,
+            "y": 0.5130759651307597,
+            "width": 0.22083333333333333,
+            "height": 0.1232876712328767
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.9201836944075497,
+            "label": "car",
+            "score": 0.9417772889137268,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.04389316583770553,
+              "y": 0.5077507495880127,
+              "width": 0.2241378110997817,
+              "height": 0.13200628757476807
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.9201836944075497,
+            "label": "car",
+            "score": 0.9417772889137268,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.04389316583770553,
+              "y": 0.5077507495880127,
+              "width": 0.2241378110997817,
+              "height": 0.13200628757476807
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.46145833333333336,
+            "y": 0.5118306351183064,
+            "width": 0.05416666666666667,
+            "height": 0.052303860523038606
+          },
+          "bestFamily": {
+            "detectionIndex": 3,
+            "iou": 0.9251800190160148,
+            "label": "car",
+            "score": 0.8824960589408875,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4617937374738306,
+              "y": 0.5105388164520264,
+              "width": 0.05363643870634194,
+              "height": 0.051355838775634766
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 3,
+            "iou": 0.9251800190160148,
+            "label": "car",
+            "score": 0.8824960589408875,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4617937374738306,
+              "y": 0.5105388164520264,
+              "width": 0.05363643870634194,
+              "height": 0.051355838775634766
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 3
+        },
+        {
+          "targetIndex": 2,
+          "instance": "49c0c77f-2820-4f46-87b8-0699b2a3d3f3",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.45,
+            "y": 0.5080946450809465,
+            "width": 0.023958333333333335,
+            "height": 0.0224159402241594
+          },
+          "bestFamily": {
+            "detectionIndex": 11,
+            "iou": 0.3066334802549387,
+            "label": "car",
+            "score": 0.5544253587722778,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.455087100758272,
+              "y": 0.5023897886276245,
+              "width": 0.02665451149535336,
+              "height": 0.018523097038269043
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 11,
+            "iou": 0.3066334802549387,
+            "label": "car",
+            "score": 0.5544253587722778,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.455087100758272,
+              "y": 0.5023897886276245,
+              "width": 0.02665451149535336,
+              "height": 0.018523097038269043
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.9201836944075497
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.9251800190160148
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.9201836944075497
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.9251800190160148
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.9201836944075497
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.9251800190160148
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 10,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 13,
+      "token": "boreas-boreas-m3n-city-1598989122093719",
+      "timestampUs": 1598989122093719,
+      "sourceSha256": "d5866e38bdfd5a3bea38f855e3b0046dd507d095dc19ff8e27f06bba8d2bf994",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "ccddf9b4-07ee-4386-869b-b83746a51cef",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.04479166666666667,
+            "y": 0.5130759651307597,
+            "width": 0.22083333333333333,
+            "height": 0.1232876712328767
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.8993517714329244,
+            "label": "car",
+            "score": 0.9941406136617843,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.04095458984375,
+              "y": 0.50860595703125,
+              "width": 0.2359619140625,
+              "height": 0.1282958984375
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.8993517714329244,
+            "label": "car",
+            "score": 0.9941406136617843,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.04095458984375,
+              "y": 0.50860595703125,
+              "width": 0.2359619140625,
+              "height": 0.1282958984375
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.46145833333333336,
+            "y": 0.5118306351183064,
+            "width": 0.05416666666666667,
+            "height": 0.052303860523038606
+          },
+          "bestFamily": {
+            "detectionIndex": 1,
+            "iou": 0.8396403915133968,
+            "label": "car",
+            "score": 0.9873046939842425,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.459747314453125,
+              "y": 0.50762939453125,
+              "width": 0.05706787109375,
+              "height": 0.0540771484375
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 1,
+            "iou": 0.8396403915133968,
+            "label": "car",
+            "score": 0.9873046939842425,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.459747314453125,
+              "y": 0.50762939453125,
+              "width": 0.05706787109375,
+              "height": 0.0540771484375
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 1
+        },
+        {
+          "targetIndex": 2,
+          "instance": "49c0c77f-2820-4f46-87b8-0699b2a3d3f3",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.45,
+            "y": 0.5080946450809465,
+            "width": 0.023958333333333335,
+            "height": 0.0224159402241594
+          },
+          "bestFamily": {
+            "detectionIndex": 1,
+            "iou": 0.09639802725832079,
+            "label": "car",
+            "score": 0.9873046939842425,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.459747314453125,
+              "y": 0.50762939453125,
+              "width": 0.05706787109375,
+              "height": 0.0540771484375
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 1,
+            "iou": 0.09639802725832079,
+            "label": "car",
+            "score": 0.9873046939842425,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.459747314453125,
+              "y": 0.50762939453125,
+              "width": 0.05706787109375,
+              "height": 0.0540771484375
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8993517714329244
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.8396403915133968
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 4,
+          "outOfScopeDetections": 5
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8993517714329244
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.8396403915133968
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 4,
+          "outOfScopeDetections": 5
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8993517714329244
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.8396403915133968
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 4,
+          "outOfScopeDetections": 5
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 9,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 11
+    },
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 21,
+      "token": "boreas-boreas-m3n-city-1598989122732937",
+      "timestampUs": 1598989122732937,
+      "sourceSha256": "b7359b339d3e0d5a39a2c34ad1b9539f90e6338e34e2f5c9e7cd97e7debbf32d",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "91a4af68-4e53-4256-a478-565b6f3922fb",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.22083333333333333,
+            "y": 0.523038605230386,
+            "width": 0.11458333333333333,
+            "height": 0.07098381070983811
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.911239890881149,
+            "label": "car",
+            "score": 0.9222573041915894,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.21868068720001022,
+              "y": 0.5222576260566711,
+              "width": 0.11730627920113361,
+              "height": 0.07608985900878906
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.911239890881149,
+            "label": "car",
+            "score": 0.9222573041915894,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.21868068720001022,
+              "y": 0.5222576260566711,
+              "width": 0.11730627920113361,
+              "height": 0.07608985900878906
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "unknown",
+          "targetBox": {
+            "x": 0.4625,
+            "y": 0.5143212951432129,
+            "width": 0.053125,
+            "height": 0.052303860523038606
+          },
+          "bestFamily": {
+            "detectionIndex": 2,
+            "iou": 0.9312261334231379,
+            "label": "car",
+            "score": 0.8779611587524414,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4623588113223805,
+              "y": 0.5144869089126587,
+              "width": 0.05379565868502353,
+              "height": 0.0492861270904541
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 2,
+            "iou": 0.9312261334231379,
+            "label": "car",
+            "score": 0.8779611587524414,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4623588113223805,
+              "y": 0.5144869089126587,
+              "width": 0.05379565868502353,
+              "height": 0.0492861270904541
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 2
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.911239890881149
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 2,
+              "iou": 0.9312261334231379
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.911239890881149
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 2,
+              "iou": 0.9312261334231379
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.911239890881149
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 2,
+              "iou": 0.9312261334231379
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 10,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 21,
+      "token": "boreas-boreas-m3n-city-1598989122732937",
+      "timestampUs": 1598989122732937,
+      "sourceSha256": "b7359b339d3e0d5a39a2c34ad1b9539f90e6338e34e2f5c9e7cd97e7debbf32d",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "91a4af68-4e53-4256-a478-565b6f3922fb",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.22083333333333333,
+            "y": 0.523038605230386,
+            "width": 0.11458333333333333,
+            "height": 0.07098381070983811
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.8067695864666571,
+            "label": "car",
+            "score": 0.995605470190128,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.21063232421875,
+              "y": 0.515533447265625,
+              "width": 0.1256103515625,
+              "height": 0.08026123046875
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.8067695864666571,
+            "label": "car",
+            "score": 0.995605470190128,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.21063232421875,
+              "y": 0.515533447265625,
+              "width": 0.1256103515625,
+              "height": 0.08026123046875
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "unknown",
+          "targetBox": {
+            "x": 0.4625,
+            "y": 0.5143212951432129,
+            "width": 0.053125,
+            "height": 0.052303860523038606
+          },
+          "bestFamily": {
+            "detectionIndex": 1,
+            "iou": 0.7787816048047889,
+            "label": "car",
+            "score": 0.9819335940735527,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.459930419921875,
+              "y": 0.50982666015625,
+              "width": 0.05572509765625,
+              "height": 0.0506591796875
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 1,
+            "iou": 0.7787816048047889,
+            "label": "car",
+            "score": 0.9819335940735527,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.459930419921875,
+              "y": 0.50982666015625,
+              "width": 0.05572509765625,
+              "height": 0.0506591796875
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 1
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8067695864666571
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.7787816048047889
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8067695864666571
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.7787816048047889
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8067695864666571
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.7787816048047889
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 10,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 29,
+      "token": "boreas-boreas-m3n-city-1598989123371838",
+      "timestampUs": 1598989123371838,
+      "sourceSha256": "a64abd3baa7da69b4577802c04edc485dbaad8b371e1a4a37a53abd78ceaa640",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "unknown",
+          "targetBox": {
+            "x": 0.4625,
+            "y": 0.5143212951432129,
+            "width": 0.05416666666666667,
+            "height": 0.053549190535491904
+          },
+          "bestFamily": {
+            "detectionIndex": 3,
+            "iou": 0.886026811216866,
+            "label": "car",
+            "score": 0.8713800311088562,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4607579848345588,
+              "y": 0.5166483521461487,
+              "width": 0.05669492833754597,
+              "height": 0.049492835998535156
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 3,
+            "iou": 0.886026811216866,
+            "label": "car",
+            "score": 0.8713800311088562,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4607579848345588,
+              "y": 0.5166483521461487,
+              "width": 0.05669492833754597,
+              "height": 0.049492835998535156
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 3
+        },
+        {
+          "targetIndex": 1,
+          "instance": "3dc8ac67-0f24-49b3-89c1-6c79b0d2eb91",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.371875,
+            "y": 0.5093399750933998,
+            "width": 0.051041666666666666,
+            "height": 0.0410958904109589
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.7943093096475444,
+            "label": "car",
+            "score": 0.8898448944091797,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.3682751873739405,
+              "y": 0.5066210627555847,
+              "width": 0.050540624880323216,
+              "height": 0.0429919958114624
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.7943093096475444,
+            "label": "car",
+            "score": 0.8898448944091797,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.3682751873739405,
+              "y": 0.5066210627555847,
+              "width": 0.050540624880323216,
+              "height": 0.0429919958114624
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 2,
+          "instance": "6ea546e4-fe95-4827-ac32-b686ec8ceb13",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.17291666666666666,
+            "y": 0.5168119551681195,
+            "width": 0.013541666666666667,
+            "height": 0.039850560398505604
+          },
+          "bestFamily": {
+            "detectionIndex": 8,
+            "iou": 0.3402144102741939,
+            "label": "person",
+            "score": 0.543247640132904,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.16575370738708894,
+              "y": 0.5134727954864502,
+              "width": 0.014703239490783301,
+              "height": 0.0425875186920166
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 8,
+            "iou": 0.3402144102741939,
+            "label": "person",
+            "score": 0.543247640132904,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.16575370738708894,
+              "y": 0.5134727954864502,
+              "width": 0.014703239490783301,
+              "height": 0.0425875186920166
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.886026811216866
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 0,
+              "iou": 0.7943093096475444
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.886026811216866
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 0,
+              "iou": 0.7943093096475444
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.886026811216866
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 0,
+              "iou": 0.7943093096475444
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 5
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 10,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 29,
+      "token": "boreas-boreas-m3n-city-1598989123371838",
+      "timestampUs": 1598989123371838,
+      "sourceSha256": "a64abd3baa7da69b4577802c04edc485dbaad8b371e1a4a37a53abd78ceaa640",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "unknown",
+          "targetBox": {
+            "x": 0.4625,
+            "y": 0.5143212951432129,
+            "width": 0.05416666666666667,
+            "height": 0.053549190535491904
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.9324171929111391,
+            "label": "car",
+            "score": 0.9882812509898713,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.46038818359375,
+              "y": 0.514862060546875,
+              "width": 0.0557861328125,
+              "height": 0.05230712890625
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.9324171929111391,
+            "label": "car",
+            "score": 0.9882812509898713,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.46038818359375,
+              "y": 0.514862060546875,
+              "width": 0.0557861328125,
+              "height": 0.05230712890625
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "3dc8ac67-0f24-49b3-89c1-6c79b0d2eb91",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.371875,
+            "y": 0.5093399750933998,
+            "width": 0.051041666666666666,
+            "height": 0.0410958904109589
+          },
+          "bestFamily": {
+            "detectionIndex": 3,
+            "iou": 0.7968946949066792,
+            "label": "car",
+            "score": 0.933593773744839,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.3691253662109375,
+              "y": 0.508453369140625,
+              "width": 0.048858642578125,
+              "height": 0.03973388671875
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 3,
+            "iou": 0.7968946949066792,
+            "label": "car",
+            "score": 0.933593773744839,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.3691253662109375,
+              "y": 0.508453369140625,
+              "width": 0.048858642578125,
+              "height": 0.03973388671875
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 3
+        },
+        {
+          "targetIndex": 2,
+          "instance": "6ea546e4-fe95-4827-ac32-b686ec8ceb13",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.17291666666666666,
+            "y": 0.5168119551681195,
+            "width": 0.013541666666666667,
+            "height": 0.039850560398505604
+          },
+          "bestFamily": null,
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.0,
+            "label": "car",
+            "score": 0.9882812509898713,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.46038818359375,
+              "y": 0.514862060546875,
+              "width": 0.0557861328125,
+              "height": 0.05230712890625
+            }
+          },
+          "warningCriterionStatus": "no-same-family-export",
+          "qualifiedDetectionIndex": null
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.9324171929111391
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.7968946949066792
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 4
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.9324171929111391
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.7968946949066792
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 4
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.9324171929111391
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.7968946949066792
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 4
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 7,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 9
+    },
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 36,
+      "token": "boreas-boreas-m3n-city-1598989123932862",
+      "timestampUs": 1598989123932862,
+      "sourceSha256": "1ee7ad400a54f1d435a705d989bc000e9449f2c479102d30105cb68aaa9788a7",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "3dc8ac67-0f24-49b3-89c1-6c79b0d2eb91",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.309375,
+            "y": 0.5093399750933998,
+            "width": 0.07708333333333334,
+            "height": 0.05603985056039851
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.7846567547580422,
+            "label": "car",
+            "score": 0.9119370579719543,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.31338286555670447,
+              "y": 0.5046644806861877,
+              "width": 0.07509505826663347,
+              "height": 0.055940985679626465
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.7846567547580422,
+            "label": "car",
+            "score": 0.9119370579719543,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.31338286555670447,
+              "y": 0.5046644806861877,
+              "width": 0.07509505826663347,
+              "height": 0.055940985679626465
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.4625,
+            "y": 0.5130759651307597,
+            "width": 0.053125,
+            "height": 0.05105853051058531
+          },
+          "bestFamily": {
+            "detectionIndex": 3,
+            "iou": 0.8653495418273687,
+            "label": "car",
+            "score": 0.8641848564147949,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.46018323711320464,
+              "y": 0.51581209897995,
+              "width": 0.05656692405152164,
+              "height": 0.04680776596069336
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 3,
+            "iou": 0.8653495418273687,
+            "label": "car",
+            "score": 0.8641848564147949,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.46018323711320464,
+              "y": 0.51581209897995,
+              "width": 0.05656692405152164,
+              "height": 0.04680776596069336
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 3
+        },
+        {
+          "targetIndex": 2,
+          "instance": "6ea546e4-fe95-4827-ac32-b686ec8ceb13",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.103125,
+            "y": 0.5180572851805728,
+            "width": 0.017708333333333333,
+            "height": 0.0460772104607721
+          },
+          "bestFamily": {
+            "detectionIndex": 7,
+            "iou": 0.6951949897416853,
+            "label": "person",
+            "score": 0.7135152220726013,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.10425808850456686,
+              "y": 0.5109780430793762,
+              "width": 0.017637595631717868,
+              "height": 0.048378705978393555
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 7,
+            "iou": 0.6951949897416853,
+            "label": "person",
+            "score": 0.7135152220726013,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.10425808850456686,
+              "y": 0.5109780430793762,
+              "width": 0.017637595631717868,
+              "height": 0.048378705978393555
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 7
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 3,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.7846567547580422
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.8653495418273687
+            },
+            {
+              "targetIndex": 2,
+              "detectionIndex": 7,
+              "iou": 0.6951949897416853
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 4
+        },
+        "0.50": {
+          "matchedTargets": 3,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.7846567547580422
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.8653495418273687
+            },
+            {
+              "targetIndex": 2,
+              "detectionIndex": 7,
+              "iou": 0.6951949897416853
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 4
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.7846567547580422
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.8653495418273687
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 6,
+          "outOfScopeDetections": 4
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 9,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 36,
+      "token": "boreas-boreas-m3n-city-1598989123932862",
+      "timestampUs": 1598989123932862,
+      "sourceSha256": "1ee7ad400a54f1d435a705d989bc000e9449f2c479102d30105cb68aaa9788a7",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "3dc8ac67-0f24-49b3-89c1-6c79b0d2eb91",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.309375,
+            "y": 0.5093399750933998,
+            "width": 0.07708333333333334,
+            "height": 0.05603985056039851
+          },
+          "bestFamily": {
+            "detectionIndex": 1,
+            "iou": 0.7540927582436557,
+            "label": "car",
+            "score": 0.9843750092863957,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.313751220703125,
+              "y": 0.5040283203125,
+              "width": 0.07659912109375,
+              "height": 0.056396484375
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 1,
+            "iou": 0.7540927582436557,
+            "label": "car",
+            "score": 0.9843750092863957,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.313751220703125,
+              "y": 0.5040283203125,
+              "width": 0.07659912109375,
+              "height": 0.056396484375
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 1
+        },
+        {
+          "targetIndex": 1,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.4625,
+            "y": 0.5130759651307597,
+            "width": 0.053125,
+            "height": 0.05105853051058531
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.8474063579279973,
+            "label": "car",
+            "score": 0.9848632834579121,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4598541259765625,
+              "y": 0.517547607421875,
+              "width": 0.054901123046875,
+              "height": 0.04595947265625
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.8474063579279973,
+            "label": "car",
+            "score": 0.9848632834579121,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4598541259765625,
+              "y": 0.517547607421875,
+              "width": 0.054901123046875,
+              "height": 0.04595947265625
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 2,
+          "instance": "6ea546e4-fe95-4827-ac32-b686ec8ceb13",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.103125,
+            "y": 0.5180572851805728,
+            "width": 0.017708333333333333,
+            "height": 0.0460772104607721
+          },
+          "bestFamily": {
+            "detectionIndex": 7,
+            "iou": 0.635970633719882,
+            "label": "person",
+            "score": 0.6113281188865471,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.1040802001953125,
+              "y": 0.502105712890625,
+              "width": 0.017303466796875,
+              "height": 0.05828857421875
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 7,
+            "iou": 0.635970633719882,
+            "label": "person",
+            "score": 0.6113281188865471,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.1040802001953125,
+              "y": 0.502105712890625,
+              "width": 0.017303466796875,
+              "height": 0.05828857421875
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 7
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 3,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 1,
+              "iou": 0.7540927582436557
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 0,
+              "iou": 0.8474063579279973
+            },
+            {
+              "targetIndex": 2,
+              "detectionIndex": 7,
+              "iou": 0.635970633719882
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 4,
+          "outOfScopeDetections": 4
+        },
+        "0.50": {
+          "matchedTargets": 3,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 1,
+              "iou": 0.7540927582436557
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 0,
+              "iou": 0.8474063579279973
+            },
+            {
+              "targetIndex": 2,
+              "detectionIndex": 7,
+              "iou": 0.635970633719882
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 4,
+          "outOfScopeDetections": 4
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 1,
+              "iou": 0.7540927582436557
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 0,
+              "iou": 0.8474063579279973
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 4
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 8,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 11
+    },
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 44,
+      "token": "boreas-boreas-m3n-city-1598989124572914",
+      "timestampUs": 1598989124572914,
+      "sourceSha256": "09a2d7ede34da99de03f865b4d2d3c6f2d62a64b6a9e9a048aa6e8a16a003a58",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "3dc8ac67-0f24-49b3-89c1-6c79b0d2eb91",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.18020833333333333,
+            "y": 0.5093399750933998,
+            "width": 0.14270833333333333,
+            "height": 0.0921544209215442
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.916730064007447,
+            "label": "car",
+            "score": 0.9306325316429138,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.17942333844752092,
+              "y": 0.5043005347251892,
+              "width": 0.1430919622284135,
+              "height": 0.09485793113708496
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.916730064007447,
+            "label": "car",
+            "score": 0.9306325316429138,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.17942333844752092,
+              "y": 0.5043005347251892,
+              "width": 0.1430919622284135,
+              "height": 0.09485793113708496
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.465625,
+            "y": 0.5143212951432129,
+            "width": 0.05416666666666667,
+            "height": 0.05105853051058531
+          },
+          "bestFamily": {
+            "detectionIndex": 3,
+            "iou": 0.8203118719844499,
+            "label": "car",
+            "score": 0.8833609819412231,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4619434331756791,
+              "y": 0.5116919875144958,
+              "width": 0.05699980492685356,
+              "height": 0.05017876625061035
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 3,
+            "iou": 0.8203118719844499,
+            "label": "car",
+            "score": 0.8833609819412231,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4619434331756791,
+              "y": 0.5116919875144958,
+              "width": 0.05699980492685356,
+              "height": 0.05017876625061035
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 3
+        },
+        {
+          "targetIndex": 2,
+          "instance": "d45fd1db-c4f5-433e-810d-2ba42ba9d357",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.6645833333333333,
+            "y": 0.50186799501868,
+            "width": 0.014583333333333334,
+            "height": 0.038605230386052306
+          },
+          "bestFamily": {
+            "detectionIndex": 5,
+            "iou": 0.0,
+            "label": "person",
+            "score": 0.7927917242050171,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.014109715916752037,
+              "y": 0.5082976222038269,
+              "width": 0.02465083396512698,
+              "height": 0.06358599662780762
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.0,
+            "label": "car",
+            "score": 0.9306325316429138,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.17942333844752092,
+              "y": 0.5043005347251892,
+              "width": 0.1430919622284135,
+              "height": 0.09485793113708496
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.916730064007447
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.8203118719844499
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 8,
+          "outOfScopeDetections": 2
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.916730064007447
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.8203118719844499
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 8,
+          "outOfScopeDetections": 2
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.916730064007447
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 3,
+              "iou": 0.8203118719844499
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 8,
+          "outOfScopeDetections": 2
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 10,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-city",
+      "index": 44,
+      "token": "boreas-boreas-m3n-city-1598989124572914",
+      "timestampUs": 1598989124572914,
+      "sourceSha256": "09a2d7ede34da99de03f865b4d2d3c6f2d62a64b6a9e9a048aa6e8a16a003a58",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "3dc8ac67-0f24-49b3-89c1-6c79b0d2eb91",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.18020833333333333,
+            "y": 0.5093399750933998,
+            "width": 0.14270833333333333,
+            "height": 0.0921544209215442
+          },
+          "bestFamily": {
+            "detectionIndex": 3,
+            "iou": 0.9401878674501135,
+            "label": "car",
+            "score": 0.9174804563880627,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.17938232421875,
+              "y": 0.505096435546875,
+              "width": 0.1431884765625,
+              "height": 0.09722900390625
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 3,
+            "iou": 0.9401878674501135,
+            "label": "car",
+            "score": 0.9174804563880627,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.17938232421875,
+              "y": 0.505096435546875,
+              "width": 0.1431884765625,
+              "height": 0.09722900390625
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 3
+        },
+        {
+          "targetIndex": 1,
+          "instance": "18063ff4-1c06-4fee-874b-c928f206d0db",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.465625,
+            "y": 0.5143212951432129,
+            "width": 0.05416666666666667,
+            "height": 0.05105853051058531
+          },
+          "bestFamily": {
+            "detectionIndex": 1,
+            "iou": 0.7598390850827096,
+            "label": "car",
+            "score": 0.9916992050659701,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.46124267578125,
+              "y": 0.5086517333984375,
+              "width": 0.0584716796875,
+              "height": 0.052032470703125
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 1,
+            "iou": 0.7598390850827096,
+            "label": "car",
+            "score": 0.9916992050659701,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.46124267578125,
+              "y": 0.5086517333984375,
+              "width": 0.0584716796875,
+              "height": 0.052032470703125
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 1
+        },
+        {
+          "targetIndex": 2,
+          "instance": "d45fd1db-c4f5-433e-810d-2ba42ba9d357",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.6645833333333333,
+            "y": 0.50186799501868,
+            "width": 0.014583333333333334,
+            "height": 0.038605230386052306
+          },
+          "bestFamily": {
+            "detectionIndex": 6,
+            "iou": 0.0,
+            "label": "person",
+            "score": 0.7260742388631343,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.01387786865234375,
+              "y": 0.509124755859375,
+              "width": 0.0264739990234375,
+              "height": 0.06378173828125
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.0,
+            "label": "traffic light",
+            "score": 0.99462890625,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.6494598388671875,
+              "y": 0.15252685546875,
+              "width": 0.040924072265625,
+              "height": 0.1053466796875
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.9401878674501135
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.7598390850827096
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 4,
+          "outOfScopeDetections": 2
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.9401878674501135
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.7598390850827096
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 4,
+          "outOfScopeDetections": 2
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.9401878674501135
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.7598390850827096
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 4,
+          "outOfScopeDetections": 2
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 6,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 8
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 13,
+      "token": "boreas-boreas-m3n-turn-1598987791165686",
+      "timestampUs": 1598987791165686,
+      "sourceSha256": "c230bfa4dab533b527cac163428488ed1918d0ecb86a1c37c0d38bdfce5ce1da",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "2d6a8f81-14e1-47ee-a80b-b643238297c9",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.6958333333333333,
+            "y": 0.5130759651307597,
+            "width": 0.30416666666666664,
+            "height": 0.19676214196762143
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.8966486833061258,
+            "label": "car",
+            "score": 0.9252512454986572,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.693104762657016,
+              "y": 0.5136786699295044,
+              "width": 0.3068719003714766,
+              "height": 0.17787086963653564
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.8966486833061258,
+            "label": "car",
+            "score": 0.9252512454986572,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.693104762657016,
+              "y": 0.5136786699295044,
+              "width": 0.3068719003714766,
+              "height": 0.17787086963653564
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "fb696606-425d-45d9-b020-c0f479eeb61c",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.484375,
+            "y": 0.5155666251556662,
+            "width": 0.06666666666666667,
+            "height": 0.0684931506849315
+          },
+          "bestFamily": {
+            "detectionIndex": 2,
+            "iou": 0.8864509340421948,
+            "label": "car",
+            "score": 0.8370791673660278,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4831149032692504,
+              "y": 0.511360764503479,
+              "width": 0.07031454447827312,
+              "height": 0.0732581615447998
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 2,
+            "iou": 0.8864509340421948,
+            "label": "car",
+            "score": 0.8370791673660278,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4831149032692504,
+              "y": 0.511360764503479,
+              "width": 0.07031454447827312,
+              "height": 0.0732581615447998
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 2
+        },
+        {
+          "targetIndex": 2,
+          "instance": "0ee5298e-b824-476b-b2dd-b902308f3b54",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.7177083333333333,
+            "y": 0.5118306351183064,
+            "width": 0.017708333333333333,
+            "height": 0.05105853051058531
+          },
+          "bestFamily": {
+            "detectionIndex": 3,
+            "iou": 0.0,
+            "label": "person",
+            "score": 0.7021466493606567,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.25346332126193577,
+              "y": 0.5043854117393494,
+              "width": 0.014647839116115224,
+              "height": 0.04171717166900635
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.015955601217720085,
+            "label": "car",
+            "score": 0.9252512454986572,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.693104762657016,
+              "y": 0.5136786699295044,
+              "width": 0.3068719003714766,
+              "height": 0.17787086963653564
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8966486833061258
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 2,
+              "iou": 0.8864509340421948
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 7,
+          "outOfScopeDetections": 3
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8966486833061258
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 2,
+              "iou": 0.8864509340421948
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 7,
+          "outOfScopeDetections": 3
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8966486833061258
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 2,
+              "iou": 0.8864509340421948
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 7,
+          "outOfScopeDetections": 3
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 10,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 13,
+      "token": "boreas-boreas-m3n-turn-1598987791165686",
+      "timestampUs": 1598987791165686,
+      "sourceSha256": "c230bfa4dab533b527cac163428488ed1918d0ecb86a1c37c0d38bdfce5ce1da",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "2d6a8f81-14e1-47ee-a80b-b643238297c9",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.6958333333333333,
+            "y": 0.5130759651307597,
+            "width": 0.30416666666666664,
+            "height": 0.19676214196762143
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.8750125483495343,
+            "label": "car",
+            "score": 0.9873046706031801,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.6904296875,
+              "y": 0.5125732421875,
+              "width": 0.302734375,
+              "height": 0.179931640625
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.8750125483495343,
+            "label": "car",
+            "score": 0.9873046706031801,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.6904296875,
+              "y": 0.5125732421875,
+              "width": 0.302734375,
+              "height": 0.179931640625
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "fb696606-425d-45d9-b020-c0f479eeb61c",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.484375,
+            "y": 0.5155666251556662,
+            "width": 0.06666666666666667,
+            "height": 0.0684931506849315
+          },
+          "bestFamily": {
+            "detectionIndex": 1,
+            "iou": 0.9038271089666963,
+            "label": "car",
+            "score": 0.9560547054412609,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.483154296875,
+              "y": 0.511138916015625,
+              "width": 0.06787109375,
+              "height": 0.07440185546875
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 1,
+            "iou": 0.9038271089666963,
+            "label": "car",
+            "score": 0.9560547054412609,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.483154296875,
+              "y": 0.511138916015625,
+              "width": 0.06787109375,
+              "height": 0.07440185546875
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 1
+        },
+        {
+          "targetIndex": 2,
+          "instance": "0ee5298e-b824-476b-b2dd-b902308f3b54",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.7177083333333333,
+            "y": 0.5118306351183064,
+            "width": 0.017708333333333333,
+            "height": 0.05105853051058531
+          },
+          "bestFamily": {
+            "detectionIndex": 2,
+            "iou": 0.0,
+            "label": "person",
+            "score": 0.8710937273498587,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.248931884765625,
+              "y": 0.501739501953125,
+              "width": 0.01727294921875,
+              "height": 0.04534912109375
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.016353436373353576,
+            "label": "car",
+            "score": 0.9873046706031801,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.6904296875,
+              "y": 0.5125732421875,
+              "width": 0.302734375,
+              "height": 0.179931640625
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8750125483495343
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.9038271089666963
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 0
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8750125483495343
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.9038271089666963
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 0
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8750125483495343
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 1,
+              "iou": 0.9038271089666963
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 0
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 3,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 5
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 21,
+      "token": "boreas-boreas-m3n-turn-1598987791805892",
+      "timestampUs": 1598987791805892,
+      "sourceSha256": "c7494b1d0a0537bd9cb16649667760bc916b3d0426fa115dae6144cdda9fd635",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "fb696606-425d-45d9-b020-c0f479eeb61c",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.48541666666666666,
+            "y": 0.5168119551681195,
+            "width": 0.0625,
+            "height": 0.06351183063511831
+          },
+          "bestFamily": {
+            "detectionIndex": 2,
+            "iou": 0.8685379286483642,
+            "label": "car",
+            "score": 0.8473944067955017,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4812718809040543,
+              "y": 0.5122495293617249,
+              "width": 0.06626677668951701,
+              "height": 0.06796145439147949
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 2,
+            "iou": 0.8685379286483642,
+            "label": "car",
+            "score": 0.8473944067955017,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4812718809040543,
+              "y": 0.5122495293617249,
+              "width": 0.06626677668951701,
+              "height": 0.06796145439147949
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 2
+        },
+        {
+          "targetIndex": 1,
+          "instance": "0ee5298e-b824-476b-b2dd-b902308f3b54",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.7947916666666667,
+            "y": 0.5130759651307597,
+            "width": 0.03229166666666667,
+            "height": 0.0647571606475716
+          },
+          "bestFamily": {
+            "detectionIndex": 7,
+            "iou": 0.6513814038321113,
+            "label": "person",
+            "score": 0.6356536746025085,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.7908816867404513,
+              "y": 0.5063405632972717,
+              "width": 0.029522166532628773,
+              "height": 0.07159686088562012
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 7,
+            "iou": 0.6513814038321113,
+            "label": "person",
+            "score": 0.6356536746025085,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.7908816867404513,
+              "y": 0.5063405632972717,
+              "width": 0.029522166532628773,
+              "height": 0.07159686088562012
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 7
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 2,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 2,
+              "iou": 0.8685379286483642
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 7,
+              "iou": 0.6513814038321113
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 8,
+          "outOfScopeDetections": 2
+        },
+        "0.50": {
+          "matchedTargets": 2,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 2,
+              "iou": 0.8685379286483642
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 7,
+              "iou": 0.6513814038321113
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 8,
+          "outOfScopeDetections": 2
+        },
+        "0.75": {
+          "matchedTargets": 1,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 2,
+              "iou": 0.8685379286483642
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 9,
+          "outOfScopeDetections": 2
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 10,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 21,
+      "token": "boreas-boreas-m3n-turn-1598987791805892",
+      "timestampUs": 1598987791805892,
+      "sourceSha256": "c7494b1d0a0537bd9cb16649667760bc916b3d0426fa115dae6144cdda9fd635",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "fb696606-425d-45d9-b020-c0f479eeb61c",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.48541666666666666,
+            "y": 0.5168119551681195,
+            "width": 0.0625,
+            "height": 0.06351183063511831
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.8465230674423799,
+            "label": "car",
+            "score": 0.967773420939011,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.480804443359375,
+              "y": 0.51116943359375,
+              "width": 0.06671142578125,
+              "height": 0.0694580078125
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.8465230674423799,
+            "label": "car",
+            "score": 0.967773420939011,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.480804443359375,
+              "y": 0.51116943359375,
+              "width": 0.06671142578125,
+              "height": 0.0694580078125
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "0ee5298e-b824-476b-b2dd-b902308f3b54",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.7947916666666667,
+            "y": 0.5130759651307597,
+            "width": 0.03229166666666667,
+            "height": 0.0647571606475716
+          },
+          "bestFamily": {
+            "detectionIndex": 2,
+            "iou": 0.345027524476845,
+            "label": "person",
+            "score": 0.8520507796268788,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.782745361328125,
+              "y": 0.473236083984375,
+              "width": 0.03607177734375,
+              "height": 0.11016845703125
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 2,
+            "iou": 0.345027524476845,
+            "label": "person",
+            "score": 0.8520507796268788,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.782745361328125,
+              "y": 0.473236083984375,
+              "width": 0.03607177734375,
+              "height": 0.11016845703125
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 1,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8465230674423799
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 0
+        },
+        "0.50": {
+          "matchedTargets": 1,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8465230674423799
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 0
+        },
+        "0.75": {
+          "matchedTargets": 1,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.8465230674423799
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 0
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 5,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 6
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 28,
+      "token": "boreas-boreas-m3n-turn-1598987792366672",
+      "timestampUs": 1598987792366672,
+      "sourceSha256": "52295c4b2b6e9d05c7722b1a3252dbd2431e0bb2f16f32d4a811f888e084d900",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 0,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 0,
+          "pairs": [],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 10,
+          "outOfScopeDetections": 2
+        },
+        "0.50": {
+          "matchedTargets": 0,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 0,
+          "pairs": [],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 10,
+          "outOfScopeDetections": 2
+        },
+        "0.75": {
+          "matchedTargets": 0,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 0,
+          "pairs": [],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 10,
+          "outOfScopeDetections": 2
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 12,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 28,
+      "token": "boreas-boreas-m3n-turn-1598987792366672",
+      "timestampUs": 1598987792366672,
+      "sourceSha256": "52295c4b2b6e9d05c7722b1a3252dbd2431e0bb2f16f32d4a811f888e084d900",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 0,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 0,
+          "pairs": [],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 7,
+          "outOfScopeDetections": 1
+        },
+        "0.50": {
+          "matchedTargets": 0,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 0,
+          "pairs": [],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 7,
+          "outOfScopeDetections": 1
+        },
+        "0.75": {
+          "matchedTargets": 0,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 0,
+          "pairs": [],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 7,
+          "outOfScopeDetections": 1
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 8,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 8
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 36,
+      "token": "boreas-boreas-m3n-turn-1598987793006782",
+      "timestampUs": 1598987793006782,
+      "sourceSha256": "9fe6c7f32ee9ffd33d2c856752101024e2004cfd3f1e662094d63bacba4f5f73",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "2941736e-3959-42dd-a117-886eee161a0d",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.48333333333333334,
+            "y": 0.5130759651307597,
+            "width": 0.05416666666666667,
+            "height": 0.0547945205479452
+          },
+          "bestFamily": {
+            "detectionIndex": 3,
+            "iou": 0.7797847453890429,
+            "label": "car",
+            "score": 0.8108413815498352,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4769201341018178,
+              "y": 0.5105127096176147,
+              "width": 0.06234122880923206,
+              "height": 0.06105470657348633
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 3,
+            "iou": 0.7797847453890429,
+            "label": "car",
+            "score": 0.8108413815498352,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4769201341018178,
+              "y": 0.5105127096176147,
+              "width": 0.06234122880923206,
+              "height": 0.06105470657348633
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 3
+        },
+        {
+          "targetIndex": 1,
+          "instance": "7e2e8b6b-bd02-4291-b69a-6456b5d2a91f",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.7260416666666667,
+            "y": 0.5118306351183064,
+            "width": 0.026041666666666668,
+            "height": 0.0722291407222914
+          },
+          "bestFamily": {
+            "detectionIndex": 2,
+            "iou": 0.7108474669479953,
+            "label": "person",
+            "score": 0.8224355578422546,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.7249628702799479,
+              "y": 0.5065978765487671,
+              "width": 0.03369868658726505,
+              "height": 0.07852208614349365
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 2,
+            "iou": 0.7108474669479953,
+            "label": "person",
+            "score": 0.8224355578422546,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.7249628702799479,
+              "y": 0.5065978765487671,
+              "width": 0.03369868658726505,
+              "height": 0.07852208614349365
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 2
+        },
+        {
+          "targetIndex": 2,
+          "instance": "7a0356ed-e073-4dc0-bf34-5691b23b129b",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.45416666666666666,
+            "y": 0.5043586550435866,
+            "width": 0.01875,
+            "height": 0.023661270236612703
+          },
+          "bestFamily": {
+            "detectionIndex": 1,
+            "iou": 0.5762994109617503,
+            "label": "car",
+            "score": 0.8331055641174316,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4494606965507557,
+              "y": 0.5014234185218811,
+              "width": 0.02446572297538811,
+              "height": 0.022154927253723145
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 1,
+            "iou": 0.5762994109617503,
+            "label": "car",
+            "score": 0.8331055641174316,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4494606965507557,
+              "y": 0.5014234185218811,
+              "width": 0.02446572297538811,
+              "height": 0.022154927253723145
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 1
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 3,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.7797847453890429
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 2,
+              "iou": 0.7108474669479953
+            },
+            {
+              "targetIndex": 2,
+              "detectionIndex": 1,
+              "iou": 0.5762994109617503
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 6,
+          "outOfScopeDetections": 3
+        },
+        "0.50": {
+          "matchedTargets": 3,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.7797847453890429
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 2,
+              "iou": 0.7108474669479953
+            },
+            {
+              "targetIndex": 2,
+              "detectionIndex": 1,
+              "iou": 0.5762994109617503
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 6,
+          "outOfScopeDetections": 3
+        },
+        "0.75": {
+          "matchedTargets": 1,
+          "missedTargets": 2,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 2,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.7797847453890429
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 8,
+          "outOfScopeDetections": 3
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 9,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 36,
+      "token": "boreas-boreas-m3n-turn-1598987793006782",
+      "timestampUs": 1598987793006782,
+      "sourceSha256": "9fe6c7f32ee9ffd33d2c856752101024e2004cfd3f1e662094d63bacba4f5f73",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "2941736e-3959-42dd-a117-886eee161a0d",
+          "classFamily": "vehicle",
+          "approach": "not-approaching",
+          "targetBox": {
+            "x": 0.48333333333333334,
+            "y": 0.5130759651307597,
+            "width": 0.05416666666666667,
+            "height": 0.0547945205479452
+          },
+          "bestFamily": {
+            "detectionIndex": 3,
+            "iou": 0.753376930678183,
+            "label": "car",
+            "score": 0.6518554706486839,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4769287109375,
+              "y": 0.508636474609375,
+              "width": 0.061767578125,
+              "height": 0.06378173828125
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 3,
+            "iou": 0.753376930678183,
+            "label": "car",
+            "score": 0.6518554706486839,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4769287109375,
+              "y": 0.508636474609375,
+              "width": 0.061767578125,
+              "height": 0.06378173828125
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 3
+        },
+        {
+          "targetIndex": 1,
+          "instance": "7e2e8b6b-bd02-4291-b69a-6456b5d2a91f",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.7260416666666667,
+            "y": 0.5118306351183064,
+            "width": 0.026041666666666668,
+            "height": 0.0722291407222914
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.7210909781332716,
+            "label": "person",
+            "score": 0.91357421875,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.72344970703125,
+              "y": 0.499755859375,
+              "width": 0.0306396484375,
+              "height": 0.08349609375
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.7210909781332716,
+            "label": "person",
+            "score": 0.91357421875,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.72344970703125,
+              "y": 0.499755859375,
+              "width": 0.0306396484375,
+              "height": 0.08349609375
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 2,
+          "instance": "7a0356ed-e073-4dc0-bf34-5691b23b129b",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.45416666666666666,
+            "y": 0.5043586550435866,
+            "width": 0.01875,
+            "height": 0.023661270236612703
+          },
+          "bestFamily": {
+            "detectionIndex": 1,
+            "iou": 0.502240109278508,
+            "label": "car",
+            "score": 0.6850585914775138,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.453521728515625,
+              "y": 0.5013656616210938,
+              "width": 0.02655029296875,
+              "height": 0.0207061767578125
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 1,
+            "iou": 0.502240109278508,
+            "label": "car",
+            "score": 0.6850585914775138,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.453521728515625,
+              "y": 0.5013656616210938,
+              "width": 0.02655029296875,
+              "height": 0.0207061767578125
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 1
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 3,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.753376930678183
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 0,
+              "iou": 0.7210909781332716
+            },
+            {
+              "targetIndex": 2,
+              "detectionIndex": 1,
+              "iou": 0.502240109278508
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 0
+        },
+        "0.50": {
+          "matchedTargets": 3,
+          "missedTargets": 0,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 0,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.753376930678183
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 0,
+              "iou": 0.7210909781332716
+            },
+            {
+              "targetIndex": 2,
+              "detectionIndex": 1,
+              "iou": 0.502240109278508
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 0
+        },
+        "0.75": {
+          "matchedTargets": 1,
+          "missedTargets": 2,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 2,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 3,
+              "iou": 0.753376930678183
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 0
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 3,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 6
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 44,
+      "token": "boreas-boreas-m3n-turn-1598987793646184",
+      "timestampUs": 1598987793646184,
+      "sourceSha256": "8abf0efe372920a8f1d72ed70f04d0b9cf70ab9c7aae0e1d90985e49f68642d6",
+      "provider": "rtdetr",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "7e2e8b6b-bd02-4291-b69a-6456b5d2a91f",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.821875,
+            "y": 0.5118306351183064,
+            "width": 0.046875,
+            "height": 0.11207970112079702
+          },
+          "bestFamily": {
+            "detectionIndex": 1,
+            "iou": 0.8559452501624654,
+            "label": "person",
+            "score": 0.868199348449707,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.8212876164056118,
+              "y": 0.5017493963241577,
+              "width": 0.049546933641620626,
+              "height": 0.12388122081756592
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 1,
+            "iou": 0.8559452501624654,
+            "label": "person",
+            "score": 0.868199348449707,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.8212876164056118,
+              "y": 0.5017493963241577,
+              "width": 0.049546933641620626,
+              "height": 0.12388122081756592
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 1
+        },
+        {
+          "targetIndex": 1,
+          "instance": "2941736e-3959-42dd-a117-886eee161a0d",
+          "classFamily": "vehicle",
+          "approach": "unknown",
+          "targetBox": {
+            "x": 0.4822916666666667,
+            "y": 0.5130759651307597,
+            "width": 0.05625,
+            "height": 0.05603985056039851
+          },
+          "bestFamily": {
+            "detectionIndex": 4,
+            "iou": 0.8019218816045264,
+            "label": "car",
+            "score": 0.7822864055633545,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4760988522199244,
+              "y": 0.5117591619491577,
+              "width": 0.061919418035769024,
+              "height": 0.06241905689239502
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 4,
+            "iou": 0.8019218816045264,
+            "label": "car",
+            "score": 0.7822864055633545,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4760988522199244,
+              "y": 0.5117591619491577,
+              "width": 0.061919418035769024,
+              "height": 0.06241905689239502
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 4
+        },
+        {
+          "targetIndex": 2,
+          "instance": "0db9e151-dd74-4b32-81c5-86e797f8287b",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.30833333333333335,
+            "y": 0.5043586550435866,
+            "width": 0.04895833333333333,
+            "height": 0.021170610211706103
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.0,
+            "label": "car",
+            "score": 0.8980611562728882,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.43400733299504696,
+              "y": 0.5036082863807678,
+              "width": 0.03170721515331391,
+              "height": 0.029569268226623535
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.0,
+            "label": "car",
+            "score": 0.8980611562728882,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.43400733299504696,
+              "y": 0.5036082863807678,
+              "width": 0.03170721515331391,
+              "height": 0.029569268226623535
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        },
+        {
+          "targetIndex": 3,
+          "instance": "7a0356ed-e073-4dc0-bf34-5691b23b129b",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.4395833333333333,
+            "y": 0.5080946450809465,
+            "width": 0.03125,
+            "height": 0.029887920298879204
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.5389701797920586,
+            "label": "car",
+            "score": 0.8980611562728882,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.43400733299504696,
+              "y": 0.5036082863807678,
+              "width": 0.03170721515331391,
+              "height": 0.029569268226623535
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.5389701797920586,
+            "label": "car",
+            "score": 0.8980611562728882,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.43400733299504696,
+              "y": 0.5036082863807678,
+              "width": 0.03170721515331391,
+              "height": 0.029569268226623535
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 3,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 1,
+              "iou": 0.8559452501624654
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 4,
+              "iou": 0.8019218816045264
+            },
+            {
+              "targetIndex": 3,
+              "detectionIndex": 0,
+              "iou": 0.5389701797920586
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 7,
+          "outOfScopeDetections": 2
+        },
+        "0.50": {
+          "matchedTargets": 3,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 1,
+              "iou": 0.8559452501624654
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 4,
+              "iou": 0.8019218816045264
+            },
+            {
+              "targetIndex": 3,
+              "detectionIndex": 0,
+              "iou": 0.5389701797920586
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 7,
+          "outOfScopeDetections": 2
+        },
+        "0.75": {
+          "matchedTargets": 2,
+          "missedTargets": 2,
+          "approachingMatchedTargets": 1,
+          "approachingMissedTargets": 2,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 1,
+              "iou": 0.8559452501624654
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 4,
+              "iou": 0.8019218816045264
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 8,
+          "outOfScopeDetections": 2
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 9,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 12
+    },
+    {
+      "clipId": "boreas-m3n-turn",
+      "index": 44,
+      "token": "boreas-boreas-m3n-turn-1598987793646184",
+      "timestampUs": 1598987793646184,
+      "sourceSha256": "8abf0efe372920a8f1d72ed70f04d0b9cf70ab9c7aae0e1d90985e49f68642d6",
+      "provider": "yolov3",
+      "cameraStatus": null,
+      "targets": [
+        {
+          "targetIndex": 0,
+          "instance": "7e2e8b6b-bd02-4291-b69a-6456b5d2a91f",
+          "classFamily": "person",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.821875,
+            "y": 0.5118306351183064,
+            "width": 0.046875,
+            "height": 0.11207970112079702
+          },
+          "bestFamily": {
+            "detectionIndex": 0,
+            "iou": 0.673465165706742,
+            "label": "person",
+            "score": 0.9633789275992228,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.83209228515625,
+              "y": 0.50384521484375,
+              "width": 0.0399169921875,
+              "height": 0.1241455078125
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.673465165706742,
+            "label": "person",
+            "score": 0.9633789275992228,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.83209228515625,
+              "y": 0.50384521484375,
+              "width": 0.0399169921875,
+              "height": 0.1241455078125
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 0
+        },
+        {
+          "targetIndex": 1,
+          "instance": "2941736e-3959-42dd-a117-886eee161a0d",
+          "classFamily": "vehicle",
+          "approach": "unknown",
+          "targetBox": {
+            "x": 0.4822916666666667,
+            "y": 0.5130759651307597,
+            "width": 0.05625,
+            "height": 0.05603985056039851
+          },
+          "bestFamily": {
+            "detectionIndex": 4,
+            "iou": 0.7704418925805818,
+            "label": "car",
+            "score": 0.6523437311807356,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.474395751953125,
+              "y": 0.509735107421875,
+              "width": 0.06390380859375,
+              "height": 0.06353759765625
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 4,
+            "iou": 0.7704418925805818,
+            "label": "car",
+            "score": 0.6523437311807356,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.474395751953125,
+              "y": 0.509735107421875,
+              "width": 0.06390380859375,
+              "height": 0.06353759765625
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 4
+        },
+        {
+          "targetIndex": 2,
+          "instance": "0db9e151-dd74-4b32-81c5-86e797f8287b",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.30833333333333335,
+            "y": 0.5043586550435866,
+            "width": 0.04895833333333333,
+            "height": 0.021170610211706103
+          },
+          "bestFamily": {
+            "detectionIndex": 2,
+            "iou": 0.0,
+            "label": "car",
+            "score": 0.8764648523570742,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4340667724609375,
+              "y": 0.5026702880859375,
+              "width": 0.033233642578125,
+              "height": 0.028839111328125
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 0,
+            "iou": 0.0,
+            "label": "person",
+            "score": 0.9633789275992228,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.83209228515625,
+              "y": 0.50384521484375,
+              "width": 0.0399169921875,
+              "height": 0.1241455078125
+            }
+          },
+          "warningCriterionStatus": "below-frozen-IoU",
+          "qualifiedDetectionIndex": null
+        },
+        {
+          "targetIndex": 3,
+          "instance": "7a0356ed-e073-4dc0-bf34-5691b23b129b",
+          "classFamily": "vehicle",
+          "approach": "approaching",
+          "targetBox": {
+            "x": 0.4395833333333333,
+            "y": 0.5080946450809465,
+            "width": 0.03125,
+            "height": 0.029887920298879204
+          },
+          "bestFamily": {
+            "detectionIndex": 2,
+            "iou": 0.5219310365083217,
+            "label": "car",
+            "score": 0.8764648523570742,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4340667724609375,
+              "y": 0.5026702880859375,
+              "width": 0.033233642578125,
+              "height": 0.028839111328125
+            }
+          },
+          "bestAnyClass": {
+            "detectionIndex": 2,
+            "iou": 0.5219310365083217,
+            "label": "car",
+            "score": 0.8764648523570742,
+            "scoreState": "observed",
+            "box": {
+              "x": 0.4340667724609375,
+              "y": 0.5026702880859375,
+              "width": 0.033233642578125,
+              "height": 0.028839111328125
+            }
+          },
+          "warningCriterionStatus": "qualified",
+          "qualifiedDetectionIndex": 2
+        }
+      ],
+      "diagnosticIoUCurve": {
+        "0.35": {
+          "matchedTargets": 3,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.673465165706742
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 4,
+              "iou": 0.7704418925805818
+            },
+            {
+              "targetIndex": 3,
+              "detectionIndex": 2,
+              "iou": 0.5219310365083217
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 0
+        },
+        "0.50": {
+          "matchedTargets": 3,
+          "missedTargets": 1,
+          "approachingMatchedTargets": 2,
+          "approachingMissedTargets": 1,
+          "pairs": [
+            {
+              "targetIndex": 0,
+              "detectionIndex": 0,
+              "iou": 0.673465165706742
+            },
+            {
+              "targetIndex": 1,
+              "detectionIndex": 4,
+              "iou": 0.7704418925805818
+            },
+            {
+              "targetIndex": 3,
+              "detectionIndex": 2,
+              "iou": 0.5219310365083217
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 3,
+          "outOfScopeDetections": 0
+        },
+        "0.75": {
+          "matchedTargets": 1,
+          "missedTargets": 3,
+          "approachingMatchedTargets": 0,
+          "approachingMissedTargets": 3,
+          "pairs": [
+            {
+              "targetIndex": 1,
+              "detectionIndex": 4,
+              "iou": 0.7704418925805818
+            }
+          ],
+          "falsePositiveDetections": null,
+          "unreviewedDetections": 5,
+          "outOfScopeDetections": 0
+        }
+      },
+      "warningAssignment": {
+        "unmatchedDetections": 3,
+        "duplicateAssignments": 0
+      },
+      "detectionAnnotationExhaustive": false,
+      "detectorExportCount": 6
+    }
+  ],
+  "exportScope": {
+    "yolov3": "Vision recognized observations filtered at .38, then fresh ObjectTracker pipeline export, max12; not uncensored proposals",
+    "rtdetr": "upstream global top300 query/class rows, then fixed .38/same-class .65 dedup/max12; not all logits/proposals"
+  },
+  "limits": "IoU curve is diagnostic only; warning gates unchanged. Sparse annotations do not establish detection precision: unreviewed detections are not false positives. Missing confidence is unknown, not zero. No motion inference, range, new threshold, phone or safety acceptance.",
+  "receiptSha256": "25a135ee4724517917e2c9713401cdddf0f699840a4882ce0f30bf0e36fd087b",
+  "truthSha256": "c12d0368bd309c266b778d3f8887eb92797f14dc8a03057dc10131669d3cbfca",
+  "diagnosticCodeSha256": "ba115f7d494cba9b206351206fd25d7fff7ae2484d145e4fb691a05acead4f42"
+}

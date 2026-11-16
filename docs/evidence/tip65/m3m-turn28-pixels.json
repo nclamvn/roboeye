@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "study": "M3M-pixel-gate-diagnosis",
+  "receiptSha256": "1744e01220bb8a8935430ead31c690ca3631008064aec928af2aecd38d620e78",
+  "inputSha256": "be77119bb740204ccc5d2e020deae1b3409b577155cfd749452775e83c352b05",
+  "codeSha256": {
+    "assist_scene_m3g_study.py": "af27a473fc03d47543ac21c7d45a8c69d4e22c74ca0b0ad4df518d2758b72ca1",
+    "assist_scene_window_loom.py": "4981561eed510a7be889744bd20c23e4ed9d6d91704cb3d22dddcea24c873217",
+    "assist_scene_dense_window.py": "98c5a0f021ae3faa9abeee634690d43b21447dec8b0525709d37680e163374d0",
+    "assist_scene_scale_approach_m3e.py": "3bfaac464710becaffa3590ffcf59ea8195f5e7ba2f57c874bd8138988fb3f2b",
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_m3d_study.py": "db37a3b6fdbb81cb5c1bddee820838a0b82f44571ae30ad658be33e84a71b225",
+    "assist_scene_m3e_study.py": "6801000ec0dbd4026067727a7aecf4250cbdbd0d435bd7aba1b29f6368914617",
+    "assist_scene_m3f_study.py": "5d97ce10027b4303ae665597b5148705facc2ffe8fa7d427a46ba79a0c8c4133",
+    "assist_scene_motion_m3b.py": "036305b33a4d09c224035bee407e4cf670802f8e17284079c06337c894ea73f9",
+    "assist_scene_motion_m3c.py": "119471b4544367431dd62b051ed557e8fe092ea8230fdee47b73fb99a671592e",
+    "assist_scene_pose_motion.py": "df6b22ae9da80a8a75dae2049de3b848c839527a7aebcb95954cc6fbbd0b0df9",
+    "assist_scene_motion.py": "330340ea5469d4f6f2a559dbe9b4090529a1da0d313e68a1b7fe82ef889d50bb",
+    "score-assist-scene-motion-m3c.py": "90875862ef6774832164776b27a54981d4253dfd9341c8d1e8fb18aeadd05f16",
+    "assist_scene_m3h_study.py": "a0fdb7a3f436c131a61d0fd66bf47614b345b2778d13608d6143eda41ca6810a",
+    "assist_scene_cohort_loom.py": "b7915e194867e09a218742f8b779631fb00ec631ddfdd39b784eaa5e1bb4bea4",
+    "assist_scene_m3k_study.py": "bbe5892b9c69ab9d249543ecaac0a322ff3fea9427da66e371bc04f876f3b894",
+    "assist_scene_learned_detector.py": "4258c1c7164b5c16ac0e48173dc932a8a2577709a19822adc42e9b564300bb9a",
+    "assist_scene_learned_region.py": "594c9c52cdc4e79db0fad19432fae99b23b0a064321f6b4b44607fbaadf7092a",
+    "audit_assist_scene_m3k.py": "eadbda5e716b053723fa18dd40bc39720c1fcd441e704cca5b0389f157b5f6ba",
+    "assist_scene_m3l_study.py": "14de9667f42fed6194c8f33e5a7ef97604dede03ba57ee6f3fb1b32b899670c0",
+    "assist_scene_direct_window.py": "5c0854542e03e70959ac012a483596e10a1259b57ca7d0a1ccecbf207e98f1bf",
+    "assist_scene_m3m_study.py": "5eb13066fd92019ca7567d7e43c64ba3672e02155ac567a9945850027d4b7427",
+    "assist_scene_global_field.py": "32f03ec4fbdd754be555d8849d63b8fd3412d404f159ad97005df0a82d2f5848",
+    "assist_scene_global_window.py": "8163edb853089f9e87a16ed2c7cd506aa5a0f8c8da32d63870a02585d73fa86b"
+  },
+  "diagnosticSha256": "b5b447bbdb08f96daa93fdb802e8f7058ab347bb64793af8e956330433ba1c6d",
+  "clip": "boreas-m3m-turn",
+  "index": 28,
+  "origin": "fresh",
+  "recordedField": {
+    "fieldId": "boreas-boreas-m3m-turn-1598987786285677->boreas-boreas-m3m-turn-1598987786366175",
+    "startToken": "boreas-boreas-m3m-turn-1598987786285677",
+    "endToken": "boreas-boreas-m3m-turn-1598987786366175",
+    "startMs": 2160.752,
+    "endMs": 2241.25,
+    "startSha256": "f57d91b3c32269085a54c49657f0c35572a29525a595063e9dfcd079aaa74351",
+    "endSha256": "a4ff1ce4d911914f7abb3a9b0c5f5014b651ab7b22ebee69b04b637f4f0de5bd",
+    "oldWorkingPixelsSha256": "b6b09f43b35bbf8c1944fd88ba66d1b7fe7a24db5b4052abca0fe3b7f3af1534",
+    "newWorkingPixelsSha256": "48c76150e8e77f3700fe1229b719427f462816a7d2d62295e09a4883f05e4b8c",
+    "fieldSha256": {
+      "forward": "a998c4a63ac74e136fea11b9a6b5f5c8c554b9e82d8eb89804458454fbbe5a0a",
+      "backward": "c8f8acecf08677cffa16b0c7d5cdad72eec791b98b947ad6676cc47ba24d5c78"
+    },
+    "fieldShapes": [
+      [
+        643,
+        768,
+        2
+      ],
+      [
+        643,
+        768,
+        2
+      ]
+    ],
+    "providerKind": "actual-local-pretrained-torchvision-global",
+    "provider": {
+      "roiShape": [
+        643,
+        768
+      ],
+      "processedShape": [
+        536,
+        640
+      ],
+      "paddedShape": [
+        536,
+        640
+      ],
+      "scaleXY": [
+        0.8333333333333334,
+        0.833592534992224
+      ],
+      "device": "mps",
+      "modelDirectionCalls": 2,
+      "flowUpdatesPerDirection": 12,
+      "status": "field-supported",
+      "outputShape": [
+        643,
+        768,
+        2
+      ],
+      "wallMs": 209.1597500257194
+    },
+    "modelDirectionCalls": 2,
+    "wallMs": 213.24499999172986
+  },
+  "measuredFieldSha256": {
+    "forward": "a998c4a63ac74e136fea11b9a6b5f5c8c554b9e82d8eb89804458454fbbe5a0a",
+    "backward": "c8f8acecf08677cffa16b0c7d5cdad72eec791b98b947ad6676cc47ba24d5c78"
+  },
+  "fieldHashMatch": {
+    "forward": true,
+    "backward": true
+  },
+  "exactFieldReconstruction": true,
+  "actualDirectionCalls": 2,
+  "provider": {
+    "roiShape": [
+      643,
+      768
+    ],
+    "processedShape": [
+      536,
+      640
+    ],
+    "paddedShape": [
+      536,
+      640
+    ],
+    "scaleXY": [
+      0.8333333333333334,
+      0.833592534992224
+    ],
+    "device": "mps",
+    "modelDirectionCalls": 2,
+    "flowUpdatesPerDirection": 12,
+    "status": "field-supported",
+    "outputShape": [
+      643,
+      768,
+      2
+    ],
+    "wallMs": 1121.7038329923525
+  },
+  "populations": {
+    "forward": [
+      {
+        "detectionIndex": 0,
+        "label": "car",
+        "score": 0.9946288863579866,
+        "box": {
+          "x": 0.42205810546875,
+          "y": 0.5224609375,
+          "width": 0.1656494140625,
+          "height": 0.162109375
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 64,
+          "nccPass": 20,
+          "fbAndNcc": 20,
+          "nccConditionalOnFb": 0.3125,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 20,
+          "fbButNotNcc": 44,
+          "nccButNotFb": 0,
+          "fbAndInteriorButLowTexture": 44,
+          "fbAndTextureButLowCorrelation": 0,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      },
+      {
+        "detectionIndex": 1,
+        "label": "car",
+        "score": 0.9936523465430582,
+        "box": {
+          "x": 0.312835693359375,
+          "y": 0.512603759765625,
+          "width": 0.09600830078125,
+          "height": 0.08123779296875
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 47,
+          "nccPass": 35,
+          "fbAndNcc": 32,
+          "nccConditionalOnFb": 0.6808510638297872,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 54,
+          "fbButNotNcc": 15,
+          "nccButNotFb": 3,
+          "fbAndInteriorButLowTexture": 9,
+          "fbAndTextureButLowCorrelation": 6,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      },
+      {
+        "detectionIndex": 2,
+        "label": "car",
+        "score": 0.9916992170406047,
+        "box": {
+          "x": 0.6026611328125,
+          "y": 0.504119873046875,
+          "width": 0.094482421875,
+          "height": 0.07476806640625
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 64,
+          "nccPass": 45,
+          "fbAndNcc": 45,
+          "nccConditionalOnFb": 0.703125,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 45,
+          "fbButNotNcc": 19,
+          "nccButNotFb": 0,
+          "fbAndInteriorButLowTexture": 19,
+          "fbAndTextureButLowCorrelation": 0,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      },
+      {
+        "detectionIndex": 3,
+        "label": "car",
+        "score": 0.9106445205131877,
+        "box": {
+          "x": 0.4209747314453125,
+          "y": 0.498382568359375,
+          "width": 0.035003662109375,
+          "height": 0.03155517578125
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 64,
+          "nccPass": 46,
+          "fbAndNcc": 46,
+          "nccConditionalOnFb": 0.71875,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 64,
+          "fbButNotNcc": 18,
+          "nccButNotFb": 0,
+          "fbAndInteriorButLowTexture": 0,
+          "fbAndTextureButLowCorrelation": 18,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      },
+      {
+        "detectionIndex": 4,
+        "label": "car",
+        "score": 0.6772460888096958,
+        "box": {
+          "x": 0.028076171875,
+          "y": 0.83465576171875,
+          "width": 0.94384765625,
+          "height": 0.1470947265625
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 64,
+          "nccPass": 26,
+          "fbAndNcc": 26,
+          "nccConditionalOnFb": 0.40625,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 26,
+          "fbButNotNcc": 38,
+          "nccButNotFb": 0,
+          "fbAndInteriorButLowTexture": 38,
+          "fbAndTextureButLowCorrelation": 0,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      }
+    ],
+    "reverse": [
+      {
+        "detectionIndex": 0,
+        "label": "car",
+        "score": 0.9965820438450237,
+        "box": {
+          "x": 0.42236328125,
+          "y": 0.523681640625,
+          "width": 0.1650390625,
+          "height": 0.15966796875
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 64,
+          "nccPass": 20,
+          "fbAndNcc": 20,
+          "nccConditionalOnFb": 0.3125,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 20,
+          "fbButNotNcc": 44,
+          "nccButNotFb": 0,
+          "fbAndInteriorButLowTexture": 44,
+          "fbAndTextureButLowCorrelation": 0,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      },
+      {
+        "detectionIndex": 1,
+        "label": "car",
+        "score": 0.9902343875037332,
+        "box": {
+          "x": 0.602874755859375,
+          "y": 0.503692626953125,
+          "width": 0.09405517578125,
+          "height": 0.07464599609375
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 64,
+          "nccPass": 45,
+          "fbAndNcc": 45,
+          "nccConditionalOnFb": 0.703125,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 45,
+          "fbButNotNcc": 19,
+          "nccButNotFb": 0,
+          "fbAndInteriorButLowTexture": 19,
+          "fbAndTextureButLowCorrelation": 0,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      },
+      {
+        "detectionIndex": 2,
+        "label": "car",
+        "score": 0.9785156458337951,
+        "box": {
+          "x": 0.300384521484375,
+          "y": 0.51531982421875,
+          "width": 0.10479736328125,
+          "height": 0.0787353515625
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 42,
+          "nccPass": 42,
+          "fbAndNcc": 32,
+          "nccConditionalOnFb": 0.7619047619047619,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 58,
+          "fbButNotNcc": 10,
+          "nccButNotFb": 10,
+          "fbAndInteriorButLowTexture": 4,
+          "fbAndTextureButLowCorrelation": 6,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      },
+      {
+        "detectionIndex": 3,
+        "label": "car",
+        "score": 0.9121093726298568,
+        "box": {
+          "x": 0.4209136962890625,
+          "y": 0.4982147216796875,
+          "width": 0.033172607421875,
+          "height": 0.031890869140625
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 64,
+          "nccPass": 46,
+          "fbAndNcc": 46,
+          "nccConditionalOnFb": 0.71875,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 64,
+          "fbButNotNcc": 18,
+          "nccButNotFb": 0,
+          "fbAndInteriorButLowTexture": 0,
+          "fbAndTextureButLowCorrelation": 18,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      },
+      {
+        "detectionIndex": 4,
+        "label": "car",
+        "score": 0.649414081754145,
+        "box": {
+          "x": 0.031005859375,
+          "y": 0.8353271484375,
+          "width": 0.93798828125,
+          "height": 0.147705078125
+        },
+        "counts": {
+          "seedPoints": 64,
+          "geometryEligible": true,
+          "firstSampleValid": 64,
+          "reverseSampleValid": 64,
+          "finiteEndpoints": 64,
+          "sampleValid": 64,
+          "fbPass": 64,
+          "nccPass": 23,
+          "fbAndNcc": 23,
+          "nccConditionalOnFb": 0.359375,
+          "oldPatchInside": 64,
+          "newPatchInside": 64,
+          "bothPatchInside": 64,
+          "patchTextureEligible": 23,
+          "fbButNotNcc": 41,
+          "nccButNotFb": 0,
+          "fbAndInteriorButLowTexture": 41,
+          "fbAndTextureButLowCorrelation": 0,
+          "maxFlowFbPx": 1.3,
+          "minPatchCorrelation": 0.7
+        }
+      }
+    ]
+  },
+  "limits": "QA counts only. Field hash mismatch means not an exact replay; geometry-ineligible populations were not measured by the original engine. No ground truth, tuning, event generation or physical range."
+}

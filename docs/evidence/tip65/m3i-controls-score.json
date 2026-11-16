@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 1,
+  "study": "M3I",
+  "dataset": "synthetic-m3c",
+  "inputSha256": "20c8d7d818a424d23d436b88466814f38a4f4572504f444f42f93145de5098ad",
+  "review": {
+    "kind": "assistant-authored-single-real-photo-camera-transforms",
+    "sourceInputSha256": "67d0b9841623f3f177f8a2bb6e8ee95d701f7d81b7b19e2353643073d39397dd",
+    "sourceSha256": "4fd627d6451b8bd8d0371ecb672b916e46879b5de7a4adb67b0df642b4faeee9",
+    "sourceToken": "boreas-boreas-m3i-urban-1598988939064200",
+    "generatorSha256": "828f915bb562822f00c5119fe9b02285d7006f8c09650332e1592b65584df354",
+    "geometryHelperSha256": "5aa1c65c99b48f5cf6b0c42e447802ca967cf2fdb3d6f39506fa563f1800430b",
+    "scope": "All scene objects are frozen; only authored camera rotation or unreported digital zoom changes pixels. Not independent field clips or human certification.",
+    "intrinsics": "synthetic 1240-pixel K",
+    "distanceGroundTruth": "not supplied"
+  },
+  "reviewSha256": null,
+  "unit": "reviewed target-keyframe",
+  "frames": 80,
+  "noMetreChecks": 320,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "opencv": "5.0.0",
+  "codeSha256": {
+    "assist_scene_m3g_study.py": "af27a473fc03d47543ac21c7d45a8c69d4e22c74ca0b0ad4df518d2758b72ca1",
+    "assist_scene_window_loom.py": "4981561eed510a7be889744bd20c23e4ed9d6d91704cb3d22dddcea24c873217",
+    "assist_scene_dense_window.py": "98c5a0f021ae3faa9abeee634690d43b21447dec8b0525709d37680e163374d0",
+    "assist_scene_scale_approach_m3e.py": "3bfaac464710becaffa3590ffcf59ea8195f5e7ba2f57c874bd8138988fb3f2b",
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_m3d_study.py": "db37a3b6fdbb81cb5c1bddee820838a0b82f44571ae30ad658be33e84a71b225",
+    "assist_scene_m3e_study.py": "6801000ec0dbd4026067727a7aecf4250cbdbd0d435bd7aba1b29f6368914617",
+    "assist_scene_m3f_study.py": "5d97ce10027b4303ae665597b5148705facc2ffe8fa7d427a46ba79a0c8c4133",
+    "assist_scene_motion_m3b.py": "036305b33a4d09c224035bee407e4cf670802f8e17284079c06337c894ea73f9",
+    "assist_scene_motion_m3c.py": "119471b4544367431dd62b051ed557e8fe092ea8230fdee47b73fb99a671592e",
+    "assist_scene_pose_motion.py": "df6b22ae9da80a8a75dae2049de3b848c839527a7aebcb95954cc6fbbd0b0df9",
+    "assist_scene_motion.py": "330340ea5469d4f6f2a559dbe9b4090529a1da0d313e68a1b7fe82ef889d50bb",
+    "score-assist-scene-motion-m3c.py": "90875862ef6774832164776b27a54981d4253dfd9341c8d1e8fb18aeadd05f16",
+    "assist_scene_m3h_study.py": "a0fdb7a3f436c131a61d0fd66bf47614b345b2778d13608d6143eda41ca6810a",
+    "assist_scene_cohort_loom.py": "b7915e194867e09a218742f8b779631fb00ec631ddfdd39b784eaa5e1bb4bea4",
+    "assist_scene_m3i_study.py": "65975246ddbd975b58b0f4089a328e0aa26de76ef9c82408edbf7553006f457b",
+    "assist_scene_region_motion.py": "bcd0219a7f7303bb533f8bc90d5a221a5efed7379235ce00b142c27257eb72d7"
+  },
+  "detectorProvenance": {
+    "kind": "actual-local-CoreML",
+    "cacheSha256": null,
+    "sampleTimings": "actual per-exposure inference, not end-to-end"
+  },
+  "sceneqaSha256": "0cc5354270cd4ff617f852909d860d2dc1641b6bf7eb8a17f23b6203c1c62c63",
+  "yoloModelHashes": {
+    "analytics/coremldata.bin": "69aff2041e3e6964184e3edf49c418130ed68d04053b5cc71f17659da44148f9",
+    "coremldata.bin": "c4ba62977ff3cedfc28b55aac78c4d75e174920a25dc5b2cf3a66b96a6786ba9",
+    "metadata.json": "4532581ab735a0afeef4d036f065cc36254ce656f979d42404c2f72b66e58d42",
+    "model0/analytics/coremldata.bin": "7a832bcc6784c578f0ab72cd0701aa0d99a1711ae66073ed4e9be710a178d951",
+    "model0/coremldata.bin": "e82495bf591e4f26a55f795c99c08e19b514bc37b4369e6d7bb63e46406bf84a",
+    "model0/model/coremldata.bin": "26c31fcd73f72753c25c41769eab9bf2b1d6f6f5e95e4af66a0f5cda4c51704f",
+    "model0/model.espresso.net": "661e0b74c257c1a32030940e5a8f7784daa29fc8dbe61dd3f75cb696c2d9fda7",
+    "model0/model.espresso.shape": "4ad064f5628c0e3db131be3568755612fd5cc2697d3d7bf813c4f894a8e40298",
+    "model0/model.espresso.weights": "257b0d097184a07f81926d008abd29dc4f5be5fffd6b28f0726917be56d24b0f",
+    "model0/neural_network_optionals/coremldata.bin": "2c34ce1df23b838c5abf2a7f6437cca3d3067ed509ff25f11df6b11b582b51eb",
+    "model1/coremldata.bin": "cf3b5859cd5c6c93339f973ba9ca9eba9f28e3f7097fc7c80a8f7fd1ce8a2812"
+  },
+  "detectorConfiguration": {
+    "computeUnits": "all",
+    "confidenceThreshold": 0.38,
+    "coordinates": "EXIF-upright normalized top-left",
+    "cropAndScale": "scaleFill",
+    "detectionTiming": "VNImageRequestHandler.perform only",
+    "iouThreshold": 0.45,
+    "modelId": "apple-yolov3-fp16"
+  },
+  "detectorObservationTimingMs": {
+    "p50": 26.75,
+    "p95": 30.67
+  },
+  "totals": {
+    "A": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "C": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "S": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "unmatchedReports": 28,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 62,
+      "allSceneFalseNotices": 28
+    }
+  },
+  "clips": [
+    {
+      "id": "m3h-control-static",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "C": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "S": {
+          "valid": 20
+        }
+      },
+      "trackReasons": {
+        "A": {
+          "new-identity": 3,
+          "small-or-truncated": 1,
+          "no-supported-mature-cohort": 28,
+          "cohort-disagreement": 48
+        },
+        "B": {
+          "new-identity": 3,
+          "small-or-truncated": 20,
+          "no-current-region-expansion": 57
+        },
+        "C": {
+          "new-identity": 3,
+          "small-or-truncated": 20,
+          "no-current-region-expansion": 57
+        },
+        "S": {}
+      },
+      "detectorCeiling": {},
+      "identityLifecycle": {
+        "observedInternalIds": 4,
+        "repeatedObservedIds": 4,
+        "maxObservedIdSpanMs": 1710.0,
+        "identityDecisionCounts": {
+          "new-or-appearance-unverified": 4,
+          "fresh-appearance-and-reciprocal-box": 76
+        },
+        "retiredCohortReasons": {
+          "cohort-expired": 12
+        },
+        "maxReportedBounds": {
+          "identityCount": 4,
+          "cohortCount": 9,
+          "cohortPoints": 507,
+          "retainedIdentityCount": 4,
+          "retiredCohortCount": 3,
+          "seededCohortCount": 3
+        },
+        "maxObservedCohortAgeMs": 720.0,
+        "maxWarningMeasurementAgeMs": null,
+        "scope": "Internal observed-ID/cohort diagnostics, NOT GT ID-switch or MOT accuracy"
+      }
+    },
+    {
+      "id": "m3h-control-zoom",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 24,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 6,
+          "allSceneFalseNotices": 24
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "insufficient-background-agreement": 19
+        },
+        "B": {
+          "first-frame": 1,
+          "insufficient-background-agreement": 19
+        },
+        "C": {
+          "first-frame": 1,
+          "insufficient-background-agreement": 19
+        },
+        "S": {
+          "valid": 20
+        }
+      },
+      "trackReasons": {
+        "A": {
+          "new-identity": 61,
+          "small-or-truncated": 16
+        },
+        "B": {
+          "new-identity": 3,
+          "small-or-truncated": 1
+        },
+        "C": {
+          "new-identity": 3,
+          "small-or-truncated": 1
+        },
+        "S": {}
+      },
+      "detectorCeiling": {},
+      "identityLifecycle": {
+        "observedInternalIds": 77,
+        "repeatedObservedIds": 0,
+        "maxObservedIdSpanMs": 0.0,
+        "identityDecisionCounts": {
+          "new-or-appearance-unverified": 77
+        },
+        "retiredCohortReasons": {},
+        "maxReportedBounds": {
+          "identityCount": 4,
+          "cohortCount": 3,
+          "cohortPoints": 175,
+          "retainedIdentityCount": 0,
+          "retiredCohortCount": 0,
+          "seededCohortCount": 3
+        },
+        "maxObservedCohortAgeMs": 0.0,
+        "maxWarningMeasurementAgeMs": null,
+        "scope": "Internal observed-ID/cohort diagnostics, NOT GT ID-switch or MOT accuracy"
+      }
+    },
+    {
+      "id": "m3h-control-pan",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 4,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 4
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "C": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "S": {
+          "valid": 20
+        }
+      },
+      "trackReasons": {
+        "A": {
+          "new-identity": 10,
+          "small-or-truncated": 1,
+          "no-supported-mature-cohort": 50,
+          "cohort-disagreement": 22
+        },
+        "B": {
+          "new-identity": 10,
+          "small-or-truncated": 20,
+          "no-current-region-expansion": 35,
+          "no-supported-long-region-expansion": 10,
+          "direct-anchor-disagreement": 2,
+          "insufficient-photometric-cycle-support": 4,
+          "registration-unavailable": 1,
+          "region-shape-change": 1
+        },
+        "C": {
+          "new-identity": 10,
+          "small-or-truncated": 20,
+          "no-current-region-expansion": 48,
+          "insufficient-flow-support": 3,
+          "no-supported-long-region-expansion": 2
+        },
+        "S": {}
+      },
+      "detectorCeiling": {},
+      "identityLifecycle": {
+        "observedInternalIds": 11,
+        "repeatedObservedIds": 8,
+        "maxObservedIdSpanMs": 1710.0,
+        "identityDecisionCounts": {
+          "new-or-appearance-unverified": 11,
+          "fresh-appearance-and-reciprocal-box": 67,
+          "fresh-one-pair-pixel-identity": 5
+        },
+        "retiredCohortReasons": {
+          "insufficient-object-flow": 9,
+          "localized-object-flow": 1,
+          "cohort-expired": 6
+        },
+        "maxReportedBounds": {
+          "identityCount": 5,
+          "cohortCount": 8,
+          "cohortPoints": 426,
+          "retainedIdentityCount": 4,
+          "retiredCohortCount": 4,
+          "seededCohortCount": 3
+        },
+        "maxObservedCohortAgeMs": 720.0,
+        "maxWarningMeasurementAgeMs": null,
+        "scope": "Internal observed-ID/cohort diagnostics, NOT GT ID-switch or MOT accuracy"
+      }
+    },
+    {
+      "id": "m3h-control-shake",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "C": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "S": {
+          "valid": 20
+        }
+      },
+      "trackReasons": {
+        "A": {
+          "new-identity": 17,
+          "small-or-truncated": 1,
+          "no-supported-mature-cohort": 48,
+          "cohort-disagreement": 15
+        },
+        "B": {
+          "new-identity": 17,
+          "small-or-truncated": 20,
+          "no-current-region-expansion": 28,
+          "region-shape-change": 1,
+          "region-box-disagreement": 1,
+          "registration-unavailable": 1,
+          "insufficient-photometric-cycle-support": 2,
+          "direct-anchor-disagreement": 2,
+          "no-supported-long-region-expansion": 9
+        },
+        "C": {
+          "new-identity": 17,
+          "small-or-truncated": 20,
+          "no-current-region-expansion": 36,
+          "insufficient-flow-support": 3,
+          "region-box-disagreement": 1,
+          "no-supported-long-region-expansion": 3,
+          "direct-anchor-disagreement": 1
+        },
+        "S": {}
+      },
+      "detectorCeiling": {},
+      "identityLifecycle": {
+        "observedInternalIds": 18,
+        "repeatedObservedIds": 12,
+        "maxObservedIdSpanMs": 1710.0,
+        "identityDecisionCounts": {
+          "new-or-appearance-unverified": 18,
+          "fresh-appearance-and-reciprocal-box": 60,
+          "fresh-one-pair-pixel-identity": 3
+        },
+        "retiredCohortReasons": {
+          "insufficient-object-flow": 14,
+          "localized-object-flow": 2,
+          "cohort-expired": 4
+        },
+        "maxReportedBounds": {
+          "identityCount": 5,
+          "cohortCount": 5,
+          "cohortPoints": 298,
+          "retainedIdentityCount": 5,
+          "retiredCohortCount": 2,
+          "seededCohortCount": 3
+        },
+        "maxObservedCohortAgeMs": 720.0,
+        "maxWarningMeasurementAgeMs": null,
+        "scope": "Internal observed-ID/cohort diagnostics, NOT GT ID-switch or MOT accuracy"
+      }
+    }
+  ],
+  "stageMs": {
+    "sharedPrep": {
+      "p50": 14.16,
+      "p95": 16.48
+    },
+    "workingDecode": {
+      "p50": 1.71,
+      "p95": 2.07
+    },
+    "nativeDecode": {
+      "p50": 12.38,
+      "p95": 14.31
+    },
+    "A": {
+      "p50": 50.18,
+      "p95": 58.73
+    },
+    "B": {
+      "p50": 19.58,
+      "p95": 46.01
+    },
+    "C": {
+      "p50": 29.05,
+      "p95": 37.6
+    },
+    "S": {
+      "p50": 0.04,
+      "p95": 0.05
+    },
+    "APlusSharedPrep": {
+      "p50": 64.44,
+      "p95": 73.73
+    },
+    "BPlusIdentityAndSharedPrep": {
+      "p50": 89.9,
+      "p95": 109.8
+    },
+    "CPlusIdentityAndSharedPrep": {
+      "p50": 94.96,
+      "p95": 105.33
+    },
+    "SPlusSharedPrep": {
+      "p50": 14.2,
+      "p95": 16.52
+    }
+  },
+  "timingScope": "A is complete frozen M3H execution, including its cohort measurement. B/C are incremental region measurement only. Candidate product samples add sharedPrep+A+B/C before percentiles; not a sum of p95s. Study wall includes all four sequential lanes and staging; detector batch wall is separate.",
+  "limits": "Unchanged physical approach labels. Optical area expansion, not angular growth, metric range or universal radial closing. Unknown/unmatched/unreviewed reports stay separate. Same observed internal IDs do not certify MOT accuracy. No phone, real-time or safety acceptance.",
+  "receiptSha256": "a4cf765f333efc6191c80af68b49374fa24c39b0747cadaa830cd8a3a7ad0a9f",
+  "truthSha256": "644c3387df34048d74f415b83399001307941f4c36c4eff9c44414db9cacf450"
+}

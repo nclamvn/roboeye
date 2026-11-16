@@ -1,0 +1,683 @@
+{
+  "schemaVersion": 1,
+  "evidence": "Local real detector, exploratory preset time windows",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "opencv": "5.0.0",
+  "sceneqaSha256": "0cc5354270cd4ff617f852909d860d2dc1641b6bf7eb8a17f23b6203c1c62c63",
+  "manifestSha256": "ea95e35bb05bf249efab7f1988ea1d899d79e05fa315158f6d0fcf455b243046",
+  "codeSha256": {
+    "assist_scene_motion_m3b.py": "036305b33a4d09c224035bee407e4cf670802f8e17284079c06337c894ea73f9",
+    "assist_scene_motion.py": "330340ea5469d4f6f2a559dbe9b4090529a1da0d313e68a1b7fe82ef889d50bb",
+    "assist_scene_evidence.py": "c84229ef30f9e84f3c649091f0f4f5140de8f5caf62401a2bf7fd27ee3180975",
+    "assist_scene_rgb_output.py": "93793da87fa383b0abcda4f26fc7ba99c63a6487e580e64ba10871235c8ba8fe",
+    "assist_scene_registration.py": "a01703bafb82793321f705881e265ad2bc0181af5c54e608917637fa50efef70",
+    "assist_scene_track_burst.py": "3f78e3f1f2f23265598979fe2dff324d06fa2aee2fd50d1b9c4d30c7e3b30f75",
+    "assist_scene_camera_guard.py": "2302ba02dd606b04cd935521b987ce4c0631ed4cd9ce429334cb0c5de961354d"
+  },
+  "rawSha256": "89a23532d94d4fca8c28e466e495121fc268b15369d1caf8e6746be56cdefe7e",
+  "positiveWindows": 7,
+  "negativeWindows": 8,
+  "scores": {
+    "baseline": {
+      "truePositiveWindows": 3,
+      "missedPositiveWindows": 4,
+      "falsePositiveWindows": 1,
+      "falsePositiveFramesWithinWindows": 1
+    },
+    "candidateRaw": {
+      "truePositiveWindows": 0,
+      "missedPositiveWindows": 7,
+      "falsePositiveWindows": 1,
+      "falsePositiveFramesWithinWindows": 1
+    },
+    "candidate": {
+      "truePositiveWindows": 0,
+      "missedPositiveWindows": 7,
+      "falsePositiveWindows": 0,
+      "falsePositiveFramesWithinWindows": 0
+    },
+    "m3Guarded": {
+      "truePositiveWindows": 3,
+      "missedPositiveWindows": 4,
+      "falsePositiveWindows": 0,
+      "falsePositiveFramesWithinWindows": 0
+    }
+  },
+  "nullDistanceFramesAllLanes": 880,
+  "medianPerRawFrameRegistrationPlusTrackingMs": 6.3665,
+  "medianPerSampleDetectorMs": 29.55943753477186,
+  "phoneEvidence": null,
+  "denseBusDiagnostic": {
+    "rawSha256": "6ecea8f3b4f944c23ed855f002539dd5d9d6053e92e3be2b63ae2de146eb1886",
+    "codeSha256": {
+      "assist_scene_motion_m3b.py": "036305b33a4d09c224035bee407e4cf670802f8e17284079c06337c894ea73f9",
+      "assist_scene_motion.py": "330340ea5469d4f6f2a559dbe9b4090529a1da0d313e68a1b7fe82ef889d50bb",
+      "assist_scene_evidence.py": "c84229ef30f9e84f3c649091f0f4f5140de8f5caf62401a2bf7fd27ee3180975",
+      "assist_scene_rgb_output.py": "93793da87fa383b0abcda4f26fc7ba99c63a6487e580e64ba10871235c8ba8fe",
+      "assist_scene_registration.py": "a01703bafb82793321f705881e265ad2bc0181af5c54e608917637fa50efef70",
+      "assist_scene_track_burst.py": "3f78e3f1f2f23265598979fe2dff324d06fa2aee2fd50d1b9c4d30c7e3b30f75",
+      "assist_scene_camera_guard.py": "2302ba02dd606b04cd935521b987ce4c0631ed4cd9ce429334cb0c5de961354d"
+    },
+    "frames": 100,
+    "detectorFps": 25,
+    "vehicleFrames": 81,
+    "classFrames": {
+      "bus": 41,
+      "car": 3,
+      "truck": 41,
+      "vehicle": 0
+    },
+    "validFramePairs": 35,
+    "proposals": [],
+    "rawRegistrationStatuses": {
+      "first-frame": 1,
+      "weak-consensus": 21,
+      "regional-warp-disagreement": 6,
+      "localized-consensus": 29,
+      "valid": 35,
+      "too-few-consistent-points": 1,
+      "insufficient-background": 7
+    }
+  },
+  "clips": [
+    {
+      "id": "pedestrians-fixed",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 600,
+          "endMs": 4000,
+          "label": "person",
+          "status": "positive",
+          "hitTimesMs": {
+            "baseline": [
+              3000,
+              3800
+            ],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": [
+              3000,
+              3800
+            ]
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 19,
+        "candidate": 15
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "valid": 94,
+        "localized-consensus": 2,
+        "insufficient-background": 3
+      },
+      "events": {
+        "baseline": [
+          {
+            "timeMs": 3000,
+            "labels": [
+              "person"
+            ]
+          },
+          {
+            "timeMs": 3800,
+            "labels": [
+              "person"
+            ]
+          }
+        ],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": [
+          {
+            "timeMs": 3000,
+            "labels": [
+              "person"
+            ]
+          },
+          {
+            "timeMs": 3800,
+            "labels": [
+              "person"
+            ]
+          }
+        ]
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "pedestrians-sim-pan",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 600,
+          "endMs": 4000,
+          "label": "person",
+          "status": "positive",
+          "hitTimesMs": {
+            "baseline": [
+              3000
+            ],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": [
+              3000
+            ]
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 18,
+        "candidate": 12
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "valid": 79,
+        "insufficient-background": 6,
+        "regional-warp-disagreement": 2,
+        "awaiting-detector-reanchor": 12
+      },
+      "events": {
+        "baseline": [
+          {
+            "timeMs": 3000,
+            "labels": [
+              "person"
+            ]
+          },
+          {
+            "timeMs": 3400,
+            "labels": [
+              "handbag"
+            ]
+          }
+        ],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": [
+          {
+            "timeMs": 3000,
+            "labels": [
+              "person"
+            ]
+          },
+          {
+            "timeMs": 3400,
+            "labels": [
+              "handbag"
+            ]
+          }
+        ]
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "frozen-sim-pan",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 0,
+          "endMs": 4000,
+          "label": "*",
+          "status": "negative",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 19,
+        "candidate": 1
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "valid": 75,
+        "insufficient-background": 15,
+        "awaiting-detector-reanchor": 6,
+        "localized-consensus": 3
+      },
+      "events": {
+        "baseline": [],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": []
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "frozen-sim-shake",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 0,
+          "endMs": 4000,
+          "label": "*",
+          "status": "negative",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 19,
+        "candidate": 3
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "valid": 77,
+        "insufficient-background": 12,
+        "awaiting-detector-reanchor": 6,
+        "localized-consensus": 4
+      },
+      "events": {
+        "baseline": [],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": []
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "frozen-steady-pan",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 0,
+          "endMs": 4000,
+          "label": "*",
+          "status": "negative",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 19,
+        "candidate": 7
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "valid": 86,
+        "localized-consensus": 4,
+        "awaiting-detector-reanchor": 1,
+        "insufficient-background": 8
+      },
+      "events": {
+        "baseline": [],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": []
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "frozen-untextured",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 0,
+          "endMs": 4000,
+          "label": "*",
+          "status": "negative",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 0,
+        "candidate": 0
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "low-texture": 20,
+        "awaiting-detector-reanchor": 79
+      },
+      "events": {
+        "baseline": [],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": []
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "cut-interleave",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 0,
+          "endMs": 4000,
+          "label": "*",
+          "status": "negative",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 10,
+        "candidate": 5
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "valid": 85,
+        "localized-consensus": 5,
+        "insufficient-background": 9
+      },
+      "events": {
+        "baseline": [],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": []
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "bus-real-pan",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 600,
+          "endMs": 2400,
+          "label": "vehicle-family",
+          "status": "positive",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        },
+        {
+          "startMs": 2400,
+          "endMs": 4000,
+          "label": "vehicle-family",
+          "status": "positive",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 0,
+        "candidate": 3
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "weak-consensus": 4,
+        "awaiting-detector-reanchor": 53,
+        "localized-consensus": 6,
+        "valid": 30,
+        "too-few-consistent-points": 1,
+        "insufficient-background": 1,
+        "regional-warp-disagreement": 4
+      },
+      "events": {
+        "baseline": [],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": []
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "frozen-fast-pan-m3b",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 0,
+          "endMs": 4000,
+          "label": "*",
+          "status": "negative",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 16,
+        "candidate": 1
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "valid": 55,
+        "insufficient-background": 16,
+        "awaiting-detector-reanchor": 26,
+        "localized-consensus": 2
+      },
+      "events": {
+        "baseline": [],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": []
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "pedestrian-cover-m3b",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 0,
+          "endMs": 1200,
+          "label": "person",
+          "status": "positive",
+          "hitTimesMs": {
+            "baseline": [
+              1000
+            ],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": [
+              1000
+            ]
+          }
+        },
+        {
+          "startMs": 1200,
+          "endMs": 2800,
+          "label": "*",
+          "status": "negative",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        },
+        {
+          "startMs": 2800,
+          "endMs": 4000,
+          "label": "person",
+          "status": "positive",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 10,
+        "candidate": 6
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "valid": 53,
+        "localized-consensus": 10,
+        "too-few-consistent-points": 1,
+        "awaiting-detector-reanchor": 32,
+        "insufficient-background": 3
+      },
+      "events": {
+        "baseline": [
+          {
+            "timeMs": 1000,
+            "labels": [
+              "person"
+            ]
+          }
+        ],
+        "candidateRaw": [],
+        "candidate": [],
+        "m3Guarded": [
+          {
+            "timeMs": 1000,
+            "labels": [
+              "person"
+            ]
+          }
+        ]
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [],
+        "m3Guarded": []
+      }
+    },
+    {
+      "id": "dashcam-parallax-m3b",
+      "frames": 20,
+      "windows": [
+        {
+          "startMs": 0,
+          "endMs": 1200,
+          "label": "vehicle-family",
+          "status": "positive",
+          "hitTimesMs": {
+            "baseline": [],
+            "candidateRaw": [],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        },
+        {
+          "startMs": 1600,
+          "endMs": 4000,
+          "label": "vehicle-family",
+          "status": "negative",
+          "hitTimesMs": {
+            "baseline": [
+              1600
+            ],
+            "candidateRaw": [
+              1600
+            ],
+            "candidate": [],
+            "m3Guarded": []
+          }
+        }
+      ],
+      "registrationValid": {
+        "baseline": 11,
+        "candidate": 5
+      },
+      "registrationRawStatuses": {
+        "first-frame": 1,
+        "regional-warp-disagreement": 14,
+        "awaiting-detector-reanchor": 44,
+        "valid": 40,
+        "weak-consensus": 1
+      },
+      "events": {
+        "baseline": [
+          {
+            "timeMs": 1400,
+            "labels": [
+              "car"
+            ]
+          },
+          {
+            "timeMs": 1600,
+            "labels": [
+              "car"
+            ]
+          }
+        ],
+        "candidateRaw": [
+          {
+            "timeMs": 1400,
+            "labels": [
+              "car"
+            ]
+          },
+          {
+            "timeMs": 1600,
+            "labels": [
+              "car"
+            ]
+          }
+        ],
+        "candidate": [],
+        "m3Guarded": []
+      },
+      "scaleVetoTimesMs": {
+        "candidate": [
+          1400,
+          1600
+        ],
+        "m3Guarded": [
+          400,
+          1200,
+          1400,
+          1600,
+          1800,
+          2000,
+          2200,
+          2400
+        ]
+      }
+    }
+  ]
+}

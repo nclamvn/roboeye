@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 1,
+  "checkedUtc": "2026-11-16T04:03:15.344Z",
+  "scope": "Mac-local structural regression; not model/phone/user acceptance",
+  "technicalPass": true,
+  "physicalDeviceAcceptance": "NOT_TESTED",
+  "phoneDetectionRecall": "NOT_TESTED",
+  "phoneLatency": "NOT_TESTED",
+  "physicalRangeAccuracy": "NOT_TESTED",
+  "thermal30Minutes": "NOT_TESTED",
+  "voiceOverPhysicalAcceptance": "NOT_TESTED",
+  "releaseApproved": false,
+  "requested": {
+    "typecheck": true,
+    "nativeBuild": true
+  },
+  "platform": "darwin",
+  "architecture": "arm64",
+  "node": "v24.14.1",
+  "networkActions": [],
+  "dependencyInstalls": [],
+  "deviceMutations": [],
+  "extraBuildDirectories": [],
+  "stages": [
+    {
+      "name": "readiness-policy",
+      "command": "/usr/local/bin/node",
+      "args": [
+        "--test",
+        "tests/test-qa-assist-scene-mac.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "elapsedMs": 485,
+      "outputBytes": 979,
+      "status": "PASS",
+      "summary": {
+        "total": 8,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "python-scene",
+      "command": "native/ios/.build-xcode/scene-qa/venv/bin/python",
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_assist_scene_*.py"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "elapsedMs": 18398,
+      "outputBytes": 239,
+      "status": "PASS",
+      "summary": {
+        "total": 138,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "swift-core",
+      "command": "swift",
+      "args": [
+        "test",
+        "--package-path",
+        "native/ios",
+        "--scratch-path",
+        "native/ios/.build",
+        "--disable-automatic-resolution"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "elapsedMs": 8512,
+      "outputBytes": 32353,
+      "status": "PASS",
+      "summary": {
+        "total": 121,
+        "failed": 0
+      }
+    },
+    {
+      "name": "typescript",
+      "command": "/usr/local/bin/node",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "elapsedMs": 6197,
+      "outputBytes": 0,
+      "status": "PASS",
+      "summary": {
+        "typechecked": true
+      }
+    },
+    {
+      "name": "unsigned-ios-release",
+      "command": "xcodebuild",
+      "args": [
+        "-project",
+        "native/ios/AssistiveDepthProbe.xcodeproj",
+        "-scheme",
+        "AssistiveDepthProbe",
+        "-configuration",
+        "Release",
+        "-destination",
+        "generic/platform=iOS",
+        "-derivedDataPath",
+        "native/ios/.build-xcode",
+        "-disableAutomaticPackageResolution",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "elapsedMs": 12066,
+      "outputBytes": 33820,
+      "status": "PASS",
+      "summary": {
+        "built": true,
+        "signed": false,
+        "installed": false
+      }
+    }
+  ],
+  "diskFreeKiB": 53467656,
+  "swiftVersion": "Apple Swift version 6.4.2 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)\nTarget: arm64-apple-macosx27.2.0\n\nswift-driver version: 1.168.6",
+  "xcodebuildVersion": "Xcode 27.2\nBuild version 27B52",
+  "opencvVersion": "5.0.0",
+  "semantics": {
+    "status": "NOT_READY",
+    "basis": "Historical M3D/M3E trials did not demonstrate useful approach recall. Available M3F evidence is an optional reference, not an acceptance decision. No semantic trial is rerun or recertified by this structural gate; old evidence is not current inference.",
+    "evidence": [
+      {
+        "path": "docs/evidence/tip65/m3d-boreas-2d-score.json",
+        "sha256": "abd0dac05e8f2f255e9ecff555b5d830dfb0c2ab974cdd2390a57ec6356489bb",
+        "inputSha256": "bb6ae7284c7ed86a57b25f80382dfbd19735e1e95820033271091ddb3ed38fe1",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 30,
+            "tn": 1,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 20,
+            "scoredKeyframes": 15,
+            "framesAbstained": 128
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 32,
+            "tn": 1,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 15,
+            "framesAbstained": 150
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 32,
+            "tn": 1,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 15,
+            "framesAbstained": 150
+          },
+          "D": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 25,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 15,
+            "framesAbstained": 150
+          },
+          "S": {
+            "tp": 7,
+            "fp": 0,
+            "fn": 18,
+            "tn": 8,
+            "unmatchedReports": 9,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 1,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 135,
+            "scoredKeyframes": 15,
+            "framesAbstained": 41
+          }
+        },
+        "review": {
+          "method": "agent visual review of source RGB proposals, blind to model outputs",
+          "scope": "checkpoint boxes only; no human QA; no exhaustive per-frame labels"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3e-boreas-score.json",
+        "sha256": "b7889450a6dbfd2b0ae845ffde92378297fad93402ffdfddbf3b744c42b51337",
+        "inputSha256": "b26871bf543042b143572f3fc46bc3fd8eb677ab7a48f87f24a0badb377f43cb",
+        "unit": "target-frame",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "detail": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "relink": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "S": {
+            "tp": 5,
+            "fp": 0,
+            "fn": 4,
+            "tn": 8,
+            "unmatchedReports": 9,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 125,
+            "scoredKeyframes": 10,
+            "framesAbstained": 40
+          }
+        },
+        "review": {
+          "method": "Direct agent visual review of 10 RGB checkpoints blinded to YOLO and lane predictions; adjusted visible edges, rejected ambiguous or heavily occluded candidates.",
+          "scope": "Not exhaustive per frame, not human review. Independent pose and LiDAR set relative-approach state, not the visual reviewer."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3e-controls-score.json",
+        "sha256": "f222a0d5fc77d89435f506ded429307b76f97db33ae49c383370c3f583b28892",
+        "inputSha256": "2779f2a80f7d046f83b6fe490be3157699123eb12a44f0d4ed43a87fbfd29238",
+        "unit": "target-frame",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "detail": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "relink": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 2,
+            "fp": 23,
+            "fn": 11,
+            "tn": 121,
+            "unmatchedReports": 31,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 66,
+            "allSceneFalseNotices": 54
+          }
+        },
+        "review": {
+          "method": "authored transformations of pinned Boreas RGB; ROI manually checked before replay",
+          "sourceSha256": "3e45e456ce59de59bc748a7f5cc5bb93cbf97d8ecd8e70a60ef2a1a2d73945e5",
+          "scope": "not independently recorded or human certified"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3f-boreas-score.json",
+        "sha256": "6836b5f7c158d9a6a7b1d14378d928083397ee93d22f058a0c7f6ba8786b745f",
+        "inputSha256": "3d27e148f26a7f33178a871b174e1172450095afda9552a77c312aa22f587234",
+        "unit": "target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 15,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 15,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          }
+        },
+        "review": {
+          "method": "Agent visual review of ten RGB checkpoints before running any M3F inference. Corrected visible boxes; omitted ambiguous or heavily occluded objects.",
+          "scope": "Checkpoints only, not exhaustive per-frame labels, no human QA. Pose/LiDAR defines relative approach outside runtime. Heldout windows selected by source camera cadence and speed only."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3f-controls-score.json",
+        "sha256": "91c920d178b64869cb38912c994b24055eeb862431276aaac79b5185c9ffa8cc",
+        "inputSha256": "2779f2a80f7d046f83b6fe490be3157699123eb12a44f0d4ed43a87fbfd29238",
+        "unit": "target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          }
+        },
+        "review": {
+          "method": "authored transformations of pinned Boreas RGB; ROI manually checked before replay",
+          "sourceSha256": "3e45e456ce59de59bc748a7f5cc5bb93cbf97d8ecd8e70a60ef2a1a2d73945e5",
+          "scope": "not independently recorded or human certified"
+        }
+      }
+    ]
+  },
+  "sourceBefore": {
+    "sha256": "56e0eaa283b22311ddffe97c80d6d9e1cd3b6619d562d1594418010edddea6fc",
+    "fileCount": 83
+  },
+  "sourceAfter": {
+    "sha256": "56e0eaa283b22311ddffe97c80d6d9e1cd3b6619d562d1594418010edddea6fc",
+    "fileCount": 83
+  },
+  "sourceUnchanged": true,
+  "finishedUtc": "2026-11-16T04:04:03.346Z"
+}

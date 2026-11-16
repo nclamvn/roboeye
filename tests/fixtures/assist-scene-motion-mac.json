@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "assetRoot": "../../native/ios/.build-xcode/scene-qa/motion-cases",
+  "split": "exploratory-new-public-video-and-controlled-counterfactuals-not-independent-holdout",
+  "sources": [
+    {
+      "file": "pedestrian-source.webm",
+      "sha256": "bfadaa62cccb42db875d50bb842aa0964fbf72040432e4097c1df59e043e0c26",
+      "author": "Taurus Media Technik",
+      "license": "CC0-1.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Video_Codec_Test_pedestrian_area_1080p25.y4m.webm",
+      "changes": "Use seconds 2–6, 640×360, CFR 25 fps, no audio; selected controls freeze the first frame and/or apply fixed affine camera warps."
+    },
+    {
+      "file": "bus-source.webm",
+      "sha256": "945446dc7d39316f71eabb3cb8f6429e78c7b67a0fccade5ca416e692d14d9b2",
+      "author": "Charstone Simon",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:BUS_on_the_move.webm",
+      "changes": "Use first 4 seconds, 640×360, CFR 25 fps, no audio; one frame also used in alternating-cut control."
+    }
+  ],
+  "truthProvenance": "Reviews of public source frames and exact fixture-generation transforms by assistant before runner output; no external track annotations or calibrated distance.",
+  "clips": [
+    {
+      "id": "pedestrians-fixed",
+      "path": "pedestrians-fixed.mp4",
+      "sha256": "2f2447f6629cabb9f5c7436e3c26727730161229ce0568f451c54df67cb9558d",
+      "sampleFps": 5,
+      "kind": "positive",
+      "expected": "Có người đổi vị trí so với cửa hàng/vạch nền; chấp nhận ít nhất một track person có thay đổi đã xác nhận."
+    },
+    {
+      "id": "pedestrians-sim-pan",
+      "path": "pedestrians-sim-pan.mp4",
+      "sha256": "80029af2f3353ad5b2aebd48699cb66829513f438b85249f9ce976d9b275d0e9",
+      "sampleFps": 5,
+      "kind": "positive",
+      "expected": "Cùng người thật chuyển động; dịch/roll/rung giả lập áp vào cả khung. Cần giữ ít nhất một phát hiện person đúng."
+    },
+    {
+      "id": "frozen-sim-pan",
+      "path": "frozen-sim-pan.mp4",
+      "sha256": "01caa5229d2de33e0b6874c9a09df3521d52288ebc8dc715a01d400c0df7b450",
+      "sampleFps": 5,
+      "kind": "negative",
+      "expected": "Chỉ affine camera mô phỏng; không có vật tự đổi vị trí. Không phát sự kiện."
+    },
+    {
+      "id": "frozen-sim-shake",
+      "path": "frozen-sim-shake.mp4",
+      "sha256": "3285293243b5404110be0ebb79f5fac2cdf5e2aacbe766ebd8c526e290f058dc",
+      "sampleFps": 5,
+      "kind": "negative",
+      "expected": "Chỉ rung/roll camera mô phỏng; không có vật tự đổi vị trí. Không phát sự kiện."
+    },
+    {
+      "id": "frozen-steady-pan",
+      "path": "frozen-steady-pan.mp4",
+      "sha256": "a1ba94609dd0d230636b454f33ddf9fe83e6c0aec0dbd9467277b8ffc2115978",
+      "sampleFps": 5,
+      "kind": "negative-follow-up",
+      "expected": "Ảnh đứng yên được dịch ngang đều 96 pixel; không có vật tự đổi vị trí. Cần 0 sự kiện đã bù, so với cả đối chứng không bù."
+    },
+    {
+      "id": "frozen-untextured",
+      "path": "frozen-untextured.mp4",
+      "sha256": "5bb5441820bc41d69df5807cb225de8a7321f9a00ba49a0ebecfd05b3de963c0",
+      "sampleFps": 5,
+      "kind": "abstain",
+      "expected": "Không có nền bám, bắt buộc báo không đủ bằng chứng."
+    },
+    {
+      "id": "cut-interleave",
+      "path": "cut-interleave.mp4",
+      "sha256": "2608afb5416d723bc936613aceae22cc7c6a2e80f545214dd435869ff7e434ec",
+      "sampleFps": 5,
+      "kind": "abstain",
+      "expected": "Hai ảnh khác cảnh cắt qua lại mỗi 400 ms. Không nối track qua cắt; không có chuyển động đã xác nhận."
+    },
+    {
+      "id": "bus-real-pan",
+      "path": "bus-real-pan.mp4",
+      "sha256": "143be21527d43e384ad1627bcfc1d9648fef1ef5fa75e9e8e42b41752602e476",
+      "sampleFps": 5,
+      "kind": "stress",
+      "expected": "Xe buýt thực di chuyển từ trái gần đến phải xa; camera quay theo và nền đồng trống. Ghi bỏ sót nếu không xác nhận được; không chấp nhận báo sai đối tượng."
+    }
+  ]
+}

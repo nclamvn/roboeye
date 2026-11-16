@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "c52fcbe8c886ac9bbb07bf4c27ef30d594fbb3d1f07e49a336322a9205ca8b0e",
+  "candidatesSha256": "fe926a2546805cf0f2be9314b10d7d064b87515e00fc2f25cc902b95726c45b8",
+  "review": {
+    "kind": "assistant-visual-review-before-model-inference",
+    "scope": "All ten fixed checkpoint tiles viewed; visible extents adjusted manually at 960x803. Sparse selected objects, not exhaustive detection annotations or human certification.",
+    "source": "Boreas CC BY 4.0; ASRL/UTIAS/University of Toronto and coauthors; derived visible 2D boxes, no endorsement.",
+    "omissions": {
+      "boreas-m3o-turn-05:4": "Projected farther car overlaps the foreground lead vehicle, no separate visible extent confidently assignable.",
+      "boreas-m3o-turn-08:4": "Projected farther car occluded by lead vehicle, no separate visible extent confidently assignable.",
+      "boreas-m3o-turn-14:3": "Projected farther vehicle behind lead car; cannot independently assign its extent.",
+      "boreas-m3o-turn-17:3": "Projected farther vehicle behind lead car; cannot independently assign its extent."
+    },
+    "policy": "Omissions are unscorable, never true negatives. Motion/proximity reference labels retained unchanged. No detector or flow outputs seen during review."
+  },
+  "frames": {
+    "boreas-m3o-traffic-05": {"1": [360, 406, 421, 446]},
+    "boreas-m3o-traffic-08": {"1": [219, 407, 369, 494]},
+    "boreas-m3o-traffic-11": {"1": [364, 408, 431, 452]},
+    "boreas-m3o-traffic-14": {"1": [199, 418, 377, 516], "2": [417, 399, 443, 422]},
+    "boreas-m3o-traffic-17": {"1": [292, 413, 408, 490], "2": [405, 395, 435, 420]},
+    "boreas-m3o-turn-05": {"1": [465, 405, 532, 465], "2": [339, 409, 412, 454], "3": [171, 399, 265, 428], "4": null},
+    "boreas-m3o-turn-08": {"1": [80, 425, 311, 550], "2": [465, 405, 530, 463], "3": [126, 399, 233, 429], "4": null, "5": [303, 399, 342, 425]},
+    "boreas-m3o-turn-11": {"1": [72, 399, 200, 434], "2": [463, 407, 529, 468]},
+    "boreas-m3o-turn-14": {"1": [4, 400, 161, 439], "2": [462, 406, 526, 465], "3": null, "4": [189, 401, 205, 431], "5": [269, 405, 285, 433]},
+    "boreas-m3o-turn-17": {"1": [456, 406, 523, 466], "2": [208, 400, 282, 435], "3": null, "4": [659, 407, 678, 453], "5": [223, 403, 241, 439]}
+  }
+}

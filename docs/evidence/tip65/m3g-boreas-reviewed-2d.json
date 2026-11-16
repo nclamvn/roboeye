@@ -1,0 +1,30 @@
+{
+  "inputSha256": "797580e2a324dd70f6b4902153b56528a97d20c7d36f3cf69226c77b46354f0e",
+  "candidatesSha256": "3155f810ef8df2b558dac6f5c48049715a7cc5f70c8b23ba606b6a11a3e04c91",
+  "review": {
+    "method": "Assistant visual review of all ten fixed checkpoint tiles, blind to M3G detector/candidate outputs. Visible 2D extents corrected from projected 3D boxes. Not independent human semantic adjudication.",
+    "limits": "Selected targets only; not exhaustive scene annotation. Low-speed clip includes acceleration, crossing and overtaking. Dark/occluded riders and ambiguous projected targets explicitly omitted before inference; those omissions do not establish absence or safety.",
+    "omissions": {
+      "boreas-m3g-low-speed-05/2": "Mostly occluded behind orange lead vehicle; projected box includes a different visible surface.",
+      "boreas-m3g-low-speed-05/5": "Dark rider region, identity/visible person extent not reliably separable at review resolution.",
+      "boreas-m3g-low-speed-08/4": "Same dark rider region not reliably separable.",
+      "boreas-m3g-low-speed-11/3": "Rider region occluded by foreground SUV.",
+      "boreas-m3g-low-speed-14/4": "Rider region partially occluded; not reliably separable.",
+      "boreas-m3g-low-speed-17/3": "Projected rider region fully occluded by foreground vehicle.",
+      "boreas-m3g-low-speed-17/4": "Projected vehicle and adjacent pedestrian overlap; vehicle identity not visually secure.",
+      "boreas-m3g-low-speed-17/5": "Pedestrian partly occluded in dark overlapping region; extent not secure."
+    }
+  },
+  "frames": {
+    "boreas-m3g-traffic-05": {"1": [784, 389, 959, 456], "2": [419, 402, 449, 423]},
+    "boreas-m3g-traffic-08": {"1": [375, 407, 422, 438]},
+    "boreas-m3g-traffic-11": {"1": [198, 419, 342, 500]},
+    "boreas-m3g-traffic-14": {"1": [292, 413, 382, 476]},
+    "boreas-m3g-traffic-17": {"1": [380, 402, 430, 438]},
+    "boreas-m3g-low-speed-05": {"1": [403, 425, 546, 543], "2": null, "3": [128, 419, 178, 447], "4": [186, 413, 271, 443], "5": null, "6": [341, 417, 380, 439]},
+    "boreas-m3g-low-speed-08": {"1": [414, 424, 542, 531], "2": [127, 420, 177, 448], "3": [118, 416, 212, 444], "4": null, "5": [308, 418, 367, 441]},
+    "boreas-m3g-low-speed-11": {"1": [633, 411, 930, 577], "2": [127, 421, 177, 448], "3": null, "4": [269, 422, 343, 446]},
+    "boreas-m3g-low-speed-14": {"1": [586, 410, 718, 495], "2": [117, 423, 168, 451], "3": [372, 412, 450, 443], "4": null, "5": [217, 429, 293, 448]},
+    "boreas-m3g-low-speed-17": {"1": [439, 424, 538, 505], "2": [564, 413, 645, 474], "3": null, "4": null, "5": null}
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "dataset": "Boreas-real",
+  "truthSha256": "0c6544b2992bb8a8638db3338d5c2dfccf5e68dfc325d5754de72db61c0705dd",
+  "receiptSha256": "6d75d7e57b75f6b7693efdc17c44dbed89763c64a3c841b933491f55cdf3c0c7",
+  "matchingIoU": 0.35,
+  "margin": 0.08,
+  "unit": "labeled target-keyframe",
+  "totals": {
+    "A": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 312,
+      "tn": 81,
+      "unmatchedReports": 5,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 1,
+      "unknownTargets": 275,
+      "unscoredFrameReports": 11,
+      "scoredKeyframes": 60,
+      "framesAbstained": 135
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 315,
+      "tn": 81,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 275,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 60,
+      "framesAbstained": 150
+    }
+  },
+  "clips": [
+    {
+      "id": "boreas-heading-change",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 146,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 130,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 146,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 130,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 50
+        }
+      },
+      "rawDetectionCoverage": {
+        "person.unknown": {
+          "targets": 113,
+          "overlapped": 34,
+          "gateAValid": 5,
+          "gateBValid": 20
+        },
+        "vehicle.unknown": {
+          "targets": 17,
+          "overlapped": 2,
+          "gateAValid": 1,
+          "gateBValid": 2
+        },
+        "person.moving": {
+          "targets": 112,
+          "overlapped": 53,
+          "gateAValid": 2,
+          "gateBValid": 38
+        },
+        "vehicle.moving": {
+          "targets": 34,
+          "overlapped": 5,
+          "gateAValid": 0,
+          "gateBValid": 4
+        }
+      }
+    },
+    {
+      "id": "boreas-low-speed",
+      "lanes": {
+        "A": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 122,
+          "tn": 81,
+          "unmatchedReports": 5,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 1,
+          "unknownTargets": 133,
+          "unscoredFrameReports": 11,
+          "scoredKeyframes": 20,
+          "framesAbstained": 35
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 125,
+          "tn": 81,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 133,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 50
+        }
+      },
+      "rawDetectionCoverage": {
+        "person.unknown": {
+          "targets": 80,
+          "overlapped": 12,
+          "gateAValid": 9,
+          "gateBValid": 0
+        },
+        "vehicle.unknown": {
+          "targets": 53,
+          "overlapped": 23,
+          "gateAValid": 19,
+          "gateBValid": 0
+        },
+        "person.stationary": {
+          "targets": 61,
+          "overlapped": 35,
+          "gateAValid": 35,
+          "gateBValid": 0
+        },
+        "person.moving": {
+          "targets": 40,
+          "overlapped": 0,
+          "gateAValid": 0,
+          "gateBValid": 0
+        },
+        "vehicle.moving": {
+          "targets": 85,
+          "overlapped": 28,
+          "gateAValid": 28,
+          "gateBValid": 0
+        },
+        "vehicle.stationary": {
+          "targets": 20,
+          "overlapped": 18,
+          "gateAValid": 18,
+          "gateBValid": 0
+        }
+      }
+    },
+    {
+      "id": "boreas-high-speed",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 44,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 12,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 44,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 12,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 50
+        }
+      },
+      "rawDetectionCoverage": {
+        "vehicle.unknown": {
+          "targets": 12,
+          "overlapped": 12,
+          "gateAValid": 0,
+          "gateBValid": 9
+        },
+        "vehicle.moving": {
+          "targets": 44,
+          "overlapped": 42,
+          "gateAValid": 2,
+          "gateBValid": 33
+        }
+      }
+    }
+  ]
+}

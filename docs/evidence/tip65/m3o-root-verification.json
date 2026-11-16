@@ -1,0 +1,149 @@
+{
+  "study": "M3O-root-independent-verification",
+  "method": "Frozen legacy score_frame on actual events, not M3O score; raw byte hashes, load_input assetRoot, same unchanged target matcher",
+  "verificationRepair": "Initial inline verifier used wrong assetRoot key, failed before first source verification or artifact write; corrected to shared load_input. No model rerun or scoring policy change.",
+  "trials": {
+    "boreas": {
+      "receiptSha256": "1b7eb6bf3edd6acd73a44f80b97d3cf48aae891519fb5747b7821977b9e8f91f",
+      "truthSha256": "f7abf79e53859829693abed41ef0f61c39e0c3a3b7642c50e98b81b60157b4a9",
+      "inputSha256": "c52fcbe8c886ac9bbb07bf4c27ef30d594fbb3d1f07e49a336322a9205ca8b0e",
+      "scoreSha256": "d236aa1cab0ff72ac8ba02dce580d49e37e90a46f4e5a71400f9b4ef2c3d2fd9",
+      "sourceFilesVerified": 100,
+      "noMetreChecks": 500,
+      "totals": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 19,
+          "tn": 2,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 10,
+          "framesAbstained": 100
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 19,
+          "tn": 2,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 10,
+          "framesAbstained": 100
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 19,
+          "tn": 2,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 10,
+          "framesAbstained": 100
+        },
+        "S": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 10,
+          "tn": 2,
+          "unmatchedReports": 7,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 128,
+          "scoredKeyframes": 10,
+          "framesAbstained": 21
+        }
+      },
+      "actualCalls": {
+        "raft": 488,
+        "refinement": 244,
+        "dis": 244
+      },
+      "replayWallMs": 158060.81033393275,
+      "actualDetectorCalls": 100
+    },
+    "controls": {
+      "receiptSha256": "a860963fe7ac6b7405a21a68a5d8fbb0ea1f7a7c4720b942d105acd458f2675a",
+      "truthSha256": "f77e6715dd575d20cbde1a884240676cc147e3f640d5e94be580ef59f4c23a4f",
+      "inputSha256": "1b3d9807434248145d0a83d8f938f6b42f5fd55dd0c8de5f9aac5c704e58b3db",
+      "scoreSha256": "878b32e578590e550ad9294570a2ad02cf75bde25011dd79b73fc02ed0e5e9f5",
+      "sourceFilesVerified": 80,
+      "noMetreChecks": 400,
+      "totals": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 80,
+          "framesAbstained": 80,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 80,
+          "framesAbstained": 80,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 80,
+          "framesAbstained": 80,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 49,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 80,
+          "framesAbstained": 58,
+          "allSceneFalseNotices": 49
+        }
+      },
+      "actualCalls": {
+        "raft": 420,
+        "refinement": 210,
+        "dis": 210
+      },
+      "replayWallMs": 106512.68870802596,
+      "actualDetectorCalls": 80
+    }
+  }
+}

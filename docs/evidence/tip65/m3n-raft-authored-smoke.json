@@ -1,0 +1,18 @@
+{
+  "kind": "actual-RAFT-MPS-authored-five-frames-three-lanes-not-holdout",
+  "capture": "Contractor copied actual tool stdout; no latency benchmark. A few CPU-only unit checks overlapped this qualitative smoke, not natural-data timing runs.",
+  "fixture": "Frozen M3M four expanding textured rectangles, five 320x256 frames at80ms, current IDs replaced each frame.",
+  "totalActualDirections": 30,
+  "results": {
+    "A": {"actualDirections":10,"eventsByFrame":[0,0,0,0,0],"lastReasons":{"148":"anchor-ambiguous-or-unverifiable-rival","149":"anchor-ambiguous-or-unverifiable-rival","150":"anchor-ambiguous-or-unverifiable-rival","151":"anchor-ambiguous-or-unverifiable-rival"}},
+    "B": {"actualDirections":10,"eventsByFrame":[0,0,0,0,0],"lastReasons":{"148":"anchor-ambiguous-or-unverifiable-rival","149":"anchor-ambiguous-or-unverifiable-rival","150":"anchor-ambiguous-or-unverifiable-rival","151":"anchor-ambiguous-or-unverifiable-rival"}},
+    "C": {"actualDirections":10,"eventsByFrame":[0,0,0,0,0],"lastReasons":{"148":"anchor-ambiguous-or-unverifiable-rival","149":"anchor-ambiguous-or-unverifiable-rival","150":"anchor-ambiguous-or-unverifiable-rival","151":"anchor-ambiguous-or-unverifiable-rival"}}
+  },
+  "sourceHashes": {
+    "assist_scene_global_field.py":"32f03ec4fbdd754be555d8849d63b8fd3412d404f159ad97005df0a82d2f5848",
+    "assist_scene_global_window.py":"8163edb853089f9e87a16ed2c7cd506aa5a0f8c8da32d63870a02585d73fa86b",
+    "assist_scene_texture_patches.py":"a2034129b5131414869aed78b16b9649e7901f4fa7ea80e52b7aee21ff737459",
+    "assist_scene_textured_window.py":"57e2fc804a9215bc214c0381e1a629144641e0ad78cde77e80988c9e27d30fc4"
+  },
+  "disposition":"FAIL as a pretrained positive fixture. Do not replace this result with analytic-field or DIS success. Natural-data development and heldout trial remain separate, with frozen thresholds."
+}

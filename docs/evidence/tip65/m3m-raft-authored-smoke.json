@@ -1,0 +1,18 @@
+{
+  "kind": "actual-local-RAFT-MPS-authored-four-object-not-holdout",
+  "capture": "Contractor copied actual tool stdout, not an independent dataset score.",
+  "engineSha256": "8163edb853089f9e87a16ed2c7cd506aa5a0f8c8da32d63870a02585d73fa86b",
+  "providerSha256": "32f03ec4fbdd754be555d8849d63b8fd3412d404f159ad97005df0a82d2f5848",
+  "fixture": "tests/test_assist_scene_global_window.py exposure(index), six 320x256 authored frames with four expanding textured rectangles and changing current IDs",
+  "directionCalls": 14,
+  "eventsByFrame": [0,0,0,0,0,0],
+  "comparisonsByFrame": [0,16,16,16,32,32],
+  "fourRivalWarnings": 0,
+  "reasonsLastFrame": {
+    "160": "anchor-ambiguous-or-unverifiable-rival",
+    "161": "anchor-ambiguous-or-unverifiable-rival",
+    "162": "anchor-ambiguous-or-unverifiable-rival",
+    "163": "anchor-ambiguous-or-unverifiable-rival"
+  },
+  "disposition": "NOT a pretrained positive acceptance. Actual DIS passes this authored fixture, but RAFT does not. Do not conflate engine geometry feasibility with checkpoint success. Natural-data development remains a separate planned trial; no thresholds altered from this result."
+}

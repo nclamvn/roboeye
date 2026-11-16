@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "study": "M3N",
+  "dataset": "synthetic-m3c",
+  "inputSha256": "1bbcb254691b611abd3ddeba1c8621764fd21ca7b8015db03e4f47e66f448f64",
+  "developmentOnly": false,
+  "frames": 80,
+  "noMetreChecks": 400,
+  "unit": "reviewed target-keyframe",
+  "totals": {
+    "A": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "C": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "S": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "unmatchedReports": 74,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 58,
+      "allSceneFalseNotices": 74
+    }
+  },
+  "clips": [
+    {
+      "id": "m3h-control-static",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        }
+      }
+    },
+    {
+      "id": "m3h-control-zoom",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 67,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 4,
+          "allSceneFalseNotices": 67
+        }
+      }
+    },
+    {
+      "id": "m3h-control-pan",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 5,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 16,
+          "allSceneFalseNotices": 5
+        }
+      }
+    },
+    {
+      "id": "m3h-control-shake",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 0,
+          "unmatchedReports": 2,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 18,
+          "allSceneFalseNotices": 2
+        }
+      }
+    }
+  ],
+  "stageMs": {
+    "APairedProduct": {
+      "p50": 609.45,
+      "p95": 1159.64
+    },
+    "BPairedProduct": {
+      "p50": 677.52,
+      "p95": 1193.95
+    },
+    "CPairedProduct": {
+      "p50": 753.11,
+      "p95": 1376.26
+    },
+    "SPairedProduct": {
+      "p50": 94.92,
+      "p95": 135.01
+    }
+  },
+  "timingScope": "Development detector/A/T/S samples are historical, not current execution. Actual B/C execute model fields independently; fresh A/B/C do likewise in fixed sequential A->B->C order with one resident checkpoint. Warm-order effects are uncontrolled: these timings do not establish lane speed superiority. Paired global lane totals add detector perform, staging/prep, T and that lane only, before percentiles. Do not add other ablation lanes or flow twice. S excludes T. CoreML perform-only detector timings make totals lower bounds. Model startup and total sequential study wall are separate. No phone/real-time claim.",
+  "codeSha256": {
+    "assist_scene_m3g_study.py": "af27a473fc03d47543ac21c7d45a8c69d4e22c74ca0b0ad4df518d2758b72ca1",
+    "assist_scene_window_loom.py": "4981561eed510a7be889744bd20c23e4ed9d6d91704cb3d22dddcea24c873217",
+    "assist_scene_dense_window.py": "98c5a0f021ae3faa9abeee634690d43b21447dec8b0525709d37680e163374d0",
+    "assist_scene_scale_approach_m3e.py": "3bfaac464710becaffa3590ffcf59ea8195f5e7ba2f57c874bd8138988fb3f2b",
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_m3d_study.py": "db37a3b6fdbb81cb5c1bddee820838a0b82f44571ae30ad658be33e84a71b225",
+    "assist_scene_m3e_study.py": "6801000ec0dbd4026067727a7aecf4250cbdbd0d435bd7aba1b29f6368914617",
+    "assist_scene_m3f_study.py": "5d97ce10027b4303ae665597b5148705facc2ffe8fa7d427a46ba79a0c8c4133",
+    "assist_scene_motion_m3b.py": "036305b33a4d09c224035bee407e4cf670802f8e17284079c06337c894ea73f9",
+    "assist_scene_motion_m3c.py": "119471b4544367431dd62b051ed557e8fe092ea8230fdee47b73fb99a671592e",
+    "assist_scene_pose_motion.py": "df6b22ae9da80a8a75dae2049de3b848c839527a7aebcb95954cc6fbbd0b0df9",
+    "assist_scene_motion.py": "330340ea5469d4f6f2a559dbe9b4090529a1da0d313e68a1b7fe82ef889d50bb",
+    "score-assist-scene-motion-m3c.py": "90875862ef6774832164776b27a54981d4253dfd9341c8d1e8fb18aeadd05f16",
+    "assist_scene_m3h_study.py": "a0fdb7a3f436c131a61d0fd66bf47614b345b2778d13608d6143eda41ca6810a",
+    "assist_scene_cohort_loom.py": "b7915e194867e09a218742f8b779631fb00ec631ddfdd39b784eaa5e1bb4bea4",
+    "assist_scene_m3k_study.py": "bbe5892b9c69ab9d249543ecaac0a322ff3fea9427da66e371bc04f876f3b894",
+    "assist_scene_learned_detector.py": "4258c1c7164b5c16ac0e48173dc932a8a2577709a19822adc42e9b564300bb9a",
+    "assist_scene_learned_region.py": "594c9c52cdc4e79db0fad19432fae99b23b0a064321f6b4b44607fbaadf7092a",
+    "audit_assist_scene_m3k.py": "eadbda5e716b053723fa18dd40bc39720c1fcd441e704cca5b0389f157b5f6ba",
+    "assist_scene_m3l_study.py": "14de9667f42fed6194c8f33e5a7ef97604dede03ba57ee6f3fb1b32b899670c0",
+    "assist_scene_direct_window.py": "5c0854542e03e70959ac012a483596e10a1259b57ca7d0a1ccecbf207e98f1bf",
+    "assist_scene_m3m_study.py": "5eb13066fd92019ca7567d7e43c64ba3672e02155ac567a9945850027d4b7427",
+    "assist_scene_global_field.py": "32f03ec4fbdd754be555d8849d63b8fd3412d404f159ad97005df0a82d2f5848",
+    "assist_scene_global_window.py": "8163edb853089f9e87a16ed2c7cd506aa5a0f8c8da32d63870a02585d73fa86b",
+    "assist_scene_m3n_study.py": "2f4cff0d60d5f8f37911f675641ba9a963388da33d35e31178a95477e2c9e2ec",
+    "assist_scene_texture_patches.py": "a2034129b5131414869aed78b16b9649e7901f4fa7ea80e52b7aee21ff737459",
+    "assist_scene_textured_window.py": "57e2fc804a9215bc214c0381e1a629144641e0ad78cde77e80988c9e27d30fc4"
+  },
+  "detectorProvenance": {
+    "kind": "actual-CoreML-and-shared-global-RAFT",
+    "cacheSha256": null
+  },
+  "limits": "Sparse evaluation labels only; unknown/unmatched/unreviewed notices remain separate. Assistant-reviewed boxes are not independent human acceptance. No metric range, phone, safety, commercial or real-time acceptance.",
+  "receiptSha256": "dbd44ee8fbf51794fd2965795a81f098d8864d2f32806b276a9820f08275d1f0",
+  "truthSha256": "4c3e0b372faebd23a14b2a75135f90850cf74bc6408c452af19a379fa27bd571"
+}

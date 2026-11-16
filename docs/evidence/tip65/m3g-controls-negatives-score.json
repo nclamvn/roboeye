@@ -1,0 +1,874 @@
+{
+  "schemaVersion": 1,
+  "dataset": "synthetic-m3c",
+  "inputSha256": "7f0b97f42b417be4946d03608013ad3944320b65429fd8ca3901ccb9f9b8f40a",
+  "review": {
+    "sourceSha256": "d01562f2961045492a42770f4476cf13a4dbc1ccd7663c1644366fb0fb623aa9",
+    "sourceSubpath": "camera/1598990957178232.png",
+    "kind": "assistant-authored-real-photo-transforms-NOT-physical-GT",
+    "poseKind": "authored-camera-rotation",
+    "intrinsicsKind": "synthetic-1240-pixel-K",
+    "distanceGroundTruth": "not-supplied",
+    "frameIntervalUs": 90000,
+    "reviewedPreviewSize": [
+      960,
+      803
+    ],
+    "reviewedLeadROI": [
+      403.0,
+      425.0,
+      546.0,
+      543.0
+    ],
+    "reviewedCompetitorROI": [
+      128.0,
+      419.0,
+      178.0,
+      447.0
+    ],
+    "method": "fixed ROI transformed by authored image homographies before inference",
+    "scope": "synthetic optical expansion controls, not independent physical motion or field validation"
+  },
+  "reviewSha256": null,
+  "unit": "reviewed target-keyframe",
+  "frames": 80,
+  "noMetreChecks": 480,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "opencv": "5.0.0",
+  "codeSha256": {
+    "assist_scene_m3g_study.py": "af27a473fc03d47543ac21c7d45a8c69d4e22c74ca0b0ad4df518d2758b72ca1",
+    "assist_scene_window_loom.py": "4981561eed510a7be889744bd20c23e4ed9d6d91704cb3d22dddcea24c873217",
+    "assist_scene_dense_window.py": "98c5a0f021ae3faa9abeee634690d43b21447dec8b0525709d37680e163374d0",
+    "assist_scene_scale_approach_m3e.py": "3bfaac464710becaffa3590ffcf59ea8195f5e7ba2f57c874bd8138988fb3f2b",
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_m3d_study.py": "db37a3b6fdbb81cb5c1bddee820838a0b82f44571ae30ad658be33e84a71b225",
+    "assist_scene_m3e_study.py": "6801000ec0dbd4026067727a7aecf4250cbdbd0d435bd7aba1b29f6368914617",
+    "assist_scene_m3f_study.py": "5d97ce10027b4303ae665597b5148705facc2ffe8fa7d427a46ba79a0c8c4133",
+    "assist_scene_motion_m3b.py": "036305b33a4d09c224035bee407e4cf670802f8e17284079c06337c894ea73f9",
+    "assist_scene_motion_m3c.py": "119471b4544367431dd62b051ed557e8fe092ea8230fdee47b73fb99a671592e",
+    "assist_scene_pose_motion.py": "df6b22ae9da80a8a75dae2049de3b848c839527a7aebcb95954cc6fbbd0b0df9",
+    "assist_scene_motion.py": "330340ea5469d4f6f2a559dbe9b4090529a1da0d313e68a1b7fe82ef889d50bb",
+    "score-assist-scene-motion-m3c.py": "90875862ef6774832164776b27a54981d4253dfd9341c8d1e8fb18aeadd05f16"
+  },
+  "detectorProvenance": {
+    "kind": "actual-local-CoreML",
+    "cacheSha256": null,
+    "sampleTimings": "actual sample inference; not end-to-end"
+  },
+  "detectorConfiguration": {
+    "computeUnits": "all",
+    "confidenceThreshold": 0.38,
+    "coordinates": "EXIF-upright normalized top-left",
+    "cropAndScale": "scaleFill",
+    "detectionTiming": "VNImageRequestHandler.perform only",
+    "iouThreshold": 0.45,
+    "modelId": "apple-yolov3-fp16"
+  },
+  "detectorObservationTimingMs": {
+    "p50": 45.4,
+    "p95": 99.96
+  },
+  "totals": {
+    "A": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 160,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 160,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "C": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 160,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "D": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 160,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "E": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 160,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 80,
+      "allSceneFalseNotices": 0
+    },
+    "S": {
+      "tp": 0,
+      "fp": 4,
+      "fn": 0,
+      "tn": 156,
+      "unmatchedReports": 49,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 0,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 80,
+      "framesAbstained": 62,
+      "allSceneFalseNotices": 53
+    }
+  },
+  "clips": [
+    {
+      "id": "m3g-control-static",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "D": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "E": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "C": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "D": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "E": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "S": {
+          "valid": 20
+        }
+      },
+      "trackReasons": {
+        "A": {
+          "new-or-unmatched-object": 6,
+          "small-or-truncated": 80,
+          "overlap-occlusion-ambiguous": 2,
+          "no-current-expansion": 57,
+          "insufficient-object-flow": 57,
+          "association-ambiguous": 38
+        },
+        "B": {
+          "new-or-unmatched-object": 8,
+          "small-or-truncated": 60,
+          "insufficient-object-seeds": 20,
+          "warming-window": 18,
+          "insufficient-object-flow": 38,
+          "no-supported-window-expansion": 96
+        },
+        "C": {
+          "new-or-unmatched-object": 3,
+          "small-or-truncated": 160,
+          "insufficient-object-seeds": 20,
+          "warming-window": 6,
+          "insufficient-object-flow": 19,
+          "no-supported-window-expansion": 32
+        },
+        "D": {
+          "new-or-unmatched-object": 8,
+          "small-or-truncated": 60,
+          "insufficient-object-seeds": 20,
+          "warming-window": 24,
+          "no-supported-window-expansion": 128
+        },
+        "E": {
+          "new-or-unmatched-object": 8,
+          "small-or-truncated": 60,
+          "insufficient-object-seeds": 20,
+          "warming-window": 18,
+          "insufficient-object-flow": 38,
+          "no-supported-window-expansion": 80,
+          "insufficient-direct-anchor-evidence": 16
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "not-approaching": 40,
+        "not-approaching.withYolo": 20
+      }
+    },
+    {
+      "id": "m3g-control-zoom",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "D": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "E": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 4,
+          "fn": 0,
+          "tn": 36,
+          "unmatchedReports": 46,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 5,
+          "allSceneFalseNotices": 50
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "insufficient-background-agreement": 19
+        },
+        "B": {
+          "first-frame": 1,
+          "insufficient-background-agreement": 19
+        },
+        "C": {
+          "first-frame": 1,
+          "insufficient-background-agreement": 19
+        },
+        "D": {
+          "first-frame": 1,
+          "insufficient-background-agreement": 19
+        },
+        "E": {
+          "first-frame": 1,
+          "insufficient-background-agreement": 19
+        },
+        "S": {
+          "valid": 20
+        }
+      },
+      "trackReasons": {
+        "A": {
+          "new-or-unmatched-object": 156,
+          "small-or-truncated": 68,
+          "overlap-occlusion-ambiguous": 16
+        },
+        "B": {
+          "new-or-unmatched-object": 203,
+          "small-or-truncated": 32,
+          "insufficient-object-seeds": 5
+        },
+        "C": {
+          "new-or-unmatched-object": 106,
+          "small-or-truncated": 116,
+          "insufficient-object-seeds": 18
+        },
+        "D": {
+          "new-or-unmatched-object": 197,
+          "small-or-truncated": 32,
+          "insufficient-object-seeds": 11
+        },
+        "E": {
+          "new-or-unmatched-object": 203,
+          "small-or-truncated": 32,
+          "insufficient-object-seeds": 5
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "not-approaching": 40,
+        "not-approaching.withYolo": 28
+      }
+    },
+    {
+      "id": "m3g-control-pan",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "D": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "E": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 2,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 18,
+          "allSceneFalseNotices": 2
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "C": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "D": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "E": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "S": {
+          "valid": 20
+        }
+      },
+      "trackReasons": {
+        "A": {
+          "new-or-unmatched-object": 14,
+          "small-or-truncated": 64,
+          "overlap-occlusion-ambiguous": 10,
+          "no-current-expansion": 33,
+          "insufficient-object-flow": 63,
+          "association-ambiguous": 24,
+          "localized-object-flow": 1,
+          "object-scale-disagreement": 13,
+          "previous-object-not-reliable": 6,
+          "object-flow-box-disagreement": 5
+        },
+        "B": {
+          "new-or-unmatched-object": 21,
+          "small-or-truncated": 31,
+          "insufficient-object-seeds": 11,
+          "warming-window": 64,
+          "insufficient-object-flow": 50,
+          "object-scale-disagreement": 2,
+          "object-flow-box-disagreement": 6,
+          "no-supported-window-expansion": 46,
+          "localized-object-flow": 2
+        },
+        "C": {
+          "small-or-truncated": 149,
+          "new-or-unmatched-object": 8,
+          "warming-window": 16,
+          "localized-object-flow": 2,
+          "insufficient-object-flow": 23,
+          "insufficient-object-seeds": 12,
+          "no-supported-window-expansion": 23
+        },
+        "D": {
+          "new-or-unmatched-object": 24,
+          "small-or-truncated": 31,
+          "insufficient-object-seeds": 12,
+          "warming-window": 64,
+          "insufficient-object-flow": 15,
+          "object-scale-disagreement": 2,
+          "object-flow-box-disagreement": 6,
+          "no-supported-window-expansion": 73,
+          "localized-object-flow": 6
+        },
+        "E": {
+          "new-or-unmatched-object": 21,
+          "small-or-truncated": 31,
+          "insufficient-object-seeds": 11,
+          "warming-window": 67,
+          "insufficient-object-flow": 56,
+          "object-scale-disagreement": 2,
+          "object-flow-box-disagreement": 5,
+          "insufficient-direct-anchor-evidence": 7,
+          "no-supported-window-expansion": 33
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "not-approaching": 40,
+        "not-approaching.withYolo": 14
+      }
+    },
+    {
+      "id": "m3g-control-shake",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "C": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "D": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "E": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 20,
+          "allSceneFalseNotices": 0
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 40,
+          "unmatchedReports": 1,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 20,
+          "framesAbstained": 19,
+          "allSceneFalseNotices": 1
+        }
+      },
+      "statuses": {
+        "A": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "B": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "C": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "D": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "E": {
+          "first-frame": 1,
+          "valid": 19
+        },
+        "S": {
+          "valid": 20
+        }
+      },
+      "trackReasons": {
+        "A": {
+          "new-or-unmatched-object": 22,
+          "small-or-truncated": 69,
+          "overlap-occlusion-ambiguous": 14,
+          "insufficient-object-flow": 78,
+          "previous-object-not-reliable": 21,
+          "object-scale-disagreement": 14,
+          "no-current-expansion": 3,
+          "object-flow-box-disagreement": 3,
+          "association-ambiguous": 15,
+          "relinked-identity-only": 1
+        },
+        "B": {
+          "new-or-unmatched-object": 39,
+          "small-or-truncated": 38,
+          "warming-window": 54,
+          "insufficient-object-flow": 69,
+          "localized-object-flow": 4,
+          "object-flow-box-disagreement": 4,
+          "no-supported-window-expansion": 19,
+          "insufficient-object-seeds": 9,
+          "object-scale-disagreement": 4
+        },
+        "C": {
+          "new-or-unmatched-object": 13,
+          "small-or-truncated": 137,
+          "insufficient-object-seeds": 25,
+          "insufficient-object-flow": 38,
+          "warming-window": 19,
+          "object-scale-disagreement": 2,
+          "no-supported-window-expansion": 6
+        },
+        "D": {
+          "new-or-unmatched-object": 39,
+          "small-or-truncated": 38,
+          "insufficient-object-seeds": 5,
+          "warming-window": 60,
+          "insufficient-object-flow": 73,
+          "localized-object-flow": 2,
+          "object-flow-box-disagreement": 3,
+          "no-supported-window-expansion": 13,
+          "object-scale-disagreement": 7
+        },
+        "E": {
+          "new-or-unmatched-object": 39,
+          "small-or-truncated": 38,
+          "warming-window": 55,
+          "insufficient-object-flow": 79,
+          "localized-object-flow": 2,
+          "object-flow-box-disagreement": 3,
+          "no-supported-window-expansion": 10,
+          "insufficient-object-seeds": 9,
+          "insufficient-direct-anchor-evidence": 2,
+          "object-scale-disagreement": 3
+        },
+        "S": {}
+      },
+      "detectorCeiling": {
+        "not-approaching": 40,
+        "not-approaching.withYolo": 26
+      }
+    }
+  ],
+  "stageMs": {
+    "sharedPrep": {
+      "p50": 17.19,
+      "p95": 48.92
+    },
+    "A": {
+      "p50": 32.69,
+      "p95": 87.5
+    },
+    "B": {
+      "p50": 43.81,
+      "p95": 86.6
+    },
+    "C": {
+      "p50": 22.34,
+      "p95": 42.97
+    },
+    "D": {
+      "p50": 91.7,
+      "p95": 164.38
+    },
+    "E": {
+      "p50": 97.97,
+      "p95": 183.27
+    },
+    "S": {
+      "p50": 0.17,
+      "p95": 0.36
+    },
+    "APlusSharedPrep": {
+      "p50": 48.91,
+      "p95": 124.41
+    },
+    "BPlusSharedPrep": {
+      "p50": 61.42,
+      "p95": 126.94
+    },
+    "CPlusSharedPrep": {
+      "p50": 39.89,
+      "p95": 82.46
+    },
+    "DPlusSharedPrep": {
+      "p50": 109.75,
+      "p95": 200.18
+    },
+    "EPlusSharedPrep": {
+      "p50": 118.02,
+      "p95": 219.97
+    },
+    "SPlusSharedPrep": {
+      "p50": 17.37,
+      "p95": 49.09
+    }
+  },
+  "limits": "Physical relative-range labels are kept unchanged; optical looming is not a proof of radial closing. Unknown/unmatched/unreviewed reports stay separate. Checkpoints do not prove event-level recall, phone speed or safety.",
+  "receiptSha256": "fd9a5e7226f4cc6e26a6a73330b1133d011a265f5093390c3535f23be619a4f1",
+  "truthSha256": "b9fdd3f942b712694ac7055444ef9598bacd49ec39fd437ec5baa3e93c861366"
+}

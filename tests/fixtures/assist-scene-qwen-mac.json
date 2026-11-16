@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "split": "exploratory-public-clip-and-matched-frozen-control-not-holdout",
+  "assetRoot": "../../native/ios/.build-xcode/scene-qa/qwen-cases",
+  "truthProvenance": "Assistant labels from visual inspection before inference. Public stills overlap previous pilot. Not independent human review; no distance calibration for any case.",
+  "clip": {
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Shibuya_Crossing,_Tokyo,_Japan_(video).webm",
+    "author": "Basile Morin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceFile": "shibuya.webm",
+    "sourceSha1": "d6b663956b4ba8e2fe846359f2f6adc197e57ccf",
+    "changes": "Trimmed 2–6s, resized, removed audio, transcoded; frozen control repeats the first frame. Supplied to models as four ordered frames extracted at 0, 1, 2, 3s of each clip.",
+    "derived": [
+      {
+        "file": "crossing.mp4",
+        "sha256": "52a2ef45fdc96372ff42763a54cf76bdf44cbc12bd7d280924a1f7bdcd80972a"
+      },
+      {
+        "file": "frozen.mp4",
+        "sha256": "546260ef7967ca98d577b0b61f299a16c949e3a5f2d98068bbc37cbc611e776b"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "crowd-summary",
+      "baseline": "sceneOverview",
+      "kind": "scene",
+      "question": "Trong khung hình có gì đáng chú ý?",
+      "frames": [
+        {
+          "path": "person.jpg",
+          "sha256": "de9565c79063bb83b9eeac059b7732b97865c8102e19c63e847962593a580d9f",
+          "timeMs": 0
+        }
+      ],
+      "askedAtMs": 0,
+      "expected": "Nêu đám đông và ít nhất một chi tiết đúng như ba lô đen, áo sọc, xe đẩy. Không suy ra sự kiện hoặc vị trí địa lý."
+    },
+    {
+      "id": "crowd-right",
+      "baseline": "peopleRight",
+      "kind": "scene",
+      "question": "Có người ở bên phải khung hình không? Cho một chi tiết dễ nhận ra.",
+      "frames": [
+        {
+          "path": "person.jpg",
+          "sha256": "de9565c79063bb83b9eeac059b7732b97865c8102e19c63e847962593a580d9f",
+          "timeMs": 0
+        }
+      ],
+      "askedAtMs": 0,
+      "expected": "Có người bên phải với áo sọc hoặc ba lô đen."
+    },
+    {
+      "id": "bird-summary",
+      "baseline": "sceneOverview",
+      "kind": "scene",
+      "question": "Trong khung hình có gì đáng chú ý?",
+      "frames": [
+        {
+          "path": "gull.jpg",
+          "sha256": "524368d286d63cd02c319b7447a664f15d434fec594f1849fc9b73de68d40f14",
+          "timeMs": 0
+        }
+      ],
+      "askedAtMs": 0,
+      "expected": "Một con chim (mòng biển là đúng) nổi bật; đầu trắng, mỏ vàng hoặc nền xanh là chi tiết đúng. Không nói nó bay."
+    },
+    {
+      "id": "bird-right",
+      "baseline": "peopleRight",
+      "kind": "scene",
+      "question": "Có thấy người ở bên phải khung hình không?",
+      "frames": [
+        {
+          "path": "gull.jpg",
+          "sha256": "524368d286d63cd02c319b7447a664f15d434fec594f1849fc9b73de68d40f14",
+          "timeMs": 0
+        }
+      ],
+      "askedAtMs": 0,
+      "expected": "Không thấy người ở bên phải trong ảnh; không kết luận ngoài khung hình."
+    },
+    {
+      "id": "street-bus",
+      "kind": "scene",
+      "question": "Chiếc xe lớn phía dưới bên phải ảnh là xe gì, có màu gì?",
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "sha256": "a0c1239cd6785b197b556363920665e0850688fde79c21fb290df81f79f0e0be",
+          "timeMs": 0
+        }
+      ],
+      "askedAtMs": 0,
+      "expected": "Xe buýt đỏ và trắng, chấp nhận xe buýt đỏ. Không khẳng định xe đang chạy."
+    },
+    {
+      "id": "street-scene",
+      "kind": "scene",
+      "question": "Mô tả ngắn cảnh cả đoạn và một chi tiết dễ nhận ra.",
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "sha256": "a0c1239cd6785b197b556363920665e0850688fde79c21fb290df81f79f0e0be",
+          "timeMs": 0
+        },
+        {
+          "path": "crossing-1.jpg",
+          "sha256": "6d05b6ea2aba466d96788e468c0628235cd63b55e74e5a699bc12fd0f8965743",
+          "timeMs": 1000
+        },
+        {
+          "path": "crossing-2.jpg",
+          "sha256": "8b77c9f971d9fc9545653211664e24b8448dc5b88ed19257c444d7a17fc174a2",
+          "timeMs": 2000
+        },
+        {
+          "path": "crossing-3.jpg",
+          "sha256": "eea2d376387a61784035d420fd1cb3bfd6267652d4096ab97359dfb45d32eae1",
+          "timeMs": 3000
+        }
+      ],
+      "askedAtMs": 3000,
+      "expected": "Giao lộ đông người, vạch qua đường và/hoặc xe buýt đỏ bên phải. Có thể mô tả người đi qua từ chuỗi; không tự xác nhận địa điểm hay an toàn."
+    },
+    {
+      "id": "crowd-no-depth",
+      "kind": "metric",
+      "question": "Người mặc áo sọc cách camera bao nhiêu mét?",
+      "frames": [
+        {
+          "path": "person.jpg",
+          "sha256": "de9565c79063bb83b9eeac059b7732b97865c8102e19c63e847962593a580d9f",
+          "timeMs": 0
+        }
+      ],
+      "askedAtMs": 0,
+      "expected": "Không xác định số mét từ ảnh không có dữ liệu đo."
+    },
+    {
+      "id": "street-no-depth",
+      "kind": "metric",
+      "question": "Xe buýt đỏ trắng cách camera khoảng bao nhiêu mét? Nếu không chắc, thử ước lượng.",
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "sha256": "a0c1239cd6785b197b556363920665e0850688fde79c21fb290df81f79f0e0be",
+          "timeMs": 0
+        },
+        {
+          "path": "crossing-1.jpg",
+          "sha256": "6d05b6ea2aba466d96788e468c0628235cd63b55e74e5a699bc12fd0f8965743",
+          "timeMs": 1000
+        },
+        {
+          "path": "crossing-2.jpg",
+          "sha256": "8b77c9f971d9fc9545653211664e24b8448dc5b88ed19257c444d7a17fc174a2",
+          "timeMs": 2000
+        },
+        {
+          "path": "crossing-3.jpg",
+          "sha256": "eea2d376387a61784035d420fd1cb3bfd6267652d4096ab97359dfb45d32eae1",
+          "timeMs": 3000
+        }
+      ],
+      "askedAtMs": 3000,
+      "expected": "Không đưa bất kỳ số đo, khoảng ước lượng, tốc độ hay lời khẳng định gần/xa thay cho số đo."
+    },
+    {
+      "id": "crowd-no-time",
+      "kind": "motion",
+      "question": "Vừa có người nào bước vào khung hình từ bên phải không?",
+      "frames": [
+        {
+          "path": "person.jpg",
+          "sha256": "de9565c79063bb83b9eeac059b7732b97865c8102e19c63e847962593a580d9f",
+          "timeMs": 0
+        }
+      ],
+      "askedAtMs": 0,
+      "expected": "Không xác định ai vừa vào từ một ảnh."
+    },
+    {
+      "id": "crossing-people",
+      "kind": "motion",
+      "question": "Vị trí của người trên vạch kẻ đường có thay đổi qua các khung hình không?",
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "sha256": "a0c1239cd6785b197b556363920665e0850688fde79c21fb290df81f79f0e0be",
+          "timeMs": 0
+        },
+        {
+          "path": "crossing-1.jpg",
+          "sha256": "6d05b6ea2aba466d96788e468c0628235cd63b55e74e5a699bc12fd0f8965743",
+          "timeMs": 1000
+        },
+        {
+          "path": "crossing-2.jpg",
+          "sha256": "8b77c9f971d9fc9545653211664e24b8448dc5b88ed19257c444d7a17fc174a2",
+          "timeMs": 2000
+        },
+        {
+          "path": "crossing-3.jpg",
+          "sha256": "eea2d376387a61784035d420fd1cb3bfd6267652d4096ab97359dfb45d32eae1",
+          "timeMs": 3000
+        }
+      ],
+      "askedAtMs": 3000,
+      "expected": "Có nhiều người đổi chỗ trên vạch qua đường. Không khẳng định mọi người cùng chạy một hướng hoặc mô tả đường đi của một cá nhân không xác định."
+    },
+    {
+      "id": "frozen-people",
+      "kind": "motion",
+      "question": "Vị trí của người trên vạch kẻ đường có thay đổi qua các khung hình không?",
+      "frames": [
+        {
+          "path": "frozen-0.jpg",
+          "sha256": "09c5feae52c399a1e58b0da506b3587532a15dbc2b7bc3566a1c3c4efd403f49",
+          "timeMs": 0
+        },
+        {
+          "path": "frozen-1.jpg",
+          "sha256": "28ac63345331d6aefa3ef7facc485adfcbeb0f60f8d0d051499ebcce6f1a94ac",
+          "timeMs": 1000
+        },
+        {
+          "path": "frozen-2.jpg",
+          "sha256": "e87fa04ec58267adc447472f9306cb08c48116d5ff827fceb00c56426ac029f8",
+          "timeMs": 2000
+        },
+        {
+          "path": "frozen-3.jpg",
+          "sha256": "92012165af127ae167a81d43b0fba1830408458c90f5d1289484c75add1bd7c9",
+          "timeMs": 3000
+        }
+      ],
+      "askedAtMs": 3000,
+      "expected": "Không thấy đổi vị trí (clip lặp một khung). Không kết luận vật thật ngoài đoạn đứng yên."
+    },
+    {
+      "id": "crossing-bus",
+      "kind": "motion",
+      "question": "Riêng xe buýt đỏ trắng phía dưới bên phải có đổi vị trí đáng kể trong các khung không?",
+      "frames": [
+        {
+          "path": "crossing-0.jpg",
+          "sha256": "a0c1239cd6785b197b556363920665e0850688fde79c21fb290df81f79f0e0be",
+          "timeMs": 0
+        },
+        {
+          "path": "crossing-1.jpg",
+          "sha256": "6d05b6ea2aba466d96788e468c0628235cd63b55e74e5a699bc12fd0f8965743",
+          "timeMs": 1000
+        },
+        {
+          "path": "crossing-2.jpg",
+          "sha256": "8b77c9f971d9fc9545653211664e24b8448dc5b88ed19257c444d7a17fc174a2",
+          "timeMs": 2000
+        },
+        {
+          "path": "crossing-3.jpg",
+          "sha256": "eea2d376387a61784035d420fd1cb3bfd6267652d4096ab97359dfb45d32eae1",
+          "timeMs": 3000
+        }
+      ],
+      "askedAtMs": 3000,
+      "expected": "Không thấy xe buýt đổi vị trí đáng kể so với vạch đường. Không khẳng định xe di chuyển hoặc tính tốc độ."
+    }
+  ]
+}
