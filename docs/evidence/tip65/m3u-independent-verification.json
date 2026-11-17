@@ -1,0 +1,739 @@
+{
+  "schemaVersion": 1,
+  "study": "M3U-independent-verification",
+  "reviewRole": "Independent source/code/geometry/score reviewer; not author of camera/study/data/review helper",
+  "receiptSha256": "a855152945d2679ad3b07258b6cb139fc81f91b259ffdf0268b6f61b49dd37ab",
+  "inputSha256": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed",
+  "truthSha256": "56a8ffe4f398f21449335cdf9ff147d5b223aae0a4539895ad2376f3c792ac0b",
+  "secondarySha256": "40094009395698a0a02290cc01990861bd690e210d32f82839738bc842f728ab",
+  "sourceFileCount": 141,
+  "sourceFileHashes": {
+    "applanix/camera_poses.csv": "1a4a066acd7a008d3dccfff4c7656519d66c6eb81a040d41a3a9266cbe54bac6",
+    "applanix/lidar_poses.csv": "19889049c68d5c93d66ca659e8319eeb889cf00e999b860d371afb77c79b7ccc",
+    "calib/P_camera.txt": "ad1a358314afc2ef040a1dd2f4ee07adf0ce5cd1ca0fd0caa3561eb3bd96d2f1",
+    "camera/1598987814129989.png": "e5c4f84f3dd3eed7ff5746eccdd63f00cc5994f42cf810dc7bb8584154e8b034",
+    "camera/1598987814210650.png": "24f06f518cfc3fce290f1d1374c3d9259b922e02d092430ab29cfe7d66f06330",
+    "camera/1598987814291842.png": "9cb63e00c668c59564fc413ec796dfe39b9b04bc83cf97a1d93b3b362081bc69",
+    "camera/1598987814370060.png": "3b3138eeebb0ace2b9bfd98a73649ff76f32d63c04e8ffcc39b399d207886c03",
+    "camera/1598987814449678.png": "3ae9dc5a9383920e075923454192e3d0b33588f821f18c2443c6c266468796fb",
+    "camera/1598987814528980.png": "30819d10d941458a8f1e3d504b19c07b54c736c676fa117dffc706294833c27b",
+    "camera/1598987814609937.png": "c357cfb445d0f570d4e64ac94c8ea971437589cd0ccac8e2a27aa177f93e7f63",
+    "camera/1598987814689268.png": "5bd1503c774de5e0c87ae2e10e924daa79651f930fbda620b0f7bf26b018b701",
+    "camera/1598987814770882.png": "41076ad33e32290ff897250c9d14d3e0cc5b16bda919cad3d65c710ce31fe4b4",
+    "camera/1598987814849736.png": "c535bb78ac9fd1df9de13e0e6b8a3299895bae707c5ee5574ec08023c7000b7e",
+    "camera/1598987814930593.png": "2fbd161829cd068f428d1e39b53512c7634a95d6463a2dbc871c5501bcc8b560",
+    "camera/1598987815012596.png": "fcc63fe7d7a160c86f30b0bcede701fd0ac817f59596637e659688920683a2c3",
+    "camera/1598987815088821.png": "3132ae0207e32cebe80d9d01b13dc1086046609f761badd581752273269f47ad",
+    "camera/1598987815169384.png": "1814a66df7855d337e6edcf44aa39845c8b1e9e9e688e07517e409d5b4f78990",
+    "camera/1598987815249513.png": "96a7a5c9e9864dc58ba8ff98bcaed06c5b72563801a7946a1e641a7f29c6e558",
+    "camera/1598987815329536.png": "f16372520957ba736749e65628feb886eb834e4ac814c6b68fca8897a22a6831",
+    "camera/1598987815410498.png": "1b292c8f2ac83911b09cf9086a122a046cfc18b7c5d999314eea1c5920856d08",
+    "camera/1598987815491311.png": "c97da126de29d1fd2c9d688fb94e100e027322c4881f16d88d17d395c4389cd8",
+    "camera/1598987815569620.png": "5b6b3192aa1dfb8a7ec00aee74918855c48e53f467ccaf4685d9e599c2b18d1e",
+    "camera/1598987815649702.png": "d7e80950010aab803b5a8dcd18e4f06395bfddb9b29e15337db2d40b49ddd077",
+    "camera/1598987815729461.png": "35e9f66d551210169026de1db5ec307cbe356d53b849d6ecb61366560a1791f8",
+    "camera/1598987815809399.png": "a891b5299be0e975afd4cae15e2bf55935fea2d4a26bd9c45bfd212ed347c2b0",
+    "camera/1598987815889738.png": "d5bbee6f2f5bd57fe79abf29188945d448302a10ebbf6026e0cc923ccb4a78ae",
+    "camera/1598987815969789.png": "a94972b51032d90b36cc326bb9ebc278f05664dc299c77cbe7c9d27f69ea4330",
+    "camera/1598987816050769.png": "6f638317d3f7ce62a74d569286b6cbfd8b9205df7ba73d649f163db48952317f",
+    "camera/1598987816130135.png": "19eb23a1d5dc70385e0b37bb9630b31e85a280f74ddbb4d31a18fcb3cbdd9aab",
+    "camera/1598987816208973.png": "43a4ac92000e63efe6f0d746c8f26ca124769f075bbecf78437d376829637364",
+    "camera/1598987816288774.png": "57b4ece15c1ee350b8b705160117cc1fba899dae9196c91ad9487556064fc06c",
+    "camera/1598987816370336.png": "d396d673861b9a13c161f4277c3754b6bed918a6bdbcce5dafba8d086d2f5f8c",
+    "camera/1598987816450641.png": "40c06de3150da52b20bd6c286af70e4672b7c1ecbead441de0feacbde0721155",
+    "camera/1598987816528458.png": "174d16af730ad908c24abba1fc559431b85e422a8b007a4944c297041f667482",
+    "camera/1598987816609099.png": "ade7fd9a2526368bff91f77815a9a5dc84aa89a5a32cb7061558bbbeb1d92274",
+    "camera/1598987816688673.png": "151f95f80066745c0bb6489cc7a20d36d7419c501e2509bbd2a16530825eb794",
+    "camera/1598987816769742.png": "b01dc5615d4aa8b3aa95b4d2c9fc552464232a1cd2d56d184d99b2c718043722",
+    "camera/1598987816848888.png": "d454d71f80d81e8b1dd7085a5dd8f059062d8923414ecadb1826410c8c5d2e0f",
+    "camera/1598987816931139.png": "d9a0a114cb8659d39fa4d56ff21774755226876c4e46aa54ad1c3199a9b50786",
+    "camera/1598987817015389.png": "59b45e001bf747e5c234a551f697d9f8dfd493fc3cccca19cc52b6f4e50ed78d",
+    "camera/1598987817090233.png": "2ffc83f98af0f1fe2bfce62387ba013b940fc871f7d50d5015caaf72b46c65e7",
+    "camera/1598987817169478.png": "864c14832dd7cd464c622a2f955491b846bfff6d78a85c645b3938ba48d8c8b2",
+    "camera/1598987817248848.png": "61564ac5e08b3ba65cdeb0c1d653fae106a2e1deed5f82939166e86550ce6f5c",
+    "camera/1598987817329822.png": "2c152a78b22dc852234133dc3c61c5f33a3106438b176d64fed23c656cbad367",
+    "camera/1598987817409432.png": "b605aeff8f84b5196c27254dda4e302afb5566cfe8d6586d7341de114b72d5dc",
+    "camera/1598987817492308.png": "250b38f23f160fc0b764b8c2d02cd5be00a9278dac1fdbee3b7753c62c9d52bd",
+    "camera/1598987817576476.png": "e6abf4d66bda8ab95a2c799b7f3e41e1011ad598c4e6e88f7a294f1b95d34be6",
+    "camera/1598987817649743.png": "9e6bed156a8f936f0119dd8556adefa3e8ab184efe75f6b8c9e738208567bd69",
+    "camera/1598987817729669.png": "f5b683a4f5dfc873f64dfdddb540349acc4c699ecd38f4f300e66d200c98db4d",
+    "camera/1598987817814251.png": "cc9fa3b9a1cf077ae4994b312020905e9130465021087c9d677f72fa227fa1e6",
+    "camera/1598987817890480.png": "db4ec1d3d9220ac025640ac155801e52d68864ab1f1ea0dd34842f189bdb3abe",
+    "camera/1598987817974798.png": "792fd60e8792f9e9d6c2f18d0a03bbf9a5961f7eecd70a7ab57bbbbeb9310305",
+    "camera/1598987818048959.png": "e8a4f12f8188cdbc6653c41d0321657cb69f4b028bc868539258464c81bf1c61",
+    "camera/1598989152056413.png": "03d89dd7b5070478b3db1c7e013e1bdc3afc49d1229bab6219f9e74be636e8a6",
+    "camera/1598989152138020.png": "11bffb7d7b9d5cf526c7460b9a7eeea7d8c6fd63a389039f30d3476280258d17",
+    "camera/1598989152216775.png": "bc683f5f441b5e063f188e5b624a75fa52da395a418659d338746a47987aa6b8",
+    "camera/1598989152297198.png": "95a7381fae5b5e8374faba828ecbe443afee011211380c02d3d385fa180720c0",
+    "camera/1598989152377586.png": "54348d1498cc64099861c0a2d240a7fca1e4b231c687df7d98ba094bf6c954cf",
+    "camera/1598989152457846.png": "7d8d7415f6a25fd2331a5663b16b130ba8325b27a2139f3783f7d80735623b8d",
+    "camera/1598989152539445.png": "7afe7ef34607c23d894938d511e62c1455698be133befbe9f18f464d56978d0d",
+    "camera/1598989152617235.png": "454ce735c4c9dc45e6e15ec1bc02c6a1cc0205d84e491e649642e70d05b5c22d",
+    "camera/1598989152697844.png": "a0d4c310feff5e81024f26f4ab1a95711537c8289188a75735fc307f67e2d546",
+    "camera/1598989152777708.png": "cffa5fb1492e6322241583ff784b054171df1b37a4a6240c7ec752bbcc1acb82",
+    "camera/1598989152857366.png": "454aa69cdc6c9440a704000396c7310e9c48e6febdc4525a2fc89bba1c4364d5",
+    "camera/1598989152938324.png": "5f99c500d70930d5cd65b71b02de35c2ef622aeb077588faf75438ff1c80e85b",
+    "camera/1598989153017831.png": "a27b4099fc48fe10db5ac4eb9631c698a7e8890e36e6174a125841eddee34093",
+    "camera/1598989153097358.png": "f442bb330288bc4ec96e761f690a394924f90c8cdde693f161e3cd85e974bb4f",
+    "camera/1598989153177664.png": "69825fb3cf6015496639175c723a79d4a8e69d5f25e8ffade8e9b727971a943b",
+    "camera/1598989153257388.png": "dec1e447e115921ed78f56eee0984999ef3d0639cd5e0c12a9830d419222ce8e",
+    "camera/1598989153337679.png": "be3b18e5abba1d1916f6f071e40c60a00950c69e702df8195e4c28684e44914a",
+    "camera/1598989153418153.png": "dea57ded15548b2ceefff233cedf1258f5590dde9760b0b08cb30b9c9d56a05e",
+    "camera/1598989153497929.png": "4649bb137ee828385f7e7621e799921fbb405a2103fc8a967ef83dbc3d0d66f0",
+    "camera/1598989153577709.png": "e14e269981717024bef0a4a6d6e1e464a07daeefa7c2b05f024ae41138c57a25",
+    "camera/1598989153657674.png": "75d219762f95c5923fdb4804be3c5a93f0ff8c156c9c4288a7a22787023745a6",
+    "camera/1598989153738269.png": "b08ae64009239829169860793ea4da923e467690a3fcbb8d48c81410c95c56a8",
+    "camera/1598989153817533.png": "23163e9e1f30e57d153f7e51e8137f72ee45b96838661324b2f3c43fb1b7f216",
+    "camera/1598989153897761.png": "008e4c83dbfec059338009dc3853b9bdef31a6714eddedf4bf47dfc0a5c8b7bd",
+    "camera/1598989153977708.png": "6613f36d1b0032e6690f4d78119a2b6e6fde98327ebe49ecc502006ec1f5796a",
+    "camera/1598989154057537.png": "1481a50e594e674d4bea1c4eec63ac97528a62007fa03fa22e6ad07b490c8118",
+    "camera/1598989154137194.png": "1e4e48dd15c03ee0edd558b39795b03e2490f6b3912beadf9143918c9b7d5ad8",
+    "camera/1598989154218105.png": "c03b5c540c7149f9c9f6c9f0874af09a82f2ee78b945fa72bb64a4626809ebd5",
+    "camera/1598989154298890.png": "5122b604170ec6cc47d9956bcc73e2572c59b1a2e70b75e3ba7eb26cda019365",
+    "camera/1598989154377802.png": "f0a576b9e3e33f9528d945fb29dab71d360d03eac448390291a15c4f8a51e9b3",
+    "camera/1598989154457886.png": "8dd0d7ec019360ef6156f8c873dcb3db4c5568d7f181eec783659309a272dce1",
+    "camera/1598989154537783.png": "ca8a57528c4948f2e9904e665764a3f175b471bae87f697dc047cb2a0ea7e3fa",
+    "camera/1598989154617436.png": "0987dcf01bd3d67b982c36a8bcffa38835144f9b933414ff6377fb56fd9084b1",
+    "camera/1598989154697548.png": "1f0c02f9065d6e785f3900c71fe82eb00ece4fc4d96e1d8a01012c53527f6787",
+    "camera/1598989154779516.png": "634c77e9025bbc5b8217bf6661939b9a9d14c0f03c182d52e106b40973f06765",
+    "camera/1598989154858243.png": "5d7264fed9570e644343277e83cf87724ae80f00baddf580b94cbc57ae071021",
+    "camera/1598989154937810.png": "9ba412d3581d9b537824c63404f708bd3095725b8bc9ea2e4ae89a1f7e255e5b",
+    "camera/1598989155017896.png": "ca00462985762b943bc40e1d56d1183dc064346e1457ad814f4c2498c2a58a23",
+    "camera/1598989155097558.png": "ed40263a74b0c0759d7ebaab11fb83d4359a5c662b33651956022f0001ad3c4a",
+    "camera/1598989155177799.png": "341ddd91b5775ea9aae59d391a24336f6cb6b0bd64d1a349e003d11a3c09e9a8",
+    "camera/1598989155259813.png": "d243a51f61032b54226554d4c48f6b8e0e8f6d84676ebb2caf36ab4a0ab1dc35",
+    "camera/1598989155337750.png": "6736a33c08f6131ccd74b2426f38d8255284ed1afa7c3593a0f2ba02bb790725",
+    "camera/1598989155417897.png": "f0841a9f84fbea3fe05dfeda7e1ce4d49291acdb41d5876e2b8af41f815a2d09",
+    "camera/1598989155497853.png": "cdc9b891758bfe7f4f6426cb5cd11c3361e581b6c6174dba637f4968db1aed0b",
+    "camera/1598989155577933.png": "4e09d64962bcf12ecdb1da587283a2481c542e6023aec11631d09e2c765e3501",
+    "camera/1598989155657607.png": "2d9097f9ebc7c09bdf12555641300fa348203c07e910bdbd0e2288c1d7f8e787",
+    "camera/1598989155737789.png": "b687601d3a4f28316a8e82ffc2ec4f3f7c81d4af9d97e59b1e6ae047c9b1ec21",
+    "camera/1598989155817303.png": "dfaf6f54c5c25e7b6b7b92c7bcc6b3683572ccf7955f56b0c9ac2775e238722a",
+    "camera/1598989155898018.png": "d0e4323a0746c5a18ffbfac11a7316bc752316b5e529a6d24f87255fb110bab1",
+    "camera/1598989155979205.png": "291d983fd4d1eb8285e137ae27abc19e985bf2bae2a75672fec05ae75d5bd557",
+    "labels_detection/1598987814182693.txt": "9f3e998c76c8892c33f60dee402c61bcbc62f3c0c8c595802de1f97fc39a1808",
+    "labels_detection/1598987814390120.txt": "d15bcf9b57631850cd974124bdb8c3b0ba254aab58fd3831a5ec699734622307",
+    "labels_detection/1598987814597567.txt": "4cc3109883d3c486b772eade01d106f1177591b4fe8aaca367b46f05c0cf0836",
+    "labels_detection/1598987814804943.txt": "0c2f17c3b21366fba5119ff6ec211732f0ed387379284720f4648321b8a618ef",
+    "labels_detection/1598987815012422.txt": "dafdfc752c8d0966948f2379df28032e29be4fee1a9a039c5f31f123a9b71270",
+    "labels_detection/1598987815219767.txt": "84c0b73ac8fd015a006de3e05bfffa76f643edbdcc57598ab38c724d11b8447c",
+    "labels_detection/1598987815427186.txt": "9620e507c0e94e88cabc4aee038acf28ef10bb4024928a5a56c90c346686f99c",
+    "labels_detection/1598987815634534.txt": "ecacae414187ec1140c129658f36449e701bb52a260313ac40148fd4d523dbd4",
+    "labels_detection/1598987815841921.txt": "53e4ed461117d437c69060259bf5e27c830757ecd504f3e560324f77707dcc4a",
+    "labels_detection/1598987816049277.txt": "f6ca965155028fb64121e19221739f58c381110baee165af80154a88898766c0",
+    "labels_detection/1598987816256643.txt": "b04e74fe21e29176ff96b9439a468658a403982b65438165909cea58b1d7fe31",
+    "labels_detection/1598987816464008.txt": "df3e179027bf774caa1b21e5c2adb63124e9fa67da3513580461859c894381ef",
+    "labels_detection/1598987816671444.txt": "307baf3edfc6b9a2e315512bfcabe5dadb2e44688521823698a0772c1480059e",
+    "labels_detection/1598987816878987.txt": "bbc841703df823804c5ce0afac6c150a97b55f80009fa04029c6e0d68739159c",
+    "labels_detection/1598987817086462.txt": "0faefc5a0998c9b80bd87dc022c25244707cb03a3b8d7029c1f337dc6c3e3759",
+    "labels_detection/1598987817293871.txt": "072e4b43d025ca63e967818b773788d9caf4914441fff5909b525ed870fb2d92",
+    "labels_detection/1598987817501292.txt": "473ea5cec1a7761a9ffe59385b00a0afa06cc26b539ded7511e7eb668e612bb3",
+    "labels_detection/1598987817708687.txt": "bf31030c2c62663488240dcfbf59b85028883292930d829682eadcac5d1b36bb",
+    "labels_detection/1598987817916154.txt": "7317d8e8462bbd5702ce921564b5f4e8e2f4b87357ad39caaa4e81db3a0f8c93",
+    "labels_detection/1598989152172269.txt": "58b1b36af0fa601c62a8248a049c5613ecd61a3989faf3c589f4e0a7c6325a8a",
+    "labels_detection/1598989152379785.txt": "9761b64a29fd21f7850522d72a66af5539957c29e67157a587c3c0cc1c8e421f",
+    "labels_detection/1598989152587231.txt": "dd5db341843a88dca922c694d452ce230ab3b4c0549bd19b2d20d0407d33e336",
+    "labels_detection/1598989152794679.txt": "f3c3ca0c3be6f603827ce4262d2e4bc80b8683863fea90957ced03f298ced4d1",
+    "labels_detection/1598989153001977.txt": "4845583d72ad89145b560db1dcde9b03da089cbfda5e50f70b1014399dee5dc7",
+    "labels_detection/1598989153209243.txt": "86a21efc11ada3fd4fea98e59b2b81ee34060995c2d6e7d805fe157283866fcf",
+    "labels_detection/1598989153416529.txt": "3ec788664814246028b965f7bd30c10ee58a1e075896a4832d9cb71e57b85504",
+    "labels_detection/1598989153623789.txt": "4baff4239f67290680ae7dbd8a166f598533e42100dd1f04a58201c805a61cc3",
+    "labels_detection/1598989153831243.txt": "8f454e84f274e3ecd060d90e4ade0c66f79ce53b59189c746da188cedbeac793",
+    "labels_detection/1598989154038682.txt": "fc02c828154213038c6f98ab7fa3df7cf998d29f2dffbbe01a628b7d72c77df4",
+    "labels_detection/1598989154246129.txt": "5b21d143bc7ecb95a2d3376f6ce584e19ab9b93c142b174bb3672290b8d0f152",
+    "labels_detection/1598989154453548.txt": "63b9a0da1a837aa25fe00af944e9dab3c7c7aeb02bc4d3ea74b3144c3b20dc25",
+    "labels_detection/1598989154661003.txt": "3b0a07c0fefa1195d6363cadd7306323112299a2313366f73c54bbbd47605500",
+    "labels_detection/1598989154868446.txt": "2a2e0ed08815b61d19c4e2c1eff6b641fd018fc3848de4eb603b5fdd9dca82c5",
+    "labels_detection/1598989155075891.txt": "0e3f35a6dcf0256d224e845ebe79430e57ac12fe4fbaa7b43bf8f6631b0a86b7",
+    "labels_detection/1598989155283253.txt": "4fd0743b4fad6f77c2f8219cfdb11f026ece33b0a7e3909a2f19212658503ac3",
+    "labels_detection/1598989155490711.txt": "7ae7b438155700073a8833a3568210ca0589dfba233a9b6ccadd817961b99f74",
+    "labels_detection/1598989155698174.txt": "3075f50c678064b41959ee5acea9364630dc6370b14530b6f40d6066e015c85b",
+    "labels_detection/1598989155905635.txt": "d2cf03ba3ae494653bb8e13053c1b7af0856b1657d75c59ce503871e5f112ce7"
+  },
+  "actualCodeHashCount": 38,
+  "allActualCodeHashesCurrent": true,
+  "oldM3RCodeHashCount": 35,
+  "allOldM3RCodeHashesUnchanged": true,
+  "oldM3RScoreSha256": "5e6497dd183a48d4fddcd213f9da7c2b534dde4bb3a339010220183503dc481a",
+  "actualFrames": 100,
+  "nativeGrayPixelHashesVerified": 100,
+  "workingJpegGrayPixelHashesVerified": 100,
+  "candidateControlExposuresVerified": 98,
+  "originalPixelPhotometricChecks": 24783,
+  "candidatePhotometryAndForegroundMasksReproduced": true,
+  "proofContractsValidated": 100,
+  "validationScope": "Frozen per-lane point/population/rival/source/clock/cost contracts plus candidate supplied-pose geometry, scale-veto and own epoch/status. Actual LK/RAFT/ML detection NOT repeated.",
+  "scoreMethod": "Direct frozen legacy score_frame, not new M3U.score; radial labels mapped unchanged; .35IoU/.08margin; unreviewed/unknown separate.",
+  "totals": {
+    "A": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13,
+      "tn": 18,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 2,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 10,
+      "framesAbstained": 100
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13,
+      "tn": 18,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 2,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 10,
+      "framesAbstained": 100
+    }
+  },
+  "clips": [
+    {
+      "id": "boreas-m3u-city",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 3,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 13,
+          "tn": 3,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 2,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        }
+      }
+    },
+    {
+      "id": "boreas-m3u-turn",
+      "lanes": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 15,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 15,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 0,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        }
+      }
+    }
+  ],
+  "cameraStatus": [
+    {
+      "clip": "boreas-m3u-city",
+      "lane": "A",
+      "status": "first-frame",
+      "frames": 1
+    },
+    {
+      "clip": "boreas-m3u-city",
+      "lane": "B",
+      "status": "first-frame",
+      "frames": 1
+    },
+    {
+      "clip": "boreas-m3u-city",
+      "lane": "A",
+      "status": "valid",
+      "frames": 17
+    },
+    {
+      "clip": "boreas-m3u-city",
+      "lane": "B",
+      "status": "insufficient-pixel-camera-evidence",
+      "frames": 48
+    },
+    {
+      "clip": "boreas-m3u-city",
+      "lane": "A",
+      "status": "insufficient-background-agreement",
+      "frames": 32
+    },
+    {
+      "clip": "boreas-m3u-city",
+      "lane": "B",
+      "status": "valid",
+      "frames": 1
+    },
+    {
+      "clip": "boreas-m3u-turn",
+      "lane": "A",
+      "status": "first-frame",
+      "frames": 1
+    },
+    {
+      "clip": "boreas-m3u-turn",
+      "lane": "B",
+      "status": "first-frame",
+      "frames": 1
+    },
+    {
+      "clip": "boreas-m3u-turn",
+      "lane": "A",
+      "status": "valid",
+      "frames": 49
+    },
+    {
+      "clip": "boreas-m3u-turn",
+      "lane": "B",
+      "status": "valid",
+      "frames": 49
+    }
+  ],
+  "candidateModes": [
+    {
+      "clip": "boreas-m3u-city",
+      "lane": "A",
+      "mode": null,
+      "frames": 50
+    },
+    {
+      "clip": "boreas-m3u-city",
+      "lane": "B",
+      "mode": null,
+      "frames": 49
+    },
+    {
+      "clip": "boreas-m3u-city",
+      "lane": "B",
+      "mode": "epipolar-observed-parallax",
+      "frames": 1
+    },
+    {
+      "clip": "boreas-m3u-turn",
+      "lane": "A",
+      "mode": null,
+      "frames": 50
+    },
+    {
+      "clip": "boreas-m3u-turn",
+      "lane": "B",
+      "mode": null,
+      "frames": 1
+    },
+    {
+      "clip": "boreas-m3u-turn",
+      "lane": "B",
+      "mode": "rotation-low-observed-impact",
+      "frames": 49
+    }
+  ],
+  "actualRaftDirections": {
+    "A": 214,
+    "B": 188
+  },
+  "actualRaftDirectionsTotal": 402,
+  "firstPositiveVeto": {
+    "A": {
+      "camera-veto:insufficient-background-agreement": 10,
+      "current-detector-or-handle-criterion-failure": 3
+    },
+    "B": {
+      "camera-veto:insufficient-pixel-camera-evidence": 10,
+      "current-detector-or-handle-criterion-failure": 3
+    }
+  },
+  "posthocCityUnionDiagnostic": {
+    "pairs": 49,
+    "rejected": 48,
+    "rejectedUnionMeetsUnchangedFloors": 12,
+    "rejectedUnionStillFails": 36,
+    "originalSeedCounts": [
+      256
+    ],
+    "medianLkFraction": 0.98828125,
+    "medianPhotometricBackgroundFraction": 0.9609375,
+    "authority": "Posthoc arithmetic only, NOT an approved new camera method, acceptance, warning or TP. No rerun/source/threshold change."
+  },
+  "positiveOpportunityStrata": {
+    "large-baseline": 13
+  },
+  "positiveCheckpoints": [
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 14,
+      "token": "boreas-boreas-m3u-city-1598989153177664",
+      "instance": "cbbff810-c0b1-42ba-97fe-b25bc3b3b45f",
+      "baselineM": 0.28319705517201077,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 14,
+      "token": "boreas-boreas-m3u-city-1598989153177664",
+      "instance": "a8f480e7-4ff5-4402-9a77-688340a43835",
+      "baselineM": 0.28319705517201077,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 22,
+      "token": "boreas-boreas-m3u-city-1598989153817533",
+      "instance": "cbbff810-c0b1-42ba-97fe-b25bc3b3b45f",
+      "baselineM": 0.2689492057723561,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 22,
+      "token": "boreas-boreas-m3u-city-1598989153817533",
+      "instance": "a8f480e7-4ff5-4402-9a77-688340a43835",
+      "baselineM": 0.2689492057723561,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 22,
+      "token": "boreas-boreas-m3u-city-1598989153817533",
+      "instance": "f68fcc60-5fa3-42e5-91fb-fc5239bd67d3",
+      "baselineM": 0.2689492057723561,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 30,
+      "token": "boreas-boreas-m3u-city-1598989154457886",
+      "instance": "cbbff810-c0b1-42ba-97fe-b25bc3b3b45f",
+      "baselineM": 0.2954863598297208,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 30,
+      "token": "boreas-boreas-m3u-city-1598989154457886",
+      "instance": "a8f480e7-4ff5-4402-9a77-688340a43835",
+      "baselineM": 0.2954863598297208,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 30,
+      "token": "boreas-boreas-m3u-city-1598989154457886",
+      "instance": "f68fcc60-5fa3-42e5-91fb-fc5239bd67d3",
+      "baselineM": 0.2954863598297208,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": false,
+          "firstVeto": "current-detector-or-handle-criterion-failure"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": false,
+          "firstVeto": "current-detector-or-handle-criterion-failure"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 38,
+      "token": "boreas-boreas-m3u-city-1598989155097558",
+      "instance": "f68fcc60-5fa3-42e5-91fb-fc5239bd67d3",
+      "baselineM": 0.3223260458051499,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "matched": false,
+          "firstVeto": "current-detector-or-handle-criterion-failure"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": false,
+          "firstVeto": "current-detector-or-handle-criterion-failure"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 38,
+      "token": "boreas-boreas-m3u-city-1598989155097558",
+      "instance": "8cd46abc-516f-48a0-900a-ada192cd5282",
+      "baselineM": 0.3223260458051499,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "matched": false,
+          "firstVeto": "current-detector-or-handle-criterion-failure"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": false,
+          "firstVeto": "current-detector-or-handle-criterion-failure"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 46,
+      "token": "boreas-boreas-m3u-city-1598989155737789",
+      "instance": "f68fcc60-5fa3-42e5-91fb-fc5239bd67d3",
+      "baselineM": 0.33127898860686994,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 46,
+      "token": "boreas-boreas-m3u-city-1598989155737789",
+      "instance": "10121b29-d5ac-4d56-bf96-60e704af1c11",
+      "baselineM": 0.33127898860686994,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 46,
+      "token": "boreas-boreas-m3u-city-1598989155737789",
+      "instance": "8cd46abc-516f-48a0-900a-ada192cd5282",
+      "baselineM": 0.33127898860686994,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    }
+  ],
+  "oneConcordantCheckpoint": [
+    {
+      "clipId": "boreas-m3u-city",
+      "frameIndex": 22,
+      "token": "boreas-boreas-m3u-city-1598989153817533",
+      "instance": "a8f480e7-4ff5-4402-9a77-688340a43835",
+      "baselineM": 0.2689492057723561,
+      "immediatePoseOpportunity": "large-baseline",
+      "lanes": {
+        "A": {
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-background-agreement"
+        },
+        "B": {
+          "cameraStatus": "insufficient-pixel-camera-evidence",
+          "measurementStatus": "insufficient-pixel-camera-evidence",
+          "matched": true,
+          "firstVeto": "camera-veto:insufficient-pixel-camera-evidence"
+        }
+      }
+    }
+  ],
+  "runtime": {
+    "actualWallMs": 91562.74287500128,
+    "requestedOpenCvThreads": 1,
+    "reportedOpenCvThreads": 10,
+    "timingControlled": false
+  },
+  "scopedTestRerun": {
+    "passed": 26,
+    "failed": 0,
+    "seconds": 0.791,
+    "scope": "Same26 authored M3U scenarios independently rerun, not26 additional empirical cases"
+  },
+  "blindReview": {
+    "primarySheetsViewed": 10,
+    "all51CandidatesAccounted": true,
+    "nativeAmbiguityCropsViewed": 4,
+    "secondaryAssignedUnits": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "secondaryAssignedPanelsViewed": 21,
+    "secondaryDecisionPath": "docs/evidence/tip65/m3u-secondary-reviewer-decisions.json",
+    "secondaryDecisionSha256": "7ef7694b55beb3b1cb2ec4bb5b38483d1ed1c37c5dc1cb361895b702014a54d1",
+    "modelOutputsSeenDuringAnnotation": false
+  },
+  "limits": [
+    "All13 primary positives may be outside the small-baseline opportunity stratum; do not generalize absence of recall gain to all pixel-impact geometry.",
+    "Camera availability on negative-only stopped clip is not positive recall evidence. Primary radial targets differ from optical expansion; single concordant checkpoint separately traced, not substitute benchmark.",
+    "B camera is stricter and conditional on static-background/calibration/pose assumptions, with no metadata covariance certification.",
+    "Frozen numeric verification emitted a nonfatal NumPy RuntimeWarning: invalid value encountered in det; all100 contracts passed. No source/receipt was repaired to suppress it.",
+    "No model rerun, threshold/label/source edits, object metres, iPhone, runtime deployment or safety certification."
+  ],
+  "disposition": "NOT READY to promote candidate or claim user-outcome improvement if recall remains unchanged; preserve regressions and abstentions honestly."
+}

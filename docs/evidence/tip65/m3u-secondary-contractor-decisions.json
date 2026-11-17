@@ -1,0 +1,70 @@
+{
+  "inputSha256": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed",
+  "proposalsSha256": "bbb121f7f0b33c5ece2c655f8b0fd28afe634bfa9f6e09557968211a58b4c448",
+  "reviewer": "Contractor agent, native source crops 00 through 06, all three roles personally viewed before model outputs; not a human review",
+  "units": {
+    "boreas-m3u-city-05:3": {
+      "sameIdentity": true, "stableAspect": true,
+      "reason": "Same largely frontal white van, visible full outline in all three exposures; tight bounds annotated in original native pixels.",
+      "roles": {
+        "start": {"visibility": "usable-visible-extent", "box": {"x": 1100, "y": 968, "width": 79, "height": 89}},
+        "mid": {"visibility": "usable-visible-extent", "box": {"x": 1062, "y": 978, "width": 89, "height": 96}},
+        "current": {"visibility": "usable-visible-extent", "box": {"x": 1014, "y": 952, "width": 108, "height": 107}}
+      }
+    },
+    "boreas-m3u-city-05:1": {
+      "sameIdentity": true, "stableAspect": false,
+      "reason": "Mercedes identity is visible, but foreground white SUV hides front-left outline and viewpoint changes. Visible-extent growth cannot be independently established.",
+      "roles": {
+        "start": {"visibility": "occluded", "reason": "White foreground SUV hides part of Mercedes outline."},
+        "mid": {"visibility": "occluded", "reason": "White foreground SUV hides front-left extent."},
+        "current": {"visibility": "occluded", "reason": "Foreground vehicle still overlaps target front-left boundary."}
+      }
+    },
+    "boreas-m3u-city-08:3": {
+      "sameIdentity": true, "stableAspect": true,
+      "reason": "Same frontal white van with unobscured vehicle outline, annotation uses native crop offsets rather than projected cuboid bounds.",
+      "roles": {
+        "start": {"visibility": "usable-visible-extent", "box": {"x": 1035, "y": 970, "width": 103, "height": 105}},
+        "mid": {"visibility": "usable-visible-extent", "box": {"x": 977, "y": 927, "width": 134, "height": 124}},
+        "current": {"visibility": "usable-visible-extent", "box": {"x": 907, "y": 939, "width": 166, "height": 164}}
+      }
+    },
+    "boreas-m3u-city-08:1": {
+      "sameIdentity": true, "stableAspect": false,
+      "reason": "Same Mercedes, partial foreground occlusion and increasing side aspect prevent sustained-extent qualification.",
+      "roles": {
+        "start": {"visibility": "occluded", "reason": "White SUV masks front-left target outline."},
+        "mid": {"visibility": "occluded", "reason": "Front-left boundary remains hidden by white SUV."},
+        "current": {"visibility": "occluded", "reason": "Partial foreground overlap persists."}
+      }
+    },
+    "boreas-m3u-city-08:4": {
+      "sameIdentity": true, "stableAspect": false,
+      "reason": "Same dark-clothed pedestrian is recognizable, but gait changes limb extrema. No stable silhouette extent established from these three frames.",
+      "roles": {
+        "start": {"visibility": "unknown", "reason": "Gait-dependent outer extent, insufficient evidence for a stable-size reference."},
+        "mid": {"visibility": "unknown", "reason": "Changed stride and arm outline; stable extent not established."},
+        "current": {"visibility": "unknown", "reason": "Changed limb pose, no reliable two-leg visible-extent reference."}
+      }
+    },
+    "boreas-m3u-city-11:2": {
+      "sameIdentity": true, "stableAspect": false,
+      "reason": "White van remains identifiable but changes from frontal to increasingly side-on while passing. Do not attribute all bounding-box growth to approach.",
+      "roles": {
+        "start": {"visibility": "usable-visible-extent", "box": {"x": 938, "y": 943, "width": 151, "height": 145}},
+        "mid": {"visibility": "usable-visible-extent", "box": {"x": 839, "y": 952, "width": 204, "height": 193}},
+        "current": {"visibility": "usable-visible-extent", "box": {"x": 640, "y": 921, "width": 337, "height": 293}}
+      }
+    },
+    "boreas-m3u-city-11:1": {
+      "sameIdentity": true, "stableAspect": false,
+      "reason": "Mercedes is identifiable for primary visible-box review, but secondary full extent is occluded then clipped at image edge.",
+      "roles": {
+        "start": {"visibility": "occluded", "reason": "White SUV obscures front-left outline."},
+        "mid": {"visibility": "occluded", "reason": "Foreground overlap prevents full target extent."},
+        "current": {"visibility": "clipped", "reason": "Mercedes front extends outside left source-image boundary."}
+      }
+    }
+  }
+}

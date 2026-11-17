@@ -1,0 +1,41 @@
+{
+  "study": "M3R-independent-blind-2D-review",
+  "candidatesSha256": "1058f18d1a75bd1afd8088d3ee892e3998f0c0ed4b03dba53ab394f2cc360376",
+  "scope": "Independent assistant viewed all15 source-bound review sheets and verified all15 tile SHA256 values before reading Contractor decisions or model outputs. Five original-resolution source crops additionally examined for low-speed pedestrian8dea.",
+  "humanCertification": false,
+  "motionFromStillImages": false,
+  "sourceApproachLabels": "Retained official synchronized3D/pose reference, not independently certified by this image review",
+  "matrixLegend": {"V":"Visually assignable physical target, requires corrected visible2D bounds rather than unadjusted3D projection","U":"Uncertain identity/extent or occlusion; do not count as true negative"},
+  "matrix": {
+    "boreas-m3r-city-05": ["V","V","V","U","U"],
+    "boreas-m3r-city-08": ["V","V","U"],
+    "boreas-m3r-city-11": ["V","V","V","U"],
+    "boreas-m3r-city-14": ["V","V"],
+    "boreas-m3r-city-17": ["V","V","U"],
+    "boreas-m3r-turn-05": ["V","V","V","U"],
+    "boreas-m3r-turn-08": ["V","V","V","V"],
+    "boreas-m3r-turn-11": ["V","U","U","V"],
+    "boreas-m3r-turn-14": ["V","V","V"],
+    "boreas-m3r-turn-17": ["V","V","V"],
+    "boreas-m3r-low-speed-05": ["V","V","V","V","V"],
+    "boreas-m3r-low-speed-08": ["V","V","U","V","U"],
+    "boreas-m3r-low-speed-11": ["V","V","V","V"],
+    "boreas-m3r-low-speed-14": ["V","V","V","V","U","U"],
+    "boreas-m3r-low-speed-17": ["V","V","V","U"]
+  },
+  "totals": {"selected":59,"visibleAssignable":46,"uncertainUnscorable":13},
+  "criticalNotes": [
+    "City92eba projects over foreground sedan rear window in05/08/11/17; do not assign that projection to the foreground car as if it were a second physical object.",
+    "City05person957a projects onto bench/street fixture; no confident separate person visible at reviewed resolution.",
+    "City08/11 b4efe corresponds to the large food-truck-like roadside object, not the neighboring blue SUV. Its original projection needs tightening to the visible truck body; review semantic/source binding carefully.",
+    "Turn05tinyvehicle62a cannot be assigned confidently. Turn11 right-side persons50c/367 overlap in darkness and cannot be separated confidently from these sheets.",
+    "Low08vehicleeb12 projects onto the foreground white van; distinct cross-traffic vehicle is occluded, not a duplicate label for that van.",
+    "Low08vehicle500db is hidden behind the nearer white pickup. Low14/17db866 white commercial van is partly or fully occluded by the streetcar; a projection on the streetcar body is not the van's visible bounds.",
+    "Original-resolution crops show low-speed8dea is one person carrying a backpack and bags, not two people.05/08/11 are assignable;14 is heavily lamp-post occluded;17 retains identifiable upper body but railing obscures lower body, so visible-only bounds are required.",
+    "Low14candidate4fe02 is officially labelled Cyclist, verified in raw source labels. Vehicle-family matching is legitimate, but its reference box must cover the cyclist/bicycle, not the neighboring silver car."
+  ],
+  "retainedNativeCropDirectory": "native/ios/.build-xcode/scene-qa/m3r-qa-gt-crops",
+  "newModelCalls": 0,
+  "productionSourceEdits": [],
+  "limits": "AI visual review is not human certification or dense pixel ground truth. Contractor may conservatively omit additional uncertain targets; disagreements must remain explicit. Later held-out association acceptance must be audited separately from this pre-inference target review."
+}

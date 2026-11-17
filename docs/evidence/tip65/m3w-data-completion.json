@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 1,
+  "study": "M3W-data-completion",
+  "role": "Reference-data Builder verification of root-executed one publication; not independent renderer-author QA or correspondence quality measurement",
+  "status": "complete-data-only-observation-not-run",
+  "planSha256": "234489b87115433d576666d46fcc7d11a0d86ab2880c209980becc416465777e",
+  "supersededProposalSha256": "6fab89bb3b84e737641f5a0c1ebdf09ec1f0fcb7bb8ce3906b10fe60f4fe9a00",
+  "rendererCodeSha256": "2f24e3df36b0af099e4d09b53980d16bc81031d7911289f11bd517f029a43906",
+  "rendererTestSha256": "bd16d26d34f10fb76dbaba9d3a2fc463fcb205455d9ff6f7f4b379b8ba2a8b01",
+  "sourceManifests": [
+    {
+      "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/tum-m3t/input.json",
+      "sha256": "671b2de2c6002715a78162181543d08156c774836a3e5f96dc4cf3fba5de2e9e"
+    },
+    {
+      "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/manifest.json",
+      "sha256": "049adf30ccfa019988fc1bcdaa3a9fcbf461459f3ebb5a52fa4f8198602d0d7f"
+    }
+  ],
+  "textureSources": [
+    {
+      "split": "analysis",
+      "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/tum-m3t-slice/structure_texture_far/rgb/1341839119.689899.png",
+      "sha256": "ce10e650f41ad546c7009e3ecdc7e2cb753521aaef269bef2c9e99657de78738",
+      "bytes": 492657,
+      "sourceFrameId": "structure_texture_far-00"
+    },
+    {
+      "split": "holdout",
+      "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/tum-m3t-slice/nostructure_texture_far/rgb/1341839848.278057.png",
+      "sha256": "a57475d1cac74608baed6dfca61f4140f9b19eedda1ecb1ca5541bde5d1881f1",
+      "bytes": 439971,
+      "sourceFrameId": "nostructure_texture_far-00"
+    }
+  ],
+  "licenses": {
+    "textureAdaptation": {
+      "name": "CC BY 4.0",
+      "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset",
+      "attribution": "J. Sturm, N. Engelhard, F. Endres, W. Burgard, D. Cremers: A Benchmark for the Evaluation of RGB-D SLAM Systems, IROS2012. TUM RGB-D Benchmark, Computer Vision Group, Technical University of Munich.",
+      "scope": "Current official dataset license; data attribution retained. No product safety or camera accuracy warranty."
+    },
+    "externalPlanarReference": {
+      "name": "MIT",
+      "datasetCard": "https://huggingface.co/datasets/vbalnt/hpatches/raw/594f211e80b75081ad84a396c93960c8653235f8/README.md",
+      "officialNotice": "https://raw.githubusercontent.com/hpatches/hpatches-dataset/fd79bca4dc755c9f623a5f129f3452fc663ee305/LICENSE"
+    },
+    "externalAttribution": "HPatches: Vassileios Balntas, Karel Lenc, Andrea Vedaldi, Krystian Mikolajczyk, CVPR2017. Copyright2020 HPatches. Selected original sequences, no endorsement."
+  },
+  "goldManifest": {
+    "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/controls.json",
+    "sha256": "8444f49903373467339a9ab26227c138cc873417c908caad3b6f5b3f12fe24f5"
+  },
+  "rgbOnlyManifest": {
+    "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/rgb-only.json",
+    "sha256": "1c172b672072e08d2d301ce1f857f3319f7a34659ae73062ebf6c15e3c2d2283",
+    "strictGeometryFreeSchemaChecked": true,
+    "authoredPairCount": 12,
+    "externalPairCount": 2
+  },
+  "actualPublication": {
+    "executionActor": "Contractor root; Builder did not rerun",
+    "rootStdoutElapsedSeconds": 2.9097135409974726,
+    "goldExecution": {
+      "renderedImages": 24,
+      "renderedPairs": 12,
+      "learnedModelCalls": 0,
+      "flowDirections": 0,
+      "networkBytes": 0,
+      "elapsedSeconds": 2.9034039999969536,
+      "requestedOpenCvThreads": 1,
+      "observedOpenCvThreads": 10
+    },
+    "assetBytes": 9493684,
+    "assetLimitBytes": 50331648,
+    "preparationLimitSeconds": 120,
+    "failures": 0,
+    "retries": 0
+  },
+  "verification": {
+    "authoredImageCount": 24,
+    "allImageBytesAndNativePngHeaderDimensionsChecked": true,
+    "sourceManifestTextureExternalImageAndHHashesChecked": true,
+    "sourceCodeAndPlanSealsChecked": true,
+    "originalPairsRetained": 12,
+    "analysisPairs": 6,
+    "holdoutPairs": 6,
+    "newDownloads": 0,
+    "flowCalls": 0,
+    "learnedModelCalls": 0,
+    "semanticAnnotations": 0,
+    "testResults": {
+      "authoredStructuralTests": 9,
+      "failed": 0,
+      "seconds": 0.067,
+      "scope": "Tiny fixtures and metadata/code contracts, not actual rendered quality scenarios"
+    }
+  },
+  "images": [
+    {
+      "pairId": "m3w-00",
+      "split": "analysis",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-00-source.png",
+      "bytes": 401808,
+      "sha256": "90d69e058a663d649e4ef36ea5fd368cc9e7fccdc7bd61a2406795d290112612",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-00",
+      "split": "analysis",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-00-target.png",
+      "bytes": 401808,
+      "sha256": "90d69e058a663d649e4ef36ea5fd368cc9e7fccdc7bd61a2406795d290112612",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-01",
+      "split": "analysis",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-01-source.png",
+      "bytes": 401808,
+      "sha256": "90d69e058a663d649e4ef36ea5fd368cc9e7fccdc7bd61a2406795d290112612",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-01",
+      "split": "analysis",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-01-target.png",
+      "bytes": 401703,
+      "sha256": "02fd476decacf41fb43c704991629086a2ad26dda9c98a711539fb56202b3a05",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-02",
+      "split": "analysis",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-02-source.png",
+      "bytes": 401808,
+      "sha256": "90d69e058a663d649e4ef36ea5fd368cc9e7fccdc7bd61a2406795d290112612",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-02",
+      "split": "analysis",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-02-target.png",
+      "bytes": 403474,
+      "sha256": "6fa33a58e9f1f88b12c9ab9ade0ba36888a7f0cfa0cfc4c6f2551cdd2a4203a7",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-03",
+      "split": "analysis",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-03-source.png",
+      "bytes": 401808,
+      "sha256": "90d69e058a663d649e4ef36ea5fd368cc9e7fccdc7bd61a2406795d290112612",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-03",
+      "split": "analysis",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-03-target.png",
+      "bytes": 405069,
+      "sha256": "4a62df2524289194ef9fb95eddbe9f9c689fa35af0657243aa5e4a0273b3a096",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-04",
+      "split": "analysis",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-04-source.png",
+      "bytes": 401808,
+      "sha256": "90d69e058a663d649e4ef36ea5fd368cc9e7fccdc7bd61a2406795d290112612",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-04",
+      "split": "analysis",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-04-target.png",
+      "bytes": 401645,
+      "sha256": "04995cda765b22cf8d41049058cbd008dd0785e4882e24dd767e006db7942efc",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-05",
+      "split": "analysis",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-05-source.png",
+      "bytes": 401808,
+      "sha256": "90d69e058a663d649e4ef36ea5fd368cc9e7fccdc7bd61a2406795d290112612",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-05",
+      "split": "analysis",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-05-target.png",
+      "bytes": 406947,
+      "sha256": "f3bb1b2a4edf4eb648452ed50206ab1e2b8c7765a2526d25603b71d74ad2f746",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-06",
+      "split": "holdout",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-06-source.png",
+      "bytes": 378883,
+      "sha256": "9484135160f546fb4d094a8c7b28830edef68837c0f29fe3726166319140190e",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-06",
+      "split": "holdout",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-06-target.png",
+      "bytes": 378883,
+      "sha256": "9484135160f546fb4d094a8c7b28830edef68837c0f29fe3726166319140190e",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-07",
+      "split": "holdout",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-07-source.png",
+      "bytes": 378883,
+      "sha256": "9484135160f546fb4d094a8c7b28830edef68837c0f29fe3726166319140190e",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-07",
+      "split": "holdout",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-07-target.png",
+      "bytes": 377670,
+      "sha256": "5e4bc279992c0a5f9bc37ba7827781b745e4b5e59a240fdaaa82d327b412dd95",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-08",
+      "split": "holdout",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-08-source.png",
+      "bytes": 378883,
+      "sha256": "9484135160f546fb4d094a8c7b28830edef68837c0f29fe3726166319140190e",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-08",
+      "split": "holdout",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-08-target.png",
+      "bytes": 375185,
+      "sha256": "a291935ee0c84a8e81930e0c7410f3d2ab1a8582abe20cf79fc710b9d29959b2",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-09",
+      "split": "holdout",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-09-source.png",
+      "bytes": 378883,
+      "sha256": "9484135160f546fb4d094a8c7b28830edef68837c0f29fe3726166319140190e",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-09",
+      "split": "holdout",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-09-target.png",
+      "bytes": 374631,
+      "sha256": "82e8d911ecfc5885258d535c00fd40cf7efbf4fc4ffa12c8001ebaf99ef87f85",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-10",
+      "split": "holdout",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-10-source.png",
+      "bytes": 378883,
+      "sha256": "9484135160f546fb4d094a8c7b28830edef68837c0f29fe3726166319140190e",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-10",
+      "split": "holdout",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-10-target.png",
+      "bytes": 377784,
+      "sha256": "817122cdaf0b9b864a9bd4f9405b8ad13348317a85626cad99ec8389f4def88b",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-11",
+      "split": "holdout",
+      "side": "source",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-11-source.png",
+      "bytes": 378883,
+      "sha256": "9484135160f546fb4d094a8c7b28830edef68837c0f29fe3726166319140190e",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "pairId": "m3w-11",
+      "split": "holdout",
+      "side": "target",
+      "path": "native/ios/.build-xcode/scene-qa/m3w-controls-r1/m3w-11-target.png",
+      "bytes": 377300,
+      "sha256": "51ff221c26bb1bc82203c4277f26451411f63b26cb4a7ceda464406365860d6a",
+      "width": 640,
+      "height": 480
+    }
+  ],
+  "externalPairs": [
+    {
+      "id": "i_londonbridge",
+      "imageShape": [
+        979,
+        1478
+      ],
+      "H_1_2": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "authority": "real-images-estimated-planar-homography-not-3D-pose",
+      "old": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/i_londonbridge/1.ppm",
+        "sha256": "3446ea3f8df5e9a77d9631c26a6fc2c4214fc572e3871177d6b806170be49fed",
+        "bytes": 4340902
+      },
+      "new": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/i_londonbridge/2.ppm",
+        "sha256": "a714e00171cfc4ef8a2a0ec19cf3100933f2a6ebd75e8ac7820860e66d93e03d",
+        "bytes": 4340902
+      },
+      "homography": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/i_londonbridge/H_1_2",
+        "sha256": "bf284252c00be268976cb5f85fe21220797083556c200aa90e9f159123e71873",
+        "bytes": 18
+      }
+    },
+    {
+      "id": "v_abstract",
+      "imageShape": [
+        922,
+        1229
+      ],
+      "H_1_2": [
+        [
+          0.7088,
+          -0.010965,
+          -26.07
+        ],
+        [
+          -0.13602,
+          0.83489,
+          103.19
+        ],
+        [
+          -0.00023352,
+          -1.5615e-05,
+          1.0004
+        ]
+      ],
+      "authority": "real-images-estimated-planar-homography-not-3D-pose",
+      "old": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/v_abstract/1.ppm",
+        "sha256": "7bcb997ad6df0043efb92a20d815a9eaf24766515dc4409230ac96477217ee6c",
+        "bytes": 3399430
+      },
+      "new": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/v_abstract/2.ppm",
+        "sha256": "0278abd717b24d784d0f752db823418063c2a068ff56320dd0288fa4c37ba55e",
+        "bytes": 3399430
+      },
+      "homography": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/v_abstract/H_1_2",
+        "sha256": "18b7c4ad2dd77f8ebc0847cf18b6e7b2d15fa4e8fc975a8f3298dac845b5e57a",
+        "bytes": 79
+      }
+    }
+  ],
+  "limits": [
+    "The12 authored pairs use retained real TUM photographs only as textures, not their physical depths/poses. Scene coordinate units are authored, not measured metres.",
+    "Analytic center material geometry is exact by construction, not physical finite-pixel photometric correspondence. Finite7/21pixel footprint mixing and visibility need separate evaluator strata.",
+    "Six analysis and six holdout controls are authored fixed hypotheses, not unseen real videos or independent commercial product evidence.",
+    "HPatches two existing native image pairs have externally estimated planar homographies, no3D pose, real exposure clock or occlusion truth. Report conditional H transfer errors separately.",
+    "No matching or factor-audit observation has run for this data-completion. No natural traffic FP/FN, phone performance, runtime range or safety claim.",
+    "Current source-only plan supersedes preliminary proposal before any actual render; UV scales reduced before outputs, all trajectories unchanged."
+  ],
+  "cleanup": {
+    "scratchProjectCopiesCreated": 0,
+    "newEnvironmentsOrDependencies": 0,
+    "temporaryTestDirectoriesAutoCleaned": true,
+    "retainedArtifacts": "Only requested24PNG+gold/RGB manifests and compact evidence; no source assets deleted."
+  }
+}

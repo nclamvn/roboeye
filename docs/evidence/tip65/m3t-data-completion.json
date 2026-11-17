@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "study": "M3T-TUM-static-controls",
+  "evidenceRole": "Data Builder execution receipt summary, not independent review or camera-quality evidence",
+  "status": "COMPLETE-FIXED-SOURCE-SLICE",
+  "planSha256": "cdf35cbc8c310bc99f5dfb9d2dba3fe5b44064533f01a4ee72b633f7040da02a",
+  "slicePath": "native/ios/.build-xcode/scene-qa/tum-m3t-slice/slice.json",
+  "sliceSha256": "1f175b6835933fb31af828f5f7aabea028660d733b9d4cdfea4c482d338adca9",
+  "manifestPath": "native/ios/.build-xcode/scene-qa/tum-m3t/input.json",
+  "manifestSha256": "671b2de2c6002715a78162181543d08156c774836a3e5f96dc4cf3fba5de2e9e",
+  "codeSha256": {
+    "fetch_assist_scene_m3t_tum.py": "e8fdb46d29b243761866247011bc4175da0eb15ab1a7e329c56753b4ba290ad0",
+    "assist_scene_m3t_tum_import.py": "33113d183ede20967285173b4cd14620a5f65dc1262d712187d137ff21e1b956",
+    "test_assist_scene_m3t_data.py": "19550264fa9753de8abe42ac9b8aef5e55bd5ab7c640dd538578f861e2d64e0e"
+  },
+  "authoredTests": {"passed": 12, "executed": 12, "elapsedSeconds": 0.918, "networkCalls": 0, "learnedModelCalls": 0, "scope": "Synthetic transport/import contract tests; not empirical reference accuracy"},
+  "execution": {
+    "fetchWallSeconds": 73.70812883299368,
+    "firstArchiveWallSeconds": null,
+    "firstArchiveTimingReason": "Only aggregate elapsed time was instrumented; no per-archive elapsed estimate invented",
+    "compressedArchiveBytes": 731814825,
+    "preflightGroundtruthBytes": 322099,
+    "fetchGroundtruthBytes": 322099,
+    "totalDatasetNetworkBytesReceived": 732459023,
+    "networkBudgetBytes": 891289600,
+    "networkRetries": 0,
+    "executionRepairs": 0,
+    "selectedImageBytes": 29813104,
+    "retainedMetadataBytes": 447139,
+    "persistedSelectedAndMetadataBytes": 30260243,
+    "selectedCandidateHardCapBytes": 83886080,
+    "candidatePeakBytes": null,
+    "candidateCapEvidence": "Enforced on each source candidate allocation including prior retained output and metadata; peak not separately recorded",
+    "archivesPersisted": false,
+    "sourcePngFiles": 108,
+    "metadataFiles": 6,
+    "sourceFiles": 114,
+    "learnedModelCalls": 0,
+    "pixelOutcomeSelection": false,
+    "referenceOutcomeSelection": false
+  },
+  "fixedDenominators": {
+    "sequences": 2,
+    "windows": 6,
+    "rgbExposures": 54,
+    "depthExposures": 54,
+    "pairs": 48,
+    "nominal100msPairs": 24,
+    "nominal200msPairs": 24,
+    "minimumActualRgbPairIntervalUs": 67140,
+    "maximumActualRgbPairIntervalUs": 209644,
+    "validIntervalPairs": 48,
+    "rgbDepthAssociations": {"valid": 52, "nearest-too-far": 2},
+    "rgbOwnPose": {"valid": 52, "nearest-pose-exceeds5ms": 2},
+    "depthOwnPose": {"valid": 52, "nearest-pose-exceeds5ms": 2},
+    "missingReferencePolicy": "All fixed frames/pairs retained; no interpolation, threshold change or reselection to remove unavailable sensor evidence"
+  },
+  "archives": [
+    {"sequence": "structure_texture_far", "bytes": 520806553, "sha256": "3f58c707f54c93b68fecd77293630e96a76d7b0f2703eb8ad9cff45ba4bbb81a", "sourceRgbFrames": 938, "sourceDepthFrames": 914, "selectedImageBytes": 16172150, "selectedRgbDepthAssociations": {"valid": 27}},
+    {"sequence": "nostructure_texture_far", "bytes": 211008272, "sha256": "e4a921052d342fd52fac74509bb75f65149acbda3d31b25f36402041625fdba9", "sourceRgbFrames": 465, "sourceDepthFrames": 454, "selectedImageBytes": 13640954, "selectedRgbDepthAssociations": {"valid": 25, "nearest-too-far": 2}}
+  ],
+  "limits": "Source preparation only. Independent QA and actual RGB/depth/mocap correspondence study remain separate. No runtime metres, road recall, mobile realtime, warnings or navigation acceptance; no iPhone, deployment, commit or push. Temporary authored-test directories were automatically removed; no archive or project copy was created."
+}

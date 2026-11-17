@@ -1,0 +1,24 @@
+{
+  "study": "M3Q-road-interruption",
+  "status": "ABORTED-NOT-SCORABLE",
+  "startedUtc": "2026-11-17T08:00:16Z",
+  "terminatedBeforeUtc": "2026-11-17T08:02:20Z",
+  "termination": "Contractor SIGTERM to exact own PID19624; exit143",
+  "reason": "Independent source audit found the SIFT candidate did not explicitly enforce the existing source-patch variance16 quality floor. NCC norm does not imply that per-source floor. Halted before accepting an invalid comparison.",
+  "lastObservedProgress": {"clip":"boreas-m3q-city","frame":30,"actualDirections":24},
+  "actualFinalDirections": null,
+  "counterLimit": "24 is the last printed actual counter, not a certified final count. No completed/prefix inference receipt was recovered after external termination. Do not add24 as an exact total or call this a zero-inference attempt.",
+  "candidateSourceSha256": "da1685866951c448ef776c60f0c36c80c2ea7d79ca43914049828c1525af8805",
+  "runnerSourceSha256": "5d2b1b3f8f6152fad6618cf2c533c03c68ff1026afe59eca3703313552377897",
+  "preservedCandidateSource": "native/ios/.build-xcode/scene-qa/m3q-road-aborted-source/assist_scene_m3q_correspondence.py",
+  "repair": "One floor-restoration execution repair: actual7x7 fractional-center sourcePatchVariance>=16, failed seeds retained UNKNOWN in original denominator, plus proof validation and negative/tampering tests. No quality threshold loosened, GT changed or method chosen from road outcome scores.",
+  "repairedCandidateSha256": "d4bad07de81cd754d6fcd9f9da78c0a2342c665e5c3644983d6bf203c97b84ce",
+  "repairedRunnerSha256": "a11eaf9c1b261b99a69c74c4cc19ebf3361166d9f8fb6040810782aa3b9340ce",
+  "r1ExternalTimeoutSeconds": 1650,
+  "roadExecutionBudget": "Initial execution<124s plus R1<=1650s, within1800s total. Implementation/review time is separate.",
+  "cleanup": {
+    "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/codex-tmp-m3q-20261117-tqyu9jin",
+    "removed": "50 generated frame-000.jpg staging files, approximately7.8MiB, validated no symlinks or non-JPEG files",
+    "recoverability": "Regenerable from retained original PNG/pose inputs; no original source, user data or model removed"
+  }
+}

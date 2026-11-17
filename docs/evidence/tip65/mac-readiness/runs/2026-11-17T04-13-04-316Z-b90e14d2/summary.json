@@ -1,0 +1,2108 @@
+{
+  "schemaVersion": 1,
+  "checkedUtc": "2026-11-17T04:13:04.330Z",
+  "scope": "Mac-local structural regression; not model/phone/user acceptance",
+  "technicalPass": false,
+  "physicalDeviceAcceptance": "NOT_TESTED",
+  "phoneDetectionRecall": "NOT_TESTED",
+  "phoneLatency": "NOT_TESTED",
+  "physicalRangeAccuracy": "NOT_TESTED",
+  "thermal30Minutes": "NOT_TESTED",
+  "voiceOverPhysicalAcceptance": "NOT_TESTED",
+  "releaseApproved": false,
+  "requested": {
+    "typecheck": true,
+    "nativeBuild": false
+  },
+  "platform": "darwin",
+  "architecture": "arm64",
+  "node": "v24.14.1",
+  "networkActions": [],
+  "dependencyInstalls": [],
+  "deviceMutations": [],
+  "extraBuildDirectories": [],
+  "stages": [
+    {
+      "name": "readiness-policy",
+      "command": "/usr/local/bin/node",
+      "args": [
+        "--test",
+        "tests/test-qa-assist-scene-mac.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "elapsedMs": 1728,
+      "outputBytes": 1375,
+      "status": "PASS",
+      "summary": {
+        "total": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "python-scene",
+      "command": "native/ios/.build-xcode/scene-qa/venv/bin/python",
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_assist_scene_*.py"
+      ],
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "timedOut": true,
+      "cancelled": false,
+      "outputExceeded": false,
+      "elapsedMs": 180034,
+      "outputBytes": 363,
+      "status": "FAIL"
+    }
+  ],
+  "diskFreeKiB": 64327528,
+  "swiftVersion": "Apple Swift version 6.4.2 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)\nTarget: arm64-apple-macosx27.2.0\n\nswift-driver version: 1.168.6",
+  "opencvVersion": "5.0.0",
+  "semantics": {
+    "status": "NOT_READY",
+    "basis": "Recorded M3D/M3E/M3F/M3G/M3H/M3I/M3J/M3K/M3L/M3M/M3N/M3O/M3P trials are references, not product acceptance or evidence of universal approach recall. No semantic trial is rerun or recertified by this structural gate; recorded evidence is not current inference. M3P selected-pair identity/component results are not warning recall, and incomplete Spring retrieval is not completed ground-truth evaluation.",
+    "evidence": [
+      {
+        "path": "docs/evidence/tip65/m3d-boreas-2d-score.json",
+        "sha256": "abd0dac05e8f2f255e9ecff555b5d830dfb0c2ab974cdd2390a57ec6356489bb",
+        "inputSha256": "bb6ae7284c7ed86a57b25f80382dfbd19735e1e95820033271091ddb3ed38fe1",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 30,
+            "tn": 1,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 20,
+            "scoredKeyframes": 15,
+            "framesAbstained": 128
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 32,
+            "tn": 1,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 15,
+            "framesAbstained": 150
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 32,
+            "tn": 1,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 15,
+            "framesAbstained": 150
+          },
+          "D": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 25,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 15,
+            "framesAbstained": 150
+          },
+          "S": {
+            "tp": 7,
+            "fp": 0,
+            "fn": 18,
+            "tn": 8,
+            "unmatchedReports": 9,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 1,
+            "unknownTargets": 6,
+            "unscoredFrameReports": 135,
+            "scoredKeyframes": 15,
+            "framesAbstained": 41
+          }
+        },
+        "review": {
+          "method": "agent visual review of source RGB proposals, blind to model outputs",
+          "scope": "checkpoint boxes only; no human QA; no exhaustive per-frame labels"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3e-boreas-score.json",
+        "sha256": "b7889450a6dbfd2b0ae845ffde92378297fad93402ffdfddbf3b744c42b51337",
+        "inputSha256": "b26871bf543042b143572f3fc46bc3fd8eb677ab7a48f87f24a0badb377f43cb",
+        "unit": "target-frame",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "detail": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "relink": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "S": {
+            "tp": 5,
+            "fp": 0,
+            "fn": 4,
+            "tn": 8,
+            "unmatchedReports": 9,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 125,
+            "scoredKeyframes": 10,
+            "framesAbstained": 40
+          }
+        },
+        "review": {
+          "method": "Direct agent visual review of 10 RGB checkpoints blinded to YOLO and lane predictions; adjusted visible edges, rejected ambiguous or heavily occluded candidates.",
+          "scope": "Not exhaustive per frame, not human review. Independent pose and LiDAR set relative-approach state, not the visual reviewer."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3e-controls-score.json",
+        "sha256": "f222a0d5fc77d89435f506ded429307b76f97db33ae49c383370c3f583b28892",
+        "inputSha256": "2779f2a80f7d046f83b6fe490be3157699123eb12a44f0d4ed43a87fbfd29238",
+        "unit": "target-frame",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "detail": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "relink": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 2,
+            "fp": 23,
+            "fn": 11,
+            "tn": 121,
+            "unmatchedReports": 31,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 66,
+            "allSceneFalseNotices": 54
+          }
+        },
+        "review": {
+          "method": "authored transformations of pinned Boreas RGB; ROI manually checked before replay",
+          "sourceSha256": "3e45e456ce59de59bc748a7f5cc5bb93cbf97d8ecd8e70a60ef2a1a2d73945e5",
+          "scope": "not independently recorded or human certified"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3f-boreas-score.json",
+        "sha256": "6836b5f7c158d9a6a7b1d14378d928083397ee93d22f058a0c7f6ba8786b745f",
+        "inputSha256": "3d27e148f26a7f33178a871b174e1172450095afda9552a77c312aa22f587234",
+        "unit": "target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 15,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 15,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          }
+        },
+        "review": {
+          "method": "Agent visual review of ten RGB checkpoints before running any M3F inference. Corrected visible boxes; omitted ambiguous or heavily occluded objects.",
+          "scope": "Checkpoints only, not exhaustive per-frame labels, no human QA. Pose/LiDAR defines relative approach outside runtime. Heldout windows selected by source camera cadence and speed only."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3f-controls-score.json",
+        "sha256": "91c920d178b64869cb38912c994b24055eeb862431276aaac79b5185c9ffa8cc",
+        "inputSha256": "2779f2a80f7d046f83b6fe490be3157699123eb12a44f0d4ed43a87fbfd29238",
+        "unit": "target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 144,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          }
+        },
+        "review": {
+          "method": "authored transformations of pinned Boreas RGB; ROI manually checked before replay",
+          "sourceSha256": "3e45e456ce59de59bc748a7f5cc5bb93cbf97d8ecd8e70a60ef2a1a2d73945e5",
+          "scope": "not independently recorded or human certified"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3g-boreas-score.json",
+        "sha256": "957a4b1c0cffab090c67daae858499f75f12bba828751cd10aaf31cfe234b0f2",
+        "inputSha256": "797580e2a324dd70f6b4902153b56528a97d20c7d36f3cf69226c77b46354f0e",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 2,
+            "scoredKeyframes": 10,
+            "framesAbstained": 98
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 4,
+            "scoredKeyframes": 10,
+            "framesAbstained": 96
+          },
+          "D": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 9,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 5,
+            "scoredKeyframes": 10,
+            "framesAbstained": 95
+          },
+          "E": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 8,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "S": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 4,
+            "tn": 8,
+            "unmatchedReports": 6,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 93,
+            "scoredKeyframes": 10,
+            "framesAbstained": 33
+          }
+        },
+        "review": {
+          "method": "Assistant visual review of all ten fixed checkpoint tiles, blind to M3G detector/candidate outputs. Visible 2D extents corrected from projected 3D boxes. Not independent human semantic adjudication.",
+          "limits": "Selected targets only; not exhaustive scene annotation. Low-speed clip includes acceleration, crossing and overtaking. Dark/occluded riders and ambiguous projected targets explicitly omitted before inference; those omissions do not establish absence or safety.",
+          "omissions": {
+            "boreas-m3g-low-speed-05/2": "Mostly occluded behind orange lead vehicle; projected box includes a different visible surface.",
+            "boreas-m3g-low-speed-05/5": "Dark rider region, identity/visible person extent not reliably separable at review resolution.",
+            "boreas-m3g-low-speed-08/4": "Same dark rider region not reliably separable.",
+            "boreas-m3g-low-speed-11/3": "Rider region occluded by foreground SUV.",
+            "boreas-m3g-low-speed-14/4": "Rider region partially occluded; not reliably separable.",
+            "boreas-m3g-low-speed-17/3": "Projected rider region fully occluded by foreground vehicle.",
+            "boreas-m3g-low-speed-17/4": "Projected vehicle and adjacent pedestrian overlap; vehicle identity not visually secure.",
+            "boreas-m3g-low-speed-17/5": "Pedestrian partly occluded in dark overlapping region; extent not secure."
+          }
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3g-controls-score.json",
+        "sha256": "970d29a63dc22102c9f2c0677aa8591493777df3b59b4fad8cc12249ac85bacb",
+        "unit": "authored target-frame, not independent episodes",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fn": 30,
+            "fp": 0,
+            "tn": 200,
+            "unmatchedReports": 0,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 4,
+            "fn": 26,
+            "fp": 0,
+            "tn": 200,
+            "unmatchedReports": 29,
+            "allSceneFalseNotices": 0
+          },
+          "C": {
+            "tp": 4,
+            "fn": 26,
+            "fp": 0,
+            "tn": 200,
+            "unmatchedReports": 2,
+            "allSceneFalseNotices": 0
+          },
+          "D": {
+            "tp": 4,
+            "fn": 26,
+            "fp": 0,
+            "tn": 200,
+            "unmatchedReports": 26,
+            "allSceneFalseNotices": 0
+          },
+          "E": {
+            "tp": 4,
+            "fn": 26,
+            "fp": 0,
+            "tn": 200,
+            "unmatchedReports": 18,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 2,
+            "fn": 28,
+            "fp": 4,
+            "tn": 196,
+            "unmatchedReports": 80,
+            "allSceneFalseNotices": 53
+          }
+        },
+        "review": {
+          "method": "Fixed real-photo ROI and authored transformations before inference; no human physical review",
+          "scope": "120 transformed frames from one photo; six scenarios, not 120 independent trials"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3h-boreas-score.json",
+        "sha256": "ccf95b8d1e5ba60da59f13ae22a005a1381be2b081f48bed751056cd5b9de00a",
+        "inputSha256": "9bce2cb8eec27f4b029e8b747e09fa541efe719e535227e71aacb0e0ad919c4a",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "tn": 3,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 3,
+            "scoredKeyframes": 10,
+            "framesAbstained": 97
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "tn": 3,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 4,
+            "scoredKeyframes": 10,
+            "framesAbstained": 96
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "tn": 3,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "S": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 17,
+            "tn": 3,
+            "unmatchedReports": 11,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 141,
+            "scoredKeyframes": 10,
+            "framesAbstained": 33
+          }
+        },
+        "review": {
+          "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles before any M3H detector/approach inference. Corrected projected boxes to visible target extents; no candidate omitted.",
+          "scope": "Selected target-checkpoints only, not exhaustive labels or human certification. Cyclist vehicle boxes cover visible rider/bicycle aggregate; person targets cover visible person. Partly truncated/overlapping vehicles and dark people are retained as hard cases. Physical approach labels remain unchanged.",
+          "omissions": "none",
+          "selection": "Two source intervals fixed solely from pose/cadence metadata; not overlapping M3C-G. Same Boreas recording, not cross-domain validation."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3h-controls-score.json",
+        "sha256": "9331b5ee0d2a5c91a38a905ac46288d95820ea08b0419e45aed831b912e94048",
+        "inputSha256": "44ca3e1ba976b5c210ec2bd78e3a679c311a49171070a9fed9c749bd213261b7",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 18,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 63,
+            "allSceneFalseNotices": 18
+          }
+        },
+        "review": {
+          "kind": "assistant-authored-single-real-photo-camera-transforms",
+          "sourceInputSha256": "9bce2cb8eec27f4b029e8b747e09fa541efe719e535227e71aacb0e0ad919c4a",
+          "sourceSha256": "a6bf1854195fa1aaba76b54abfcfffc844b92113c66319c90736d3c8059910d4",
+          "sourceToken": "boreas-boreas-m3h-urban-1598989109090500",
+          "generatorSha256": "828f915bb562822f00c5119fe9b02285d7006f8c09650332e1592b65584df354",
+          "geometryHelperSha256": "5aa1c65c99b48f5cf6b0c42e447802ca967cf2fdb3d6f39506fa563f1800430b",
+          "scope": "All scene objects are frozen; only authored camera rotation or unreported digital zoom changes pixels. Not independent field clips or human certification.",
+          "intrinsics": "synthetic 1240-pixel K",
+          "distanceGroundTruth": "not supplied"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3i-development-score.json",
+        "sha256": "e5fc5d1d2284d4027db871a768963c0863dbf46558e9632c6e05e06a397306f6",
+        "inputSha256": "9bce2cb8eec27f4b029e8b747e09fa541efe719e535227e71aacb0e0ad919c4a",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "tn": 3,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 4,
+            "scoredKeyframes": 10,
+            "framesAbstained": 96
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "tn": 3,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 6,
+            "scoredKeyframes": 10,
+            "framesAbstained": 95
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "tn": 3,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 1,
+            "scoredKeyframes": 10,
+            "framesAbstained": 99
+          },
+          "S": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 17,
+            "tn": 3,
+            "unmatchedReports": 11,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 141,
+            "scoredKeyframes": 10,
+            "framesAbstained": 33
+          }
+        },
+        "review": {
+          "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles before any M3H detector/approach inference. Corrected projected boxes to visible target extents; no candidate omitted.",
+          "scope": "Selected target-checkpoints only, not exhaustive labels or human certification. Cyclist vehicle boxes cover visible rider/bicycle aggregate; person targets cover visible person. Partly truncated/overlapping vehicles and dark people are retained as hard cases. Physical approach labels remain unchanged.",
+          "omissions": "none",
+          "selection": "Two source intervals fixed solely from pose/cadence metadata; not overlapping M3C-G. Same Boreas recording, not cross-domain validation."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3i-boreas-score.json",
+        "sha256": "7f132db8564a7f03818f8f1595bab4b8e9bd3d5f00161c37e9d637d09d040423",
+        "inputSha256": "67d0b9841623f3f177f8a2bb6e8ee95d701f7d81b7b19e2353643073d39397dd",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 29,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 29,
+            "scoredKeyframes": 10,
+            "framesAbstained": 71
+          },
+          "B": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 31,
+            "tn": 2,
+            "unmatchedReports": 2,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 39,
+            "scoredKeyframes": 10,
+            "framesAbstained": 71
+          },
+          "C": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 31,
+            "tn": 2,
+            "unmatchedReports": 1,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 15,
+            "scoredKeyframes": 10,
+            "framesAbstained": 85
+          },
+          "S": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 22,
+            "tn": 2,
+            "unmatchedReports": 6,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 130,
+            "scoredKeyframes": 10,
+            "framesAbstained": 8
+          }
+        },
+        "review": {
+          "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles before any M3I detector or approach inference. Corrected projected boxes to visible target extents, independently of detector output.",
+          "scope": "Selected target-checkpoints only, not exhaustive labels, independent human adjudication or physical safety certification. Dark, small, partially occluded and truncated targets retained where a distinct visible target is identifiable. Cyclist vehicle targets cover the visible rider/bicycle aggregate; person targets cover the visible person. Physical approach labels unchanged.",
+          "omissions": {
+            "boreas-m3i-urban-05.2": "Behind the oncoming vehicle, insufficient independently identifiable visible extent to assign a reliable 2D box.",
+            "boreas-m3i-following-14.3": "Dark far-right projected person cannot be distinguished reliably from plants/occluding structures in this review tile.",
+            "boreas-m3i-following-14.5": "Second vehicle is obscured by the foreground oncoming vehicle; no reliable independent visible 2D extent."
+          },
+          "selection": "Two source intervals fixed from pose/cadence metadata before RGB inspection, disjoint from M3C-H. Same Boreas recording, not cross-domain. Omissions are review uncertainty, not model successes; all candidates and omission reasons preserved."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3i-controls-score.json",
+        "sha256": "e16f290ecb8b291e4297a1f57081e7f1bea88a0d0fa61af2849f51793ceab460",
+        "inputSha256": "20c8d7d818a424d23d436b88466814f38a4f4572504f444f42f93145de5098ad",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 28,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 62,
+            "allSceneFalseNotices": 28
+          }
+        },
+        "review": {
+          "kind": "assistant-authored-single-real-photo-camera-transforms",
+          "sourceInputSha256": "67d0b9841623f3f177f8a2bb6e8ee95d701f7d81b7b19e2353643073d39397dd",
+          "sourceSha256": "4fd627d6451b8bd8d0371ecb672b916e46879b5de7a4adb67b0df642b4faeee9",
+          "sourceToken": "boreas-boreas-m3i-urban-1598988939064200",
+          "generatorSha256": "828f915bb562822f00c5119fe9b02285d7006f8c09650332e1592b65584df354",
+          "geometryHelperSha256": "5aa1c65c99b48f5cf6b0c42e447802ca967cf2fdb3d6f39506fa563f1800430b",
+          "scope": "All scene objects are frozen; only authored camera rotation or unreported digital zoom changes pixels. Not independent field clips or human certification.",
+          "intrinsics": "synthetic 1240-pixel K",
+          "distanceGroundTruth": "not supplied"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3j-development-score.json",
+        "sha256": "b63892cad223960faf650c7e808680580e1a4e5e11519d3141988e96a816ac28",
+        "inputSha256": "67d0b9841623f3f177f8a2bb6e8ee95d701f7d81b7b19e2353643073d39397dd",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 29,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 29,
+            "scoredKeyframes": 10,
+            "framesAbstained": 71
+          },
+          "B": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 29,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 35,
+            "scoredKeyframes": 10,
+            "framesAbstained": 67
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 32,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 4,
+            "scoredKeyframes": 10,
+            "framesAbstained": 96
+          },
+          "D": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 32,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 5,
+            "scoredKeyframes": 10,
+            "framesAbstained": 96
+          },
+          "S": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 22,
+            "tn": 2,
+            "unmatchedReports": 6,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 130,
+            "scoredKeyframes": 10,
+            "framesAbstained": 8
+          }
+        },
+        "review": {
+          "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles before any M3I detector or approach inference. Corrected projected boxes to visible target extents, independently of detector output.",
+          "scope": "Selected target-checkpoints only, not exhaustive labels, independent human adjudication or physical safety certification. Dark, small, partially occluded and truncated targets retained where a distinct visible target is identifiable. Cyclist vehicle targets cover the visible rider/bicycle aggregate; person targets cover the visible person. Physical approach labels unchanged.",
+          "omissions": {
+            "boreas-m3i-urban-05.2": "Behind the oncoming vehicle, insufficient independently identifiable visible extent to assign a reliable 2D box.",
+            "boreas-m3i-following-14.3": "Dark far-right projected person cannot be distinguished reliably from plants/occluding structures in this review tile.",
+            "boreas-m3i-following-14.5": "Second vehicle is obscured by the foreground oncoming vehicle; no reliable independent visible 2D extent."
+          },
+          "selection": "Two source intervals fixed from pose/cadence metadata before RGB inspection, disjoint from M3C-H. Same Boreas recording, not cross-domain. Omissions are review uncertainty, not model successes; all candidates and omission reasons preserved."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3j-boreas-score.json",
+        "sha256": "0d4b5c49fba70eaa5248aedacedf89c0d268b850d63f0e19a7fb90b032da3b94",
+        "inputSha256": "c16b667ee8fd61ffa30ae2e15effe613235c1c6741b3954bf5d8959d29e6d151",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "tn": 2,
+            "unmatchedReports": 2,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 13,
+            "scoredKeyframes": 10,
+            "framesAbstained": 85
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "tn": 2,
+            "unmatchedReports": 2,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 13,
+            "scoredKeyframes": 10,
+            "framesAbstained": 85
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "D": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "S": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 20,
+            "tn": 2,
+            "unmatchedReports": 8,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 92,
+            "scoredKeyframes": 10,
+            "framesAbstained": 43
+          }
+        },
+        "review": {
+          "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles before any new M3J model inference, correcting projected boxes to visible target extents without detector predictions.",
+          "scope": "Selected target-checkpoints only; not exhaustive labels or independent human certification. Dark, small, crowded, partly occluded and sensor-truncated targets retained where a distinct visible extent can be assigned. Source Cyclist is vehicle family: its box covers visible rider/bicycle aggregate; person boxes cover the visible person. Physical approach labels unchanged. Parked objects approached by the ego camera remain positive relative-approach references.",
+          "omissions": {
+            "boreas-m3j-following-17.6": "The projected distant vehicle falls behind the foreground SUV; no reliable independent visible extent can be assigned in the review tile. Original negative candidate retained in candidates.json, not counted as successful abstention."
+          },
+          "selection": "Two source intervals fixed from pose/cadence metadata before RGB inspection; disjoint from M3C-I but adjacent within the same recording, not cross-domain. No candidate removed or relabelled after inference."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3j-controls-score.json",
+        "sha256": "67aa7453f4a2c02516ad84ba6bd4d9bb01f9c5a7cbdaf771bb47a9e486bbffa2",
+        "inputSha256": "0224638ea5cc5fc2008ad3e59cda3a6bd719ad51ad6e5c03e928b0953b5d7ecb",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "D": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 16,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 67,
+            "allSceneFalseNotices": 16
+          }
+        },
+        "review": {
+          "kind": "assistant-authored-single-real-photo-camera-transforms",
+          "sourceInputSha256": "c16b667ee8fd61ffa30ae2e15effe613235c1c6741b3954bf5d8959d29e6d151",
+          "sourceSha256": "570254249bbce8d82dc55649eb31f0efb965e05e7bf9944b87e7ef29fcc986e5",
+          "sourceToken": "boreas-boreas-m3j-urban-1598988945065241",
+          "generatorSha256": "828f915bb562822f00c5119fe9b02285d7006f8c09650332e1592b65584df354",
+          "geometryHelperSha256": "5aa1c65c99b48f5cf6b0c42e447802ca967cf2fdb3d6f39506fa563f1800430b",
+          "scope": "All scene objects are frozen; only authored camera rotation or unreported digital zoom changes pixels. Not independent field clips or human certification.",
+          "intrinsics": "synthetic 1240-pixel K",
+          "distanceGroundTruth": "not supplied"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3k-development-score.json",
+        "sha256": "6afddce6734b9416023b47956d54010e585cf892f685aeac1ca9b206b6837c79",
+        "inputSha256": "c16b667ee8fd61ffa30ae2e15effe613235c1c6741b3954bf5d8959d29e6d151",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "tn": 2,
+            "unmatchedReports": 2,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 13,
+            "scoredKeyframes": 10,
+            "framesAbstained": 85
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "tn": 2,
+            "unmatchedReports": 5,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 42,
+            "scoredKeyframes": 10,
+            "framesAbstained": 63
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "tn": 2,
+            "unmatchedReports": 1,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 12,
+            "scoredKeyframes": 10,
+            "framesAbstained": 89
+          },
+          "D": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "tn": 2,
+            "unmatchedReports": 4,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 40,
+            "scoredKeyframes": 10,
+            "framesAbstained": 64
+          },
+          "S": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 20,
+            "tn": 2,
+            "unmatchedReports": 8,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 92,
+            "scoredKeyframes": 10,
+            "framesAbstained": 43
+          }
+        },
+        "review": {
+          "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles before any new M3J model inference, correcting projected boxes to visible target extents without detector predictions.",
+          "scope": "Selected target-checkpoints only; not exhaustive labels or independent human certification. Dark, small, crowded, partly occluded and sensor-truncated targets retained where a distinct visible extent can be assigned. Source Cyclist is vehicle family: its box covers visible rider/bicycle aggregate; person boxes cover the visible person. Physical approach labels unchanged. Parked objects approached by the ego camera remain positive relative-approach references.",
+          "omissions": {
+            "boreas-m3j-following-17.6": "The projected distant vehicle falls behind the foreground SUV; no reliable independent visible extent can be assigned in the review tile. Original negative candidate retained in candidates.json, not counted as successful abstention."
+          },
+          "selection": "Two source intervals fixed from pose/cadence metadata before RGB inspection; disjoint from M3C-I but adjacent within the same recording, not cross-domain. No candidate removed or relabelled after inference."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3k-boreas-score.json",
+        "sha256": "228e03f2b6ea7c97817919cb1a73c9230a41995443de0f16ae6a324dd4c34c76",
+        "inputSha256": "7b6508c348920c1105438994e30779e087c777fcd599885e1c518e8a7be3bbe7",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 23,
+            "tn": 1,
+            "unmatchedReports": 1,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 13,
+            "scoredKeyframes": 10,
+            "framesAbstained": 86
+          },
+          "B": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 22,
+            "tn": 1,
+            "unmatchedReports": 3,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 33,
+            "scoredKeyframes": 10,
+            "framesAbstained": 72
+          },
+          "C": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 21,
+            "tn": 1,
+            "unmatchedReports": 1,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 21,
+            "scoredKeyframes": 10,
+            "framesAbstained": 78
+          },
+          "D": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 21,
+            "tn": 1,
+            "unmatchedReports": 5,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 38,
+            "scoredKeyframes": 10,
+            "framesAbstained": 70
+          },
+          "S": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 16,
+            "tn": 1,
+            "unmatchedReports": 8,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 1,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 137,
+            "scoredKeyframes": 10,
+            "framesAbstained": 14
+          }
+        },
+        "review": {
+          "method": "Contractor assistant visually inspected all ten fixed RGB checkpoint tiles before any M3K inference, adjusting projected boxes to visible extents without model predictions.",
+          "scope": "Selected target-checkpoints, not exhaustive labels or independent human certification. Small, dark, crowded and partly truncated objects retained when a visible extent can be assigned. Physical approach labels unchanged; motion is relative to the camera, not a claim that the object itself is moving.",
+          "omissions": {
+            "boreas-m3k-urban-17.3": "Distant vehicle is occluded behind foreground car; cannot assign an independent visible extent. Original unknown candidate preserved in candidates.json; omission is not successful abstention."
+          },
+          "selection": "Two intervals selected by pose/cadence metadata before RGB inspection, disjoint from previous study intervals but adjacent in the same recording; not an independent cross-domain population. Labels frozen before development replay."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3k-controls-score.json",
+        "sha256": "32a5ebe1ad5aebd44dcbf559a144e0693db60fca3db28bb76a657e595473310f",
+        "inputSha256": "67e1597c302edac8144fbc543512784d103c30fc28bbb0379a1484f7b51a7468",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "D": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 45,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 52,
+            "allSceneFalseNotices": 45
+          }
+        },
+        "review": {
+          "kind": "assistant-authored-single-real-photo-camera-transforms",
+          "sourceInputSha256": "7b6508c348920c1105438994e30779e087c777fcd599885e1c518e8a7be3bbe7",
+          "sourceSha256": "ea2b91020610102fe8a3cbb8093cc1159e196d381deb384674cfa4cbb50e1af9",
+          "sourceToken": "boreas-boreas-m3k-urban-1598989115091434",
+          "generatorSha256": "828f915bb562822f00c5119fe9b02285d7006f8c09650332e1592b65584df354",
+          "geometryHelperSha256": "5aa1c65c99b48f5cf6b0c42e447802ca967cf2fdb3d6f39506fa563f1800430b",
+          "scope": "All scene objects are frozen; only authored camera rotation or unreported digital zoom changes pixels. Not independent field clips or human certification.",
+          "intrinsics": "synthetic 1240-pixel K",
+          "distanceGroundTruth": "not supplied"
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3l-development-score.json",
+        "sha256": "f2d1ac37243c4f3b7eaa8d03618978678eb279f84b6a5919436513119b0a2ba5",
+        "inputSha256": "7b6508c348920c1105438994e30779e087c777fcd599885e1c518e8a7be3bbe7",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 23,
+            "tn": 1,
+            "unmatchedReports": 1,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 13,
+            "scoredKeyframes": 10,
+            "framesAbstained": 86
+          },
+          "B": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 21,
+            "tn": 1,
+            "unmatchedReports": 1,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 21,
+            "scoredKeyframes": 10,
+            "framesAbstained": 78
+          },
+          "C": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 23,
+            "tn": 1,
+            "unmatchedReports": 1,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 4,
+            "scoredKeyframes": 10,
+            "framesAbstained": 95
+          },
+          "S": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 16,
+            "tn": 1,
+            "unmatchedReports": 8,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 1,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 137,
+            "scoredKeyframes": 10,
+            "framesAbstained": 14
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3l-boreas-score.json",
+        "sha256": "a6e2f45fe748fe3eceec92e9823587845416550e01b70f31d410fe27f80a5c0e",
+        "inputSha256": "c08ee5c9b42dd9bb1befc1325987e615107577635447c74045302d2823afecd4",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 9,
+            "tn": 4,
+            "unmatchedReports": 6,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 2,
+            "unscoredFrameReports": 37,
+            "scoredKeyframes": 10,
+            "framesAbstained": 73
+          },
+          "B": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 9,
+            "tn": 4,
+            "unmatchedReports": 4,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 2,
+            "unscoredFrameReports": 35,
+            "scoredKeyframes": 10,
+            "framesAbstained": 74
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 4,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 2,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "S": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 2,
+            "tn": 3,
+            "unmatchedReports": 24,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 2,
+            "unscoredFrameReports": 300,
+            "scoredKeyframes": 10,
+            "framesAbstained": 8
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3l-controls-score.json",
+        "sha256": "d5a89a1500f4f7f70537b66386c99b1f050d19c4a12dd20e1437f4675af91eab",
+        "inputSha256": "77fb3c85b86ec2cec87deffbd1568355f72cee13f5a86faaee3110036a25b966",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 44,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 60,
+            "allSceneFalseNotices": 44
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3m-development-score.json",
+        "sha256": "c7997bed928cde789302163b6026044c33db3ef864f5898347eab2298fe987a0",
+        "inputSha256": "c08ee5c9b42dd9bb1befc1325987e615107577635447c74045302d2823afecd4",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 9,
+            "tn": 4,
+            "unmatchedReports": 6,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 2,
+            "unscoredFrameReports": 37,
+            "scoredKeyframes": 10,
+            "framesAbstained": 73
+          },
+          "B": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 9,
+            "tn": 4,
+            "unmatchedReports": 4,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 2,
+            "unscoredFrameReports": 35,
+            "scoredKeyframes": 10,
+            "framesAbstained": 74
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 13,
+            "tn": 4,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 2,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "S": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 2,
+            "tn": 3,
+            "unmatchedReports": 24,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 2,
+            "unscoredFrameReports": 300,
+            "scoredKeyframes": 10,
+            "framesAbstained": 8
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3m-boreas-score.json",
+        "sha256": "bed5cb3d23ec3d874280be5ba9830e810f7450c2a7ae7c35d31a144b4a829087",
+        "inputSha256": "be77119bb740204ccc5d2e020deae1b3409b577155cfd749452775e83c352b05",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 15,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 7,
+            "scoredKeyframes": 10,
+            "framesAbstained": 93
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 15,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 6,
+            "scoredKeyframes": 10,
+            "framesAbstained": 94
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 10,
+            "tn": 15,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "S": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1,
+            "tn": 14,
+            "unmatchedReports": 14,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 5,
+            "unscoredFrameReports": 181,
+            "scoredKeyframes": 10,
+            "framesAbstained": 13
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3m-controls-score.json",
+        "sha256": "456a95aa04c0b95a03ee91101c44e8ad86cfa32be439a52799b08737714f7ffd",
+        "inputSha256": "8690f1886e2c485f3662675926e61a93b10cc23688d135b73acac629525c887c",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 48,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 59,
+            "allSceneFalseNotices": 48
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3n-development-score.json",
+        "status": "UNAVAILABLE",
+        "reason": "ENOENT"
+      },
+      {
+        "path": "docs/evidence/tip65/m3n-boreas-score.json",
+        "sha256": "51bf99bb5b3fbdf79c6eb2bcfa52d57f256c7e128c3d99462f38ed31da3cf6d3",
+        "inputSha256": "2c359c6296bcd191277a881280aa105044ff937cf189d2fe4ec61252bb75c8d5",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 17,
+            "tn": 6,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 17,
+            "tn": 6,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 17,
+            "tn": 6,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "S": {
+            "tp": 7,
+            "fp": 1,
+            "fn": 10,
+            "tn": 5,
+            "unmatchedReports": 11,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 138,
+            "scoredKeyframes": 10,
+            "framesAbstained": 24
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3n-controls-score.json",
+        "sha256": "95e8c2dc1a01f1c6510c8957c34979c308069158852751d4a5b979eff943832a",
+        "inputSha256": "1bbcb254691b611abd3ddeba1c8621764fd21ca7b8015db03e4f47e66f448f64",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 74,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 58,
+            "allSceneFalseNotices": 74
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3o-m3n-diagnosis.json",
+        "sha256": "cf023f731c0ba5885482f85a8f3935837a55e986b40613eeac045113c2c985b5",
+        "inputSha256": "2c359c6296bcd191277a881280aa105044ff937cf189d2fe4ec61252bb75c8d5",
+        "unit": null,
+        "totals": null,
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3o-boreas-score.json",
+        "sha256": "d236aa1cab0ff72ac8ba02dce580d49e37e90a46f4e5a71400f9b4ef2c3d2fd9",
+        "inputSha256": "c52fcbe8c886ac9bbb07bf4c27ef30d594fbb3d1f07e49a336322a9205ca8b0e",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 19,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 19,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 19,
+            "tn": 2,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 10,
+            "framesAbstained": 100
+          },
+          "S": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 10,
+            "tn": 2,
+            "unmatchedReports": 7,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 3,
+            "unscoredFrameReports": 128,
+            "scoredKeyframes": 10,
+            "framesAbstained": 21
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3o-controls-score.json",
+        "sha256": "878b32e578590e550ad9294570a2ad02cf75bde25011dd79b73fc02ed0e5e9f5",
+        "inputSha256": "1b3d9807434248145d0a83d8f938f6b42f5fd55dd0c8de5f9aac5c704e58b3db",
+        "unit": "reviewed target-keyframe",
+        "totals": {
+          "A": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "B": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "C": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 0,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 80,
+            "allSceneFalseNotices": 0
+          },
+          "S": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "tn": 0,
+            "unmatchedReports": 49,
+            "ambiguousReports": 0,
+            "unknownTargetReports": 0,
+            "unknownTargets": 0,
+            "unscoredFrameReports": 0,
+            "scoredKeyframes": 80,
+            "framesAbstained": 58,
+            "allSceneFalseNotices": 49
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3p-identity-reviewed.json",
+        "sha256": "91f40f039f035c1e386700c7301ee25367a8f7799a535e0f15797305f9b8f55d",
+        "unit": null,
+        "totals": null,
+        "review": {
+          "kind": "root-assistant-visual-review-of-all12-bound-source-current-sheets",
+          "scope": "16 distinct selected source hypotheses, not all candidates, not human identity certification; no labels enter inference.",
+          "uncertainty": "Dark sidewalk person identity retained unknown, not forced same/different. Current GT identifies the intended object, source boxes remain hypotheses.",
+          "provenance": "Boreas CC BY4.0, ASRL/UTIAS/University of Toronto and coauthors; derived posthoc visual annotations."
+        }
+      },
+      {
+        "path": "docs/evidence/tip65/m3p-real-pair-score.json",
+        "sha256": "92b4df0c9733c0338564f2df7c08d785597bdb435f89c86c20364970b86a7e76",
+        "unit": "selected source/current box hypothesis, not independent objects or warning recall",
+        "totals": {
+          "A": {
+            "sameUnits": 11,
+            "sameUnsupported": 9,
+            "differentUnits": 3,
+            "differentUnsupported": 3,
+            "sameSupported": 2,
+            "unknownUnits": 2,
+            "unknownUnsupported": 2
+          },
+          "B": {
+            "sameUnits": 11,
+            "sameUnsupported": 10,
+            "differentUnits": 3,
+            "differentUnsupported": 3,
+            "sameSupported": 1,
+            "unknownUnits": 2,
+            "unknownUnsupported": 2
+          },
+          "C": {
+            "sameUnits": 11,
+            "sameUnsupported": 9,
+            "differentUnits": 3,
+            "differentUnsupported": 3,
+            "sameSupported": 2,
+            "unknownUnits": 2,
+            "unknownUnsupported": 2
+          }
+        },
+        "review": null
+      },
+      {
+        "path": "docs/evidence/tip65/m3p-spring-fetch-incomplete.json",
+        "sha256": "c59c384e62b45f59da21e9fa5c4fc7a90d2f3abb3bc705ee620bc123670b5338",
+        "unit": null,
+        "totals": null,
+        "review": null
+      }
+    ]
+  },
+  "sourceBefore": {
+    "sha256": "e6b37160e158129a89afcb73f040fadd3b657deedf3653a9b7abdbcca19b49ac",
+    "fileCount": 160
+  },
+  "failure": "python-scene: subprocess failed, cancelled, timed out or exceeded output budget.",
+  "finishedUtc": "2026-11-17T04:16:27.980Z"
+}

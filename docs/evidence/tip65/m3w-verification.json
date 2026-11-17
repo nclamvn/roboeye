@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "milestone": "TIP-65-M3W",
+  "date": "2026-11-17",
+  "role": "Contractor closeout after data Builder, method Builder and independent Reviewer",
+  "implementationStatus": "COMPLETED_WITH_SCOPED_DIAGNOSTIC_EVIDENCE",
+  "overallProductStatus": "NOT_READY",
+  "physicalBoreasRootCause": "NOT_ISOLATED",
+  "runtimePromotion": false,
+  "bindings": {
+    "docs/TIP-65-M3W-MAC.md": "f05e1e22d0fa770b354961b26e3b8052905d8fc7ce737b8fec02367f54895c27",
+    "docs/evidence/tip65/m3w-plan-frozen.md": "07ad8880854f5a5392a4de5840500d53b8b72f61afd72636823edd27ec970569",
+    "docs/evidence/tip65/m3w-preflight.json": "41f96ab291b29fd022569d70d907965db2ffe227467671de332061c23ab5d89e",
+    "docs/evidence/tip65/m3w-data-plan.json": "234489b87115433d576666d46fcc7d11a0d86ab2880c209980becc416465777e",
+    "docs/evidence/tip65/m3w-data-plan-proposal.json": "6fab89bb3b84e737641f5a0c1ebdf09ec1f0fcb7bb8ce3906b10fe60f4fe9a00",
+    "docs/evidence/tip65/m3w-data-completion.json": "beea06d510f1ac08d1721ba2813abe828df387b5ee879d9cdc15e593b850d386",
+    "docs/evidence/tip65/m3w-rgb-observations-r1.json": "445b0b902d0aa28625602150f40c952623b2c7cab47a6824188d9c12720e99fb",
+    "docs/evidence/tip65/m3w-factor-evaluation-r1.json": "2aca43f19d7d5f8b8a377479f1d822b5e027d0214f60a432e63758d76d9360bb",
+    "docs/evidence/tip65/m3w-method-diagnosis.json": "10c1fa8f6d4f495e54c077072293988ad3b67d8d9bb18a827a535878dd36073b",
+    "docs/evidence/tip65/m3w-independent-verification.json": "b50e69ae72182d86c21d74c6606deac9c27ca0d0151a0c0b92e98ceb6e53ffd3",
+    "docs/evidence/tip65/m3w-independent-boundary-sensitivity.json": "daa9be8065fa4685f2dff9992484c124840026009369d457de291f526b3ef57b",
+    "docs/evidence/tip65/mac-readiness/runs/2026-11-17T13-15-42-156Z-63f8f24a/summary.json": "c5fa4f11c8da0f2ced8ad540485026108159a64c9c71d9361af0d743546e9294",
+    "scripts/assist_scene_m3w_controls.py": "2f24e3df36b0af099e4d09b53980d16bc81031d7911289f11bd517f029a43906",
+    "scripts/assist_scene_m3w_factor_audit.py": "2c5590ed56526bc34b84d4866318808778fe525e227c8705581e362c6f90bbe2",
+    "tests/test_assist_scene_m3w_controls.py": "bd16d26d34f10fb76dbaba9d3a2fc463fcb205455d9ff6f7f4b379b8ba2a8b01",
+    "tests/test_assist_scene_m3w_factor_audit.py": "94074445714c7f4910c7981b68ef330b5734ca4b498dd81e0825d4af008631dd",
+    "native/ios/.build-xcode/scene-qa/m3w-controls-r1/controls.json": "8444f49903373467339a9ab26227c138cc873417c908caad3b6f5b3f12fe24f5",
+    "native/ios/.build-xcode/scene-qa/m3w-controls-r1/rgb-only.json": "1c172b672072e08d2d301ce1f857f3319f7a34659ae73062ebf6c15e3c2d2283",
+    "docs/evidence/tip65/m3v-cached-m3u-score.json": "843a3f46592af86a62d5415bb895986d1841a4a08723e1520ea6f8ca5b1b8734"
+  },
+  "requirements": {
+    "morePrecisePixelPoseReference": "IMPLEMENTED for explicitly authored rendered controls only; no new physical exact-reference dataset",
+    "separateCalibrationSynchronizationCorrespondence": "PARTIAL: controlled factor/observability checks and correspondence failures measured; physical cause remains unresolved",
+    "falseAlarmsAndMisses": "MEASURED as component correspondences, not new traffic warnings",
+    "noThresholdRelaxation": "VERIFIED",
+    "noObjectMetres": "VERIFIED: scene/camera coordinates are authored input, no inferred object ranges",
+    "macOnly": "VERIFIED, no phone",
+    "usefulTrafficRecallRepair": "NOT ACHIEVED"
+  },
+  "data": {
+    "authoredPairs": 12,
+    "analysis": 6,
+    "holdout": 6,
+    "authoredPngFiles": 24,
+    "uniqueAuthoredImageHashes": 12,
+    "textureSources": 2,
+    "externalRealPairs": 2,
+    "externalAuthority": "Existing HPatches estimated planar H, no exact physical matching/pose/time/occlusion truth",
+    "assetBytes": 9493684,
+    "sourceChoiceChangesAfterRendering": 0
+  },
+  "execution": {
+    "preparationRuns": 1,
+    "preparationSeconds": 2.9097135409974726,
+    "observationRuns": 1,
+    "observationMs": 872.9724169970723,
+    "evaluationRuns": 1,
+    "evaluationMs": 1712.4715839963756,
+    "executionRepairs": 0,
+    "actualLkDirections": 28,
+    "observerGoldOpens": 0,
+    "actualLearnedModelCalls": 0,
+    "networkDatasetBytes": 0,
+    "geometricGateEvaluations": 140,
+    "similarityFitAttempts": 135,
+    "opencvThreadsRequested": 1,
+    "opencvThreadsReported": 10,
+    "performanceControlled": false,
+    "notEndToEndRuntimeOrPhoneFps": true
+  },
+  "primaryConditionalAuthoredResult": {
+    "unit": "source-selected material correspondence on authored image pairs",
+    "originalSeeds": 3072,
+    "visibleReferences": 2767,
+    "mutuallyExclusiveLedger": {
+      "acceptedRight": 2262,
+      "acceptedWrongVisible": 72,
+      "rejectedVisible": 433,
+      "acceptedKnownUnmatchable": 66,
+      "rejectedKnownUnmatchable": 239
+    },
+    "correspondenceRetrieval": {
+      "tp": 2262,
+      "fp": 138,
+      "fn": 505,
+      "tn": 239
+    },
+    "countingNote": "A wrong accepted visible endpoint is both a false match and a missed correct match; confusion counts are not a binary partition of original N."
+  },
+  "independentBoundarySensitivity": {
+    "authority": "Post-trial descriptive numerical robustness view, not relabeling or a new preregistered primary score",
+    "screen": "128 machine-epsilon-scaled coordinate envelope, not a certified floating/physical interval",
+    "originalSeeds": 3072,
+    "centerTouchingBoundary": 12,
+    "referenceStatusDifferencesAcrossEquivalentAlgebra": 4,
+    "patch7BoundaryTouch": 42,
+    "patch21BoundaryTouch": 48,
+    "patchVerdictDifferences": 0,
+    "primaryReceiptsRetained": true,
+    "descriptiveView": {
+      "tp": 2260,
+      "fp": 130,
+      "fn": 497,
+      "tn": 239,
+      "unknown": 12
+    },
+    "singleLevelInterior21View": {
+      "points": 1680,
+      "tp": 1455,
+      "fp": 3,
+      "fn": 225
+    },
+    "notFullLkPyramidCertificate": true
+  },
+  "fastPanFinding": {
+    "originalSelectedSeeds": 512,
+    "originalVisibleReferences": 371,
+    "tp": 32,
+    "fp": 8,
+    "fn": 339,
+    "tn": 141,
+    "centerClearView": {
+      "visible": 369,
+      "tp": 32,
+      "fn": 337,
+      "unknown": 2
+    },
+    "singleLevel21MaterialInterior": {
+      "points": 226,
+      "tp": 13,
+      "fp": 3,
+      "fn": 213
+    },
+    "knownDisplacementMedianPx": "about94",
+    "causalLimit": "Large-displacement authored stress; not isolated from texture sampling, pyramid capture range or occlusion. The gap remains after enumerated boundary exclusions."
+  },
+  "geometryAndFactors": {
+    "nominalVisibleNonstationaryEndpointMaximumDualPx": 1.7582315599003318e-13,
+    "nominalOracleQualified": 3,
+    "nominalMeasuredQualified": 8,
+    "oracleRejections": 9,
+    "oracleRejectionCause": "All9 have less than180/256 pure7px eligible controls; oracle mask differs from measured FB/NCC, so not proof of wrong pose or LK superiority.",
+    "modePartitionIssue": "Two accelerating cases split R/E114/44 and60/109; no union or floor change implemented.",
+    "knownUnidentifiableStrata": "Stationary/lateral K invariants; stationary/lateral/body-twist timing invariance",
+    "clock40ms": "Hard timestamp rejection, not image-based synchronization diagnosis",
+    "clock10ms": "One nominal-qualified informative case accepts-10ms and rejects+10ms; no offset selected",
+    "calibration": "Same informative case accepts fixedfx*1.05/cx+8; compatibility does not prove calibration correct",
+    "wrongAlongEpiline": "All10 arms lack180eligible points aftershift; zeroqualified is underpowered, not disambiguation success"
+  },
+  "externalRealReference": {
+    "iLondonbridge": {
+      "conditionalRight": 0,
+      "conditionalWrongAccepted": 222,
+      "identityH": true,
+      "observedMedianDisplacement": [
+        0.61309814453125,
+        3.76336669921875
+      ],
+      "meaning": "Matcher/reference alignment unresolved. Historical RAFT/RootSIFT also disagree; no H was fitted/replaced."
+    },
+    "vAbstract": {
+      "conditionalRight": 22,
+      "conditionalWrongAccepted": 7,
+      "conditionalFn": 222
+    },
+    "notPooledWithAuthored": true
+  },
+  "traffic": {
+    "source": "Unchanged original M3U receipt/truth and byte-identical cached score; not a new inference A/B",
+    "bothLanes": {
+      "tp": 0,
+      "fn": 13,
+      "fp": 0,
+      "tn": 18,
+      "unknown": 2
+    },
+    "warningImprovementMeasured": false
+  },
+  "verification": {
+    "independentlyRecomputedRawStatusCycles": 3584,
+    "photometricPairs": 3299,
+    "oracleCenterAndFootprintPoints": 3072,
+    "geometricGateArrays": 140,
+    "wrongEndpointPointControls": 3180,
+    "reviewerNewFlowOrModels": 0,
+    "oldM3UCodePinsUnchanged": 38,
+    "oldM3RCodePinsUnchanged": 35,
+    "structuralQa": {
+      "python": 711,
+      "swift": 121,
+      "node": 14,
+      "typeScript": "PASS",
+      "scoped28TestsIncludedNotAddedAgain": true,
+      "sourceFingerprint": {
+        "sha256": "9564df3ac6662418a595566fae102175d3810cf1de341b81e272282c37f98554",
+        "fileCount": 205
+      }
+    },
+    "gitDiffCheck": "PASS",
+    "preexistingTrackedChanges": "Preserved13files/288insertions/30deletions",
+    "directLlmAgentOrHumanBaseline": "NOT MEASURED, no superiority or exact-human-label claim"
+  },
+  "hygiene": {
+    "newDependencies": 0,
+    "newModels": 0,
+    "newExtraBuildDirs": 0,
+    "newOutsideProjectCopies": 0,
+    "remainingNamedTaskScratchDirs": 0,
+    "materialDeletions": 0,
+    "diskFreeGiBAtCloseout": 31
+  },
+  "disposition": {
+    "done": "Higher-precision authored factor controls, raw proof and independently audited matching bottleneck",
+    "notDone": "No physical K/time correction, improved traffic A/B, mobile acceptance or commercial readiness",
+    "next": "Stop guessing K/time or adding diagnostic layers. Test one better large-displacement/occlusion correspondence method with fresh frozen controls and independent dense-flow data when available; keep thresholds, original denominators and all evidence channels separate."
+  }
+}

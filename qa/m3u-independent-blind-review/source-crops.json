@@ -1,0 +1,50 @@
+[
+  {
+    "path": "/Users/os/Documents/Codex/roboeye/qa/m3u-independent-blind-review/boreas-m3u-turn-05-right-shadow.png",
+    "sha256": "a8d80498c3cba2e5b0a21c430e2037ecae3108145223bac8444b84bde06ce440",
+    "sourceSha256": "96a7a5c9e9864dc58ba8ff98bcaed06c5b72563801a7946a1e641a7f29c6e558",
+    "token": "boreas-boreas-m3u-turn-1598987815249513",
+    "nativeCrop": [
+      1581,
+      969,
+      1963,
+      1250
+    ]
+  },
+  {
+    "path": "/Users/os/Documents/Codex/roboeye/qa/m3u-independent-blind-review/boreas-m3u-turn-05-distant-left.png",
+    "sha256": "449107673b1739483c4490be65738d419e280a7cf10f2c6f8e7d59fbd45eae81",
+    "sourceSha256": "96a7a5c9e9864dc58ba8ff98bcaed06c5b72563801a7946a1e641a7f29c6e558",
+    "token": "boreas-boreas-m3u-turn-1598987815249513",
+    "nativeCrop": [
+      727,
+      982,
+      1033,
+      1135
+    ]
+  },
+  {
+    "path": "/Users/os/Documents/Codex/roboeye/qa/m3u-independent-blind-review/boreas-m3u-turn-05-behind-suv.png",
+    "sha256": "1af41ba2d7609fe46c8a823041a46a106ef80f3bdb4e1af03736a64882155f8c",
+    "sourceSha256": "96a7a5c9e9864dc58ba8ff98bcaed06c5b72563801a7946a1e641a7f29c6e558",
+    "token": "boreas-boreas-m3u-turn-1598987815249513",
+    "nativeCrop": [
+      1071,
+      944,
+      1441,
+      1122
+    ]
+  },
+  {
+    "path": "/Users/os/Documents/Codex/roboeye/qa/m3u-independent-blind-review/boreas-m3u-city-08-far-behind-sedan.png",
+    "sha256": "58b04275c9c710c978801499029bb490ba193950b1caec9b3988413357d80142",
+    "sourceSha256": "23163e9e1f30e57d153f7e51e8137f72ee45b96838661324b2f3c43fb1b7f216",
+    "token": "boreas-boreas-m3u-city-1598989153817533",
+    "nativeCrop": [
+      1046,
+      893,
+      1364,
+      1097
+    ]
+  }
+]

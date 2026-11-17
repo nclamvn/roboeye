@@ -1,0 +1,694 @@
+{
+  "schemaVersion": 1,
+  "study": "M3U-secondary-visible-extent",
+  "policy": {
+    "unit": "selected radial-positive target checkpoint",
+    "maxPositives": 24,
+    "sourceRule": "exact frozen trend start/mid/end; each leg>=300ms, total<=950ms",
+    "deltaNativePixels": "max(3,.03*minimum tight-box side)",
+    "opticalRule": "both leg lower>0 concordant; ANY leg upper<0 contrary to sustained two-leg expansion; else unknown",
+    "heuristicNotConfidenceInterval": true,
+    "changesRadialTruth": false,
+    "materialPointTruth": false,
+    "modelCalls": 0
+  },
+  "proposalsSha256": "bbb121f7f0b33c5ece2c655f8b0fd28afe634bfa9f6e09557968211a58b4c448",
+  "decisionsSha256": "155468642aad3fbddae25029086fe0d0f6f3c32539ec9d4bbdb66a1934a69572",
+  "inputSha256": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed",
+  "sourceCodeSha256": "92e01667c328e42372b7bb09cea407133cfe86393e8824a33531e27795bb31a6",
+  "rows": [
+    {
+      "key": "boreas-m3u-city-05:3",
+      "instance": "a8f480e7-4ff5-4402-9a77-688340a43835",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": true,
+        "reason": "Same largely frontal white van, visible full outline in all three exposures; tight bounds annotated in original native pixels.",
+        "roles": {
+          "start": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1100,
+              "y": 968,
+              "width": 79,
+              "height": 89
+            }
+          },
+          "mid": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1062,
+              "y": 978,
+              "width": 89,
+              "height": 96
+            }
+          },
+          "current": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1014,
+              "y": 952,
+              "width": 108,
+              "height": 107
+            }
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "legs": [
+          {
+            "status": "bounded-visible-extent-heuristic",
+            "sourceArea": {
+              "status": "bounded-visible-extent-heuristic",
+              "lowerAreaPx2": 6068.736902580131,
+              "upperAreaPx2": 8087.976880676171,
+              "deltaNativePixels": 3.0
+            },
+            "currentArea": {
+              "status": "bounded-visible-extent-heuristic",
+              "lowerAreaPx2": 7470.0,
+              "upperAreaPx2": 9690.0,
+              "deltaNativePixels": 3.0
+            },
+            "lowerLogLinearExtentRatio": -0.03974181204853773,
+            "upperLogLinearExtentRatio": 0.2339719655108688,
+            "rotationHomography": [
+              [
+                1.0060891086215287,
+                0.008267875285058268,
+                -26.75222187800955
+              ],
+              [
+                -0.0003078944830568145,
+                1.0023567753653064,
+                -6.937683032996802
+              ],
+              [
+                4.9842005333985466e-06,
+                2.2966500135059826e-06,
+                0.9914600750656483
+              ]
+            ]
+          },
+          {
+            "status": "bounded-visible-extent-heuristic",
+            "sourceArea": {
+              "status": "bounded-visible-extent-heuristic",
+              "lowerAreaPx2": 7488.269751280895,
+              "upperAreaPx2": 9713.70042827737,
+              "deltaNativePixels": 3.0
+            },
+            "currentArea": {
+              "status": "bounded-visible-extent-heuristic",
+              "lowerAreaPx2": 10216.916399999871,
+              "upperAreaPx2": 12977.51640000008,
+              "deltaNativePixels": 3.21
+            },
+            "lowerLogLinearExtentRatio": 0.025253756429675627,
+            "upperLogLinearExtentRatio": 0.2749402947205467,
+            "rotationHomography": [
+              [
+                1.0074065230380618,
+                -0.03354394700914684,
+                11.654844061081576
+              ],
+              [
+                0.030427818962386378,
+                0.9914612753112256,
+                -12.141692793414222
+              ],
+              [
+                6.288498366447875e-06,
+                -7.910842056408024e-06,
+                1.0003445072985149
+              ]
+            ]
+          }
+        ],
+        "scope": "Visible box extent after pose rotation compensation only; contrary does not mean object moving away"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-05:1",
+      "instance": "cbbff810-c0b1-42ba-97fe-b25bc3b3b45f",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Mercedes identity is visible, but foreground white SUV hides front-left outline and viewpoint changes. Visible-extent growth cannot be independently established.",
+        "roles": {
+          "start": {
+            "visibility": "occluded",
+            "reason": "White foreground SUV hides part of Mercedes outline."
+          },
+          "mid": {
+            "visibility": "occluded",
+            "reason": "White foreground SUV hides front-left extent."
+          },
+          "current": {
+            "visibility": "occluded",
+            "reason": "Foreground vehicle still overlaps target front-left boundary."
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-08:3",
+      "instance": "a8f480e7-4ff5-4402-9a77-688340a43835",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": true,
+        "reason": "Same frontal white van with unobscured vehicle outline, annotation uses native crop offsets rather than projected cuboid bounds.",
+        "roles": {
+          "start": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1035,
+              "y": 970,
+              "width": 103,
+              "height": 105
+            }
+          },
+          "mid": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 977,
+              "y": 927,
+              "width": 134,
+              "height": 124
+            }
+          },
+          "current": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 907,
+              "y": 939,
+              "width": 166,
+              "height": 164
+            }
+          }
+        }
+      },
+      "result": {
+        "status": "concordant",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "legs": [
+          {
+            "status": "bounded-visible-extent-heuristic",
+            "sourceArea": {
+              "status": "bounded-visible-extent-heuristic",
+              "lowerAreaPx2": 9589.96400734008,
+              "upperAreaPx2": 12166.816451377876,
+              "deltaNativePixels": 3.09
+            },
+            "currentArea": {
+              "status": "bounded-visible-extent-heuristic",
+              "lowerAreaPx2": 14751.833599999896,
+              "upperAreaPx2": 18590.873600000166,
+              "deltaNativePixels": 3.7199999999999998
+            },
+            "lowerLogLinearExtentRatio": 0.09632755200371973,
+            "upperLogLinearExtentRatio": 0.3309768289464241,
+            "rotationHomography": [
+              [
+                1.0057516817286516,
+                -0.0340901745325559,
+                17.14361003590284
+              ],
+              [
+                0.020215216139167092,
+                0.9836474504268158,
+                24.57253137980024
+              ],
+              [
+                4.79070987394021e-06,
+                -1.5442345070077644e-05,
+                1.0098124755685236
+              ]
+            ]
+          },
+          {
+            "status": "bounded-visible-extent-heuristic",
+            "sourceArea": {
+              "status": "bounded-visible-extent-heuristic",
+              "lowerAreaPx2": 14846.11897764547,
+              "upperAreaPx2": 18709.702748281066,
+              "deltaNativePixels": 3.7199999999999998
+            },
+            "currentArea": {
+              "status": "bounded-visible-extent-heuristic",
+              "lowerAreaPx2": 24073.62560000003,
+              "upperAreaPx2": 30568.02560000005,
+              "deltaNativePixels": 4.92
+            },
+            "lowerLogLinearExtentRatio": 0.1260373074734594,
+            "upperLogLinearExtentRatio": 0.36110803241838196,
+            "rotationHomography": [
+              [
+                1.0090385578604448,
+                0.009372852195414751,
+                -36.75433642492908
+              ],
+              [
+                0.012495118918741204,
+                1.0119488988041503,
+                -52.99174855645617
+              ],
+              [
+                7.40549037105954e-06,
+                1.1697159908075801e-05,
+                0.9785791889279175
+              ]
+            ]
+          }
+        ],
+        "scope": "Visible box extent after pose rotation compensation only; contrary does not mean object moving away"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-08:1",
+      "instance": "cbbff810-c0b1-42ba-97fe-b25bc3b3b45f",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Same Mercedes, partial foreground occlusion and increasing side aspect prevent sustained-extent qualification.",
+        "roles": {
+          "start": {
+            "visibility": "occluded",
+            "reason": "White SUV masks front-left target outline."
+          },
+          "mid": {
+            "visibility": "occluded",
+            "reason": "Front-left boundary remains hidden by white SUV."
+          },
+          "current": {
+            "visibility": "occluded",
+            "reason": "Partial foreground overlap persists."
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-08:4",
+      "instance": "f68fcc60-5fa3-42e5-91fb-fc5239bd67d3",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Same dark-clothed pedestrian is recognizable, but gait changes limb extrema. No stable silhouette extent established from these three frames.",
+        "roles": {
+          "start": {
+            "visibility": "unknown",
+            "reason": "Gait-dependent outer extent, insufficient evidence for a stable-size reference."
+          },
+          "mid": {
+            "visibility": "unknown",
+            "reason": "Changed stride and arm outline; stable extent not established."
+          },
+          "current": {
+            "visibility": "unknown",
+            "reason": "Changed limb pose, no reliable two-leg visible-extent reference."
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-11:2",
+      "instance": "a8f480e7-4ff5-4402-9a77-688340a43835",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "White van remains identifiable but changes from frontal to increasingly side-on while passing. Do not attribute all bounding-box growth to approach.",
+        "roles": {
+          "start": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 938,
+              "y": 943,
+              "width": 151,
+              "height": 145
+            }
+          },
+          "mid": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 839,
+              "y": 952,
+              "width": 204,
+              "height": 193
+            }
+          },
+          "current": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 640,
+              "y": 921,
+              "width": 337,
+              "height": 293
+            }
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-11:1",
+      "instance": "cbbff810-c0b1-42ba-97fe-b25bc3b3b45f",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Mercedes is identifiable for primary visible-box review, but secondary full extent is occluded then clipped at image edge.",
+        "roles": {
+          "start": {
+            "visibility": "occluded",
+            "reason": "White SUV obscures front-left outline."
+          },
+          "mid": {
+            "visibility": "occluded",
+            "reason": "Foreground overlap prevents full target extent."
+          },
+          "current": {
+            "visibility": "clipped",
+            "reason": "Mercedes front extends outside left source-image boundary."
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-11:4",
+      "instance": "f68fcc60-5fa3-42e5-91fb-fc5239bd67d3",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Same identifiable walking person, but changing stride, leg overlap, arm position and silhouette width prevent stable rigid/aspect extent evidence. Do not turn the radial reference into optical expansion truth.",
+        "roles": {
+          "start": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1787,
+              "y": 954,
+              "width": 38,
+              "height": 98
+            }
+          },
+          "mid": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1794,
+              "y": 985,
+              "width": 33,
+              "height": 96
+            }
+          },
+          "current": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1817,
+              "y": 974,
+              "width": 33,
+              "height": 101
+            }
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-14:5",
+      "instance": "8cd46abc-516f-48a0-900a-ada192cd5282",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Same identifiable frontal pedestrian, but gait and arm/leg configuration change materially between the three extents; stable optical size proxy is not established.",
+        "roles": {
+          "start": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1604,
+              "y": 994,
+              "width": 24,
+              "height": 64
+            }
+          },
+          "mid": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1644,
+              "y": 1003,
+              "width": 29,
+              "height": 85
+            }
+          },
+          "current": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1701,
+              "y": 1037,
+              "width": 26,
+              "height": 75
+            }
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-14:4",
+      "instance": "ce9c2621-a636-44f0-8b0d-1c613f877e6b",
+      "decisions": {
+        "sameIdentity": false,
+        "stableAspect": false,
+        "reason": "Projected far vehicle is hidden by the foreground sedan and intermediate traffic; roof fragments cannot establish a separate complete visible target extent or material identity.",
+        "roles": {
+          "start": {
+            "visibility": "occluded",
+            "reason": "Foreground sedan hides the projected target body; do not annotate the occluding sedan."
+          },
+          "mid": {
+            "visibility": "occluded",
+            "reason": "Overlapping vehicle roofs and foreground sedan prevent an individually assignable extent."
+          },
+          "current": {
+            "visibility": "occluded",
+            "reason": "Only ambiguous roof/background fragments remain above the foreground sedan."
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-14:2",
+      "instance": "f68fcc60-5fa3-42e5-91fb-fc5239bd67d3",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Same walking person, but gait and silhouette change, with additional pole/foreground overlap near parts of the body. Stable-size optical evidence is not established.",
+        "roles": {
+          "start": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1797,
+              "y": 985,
+              "width": 31,
+              "height": 94
+            }
+          },
+          "mid": {
+            "visibility": "unknown",
+            "reason": "Gait/blur and adjacent pole/white feature make the left silhouette edge insufficiently stable for precise extent comparison."
+          },
+          "current": {
+            "visibility": "unknown",
+            "reason": "Pole/foreground adjacency and changing stride make a complete stable visible extent uncertain."
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-17:3",
+      "instance": "10121b29-d5ac-4d56-bf96-60e704af1c11",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Same dark vehicle is identifiable, but parking bollards occlude its front in every exposure; visible extent and perspective/aspect are not a clean optical scale reference.",
+        "roles": {
+          "start": {
+            "visibility": "occluded",
+            "reason": "White bollard covers the vehicle front and adjacent curb obscures its lower extent."
+          },
+          "mid": {
+            "visibility": "occluded",
+            "reason": "Bollard crosses the target front and prevents a clean full visible surface/extent comparison."
+          },
+          "current": {
+            "visibility": "occluded",
+            "reason": "Foreground bollard still occludes the front of the same vehicle."
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-17:4",
+      "instance": "8cd46abc-516f-48a0-900a-ada192cd5282",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Same frontal pedestrian, but walking articulation and changing arm/leg spread alter the extent independently of radial closing.",
+        "roles": {
+          "start": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1653,
+              "y": 1026,
+              "width": 36,
+              "height": 78
+            }
+          },
+          "mid": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1724,
+              "y": 1011,
+              "width": 34,
+              "height": 96
+            }
+          },
+          "current": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1808,
+              "y": 997,
+              "width": 37,
+              "height": 95
+            }
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    },
+    {
+      "key": "boreas-m3u-city-17:2",
+      "instance": "f68fcc60-5fa3-42e5-91fb-fc5239bd67d3",
+      "decisions": {
+        "sameIdentity": true,
+        "stableAspect": false,
+        "reason": "Same walking person, but stride/leg overlap and pose vary and the middle exposure is partly interfered with by the pole. This is not a stable optical extent reference.",
+        "roles": {
+          "start": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 1860,
+              "y": 1022,
+              "width": 41,
+              "height": 104
+            }
+          },
+          "mid": {
+            "visibility": "unknown",
+            "reason": "Pole overlaps the left part of the silhouette, with gait and blur preventing a stable clean extent."
+          },
+          "current": {
+            "visibility": "usable-visible-extent",
+            "box": {
+              "x": 2037,
+              "y": 981,
+              "width": 48,
+              "height": 114
+            }
+          }
+        }
+      },
+      "result": {
+        "status": "unknown",
+        "materialPointTruth": false,
+        "changesRadialTruth": false,
+        "modelCalls": 0,
+        "reason": "identity-or-aspect-not-established"
+      }
+    }
+  ],
+  "counts": {
+    "unknown": 13,
+    "concordant": 1
+  },
+  "primaryRadialTruthChanged": false,
+  "modelOutputsSeen": false,
+  "modelCalls": 0,
+  "limits": "Extent heuristic not confidence interval, material-point groundtruth or measured traffic warning recall."
+}

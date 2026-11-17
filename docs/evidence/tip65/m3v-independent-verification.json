@@ -1,0 +1,711 @@
+{
+  "schemaVersion": 1,
+  "study": "M3V-independent-receipt-verification",
+  "receiptSha256": "c34320d88587b54e9f4123e391643423e0b5f4b6329eb8060c2f83462ed61c58",
+  "referenceSha256": "7526453f77534ad490e90f423a10ad44b1f311c65e52008a755432cc87b24d60",
+  "sourceFileCount": 141,
+  "actualCodeHashesVerified": 7,
+  "oldM3UCodeHashesUnchanged": 38,
+  "oldM3RCodeHashesUnchanged": 35,
+  "originalSlots": 72,
+  "conditionalStaticReference": 12,
+  "unknownReference": 60,
+  "geometryOrControlUnitsVerified": 432,
+  "independentlyRecomputedEpipolarIntervals": 384,
+  "overlappingOrOutOfViewControlUnitsKeptUnknown": 48,
+  "rawPhotometricPatchPairsRecomputed": 23,
+  "actualRecordedLkDirections": 24,
+  "newReviewerLkOrModelCalls": 0,
+  "nominalCombinedCounts": {
+    "unknown": 11,
+    "fail": 1
+  },
+  "nominalReferenceCases": [
+    {
+      "slotId": "pair0-cell00",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        8.229506557893407
+      ],
+      "cheirality": "positive",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair0-cell02",
+      "epiline": "unknown",
+      "bounds": [
+        0.24612947927127143,
+        11.56377356894369
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair1-cell01",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        4.032184037488304
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair1-cell03",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        6.943520359689949
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair2-cell00",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        6.493676661680367
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair2-cell03",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        8.773205351453836
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair2-cell05",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        7.52447858469488
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair2-cell10",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        8.580005157514101
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair3-cell00",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        5.394218747472459
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair3-cell02",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        4.599341451943695
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    },
+    {
+      "slotId": "pair4-cell00",
+      "epiline": "fail",
+      "bounds": [
+        1.7250898326291697,
+        9.583066328730329
+      ],
+      "cheirality": "unknown",
+      "combined": "fail"
+    },
+    {
+      "slotId": "pair5-cell01",
+      "epiline": "unknown",
+      "bounds": [
+        0.0,
+        3.0267877684240516
+      ],
+      "cheirality": "unknown",
+      "combined": "unknown"
+    }
+  ],
+  "nominalWrongTargetControls": {
+    "fail": 9,
+    "unknown": 15
+  },
+  "nominalEligibleKnownWrongControls": {
+    "total": 20,
+    "rejected": 9,
+    "unknown": 11,
+    "compatible": 0
+  },
+  "nominalIneligibleOverlappingControls": {
+    "total": 4,
+    "unknown": 4,
+    "reason": "The fixed16native-pixel shift overlaps the sealed target uncertainty rectangle for pair0-cell02/x, pair2-cell03/x and pair2-cell10/x,y. They are not known-wrong endpoints."
+  },
+  "oracleSourceRecount": {
+    "native": {
+      "stages": {
+        "accepted": 11,
+        "lk-status-cycle-or-bounds-rejected": 1
+      },
+      "outcomes": {
+        "uncertain-reference-endpoint": 11,
+        "missed-reference": 1
+      },
+      "queries": 12
+    },
+    "working-JPEG93": {
+      "stages": {
+        "accepted": 11,
+        "photometric-rejected": 1
+      },
+      "outcomes": {
+        "uncertain-reference-endpoint": 11,
+        "missed-reference": 1
+      },
+      "queries": 12
+    }
+  },
+  "recordedRuntime": 7562.518208003894,
+  "requestedOpenCvThreads": 1,
+  "reportedOpenCvThreads": 10,
+  "controlledPerformanceClaim": false,
+  "invalidClockVariants": [
+    [
+      "pair0",
+      "clock-both-endpoints--2-frames",
+      -159034,
+      -159833
+    ],
+    [
+      "pair0",
+      "clock-both-endpoints--1-frames",
+      -79527,
+      -80306
+    ],
+    [
+      "pair0",
+      "clock-both-endpoints-+1-frames",
+      80306,
+      79724
+    ],
+    [
+      "pair0",
+      "clock-both-endpoints-+2-frames",
+      160030,
+      160015
+    ],
+    [
+      "pair0",
+      "clock-both-endpoints--2-frames",
+      -159034,
+      -159833
+    ],
+    [
+      "pair0",
+      "clock-both-endpoints--1-frames",
+      -79527,
+      -80306
+    ],
+    [
+      "pair0",
+      "clock-both-endpoints-+1-frames",
+      80306,
+      79724
+    ],
+    [
+      "pair0",
+      "clock-both-endpoints-+2-frames",
+      160030,
+      160015
+    ],
+    [
+      "pair1",
+      "clock-both-endpoints--2-frames",
+      -160560,
+      -159859
+    ],
+    [
+      "pair1",
+      "clock-both-endpoints--1-frames",
+      -80595,
+      -79264
+    ],
+    [
+      "pair1",
+      "clock-both-endpoints-+1-frames",
+      79264,
+      80228
+    ],
+    [
+      "pair1",
+      "clock-both-endpoints-+2-frames",
+      159492,
+      160175
+    ],
+    [
+      "pair1",
+      "clock-both-endpoints--2-frames",
+      -160560,
+      -159859
+    ],
+    [
+      "pair1",
+      "clock-both-endpoints--1-frames",
+      -80595,
+      -79264
+    ],
+    [
+      "pair1",
+      "clock-both-endpoints-+1-frames",
+      79264,
+      80228
+    ],
+    [
+      "pair1",
+      "clock-both-endpoints-+2-frames",
+      159492,
+      160175
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints--2-frames",
+      -159697,
+      -158996
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints--1-frames",
+      -78912,
+      -80084
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints-+1-frames",
+      80084,
+      79897
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints-+2-frames",
+      159981,
+      159550
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints--2-frames",
+      -159697,
+      -158996
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints--1-frames",
+      -78912,
+      -80084
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints-+1-frames",
+      80084,
+      79897
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints-+2-frames",
+      159981,
+      159550
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints--2-frames",
+      -159697,
+      -158996
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints--1-frames",
+      -78912,
+      -80084
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints-+1-frames",
+      80084,
+      79897
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints-+2-frames",
+      159981,
+      159550
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints--2-frames",
+      -159697,
+      -158996
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints--1-frames",
+      -78912,
+      -80084
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints-+1-frames",
+      80084,
+      79897
+    ],
+    [
+      "pair2",
+      "clock-both-endpoints-+2-frames",
+      159981,
+      159550
+    ],
+    [
+      "pair3",
+      "clock-both-endpoints--2-frames",
+      -159653,
+      -159748
+    ],
+    [
+      "pair3",
+      "clock-both-endpoints--1-frames",
+      -80086,
+      -79662
+    ],
+    [
+      "pair3",
+      "clock-both-endpoints-+1-frames",
+      79662,
+      80241
+    ],
+    [
+      "pair3",
+      "clock-both-endpoints-+2-frames",
+      159903,
+      162255
+    ],
+    [
+      "pair3",
+      "clock-both-endpoints--2-frames",
+      -159653,
+      -159748
+    ],
+    [
+      "pair3",
+      "clock-both-endpoints--1-frames",
+      -80086,
+      -79662
+    ],
+    [
+      "pair3",
+      "clock-both-endpoints-+1-frames",
+      79662,
+      80241
+    ],
+    [
+      "pair3",
+      "clock-both-endpoints-+2-frames",
+      159903,
+      162255
+    ],
+    [
+      "pair4",
+      "clock-both-endpoints--2-frames",
+      -159754,
+      -159856
+    ],
+    [
+      "pair4",
+      "clock-both-endpoints--1-frames",
+      -79674,
+      -80182
+    ],
+    [
+      "pair4",
+      "clock-both-endpoints-+1-frames",
+      80182,
+      79514
+    ],
+    [
+      "pair4",
+      "clock-both-endpoints-+2-frames",
+      159696,
+      160229
+    ],
+    [
+      "pair5",
+      "clock-both-endpoints--2-frames",
+      -159697,
+      -160277
+    ],
+    [
+      "pair5",
+      "clock-both-endpoints--1-frames",
+      -79938,
+      -80339
+    ],
+    [
+      "pair5",
+      "clock-both-endpoints-+1-frames",
+      80339,
+      80051
+    ],
+    [
+      "pair5",
+      "clock-both-endpoints-+2-frames",
+      160390,
+      161031
+    ]
+  ],
+  "endpointRecount": [
+    {
+      "slotId": "pair0-cell00",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        3.2184887038466403
+      ]
+    },
+    {
+      "slotId": "pair0-cell02",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        4.289895984912813
+      ]
+    },
+    {
+      "slotId": "pair0-cell00",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        3.2430851063046493
+      ]
+    },
+    {
+      "slotId": "pair0-cell02",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        4.243168798496483
+      ]
+    },
+    {
+      "slotId": "pair1-cell01",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        1.8560418521596602
+      ]
+    },
+    {
+      "slotId": "pair1-cell03",
+      "domain": "native",
+      "accepted": false,
+      "endpointErrorWorkingPx": [
+        0.0,
+        3.6056653437981137
+      ]
+    },
+    {
+      "slotId": "pair1-cell01",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        1.8883896085626597
+      ]
+    },
+    {
+      "slotId": "pair1-cell03",
+      "domain": "working-JPEG93",
+      "accepted": false,
+      "endpointErrorWorkingPx": [
+        0.531890869140625,
+        4.997990294488276
+      ]
+    },
+    {
+      "slotId": "pair2-cell00",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        2.884937701017771
+      ]
+    },
+    {
+      "slotId": "pair2-cell03",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        3.5735998420990502
+      ]
+    },
+    {
+      "slotId": "pair2-cell05",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        4.5331855249579185
+      ]
+    },
+    {
+      "slotId": "pair2-cell10",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        4.474983212381332
+      ]
+    },
+    {
+      "slotId": "pair2-cell00",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        2.9131543987196675
+      ]
+    },
+    {
+      "slotId": "pair2-cell03",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        3.9353846204657676
+      ]
+    },
+    {
+      "slotId": "pair2-cell05",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        4.4276062795599
+      ]
+    },
+    {
+      "slotId": "pair2-cell10",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        4.623157474397204
+      ]
+    },
+    {
+      "slotId": "pair3-cell00",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        2.448154273426653
+      ]
+    },
+    {
+      "slotId": "pair3-cell02",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        2.0807131018780387
+      ]
+    },
+    {
+      "slotId": "pair3-cell00",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        2.403695976008801
+      ]
+    },
+    {
+      "slotId": "pair3-cell02",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        2.0259735532638534
+      ]
+    },
+    {
+      "slotId": "pair4-cell00",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.7245136335784313,
+        5.113158431618872
+      ]
+    },
+    {
+      "slotId": "pair4-cell00",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.7466248156977642,
+        5.1866741316879015
+      ]
+    },
+    {
+      "slotId": "pair5-cell01",
+      "domain": "native",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        1.7959541206592644
+      ]
+    },
+    {
+      "slotId": "pair5-cell01",
+      "domain": "working-JPEG93",
+      "accepted": true,
+      "endpointErrorWorkingPx": [
+        0.0,
+        1.7973511714508743
+      ]
+    }
+  ],
+  "scopedAuthoredTestsIndependentRerun": {
+    "passed": 16,
+    "failed": 0,
+    "seconds": 3.037,
+    "notAdditionalEmpiricalCases": true
+  },
+  "limits": [
+    "Nominal one conditional-static epiline failure and11unknown do not identify pose/calibration/time/correspondence root cause or explain all13traffic misses.",
+    "Known-wrong endpoint controls are synthetic geometry compatibility, not trafficfalsepositive assessment. Unknown controls are not correct rejections.",
+    "Broad AI-authored/cross-reviewed rectangles, not exacthuman/physicaltruth. All72slots retained; match disagreement madeunknown before geometry.",
+    "Raw backward endpoints/statusarrays were not serialized: empirical FBcycle cannot be independently reconstructed from receipt. Recorded cycle/calllogic reviewed, rawpatches/EPE/geometry independentlyrecomputed; no forbidden rerun.",
+    "Oracle-source centers were queried once, not an uncertainty sweep; native andworking windows coverdifferent footprints.",
+    "M3Ucached0TP13FN0FP18TN2unknown unchanged; no runtimefix/freshwarningA/B/performance improvement/iPhonecertification."
+  ],
+  "disposition": "Diagnostic integrity verified within scope; product recall goal NOT READY. No automatic variant selection or runtime promotion."
+}

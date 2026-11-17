@@ -1,0 +1,385 @@
+{
+  "inputSha256": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed",
+  "proposalsSha256": "bbb121f7f0b33c5ece2c655f8b0fd28afe634bfa9f6e09557968211a58b4c448",
+  "review": {
+    "method": "Contractor agent reviewed units00..06; separate Reviewer agent reviewed07..13. All42 native crops reviewed before detector/flow outputs. No human review.",
+    "sourceDecisionFiles": [
+      "docs/evidence/tip65/m3u-secondary-contractor-decisions.json",
+      "docs/evidence/tip65/m3u-secondary-reviewer-decisions.json"
+    ],
+    "modelOutputsSeen": false
+  },
+  "units": {
+    "boreas-m3u-city-05:3": {
+      "sameIdentity": true,
+      "stableAspect": true,
+      "reason": "Same largely frontal white van, visible full outline in all three exposures; tight bounds annotated in original native pixels.",
+      "roles": {
+        "start": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1100,
+            "y": 968,
+            "width": 79,
+            "height": 89
+          }
+        },
+        "mid": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1062,
+            "y": 978,
+            "width": 89,
+            "height": 96
+          }
+        },
+        "current": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1014,
+            "y": 952,
+            "width": 108,
+            "height": 107
+          }
+        }
+      }
+    },
+    "boreas-m3u-city-05:1": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Mercedes identity is visible, but foreground white SUV hides front-left outline and viewpoint changes. Visible-extent growth cannot be independently established.",
+      "roles": {
+        "start": {
+          "visibility": "occluded",
+          "reason": "White foreground SUV hides part of Mercedes outline."
+        },
+        "mid": {
+          "visibility": "occluded",
+          "reason": "White foreground SUV hides front-left extent."
+        },
+        "current": {
+          "visibility": "occluded",
+          "reason": "Foreground vehicle still overlaps target front-left boundary."
+        }
+      }
+    },
+    "boreas-m3u-city-08:3": {
+      "sameIdentity": true,
+      "stableAspect": true,
+      "reason": "Same frontal white van with unobscured vehicle outline, annotation uses native crop offsets rather than projected cuboid bounds.",
+      "roles": {
+        "start": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1035,
+            "y": 970,
+            "width": 103,
+            "height": 105
+          }
+        },
+        "mid": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 977,
+            "y": 927,
+            "width": 134,
+            "height": 124
+          }
+        },
+        "current": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 907,
+            "y": 939,
+            "width": 166,
+            "height": 164
+          }
+        }
+      }
+    },
+    "boreas-m3u-city-08:1": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Same Mercedes, partial foreground occlusion and increasing side aspect prevent sustained-extent qualification.",
+      "roles": {
+        "start": {
+          "visibility": "occluded",
+          "reason": "White SUV masks front-left target outline."
+        },
+        "mid": {
+          "visibility": "occluded",
+          "reason": "Front-left boundary remains hidden by white SUV."
+        },
+        "current": {
+          "visibility": "occluded",
+          "reason": "Partial foreground overlap persists."
+        }
+      }
+    },
+    "boreas-m3u-city-08:4": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Same dark-clothed pedestrian is recognizable, but gait changes limb extrema. No stable silhouette extent established from these three frames.",
+      "roles": {
+        "start": {
+          "visibility": "unknown",
+          "reason": "Gait-dependent outer extent, insufficient evidence for a stable-size reference."
+        },
+        "mid": {
+          "visibility": "unknown",
+          "reason": "Changed stride and arm outline; stable extent not established."
+        },
+        "current": {
+          "visibility": "unknown",
+          "reason": "Changed limb pose, no reliable two-leg visible-extent reference."
+        }
+      }
+    },
+    "boreas-m3u-city-11:2": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "White van remains identifiable but changes from frontal to increasingly side-on while passing. Do not attribute all bounding-box growth to approach.",
+      "roles": {
+        "start": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 938,
+            "y": 943,
+            "width": 151,
+            "height": 145
+          }
+        },
+        "mid": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 839,
+            "y": 952,
+            "width": 204,
+            "height": 193
+          }
+        },
+        "current": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 640,
+            "y": 921,
+            "width": 337,
+            "height": 293
+          }
+        }
+      }
+    },
+    "boreas-m3u-city-11:1": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Mercedes is identifiable for primary visible-box review, but secondary full extent is occluded then clipped at image edge.",
+      "roles": {
+        "start": {
+          "visibility": "occluded",
+          "reason": "White SUV obscures front-left outline."
+        },
+        "mid": {
+          "visibility": "occluded",
+          "reason": "Foreground overlap prevents full target extent."
+        },
+        "current": {
+          "visibility": "clipped",
+          "reason": "Mercedes front extends outside left source-image boundary."
+        }
+      }
+    },
+    "boreas-m3u-city-11:4": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Same identifiable walking person, but changing stride, leg overlap, arm position and silhouette width prevent stable rigid/aspect extent evidence. Do not turn the radial reference into optical expansion truth.",
+      "roles": {
+        "start": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1787,
+            "y": 954,
+            "width": 38,
+            "height": 98
+          }
+        },
+        "mid": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1794,
+            "y": 985,
+            "width": 33,
+            "height": 96
+          }
+        },
+        "current": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1817,
+            "y": 974,
+            "width": 33,
+            "height": 101
+          }
+        }
+      }
+    },
+    "boreas-m3u-city-14:5": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Same identifiable frontal pedestrian, but gait and arm/leg configuration change materially between the three extents; stable optical size proxy is not established.",
+      "roles": {
+        "start": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1604,
+            "y": 994,
+            "width": 24,
+            "height": 64
+          }
+        },
+        "mid": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1644,
+            "y": 1003,
+            "width": 29,
+            "height": 85
+          }
+        },
+        "current": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1701,
+            "y": 1037,
+            "width": 26,
+            "height": 75
+          }
+        }
+      }
+    },
+    "boreas-m3u-city-14:4": {
+      "sameIdentity": false,
+      "stableAspect": false,
+      "reason": "Projected far vehicle is hidden by the foreground sedan and intermediate traffic; roof fragments cannot establish a separate complete visible target extent or material identity.",
+      "roles": {
+        "start": {
+          "visibility": "occluded",
+          "reason": "Foreground sedan hides the projected target body; do not annotate the occluding sedan."
+        },
+        "mid": {
+          "visibility": "occluded",
+          "reason": "Overlapping vehicle roofs and foreground sedan prevent an individually assignable extent."
+        },
+        "current": {
+          "visibility": "occluded",
+          "reason": "Only ambiguous roof/background fragments remain above the foreground sedan."
+        }
+      }
+    },
+    "boreas-m3u-city-14:2": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Same walking person, but gait and silhouette change, with additional pole/foreground overlap near parts of the body. Stable-size optical evidence is not established.",
+      "roles": {
+        "start": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1797,
+            "y": 985,
+            "width": 31,
+            "height": 94
+          }
+        },
+        "mid": {
+          "visibility": "unknown",
+          "reason": "Gait/blur and adjacent pole/white feature make the left silhouette edge insufficiently stable for precise extent comparison."
+        },
+        "current": {
+          "visibility": "unknown",
+          "reason": "Pole/foreground adjacency and changing stride make a complete stable visible extent uncertain."
+        }
+      }
+    },
+    "boreas-m3u-city-17:3": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Same dark vehicle is identifiable, but parking bollards occlude its front in every exposure; visible extent and perspective/aspect are not a clean optical scale reference.",
+      "roles": {
+        "start": {
+          "visibility": "occluded",
+          "reason": "White bollard covers the vehicle front and adjacent curb obscures its lower extent."
+        },
+        "mid": {
+          "visibility": "occluded",
+          "reason": "Bollard crosses the target front and prevents a clean full visible surface/extent comparison."
+        },
+        "current": {
+          "visibility": "occluded",
+          "reason": "Foreground bollard still occludes the front of the same vehicle."
+        }
+      }
+    },
+    "boreas-m3u-city-17:4": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Same frontal pedestrian, but walking articulation and changing arm/leg spread alter the extent independently of radial closing.",
+      "roles": {
+        "start": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1653,
+            "y": 1026,
+            "width": 36,
+            "height": 78
+          }
+        },
+        "mid": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1724,
+            "y": 1011,
+            "width": 34,
+            "height": 96
+          }
+        },
+        "current": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1808,
+            "y": 997,
+            "width": 37,
+            "height": 95
+          }
+        }
+      }
+    },
+    "boreas-m3u-city-17:2": {
+      "sameIdentity": true,
+      "stableAspect": false,
+      "reason": "Same walking person, but stride/leg overlap and pose vary and the middle exposure is partly interfered with by the pole. This is not a stable optical extent reference.",
+      "roles": {
+        "start": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 1860,
+            "y": 1022,
+            "width": 41,
+            "height": 104
+          }
+        },
+        "mid": {
+          "visibility": "unknown",
+          "reason": "Pole overlaps the left part of the silhouette, with gait and blur preventing a stable clean extent."
+        },
+        "current": {
+          "visibility": "usable-visible-extent",
+          "box": {
+            "x": 2037,
+            "y": 981,
+            "width": 48,
+            "height": 114
+          }
+        }
+      }
+    }
+  }
+}

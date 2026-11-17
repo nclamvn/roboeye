@@ -1,0 +1,42 @@
+{
+  "inputSha256": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed",
+  "candidatesSha256": "083c046a8dea833171add2d2ca21527f80db07eb26e57bc8239f5b83066252bc",
+  "selectionAccountingSha256": "086b45c09f9cf57fcc6f0c91ca5e5224ea32c420df90a2939c1fd6c3ac8ce05b",
+  "review": {
+    "method": "Contractor agent viewed all ten source-bound 960x803 RGB sheets before detector/flow outputs; corrected tight visible extents. Independent Reviewer viewed all ten and native ambiguous crops, challenged shadow-person and horizon-vehicle assignments. No human review.",
+    "scope": "Fixed selected candidates only, not exhaustive scene objects. Published radial labels unchanged. Clipped but identifiable Mercedes retained in primary; clipping remains unknown in secondary extent test.",
+    "modelOutputsSeen": false,
+    "omissions": {
+      "boreas-m3u-city-05:4": "Horizon vehicle severely hidden behind foreground sedan; separate visible extent not defensible.",
+      "boreas-m3u-city-08:5": "Only an ambiguous roof patch behind foreground sedan; no full visible target extent.",
+      "boreas-m3u-city-11:5": "Small roof patch behind sedan, identity and visible bounds unresolved.",
+      "boreas-m3u-city-14:3": "Projected region overlaps foreground sedan and hidden vehicle; cannot separate target extent.",
+      "boreas-m3u-city-14:4": "Radial-positive vehicle almost entirely hidden behind sedan; retained as unscorable, not a negative.",
+      "boreas-m3u-turn-05:3": "Dark construction scene contains posts/barrels and adjacent silhouettes; source instance cannot be safely assigned a separate visible person.",
+      "boreas-m3u-turn-05:4": "Distant projected vehicle region is an ambiguous curbside cluster, native crop does not establish physical identity.",
+      "boreas-m3u-turn-05:5": "Roof-only white vehicle behind near SUV, severe occlusion.",
+      "boreas-m3u-turn-08:3": "Dark overlapping silhouettes and construction clutter prevent confident instance assignment.",
+      "boreas-m3u-turn-08:4": "Ambiguous distant curbside vehicle projection, identity/extent unresolved.",
+      "boreas-m3u-turn-08:5": "Vehicle body hidden behind near SUV; only roof fragment visible.",
+      "boreas-m3u-turn-11:3": "Shadowed target cannot be separated confidently from nearby silhouettes and posts.",
+      "boreas-m3u-turn-11:4": "Distant curbside projection does not establish a unique visible vehicle.",
+      "boreas-m3u-turn-11:5": "Small distant white patch cannot be assigned a reliable full vehicle extent.",
+      "boreas-m3u-turn-14:3": "Ambiguous shadow silhouette among construction clutter, no reliable independent identity.",
+      "boreas-m3u-turn-14:4": "Distant projected vehicle is not separable from curbside cluster.",
+      "boreas-m3u-turn-17:3": "Shadowed person extent/identity remains ambiguous.",
+      "boreas-m3u-turn-17:4": "Distant curbside target identity and visible extent unresolved."
+    }
+  },
+  "frames": {
+    "boreas-m3u-city-05": {"1": [171,391,294,466], "2": [435,399,513,459], "3": [398,372,442,415], "4": null},
+    "boreas-m3u-city-08": {"1": [80,390,257,479], "2": [427,399,508,460], "3": [356,370,424,431], "4": [702,383,716,418], "5": null},
+    "boreas-m3u-city-11": {"1": [0,399,212,510], "2": [255,359,391,474], "3": [427,398,501,462], "4": [711,384,725,422], "5": null},
+    "boreas-m3u-city-14": {"1": [436,419,508,478], "2": [747,408,765,449], "3": null, "4": null, "5": [668,410,681,440]},
+    "boreas-m3u-city-17": {"1": [450,410,523,466], "2": [800,394,820,434], "3": [378,402,416,430], "4": [709,396,722,427]},
+    "boreas-m3u-turn-05": {"1": [360,419,549,593], "2": [110,422,132,469], "3": null, "4": null, "5": null, "6": [294,406,307,439]},
+    "boreas-m3u-turn-08": {"1": [360,419,550,593], "2": [121,422,145,470], "3": null, "4": null, "5": null, "6": [294,406,307,439]},
+    "boreas-m3u-turn-11": {"1": [360,419,550,593], "2": [132,421,151,468], "3": null, "4": null, "5": null, "6": [294,406,307,439]},
+    "boreas-m3u-turn-14": {"1": [360,419,550,593], "2": [142,420,162,466], "3": null, "4": null, "5": [294,406,307,439]},
+    "boreas-m3u-turn-17": {"1": [360,419,550,593], "2": [151,420,169,464], "3": null, "4": null, "5": [294,406,307,439]}
+  }
+}

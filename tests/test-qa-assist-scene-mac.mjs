@@ -8,25 +8,65 @@ import {buildPlan, checkedResult, parseDiskFree, parseTestResult, runCommand, ru
 test('semantic reference collector includes all M3M artifacts without promotion',async()=>{
   const source=await readFile(new URL('../scripts/qa-assist-scene-mac.mjs',import.meta.url),'utf8');
   for(const name of ['m3m-development-score.json','m3m-boreas-score.json','m3m-controls-score.json'])assert.ok(source.includes(`'${name}'`));
-  assert.match(source,/status:'NOT_READY',basis:'Recorded .*M3L\/M3M\/M3N\/M3O trials are references, not product acceptance/);
+  assert.match(source,/status:'NOT_READY',basis:'Recorded .*M3L\/M3M\/M3N\/M3O\/M3P\/M3Q\/M3R trials are references, not product acceptance/);
 });
 
 test('semantic reference collector includes all M3N artifacts without promotion',async()=>{
   const source=await readFile(new URL('../scripts/qa-assist-scene-mac.mjs',import.meta.url),'utf8');
   for(const name of ['m3n-development-score.json','m3n-boreas-score.json','m3n-controls-score.json'])assert.ok(source.includes(`'${name}'`));
-  assert.match(source,/M3M\/M3N\/M3O trials are references, not product acceptance/);
+  assert.match(source,/M3M\/M3N\/M3O\/M3P\/M3Q\/M3R trials are references, not product acceptance/);
 });
 
 test('semantic reference collector keeps M3O diagnosis and fresh scores non-accepting',async()=>{
   const source=await readFile(new URL('../scripts/qa-assist-scene-mac.mjs',import.meta.url),'utf8');
   for(const name of ['m3o-m3n-diagnosis.json','m3o-boreas-score.json','m3o-controls-score.json'])assert.ok(source.includes(`'${name}'`));
-  assert.match(source,/status:'NOT_READY',basis:'Recorded .*M3N\/M3O trials are references, not product acceptance/);
+  assert.match(source,/status:'NOT_READY',basis:'Recorded .*M3N\/M3O\/M3P\/M3Q\/M3R trials are references, not product acceptance/);
+});
+
+test('semantic reference collector keeps M3P component and incomplete Spring evidence non-accepting',async()=>{
+  const source=await readFile(new URL('../scripts/qa-assist-scene-mac.mjs',import.meta.url),'utf8');
+  for(const name of ['m3p-identity-reviewed.json','m3p-real-pair-score.json','m3p-spring-fetch-incomplete.json'])assert.ok(source.includes(`'${name}'`));
+  assert.match(source,/status:'NOT_READY',basis:'Recorded .*M3O\/M3P\/M3Q\/M3R trials are references, not product acceptance/);
+  assert.ok(source.includes('M3P selected-pair identity/component results are not warning recall'));
+  assert.ok(source.includes('incomplete Spring retrieval is not completed ground-truth evaluation'));
+  assert.equal(sceneFingerprintSource('scripts','fetch_assist_scene_flow_reference.py'),true);
+  assert.equal(sceneFingerprintSource('scripts','fetch_unrelated_data.py'),false);
+});
+
+test('M3Q collector retains non-accepting evidence and all scoped fetcher bindings',async()=>{
+  const source=await readFile(new URL('../scripts/qa-assist-scene-mac.mjs',import.meta.url),'utf8');
+  for(const name of ['m3q-boreas-score.json','m3q-verification.json'])assert.ok(source.includes(`'${name}'`));
+  assert.ok(source.includes('M3Q point-transfer component results are not warning recall'));
+  assert.ok(source.includes('Disputed M3Q reference geometry is not trusted optical-flow ground truth'));
+  for(const name of ['fetch_assist_scene_m3q_reference.py','fetch_assist_scene_m3q_boreas.py','fetch_assist_scene_m3q_low_speed.py'])
+    assert.equal(sceneFingerprintSource('scripts',name),true,name);
+  assert.equal(sceneFingerprintSource('scripts','fetch_unrelated_data.py'),false);
+  assert.equal(sceneFingerprintSource('scripts','fetch_assist_scene_m3q_reference.json'),false);
+  assert.equal(buildPlan('/checkout').find(s=>s.name==='python-scene').timeoutMs,180_000);
+});
+
+test('M3R collector binds current code and requires its TIP without promoting identity certificates',async()=>{
+  const source=await readFile(new URL('../scripts/qa-assist-scene-mac.mjs',import.meta.url),'utf8');
+  for(const name of ['m3r-development-association.json','m3r-boreas-score.json','m3r-verification.json'])
+    assert.ok(source.includes(`'${name}'`));
+  for(const name of ['assist_scene_m3r_association.py','assist_scene_m3r_study.py','fetch_assist_scene_m3r_boreas.py']) {
+    assert.equal(sceneFingerprintSource('scripts',name),true,name);
+    assert.ok(source.includes(`'scripts/${name}'`),name);
+  }
+  for(const name of ['test_assist_scene_m3r_association.py','test_assist_scene_m3r_study.py','test_assist_scene_m3r_data.py']) {
+    assert.equal(sceneFingerprintSource('tests',name),true,name);
+    assert.ok(source.includes(`'tests/${name}'`),name);
+  }
+  assert.ok(source.includes("'docs/TIP-65-M3R-MAC.md'"));
+  assert.ok(source.includes('for(const file of M3R_REQUIRED_FILES)await access(join(root,file),constants.R_OK)'));
+  assert.ok(source.includes('M3R numeric identity-chain certificates are not independently established physical identity or phone acceptance'));
+  assert.equal(buildPlan('/checkout').find(s=>s.name==='python-scene').timeoutMs,180_000);
 });
 
 test('source binding includes hyphenated review/import/scoring tools exercised by tests',()=>{
   for(const name of ['assist_scene_m3f_study.py','assist_scene_window_loom.py','diagnose_assist_scene_approach.py','audit_assist_scene_m3k.py','reconstruct_assist_scene_m3k_growth.py','serve-assist-scene-review.py','fetch-assist-scene-boreas-slice.py',
     'fetch-assist-scene-pandaset-slice.py','convert-assist-scene-pandaset-labels.py',
-    'score-assist-scene-motion-m3c.py','prepare-assist-scene-motion.py','assist-scene-mac.py'])
+    'score-assist-scene-motion-m3c.py','prepare-assist-scene-motion.py','assist-scene-mac.py','fetch_assist_scene_flow_reference.py'])
     assert.equal(sceneFingerprintSource('scripts',name),true,name);
   for(const name of ['test_assist_scene_review.py','test_assist_scene_m3f_study.py','test-qa-assist-scene-mac.mjs'])
     assert.equal(sceneFingerprintSource('tests',name),true,name);

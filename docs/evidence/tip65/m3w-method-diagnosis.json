@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "study": "M3W-read-only-posthoc-component-diagnosis",
+  "date": "2026-11-17",
+  "authority": "Builder-authored arithmetic over sealed actual receipts, not independent review or new matching",
+  "sources": {
+    "observation": "docs/evidence/tip65/m3w-rgb-observations-r1.json",
+    "observationSha256": "445b0b902d0aa28625602150f40c952623b2c7cab47a6824188d9c12720e99fb",
+    "evaluation": "docs/evidence/tip65/m3w-factor-evaluation-r1.json",
+    "evaluationSha256": "2aca43f19d7d5f8b8a377479f1d822b5e027d0214f60a432e63758d76d9360bb",
+    "historicalHpatchesReceipt": "native/ios/.build-xcode/scene-qa/m3q-hpatches-receipt.json",
+    "historicalHpatchesReceiptSha256": "9d41e038a2417c3d05c2b19522afc88f3428d4d74b35485254afdf90aed2be0d",
+    "historicalHpatchesUse": "Read previously completed RAFT/RootSIFT observations only; no inference or descriptor matching was repeated"
+  },
+  "execution": {
+    "rootActualObservationPairs": 14,
+    "rootActualObservationWallMs": 872.972,
+    "rootActualObservationLkDirections": 28,
+    "rootActualObservationGoldOpens": 0,
+    "rootActualEvaluationWallMs": 1712.4715839963756,
+    "rootActualEvaluationGeometricGates": 140,
+    "rootActualEvaluationSimilarityFitAttempts": 135,
+    "newFlowOrModelCallsForThisDiagnosis": 0,
+    "newGeometryOracleRunsForThisDiagnosis": 0,
+    "runtimeOrThresholdChanges": 0,
+    "observationOrReferenceRelabeling": 0,
+    "threadObservation": {"opencv": "5.0.0", "requested": 1, "reported": 10, "meaning": "Observed API reporting, not measured worker count or a demonstrated correctness cause"}
+  },
+  "whyNominalOracleQualificationIsLower": {
+    "nominalOracleQualified": {"analysis": "0/6", "holdout": "3/6"},
+    "nominalMeasuredQualified": {"analysis": "4/6", "holdout": "4/6"},
+    "originalSeedsPerPair": 256,
+    "unchangedMinimumSupport": 0.7,
+    "minimumIntegerAgreementPointsAtThisDenominator": 180,
+    "finding": "All9 rejected oracle components already have fewer than180 clean7px, center-visible source seeds. The locked oracle eligibility mask therefore makes qualification impossible before testing pose residuals, cells, span or common scale. This is a necessary support-ceiling explanation, not a posthoc redefinition of the denominator.",
+    "whyMeasuredCanQualify": "The measured frozen gate requires actual FB/NCC quality, but does not require each7px patch to contain one material surface. The oracle arm intentionally requires that additional finite-footprint eligibility. Many excluded mixed-material patches still match correctly, especially identical stationary images. The two arms do not have equal positive-evidence masks; a higher measured qualification count does not establish better geometry than the oracle.",
+    "perPair": [
+      {"id":"m3w-00","motion":"stationary","split":"analysis","visible":256,"clean7":173,"visibleMixed7ImageBorder":3,"visibleMixed7InternalMaterial":80,"oracleR":173,"oracleE":0,"oracleQualified":false,"measuredQualified":true},
+      {"id":"m3w-01","motion":"lateral","split":"analysis","visible":249,"clean7":171,"visibleMixed7ImageBorder":4,"visibleMixed7InternalMaterial":74,"oracleR":0,"oracleE":171,"oracleQualified":false,"measuredQualified":true},
+      {"id":"m3w-02","motion":"constant-body-twist","split":"analysis","visible":226,"clean7":152,"visibleMixed7ImageBorder":1,"visibleMixed7InternalMaterial":73,"oracleR":0,"oracleE":152,"oracleQualified":false,"measuredQualified":true},
+      {"id":"m3w-03","motion":"accelerating","split":"analysis","visible":234,"clean7":158,"visibleMixed7ImageBorder":2,"visibleMixed7InternalMaterial":74,"oracleR":114,"oracleE":44,"oracleQualified":false,"measuredQualified":false},
+      {"id":"m3w-04","motion":"changing-direction","split":"analysis","visible":243,"clean7":170,"visibleMixed7ImageBorder":5,"visibleMixed7InternalMaterial":68,"oracleR":0,"oracleE":170,"oracleQualified":false,"measuredQualified":true},
+      {"id":"m3w-05","motion":"fast-reveal","split":"analysis","visible":189,"clean7":125,"visibleMixed7ImageBorder":2,"visibleMixed7InternalMaterial":62,"oracleR":0,"oracleE":125,"oracleQualified":false,"measuredQualified":false},
+      {"id":"m3w-06","motion":"stationary","split":"holdout","visible":256,"clean7":190,"visibleMixed7ImageBorder":4,"visibleMixed7InternalMaterial":62,"oracleR":190,"oracleE":0,"oracleQualified":true,"measuredQualified":true},
+      {"id":"m3w-07","motion":"lateral","split":"holdout","visible":246,"clean7":184,"visibleMixed7ImageBorder":5,"visibleMixed7InternalMaterial":57,"oracleR":0,"oracleE":184,"oracleQualified":true,"measuredQualified":true},
+      {"id":"m3w-08","motion":"constant-body-twist","split":"holdout","visible":223,"clean7":162,"visibleMixed7ImageBorder":5,"visibleMixed7InternalMaterial":56,"oracleR":0,"oracleE":162,"oracleQualified":false,"measuredQualified":true},
+      {"id":"m3w-09","motion":"accelerating","split":"holdout","visible":227,"clean7":169,"visibleMixed7ImageBorder":2,"visibleMixed7InternalMaterial":56,"oracleR":60,"oracleE":109,"oracleQualified":false,"measuredQualified":false},
+      {"id":"m3w-10","motion":"changing-direction","split":"holdout","visible":236,"clean7":183,"visibleMixed7ImageBorder":5,"visibleMixed7InternalMaterial":48,"oracleR":0,"oracleE":183,"oracleQualified":true,"measuredQualified":true},
+      {"id":"m3w-11","motion":"fast-reveal","split":"holdout","visible":182,"clean7":133,"visibleMixed7ImageBorder":3,"visibleMixed7InternalMaterial":46,"oracleR":0,"oracleE":133,"oracleQualified":false,"measuredQualified":false}
+    ],
+    "borderPartitionAuthority": "Derived only from retained source/target pixel coordinates and stored clean7 flags. A visible point with failed clean7 but an entirely in-bounds bilinear lattice must fail the stored material-ID condition. No material-ray oracle was rerun.",
+    "poseArithmeticEvidence": {
+      "nonstationaryPairs": 10,
+      "maximumStoredNominalDualEpilineResidualAcrossVisibleExactEndpointsWorkingPx": 1.7582315599003318e-13,
+      "epipolarUnsafeVisiblePointsAcrossThesePairs": 0,
+      "allVisibleExactEndpointsHavePositiveBothViewCheirality": true,
+      "nominalCommonScaleVetoes": 0,
+      "interpretation": "The authored endpoints agree with supplied-pose epiline/sign arithmetic to numerical precision. These controls do not support a nominal pose-convention bug. Exact oracle agreement does not establish physical Boreas calibration or synchronization accuracy."
+    },
+    "additionalRepresentationLimit": "The accelerating cases split eligible points into R-low-impact and E-observed-parallax populations114/44 and60/109. Neither branch alone reaches70% of256. This is an additional gate-model limitation; no union arm was measured or promoted, and no existing criterion was changed."
+  },
+  "actualRgbCorrespondenceEvidence": {
+    "authoredOriginalSeeds": 3072,
+    "visibleExactCenterReferences": 2767,
+    "acceptedRightTP": 2262,
+    "acceptedWrongVisibleFP": 72,
+    "rejectedVisibleCorrectMatchMisses": 433,
+    "knownInvisibleAcceptedFP": 66,
+    "totalKnownFP": 138,
+    "correctMatchFN": 505,
+    "knownInvisibleRejectedTN": 239,
+    "sourceUnavailableUnknown": 0,
+    "countingNote": "An accepted wrong visible endpoint counts as both a false correspondence and a missed correct correspondence. These are not a single mutually exclusive binary accuracy table.",
+    "nominalQualifiedCameraSelectedPointOutliers": {"visibleWrong":42,"knownInvisible":25,"total":67,"meaning":"Background camera qualification is a robust population test, not a certificate for every chosen correspondence"},
+    "fastReveal": {
+      "combined": {"visibleReferences":371,"acceptedRight":32,"correctMatchFN":339},
+      "analysis": {"visibleReferences":189,"acceptedRight":10,"acceptedWrongVisible":3,"correctMatchFN":179,"referenceDisplacementMedianPx":94.08386780669782,"referenceDisplacementMaxPx":106.13405777527348,"firstVetoAll256":{"forwardStatus":85,"backwardStatus":30,"cycle":122,"NCC":6,"accepted":13}},
+      "holdout": {"visibleReferences":182,"acceptedRight":22,"acceptedWrongVisible":5,"correctMatchFN":160,"referenceDisplacementMedianPx":93.87344724683791,"referenceDisplacementMaxPx":117.17523198237984,"firstVetoAll256":{"forwardStatus":28,"backwardStatus":32,"cycle":167,"NCC":2,"accepted":27}},
+      "finding": "The two fast-reveal cases account for339/505 missed correct correspondences. Most first vetoes are LK status or FB cycle, not NCC alone. Large authored displacement is an observed stress factor, but texture resampling, boundary/occlusion and LK capture range remain confounded; this does not isolate one implementation defect."
+    }
+  },
+  "negativeControlInterpretation": {
+    "hardClock40ms": "Each offset has12pairs times2components, so24cases per offset and48total across minus40ms/plus40ms. All are rejected by the unchanged timestamp contract; this is a contract check, not learned synchronization diagnosis.",
+    "withinContract10ms": "Known stationary/lateral/body-twist timing invariants are explicitly not-identifiable. The only nominal-qualified, non-invariant holdout changing-direction case remains compatible at minus10ms and is rejected at plus10ms. This is one controlled sensitivity observation, not a calibrated time-offset detector or a chosen correction.",
+    "calibration": "The nominal-qualified non-invariant holdout changing-direction case also remains compatible under each fixed fx-times1.05 and cx-plus8 injection. Known stationary/lateral invariants remain separate. No correction can be selected from these compatibility counts.",
+    "alongEpilineControls": "All10 evaluated along-epiline wrong-endpoint arms have fewer than180 eligible wrong points, so0 qualified arms cannot show that epiline-only ambiguity is resolved. In the two nominal-qualified epipolar cases, fixed8px shifts reduce eligible populations184 to179 and183 to178 because of out-of-view endpoints. Those179/178 points still satisfy the stored E agreement. Rejection is a support ceiling, not successful endpoint-error discrimination.",
+    "perpendicularControls": "In the same two nominal-qualified epipolar cases,181 wrong endpoints remain eligible but R/E agreement becomes0, giving a stronger conditional falsification of perpendicular errors. The stationary arms remain explicitly epipolar-unobservable."
+  },
+  "hpatchesReferenceBottleneck": {
+    "authority": "External estimated homography only, not exact physical pixel truth, independent depth/pose or occlusion gold",
+    "iLondonbridge": {
+      "externalH": "identity",
+      "nativeShape": [979,1478],
+      "currentFrozenLkAccepted": 222,
+      "currentConditionalHAcceptedRight": 0,
+      "currentConditionalHAcceptedWrong": 222,
+      "currentAcceptedMedianDisplacementNativePx": [0.61309814453125,3.76336669921875],
+      "historicalRaftForwardAccepted":54,
+      "historicalRaftForwardAcceptedCorrectAtOldFixedWorkingCap":0,
+      "historicalRaftForwardMedianErrorToHNativePx":3.6083977770031286,
+      "historicalRootSiftForwardAccepted":26,
+      "historicalRootSiftForwardMedianErrorToHNativePx":3.642150709497626,
+      "interpretation": "The identity-reference disagreement is shared by current native LK and two previously completed matching methods, including the resized working-domain run. This makes the external-H precision/alignment an important unresolved reference limitation. Agreement among matchers does not prove the physical endpoint or that H is wrong. The frozen222 conditional wrong labels are retained; they must not be advertised as222 proven physical mismatches.",
+      "notDone": "No homography was fitted, offset searched, identity H replaced, threshold enlarged or matcher rerun."
+    },
+    "vAbstract": {"currentConditionalHRight":22,"currentConditionalHWrong":7,"currentConditionalHCorrectMatchFN":222,"interpretation":"The same LK setup has major missed-match counts under the estimated viewpoint-change reference, but the two HPatches samples cannot establish real-video generalization."}
+  },
+  "disposition": {
+    "supported": [
+      "Exact controlled geometry separates nominal pose algebra from strict source-support eligibility: all9 oracle failures are support-ceiling limited.",
+      "RGB-only FB/NCC does accept some incorrect or invisible correspondences; camera qualification is not a per-point proof.",
+      "Fast-reveal correspondence failure is measured and concentrated in LK status/cycle stages, with roughly94px median true displacement.",
+      "Timing/calibration compatibility has explicit non-identifiable cases; negative controls cannot be pooled into universal fault-detection accuracy."
+    ],
+    "unresolved": [
+      "The physical cause of the real Boreas supplied-pose/pixel disagreement",
+      "A replacement camera or correspondence method that improves actual traffic warning recall",
+      "HPatches identity-H physical alignment at the fixed subpixel tolerance",
+      "Phone stability, runtime performance and any real-world safety/market claim"
+    ],
+    "cachedTrafficUnchanged": {"tp":0,"fn":13,"fp":0,"tn":18,"unknown":2},
+    "runtimePromotion": "NOT AUTHORIZED",
+    "nextConstraint": "Do not turn the oracle mask ceiling into a threshold/denominator relaxation or call this a13FN fix. Any subsequent experiment must preserve this receipt, isolate one useful measured change and keep exact authored, estimated-H and real-traffic evidence separate."
+  },
+  "technicalQaReportedByContractorNotRerunHere": {"python":711,"swift":121,"nodeAndTypeScript":14,"status":"PASS","receipt":"13-15-42-156Z-63f8f24a","meaning":"Technical regression, not road, phone, safety or commercial acceptance"}
+}

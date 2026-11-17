@@ -1,0 +1,45 @@
+{
+  "inputSha256": "b608bf1ae8518c61aea3a037ac608f2ce48265f7374f0ed0c37c67e619d5c108",
+  "candidatesSha256": "1058f18d1a75bd1afd8088d3ee892e3998f0c0ed4b03dba53ab394f2cc360376",
+  "selectionAccountingSha256": "a0ccda0b20c54f1d9d33ef5ee27ef0ee99de98dae428b00024bf3ea234ffe60c",
+  "review": {
+    "reviewer": "Contractor assistant: all 15 source-bound 960x803 sheets plus original-resolution ambiguity crops, before any M3R inference",
+    "evidence": "AI-authored visible 2D bounds, independently cross-reviewed; not human-certified boxes or dense correspondence truth. Approach references remain official 3D/pose-derived, not inferred from still images.",
+    "scope": "All 59 preselected candidate units explicitly decided; not exhaustive scene truth. Boxes include only assignable visible target extent. Unscorable units are not true negatives.",
+    "independentReview": "m3r-independent-blind-review.json SHA256 5bc6dcbc44980e1e371002997e3220e62e0f87ff5e5859c3cadc2c8bf0919b93: 46 assignable/13 uncertain independently. Contractor conservatively omits two additional partial/dark person units, turn-08:3 and low-speed-17:3, before inference.",
+    "omissions": {
+      "boreas-m3r-city-05:4": "Projected person falls on bench/street fixture; no confidently assignable person extent.",
+      "boreas-m3r-city-05:5": "Far vehicle is occluded by foreground sedan; projected rear-window rectangle is not its visible object extent.",
+      "boreas-m3r-city-08:3": "Far vehicle projects onto foreground sedan rear window and is not separately visible.",
+      "boreas-m3r-city-11:4": "Far vehicle is hidden behind foreground sedan; do not score occluder as target.",
+      "boreas-m3r-city-17:3": "Projected far target is occluded by foreground sedan, with no confident separate visible extent.",
+      "boreas-m3r-turn-05:4": "Very small distant vehicle has insufficient visible identity detail to assign this source instance confidently.",
+      "boreas-m3r-turn-08:3": "Dark person partly merges into shadow/background; contractor cannot confidently bound this individual despite independent partial-visibility assessment.",
+      "boreas-m3r-turn-11:2": "Overlapping dark pedestrians cannot be assigned separate source-instance extents confidently.",
+      "boreas-m3r-turn-11:3": "Overlapping dark pedestrians cannot be assigned separate source-instance extents confidently.",
+      "boreas-m3r-low-speed-08:3": "Projected target lies on foreground white van, which is an occluder rather than this source instance.",
+      "boreas-m3r-low-speed-08:5": "Distant crossing vehicle is occluded by white pickup; cannot isolate its visible extent.",
+      "boreas-m3r-low-speed-14:5": "Person is strongly occluded by pole; bags/partial body do not establish a confident target rectangle.",
+      "boreas-m3r-low-speed-14:6": "Small white commercial van is mostly behind streetcar; target extent is ambiguous and must not be replaced by streetcar body.",
+      "boreas-m3r-low-speed-17:3": "Person partly hidden by foreground railing; contractor cannot confidently assign full visible extent despite independent partial-visibility assessment.",
+      "boreas-m3r-low-speed-17:4": "Commercial van is hidden behind streetcar; projected streetcar-body rectangle is not the target."
+    }
+  },
+  "frames": {
+    "boreas-m3r-city-05": {"1": [729,401,960,533], "2": [440,419,519,485], "3": [211,428,311,480], "4": null, "5": null},
+    "boreas-m3r-city-08": {"1": [635,345,849,490], "2": [440,419,519,485], "3": null},
+    "boreas-m3r-city-11": {"1": [650,336,929,522], "2": [440,414,520,483], "3": [264,411,337,463], "4": null},
+    "boreas-m3r-city-14": {"1": [45,417,233,498], "2": [440,410,520,476]},
+    "boreas-m3r-city-17": {"1": [180,410,303,477], "2": [437,410,519,477], "3": null},
+    "boreas-m3r-turn-05": {"1": [363,424,549,589], "2": [23,415,58,478], "3": [283,412,298,440], "4": null},
+    "boreas-m3r-turn-08": {"1": [363,424,549,589], "2": [49,415,79,476], "3": null, "4": [283,412,298,440]},
+    "boreas-m3r-turn-11": {"1": [363,424,549,589], "2": null, "3": null, "4": [283,412,298,440]},
+    "boreas-m3r-turn-14": {"1": [363,424,549,589], "2": [33,427,59,485], "3": [93,417,116,471]},
+    "boreas-m3r-turn-17": {"1": [363,424,549,589], "2": [47,427,74,485], "3": [108,415,130,469]},
+    "boreas-m3r-low-speed-05": {"1": [416,446,607,601], "2": [155,388,310,443], "3": [556,417,655,453], "4": [193,410,227,474], "5": [451,403,522,429]},
+    "boreas-m3r-low-speed-08": {"1": [416,446,607,601], "2": [279,393,435,448], "3": null, "4": [151,410,190,472], "5": null},
+    "boreas-m3r-low-speed-11": {"1": [416,446,607,601], "2": [417,398,570,450], "3": [111,408,151,470], "4": [535,393,620,430]},
+    "boreas-m3r-low-speed-14": {"1": [416,446,607,601], "2": [559,402,697,455], "3": [110,408,250,454], "4": [178,408,225,468], "5": null, "6": null},
+    "boreas-m3r-low-speed-17": {"1": [416,446,607,601], "2": [142,409,280,455], "3": null, "4": null}
+  }
+}

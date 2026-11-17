@@ -1,0 +1,1650 @@
+{
+  "study": "M3R-old-development-overlay",
+  "sourceReceiptSha256": "0c4198fd153cb9acddee1dd18d7911f5be60dcd35153f73a63c98c8a07e863d0",
+  "sourceModuleSha256": "03123315ebf5172437da548782348d8aa5ea876d8954d051798bec79f8a4900f",
+  "sourceRunnerSha256": "88d138fb68dc144d27f4280669710e416bb1922b3e2c663092b84be16b9ec204",
+  "scope": "POSTHOC DEVELOPMENT on already-seen M3Q frames, not new holdout or new detector/flow inference",
+  "frames": 150,
+  "actualNewModelDirections": 0,
+  "historicalMeasurementDirectionsRequired": 370,
+  "contractCheckedFrames": 150,
+  "totalsB": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 30,
+    "tn": 8,
+    "unmatchedReports": 1,
+    "ambiguousReports": 0,
+    "unknownTargetReports": 0,
+    "unknownTargets": 5,
+    "unscoredFrameReports": 1,
+    "scoredKeyframes": 15,
+    "framesAbstained": 147
+  },
+  "identityTransitions": {
+    "transitions": 147,
+    "supportedLinks": 749
+  },
+  "alerts": [
+    {
+      "clipId": "boreas-m3q-city",
+      "index": 45,
+      "token": "boreas-boreas-m3q-city-1598989143656612",
+      "events": [
+        {
+          "kind": "relative-optical-approach",
+          "trackId": 308,
+          "label": "car",
+          "epoch": 20,
+          "timeMs": 3601.495,
+          "method": "positive-adjacent-identity-chain-with-frozen-measurement",
+          "observationMs": 320.203,
+          "linearLogGrowth": 0.07024632634316628,
+          "linearLogGrowthLowerBound": 0.07024632634316628,
+          "logAreaGrowth": 0.14049265268633257,
+          "growthBound": "forward-reverse-estimator-envelope",
+          "points": 31,
+          "measurementPairSha256": "910d1a83aaae68b2e769656a7f8956dcac585be92f9f7a2007a409b32d498247",
+          "identityChainSha256": "699a8fb34ce971d3624f4960df72ba7da2a533ba60faa91aa5bc4870e16afa8a"
+        }
+      ],
+      "evidence": {
+        "302": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 302,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 302,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 0,
+              "sourceIndex": 1,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 1,
+                  "currentIndex": 0,
+                  "linkSha256": "8a91d986b15d85ddcf5abfb2c0626b1a25d6a77f573380e18b0b24cc0083e8b5"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 1,
+              "endDetectionIndex": 0,
+              "pairSha256": "6bfc91377c669de7e6416b7c5ded9addaee2ac67354377fd10e880b875fd40bd"
+            }
+          },
+          "reason": "fresh-bidirectional-estimator-disagreement"
+        },
+        "303": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 303,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 303,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 1,
+              "sourceIndex": 0,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 0,
+                  "currentIndex": 1,
+                  "linkSha256": "bad3e06e38c5a68156c240ce562c79a6c2117d688e02edbeea9615d2b990161e"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 0,
+              "endDetectionIndex": 1,
+              "pairSha256": "2285af27fd2c35da1b2390848eef84b104bd2c92eb888edc7fbd06a89483b713"
+            },
+            "linearLogGrowthLowerBound": 0.050916008982154835,
+            "linearLogGrowthUpperBound": 0.053127844221887,
+            "startMs": 3522.782,
+            "observationMs": 78.71299999999974
+          },
+          "anchor": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 303,
+              "startToken": "boreas-boreas-m3q-city-1598989143336409",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 1,
+              "sourceIndex": 1,
+              "startMs": 3281.292,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "dd4e72b8f4dd14c918db7b4d679886b922c4cfe1fa4afa89d2db2f1eb55fc1ca",
+                "31b1a7dcf26caf2d64cbda4d0c5fed9bb8b463865018b4100a835a7ae540e099",
+                "89cafcd17c84672174c13e6ee5854ad042d1acb52e004490dd395d7f3fdffab1",
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143336409",
+                "boreas-boreas-m3q-city-1598989143416409",
+                "boreas-boreas-m3q-city-1598989143497933",
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143336409",
+                  "endToken": "boreas-boreas-m3q-city-1598989143416409",
+                  "transitionSha256": "1f619098f4f7be3d2837c2738ea78427abc5a20867ddca4cac8c4c5e12f72105",
+                  "previousIndex": 1,
+                  "currentIndex": 0,
+                  "linkSha256": "dbd82750f50a6c89b39dcb6de24867d1062531c791b082892eca52ff5caa35e5"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143416409",
+                  "endToken": "boreas-boreas-m3q-city-1598989143497933",
+                  "transitionSha256": "0720ca32e6ffebf2e8a06027c222c8d345ae1e357cfecae67a1d118273ea3118",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "3cd372196b943019920a9fd2d3757b36dda4eca572f821d80f29dec23d5bb702"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143497933",
+                  "endToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "transitionSha256": "b5423ad2f5847692fb1768f23cf9beb0edc4c3240df6ab287a79f171a6fb0251",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "20d2a31bbd1655766b6996929f0a5fc5f2f380600a48ae41fa936ee090bda35e"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 0,
+                  "currentIndex": 1,
+                  "linkSha256": "bad3e06e38c5a68156c240ce562c79a6c2117d688e02edbeea9615d2b990161e"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143336409->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143336409",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 1,
+              "endDetectionIndex": 1,
+              "pairSha256": "364a03bf0952e67c19f482528c3363bcb8af6f2711e31111a7454d8675b372e6"
+            }
+          },
+          "reason": "anchor-forward-insufficient-grid-support"
+        },
+        "301": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 301,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 301,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 2,
+              "sourceIndex": 2,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 2,
+                  "currentIndex": 2,
+                  "linkSha256": "fe66a94f78389cb70204d8297096c451cedcb866ca8ed6f90c8ed7ed90c02965"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 2,
+              "endDetectionIndex": 2,
+              "pairSha256": "dea6559c0b0d01366aafdc336468067195d6c707d4c428d1c6969fb0c1ac13a7"
+            },
+            "linearLogGrowthLowerBound": 0.031066773722023502,
+            "linearLogGrowthUpperBound": 0.032574252909877525,
+            "startMs": 3522.782,
+            "observationMs": 78.71299999999974
+          },
+          "anchor": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 301,
+              "startToken": "boreas-boreas-m3q-city-1598989143336409",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 2,
+              "sourceIndex": 0,
+              "startMs": 3281.292,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "dd4e72b8f4dd14c918db7b4d679886b922c4cfe1fa4afa89d2db2f1eb55fc1ca",
+                "31b1a7dcf26caf2d64cbda4d0c5fed9bb8b463865018b4100a835a7ae540e099",
+                "89cafcd17c84672174c13e6ee5854ad042d1acb52e004490dd395d7f3fdffab1",
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143336409",
+                "boreas-boreas-m3q-city-1598989143416409",
+                "boreas-boreas-m3q-city-1598989143497933",
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143336409",
+                  "endToken": "boreas-boreas-m3q-city-1598989143416409",
+                  "transitionSha256": "1f619098f4f7be3d2837c2738ea78427abc5a20867ddca4cac8c4c5e12f72105",
+                  "previousIndex": 0,
+                  "currentIndex": 2,
+                  "linkSha256": "10f79058baf7d250fdf09b1b9c0cca7eebb78b50a6a37c7a2ba5a864fd20d95d"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143416409",
+                  "endToken": "boreas-boreas-m3q-city-1598989143497933",
+                  "transitionSha256": "0720ca32e6ffebf2e8a06027c222c8d345ae1e357cfecae67a1d118273ea3118",
+                  "previousIndex": 2,
+                  "currentIndex": 2,
+                  "linkSha256": "7fa2407659f5ddb28c23abaab071553f10dbdb46995583f833dcb5f1268bfc51"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143497933",
+                  "endToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "transitionSha256": "b5423ad2f5847692fb1768f23cf9beb0edc4c3240df6ab287a79f171a6fb0251",
+                  "previousIndex": 2,
+                  "currentIndex": 2,
+                  "linkSha256": "71ecd5fc334340381e4cb7d64e4115ff8d5ad5ff42932910a7a19f907d13d58d"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 2,
+                  "currentIndex": 2,
+                  "linkSha256": "fe66a94f78389cb70204d8297096c451cedcb866ca8ed6f90c8ed7ed90c02965"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143336409->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143336409",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 0,
+              "endDetectionIndex": 2,
+              "pairSha256": "c0a1445fd515cd5bf6d20f2aaacc4789f9687d3cf4a3efc998190540b33c4389"
+            }
+          },
+          "reason": "anchor-bidirectional-estimator-disagreement"
+        },
+        "305": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 305,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 305,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 3,
+              "sourceIndex": 5,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 5,
+                  "currentIndex": 3,
+                  "linkSha256": "c8cb8e67cdb19fb9cfd0d56ddc4d3fca5f790f4975defb45746949f88f3108ae"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 5,
+              "endDetectionIndex": 3,
+              "pairSha256": "1630e1a16f5662eb8314c190722f4a6e421861a0c7c6727f66d4737984788cd2"
+            }
+          },
+          "reason": "fresh-unverifiable-source-selection"
+        },
+        "316": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 316,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 316,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 4,
+              "sourceIndex": 3,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 3,
+                  "currentIndex": 4,
+                  "linkSha256": "67b92cc31befffb2c198d7af1c67aa6f8ffb2ca581d3c5eaebfed6e814d997bc"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 3,
+              "endDetectionIndex": 4,
+              "pairSha256": "00902fc3f9b6e1d1c38a461bad7ecd3ca01275772299220ecc15980b74586504"
+            }
+          },
+          "reason": "fresh-forward-insufficient-grid-support"
+        },
+        "307": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 307,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 307,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 5,
+              "sourceIndex": 4,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 4,
+                  "currentIndex": 5,
+                  "linkSha256": "b07d983f86ca52ecc6578f237bd6bbfa3bcb2e01d3e5a94814e36c53590c7711"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 4,
+              "endDetectionIndex": 5,
+              "pairSha256": "11a4442329dbd0c64f5d935cd75781e8fce872952b8de9221ceb043fcd118b36"
+            }
+          },
+          "reason": "fresh-bidirectional-estimator-disagreement"
+        },
+        "308": {
+          "confirmed": true,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 308,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 308,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 6,
+              "sourceIndex": 7,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 7,
+                  "currentIndex": 6,
+                  "linkSha256": "c47bb1070e4027cf92ee5ecb364d009dfab19e4109dc5b1c08616147a655ac60"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 7,
+              "endDetectionIndex": 6,
+              "pairSha256": "3543b1ff5a2086339f6d34749c36fa6ee2f2b8e7ad823f92604291265aacdd5c"
+            },
+            "linearLogGrowthLowerBound": 0.01610214313161588,
+            "linearLogGrowthUpperBound": 0.017558060787765947,
+            "startMs": 3522.782,
+            "observationMs": 78.71299999999974
+          },
+          "anchor": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 308,
+              "startToken": "boreas-boreas-m3q-city-1598989143336409",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 6,
+              "sourceIndex": 6,
+              "startMs": 3281.292,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "dd4e72b8f4dd14c918db7b4d679886b922c4cfe1fa4afa89d2db2f1eb55fc1ca",
+                "31b1a7dcf26caf2d64cbda4d0c5fed9bb8b463865018b4100a835a7ae540e099",
+                "89cafcd17c84672174c13e6ee5854ad042d1acb52e004490dd395d7f3fdffab1",
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143336409",
+                "boreas-boreas-m3q-city-1598989143416409",
+                "boreas-boreas-m3q-city-1598989143497933",
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143336409",
+                  "endToken": "boreas-boreas-m3q-city-1598989143416409",
+                  "transitionSha256": "1f619098f4f7be3d2837c2738ea78427abc5a20867ddca4cac8c4c5e12f72105",
+                  "previousIndex": 6,
+                  "currentIndex": 6,
+                  "linkSha256": "a3beaf0418ed02b790518ed0f4a4c499d78a5d372233036c7f27836005191d99"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143416409",
+                  "endToken": "boreas-boreas-m3q-city-1598989143497933",
+                  "transitionSha256": "0720ca32e6ffebf2e8a06027c222c8d345ae1e357cfecae67a1d118273ea3118",
+                  "previousIndex": 6,
+                  "currentIndex": 6,
+                  "linkSha256": "9eea9155b20f05add29138d63dba9de70b40e02bd09cbca5a07234a966832e5b"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143497933",
+                  "endToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "transitionSha256": "b5423ad2f5847692fb1768f23cf9beb0edc4c3240df6ab287a79f171a6fb0251",
+                  "previousIndex": 6,
+                  "currentIndex": 7,
+                  "linkSha256": "a25590b30d93891bc2a242137c253ee5a0edf903cd19a0121d4f156813998183"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 7,
+                  "currentIndex": 6,
+                  "linkSha256": "c47bb1070e4027cf92ee5ecb364d009dfab19e4109dc5b1c08616147a655ac60"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143336409->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143336409",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 6,
+              "endDetectionIndex": 6,
+              "pairSha256": "910d1a83aaae68b2e769656a7f8956dcac585be92f9f7a2007a409b32d498247"
+            },
+            "linearLogGrowthLowerBound": 0.07024632634316628,
+            "linearLogGrowthUpperBound": 0.07484874681549597,
+            "startMs": 3281.292,
+            "observationMs": 320.203
+          },
+          "linearLogGrowth": 0.07024632634316628,
+          "linearLogGrowthLowerBound": 0.07024632634316628,
+          "linearLogGrowthUpperBound": 0.07484874681549597,
+          "growthBound": "forward-reverse-estimator-envelope",
+          "observationMs": 320.203,
+          "reason": "identity-chain-and-frozen-measurement-supported"
+        },
+        "313": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 313,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 313,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 7,
+              "sourceIndex": 6,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 6,
+                  "currentIndex": 7,
+                  "linkSha256": "88eb706ae82191bbb2165d9293747ab3f10ab1cf8755faefb54b5a5ac754067e"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 6,
+              "endDetectionIndex": 7,
+              "pairSha256": "667f52ecd0e1ceb8312cf5d5e4f9ad3263d40faf2b2e5304d9d2158bd785efed"
+            },
+            "linearLogGrowthLowerBound": 0.006473670019146026,
+            "linearLogGrowthUpperBound": 0.008256923650724293,
+            "startMs": 3522.782,
+            "observationMs": 78.71299999999974
+          },
+          "anchor": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 313,
+              "startToken": "boreas-boreas-m3q-city-1598989143336409",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 7,
+              "sourceIndex": 8,
+              "startMs": 3281.292,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "dd4e72b8f4dd14c918db7b4d679886b922c4cfe1fa4afa89d2db2f1eb55fc1ca",
+                "31b1a7dcf26caf2d64cbda4d0c5fed9bb8b463865018b4100a835a7ae540e099",
+                "89cafcd17c84672174c13e6ee5854ad042d1acb52e004490dd395d7f3fdffab1",
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143336409",
+                "boreas-boreas-m3q-city-1598989143416409",
+                "boreas-boreas-m3q-city-1598989143497933",
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143336409",
+                  "endToken": "boreas-boreas-m3q-city-1598989143416409",
+                  "transitionSha256": "1f619098f4f7be3d2837c2738ea78427abc5a20867ddca4cac8c4c5e12f72105",
+                  "previousIndex": 8,
+                  "currentIndex": 8,
+                  "linkSha256": "a8b7004e2cae997a8f91afc1c0440a10393e1f440e49ddb7acf6c43cae6baea2"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143416409",
+                  "endToken": "boreas-boreas-m3q-city-1598989143497933",
+                  "transitionSha256": "0720ca32e6ffebf2e8a06027c222c8d345ae1e357cfecae67a1d118273ea3118",
+                  "previousIndex": 8,
+                  "currentIndex": 7,
+                  "linkSha256": "5b13618e1ee56cd308b73bbc0def001cda1416ff8461ff1ede60b7e1ab62eabc"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143497933",
+                  "endToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "transitionSha256": "b5423ad2f5847692fb1768f23cf9beb0edc4c3240df6ab287a79f171a6fb0251",
+                  "previousIndex": 7,
+                  "currentIndex": 6,
+                  "linkSha256": "bf5ab57f6bb0283619979e7cfd8d7ddbe124859f0ffba9faf0384baaeb2d350f"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 6,
+                  "currentIndex": 7,
+                  "linkSha256": "88eb706ae82191bbb2165d9293747ab3f10ab1cf8755faefb54b5a5ac754067e"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143336409->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143336409",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 8,
+              "endDetectionIndex": 7,
+              "pairSha256": "f5a0367c6886178548f4ebcc699c80d94ea0550457e0f65f81caf2395c46fb48"
+            }
+          },
+          "reason": "anchor-bidirectional-estimator-disagreement"
+        },
+        "317": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 317,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 317,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 8,
+              "sourceIndex": 9,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 9,
+                  "currentIndex": 8,
+                  "linkSha256": "17cc75207ebe8a36db3fb210e252209c57dc1d61d0a685048a370353c57cf2f7"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 9,
+              "endDetectionIndex": 8,
+              "pairSha256": "fcf194bffc649f21d0b80131ba881fb8f8f26229966dd4efbc03bb8b9443bfb3"
+            }
+          },
+          "reason": "fresh-unverifiable-source-selection"
+        },
+        "314": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 314,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 314,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 9,
+              "sourceIndex": 10,
+              "startMs": 3522.782,
+              "endMs": 3601.495,
+              "observationSha256s": [
+                "0fa411ca9f8a41dd03ad7198f20820e9d4642fc8eead9196437f792f4746903a",
+                "d561e0ae0ee512a51d1ac9b7bd653f3a138472aecc69805ca058ebeeeaa65e72"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-city-1598989143577899",
+                "boreas-boreas-m3q-city-1598989143656612"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-city-1598989143577899",
+                  "endToken": "boreas-boreas-m3q-city-1598989143656612",
+                  "transitionSha256": "30d2aca17d7f219fe28e2a5aecc896ca127032a8c1de3be298ea816c289ce3f1",
+                  "previousIndex": 10,
+                  "currentIndex": 9,
+                  "linkSha256": "1d96adcd8ef84f0ba7a02593c95171c74bd13b4eb676bee28010cc31b481a882"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-city-1598989143577899->boreas-boreas-m3q-city-1598989143656612",
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "startDetectionIndex": 10,
+              "endDetectionIndex": 9,
+              "pairSha256": "ac287813d5bc351c65708917785ea751172cf4e3a7207c7115b52639fa1fdb54"
+            }
+          },
+          "reason": "fresh-unverifiable-source-selection"
+        },
+        "318": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 318,
+          "fresh": {
+            "identityChain": {
+              "supported": false,
+              "reason": "missing-identity-source-exposure",
+              "identityId": 318,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 10
+            },
+            "supported": false,
+            "measurementPair": null
+          },
+          "reason": "fresh-missing-identity-source-exposure"
+        },
+        "319": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-city-1598989143656612",
+          "currentMs": 3601.495,
+          "identityId": 319,
+          "fresh": {
+            "identityChain": {
+              "supported": false,
+              "reason": "missing-identity-source-exposure",
+              "identityId": 319,
+              "startToken": "boreas-boreas-m3q-city-1598989143577899",
+              "endToken": "boreas-boreas-m3q-city-1598989143656612",
+              "currentIndex": 11
+            },
+            "supported": false,
+            "measurementPair": null
+          },
+          "reason": "fresh-missing-identity-source-exposure"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "index": 14,
+      "token": "boreas-boreas-m3q-turn-1598987803247859",
+      "events": [
+        {
+          "kind": "relative-optical-approach",
+          "trackId": 29,
+          "label": "car",
+          "epoch": 3,
+          "timeMs": 1120.489,
+          "method": "positive-adjacent-identity-chain-with-frozen-measurement",
+          "observationMs": 320.93100000000004,
+          "linearLogGrowth": 0.04432456297928609,
+          "linearLogGrowthLowerBound": 0.04432456297928609,
+          "logAreaGrowth": 0.08864912595857218,
+          "growthBound": "forward-reverse-estimator-envelope",
+          "points": 13,
+          "measurementPairSha256": "5329e3e08724bd7be8ea2ab386e4e91d651eaacbad6339d07c17423e732f39ae",
+          "identityChainSha256": "ed684a5f5d62a47d07ac2bc9772902689a4589c75afd89d03726a3e16d5f599a"
+        }
+      ],
+      "evidence": {
+        "29": {
+          "confirmed": true,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803247859",
+          "currentMs": 1120.489,
+          "identityId": 29,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 29,
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "currentIndex": 0,
+              "sourceIndex": 0,
+              "startMs": 1040.288,
+              "endMs": 1120.489,
+              "observationSha256s": [
+                "88118395fd527caecac794d5343bb4e19d5c19f80954d0487964db0bad2f89ea",
+                "74a8ebdf5b67440fc59851a52b6ea3f51bfde91151640645a5c6e714d925fd1d"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987803167658",
+                "boreas-boreas-m3q-turn-1598987803247859"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+                  "transitionSha256": "f435624e6d1bd12352a91680275b3b70d09bdd70d83ce88d51cdf60938830433",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "878ae6fa4927f8bb4172344eb2bcc801afb1bd35afc7371af098fb3bc30dfa0b"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987803167658->boreas-boreas-m3q-turn-1598987803247859",
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "startDetectionIndex": 0,
+              "endDetectionIndex": 0,
+              "pairSha256": "49da5d460c4c42686b61a30a63d63fe522aa11f90826671a599d7168c60b8ea0"
+            },
+            "linearLogGrowthLowerBound": 0.011044356258225549,
+            "linearLogGrowthUpperBound": 0.01170918798197442,
+            "startMs": 1040.288,
+            "observationMs": 80.20100000000002
+          },
+          "anchor": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 29,
+              "startToken": "boreas-boreas-m3q-turn-1598987802926928",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "currentIndex": 0,
+              "sourceIndex": 0,
+              "startMs": 799.558,
+              "endMs": 1120.489,
+              "observationSha256s": [
+                "f38108196e5d792088f1c7b25b1f4682cb7250e825f650d55ce869dba270b5ae",
+                "3b337c5379e27d1e73480749c5d047d69c7020be01415ded6ca391cd4fa4be9d",
+                "8a0df09b7051edfbb55fbedfcc3f1137c5fab41b4bad755af897057369382628",
+                "88118395fd527caecac794d5343bb4e19d5c19f80954d0487964db0bad2f89ea",
+                "74a8ebdf5b67440fc59851a52b6ea3f51bfde91151640645a5c6e714d925fd1d"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987802926928",
+                "boreas-boreas-m3q-turn-1598987803010477",
+                "boreas-boreas-m3q-turn-1598987803088101",
+                "boreas-boreas-m3q-turn-1598987803167658",
+                "boreas-boreas-m3q-turn-1598987803247859"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987802926928",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803010477",
+                  "transitionSha256": "402c1a9d611d6769370e9730bf0f9525937c1a3f7cf44c731edfd79a9a403424",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "03fa1a7aaaa73098792be83d4759e89ceb51da40b8ebb59675ac8da9a846bc50"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803010477",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803088101",
+                  "transitionSha256": "2db4e17c671214dcab1648dcea326ce61b95bdaee881a1d66f542a8a0dc2d6f2",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "338c5d8e5ebf4cd2ca4d41044f73254e060aba2c3d6a9bea40c21f5d6ed7e8e8"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803088101",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803167658",
+                  "transitionSha256": "0b58b1c42c7a53fba068f3f20cd70a64d65ebfd85d48f6f4e06200742fdb719b",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "7a6d381f8c7e28186f7aecfef88ec2610526dd8fb932cf5245403dfc08bc7113"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+                  "transitionSha256": "f435624e6d1bd12352a91680275b3b70d09bdd70d83ce88d51cdf60938830433",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "878ae6fa4927f8bb4172344eb2bcc801afb1bd35afc7371af098fb3bc30dfa0b"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987802926928->boreas-boreas-m3q-turn-1598987803247859",
+              "startToken": "boreas-boreas-m3q-turn-1598987802926928",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "startDetectionIndex": 0,
+              "endDetectionIndex": 0,
+              "pairSha256": "5329e3e08724bd7be8ea2ab386e4e91d651eaacbad6339d07c17423e732f39ae"
+            },
+            "linearLogGrowthLowerBound": 0.04432456297928609,
+            "linearLogGrowthUpperBound": 0.0477581051906285,
+            "startMs": 799.558,
+            "observationMs": 320.93100000000004
+          },
+          "linearLogGrowth": 0.04432456297928609,
+          "linearLogGrowthLowerBound": 0.04432456297928609,
+          "linearLogGrowthUpperBound": 0.0477581051906285,
+          "growthBound": "forward-reverse-estimator-envelope",
+          "observationMs": 320.93100000000004,
+          "reason": "identity-chain-and-frozen-measurement-supported"
+        },
+        "49": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803247859",
+          "currentMs": 1120.489,
+          "identityId": 49,
+          "fresh": {
+            "identityChain": {
+              "supported": false,
+              "reason": "missing-identity-source-exposure",
+              "identityId": 49,
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "currentIndex": 1
+            },
+            "supported": false,
+            "measurementPair": null
+          },
+          "reason": "fresh-missing-identity-source-exposure"
+        },
+        "50": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803247859",
+          "currentMs": 1120.489,
+          "identityId": 50,
+          "fresh": {
+            "identityChain": {
+              "supported": false,
+              "reason": "missing-identity-source-exposure",
+              "identityId": 50,
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "currentIndex": 2
+            },
+            "supported": false,
+            "measurementPair": null
+          },
+          "reason": "fresh-missing-identity-source-exposure"
+        },
+        "51": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803247859",
+          "currentMs": 1120.489,
+          "identityId": 51,
+          "fresh": {
+            "identityChain": {
+              "supported": false,
+              "reason": "missing-identity-source-exposure",
+              "identityId": 51,
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "currentIndex": 3
+            },
+            "supported": false,
+            "measurementPair": null
+          },
+          "reason": "fresh-missing-identity-source-exposure"
+        },
+        "34": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803247859",
+          "currentMs": 1120.489,
+          "identityId": 34,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 34,
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "currentIndex": 4,
+              "sourceIndex": 5,
+              "startMs": 1040.288,
+              "endMs": 1120.489,
+              "observationSha256s": [
+                "88118395fd527caecac794d5343bb4e19d5c19f80954d0487964db0bad2f89ea",
+                "74a8ebdf5b67440fc59851a52b6ea3f51bfde91151640645a5c6e714d925fd1d"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987803167658",
+                "boreas-boreas-m3q-turn-1598987803247859"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+                  "transitionSha256": "f435624e6d1bd12352a91680275b3b70d09bdd70d83ce88d51cdf60938830433",
+                  "previousIndex": 5,
+                  "currentIndex": 4,
+                  "linkSha256": "35f02c4f6492a5fab961df58ccb8eb5cd3625762ab069a0bfb60a05a263f8e9d"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987803167658->boreas-boreas-m3q-turn-1598987803247859",
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "startDetectionIndex": 5,
+              "endDetectionIndex": 4,
+              "pairSha256": "ed49f29684bfc3e690244f6a78e3684989ea13cad80c9da4e9246e0ef80f5c0d"
+            },
+            "linearLogGrowthLowerBound": 0.005204711714649533,
+            "linearLogGrowthUpperBound": 0.005220990424269265,
+            "startMs": 1040.288,
+            "observationMs": 80.20100000000002
+          },
+          "anchor": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 34,
+              "startToken": "boreas-boreas-m3q-turn-1598987802926928",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "currentIndex": 4,
+              "sourceIndex": 4,
+              "startMs": 799.558,
+              "endMs": 1120.489,
+              "observationSha256s": [
+                "f38108196e5d792088f1c7b25b1f4682cb7250e825f650d55ce869dba270b5ae",
+                "3b337c5379e27d1e73480749c5d047d69c7020be01415ded6ca391cd4fa4be9d",
+                "8a0df09b7051edfbb55fbedfcc3f1137c5fab41b4bad755af897057369382628",
+                "88118395fd527caecac794d5343bb4e19d5c19f80954d0487964db0bad2f89ea",
+                "74a8ebdf5b67440fc59851a52b6ea3f51bfde91151640645a5c6e714d925fd1d"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987802926928",
+                "boreas-boreas-m3q-turn-1598987803010477",
+                "boreas-boreas-m3q-turn-1598987803088101",
+                "boreas-boreas-m3q-turn-1598987803167658",
+                "boreas-boreas-m3q-turn-1598987803247859"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987802926928",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803010477",
+                  "transitionSha256": "402c1a9d611d6769370e9730bf0f9525937c1a3f7cf44c731edfd79a9a403424",
+                  "previousIndex": 4,
+                  "currentIndex": 4,
+                  "linkSha256": "aca6c8199d86f2e91f4c5e10dcf214528c41b50dd767878acd07cc3a82130906"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803010477",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803088101",
+                  "transitionSha256": "2db4e17c671214dcab1648dcea326ce61b95bdaee881a1d66f542a8a0dc2d6f2",
+                  "previousIndex": 4,
+                  "currentIndex": 4,
+                  "linkSha256": "789a4a572703884f4aa847a2e9f092a286e0acbdac3ce493787c4ff545e17497"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803088101",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803167658",
+                  "transitionSha256": "0b58b1c42c7a53fba068f3f20cd70a64d65ebfd85d48f6f4e06200742fdb719b",
+                  "previousIndex": 4,
+                  "currentIndex": 5,
+                  "linkSha256": "85ae6c34f2630884df3435f42af82d7a1eac5761227b5edb577dde40bf089613"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+                  "transitionSha256": "f435624e6d1bd12352a91680275b3b70d09bdd70d83ce88d51cdf60938830433",
+                  "previousIndex": 5,
+                  "currentIndex": 4,
+                  "linkSha256": "35f02c4f6492a5fab961df58ccb8eb5cd3625762ab069a0bfb60a05a263f8e9d"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987802926928->boreas-boreas-m3q-turn-1598987803247859",
+              "startToken": "boreas-boreas-m3q-turn-1598987802926928",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "startDetectionIndex": 4,
+              "endDetectionIndex": 4,
+              "pairSha256": "424a76a601cbd05b25e46677959e84c76335b01c2051ea18a59290facce8c1b0"
+            }
+          },
+          "reason": "anchor-unverifiable-source-selection"
+        },
+        "33": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803247859",
+          "currentMs": 1120.489,
+          "identityId": 33,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 33,
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "currentIndex": 5,
+              "sourceIndex": 4,
+              "startMs": 1040.288,
+              "endMs": 1120.489,
+              "observationSha256s": [
+                "88118395fd527caecac794d5343bb4e19d5c19f80954d0487964db0bad2f89ea",
+                "74a8ebdf5b67440fc59851a52b6ea3f51bfde91151640645a5c6e714d925fd1d"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987803167658",
+                "boreas-boreas-m3q-turn-1598987803247859"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+                  "transitionSha256": "f435624e6d1bd12352a91680275b3b70d09bdd70d83ce88d51cdf60938830433",
+                  "previousIndex": 4,
+                  "currentIndex": 5,
+                  "linkSha256": "ad2bdebc0b9b2d449de20d40f028236baa374a6c7526a30211c3d610708b63bd"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987803167658->boreas-boreas-m3q-turn-1598987803247859",
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "startDetectionIndex": 4,
+              "endDetectionIndex": 5,
+              "pairSha256": "a74e11d61440c6ad2cb1f28093d01501a6df634305bfaa252a9d23293e099124"
+            }
+          },
+          "reason": "fresh-unverifiable-source-selection"
+        },
+        "40": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803247859",
+          "currentMs": 1120.489,
+          "identityId": 40,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 40,
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "currentIndex": 6,
+              "sourceIndex": 6,
+              "startMs": 1040.288,
+              "endMs": 1120.489,
+              "observationSha256s": [
+                "88118395fd527caecac794d5343bb4e19d5c19f80954d0487964db0bad2f89ea",
+                "74a8ebdf5b67440fc59851a52b6ea3f51bfde91151640645a5c6e714d925fd1d"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987803167658",
+                "boreas-boreas-m3q-turn-1598987803247859"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+                  "transitionSha256": "f435624e6d1bd12352a91680275b3b70d09bdd70d83ce88d51cdf60938830433",
+                  "previousIndex": 6,
+                  "currentIndex": 6,
+                  "linkSha256": "2c1a449d5fc6665bd044d50937407087fab12e357738a4b2c6b6532c6d934af4"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987803167658->boreas-boreas-m3q-turn-1598987803247859",
+              "startToken": "boreas-boreas-m3q-turn-1598987803167658",
+              "endToken": "boreas-boreas-m3q-turn-1598987803247859",
+              "startDetectionIndex": 6,
+              "endDetectionIndex": 6,
+              "pairSha256": "7f88d4975053b6eb19b7b78493e0cc4c74d9cfa00bf5422de8d6718fb2b1ae29"
+            }
+          },
+          "reason": "fresh-unverifiable-source-selection"
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "index": 21,
+      "token": "boreas-boreas-m3q-turn-1598987803807672",
+      "events": [
+        {
+          "kind": "relative-optical-approach",
+          "trackId": 52,
+          "label": "car",
+          "epoch": 4,
+          "timeMs": 1680.302,
+          "method": "positive-adjacent-identity-chain-with-frozen-measurement",
+          "observationMs": 398.96399999999994,
+          "linearLogGrowth": 0.0759751452960223,
+          "linearLogGrowthLowerBound": 0.0759751452960223,
+          "logAreaGrowth": 0.1519502905920446,
+          "growthBound": "forward-reverse-estimator-envelope",
+          "points": 16,
+          "measurementPairSha256": "5e99ff317a3255be0f4a5becb1c6218ef0cc54351c775644860f8df1eac13646",
+          "identityChainSha256": "6a8a6ac8957bc6847e2981bf335cfa251d1f085bc49c01c0524d85adc2a8cede"
+        }
+      ],
+      "evidence": {
+        "52": {
+          "confirmed": true,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803807672",
+          "currentMs": 1680.302,
+          "identityId": 52,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 52,
+              "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "currentIndex": 0,
+              "sourceIndex": 0,
+              "startMs": 1600.621,
+              "endMs": 1680.302,
+              "observationSha256s": [
+                "c345ad236a7d84ccb186dc97c1aecc30cf977d28ff045feb7106c1968c1e2e2e",
+                "88375e463f9279a03da8f7e5151c7a8226dd4f208c61ef2696b7c055dd36c1ed"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987803727991",
+                "boreas-boreas-m3q-turn-1598987803807672"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+                  "transitionSha256": "422a163a9ee89f0404553d838f8a16a0cac352533336b72c9f6263b78517a76c",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "eae9040602c7e4e75f8a56e985cab8803a5b61ce20f6e1ad78ffa7708e458fb1"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987803727991->boreas-boreas-m3q-turn-1598987803807672",
+              "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "startDetectionIndex": 0,
+              "endDetectionIndex": 0,
+              "pairSha256": "94f3c0c87f5a3dbeb9109546c1d9f141e9f497fcd053a342cde271987ae51f51"
+            },
+            "linearLogGrowthLowerBound": 0.013516369661616321,
+            "linearLogGrowthUpperBound": 0.01438864258578136,
+            "startMs": 1600.621,
+            "observationMs": 79.68099999999981
+          },
+          "anchor": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 52,
+              "startToken": "boreas-boreas-m3q-turn-1598987803408708",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "currentIndex": 0,
+              "sourceIndex": 0,
+              "startMs": 1281.338,
+              "endMs": 1680.302,
+              "observationSha256s": [
+                "5e7dcd16c7beb71098d46b588f38a6e6d9f2f6a4ebc4568616c08d92e3cb14d6",
+                "b9643354f6bb5aa751f50220b9e2e55b56279bef60c5d216e24c07409f0484e3",
+                "610e96b2bb2749b5eaa24612c38b97f47692e9179e87d208371bb024cfcf55d1",
+                "f36cc0e0892e0d34635ef8e56846646c8f133f907771beb29acc01648b8504ce",
+                "c345ad236a7d84ccb186dc97c1aecc30cf977d28ff045feb7106c1968c1e2e2e",
+                "88375e463f9279a03da8f7e5151c7a8226dd4f208c61ef2696b7c055dd36c1ed"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987803408708",
+                "boreas-boreas-m3q-turn-1598987803487744",
+                "boreas-boreas-m3q-turn-1598987803569995",
+                "boreas-boreas-m3q-turn-1598987803652746",
+                "boreas-boreas-m3q-turn-1598987803727991",
+                "boreas-boreas-m3q-turn-1598987803807672"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803408708",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803487744",
+                  "transitionSha256": "c0e3db8e370b051b79e6c8631aeff880818ec403023f553863ac416b9139fc20",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "d5eb9dd4c99190a256a80726f42c62050c399ac4e61f1abda1f5667db7808a93"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803487744",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803569995",
+                  "transitionSha256": "07672f396cf4e7c1319c3124b7d4593435e68d9a2f7dfb1503d590f7596ff3c5",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "f4d324d3c5022f8f46015c39e82827258b87c51d7bc06cef93697f6684e0a3d6"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803569995",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803652746",
+                  "transitionSha256": "52fd2ed901c01df44ba0c4247b562dd5735e8d99ed3c21d5777cc9bb1c39a99d",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "c6e755ef74ce4342136340d366be44cf545a7b00b8f35e5230ba8da2f0db93eb"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803652746",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803727991",
+                  "transitionSha256": "75b1baa62a2175aa1fe7efc8fcd16d94308397a86982f46ce640075dd6df9342",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "fd89481aaba3a642d562baa1d380fd7a530b50aae5af261452ef7d6f90005039"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+                  "transitionSha256": "422a163a9ee89f0404553d838f8a16a0cac352533336b72c9f6263b78517a76c",
+                  "previousIndex": 0,
+                  "currentIndex": 0,
+                  "linkSha256": "eae9040602c7e4e75f8a56e985cab8803a5b61ce20f6e1ad78ffa7708e458fb1"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987803408708->boreas-boreas-m3q-turn-1598987803807672",
+              "startToken": "boreas-boreas-m3q-turn-1598987803408708",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "startDetectionIndex": 0,
+              "endDetectionIndex": 0,
+              "pairSha256": "5e99ff317a3255be0f4a5becb1c6218ef0cc54351c775644860f8df1eac13646"
+            },
+            "linearLogGrowthLowerBound": 0.0759751452960223,
+            "linearLogGrowthUpperBound": 0.0772870515280031,
+            "startMs": 1281.338,
+            "observationMs": 398.96399999999994
+          },
+          "linearLogGrowth": 0.0759751452960223,
+          "linearLogGrowthLowerBound": 0.0759751452960223,
+          "linearLogGrowthUpperBound": 0.0772870515280031,
+          "growthBound": "forward-reverse-estimator-envelope",
+          "observationMs": 398.96399999999994,
+          "reason": "identity-chain-and-frozen-measurement-supported"
+        },
+        "54": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803807672",
+          "currentMs": 1680.302,
+          "identityId": 54,
+          "fresh": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 54,
+              "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "currentIndex": 1,
+              "sourceIndex": 1,
+              "startMs": 1600.621,
+              "endMs": 1680.302,
+              "observationSha256s": [
+                "c345ad236a7d84ccb186dc97c1aecc30cf977d28ff045feb7106c1968c1e2e2e",
+                "88375e463f9279a03da8f7e5151c7a8226dd4f208c61ef2696b7c055dd36c1ed"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987803727991",
+                "boreas-boreas-m3q-turn-1598987803807672"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+                  "transitionSha256": "422a163a9ee89f0404553d838f8a16a0cac352533336b72c9f6263b78517a76c",
+                  "previousIndex": 1,
+                  "currentIndex": 1,
+                  "linkSha256": "642f25f18da122f892d0fc99bfed1502a7d9e7fb839fc48b720202534ea5ed2e"
+                }
+              ]
+            },
+            "supported": true,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987803727991->boreas-boreas-m3q-turn-1598987803807672",
+              "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "startDetectionIndex": 1,
+              "endDetectionIndex": 1,
+              "pairSha256": "c32ddcef7b84dcf6b1147db034848e35fc6017281562fde7134495ab21fc69c9"
+            },
+            "linearLogGrowthLowerBound": 0.0005934185776168653,
+            "linearLogGrowthUpperBound": 0.001490132022051094,
+            "startMs": 1600.621,
+            "observationMs": 79.68099999999981
+          },
+          "anchor": {
+            "identityChain": {
+              "supported": true,
+              "reason": "uninterrupted-measured-positive-identity-chain",
+              "identityId": 54,
+              "startToken": "boreas-boreas-m3q-turn-1598987803408708",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "currentIndex": 1,
+              "sourceIndex": 2,
+              "startMs": 1281.338,
+              "endMs": 1680.302,
+              "observationSha256s": [
+                "5e7dcd16c7beb71098d46b588f38a6e6d9f2f6a4ebc4568616c08d92e3cb14d6",
+                "b9643354f6bb5aa751f50220b9e2e55b56279bef60c5d216e24c07409f0484e3",
+                "610e96b2bb2749b5eaa24612c38b97f47692e9179e87d208371bb024cfcf55d1",
+                "f36cc0e0892e0d34635ef8e56846646c8f133f907771beb29acc01648b8504ce",
+                "c345ad236a7d84ccb186dc97c1aecc30cf977d28ff045feb7106c1968c1e2e2e",
+                "88375e463f9279a03da8f7e5151c7a8226dd4f208c61ef2696b7c055dd36c1ed"
+              ],
+              "exposureTokens": [
+                "boreas-boreas-m3q-turn-1598987803408708",
+                "boreas-boreas-m3q-turn-1598987803487744",
+                "boreas-boreas-m3q-turn-1598987803569995",
+                "boreas-boreas-m3q-turn-1598987803652746",
+                "boreas-boreas-m3q-turn-1598987803727991",
+                "boreas-boreas-m3q-turn-1598987803807672"
+              ],
+              "links": [
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803408708",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803487744",
+                  "transitionSha256": "c0e3db8e370b051b79e6c8631aeff880818ec403023f553863ac416b9139fc20",
+                  "previousIndex": 2,
+                  "currentIndex": 2,
+                  "linkSha256": "687b59af9f8effc6d3cebf28599ce221de46fc3b6cd2b276b044bba01f3d5e6f"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803487744",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803569995",
+                  "transitionSha256": "07672f396cf4e7c1319c3124b7d4593435e68d9a2f7dfb1503d590f7596ff3c5",
+                  "previousIndex": 2,
+                  "currentIndex": 1,
+                  "linkSha256": "a9d0742a636629c5f8195297a8a99629b9e8128adf8c28fa2cf787bbe29fe59a"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803569995",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803652746",
+                  "transitionSha256": "52fd2ed901c01df44ba0c4247b562dd5735e8d99ed3c21d5777cc9bb1c39a99d",
+                  "previousIndex": 1,
+                  "currentIndex": 1,
+                  "linkSha256": "53fe555e0fa1ad6700ee9270f900c603ff4863c3a4cc80d6e621fcf205abbd35"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803652746",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803727991",
+                  "transitionSha256": "75b1baa62a2175aa1fe7efc8fcd16d94308397a86982f46ce640075dd6df9342",
+                  "previousIndex": 1,
+                  "currentIndex": 1,
+                  "linkSha256": "9ee7d5920ffe1c01e224d5fb295cefe05a449e50c4d928053960a0d505ad371b"
+                },
+                {
+                  "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+                  "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+                  "transitionSha256": "422a163a9ee89f0404553d838f8a16a0cac352533336b72c9f6263b78517a76c",
+                  "previousIndex": 1,
+                  "currentIndex": 1,
+                  "linkSha256": "642f25f18da122f892d0fc99bfed1502a7d9e7fb839fc48b720202534ea5ed2e"
+                }
+              ]
+            },
+            "supported": false,
+            "measurementPair": {
+              "fieldId": "boreas-boreas-m3q-turn-1598987803408708->boreas-boreas-m3q-turn-1598987803807672",
+              "startToken": "boreas-boreas-m3q-turn-1598987803408708",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "startDetectionIndex": 2,
+              "endDetectionIndex": 1,
+              "pairSha256": "e354f3e4dccdbf0fce8659bbc86171850cb01501252ef9a5d205fcfb748b66fc"
+            }
+          },
+          "reason": "anchor-forward-insufficient-grid-support"
+        },
+        "73": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803807672",
+          "currentMs": 1680.302,
+          "identityId": 73,
+          "fresh": {
+            "identityChain": {
+              "supported": false,
+              "reason": "missing-identity-source-exposure",
+              "identityId": 73,
+              "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "currentIndex": 2
+            },
+            "supported": false,
+            "measurementPair": null
+          },
+          "reason": "fresh-missing-identity-source-exposure"
+        },
+        "74": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803807672",
+          "currentMs": 1680.302,
+          "identityId": 74,
+          "fresh": {
+            "identityChain": {
+              "supported": false,
+              "reason": "missing-identity-source-exposure",
+              "identityId": 74,
+              "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "currentIndex": 3
+            },
+            "supported": false,
+            "measurementPair": null
+          },
+          "reason": "fresh-missing-identity-source-exposure"
+        },
+        "75": {
+          "confirmed": false,
+          "currentToken": "boreas-boreas-m3q-turn-1598987803807672",
+          "currentMs": 1680.302,
+          "identityId": 75,
+          "fresh": {
+            "identityChain": {
+              "supported": false,
+              "reason": "missing-identity-source-exposure",
+              "identityId": 75,
+              "startToken": "boreas-boreas-m3q-turn-1598987803727991",
+              "endToken": "boreas-boreas-m3q-turn-1598987803807672",
+              "currentIndex": 4
+            },
+            "supported": false,
+            "measurementPair": null
+          },
+          "reason": "fresh-missing-identity-source-exposure"
+        }
+      }
+    }
+  ],
+  "wallSeconds": 80.26390900000115,
+  "limits": "Copied historical A/T observations and actual native pixels, newly executed identity overlay/validator. Same-ID proposals are not independently certified physical identity. No point floor or source IDs were changed."
+}

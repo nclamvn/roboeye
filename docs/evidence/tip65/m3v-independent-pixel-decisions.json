@@ -1,0 +1,623 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Independent QA reviewer; AI-authored visual reference, not human/exact physical truth",
+  "inputSha256": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed",
+  "sourceSelectionSha256": "a949bec984aebb13ecff5ea9603cd29a89fab865d109f6647075cdfca276455f",
+  "targetProposalsSha256": "22a7486bf5fc14d6b31b2af4746765f9248011dc4fcf8f900dbad8126b93f298",
+  "displayManifestSha256": "1a7cfeab23b26df6f4519db35f15de5f01569c4133be2bf386cba25d9c4a8ec5",
+  "slots": {
+    "pair0-cell00": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 418,
+        "y0": 278,
+        "x1": 424,
+        "y1": 284
+      },
+      "targetRectangle": {
+        "x0": 406,
+        "y0": 252,
+        "x1": 413,
+        "y1": 258
+      },
+      "materialIdentity": "Left lower corner of projecting white balcony face",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair0-cell01": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 982,
+        "y0": 259,
+        "x1": 986,
+        "y1": 265
+      },
+      "targetRectangle": {
+        "x0": 990,
+        "y0": 239,
+        "x1": 995,
+        "y1": 248
+      },
+      "materialIdentity": "Small lower clamp beneath the middle rooftop antenna, not antenna-tip substitution",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair0-cell02": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1758,
+        "y0": 483,
+        "x1": 1764,
+        "y1": 490
+      },
+      "targetRectangle": {
+        "x0": 1760,
+        "y0": 470,
+        "x1": 1768,
+        "y1": 477
+      },
+      "materialIdentity": "Right lower corner of raised dark roof trim step; conditional physical trim vertex",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair0-cell03": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1864,
+        "y0": 539,
+        "x1": 1871,
+        "y1": 549
+      },
+      "targetRectangle": {
+        "x0": 1873,
+        "y0": 521,
+        "x1": 1881,
+        "y1": 531
+      },
+      "materialIdentity": "White fixed pole bracket at arm origin, blurred irregular edge",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair0-cell04": {
+      "status": "unknown",
+      "reason": "Vehicle front/headlamp, not established world-static."
+    },
+    "pair0-cell05": {
+      "status": "unknown",
+      "reason": "Vehicle wheel/body, not established world-static."
+    },
+    "pair0-cell06": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1304,
+        "y0": 954,
+        "x1": 1311,
+        "y1": 961
+      },
+      "targetRectangle": {
+        "x0": 1306,
+        "y0": 944,
+        "x1": 1314,
+        "y1": 952
+      },
+      "materialIdentity": "Right end of fixed white crossarm on distant signal mast",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair0-cell07": {
+      "status": "unknown",
+      "reason": "Display/glass bright content could be reflection; selected blue-white spot is not an independently identified material corner."
+    },
+    "pair0-cell08": {
+      "status": "unknown",
+      "reason": "Own vehicle hood, excluded static-world reference."
+    },
+    "pair0-cell09": {
+      "status": "unknown",
+      "reason": "Own vehicle hood/dash, excluded static-world reference."
+    },
+    "pair0-cell10": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1812,
+        "y0": 1500,
+        "x1": 1819,
+        "y1": 1507
+      },
+      "targetRectangle": {
+        "x0": 1836,
+        "y0": 1517,
+        "x1": 1843,
+        "y1": 1524
+      },
+      "materialIdentity": "Same small dark paint-hole in white road arrow, not a new road corner",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair0-cell11": {
+      "status": "unknown",
+      "reason": "Paint boundary is static but selected local point is an elongated/irregular edge; unique subcorner correspondence not resolved."
+    },
+    "pair1-cell00": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 337,
+        "y0": 162,
+        "x1": 349,
+        "y1": 177
+      },
+      "targetRectangle": {
+        "x0": 323,
+        "y0": 158,
+        "x1": 335,
+        "y1": 172
+      },
+      "materialIdentity": "Whole blurred dark facade attachment bounds; smaller material subcorner is not resolved",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair1-cell01": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1017,
+        "y0": 296,
+        "x1": 1024,
+        "y1": 303
+      },
+      "targetRectangle": {
+        "x0": 1016,
+        "y0": 301,
+        "x1": 1024,
+        "y1": 307
+      },
+      "materialIdentity": "Right end of middle horizontal rooftop antenna",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair1-cell02": {
+      "status": "unknown",
+      "reason": "Foreground roof edge occludes a background roof/white panel: apparent 2D intersection is not a unique material vertex."
+    },
+    "pair1-cell03": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1968,
+        "y0": 470,
+        "x1": 1977,
+        "y1": 478
+      },
+      "targetRectangle": {
+        "x0": 1974,
+        "y0": 470,
+        "x1": 1983,
+        "y1": 478
+      },
+      "materialIdentity": "Lower right extremity of fixed pole-mounted camera housing",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair1-cell04": {
+      "status": "unknown",
+      "reason": "Vehicle body/headlamp, not established world-static."
+    },
+    "pair1-cell05": {
+      "status": "unknown",
+      "reason": "Vehicle wheel/body, not established world-static."
+    },
+    "pair1-cell06": {
+      "status": "unknown",
+      "reason": "Distant small bright structure near traffic, exact selected material point not resolved."
+    },
+    "pair1-cell07": {
+      "status": "unknown",
+      "reason": "Bright glass/display dot may be reflection; not a distinct fixed material corner."
+    },
+    "pair1-cell08": {
+      "status": "unknown",
+      "reason": "Own vehicle hood."
+    },
+    "pair1-cell09": {
+      "status": "unknown",
+      "reason": "Own vehicle hood/dash."
+    },
+    "pair1-cell10": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1558,
+        "y0": 1368,
+        "x1": 1567,
+        "y1": 1376
+      },
+      "targetRectangle": {
+        "x0": 1562,
+        "y0": 1391,
+        "x1": 1572,
+        "y1": 1398
+      },
+      "materialIdentity": "Crack entry at left edge of white road stripe",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair1-cell11": {
+      "status": "unknown",
+      "reason": "Own vehicle hood clipped at image boundary."
+    },
+    "pair2-cell00": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 268,
+        "y0": 411,
+        "x1": 276,
+        "y1": 420
+      },
+      "targetRectangle": {
+        "x0": 260,
+        "y0": 410,
+        "x1": 268,
+        "y1": 420
+      },
+      "materialIdentity": "Upper part of dark facade attachment, distinct from shadow edge",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair2-cell01": {
+      "status": "unknown",
+      "reason": "Bright triangular spots on multiple window panes could be reflections, not a verified material corner."
+    },
+    "pair2-cell02": {
+      "status": "unknown",
+      "reason": "Foreground roof/background roof occlusion intersection, not a verified same physical corner."
+    },
+    "pair2-cell03": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 2059,
+        "y0": 373,
+        "x1": 2068,
+        "y1": 382
+      },
+      "targetRectangle": {
+        "x0": 2075,
+        "y0": 363,
+        "x1": 2084,
+        "y1": 373
+      },
+      "materialIdentity": "Middle small protruding clamp on fixed vertical mast",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair2-cell04": {
+      "status": "unknown",
+      "reason": "Vehicle wheel/body, not established world-static."
+    },
+    "pair2-cell05": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 844,
+        "y0": 817,
+        "x1": 852,
+        "y1": 826
+      },
+      "targetRectangle": {
+        "x0": 847,
+        "y0": 821,
+        "x1": 855,
+        "y1": 829
+      },
+      "materialIdentity": "Upper right corner of white vertical building trim at dark canopy edge",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair2-cell06": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1471,
+        "y0": 986,
+        "x1": 1480,
+        "y1": 996
+      },
+      "targetRectangle": {
+        "x0": 1479,
+        "y0": 990,
+        "x1": 1488,
+        "y1": 1001
+      },
+      "materialIdentity": "Bright fixed canopy/support lower corner, conditional rigid building feature",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair2-cell07": {
+      "status": "unknown",
+      "reason": "Selected text is on a flexible hanging banner; rigid/static-world point not established."
+    },
+    "pair2-cell08": {
+      "status": "unknown",
+      "reason": "Own vehicle hood."
+    },
+    "pair2-cell09": {
+      "status": "unknown",
+      "reason": "Own vehicle hood/reflection."
+    },
+    "pair2-cell10": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1627,
+        "y0": 1463,
+        "x1": 1636,
+        "y1": 1471
+      },
+      "targetRectangle": {
+        "x0": 1654,
+        "y0": 1490,
+        "x1": 1664,
+        "y1": 1500
+      },
+      "materialIdentity": "Crack junction at right painted stripe edge",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair2-cell11": {
+      "status": "unknown",
+      "reason": "Own vehicle hood."
+    },
+    "pair3-cell00": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 244,
+        "y0": 421,
+        "x1": 251,
+        "y1": 428
+      },
+      "targetRectangle": {
+        "x0": 235,
+        "y0": 423,
+        "x1": 244,
+        "y1": 431
+      },
+      "materialIdentity": "Upper edge of same dark facade attachment",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair3-cell01": {
+      "status": "unknown",
+      "reason": "Bright window-pane glint repeats across windows and may be reflection, not a verified material corner."
+    },
+    "pair3-cell02": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1816,
+        "y0": 493,
+        "x1": 1823,
+        "y1": 501
+      },
+      "targetRectangle": {
+        "x0": 1822,
+        "y0": 485,
+        "x1": 1830,
+        "y1": 494
+      },
+      "materialIdentity": "Right lower corner of raised dark roof trim step; conditional physical trim vertex",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair3-cell03": {
+      "status": "unknown",
+      "reason": "Slanted foreground roof intersects background white roof; apparent tip is a depth/occlusion junction."
+    },
+    "pair3-cell04": {
+      "status": "unknown",
+      "reason": "Passing vehicle door/handle, not world-static."
+    },
+    "pair3-cell05": {
+      "status": "unknown",
+      "reason": "Selected bright feature on distant traffic vehicle."
+    },
+    "pair3-cell06": {
+      "status": "unknown",
+      "reason": "Distant illuminated letters blurred; selected letter subcorner is not uniquely resolved."
+    },
+    "pair3-cell07": {
+      "status": "unknown",
+      "reason": "Hydrant round cap/specular contour has no uniquely identified same material subcorner."
+    },
+    "pair3-cell08": {
+      "status": "unknown",
+      "reason": "Own vehicle hood."
+    },
+    "pair3-cell09": {
+      "status": "unknown",
+      "reason": "Own vehicle hood/dash."
+    },
+    "pair3-cell10": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1733,
+        "y0": 1536,
+        "x1": 1743,
+        "y1": 1545
+      },
+      "targetRectangle": {
+        "x0": 1748,
+        "y0": 1547,
+        "x1": 1762,
+        "y1": 1562
+      },
+      "materialIdentity": "Dark branch junction in road-arrow crack graph, visibly blurred",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair3-cell11": {
+      "status": "unknown",
+      "reason": "Own vehicle hood."
+    },
+    "pair4-cell00": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 184,
+        "y0": 350,
+        "x1": 192,
+        "y1": 359
+      },
+      "targetRectangle": {
+        "x0": 177,
+        "y0": 362,
+        "x1": 184,
+        "y1": 371
+      },
+      "materialIdentity": "Lower edge of dark facade attachment",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair4-cell01": {
+      "status": "unknown",
+      "reason": "Window bright glint/reflection rather than a securely identified material corner."
+    },
+    "pair4-cell02": {
+      "status": "unknown",
+      "reason": "White gap tip is intersection of occluding roof edges at different depths, not a verified material vertex."
+    },
+    "pair4-cell03": {
+      "status": "unknown",
+      "reason": "Foreground roof edge crosses background white roof edge; 2D tip is not a material corner."
+    },
+    "pair4-cell04": {
+      "status": "unknown",
+      "reason": "Bright glass/door reflection; selected point not identified as static material."
+    },
+    "pair4-cell05": {
+      "status": "unknown",
+      "reason": "Selected feature overlaps bollard and car/headlamp at different depths; cannot certify selected material identity."
+    },
+    "pair4-cell06": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1340,
+        "y0": 977,
+        "x1": 1348,
+        "y1": 985
+      },
+      "targetRectangle": {
+        "x0": 1356,
+        "y0": 975,
+        "x1": 1365,
+        "y1": 983
+      },
+      "materialIdentity": "Right end of fixed white crossarm on distant mast",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair4-cell07": {
+      "status": "unknown",
+      "reason": "Hydrant curved/specular feature; same material subcorner not resolved."
+    },
+    "pair4-cell08": {
+      "status": "unknown",
+      "reason": "Own vehicle hood."
+    },
+    "pair4-cell09": {
+      "status": "unknown",
+      "reason": "Own vehicle hood/dash."
+    },
+    "pair4-cell10": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 1808,
+        "y0": 1428,
+        "x1": 1816,
+        "y1": 1436
+      },
+      "targetRectangle": {
+        "x0": 1813,
+        "y0": 1436,
+        "x1": 1822,
+        "y1": 1445
+      },
+      "materialIdentity": "Same inward notch of white painted stripe at cracked edge",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair4-cell11": {
+      "status": "unknown",
+      "reason": "Own vehicle hood."
+    },
+    "pair5-cell00": {
+      "status": "unknown",
+      "reason": "Small attachment on suspended overhead wire could move/sway; static-world material point not established from these pixels."
+    },
+    "pair5-cell01": {
+      "status": "accepted-static-match",
+      "sourceRectangle": {
+        "x0": 883,
+        "y0": 602,
+        "x1": 891,
+        "y1": 610
+      },
+      "targetRectangle": {
+        "x0": 883,
+        "y0": 602,
+        "x1": 891,
+        "y1": 610
+      },
+      "materialIdentity": "Small fixed rooftop vent/cap lower right edge, unchanged within visual precision",
+      "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+      "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair5-cell02": {
+      "status": "unknown",
+      "reason": "Bright gap/brace under billboard has ambiguous material boundary and reflected sky; selected same corner not resolved."
+    },
+    "pair5-cell03": {
+      "status": "unknown",
+      "reason": "Cable/building silhouette intersection is a depth junction, not one physical material feature."
+    },
+    "pair5-cell04": {
+      "status": "unknown",
+      "reason": "Walking person."
+    },
+    "pair5-cell05": {
+      "status": "unknown",
+      "reason": "Person/traffic overlap; selected point not static-world."
+    },
+    "pair5-cell06": {
+      "status": "unknown",
+      "reason": "Cable/bracket/beam apparent junction at separate depths; same material corner not established."
+    },
+    "pair5-cell07": {
+      "status": "unknown",
+      "reason": "Dark text very close to clipped native image edge; selected distinct material corner unresolved."
+    },
+    "pair5-cell08": {
+      "status": "unknown",
+      "reason": "Own vehicle hood."
+    },
+    "pair5-cell09": {
+      "status": "unknown",
+      "reason": "Brake-light reflection on own vehicle hood."
+    },
+    "pair5-cell10": {
+      "status": "unknown",
+      "reason": "Highlight/reflection on own vehicle hood."
+    },
+    "pair5-cell11": {
+      "status": "unknown",
+      "reason": "Own vehicle hood."
+    }
+  },
+  "counts": {
+    "accepted-static-match": 22,
+    "unknown": 50
+  },
+  "review": {
+    "allOriginalSlotsReviewed": 72,
+    "chartsReviewed": 48,
+    "initialAnnotationFilesRead": false,
+    "modelOrGeometryOutputsSeen": false,
+    "sourceOnlySealVerifiedBeforeTargetView": true,
+    "limitations": [
+      "Two rectangle updates (pair0-cell00, pair2-cell00) and two proposed unknown identities (pair2-cell02, pair5-cell03) were disclosed in a parent coordination message before this final draft. These four are not claimed fully blind; all independently re-inspected.",
+      "All other initial annotation files remained unread. Rectangles are visual uncertainty regions, not probabilities or exact pixel groundtruth.",
+      "Roof-step and canopy interpretations are explicitly conditional; identity disagreement must become unknown rather than tuned to geometry.",
+      "No LK/RAFT/pose-projected endpoints or geometry outputs were used. No source replacement. M3U traffic score unchanged."
+    ]
+  }
+}

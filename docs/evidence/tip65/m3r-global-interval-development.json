@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "study": "M3R-global-interval-historical-development-probe",
+  "provenance": "Compact record of the already executed inline CPU development probe reported during M3R design. This is not a new inference, a fresh holdout result, or a replay performed while fresh timing ran.",
+  "sourceReceipt": "native/ios/.build-xcode/scene-qa/m3q-boreas-receipt-r1.json",
+  "sourceReceiptSha256": "0c4198fd153cb9acddee1dd18d7911f5be60dcd35153f73a63c98c8a07e863d0",
+  "observedCounts": {
+    "fieldMatrices": 185,
+    "pairEdges": 6421,
+    "unknownZeroToOneIntervals": 4451,
+    "supportedPairsSelectedByBestLowerMatching": 294,
+    "selectedPairsWithRobustAlternativeMarginAtLeast008": 0,
+    "newWarningsOn150OldDevelopmentFrames": 0
+  },
+  "method": {
+    "solver": "scipy.optimize.linear_sum_assignment(maximize=True)",
+    "unmatched": "Per-current dummy unmatched columns, score zero.",
+    "candidate": "Best one-to-one matching under pair lower scores.",
+    "alternative": "Forbid the selected target edge and maximize with lower scores for edges common to the candidate matching, upper scores for other edges. Common edges cancel in the robust margin.",
+    "requiredMargin": 0.08,
+    "unknownPolicy": "Keep all unknown pair intervals [0,1]. An unsupported measurement is not a negative physical identity label."
+  },
+  "actualNewModelCalls": 0,
+  "softwareVersion": "Not captured in the historical inline probe; do not infer a version from the current environment.",
+  "limits": [
+    "Old development comparisons, already inspected before M3R inference; not independent fresh quality evidence.",
+    "This exact robust lower-versus-alternative-upper scheme could not certify an improvement on the observed old matrices.",
+    "Zero certified pairs is not a proof that every global assignment method is ineffective.",
+    "No RootSIFT optimization, threshold relaxation, distance inference, or model download resulted from this probe."
+  ]
+}

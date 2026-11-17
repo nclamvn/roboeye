@@ -1,0 +1,2420 @@
+{
+  "schemaVersion": 1,
+  "study": "M3V-independent-visual-crosscomparison",
+  "sourceSelectionSha256": "a949bec984aebb13ecff5ea9603cd29a89fab865d109f6647075cdfca276455f",
+  "targetProposalsSha256": "22a7486bf5fc14d6b31b2af4746765f9248011dc4fcf8f900dbad8126b93f298",
+  "inputSha256": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed",
+  "annotationFiles": {
+    "firstContractor": {
+      "path": "/Users/os/Documents/Codex/roboeye/docs/evidence/tip65/m3v-contractor-pixel-decisions.json",
+      "sha256": "a4183d899a21e2b1cd91f0b35cc2d0a76e70b5b32fbf9cc8193a33ecead2c5f4"
+    },
+    "firstBuilder": {
+      "path": "/Users/os/Documents/Codex/roboeye/docs/evidence/tip65/m3v-builder-pixel-decisions.json",
+      "sha256": "53c506a7007b8f2cf07d210fc47382229037f4cc5d7b71b4e3a60cd87cc61031"
+    },
+    "independent": {
+      "path": "/Users/os/Documents/Codex/roboeye/docs/evidence/tip65/m3v-independent-pixel-decisions.json",
+      "sha256": "836f6925be79464408e4e50cfde571d4b01403f815b6708f287a2c985dcd46a6"
+    }
+  },
+  "originalSlots": 72,
+  "counts": {
+    "accepted-static-match": 12,
+    "unknown": 60
+  },
+  "recommendationCounts": {
+    "same-selected-point-uncertainty-union": 12,
+    "one-sided-unknown-retained": 11,
+    "subcorner-identity-disagreement-unknown": 4,
+    "both-unknown": 45
+  },
+  "comparisons": {
+    "pair0-cell00": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same lower-left junction of bright facade panel and dark recess; unmarked6x crop refines target location before any geometry.",
+        "staticEvidence": "Rigid building facade",
+        "materialIdentity": "Bright panel lower-left junction",
+        "sourceRectangle": {
+          "x0": 417,
+          "y0": 276,
+          "x1": 425,
+          "y1": 284
+        },
+        "targetRectangle": {
+          "x0": 404,
+          "y0": 250,
+          "x1": 416,
+          "y1": 262
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 418,
+          "y0": 278,
+          "x1": 424,
+          "y1": 284
+        },
+        "targetRectangle": {
+          "x0": 406,
+          "y0": 252,
+          "x1": 413,
+          "y1": 258
+        },
+        "materialIdentity": "Left lower corner of projecting white balcony face",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Bright panel lower-left junction",
+        "staticEvidence": "Rigid building facade",
+        "independentMaterialInterpretation": "Left lower corner of projecting white balcony face",
+        "sourceRectangle": {
+          "x0": 417,
+          "y0": 276,
+          "x1": 425,
+          "y1": 284
+        },
+        "targetRectangle": {
+          "x0": 404,
+          "y0": 250,
+          "x1": 416,
+          "y1": 262
+        }
+      }
+    },
+    "pair0-cell01": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "unknown",
+        "reason": "Dense repeated crane/scaffold and small bright edges; cannot confidently isolate the selected material corner."
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 982,
+          "y0": 259,
+          "x1": 986,
+          "y1": 265
+        },
+        "targetRectangle": {
+          "x0": 990,
+          "y0": 239,
+          "x1": 995,
+          "y1": 248
+        },
+        "materialIdentity": "Small lower clamp beneath the middle rooftop antenna, not antenna-tip substitution",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Dense repeated crane/scaffold and small bright edges; cannot confidently isolate the selected material corner. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      }
+    },
+    "pair0-cell02": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same small step in lower edge of white upper facade, native blur covered.",
+        "staticEvidence": "Rigid upper building facade",
+        "materialIdentity": "White facade lower-edge step",
+        "sourceRectangle": {
+          "x0": 1756,
+          "y0": 482,
+          "x1": 1766,
+          "y1": 492
+        },
+        "targetRectangle": {
+          "x0": 1753,
+          "y0": 467,
+          "x1": 1769,
+          "y1": 481
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1758,
+          "y0": 483,
+          "x1": 1764,
+          "y1": 490
+        },
+        "targetRectangle": {
+          "x0": 1760,
+          "y0": 470,
+          "x1": 1768,
+          "y1": 477
+        },
+        "materialIdentity": "Right lower corner of raised dark roof trim step; conditional physical trim vertex",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "White facade lower-edge step",
+        "staticEvidence": "Rigid upper building facade",
+        "independentMaterialInterpretation": "Right lower corner of raised dark roof trim step; conditional physical trim vertex",
+        "sourceRectangle": {
+          "x0": 1756,
+          "y0": 482,
+          "x1": 1766,
+          "y1": 492
+        },
+        "targetRectangle": {
+          "x0": 1753,
+          "y0": 467,
+          "x1": 1769,
+          "y1": 481
+        }
+      }
+    },
+    "pair0-cell03": {
+      "recommendation": "subcorner-identity-disagreement-unknown",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same elbow/end of small lamp fixture attached to cylindrical street pole.",
+        "staticEvidence": "Rigid pole fixture",
+        "materialIdentity": "Lamp fixture elbow",
+        "sourceRectangle": {
+          "x0": 1863,
+          "y0": 540,
+          "x1": 1871,
+          "y1": 548
+        },
+        "targetRectangle": {
+          "x0": 1870,
+          "y0": 526,
+          "x1": 1884,
+          "y1": 540
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1864,
+          "y0": 539,
+          "x1": 1871,
+          "y1": 549
+        },
+        "targetRectangle": {
+          "x0": 1873,
+          "y0": 521,
+          "x1": 1881,
+          "y1": 531
+        },
+        "materialIdentity": "White fixed pole bracket at arm origin, blurred irregular edge",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both recognize the same fixture, but source bracket elbow versus pole-arm origin and target vertical subcorner remain unresolved. Different subcorner cannot become a large uncertainty union."
+      }
+    },
+    "pair0-cell04": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected corner lies on another vehicle; static-scene reference cannot be asserted."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Vehicle front/headlamp, not established world-static."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected corner lies on another vehicle; static-scene reference cannot be asserted. Independent: Vehicle front/headlamp, not established world-static."
+      }
+    },
+    "pair0-cell05": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected corner lies on another vehicle wheel/body; independent motion is possible."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Vehicle wheel/body, not established world-static."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected corner lies on another vehicle wheel/body; independent motion is possible. Independent: Vehicle wheel/body, not established world-static."
+      }
+    },
+    "pair0-cell06": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "unknown",
+        "reason": "Distant sign/pole contains several overlapping bright corners; selected identity is not resolved reliably."
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1304,
+          "y0": 954,
+          "x1": 1311,
+          "y1": 961
+        },
+        "targetRectangle": {
+          "x0": 1306,
+          "y0": 944,
+          "x1": 1314,
+          "y1": 952
+        },
+        "materialIdentity": "Right end of fixed white crossarm on distant signal mast",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Distant sign/pole contains several overlapping bright corners; selected identity is not resolved reliably. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      }
+    },
+    "pair0-cell07": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected corner is within advertising/display content; rigid mounting does not certify the displayed pixel content is static."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Display/glass bright content could be reflection; selected blue-white spot is not an independently identified material corner."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected corner is within advertising/display content; rigid mounting does not certify the displayed pixel content is static. Independent: Display/glass bright content could be reflection; selected blue-white spot is not an independently identified material corner."
+      }
+    },
+    "pair0-cell08": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Ego vehicle hood/border, not an independent static world point."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood, excluded static-world reference."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Ego vehicle hood/border, not an independent static world point. Independent: Own vehicle hood, excluded static-world reference."
+      }
+    },
+    "pair0-cell09": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Ego vehicle hood highlight, not an independent static world point."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood/dash, excluded static-world reference."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Ego vehicle hood highlight, not an independent static world point. Independent: Own vehicle hood/dash, excluded static-world reference."
+      }
+    },
+    "pair0-cell10": {
+      "recommendation": "subcorner-identity-disagreement-unknown",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same small dark spot within painted road marking next to inward notch, clarified on unmarked6x crop before geometry.",
+        "staticEvidence": "Paint fixed on road surface",
+        "materialIdentity": "Dark spot within road paint",
+        "sourceRectangle": {
+          "x0": 1810,
+          "y0": 1498,
+          "x1": 1820,
+          "y1": 1508
+        },
+        "targetRectangle": {
+          "x0": 1818,
+          "y0": 1514,
+          "x1": 1830,
+          "y1": 1526
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1812,
+          "y0": 1500,
+          "x1": 1819,
+          "y1": 1507
+        },
+        "targetRectangle": {
+          "x0": 1836,
+          "y0": 1517,
+          "x1": 1843,
+          "y1": 1524
+        },
+        "materialIdentity": "Same small dark paint-hole in white road arrow, not a new road corner",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Source dark paint-hole agreed, but target isolated spot versus nearby notch disagree by about18native pixels. Exact material point identity unresolved; do not union distinct features."
+      }
+    },
+    "pair0-cell11": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same dark interruption/notch along upper road-paint edge; widened for texture ambiguity.",
+        "staticEvidence": "Paint fixed on road surface",
+        "materialIdentity": "Upper paint-edge interruption",
+        "sourceRectangle": {
+          "x0": 1971,
+          "y0": 1590,
+          "x1": 1983,
+          "y1": 1602
+        },
+        "targetRectangle": {
+          "x0": 2004,
+          "y0": 1615,
+          "x1": 2022,
+          "y1": 1633
+        }
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Paint boundary is static but selected local point is an elongated/irregular edge; unique subcorner correspondence not resolved."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same dark interruption/notch along upper road-paint edge; widened for texture ambiguity. Independent: Paint boundary is static but selected local point is an elongated/irregular edge; unique subcorner correspondence not resolved."
+      }
+    },
+    "pair1-cell00": {
+      "recommendation": "subcorner-identity-disagreement-unknown",
+      "first": {
+        "status": "accepted-static-match",
+        "reason": "Same lower-left dark latch termination on the fixed pale building panel, identifiable in both fixed crops; wide bounds retain blur ambiguity.",
+        "staticEvidence": "Latch is attached to a rigid exterior facade panel, not an object on the roadway.",
+        "materialIdentity": "Lower-left terminal corner of the same dark rectangular facade latch selected near the source GFTT point.",
+        "sameSelectedFeature": true,
+        "sourceRectangle": {
+          "x0": 341,
+          "y0": 170,
+          "x1": 347,
+          "y1": 176
+        },
+        "targetRectangle": {
+          "x0": 325,
+          "y0": 167,
+          "x1": 331,
+          "y1": 173
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 337,
+          "y0": 162,
+          "x1": 349,
+          "y1": 177
+        },
+        "targetRectangle": {
+          "x0": 323,
+          "y0": 158,
+          "x1": 335,
+          "y1": 172
+        },
+        "materialIdentity": "Whole blurred dark facade attachment bounds; smaller material subcorner is not resolved",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Reviewer only resolves whole blurred latch while first annotator specifies a terminal corner. Whole-object bounds do not independently verify that selected material corner."
+      }
+    },
+    "pair1-cell01": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "reason": "Same outer tip of the lower of the two adjacent white facade brackets in the detail crop; uncertainty covers the blurred tip boundary.",
+        "staticEvidence": "Repeated brackets are bolted to the rigid building facade; the selected individual bracket is disambiguated by its neighbors.",
+        "materialIdentity": "Outer lower/right tip of the particular white bracket at source near1021,300, not a substituted neighboring bracket.",
+        "sameSelectedFeature": true,
+        "sourceRectangle": {
+          "x0": 1019,
+          "y0": 297,
+          "x1": 1025,
+          "y1": 303
+        },
+        "targetRectangle": {
+          "x0": 1017,
+          "y0": 302,
+          "x1": 1023,
+          "y1": 308
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1017,
+          "y0": 296,
+          "x1": 1024,
+          "y1": 303
+        },
+        "targetRectangle": {
+          "x0": 1016,
+          "y0": 301,
+          "x1": 1024,
+          "y1": 307
+        },
+        "materialIdentity": "Right end of middle horizontal rooftop antenna",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Outer lower/right tip of the particular white bracket at source near1021,300, not a substituted neighboring bracket.",
+        "staticEvidence": "Repeated brackets are bolted to the rigid building facade; the selected individual bracket is disambiguated by its neighbors.",
+        "independentMaterialInterpretation": "Right end of middle horizontal rooftop antenna",
+        "sourceRectangle": {
+          "x0": 1017,
+          "y0": 296,
+          "x1": 1025,
+          "y1": 303
+        },
+        "targetRectangle": {
+          "x0": 1016,
+          "y0": 301,
+          "x1": 1024,
+          "y1": 308
+        }
+      }
+    },
+    "pair1-cell02": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected white roof-cap/foreground-roof junction is an occluding contour between different structures, not clearly one persistent material corner."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Foreground roof edge occludes a background roof/white panel: apparent 2D intersection is not a unique material vertex."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected white roof-cap/foreground-roof junction is an occluding contour between different structures, not clearly one persistent material corner. Independent: Foreground roof edge occludes a background roof/white panel: apparent 2D intersection is not a unique material vertex."
+      }
+    },
+    "pair1-cell03": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "reason": "Same terminal lower/right corner of the pale projecting pole bracket, distinctive hook shape visible in both crops.",
+        "staticEvidence": "Rigid bracket mounted to a fixed street/building pole.",
+        "materialIdentity": "Lower/right tip of the same white hook bracket near the source selected corner, not the background roof edge.",
+        "sameSelectedFeature": true,
+        "sourceRectangle": {
+          "x0": 1969,
+          "y0": 471,
+          "x1": 1975,
+          "y1": 477
+        },
+        "targetRectangle": {
+          "x0": 1980,
+          "y0": 474,
+          "x1": 1986,
+          "y1": 480
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1968,
+          "y0": 470,
+          "x1": 1977,
+          "y1": 478
+        },
+        "targetRectangle": {
+          "x0": 1974,
+          "y0": 470,
+          "x1": 1983,
+          "y1": 478
+        },
+        "materialIdentity": "Lower right extremity of fixed pole-mounted camera housing",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Lower/right tip of the same white hook bracket near the source selected corner, not the background roof edge.",
+        "staticEvidence": "Rigid bracket mounted to a fixed street/building pole.",
+        "independentMaterialInterpretation": "Lower right extremity of fixed pole-mounted camera housing",
+        "sourceRectangle": {
+          "x0": 1968,
+          "y0": 470,
+          "x1": 1977,
+          "y1": 478
+        },
+        "targetRectangle": {
+          "x0": 1974,
+          "y0": 470,
+          "x1": 1986,
+          "y1": 480
+        }
+      }
+    },
+    "pair1-cell04": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected feature is on a vehicle headlight/body. Static-world status is not independently established from these images."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Vehicle body/headlamp, not established world-static."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected feature is on a vehicle headlight/body. Static-world status is not independently established from these images. Independent: Vehicle body/headlamp, not established world-static."
+      }
+    },
+    "pair1-cell05": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected feature is on a vehicle wheel/body, not a verified static background material point."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Vehicle wheel/body, not established world-static."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected feature is on a vehicle wheel/body, not a verified static background material point. Independent: Vehicle wheel/body, not established world-static."
+      }
+    },
+    "pair1-cell06": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Distant thin street fixtures overlap vehicles and facade texture; the selected material corner cannot be uniquely localized independently."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Distant small bright structure near traffic, exact selected material point not resolved."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Distant thin street fixtures overlap vehicles and facade texture; the selected material corner cannot be uniquely localized independently. Independent: Distant small bright structure near traffic, exact selected material point not resolved."
+      }
+    },
+    "pair1-cell07": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Bright blob on the message/display glass may be a reflection or display content rather than a fixed material corner."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Bright glass/display dot may be reflection; not a distinct fixed material corner."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Bright blob on the message/display glass may be a reflection or display content rather than a fixed material corner. Independent: Bright glass/display dot may be reflection; not a distinct fixed material corner."
+      }
+    },
+    "pair1-cell08": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected point lies at own-vehicle hood/image-edge region; it is not static in the world and extends into missing image support."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected point lies at own-vehicle hood/image-edge region; it is not static in the world and extends into missing image support. Independent: Own vehicle hood."
+      }
+    },
+    "pair1-cell09": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected spot lies on own-vehicle hood; sensor-attached texture is not static-world background."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood/dash."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected spot lies on own-vehicle hood; sensor-attached texture is not static-world background. Independent: Own vehicle hood/dash."
+      }
+    },
+    "pair1-cell10": {
+      "recommendation": "subcorner-identity-disagreement-unknown",
+      "first": {
+        "status": "accepted-static-match",
+        "reason": "Same crack/notch intersecting the lower edge of the white road stripe; the surrounding crack and paint shape identify the material junction in fixed context.",
+        "staticEvidence": "Paint and asphalt crack belong to the rigid road surface.",
+        "materialIdentity": "The same lower stripe-edge/crack junction near source1563,1373, not another crack in the nearby paint.",
+        "sameSelectedFeature": true,
+        "sourceRectangle": {
+          "x0": 1559,
+          "y0": 1369,
+          "x1": 1567,
+          "y1": 1377
+        },
+        "targetRectangle": {
+          "x0": 1595,
+          "y0": 1392,
+          "x1": 1603,
+          "y1": 1400
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1558,
+          "y0": 1368,
+          "x1": 1567,
+          "y1": 1376
+        },
+        "targetRectangle": {
+          "x0": 1562,
+          "y0": 1391,
+          "x1": 1572,
+          "y1": 1398
+        },
+        "materialIdentity": "Crack entry at left edge of white road stripe",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Source crack-entry agreed, but target left stripe-edge entry and right crack tip are different corners about32native pixels apart. Unknown, not averaged/unioned."
+      }
+    },
+    "pair1-cell11": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Own-vehicle hood contour near image boundary, not a static-world material feature."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood clipped at image boundary."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Own-vehicle hood contour near image boundary, not a static-world material feature. Independent: Own vehicle hood clipped at image boundary."
+      }
+    },
+    "pair2-cell00": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same top corner of small dark wall bracket; unmarked6x crop refines target before geometry.",
+        "staticEvidence": "Bracket on rigid building wall",
+        "materialIdentity": "Dark wall bracket upper corner",
+        "sourceRectangle": {
+          "x0": 268,
+          "y0": 410,
+          "x1": 276,
+          "y1": 418
+        },
+        "targetRectangle": {
+          "x0": 258,
+          "y0": 408,
+          "x1": 270,
+          "y1": 420
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 268,
+          "y0": 411,
+          "x1": 276,
+          "y1": 420
+        },
+        "targetRectangle": {
+          "x0": 260,
+          "y0": 410,
+          "x1": 268,
+          "y1": 420
+        },
+        "materialIdentity": "Upper part of dark facade attachment, distinct from shadow edge",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Dark wall bracket upper corner",
+        "staticEvidence": "Bracket on rigid building wall",
+        "independentMaterialInterpretation": "Upper part of dark facade attachment, distinct from shadow edge",
+        "sourceRectangle": {
+          "x0": 268,
+          "y0": 410,
+          "x1": 276,
+          "y1": 420
+        },
+        "targetRectangle": {
+          "x0": 258,
+          "y0": 408,
+          "x1": 270,
+          "y1": 420
+        }
+      }
+    },
+    "pair2-cell01": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same small bright triangular element in recessed vertical facade stripe.",
+        "staticEvidence": "Rigid facade recess",
+        "materialIdentity": "Bright triangular facade element",
+        "sourceRectangle": {
+          "x0": 843,
+          "y0": 142,
+          "x1": 851,
+          "y1": 150
+        },
+        "targetRectangle": {
+          "x0": 843,
+          "y0": 144,
+          "x1": 855,
+          "y1": 156
+        }
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Bright triangular spots on multiple window panes could be reflections, not a verified material corner."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same small bright triangular element in recessed vertical facade stripe. Independent: Bright triangular spots on multiple window panes could be reflections, not a verified material corner."
+      }
+    },
+    "pair2-cell02": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Unmarked detail shows intersection of foreground canopy silhouette and distant bright roof, not a single selected material point; depth-boundary intersection can slide."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Foreground roof/background roof occlusion intersection, not a verified same physical corner."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Unmarked detail shows intersection of foreground canopy silhouette and distant bright roof, not a single selected material point; depth-boundary intersection can slide. Independent: Foreground roof/background roof occlusion intersection, not a verified same physical corner."
+      }
+    },
+    "pair2-cell03": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same small projecting pole attachment; source and target remain inside original fixed crop.",
+        "staticEvidence": "Rigid street pole attachment",
+        "materialIdentity": "Pole-side attachment junction",
+        "sourceRectangle": {
+          "x0": 2057,
+          "y0": 372,
+          "x1": 2067,
+          "y1": 382
+        },
+        "targetRectangle": {
+          "x0": 2078,
+          "y0": 360,
+          "x1": 2092,
+          "y1": 374
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 2059,
+          "y0": 373,
+          "x1": 2068,
+          "y1": 382
+        },
+        "targetRectangle": {
+          "x0": 2075,
+          "y0": 363,
+          "x1": 2084,
+          "y1": 373
+        },
+        "materialIdentity": "Middle small protruding clamp on fixed vertical mast",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Pole-side attachment junction",
+        "staticEvidence": "Rigid street pole attachment",
+        "independentMaterialInterpretation": "Middle small protruding clamp on fixed vertical mast",
+        "sourceRectangle": {
+          "x0": 2057,
+          "y0": 372,
+          "x1": 2068,
+          "y1": 382
+        },
+        "targetRectangle": {
+          "x0": 2075,
+          "y0": 360,
+          "x1": 2092,
+          "y1": 374
+        }
+      }
+    },
+    "pair2-cell04": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected corner on another vehicle wheel/body, not certified static."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Vehicle wheel/body, not established world-static."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected corner on another vehicle wheel/body, not certified static. Independent: Vehicle wheel/body, not established world-static."
+      }
+    },
+    "pair2-cell05": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same right corner of dark projecting shop awning adjacent to bright vertical edge.",
+        "staticEvidence": "Rigid building awning",
+        "materialIdentity": "Awning right corner",
+        "sourceRectangle": {
+          "x0": 844,
+          "y0": 818,
+          "x1": 852,
+          "y1": 826
+        },
+        "targetRectangle": {
+          "x0": 845,
+          "y0": 824,
+          "x1": 857,
+          "y1": 836
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 844,
+          "y0": 817,
+          "x1": 852,
+          "y1": 826
+        },
+        "targetRectangle": {
+          "x0": 847,
+          "y0": 821,
+          "x1": 855,
+          "y1": 829
+        },
+        "materialIdentity": "Upper right corner of white vertical building trim at dark canopy edge",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Awning right corner",
+        "staticEvidence": "Rigid building awning",
+        "independentMaterialInterpretation": "Upper right corner of white vertical building trim at dark canopy edge",
+        "sourceRectangle": {
+          "x0": 844,
+          "y0": 817,
+          "x1": 852,
+          "y1": 826
+        },
+        "targetRectangle": {
+          "x0": 845,
+          "y0": 821,
+          "x1": 857,
+          "y1": 836
+        }
+      }
+    },
+    "pair2-cell06": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "unknown",
+        "reason": "Small distant bright feature overlaps street furniture and background; selected physical identity remains ambiguous."
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1471,
+          "y0": 986,
+          "x1": 1480,
+          "y1": 996
+        },
+        "targetRectangle": {
+          "x0": 1479,
+          "y0": 990,
+          "x1": 1488,
+          "y1": 1001
+        },
+        "materialIdentity": "Bright fixed canopy/support lower corner, conditional rigid building feature",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Small distant bright feature overlaps street furniture and background; selected physical identity remains ambiguous. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      }
+    },
+    "pair2-cell07": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected corner lies on suspended banner lettering; cannot rule out local cloth movement or repeated glyph ambiguity."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Selected text is on a flexible hanging banner; rigid/static-world point not established."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected corner lies on suspended banner lettering; cannot rule out local cloth movement or repeated glyph ambiguity. Independent: Selected text is on a flexible hanging banner; rigid/static-world point not established."
+      }
+    },
+    "pair2-cell08": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Ego hood/border is not static world background."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Ego hood/border is not static world background. Independent: Own vehicle hood."
+      }
+    },
+    "pair2-cell09": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Point on/near ego hood edge, not independent static world material."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood/reflection."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Point on/near ego hood edge, not independent static world material. Independent: Own vehicle hood/reflection."
+      }
+    },
+    "pair2-cell10": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same turn of dark crack within white road paint, wider bounds to cover blurred bend.",
+        "staticEvidence": "Road-surface crack and paint",
+        "materialIdentity": "Crack bend within road paint",
+        "sourceRectangle": {
+          "x0": 1626,
+          "y0": 1463,
+          "x1": 1636,
+          "y1": 1473
+        },
+        "targetRectangle": {
+          "x0": 1647,
+          "y0": 1494,
+          "x1": 1661,
+          "y1": 1510
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1627,
+          "y0": 1463,
+          "x1": 1636,
+          "y1": 1471
+        },
+        "targetRectangle": {
+          "x0": 1654,
+          "y0": 1490,
+          "x1": 1664,
+          "y1": 1500
+        },
+        "materialIdentity": "Crack junction at right painted stripe edge",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Crack bend within road paint",
+        "staticEvidence": "Road-surface crack and paint",
+        "independentMaterialInterpretation": "Crack junction at right painted stripe edge",
+        "sourceRectangle": {
+          "x0": 1626,
+          "y0": 1463,
+          "x1": 1636,
+          "y1": 1473
+        },
+        "targetRectangle": {
+          "x0": 1647,
+          "y0": 1490,
+          "x1": 1664,
+          "y1": 1510
+        }
+      }
+    },
+    "pair2-cell11": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Ego hood highlight/fixture, not independent world-static reference."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Ego hood highlight/fixture, not independent world-static reference. Independent: Own vehicle hood."
+      }
+    },
+    "pair3-cell00": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "reason": "Same upper/right corner of the dark latch on the pale fixed facade panel, with widened bounds for defocus.",
+        "staticEvidence": "Rigid fitting attached to the exterior building panel.",
+        "materialIdentity": "Upper/right corner of the same selected dark latch, not its lower termination or a panel shadow.",
+        "sameSelectedFeature": true,
+        "sourceRectangle": {
+          "x0": 247,
+          "y0": 421,
+          "x1": 253,
+          "y1": 427
+        },
+        "targetRectangle": {
+          "x0": 240,
+          "y0": 424,
+          "x1": 246,
+          "y1": 430
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 244,
+          "y0": 421,
+          "x1": 251,
+          "y1": 428
+        },
+        "targetRectangle": {
+          "x0": 235,
+          "y0": 423,
+          "x1": 244,
+          "y1": 431
+        },
+        "materialIdentity": "Upper edge of same dark facade attachment",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Upper/right corner of the same selected dark latch, not its lower termination or a panel shadow.",
+        "staticEvidence": "Rigid fitting attached to the exterior building panel.",
+        "independentMaterialInterpretation": "Upper edge of same dark facade attachment",
+        "sourceRectangle": {
+          "x0": 244,
+          "y0": 421,
+          "x1": 253,
+          "y1": 428
+        },
+        "targetRectangle": {
+          "x0": 235,
+          "y0": 423,
+          "x1": 246,
+          "y1": 431
+        }
+      }
+    },
+    "pair3-cell01": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Small bright patch in repetitive reflective facade strips could be a glint; fixed material identity of the selected corner is uncertain."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Bright window-pane glint repeats across windows and may be reflection, not a verified material corner."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Small bright patch in repetitive reflective facade strips could be a glint; fixed material identity of the selected corner is uncertain. Independent: Bright window-pane glint repeats across windows and may be reflection, not a verified material corner."
+      }
+    },
+    "pair3-cell02": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "reason": "Same downward step at the right end of the raised dark roof-edge ledge; the ledge shape and neighboring roof ribs match.",
+        "staticEvidence": "The step is a physical vertex on rigid roof cladding, unlike a crossing of independent foreground/background edges.",
+        "materialIdentity": "Lower/right vertex of the same roof-edge step near source1820,498.",
+        "sameSelectedFeature": true,
+        "sourceRectangle": {
+          "x0": 1817,
+          "y0": 495,
+          "x1": 1823,
+          "y1": 501
+        },
+        "targetRectangle": {
+          "x0": 1822,
+          "y0": 488,
+          "x1": 1828,
+          "y1": 494
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1816,
+          "y0": 493,
+          "x1": 1823,
+          "y1": 501
+        },
+        "targetRectangle": {
+          "x0": 1822,
+          "y0": 485,
+          "x1": 1830,
+          "y1": 494
+        },
+        "materialIdentity": "Right lower corner of raised dark roof trim step; conditional physical trim vertex",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Lower/right vertex of the same roof-edge step near source1820,498.",
+        "staticEvidence": "The step is a physical vertex on rigid roof cladding, unlike a crossing of independent foreground/background edges.",
+        "independentMaterialInterpretation": "Right lower corner of raised dark roof trim step; conditional physical trim vertex",
+        "sourceRectangle": {
+          "x0": 1816,
+          "y0": 493,
+          "x1": 1823,
+          "y1": 501
+        },
+        "targetRectangle": {
+          "x0": 1822,
+          "y0": 485,
+          "x1": 1830,
+          "y1": 494
+        }
+      }
+    },
+    "pair3-cell03": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected roof/facade edge junction is an apparent occlusion intersection, not a clearly persistent material corner."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Slanted foreground roof intersects background white roof; apparent tip is a depth/occlusion junction."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected roof/facade edge junction is an apparent occlusion intersection, not a clearly persistent material corner. Independent: Slanted foreground roof intersects background white roof; apparent tip is a depth/occlusion junction."
+      }
+    },
+    "pair3-cell04": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected delivery-vehicle handle/body is moving or of unknown world motion; no independent static-background evidence."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Passing vehicle door/handle, not world-static."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected delivery-vehicle handle/body is moving or of unknown world motion; no independent static-background evidence. Independent: Passing vehicle door/handle, not world-static."
+      }
+    },
+    "pair3-cell05": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected distant vehicle/reflection region cannot be certified as a static material feature from these two views."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Selected bright feature on distant traffic vehicle."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected distant vehicle/reflection region cannot be certified as a static material feature from these two views. Independent: Selected bright feature on distant traffic vehicle."
+      }
+    },
+    "pair3-cell06": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Blurred small sign lettering is identifiable as a region but not enough to localize the particular selected material corner without substituting another glyph edge."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Distant illuminated letters blurred; selected letter subcorner is not uniquely resolved."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Blurred small sign lettering is identifiable as a region but not enough to localize the particular selected material corner without substituting another glyph edge. Independent: Distant illuminated letters blurred; selected letter subcorner is not uniquely resolved."
+      }
+    },
+    "pair3-cell07": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Pole/hydrant overlap and specular highlights make the exact selected material corner ambiguous; no convenient neighboring corner substituted."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Hydrant round cap/specular contour has no uniquely identified same material subcorner."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Pole/hydrant overlap and specular highlights make the exact selected material corner ambiguous; no convenient neighboring corner substituted. Independent: Hydrant round cap/specular contour has no uniquely identified same material subcorner."
+      }
+    },
+    "pair3-cell08": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Own-vehicle hood/image-edge texture, not static-world background."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Own-vehicle hood/image-edge texture, not static-world background. Independent: Own vehicle hood."
+      }
+    },
+    "pair3-cell09": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Own-vehicle hood fitting/spot, sensor-attached rather than static-world."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood/dash."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Own-vehicle hood fitting/spot, sensor-attached rather than static-world. Independent: Own vehicle hood/dash."
+      }
+    },
+    "pair3-cell10": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "unknown",
+        "reason": "Road paint is static but multiple similar cracks and blur prevent a unique material-corner match for the selected point within fixed support."
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1733,
+          "y0": 1536,
+          "x1": 1743,
+          "y1": 1545
+        },
+        "targetRectangle": {
+          "x0": 1748,
+          "y0": 1547,
+          "x1": 1762,
+          "y1": 1562
+        },
+        "materialIdentity": "Dark branch junction in road-arrow crack graph, visibly blurred",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Road paint is static but multiple similar cracks and blur prevent a unique material-corner match for the selected point within fixed support. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      }
+    },
+    "pair3-cell11": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Own-vehicle hood contour rather than a static-world material corner."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Own-vehicle hood contour rather than a static-world material corner. Independent: Own vehicle hood."
+      }
+    },
+    "pair4-cell00": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "reason": "Same lower/left dark-latch termination on the fixed pale facade panel; uncertainty is widened for the soft boundary.",
+        "staticEvidence": "The latch is attached to a stationary rigid facade panel.",
+        "materialIdentity": "Lower/left terminal corner of the selected dark latch, not a different point on the panel boundary.",
+        "sameSelectedFeature": true,
+        "sourceRectangle": {
+          "x0": 183,
+          "y0": 351,
+          "x1": 189,
+          "y1": 357
+        },
+        "targetRectangle": {
+          "x0": 171,
+          "y0": 362,
+          "x1": 177,
+          "y1": 368
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 184,
+          "y0": 350,
+          "x1": 192,
+          "y1": 359
+        },
+        "targetRectangle": {
+          "x0": 177,
+          "y0": 362,
+          "x1": 184,
+          "y1": 371
+        },
+        "materialIdentity": "Lower edge of dark facade attachment",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Lower/left terminal corner of the selected dark latch, not a different point on the panel boundary.",
+        "staticEvidence": "The latch is attached to a stationary rigid facade panel.",
+        "independentMaterialInterpretation": "Lower edge of dark facade attachment",
+        "sourceRectangle": {
+          "x0": 183,
+          "y0": 350,
+          "x1": 192,
+          "y1": 359
+        },
+        "targetRectangle": {
+          "x0": 171,
+          "y0": 362,
+          "x1": 184,
+          "y1": 371
+        }
+      }
+    },
+    "pair4-cell01": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Tiny bright feature on repetitive reflective facade strips may be a view-dependent glint; exact static material corner uncertain."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Window bright glint/reflection rather than a securely identified material corner."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Tiny bright feature on repetitive reflective facade strips may be a view-dependent glint; exact static material corner uncertain. Independent: Window bright glint/reflection rather than a securely identified material corner."
+      }
+    },
+    "pair4-cell02": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Roof edge crosses another structure in projection; this apparent junction is not assured to be one material point."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "White gap tip is intersection of occluding roof edges at different depths, not a verified material vertex."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Roof edge crosses another structure in projection; this apparent junction is not assured to be one material point. Independent: White gap tip is intersection of occluding roof edges at different depths, not a verified material vertex."
+      }
+    },
+    "pair4-cell03": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Apparent roof/facade occlusion intersection, not a verified persistent material corner."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Foreground roof edge crosses background white roof edge; 2D tip is not a material corner."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Apparent roof/facade occlusion intersection, not a verified persistent material corner. Independent: Foreground roof edge crosses background white roof edge; 2D tip is not a material corner."
+      }
+    },
+    "pair4-cell04": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Bright shop-glass blob can be reflection/view-dependent content, not established static material texture."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Bright glass/door reflection; selected point not identified as static material."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Bright shop-glass blob can be reflection/view-dependent content, not established static material texture. Independent: Bright glass/door reflection; selected point not identified as static material."
+      }
+    },
+    "pair4-cell05": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Selected region lies on/over a vehicle; independent static-world identity is not established."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Selected feature overlaps bollard and car/headlamp at different depths; cannot certify selected material identity."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Selected region lies on/over a vehicle; independent static-world identity is not established. Independent: Selected feature overlaps bollard and car/headlamp at different depths; cannot certify selected material identity."
+      }
+    },
+    "pair4-cell06": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "unknown",
+        "reason": "Distant overlapping sign/pole arms are too blurred to identify the selected material corner uniquely rather than another nearby bracket."
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1340,
+          "y0": 977,
+          "x1": 1348,
+          "y1": 985
+        },
+        "targetRectangle": {
+          "x0": 1356,
+          "y0": 975,
+          "x1": 1365,
+          "y1": 983
+        },
+        "materialIdentity": "Right end of fixed white crossarm on distant mast",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Distant overlapping sign/pole arms are too blurred to identify the selected material corner uniquely rather than another nearby bracket. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      }
+    },
+    "pair4-cell07": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Hydrant is static, but the selected rounded/silhouette/highlight junction is not a clearly persistent material corner across the changed viewpoint."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Hydrant curved/specular feature; same material subcorner not resolved."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Hydrant is static, but the selected rounded/silhouette/highlight junction is not a clearly persistent material corner across the changed viewpoint. Independent: Hydrant curved/specular feature; same material subcorner not resolved."
+      }
+    },
+    "pair4-cell08": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Own-vehicle hood at image boundary, not a static-world point."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Own-vehicle hood at image boundary, not a static-world point. Independent: Own vehicle hood."
+      }
+    },
+    "pair4-cell09": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Own-vehicle hood spot, static relative to sensor but not static in world."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood/dash."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Own-vehicle hood spot, static relative to sensor but not static in world. Independent: Own vehicle hood/dash."
+      }
+    },
+    "pair4-cell10": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "unknown",
+        "reason": "Cracked road paint is static but the exact selected crack junction is not uniquely matched amid similar nearby cracks and blur; no replacement feature chosen."
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 1808,
+          "y0": 1428,
+          "x1": 1816,
+          "y1": 1436
+        },
+        "targetRectangle": {
+          "x0": 1813,
+          "y0": 1436,
+          "x1": 1822,
+          "y1": 1445
+        },
+        "materialIdentity": "Same inward notch of white painted stripe at cracked edge",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Cracked road paint is static but the exact selected crack junction is not uniquely matched amid similar nearby cracks and blur; no replacement feature chosen. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      }
+    },
+    "pair4-cell11": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Own-vehicle hood contour and missing edge support, not static-world background."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Own-vehicle hood contour and missing edge support, not static-world background. Independent: Own vehicle hood."
+      }
+    },
+    "pair5-cell00": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same bright attachment to overhead cable; remains within native blur interval across near-stationary pair.",
+        "staticEvidence": "Overhead fixed cable hardware",
+        "materialIdentity": "Cable hardware bright corner",
+        "sourceRectangle": {
+          "x0": 343,
+          "y0": 67,
+          "x1": 351,
+          "y1": 75
+        },
+        "targetRectangle": {
+          "x0": 343,
+          "y0": 67,
+          "x1": 351,
+          "y1": 75
+        }
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Small attachment on suspended overhead wire could move/sway; static-world material point not established from these pixels."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same bright attachment to overhead cable; remains within native blur interval across near-stationary pair. Independent: Small attachment on suspended overhead wire could move/sway; static-world material point not established from these pixels."
+      }
+    },
+    "pair5-cell01": {
+      "recommendation": "same-selected-point-uncertainty-union",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same small rooftop projection; identical image neighborhood within uncertainty.",
+        "staticEvidence": "Rigid building rooftop",
+        "materialIdentity": "Small rooftop projection",
+        "sourceRectangle": {
+          "x0": 883,
+          "y0": 602,
+          "x1": 891,
+          "y1": 610
+        },
+        "targetRectangle": {
+          "x0": 883,
+          "y0": 602,
+          "x1": 891,
+          "y1": 610
+        }
+      },
+      "independent": {
+        "status": "accepted-static-match",
+        "sourceRectangle": {
+          "x0": 883,
+          "y0": 602,
+          "x1": 891,
+          "y1": 610
+        },
+        "targetRectangle": {
+          "x0": 883,
+          "y0": 602,
+          "x1": 891,
+          "y1": 610
+        },
+        "materialIdentity": "Small fixed rooftop vent/cap lower right edge, unchanged within visual precision",
+        "staticEvidence": "Visually associated with fixed facade, street fixture or road marking; conditional on this visual interpretation, not physical certification.",
+        "reason": "Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+      },
+      "proposed": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+        "materialIdentity": "Small rooftop projection",
+        "staticEvidence": "Rigid building rooftop",
+        "independentMaterialInterpretation": "Small fixed rooftop vent/cap lower right edge, unchanged within visual precision",
+        "sourceRectangle": {
+          "x0": 883,
+          "y0": 602,
+          "x1": 891,
+          "y1": 610
+        },
+        "targetRectangle": {
+          "x0": 883,
+          "y0": 602,
+          "x1": 891,
+          "y1": 610
+        }
+      }
+    },
+    "pair5-cell02": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same light-edged scaffold/ledge junction in shadow, wider uncertainty for low contrast.",
+        "staticEvidence": "Rigid building scaffold/ledge",
+        "materialIdentity": "Shadowed ledge junction",
+        "sourceRectangle": {
+          "x0": 1695,
+          "y0": 664,
+          "x1": 1705,
+          "y1": 674
+        },
+        "targetRectangle": {
+          "x0": 1695,
+          "y0": 664,
+          "x1": 1705,
+          "y1": 674
+        }
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Bright gap/brace under billboard has ambiguous material boundary and reflected sky; selected same corner not resolved."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same light-edged scaffold/ledge junction in shadow, wider uncertainty for low contrast. Independent: Bright gap/brace under billboard has ambiguous material boundary and reflected sky; selected same corner not resolved."
+      }
+    },
+    "pair5-cell03": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Unmarked detail shows diagonal cable crossing building silhouette; cannot certify one selected material corner rather than a depth-boundary intersection."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Cable/building silhouette intersection is a depth junction, not one physical material feature."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Unmarked detail shows diagonal cable crossing building silhouette; cannot certify one selected material corner rather than a depth-boundary intersection. Independent: Cable/building silhouette intersection is a depth junction, not one physical material feature."
+      }
+    },
+    "pair5-cell04": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Pedestrian foot/leg, visibly moving, not a static reference."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Walking person."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Pedestrian foot/leg, visibly moving, not a static reference. Independent: Walking person."
+      }
+    },
+    "pair5-cell05": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Moving pedestrian/vehicle neighborhood, no static selected identity certified."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Person/traffic overlap; selected point not static-world."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Moving pedestrian/vehicle neighborhood, no static selected identity certified. Independent: Person/traffic overlap; selected point not static-world."
+      }
+    },
+    "pair5-cell06": {
+      "recommendation": "one-sided-unknown-retained",
+      "first": {
+        "status": "accepted-static-match",
+        "sameSelectedFeature": true,
+        "reason": "Same corner of dark projecting structural ledge against bright background.",
+        "staticEvidence": "Rigid building structural ledge",
+        "materialIdentity": "Projecting ledge corner",
+        "sourceRectangle": {
+          "x0": 1576,
+          "y0": 711,
+          "x1": 1586,
+          "y1": 721
+        },
+        "targetRectangle": {
+          "x0": 1576,
+          "y0": 711,
+          "x1": 1586,
+          "y1": 721
+        }
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Cable/bracket/beam apparent junction at separate depths; same material corner not established."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same corner of dark projecting structural ledge against bright background. Independent: Cable/bracket/beam apparent junction at separate depths; same material corner not established."
+      }
+    },
+    "pair5-cell07": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Feature at extreme image edge in deep shadow; material identity cannot be established confidently."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Dark text very close to clipped native image edge; selected distinct material corner unresolved."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Feature at extreme image edge in deep shadow; material identity cannot be established confidently. Independent: Dark text very close to clipped native image edge; selected distinct material corner unresolved."
+      }
+    },
+    "pair5-cell08": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Ego vehicle hood detail, not an independent static scene point."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Ego vehicle hood detail, not an independent static scene point. Independent: Own vehicle hood."
+      }
+    },
+    "pair5-cell09": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Reflection on ego hood, not static world material."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Brake-light reflection on own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Reflection on ego hood, not static world material. Independent: Brake-light reflection on own vehicle hood."
+      }
+    },
+    "pair5-cell10": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Ego hood reflection/highlight, not static world material."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Highlight/reflection on own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Ego hood reflection/highlight, not static world material. Independent: Highlight/reflection on own vehicle hood."
+      }
+    },
+    "pair5-cell11": {
+      "recommendation": "both-unknown",
+      "first": {
+        "status": "unknown",
+        "reason": "Ego hood fixture/highlight, not static world material."
+      },
+      "independent": {
+        "status": "unknown",
+        "reason": "Own vehicle hood."
+      },
+      "proposed": {
+        "status": "unknown",
+        "reason": "Both visual reviewers abstain. First: Ego hood fixture/highlight, not static world material. Independent: Own vehicle hood."
+      }
+    }
+  },
+  "slots": {
+    "pair0-cell00": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Bright panel lower-left junction",
+      "staticEvidence": "Rigid building facade",
+      "independentMaterialInterpretation": "Left lower corner of projecting white balcony face",
+      "sourceRectangle": {
+        "x0": 417,
+        "y0": 276,
+        "x1": 425,
+        "y1": 284
+      },
+      "targetRectangle": {
+        "x0": 404,
+        "y0": 250,
+        "x1": 416,
+        "y1": 262
+      }
+    },
+    "pair0-cell01": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Dense repeated crane/scaffold and small bright edges; cannot confidently isolate the selected material corner. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair0-cell02": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "White facade lower-edge step",
+      "staticEvidence": "Rigid upper building facade",
+      "independentMaterialInterpretation": "Right lower corner of raised dark roof trim step; conditional physical trim vertex",
+      "sourceRectangle": {
+        "x0": 1756,
+        "y0": 482,
+        "x1": 1766,
+        "y1": 492
+      },
+      "targetRectangle": {
+        "x0": 1753,
+        "y0": 467,
+        "x1": 1769,
+        "y1": 481
+      }
+    },
+    "pair0-cell03": {
+      "status": "unknown",
+      "reason": "Both recognize the same fixture, but source bracket elbow versus pole-arm origin and target vertical subcorner remain unresolved. Different subcorner cannot become a large uncertainty union."
+    },
+    "pair0-cell04": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected corner lies on another vehicle; static-scene reference cannot be asserted. Independent: Vehicle front/headlamp, not established world-static."
+    },
+    "pair0-cell05": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected corner lies on another vehicle wheel/body; independent motion is possible. Independent: Vehicle wheel/body, not established world-static."
+    },
+    "pair0-cell06": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Distant sign/pole contains several overlapping bright corners; selected identity is not resolved reliably. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair0-cell07": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected corner is within advertising/display content; rigid mounting does not certify the displayed pixel content is static. Independent: Display/glass bright content could be reflection; selected blue-white spot is not an independently identified material corner."
+    },
+    "pair0-cell08": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Ego vehicle hood/border, not an independent static world point. Independent: Own vehicle hood, excluded static-world reference."
+    },
+    "pair0-cell09": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Ego vehicle hood highlight, not an independent static world point. Independent: Own vehicle hood/dash, excluded static-world reference."
+    },
+    "pair0-cell10": {
+      "status": "unknown",
+      "reason": "Source dark paint-hole agreed, but target isolated spot versus nearby notch disagree by about18native pixels. Exact material point identity unresolved; do not union distinct features."
+    },
+    "pair0-cell11": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same dark interruption/notch along upper road-paint edge; widened for texture ambiguity. Independent: Paint boundary is static but selected local point is an elongated/irregular edge; unique subcorner correspondence not resolved."
+    },
+    "pair1-cell00": {
+      "status": "unknown",
+      "reason": "Reviewer only resolves whole blurred latch while first annotator specifies a terminal corner. Whole-object bounds do not independently verify that selected material corner."
+    },
+    "pair1-cell01": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Outer lower/right tip of the particular white bracket at source near1021,300, not a substituted neighboring bracket.",
+      "staticEvidence": "Repeated brackets are bolted to the rigid building facade; the selected individual bracket is disambiguated by its neighbors.",
+      "independentMaterialInterpretation": "Right end of middle horizontal rooftop antenna",
+      "sourceRectangle": {
+        "x0": 1017,
+        "y0": 296,
+        "x1": 1025,
+        "y1": 303
+      },
+      "targetRectangle": {
+        "x0": 1016,
+        "y0": 301,
+        "x1": 1024,
+        "y1": 308
+      }
+    },
+    "pair1-cell02": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected white roof-cap/foreground-roof junction is an occluding contour between different structures, not clearly one persistent material corner. Independent: Foreground roof edge occludes a background roof/white panel: apparent 2D intersection is not a unique material vertex."
+    },
+    "pair1-cell03": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Lower/right tip of the same white hook bracket near the source selected corner, not the background roof edge.",
+      "staticEvidence": "Rigid bracket mounted to a fixed street/building pole.",
+      "independentMaterialInterpretation": "Lower right extremity of fixed pole-mounted camera housing",
+      "sourceRectangle": {
+        "x0": 1968,
+        "y0": 470,
+        "x1": 1977,
+        "y1": 478
+      },
+      "targetRectangle": {
+        "x0": 1974,
+        "y0": 470,
+        "x1": 1986,
+        "y1": 480
+      }
+    },
+    "pair1-cell04": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected feature is on a vehicle headlight/body. Static-world status is not independently established from these images. Independent: Vehicle body/headlamp, not established world-static."
+    },
+    "pair1-cell05": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected feature is on a vehicle wheel/body, not a verified static background material point. Independent: Vehicle wheel/body, not established world-static."
+    },
+    "pair1-cell06": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Distant thin street fixtures overlap vehicles and facade texture; the selected material corner cannot be uniquely localized independently. Independent: Distant small bright structure near traffic, exact selected material point not resolved."
+    },
+    "pair1-cell07": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Bright blob on the message/display glass may be a reflection or display content rather than a fixed material corner. Independent: Bright glass/display dot may be reflection; not a distinct fixed material corner."
+    },
+    "pair1-cell08": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected point lies at own-vehicle hood/image-edge region; it is not static in the world and extends into missing image support. Independent: Own vehicle hood."
+    },
+    "pair1-cell09": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected spot lies on own-vehicle hood; sensor-attached texture is not static-world background. Independent: Own vehicle hood/dash."
+    },
+    "pair1-cell10": {
+      "status": "unknown",
+      "reason": "Source crack-entry agreed, but target left stripe-edge entry and right crack tip are different corners about32native pixels apart. Unknown, not averaged/unioned."
+    },
+    "pair1-cell11": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Own-vehicle hood contour near image boundary, not a static-world material feature. Independent: Own vehicle hood clipped at image boundary."
+    },
+    "pair2-cell00": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Dark wall bracket upper corner",
+      "staticEvidence": "Bracket on rigid building wall",
+      "independentMaterialInterpretation": "Upper part of dark facade attachment, distinct from shadow edge",
+      "sourceRectangle": {
+        "x0": 268,
+        "y0": 410,
+        "x1": 276,
+        "y1": 420
+      },
+      "targetRectangle": {
+        "x0": 258,
+        "y0": 408,
+        "x1": 270,
+        "y1": 420
+      }
+    },
+    "pair2-cell01": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same small bright triangular element in recessed vertical facade stripe. Independent: Bright triangular spots on multiple window panes could be reflections, not a verified material corner."
+    },
+    "pair2-cell02": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Unmarked detail shows intersection of foreground canopy silhouette and distant bright roof, not a single selected material point; depth-boundary intersection can slide. Independent: Foreground roof/background roof occlusion intersection, not a verified same physical corner."
+    },
+    "pair2-cell03": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Pole-side attachment junction",
+      "staticEvidence": "Rigid street pole attachment",
+      "independentMaterialInterpretation": "Middle small protruding clamp on fixed vertical mast",
+      "sourceRectangle": {
+        "x0": 2057,
+        "y0": 372,
+        "x1": 2068,
+        "y1": 382
+      },
+      "targetRectangle": {
+        "x0": 2075,
+        "y0": 360,
+        "x1": 2092,
+        "y1": 374
+      }
+    },
+    "pair2-cell04": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected corner on another vehicle wheel/body, not certified static. Independent: Vehicle wheel/body, not established world-static."
+    },
+    "pair2-cell05": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Awning right corner",
+      "staticEvidence": "Rigid building awning",
+      "independentMaterialInterpretation": "Upper right corner of white vertical building trim at dark canopy edge",
+      "sourceRectangle": {
+        "x0": 844,
+        "y0": 817,
+        "x1": 852,
+        "y1": 826
+      },
+      "targetRectangle": {
+        "x0": 845,
+        "y0": 821,
+        "x1": 857,
+        "y1": 836
+      }
+    },
+    "pair2-cell06": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Small distant bright feature overlaps street furniture and background; selected physical identity remains ambiguous. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair2-cell07": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected corner lies on suspended banner lettering; cannot rule out local cloth movement or repeated glyph ambiguity. Independent: Selected text is on a flexible hanging banner; rigid/static-world point not established."
+    },
+    "pair2-cell08": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Ego hood/border is not static world background. Independent: Own vehicle hood."
+    },
+    "pair2-cell09": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Point on/near ego hood edge, not independent static world material. Independent: Own vehicle hood/reflection."
+    },
+    "pair2-cell10": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Crack bend within road paint",
+      "staticEvidence": "Road-surface crack and paint",
+      "independentMaterialInterpretation": "Crack junction at right painted stripe edge",
+      "sourceRectangle": {
+        "x0": 1626,
+        "y0": 1463,
+        "x1": 1636,
+        "y1": 1473
+      },
+      "targetRectangle": {
+        "x0": 1647,
+        "y0": 1490,
+        "x1": 1664,
+        "y1": 1510
+      }
+    },
+    "pair2-cell11": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Ego hood highlight/fixture, not independent world-static reference. Independent: Own vehicle hood."
+    },
+    "pair3-cell00": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Upper/right corner of the same selected dark latch, not its lower termination or a panel shadow.",
+      "staticEvidence": "Rigid fitting attached to the exterior building panel.",
+      "independentMaterialInterpretation": "Upper edge of same dark facade attachment",
+      "sourceRectangle": {
+        "x0": 244,
+        "y0": 421,
+        "x1": 253,
+        "y1": 428
+      },
+      "targetRectangle": {
+        "x0": 235,
+        "y0": 423,
+        "x1": 246,
+        "y1": 431
+      }
+    },
+    "pair3-cell01": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Small bright patch in repetitive reflective facade strips could be a glint; fixed material identity of the selected corner is uncertain. Independent: Bright window-pane glint repeats across windows and may be reflection, not a verified material corner."
+    },
+    "pair3-cell02": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Lower/right vertex of the same roof-edge step near source1820,498.",
+      "staticEvidence": "The step is a physical vertex on rigid roof cladding, unlike a crossing of independent foreground/background edges.",
+      "independentMaterialInterpretation": "Right lower corner of raised dark roof trim step; conditional physical trim vertex",
+      "sourceRectangle": {
+        "x0": 1816,
+        "y0": 493,
+        "x1": 1823,
+        "y1": 501
+      },
+      "targetRectangle": {
+        "x0": 1822,
+        "y0": 485,
+        "x1": 1830,
+        "y1": 494
+      }
+    },
+    "pair3-cell03": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected roof/facade edge junction is an apparent occlusion intersection, not a clearly persistent material corner. Independent: Slanted foreground roof intersects background white roof; apparent tip is a depth/occlusion junction."
+    },
+    "pair3-cell04": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected delivery-vehicle handle/body is moving or of unknown world motion; no independent static-background evidence. Independent: Passing vehicle door/handle, not world-static."
+    },
+    "pair3-cell05": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected distant vehicle/reflection region cannot be certified as a static material feature from these two views. Independent: Selected bright feature on distant traffic vehicle."
+    },
+    "pair3-cell06": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Blurred small sign lettering is identifiable as a region but not enough to localize the particular selected material corner without substituting another glyph edge. Independent: Distant illuminated letters blurred; selected letter subcorner is not uniquely resolved."
+    },
+    "pair3-cell07": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Pole/hydrant overlap and specular highlights make the exact selected material corner ambiguous; no convenient neighboring corner substituted. Independent: Hydrant round cap/specular contour has no uniquely identified same material subcorner."
+    },
+    "pair3-cell08": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Own-vehicle hood/image-edge texture, not static-world background. Independent: Own vehicle hood."
+    },
+    "pair3-cell09": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Own-vehicle hood fitting/spot, sensor-attached rather than static-world. Independent: Own vehicle hood/dash."
+    },
+    "pair3-cell10": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Road paint is static but multiple similar cracks and blur prevent a unique material-corner match for the selected point within fixed support. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair3-cell11": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Own-vehicle hood contour rather than a static-world material corner. Independent: Own vehicle hood."
+    },
+    "pair4-cell00": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Lower/left terminal corner of the selected dark latch, not a different point on the panel boundary.",
+      "staticEvidence": "The latch is attached to a stationary rigid facade panel.",
+      "independentMaterialInterpretation": "Lower edge of dark facade attachment",
+      "sourceRectangle": {
+        "x0": 183,
+        "y0": 350,
+        "x1": 192,
+        "y1": 359
+      },
+      "targetRectangle": {
+        "x0": 171,
+        "y0": 362,
+        "x1": 184,
+        "y1": 371
+      }
+    },
+    "pair4-cell01": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Tiny bright feature on repetitive reflective facade strips may be a view-dependent glint; exact static material corner uncertain. Independent: Window bright glint/reflection rather than a securely identified material corner."
+    },
+    "pair4-cell02": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Roof edge crosses another structure in projection; this apparent junction is not assured to be one material point. Independent: White gap tip is intersection of occluding roof edges at different depths, not a verified material vertex."
+    },
+    "pair4-cell03": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Apparent roof/facade occlusion intersection, not a verified persistent material corner. Independent: Foreground roof edge crosses background white roof edge; 2D tip is not a material corner."
+    },
+    "pair4-cell04": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Bright shop-glass blob can be reflection/view-dependent content, not established static material texture. Independent: Bright glass/door reflection; selected point not identified as static material."
+    },
+    "pair4-cell05": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Selected region lies on/over a vehicle; independent static-world identity is not established. Independent: Selected feature overlaps bollard and car/headlamp at different depths; cannot certify selected material identity."
+    },
+    "pair4-cell06": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Distant overlapping sign/pole arms are too blurred to identify the selected material corner uniquely rather than another nearby bracket. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair4-cell07": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Hydrant is static, but the selected rounded/silhouette/highlight junction is not a clearly persistent material corner across the changed viewpoint. Independent: Hydrant curved/specular feature; same material subcorner not resolved."
+    },
+    "pair4-cell08": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Own-vehicle hood at image boundary, not a static-world point. Independent: Own vehicle hood."
+    },
+    "pair4-cell09": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Own-vehicle hood spot, static relative to sensor but not static in world. Independent: Own vehicle hood/dash."
+    },
+    "pair4-cell10": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Cracked road paint is static but the exact selected crack junction is not uniquely matched amid similar nearby cracks and blur; no replacement feature chosen. Independent: Independently identified on sealed RGB charts and unmarked fixed crops; deliberately wide native uncertainty where blurred."
+    },
+    "pair4-cell11": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Own-vehicle hood contour and missing edge support, not static-world background. Independent: Own vehicle hood."
+    },
+    "pair5-cell00": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same bright attachment to overhead cable; remains within native blur interval across near-stationary pair. Independent: Small attachment on suspended overhead wire could move/sway; static-world material point not established from these pixels."
+    },
+    "pair5-cell01": {
+      "status": "accepted-static-match",
+      "sameSelectedFeature": true,
+      "reason": "Both independently identify the same selected material subcorner; union of native uncertainty bounds, never averaging toward geometry.",
+      "materialIdentity": "Small rooftop projection",
+      "staticEvidence": "Rigid building rooftop",
+      "independentMaterialInterpretation": "Small fixed rooftop vent/cap lower right edge, unchanged within visual precision",
+      "sourceRectangle": {
+        "x0": 883,
+        "y0": 602,
+        "x1": 891,
+        "y1": 610
+      },
+      "targetRectangle": {
+        "x0": 883,
+        "y0": 602,
+        "x1": 891,
+        "y1": 610
+      }
+    },
+    "pair5-cell02": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same light-edged scaffold/ledge junction in shadow, wider uncertainty for low contrast. Independent: Bright gap/brace under billboard has ambiguous material boundary and reflected sky; selected same corner not resolved."
+    },
+    "pair5-cell03": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Unmarked detail shows diagonal cable crossing building silhouette; cannot certify one selected material corner rather than a depth-boundary intersection. Independent: Cable/building silhouette intersection is a depth junction, not one physical material feature."
+    },
+    "pair5-cell04": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Pedestrian foot/leg, visibly moving, not a static reference. Independent: Walking person."
+    },
+    "pair5-cell05": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Moving pedestrian/vehicle neighborhood, no static selected identity certified. Independent: Person/traffic overlap; selected point not static-world."
+    },
+    "pair5-cell06": {
+      "status": "unknown",
+      "reason": "At least one visual reviewer cannot establish selected static material identity. First: Same corner of dark projecting structural ledge against bright background. Independent: Cable/bracket/beam apparent junction at separate depths; same material corner not established."
+    },
+    "pair5-cell07": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Feature at extreme image edge in deep shadow; material identity cannot be established confidently. Independent: Dark text very close to clipped native image edge; selected distinct material corner unresolved."
+    },
+    "pair5-cell08": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Ego vehicle hood detail, not an independent static scene point. Independent: Own vehicle hood."
+    },
+    "pair5-cell09": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Reflection on ego hood, not static world material. Independent: Brake-light reflection on own vehicle hood."
+    },
+    "pair5-cell10": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Ego hood reflection/highlight, not static world material. Independent: Highlight/reflection on own vehicle hood."
+    },
+    "pair5-cell11": {
+      "status": "unknown",
+      "reason": "Both visual reviewers abstain. First: Ego hood fixture/highlight, not static world material. Independent: Own vehicle hood."
+    }
+  },
+  "review": {
+    "authority": "Independent visual cross-review, AI-authored conditional uncertainty reference, not exact physical/human truth.",
+    "geometryResultsSeen": false,
+    "originalSourceSlotsUnchanged": true,
+    "noAutomaticPromotion": true,
+    "firstAnnotationsReadOnlyAfterIndependentDraftSeal": true,
+    "leakage": "Two rectangle updates (pair0-cell00, pair2-cell00) and two proposed unknown identities (pair2-cell02, pair5-cell03) were disclosed in a parent coordination message before this final draft. These four are not claimed fully blind; all independently re-inspected.",
+    "disposition": "Proposed final annotations require Contractor approval before bind and single diagnostic run. No runtime, M3U score or quality-floor change."
+  }
+}

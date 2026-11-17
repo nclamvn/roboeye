@@ -1,0 +1,9 @@
+{
+  "baseDecisionsSha256": "01f333be600b028374b3bac03b860e6d71220e611d8fc7beb7d50ebf96907454",
+  "evidence": "Second AI reviewer independently viewed all ten sheets and verified every tile hash before reading Contractor decisions. Contractor retains additional uncertain candidates as explicit omissions. No model inference or outputs seen.",
+  "omit": {
+    "boreas-m3q-city-17:6": "Very small 957a person is plausible but visual identity/body extent remains uncertain at reviewed resolution; not treated as a certified visible person.",
+    "boreas-m3q-turn-14:2": "Two overlapping dark right-side people are plausible, but individual 00d0 identity and extent cannot be assigned confidently from this sheet.",
+    "boreas-m3q-turn-14:3": "Overlapping dark right-side people cannot be reliably separated into the individual 06cc identity and visible extent."
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "study": "M3U",
+  "receiptSha256": "a855152945d2679ad3b07258b6cb139fc81f91b259ffdf0268b6f61b49dd37ab",
+  "scope": "Post-trial numeric diagnostics from sealed receipt, not a new trial or approved camera model",
+  "sourceOrPolicyChanged": false,
+  "newInferenceCalls": 0,
+  "newWarningsAuthorized": false,
+  "facts": {
+    "actualEventsAllFramesBothLanes": 0,
+    "cityCameraAValid": 17,
+    "cityCameraBValid": 1,
+    "cityCameraBVetoes": 48,
+    "cityBActualFlowDirections": 0,
+    "stopCameraAValid": 49,
+    "stopCameraBValid": 49,
+    "actualFlowDirectionsA": 214,
+    "actualFlowDirectionsB": 188,
+    "actualTotalFlowDirections": 402,
+    "cityPairCount": 49,
+    "cityOriginalSeedsEveryPair": 256,
+    "cityMedianAcceptedLkFraction": 0.98828125,
+    "cityMedianLkPhotometryCurrentBackgroundFraction": 0.9609375,
+    "cityRejectsWhoseUnionOfRecordedRotationAndEpipolarMasksMeetsFloors": 12,
+    "cityPairsWhoseUnionStillFailsFloors": 36,
+    "stopPairCount": 49,
+    "stopMedianAcceptedLkFraction": 1.0,
+    "stopMedianLkPhotometryCurrentBackgroundFraction": 0.98828125
+  },
+  "interpretation": [
+    "Primary product outcome did not improve: both lanes miss all 13 reviewed radial-positive checkpoints and have no reports on 18 reviewed negatives. No unreviewed notices are hidden.",
+    "B city camera rejects destroy adjacent valid source continuity, so no city RAFT measurement is dispatched. This is an actual availability regression, not faster successful processing.",
+    "The city rejection is not lack of seed quantity or zero LK returns. High cycle/NCC acceptance does not independently prove physical point correctness.",
+    "Rotation-only-versus-parallax scene-level exclusivity rejects some mixed-impact backgrounds, but pooling masks would still leave 36 of 49 city pairs failing quality floors. Pooling is a counterfactual diagnostic, not a fix or rescued warning.",
+    "Supplied-pose/pixel-model compatibility and correspondence physical accuracy remain unresolved; valid SE3 or SDK convention agreement does not certify timing/calibration/rolling-shutter correctness.",
+    "All primary positives are in the city clip; the stopped negative-only clip cannot demonstrate positive recall gain for the small-baseline case. Do not generalize lack of gain to all pixel-impact geometry.",
+    "Do not promote B, relax thresholds, modify labels or add a tracker to hide this failure. A later method requires independently checked per-ray image geometry and pose/calibration uncertainty on fresh positive as well as negative opportunities."
+  ],
+  "runtimeDecision": "EXPERIMENTAL_CANDIDATE_NOT_PROMOTED",
+  "productReadiness": "NOT_READY"
+}

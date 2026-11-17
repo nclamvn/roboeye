@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "dataset": "Spring-v2-independent-rendered-flow-reference",
+  "datasetDoi": "doi:10.18419/DARUS-3376",
+  "datasetVersion": "2.0",
+  "license": {
+    "name": "CC BY4.0",
+    "uri": "http://creativecommons.org/licenses/by/4.0",
+    "source": "https://darus.uni-stuttgart.de/api/datasets/:persistentId/?persistentId=doi:10.18419/DARUS-3376"
+  },
+  "attribution": "Mehl, Lukas; Schmalfuss, Jenny; Jahedi, Azin; Nalivayko, Yaroslava; Bruhn, Andr\u00e9s (2023), Spring, DaRUS V2, doi:10.18419/DARUS-3376. Spring movie assets by Blender Foundation. Selected subset, no endorsement.",
+  "selection": "Sequences0001/0002, left frames0001->0002, forward at0001/backward at0002, matched maps; fixed without viewing pixels/model outcomes.",
+  "maxNetworkBytes": 262144000,
+  "metadataSha256": "2df709d56d3020ab5580d3fc7575babf39093f496c5925b12c84d5ee26afca52",
+  "files": [
+    {
+      "path": "train_frame_left/spring/train/0001/frame_left/frame_left_0001.png",
+      "archive": "train_frame_left.zip",
+      "member": "spring/train/0001/frame_left/frame_left_0001.png",
+      "size": 6232017,
+      "sha256": "7453350e3b53eae672000c77f17e04b5c12277f4701eb938926cf99e09bd2f9b",
+      "crc32": 2122402214
+    }
+  ],
+  "archives": [
+    {
+      "filename": "train_frame_left.zip",
+      "dataFileId": 199097,
+      "size": 13361546687,
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "etag": "\"014baa688832aea7af03c5e0d0061cc6-2549\""
+    }
+  ],
+  "complete": false,
+  "sourceSha256": "bb8fd64fc7da000404df1a70f10fb18f24ff71451e1b6096b184dd502e1448c5",
+  "limits": "Rendered independent benchmark, not real-road scene semantics, motion alerts, metres or phone acceptance.",
+  "actualReceivedBytes": 7694882,
+  "reservedNetworkBytes": 12705523,
+  "requests": [
+    {
+      "url": "https://darus.uni-stuttgart.de/api/datasets/:persistentId/?persistentId=doi:10.18419/DARUS-3376",
+      "range": null,
+      "reservedBytes": 1048576,
+      "receivedBytes": 22664,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        13361546589,
+        13361546686
+      ],
+      "reservedBytes": 98,
+      "receivedBytes": 98,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        13361546589,
+        13361546644
+      ],
+      "reservedBytes": 56,
+      "receivedBytes": 56,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        13360916389,
+        13361546588
+      ],
+      "reservedBytes": 630200,
+      "receivedBytes": 630200,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        0,
+        29
+      ],
+      "reservedBytes": 30,
+      "receivedBytes": 30,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        30,
+        3627460
+      ],
+      "reservedBytes": 3627431,
+      "receivedBytes": 3627431,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        3627461,
+        3627490
+      ],
+      "reservedBytes": 30,
+      "receivedBytes": 30,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        3627491,
+        7250480
+      ],
+      "reservedBytes": 3622990,
+      "receivedBytes": 130408,
+      "exitCode": 28
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        13361546589,
+        13361546686
+      ],
+      "reservedBytes": 98,
+      "receivedBytes": 98,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        13361546589,
+        13361546644
+      ],
+      "reservedBytes": 56,
+      "receivedBytes": 56,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        13360916389,
+        13361440676
+      ],
+      "reservedBytes": 524288,
+      "receivedBytes": 524288,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        13361440677,
+        13361546588
+      ],
+      "reservedBytes": 105912,
+      "receivedBytes": 105912,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        3627461,
+        3627490
+      ],
+      "reservedBytes": 30,
+      "receivedBytes": 30,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        3627491,
+        4151778
+      ],
+      "reservedBytes": 524288,
+      "receivedBytes": 524288,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        4151779,
+        4676066
+      ],
+      "reservedBytes": 524288,
+      "receivedBytes": 524288,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        4676067,
+        5200354
+      ],
+      "reservedBytes": 524288,
+      "receivedBytes": 524288,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        5200355,
+        5724642
+      ],
+      "reservedBytes": 524288,
+      "receivedBytes": 524288,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        5724643,
+        6248930
+      ],
+      "reservedBytes": 524288,
+      "receivedBytes": 524288,
+      "exitCode": 0
+    },
+    {
+      "url": "https://darus.uni-stuttgart.de/api/access/datafile/199097",
+      "range": [
+        6248931,
+        6773218
+      ],
+      "reservedBytes": 524288,
+      "receivedBytes": 32141,
+      "exitCode": 28
+    }
+  ],
+  "resume": {
+    "kind": "one-authorized-infrastructure-repair",
+    "change": "512KiB exact ranges, signed GET redirect reused in memory only, additional wall budget300s",
+    "priorManifestSha256": "5b65a6493038403df9cf98dfa2c9a46482ea0879e6654d829a6eae8e8b69d576",
+    "newSourceSha256": "fefe92550fe7bac228ed2adf3cfbb9e5f0d27bfe0071d1635a17de33440a6882"
+  },
+  "completeReferencePairs": []
+}

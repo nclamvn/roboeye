@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "study": "M3S-reference-observability",
+  "policy": {
+    "study": "M3S-reference-observability",
+    "targets": "all12 frozen M3R positive misses",
+    "synchronization": "existing mutual-unique-nearest60ms; no interpolation",
+    "counterfactualWhen": "actual anchor absent only",
+    "counterfactualMinMs": 320.0,
+    "counterfactualMaxMs": 800.0,
+    "counterfactualPreferredMs": 600.0,
+    "minimumLabelLidarPoints": 5,
+    "geometry": "same indexed8 official cuboid annotation vertices; varying dimensions/yaw may change material location; includes hidden/empty box geometry",
+    "affine": "unweighted all-vertex least squares, no RANSAC, no point-support claim",
+    "angular": "RMS angular radius of normalized material-vertex rays around their mean bearing",
+    "frozenGrowthMagnitude": 0.04,
+    "changesRuntime": false,
+    "changesScoresOrGT": false,
+    "modelCalls": 0
+  },
+  "receiptSha256": "7d2922b2cfbd0819f342361b17108b3308cbba936a0a267785dcc4731abd7b52",
+  "inputSha256": "b608bf1ae8518c61aea3a037ac608f2ce48265f7374f0ed0c37c67e619d5c108",
+  "diagnosisSha256": "9c031f92ec58e3c8a777645eb6fb51ba775e26e7fcf298475161bfec981c044d",
+  "sliceInventorySha256": "9d365f5f88e36f24b48ce6830545dea9583e592250cc7fe7cd7eca2e95666fe4",
+  "verifiedReferenceFiles": {
+    "applanix/camera_poses.csv": "1a4a066acd7a008d3dccfff4c7656519d66c6eb81a040d41a3a9266cbe54bac6",
+    "applanix/lidar_poses.csv": "19889049c68d5c93d66ca659e8319eeb889cf00e999b860d371afb77c79b7ccc",
+    "calib/P_camera.txt": "ad1a358314afc2ef040a1dd2f4ee07adf0ce5cd1ca0fd0caa3561eb3bd96d2f1",
+    "labels_detection/1598987808167660.txt": "64e8c5c9524d86e9768a318dce97725cd7cf60c937fd5bbbc77d0d2a3b0b18a4",
+    "labels_detection/1598987808375087.txt": "5a8bc6284f8b23316c3079348e8073552dbf293ce6d13cad96cc0fbd85443efb",
+    "labels_detection/1598987808582435.txt": "a83e69dc5b1391b31d96f29b84114986f18b27c35a6832316bcb56d868642daa",
+    "labels_detection/1598987808789894.txt": "4acf6bd647e1b61cc5c28be2ffe3e8965fe23961b987e905c4d7dc52fb95c02e",
+    "labels_detection/1598987808997332.txt": "e80de6d672be24ba709113a9b96d0f83fc4f84e39dd57806cbda583c150b8f34",
+    "labels_detection/1598987809204720.txt": "50808bfab92c9936205bedae43d8b8fdb1c2c5930a1e171c934a74ff1f2c55ba",
+    "labels_detection/1598987809412093.txt": "fcd4a0756ceb3a93c98064d51de22cf14acd3ab72e4f54fc422b5d138d1a84bf",
+    "labels_detection/1598987809619462.txt": "49017ce5cc24687698371ee96eb7cf00060fd739621a243ed0134c113b753e94",
+    "labels_detection/1598987809826920.txt": "375a4577e797b9421d9568f92762a3b1a78bce112ebe63c62659975a8b0f9c51",
+    "labels_detection/1598987810034311.txt": "8cfd529e6c5abb451fe8f6d422b9b261c27e077aa69091c60227e54c0396695a",
+    "labels_detection/1598987810241800.txt": "ce6fb8ea12511928641e7130ff96bab15cfdd00ba464c60e548f4f11c594ed16",
+    "labels_detection/1598987810449255.txt": "5518f160cd22c8bc8bc2ca1b3ec4ee9536dc6211b3e57cd8d6d5f5b966c841d4",
+    "labels_detection/1598987810656695.txt": "73d9c4f3cc49ad257650fd30c9bb88075d8f4e3372bd21fbeabb899c5b491877",
+    "labels_detection/1598987810864100.txt": "a61e27d7de1cdb98f63ce207fe31fc0dc49b53c192722c95aa568f110e71c3c0",
+    "labels_detection/1598987811071577.txt": "fc25231052efa21a702ddcedc40bcdcad86413794e4f8f91020da2ec77998a18",
+    "labels_detection/1598987811279049.txt": "e7b44c7cf5fe0c4ff0a40eb3ac8c3a271c9ed1e905c2df4880c6ae9545a97e88",
+    "labels_detection/1598987811486494.txt": "eb6debde9e72cfbf162a1d54c9aabc8f22f58a42ad7d061a16daa1148e0386eb",
+    "labels_detection/1598987811693857.txt": "e4a2b0701c2ebd78c1fc084f6edd52c42e3183a5c3b9ab539993e7a8b344cbef",
+    "labels_detection/1598987811901238.txt": "1e80392f472a5db42eef078dc486a45f47ab6ae9bbdb12a6abdc0493de927ab1",
+    "labels_detection/1598987812108674.txt": "d1aca9ece449ef967a7620539c15d761da87d972f8e4e5b4633eaa6cd483bff6",
+    "labels_detection/1598989146157209.txt": "9a137e14590064c42492325a9f579ecfcb00e5d62bb0a1d058272d0eed38135c",
+    "labels_detection/1598989146364656.txt": "a337a40b146a4b3d05d60c965c99ab276563492b6bd6e64eafd04fb70af5b5a8",
+    "labels_detection/1598989146572049.txt": "f9a516060bcaa29e172055ff2adcc361e920f1e02197151e5129b765e8c17c0d",
+    "labels_detection/1598989146779495.txt": "612963f9c8f21bd22e0aa2809e97568a07d62152e686c4afb49b6268c24e1d5b",
+    "labels_detection/1598989146986948.txt": "c0834c1e26de3440929d9140fde693f90dd19c934e1f56371716f2841a5053aa",
+    "labels_detection/1598989147194476.txt": "6a3845a6b882309a59d3d999664b339f65a4178e6bad6c2037aa90e27c1fcd5f",
+    "labels_detection/1598989147401895.txt": "df50305d501c4479e0865e8afd301386cdc870a4f475b30690a86bb72f4bb88c",
+    "labels_detection/1598989147609348.txt": "d2b660ea32bfb1b909429334a7b81f754553a24559e84ff3fa25ad1943332cf1",
+    "labels_detection/1598989147816685.txt": "de0a93cb6792431aa18bb3ff6effbf9f5230f5fc5ec2833fda50e30d95b4dfcd",
+    "labels_detection/1598989148024063.txt": "f838577e4f5b7a337bb509ae9f6da97ab0db5d506e2db039442c09367cdd6521",
+    "labels_detection/1598989148231438.txt": "e2236ed77d20c559cbe216adafa8ec6c34e6739b73d5e108627e50f1e74c2332",
+    "labels_detection/1598989148438810.txt": "3dcf4e62df385287648a26314198f1dbedba8bfa6dde088bf8659550ed8f42e3",
+    "labels_detection/1598989148646064.txt": "de8139f18dcbad65ffa0f2da1de9a0f9052f8dc35908e2a2a22660b8b4941293",
+    "labels_detection/1598989148853512.txt": "51647ac570f3e9439abd83461ad16fa6f02678a2401d925a87a47c601cbadbf5",
+    "labels_detection/1598989149060912.txt": "8a63c3f35b45da6ff6660a5633962af7fdbb015a82766c76a18bc6e6c11078ea",
+    "labels_detection/1598989149268356.txt": "26d39fec2ce12c60e42f42c2ec572246f9a8e86a1134bba56fb11a8ceb74ef2e",
+    "labels_detection/1598989149475883.txt": "970f9b00e1306327a225b50990224209d114246d808c5d31ac15fb2b2c10a0f4",
+    "labels_detection/1598989149683445.txt": "9e385337318b3f9e0316f175cd3f185712b4b71a3d98aaccf11e1a33b41f42dc",
+    "labels_detection/1598989149890907.txt": "6b655d830a1bfdbb0a31fa2b627ef27785bd6d88a322d1608f1d58f52f9eeafd",
+    "labels_detection/1598991324045123.txt": "3534abcf084aa22de249d782d087075ea4466df2874a9690e554a1748696cfb7",
+    "labels_detection/1598991324252594.txt": "44248b060928434b6b74aefdfdd4044f0fb3e12eae8100ffd1cb2fb388bfeab3",
+    "labels_detection/1598991324459956.txt": "d1db2d2e0512504cbefc094afa75a8d684ba86c6ea002fa03126b570e97e65dc",
+    "labels_detection/1598991324667323.txt": "f8d3ba5a05d7f511755d20e1bfe09af1d973df84d3c3f43ea727e72bb837737c",
+    "labels_detection/1598991324874757.txt": "18b0c8f24ac4b12ea23af9d08323afeaada83d04d0ff0f31c80a15374745efb7",
+    "labels_detection/1598991325082100.txt": "ca9bb0869ff369c70b8295f30de6d507c7d267571999c3f4fa0c16b895161366",
+    "labels_detection/1598991325289550.txt": "c71c30c0e27428f6c6ab082338f5fd170cef9f3ae90fa2b89b353f50894ea299",
+    "labels_detection/1598991325496891.txt": "2b654e4a16ed02db6fa1bbff5fc0022532f6b88be28a37eced348999bdc6da62",
+    "labels_detection/1598991325704333.txt": "adb0b8891be84c1e92e76bd8386604e9704d795d928d80ceff32fd249bbbc62b",
+    "labels_detection/1598991325911773.txt": "7e351fd9c2482b51a8cdfe72be9e1b41ab04fc9af965fe598517c5334f563720",
+    "labels_detection/1598991326119261.txt": "b00dc84abe2dca7ad7076bcd6d63aafe69f32f6b674cb5b9880ecb45c3348ef0",
+    "labels_detection/1598991326326684.txt": "e99ee3c47484719077f9211d4b3c65349c80246815ac9660c86c202f07121250",
+    "labels_detection/1598991326534063.txt": "9063427d9db530f6e2f18eb76feb458debd545a6b2e97f6c363352923823f12f",
+    "labels_detection/1598991326741435.txt": "e32f616610528b8670ee7024ff5fc1364ae81d19f4dc5dd8d209be14dc31a072",
+    "labels_detection/1598991326948726.txt": "0b7d96f74185bc7c584bdb69b0722d84854ff28e8cfaf3c670bb2cd139f3c55d",
+    "labels_detection/1598991327156165.txt": "dce6182795eca115aee1e667e8692898a388b4ea4fc45b458beb3085064dca14",
+    "labels_detection/1598991327363515.txt": "c0229016a55d411e49a0a0058ab71474179b0fb6ac071b47f44d5f6c965e8f94",
+    "labels_detection/1598991327570948.txt": "dc58446c7a2184ba3a776aada4029e90c8ce7d1b474d80ba925fa5f3314abaef",
+    "labels_detection/1598991327778414.txt": "7ed072f2824ed162372c549dd22782c27b860cdb19edb988a43dd0e0fdcf5e23",
+    "labels_detection/1598991327985935.txt": "1b8f3af91395593bc26ea0d21cbee0eefd521f8d184e32b8e17d490e5ac17c09"
+  },
+  "codeSha256": {
+    "assist_scene_m3s_observability.py": "c6a00bb85ec1e28f0849519824d193a6623841d047662a647dca2332bb8e9a8a",
+    "assist_scene_boreas_import.py": "794ae945453dc17391b9131d551a2ffade770a8bba1a5c23b293e8cc441122df",
+    "assist_scene_global_window.py": "8163edb853089f9e87a16ed2c7cd506aa5a0f8c8da32d63870a02585d73fa86b",
+    "assist_scene_region_motion.py": "bcd0219a7f7303bb533f8bc90d5a221a5efed7379235ce00b142c27257eb72d7",
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_pose_motion.py": "df6b22ae9da80a8a75dae2049de3b848c839527a7aebcb95954cc6fbbd0b0df9"
+  },
+  "truthSha256": "7e9ddf11518d7365059e52b060889bf99616897a31e702f325f51a60f58cc284",
+  "numpyVersion": "2.5.4",
+  "targets": 12,
+  "results": [
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 14,
+      "token": "boreas-boreas-m3r-city-1598989147178709",
+      "instance": "960f9af8-de22-466f-854d-98d2ff695513",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "no-fresh-source-exposure",
+      "cameraStatus": "insufficient-background-agreement",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": null,
+          "currentToken": "boreas-boreas-m3r-city-1598989147178709",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-executed-source"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": null,
+          "currentToken": "boreas-boreas-m3r-city-1598989147178709",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-executed-source"
+        }
+      },
+      "counterfactual": {
+        "kind": "counterfactual-reference-only-nearest600ms",
+        "sourceToken": "boreas-boreas-m3r-city-1598989146536622",
+        "currentToken": "boreas-boreas-m3r-city-1598989147178709",
+        "measuredCorrespondence": false,
+        "warningPass": false,
+        "status": "reference-geometric-proxy-not-image-proof",
+        "elapsedMs": 642.087,
+        "oldLabelTimestampUs": 1598989146572049,
+        "newLabelTimestampUs": 1598989147194476,
+        "oldAbsSkewUs": 35427,
+        "newAbsSkewUs": 15767,
+        "annotationDimensionLogRatios": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "annotationDimensionsChanged": false,
+        "rawLidarAnnotationYawChangeRad": -0.002240386762599973,
+        "worldCuboidXAxisAngleChangeRad": 0.004302464975602203,
+        "worldCuboidAxisChanged": true,
+        "annotationCornersAreNotGuaranteedMaterialPoints": true,
+        "geometry": {
+          "status": "geometric-proxy-only",
+          "radialCenterLogRatio": 0.1635928685650359,
+          "vertexCount": 8,
+          "visibleMaterialCorrespondenceTruth": false,
+          "minimumCommonOpticalZPositive": true,
+          "axialCenterLogRatio": 0.21189038375762476,
+          "angularRmsLogRatio": 0.2190255642514848,
+          "projectedVerticesClipped": true,
+          "forward": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                1.4400451640673102,
+                0.01430534577292441,
+                -217.87149863653664
+              ],
+              [
+                0.03378984816720977,
+                1.2854755500653112,
+                -111.7370370009104
+              ]
+            ],
+            "linearLogGrowth": 0.30777102398362177,
+            "maxResidualPx": 18.472965614007933,
+            "rmsResidualPx": 11.329939476318803,
+            "anisotropyLog": 0.11892473931910247
+          },
+          "reverse": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                0.6855728105827452,
+                -0.007668307335926102,
+                156.6259496953065
+              ],
+              [
+                -0.018870105456720947,
+                0.7763375684384186,
+                84.04221389006837
+              ]
+            ],
+            "linearLogGrowth": -0.3154701625210719,
+            "maxResidualPx": 12.563232449369874,
+            "rmsResidualPx": 7.86218388669653,
+            "anisotropyLog": 0.12954882133561332
+          },
+          "proxyLinearLogGrowthLower": 0.30777102398362177,
+          "proxyLinearLogGrowthUpper": 0.3154701625210719,
+          "proxyEstimatorSpan": 0.007699138537450134,
+          "proxyExceedsFrozenGrowthMagnitude": true
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 14,
+      "token": "boreas-boreas-m3r-city-1598989147178709",
+      "instance": "d0a6aa54-49e2-4e2b-a7a3-46893427dcc1",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "no-fresh-source-exposure",
+      "cameraStatus": "insufficient-background-agreement",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": null,
+          "currentToken": "boreas-boreas-m3r-city-1598989147178709",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-executed-source"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": null,
+          "currentToken": "boreas-boreas-m3r-city-1598989147178709",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-executed-source"
+        }
+      },
+      "counterfactual": {
+        "kind": "counterfactual-reference-only-nearest600ms",
+        "sourceToken": "boreas-boreas-m3r-city-1598989146536622",
+        "currentToken": "boreas-boreas-m3r-city-1598989147178709",
+        "measuredCorrespondence": false,
+        "warningPass": false,
+        "status": "reference-geometric-proxy-not-image-proof",
+        "elapsedMs": 642.087,
+        "oldLabelTimestampUs": 1598989146572049,
+        "newLabelTimestampUs": 1598989147194476,
+        "oldAbsSkewUs": 35427,
+        "newAbsSkewUs": 15767,
+        "annotationDimensionLogRatios": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "annotationDimensionsChanged": false,
+        "rawLidarAnnotationYawChangeRad": 0.01521290576000034,
+        "worldCuboidXAxisAngleChangeRad": 0.013247831019299347,
+        "worldCuboidAxisChanged": true,
+        "annotationCornersAreNotGuaranteedMaterialPoints": true,
+        "geometry": {
+          "status": "geometric-proxy-only",
+          "radialCenterLogRatio": 0.09072192644898242,
+          "vertexCount": 8,
+          "visibleMaterialCorrespondenceTruth": false,
+          "minimumCommonOpticalZPositive": true,
+          "axialCenterLogRatio": 0.10316909029376425,
+          "angularRmsLogRatio": 0.1246971670270695,
+          "projectedVerticesClipped": false,
+          "forward": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                1.1681091615930523,
+                -0.04101611924134338,
+                -41.89538607488478
+              ],
+              [
+                -0.006454827724786646,
+                1.1240734042446745,
+                -36.1146406240641
+              ]
+            ],
+            "linearLogGrowth": 0.13607187140561836,
+            "maxResidualPx": 4.23928366425652,
+            "rmsResidualPx": 2.622296505362474,
+            "anisotropyLog": 0.05650549485939694
+          },
+          "reverse": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                0.8529210398657411,
+                0.034323298270023034,
+                36.59028340258824
+              ],
+              [
+                0.006146271777668034,
+                0.888465946552978,
+                32.56516388187356
+              ]
+            ],
+            "linearLogGrowth": -0.13881284476641856,
+            "maxResidualPx": 3.62541751722437,
+            "rmsResidualPx": 2.220867479175476,
+            "anisotropyLog": 0.06187385783903436
+          },
+          "proxyLinearLogGrowthLower": 0.13607187140561836,
+          "proxyLinearLogGrowthUpper": 0.13881284476641856,
+          "proxyEstimatorSpan": 0.002740973360800203,
+          "proxyExceedsFrozenGrowthMagnitude": true
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 22,
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "instance": "b4efe1a9-5690-43c8-92da-5adb578c82fd",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "fresh-missing-identity-source-exposure",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": "boreas-boreas-m3r-city-1598989147738617",
+          "currentToken": "boreas-boreas-m3r-city-1598989147816327",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": "boreas-boreas-m3r-city-1598989147416451",
+          "currentToken": "boreas-boreas-m3r-city-1598989147816327",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "reference-geometric-proxy-not-image-proof",
+          "elapsedMs": 399.876,
+          "oldLabelTimestampUs": 1598989147401895,
+          "newLabelTimestampUs": 1598989147816685,
+          "oldAbsSkewUs": 14556,
+          "newAbsSkewUs": 358,
+          "annotationDimensionLogRatios": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "annotationDimensionsChanged": false,
+          "rawLidarAnnotationYawChangeRad": 0.0008532582906000119,
+          "worldCuboidXAxisAngleChangeRad": 0.006448954613017244,
+          "worldCuboidAxisChanged": true,
+          "annotationCornersAreNotGuaranteedMaterialPoints": true,
+          "geometry": {
+            "status": "geometric-proxy-only",
+            "radialCenterLogRatio": 0.07486297571184443,
+            "vertexCount": 8,
+            "visibleMaterialCorrespondenceTruth": false,
+            "minimumCommonOpticalZPositive": true,
+            "axialCenterLogRatio": 0.08593395074660995,
+            "angularRmsLogRatio": 0.09538401668038422,
+            "projectedVerticesClipped": false,
+            "forward": {
+              "status": "geometric-proxy-only",
+              "matrix": [
+                [
+                  1.1538612089761016,
+                  -0.01677287612373269,
+                  -63.10952322589084
+                ],
+                [
+                  0.0024781491100486852,
+                  1.1090000440786099,
+                  -41.52066949360675
+                ]
+              ],
+              "linearLogGrowth": 0.12330256072547867,
+              "maxResidualPx": 5.326422679027822,
+              "rmsResidualPx": 3.394596926513591,
+              "anisotropyLog": 0.041618698561070915
+            },
+            "reverse": {
+              "status": "geometric-proxy-only",
+              "matrix": [
+                [
+                  0.8652248195621943,
+                  0.013542458111617911,
+                  55.916221399922094
+                ],
+                [
+                  -0.001575113523370044,
+                  0.9011711003861518,
+                  37.27205627813598
+                ]
+              ],
+              "linearLogGrowth": -0.12439934037763165,
+              "maxResidualPx": 4.640601092002298,
+              "rmsResidualPx": 2.959472319722482,
+              "anisotropyLog": 0.042901444796112215
+            },
+            "proxyLinearLogGrowthLower": 0.12330256072547867,
+            "proxyLinearLogGrowthUpper": 0.12439934037763165,
+            "proxyEstimatorSpan": 0.0010967796521529766,
+            "proxyExceedsFrozenGrowthMagnitude": true
+          }
+        }
+      },
+      "counterfactual": null
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 30,
+      "token": "boreas-boreas-m3r-city-1598989148456682",
+      "instance": "b4efe1a9-5690-43c8-92da-5adb578c82fd",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "fresh-bidirectional-estimator-disagreement",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": "boreas-boreas-m3r-city-1598989148377268",
+          "currentToken": "boreas-boreas-m3r-city-1598989148456682",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": null,
+          "currentToken": "boreas-boreas-m3r-city-1598989148456682",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-executed-source"
+        }
+      },
+      "counterfactual": {
+        "kind": "counterfactual-reference-only-nearest600ms",
+        "sourceToken": "boreas-boreas-m3r-city-1598989147816327",
+        "currentToken": "boreas-boreas-m3r-city-1598989148456682",
+        "measuredCorrespondence": false,
+        "warningPass": false,
+        "status": "reference-geometric-proxy-not-image-proof",
+        "elapsedMs": 640.355,
+        "oldLabelTimestampUs": 1598989147816685,
+        "newLabelTimestampUs": 1598989148438810,
+        "oldAbsSkewUs": 358,
+        "newAbsSkewUs": 17872,
+        "annotationDimensionLogRatios": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "annotationDimensionsChanged": false,
+        "rawLidarAnnotationYawChangeRad": 0.0032980643588000906,
+        "worldCuboidXAxisAngleChangeRad": 0.00795875780307043,
+        "worldCuboidAxisChanged": true,
+        "annotationCornersAreNotGuaranteedMaterialPoints": true,
+        "geometry": {
+          "status": "geometric-proxy-only",
+          "radialCenterLogRatio": 0.12696556606718845,
+          "vertexCount": 8,
+          "visibleMaterialCorrespondenceTruth": false,
+          "minimumCommonOpticalZPositive": true,
+          "axialCenterLogRatio": 0.14956018620203868,
+          "angularRmsLogRatio": 0.16257020363678243,
+          "projectedVerticesClipped": true,
+          "forward": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                1.2915381587585615,
+                0.016477320937889943,
+                -138.38825705255127
+              ],
+              [
+                -0.022450066777619865,
+                1.2076108766398348,
+                -61.75082554720741
+              ]
+            ],
+            "linearLogGrowth": 0.2223574761453603,
+            "maxResidualPx": 10.445042935924127,
+            "rmsResidualPx": 6.813205644931626,
+            "anisotropyLog": 0.06735183471058974
+          },
+          "reverse": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                0.7711115239713334,
+                -0.010238705750645963,
+                108.2151309462595
+              ],
+              [
+                0.014540019132904904,
+                0.8265253782895765,
+                53.4640661688807
+              ]
+            ],
+            "linearLogGrowth": -0.22510668530214617,
+            "maxResidualPx": 8.123983951027393,
+            "rmsResidualPx": 5.3533808308185185,
+            "anisotropyLog": 0.06959815258457502
+          },
+          "proxyLinearLogGrowthLower": 0.2223574761453603,
+          "proxyLinearLogGrowthUpper": 0.22510668530214617,
+          "proxyEstimatorSpan": 0.0027492091567858645,
+          "proxyExceedsFrozenGrowthMagnitude": true
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 30,
+      "token": "boreas-boreas-m3r-city-1598989148456682",
+      "instance": "915bf105-20a3-44bb-8b07-67e429afc80b",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "no-long-source-exposure",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": "boreas-boreas-m3r-city-1598989148377268",
+          "currentToken": "boreas-boreas-m3r-city-1598989148456682",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": null,
+          "currentToken": "boreas-boreas-m3r-city-1598989148456682",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-executed-source"
+        }
+      },
+      "counterfactual": {
+        "kind": "counterfactual-reference-only-nearest600ms",
+        "sourceToken": "boreas-boreas-m3r-city-1598989147816327",
+        "currentToken": "boreas-boreas-m3r-city-1598989148456682",
+        "measuredCorrespondence": false,
+        "warningPass": false,
+        "status": "reference-geometric-proxy-not-image-proof",
+        "elapsedMs": 640.355,
+        "oldLabelTimestampUs": 1598989147816685,
+        "newLabelTimestampUs": 1598989148438810,
+        "oldAbsSkewUs": 358,
+        "newAbsSkewUs": 17872,
+        "annotationDimensionLogRatios": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "annotationDimensionsChanged": false,
+        "rawLidarAnnotationYawChangeRad": 0.0032980643600000192,
+        "worldCuboidXAxisAngleChangeRad": 0.007808055759412991,
+        "worldCuboidAxisChanged": true,
+        "annotationCornersAreNotGuaranteedMaterialPoints": true,
+        "geometry": {
+          "status": "geometric-proxy-only",
+          "radialCenterLogRatio": 0.08401697063088051,
+          "vertexCount": 8,
+          "visibleMaterialCorrespondenceTruth": false,
+          "minimumCommonOpticalZPositive": true,
+          "axialCenterLogRatio": 0.09129515638824348,
+          "angularRmsLogRatio": 0.09964916359617021,
+          "projectedVerticesClipped": false,
+          "forward": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                1.1332439471547866,
+                0.004769590751828948,
+                -48.33458663479004
+              ],
+              [
+                -0.007307665166663904,
+                1.0957459660896385,
+                -35.940911643537305
+              ]
+            ],
+            "linearLogGrowth": 0.10827385857835133,
+            "maxResidualPx": 2.639400426708183,
+            "rmsResidualPx": 1.713149452229726,
+            "anisotropyLog": 0.03372540072981975
+          },
+          "reverse": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                0.8795257693126118,
+                -0.0053733927922506135,
+                43.730619076566285
+              ],
+              [
+                0.005181514108037666,
+                0.9121299121643801,
+                33.413547200944095
+              ]
+            ],
+            "linearLogGrowth": -0.11015528087318904,
+            "maxResidualPx": 2.3228567065414354,
+            "rmsResidualPx": 1.5131999750602985,
+            "anisotropyLog": 0.036399562476467716
+          },
+          "proxyLinearLogGrowthLower": 0.10827385857835133,
+          "proxyLinearLogGrowthUpper": 0.11015528087318904,
+          "proxyEstimatorSpan": 0.0018814222948377174,
+          "proxyExceedsFrozenGrowthMagnitude": true
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 38,
+      "token": "boreas-boreas-m3r-city-1598989149098115",
+      "instance": "d0a6aa54-49e2-4e2b-a7a3-46893427dcc1",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "no-long-source-exposure",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": "boreas-boreas-m3r-city-1598989149017050",
+          "currentToken": "boreas-boreas-m3r-city-1598989149098115",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": null,
+          "currentToken": "boreas-boreas-m3r-city-1598989149098115",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-executed-source"
+        }
+      },
+      "counterfactual": {
+        "kind": "counterfactual-reference-only-nearest600ms",
+        "sourceToken": "boreas-boreas-m3r-city-1598989148456682",
+        "currentToken": "boreas-boreas-m3r-city-1598989149098115",
+        "measuredCorrespondence": false,
+        "warningPass": false,
+        "status": "reference-geometric-proxy-not-image-proof",
+        "elapsedMs": 641.433,
+        "oldLabelTimestampUs": 1598989148438810,
+        "newLabelTimestampUs": 1598989149060912,
+        "oldAbsSkewUs": 17872,
+        "newAbsSkewUs": 37203,
+        "annotationDimensionLogRatios": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "annotationDimensionsChanged": false,
+        "rawLidarAnnotationYawChangeRad": -0.014270930830000418,
+        "worldCuboidXAxisAngleChangeRad": 0.012550006869633482,
+        "worldCuboidAxisChanged": true,
+        "annotationCornersAreNotGuaranteedMaterialPoints": true,
+        "geometry": {
+          "status": "geometric-proxy-only",
+          "radialCenterLogRatio": 0.12548704829515164,
+          "vertexCount": 8,
+          "visibleMaterialCorrespondenceTruth": false,
+          "minimumCommonOpticalZPositive": true,
+          "axialCenterLogRatio": 0.1612631523223452,
+          "angularRmsLogRatio": 0.16658907108361604,
+          "projectedVerticesClipped": false,
+          "forward": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                1.2948657027959953,
+                -0.022584085219046115,
+                -82.17984993451078
+              ],
+              [
+                -0.010806676148440523,
+                1.1946918705244798,
+                -68.7009955580514
+              ]
+            ],
+            "linearLogGrowth": 0.2180687549548693,
+            "maxResidualPx": 7.786888375885197,
+            "rmsResidualPx": 4.715890867764384,
+            "anisotropyLog": 0.08487815824657499
+          },
+          "reverse": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                0.7687878142474519,
+                0.013045467390017508,
+                65.45477554505608
+              ],
+              [
+                0.006970624334119375,
+                0.8365235877786492,
+                58.32576742096303
+              ]
+            ],
+            "linearLogGrowth": -0.22079112083678537,
+            "maxResidualPx": 5.901005667902838,
+            "rmsResidualPx": 3.6432000294870623,
+            "anisotropyLog": 0.08805321202018333
+          },
+          "proxyLinearLogGrowthLower": 0.2180687549548693,
+          "proxyLinearLogGrowthUpper": 0.22079112083678537,
+          "proxyEstimatorSpan": 0.0027223658819160723,
+          "proxyExceedsFrozenGrowthMagnitude": true
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 45,
+      "token": "boreas-boreas-m3r-city-1598989149656821",
+      "instance": "915bf105-20a3-44bb-8b07-67e429afc80b",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "no-fresh-source-exposure",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": null,
+          "currentToken": "boreas-boreas-m3r-city-1598989149656821",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-executed-source"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": null,
+          "currentToken": "boreas-boreas-m3r-city-1598989149656821",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-executed-source"
+        }
+      },
+      "counterfactual": {
+        "kind": "counterfactual-reference-only-nearest600ms",
+        "sourceToken": "boreas-boreas-m3r-city-1598989149098115",
+        "currentToken": "boreas-boreas-m3r-city-1598989149656821",
+        "measuredCorrespondence": false,
+        "warningPass": false,
+        "status": "reference-geometric-proxy-not-image-proof",
+        "elapsedMs": 558.706,
+        "oldLabelTimestampUs": 1598989149060912,
+        "newLabelTimestampUs": 1598989149683445,
+        "oldAbsSkewUs": 37203,
+        "newAbsSkewUs": 26624,
+        "annotationDimensionLogRatios": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "annotationDimensionsChanged": false,
+        "rawLidarAnnotationYawChangeRad": 0.006232630320000433,
+        "worldCuboidXAxisAngleChangeRad": 0.015350579379041973,
+        "worldCuboidAxisChanged": true,
+        "annotationCornersAreNotGuaranteedMaterialPoints": true,
+        "geometry": {
+          "status": "geometric-proxy-only",
+          "radialCenterLogRatio": 0.09677217693765956,
+          "vertexCount": 8,
+          "visibleMaterialCorrespondenceTruth": false,
+          "minimumCommonOpticalZPositive": true,
+          "axialCenterLogRatio": 0.11259646009491463,
+          "angularRmsLogRatio": 0.12694942336402945,
+          "projectedVerticesClipped": false,
+          "forward": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                1.188816648628687,
+                -0.0319377618270764,
+                -52.398110789564065
+              ],
+              [
+                0.005803258940664145,
+                1.1289628543108756,
+                -48.657109618832514
+              ]
+            ],
+            "linearLogGrowth": 0.14719793469369336,
+            "maxResidualPx": 5.209468669049286,
+            "rmsResidualPx": 3.3114729231300517,
+            "anisotropyLog": 0.05636372317477023
+          },
+          "reverse": {
+            "status": "geometric-proxy-only",
+            "matrix": [
+              [
+                0.836188722794046,
+                0.02512772233319257,
+                45.6911277402578
+              ],
+              [
+                -0.0032874003782899274,
+                0.8851457741098627,
+                42.84457263256013
+              ]
+            ],
+            "linearLogGrowth": -0.15039613895011258,
+            "maxResidualPx": 4.392880345253255,
+            "rmsResidualPx": 2.7729824743180695,
+            "anisotropyLog": 0.062297940865581686
+          },
+          "proxyLinearLogGrowthLower": 0.14719793469369336,
+          "proxyLinearLogGrowthUpper": 0.15039613895011258,
+          "proxyEstimatorSpan": 0.0031982042564192292,
+          "proxyExceedsFrozenGrowthMagnitude": true
+        }
+      }
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 13,
+      "token": "boreas-boreas-m3r-low-speed-1598991325115172",
+      "instance": "cb7da3b6-7f6a-459a-836f-047195fce41c",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "fresh-forward-insufficient-grid-support",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991325035074",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991325115172",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991324315964",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991325115172",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        }
+      },
+      "counterfactual": null
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 20,
+      "token": "boreas-boreas-m3r-low-speed-1598991325675557",
+      "instance": "cb7da3b6-7f6a-459a-836f-047195fce41c",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "current-detector-or-handle-criterion-failure",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991325595222",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991325675557",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991324961252",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991325675557",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        }
+      },
+      "counterfactual": null
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 28,
+      "token": "boreas-boreas-m3r-low-speed-1598991326316062",
+      "instance": "cb7da3b6-7f6a-459a-836f-047195fce41c",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "fresh-missing-identity-source-exposure",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991326237522",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991326316062",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991325595222",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991326316062",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        }
+      },
+      "counterfactual": null
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 36,
+      "token": "boreas-boreas-m3r-low-speed-1598991326957882",
+      "instance": "fe02c1ed-9fdd-473f-a933-e46d93652746",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "fresh-missing-identity-source-exposure",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991326875470",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991326957882",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991326237522",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991326957882",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        }
+      },
+      "counterfactual": null
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 44,
+      "token": "boreas-boreas-m3r-low-speed-1598991327601738",
+      "instance": "09cf400a-d0b2-4716-975e-55a13bcd1237",
+      "frozenReferenceApproach": "approaching",
+      "frozenScore": "FN-unchanged",
+      "firstVeto": "fresh-forward-insufficient-grid-support",
+      "cameraStatus": "valid",
+      "actual": {
+        "fresh": {
+          "kind": "actual-fresh",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991327518010",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991327601738",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        },
+        "anchor": {
+          "kind": "actual-anchor",
+          "sourceToken": "boreas-boreas-m3r-low-speed-1598991326875470",
+          "currentToken": "boreas-boreas-m3r-low-speed-1598991327601738",
+          "measuredCorrespondence": false,
+          "warningPass": false,
+          "status": "no-direct-synchronized-label-endpoint"
+        }
+      },
+      "counterfactual": null
+    }
+  ],
+  "actualPairStatuses": {
+    "no-executed-source": 9,
+    "no-direct-synchronized-label-endpoint": 14,
+    "reference-geometric-proxy-not-image-proof": 1
+  },
+  "counterfactualStatuses": {
+    "reference-geometric-proxy-not-image-proof": 6
+  },
+  "modelCalls": 0,
+  "cpuWallMs": 2108.327708003344,
+  "maxCpuSeconds": 300,
+  "maxOutputBytes": 5242880,
+  "limits": "Posthoc reference diagnosis, not fresh quality evidence. No object-pose interpolation. Indexed official cuboid vertices can change physical location as annotation dimensions/yaw vary; include hidden faces/empty geometry; are not image texture, actual visible correspondences, segmentation or9-point support. Different aspect, clipping and synchronization skew can affect proxies. Camera centers are from each exact bound image exposure, but object labels can have up to60ms skew; no mover interpolation silently repairs it. No runtime, original scores or truth changed; no radial target relabeling, range output, detection or warning promotion."
+}

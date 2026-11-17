@@ -1,0 +1,26 @@
+{
+  "inputSha256": "963d58b94c43fd78cc44739103b1986ef7ec875c628b10db81545ab4a7fd017e",
+  "candidatesSha256": "e43de4bed6ed65066a19a2f6e964506e45e8e4ee5fb9716f6f21f5053c0918e4",
+  "selectionAccountingSha256": "c0bd6b0a069b82f1aadd01ef316e3d6d51fb4056a386f5d5ddefd957474c0daa",
+  "review": {
+    "reviewer": "Contractor assistant visual review of all five source-bound 960x803 low-speed sheets before road model inference",
+    "evidence": "AI-authored visible 2D bounds and source-identity review, not human certification. Approach labels retained from official synchronized 3D/pose reference, never inferred from still images.",
+    "scope": "All23 preselected candidates explicitly reviewed. This is a checkpoint/stratum evaluation, not exhaustive annotation of the entire street.",
+    "omissions": {
+      "boreas-m3q-low-speed-05:3": "Cross-street vehicle 14ac is substantially hidden by the foreground van/mirror; cannot assign a separate confident visible extent.",
+      "boreas-m3q-low-speed-08:3": "Person 8dea is substantially hidden by crossing SUV and foreground sedan; cannot label complete individual extent from visible fragments.",
+      "boreas-m3q-low-speed-11:4": "Person 8dea projects over the foreground sedan windshield; mostly occluded body cannot serve as a full visible-object label.",
+      "boreas-m3q-low-speed-11:5": "Small far cross-street vehicle 6b0 overlaps nearer crossing vehicle; physical identity and visible extent are uncertain.",
+      "boreas-m3q-low-speed-11:6": "Very small far vehicle 3fcc cannot be separated confidently from adjacent traffic/fixtures at reviewed resolution.",
+      "boreas-m3q-low-speed-14:3": "Person 8dea is mostly behind the foreground sedan, leaving head/upper-body fragments; full visible extent is uncertain.",
+      "boreas-m3q-low-speed-17:5": "Small far vehicle 6b0 is mostly behind the nearer silver crossing car; no reliable separate visible extent."
+    }
+  },
+  "frames": {
+    "boreas-m3q-low-speed-05": {"1":[416,446,607,601],"2":[302,400,452,457],"3":null,"4":[600,425,623,489]},
+    "boreas-m3q-low-speed-08": {"1":[416,446,607,601],"2":[442,402,588,459],"3":null,"4":[356,399,425,425]},
+    "boreas-m3q-low-speed-11": {"1":[416,446,607,601],"2":[598,405,687,462],"3":[254,403,365,445],"4":null,"5":null,"6":null},
+    "boreas-m3q-low-speed-14": {"1":[416,446,607,601],"2":[0,399,138,448],"3":null,"4":[202,399,272,424]},
+    "boreas-m3q-low-speed-17": {"1":[416,446,607,601],"2":[24,399,178,449],"3":[539,412,655,453],"4":[431,415,455,480],"5":null}
+  }
+}

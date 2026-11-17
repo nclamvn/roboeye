@@ -1,0 +1,37 @@
+{
+  "study": "M3Q-Contractor-VERIFY",
+  "date": "2026-11-17",
+  "userOutcome": "Completed a new independent-descriptor verification method and actual A/B on three fresh Mac-local clips. Candidate does not improve useful approach warnings and is slower; not promoted.",
+  "overall": "NOT_READY",
+  "candidatePromoted": false,
+  "releaseApproved": false,
+  "runtime": {"device":"Mac M1 Max, MPS","detector":"existing actual CoreML YOLOv3FP16","correspondence":"existing RAFT-small C_T_V2,12updates/direction; B adds RootSIFT, strict unchanged geometry/pixel/temporal floors"},
+  "sourceSha256": {
+    "candidate": "d4bad07de81cd754d6fcd9f9da78c0a2342c665e5c3644983d6bf203c97b84ce",
+    "runner": "a11eaf9c1b261b99a69c74c4cc19ebf3361166d9f8fb6040810782aa3b9340ce"
+  },
+  "evidenceSha256": {
+    "r1Receipt": "0c4198fd153cb9acddee1dd18d7911f5be60dcd35153f73a63c98c8a07e863d0",
+    "score": "35e3f8623fed9fe706ee3680eca4833fc01f107f19a7e43275a4499dbbbcbf44",
+    "independentVerification": "77f7a86396830bddeeefb32af6bd506ba0ee866c355311b108fa18f569dc99ad",
+    "input": "7c377d6a6a344a64d34cbbb1fe4b3319e2fe9856e051a889c3148bcd0b2f9986",
+    "truth": "3e0668037090c65ea93964b843df1e083e759f0f7e6c86f0b2bb5df1c7e6fa20"
+  },
+  "scope": {"freshClips":3,"frames":150,"scoredKeyframes":15,"selectedCandidates":73,"retainedTargets":44,"explicitUnscorableOmissions":29,"positiveTargetKeyframes":31,"negativeTargetKeyframes":8,"unknownTargetKeyframes":5,"notExhaustiveSceneTruth":true,"sameRecordingNotCrossDomain":true,"humanCertification":false},
+  "actualR1Work": {"detectorCalls":150,"detectorBatches":3,"raftDirectionsA":370,"raftDirectionsB":370,"totalRaftDirections":740,"externalElapsedMs":392521,"rawReceiptBytes":202664796,"noRangeSurfaceChecks":600,"priorInterruptedFinalDirections":null},
+  "warningResults": {
+    "A": {"tp":0,"fn":31,"fp":0,"tn":8,"unknown":5,"framesAbstained":150,"unmatchedReports":0,"ambiguousReports":0,"unscoredFrameReports":0},
+    "B": {"tp":0,"fn":31,"fp":0,"tn":8,"unknown":5,"framesAbstained":150,"unmatchedReports":0,"ambiguousReports":0,"unscoredFrameReports":0}
+  },
+  "pairedProductMs": {"A":{"p50":795.97,"p95":1551.14},"B":{"p50":1967.71,"p95":3780.14},"scope":"Per-frame detector observation plus staging/shared decoding/camera and own method. Excludes external proof validation/receipt encoding. Whole392.521s includes both research arms. Not realtime/UI/thermal acceptance."},
+  "firstVetoPartitionBothLanes": {"currentDetectorOrHandleCriterionFailure":4,"cameraVeto":2,"noFreshSourceExposure":7,"ambiguousOrUnverifiableRival":18},
+  "overlappingSecondaryObservation": {"matchedPositives":27,"candidateCurrentSourceNBelow9":14,"notAdditionalFalseNegativeCounts":true},
+  "externalReference": {"completeFiles":true,"pairs":2,"homographyNotDenseFlow":true,"londonIdentityH":"REFERENCE_DISPUTED at fixed1.3px; raw/Sobel phase correlation agrees with approx1.7px shift; no H fit/replacement or threshold change","viewpointPair":"Candidate retains42 correct points vs baseline107, different original denominators125vs128; not an improvement","oldComponentCandidateSource":"cb24574f..., historical before current source-variance guard; exact source retained","currentCandidateExternalPixelAccuracyCertification":false},
+  "technicalHealth": {
+    "qaReceipt": "docs/evidence/tip65/mac-readiness/runs/2026-11-17T08-11-18-261Z-15a90e9c/summary.json",
+    "technicalPass":true,"python":{"passed":587,"failed":0,"skipped":0},"nodePolicy":{"passed":13,"failed":0,"skipped":0},"swift":{"passed":121,"failed":0},"typescript":"PASS","sourceBeforeAfterSha256":"fad050a0189f01e3cfedb015df27c1cf6b17e2f715fb075281b7c01295a201ad","sourceFiles":174,"sourceUnchanged":true,"gitDiffCheck":"PASS"
+  },
+  "requirementCoverage": {"newMethod":"IMPLEMENTED and actually executed","completeScopedRoadReference":"COMPLETE with explicit unscorable omissions, not exhaustive scene annotation","freshClipABFalsePositiveAndFalseNegativeMeasurement":"COMPLETE, independently recounted","noThresholdLoosening":"PASS; one missing16-variance gate restored before accepted R1","noMetres":"PASS","noIPhone":"PASS","usefulRecallImprovement":"FAIL","smoothRealtimeBehavior":"NOT_DEMONSTRATED, candidate slower","directLLMOrAgentBenchmark":"UNMEASURED"},
+  "disposition": "Reject RootSIFT candidate for default integration. Do not optimize a slower all-silent path or replace it with unvalidated bbox growth. Next bounded investigation must address object association/unknown-rival evidence and small-object feature sufficiency, and distinguish radial physical approach from projected expansion. Keep all quality floors until independent evidence justifies a newly authorized design; do not claim a fix from these diagnostics.",
+  "hygiene": {"removed":"Only50 generated JPEG staging files from interrupted own run, approx7.8MiB; regenerable from retained originals","otherScratchDirectoriesRemaining":0,"freeDiskGiBAtFinalCheck":57,"newModelDownloads":0,"newDependencies":0,"phoneMutations":0,"commit":false,"push":false,"deploy":false,"preExistingNativePackageEditsPreserved":true}
+}

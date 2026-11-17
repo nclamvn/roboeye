@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "milestone": "TIP-65-M3W",
+  "date": "2026-11-17",
+  "stage": "SEALED_BEFORE_ACTUAL_RGB_OBSERVATION_AND_ORACLE_EVALUATION",
+  "bindings": {
+    "docs/TIP-65-M3W-MAC.md": "07ad8880854f5a5392a4de5840500d53b8b72f61afd72636823edd27ec970569",
+    "docs/evidence/tip65/m3w-data-plan.json": "234489b87115433d576666d46fcc7d11a0d86ab2880c209980becc416465777e",
+    "docs/evidence/tip65/m3w-data-plan-proposal.json": "6fab89bb3b84e737641f5a0c1ebdf09ec1f0fcb7bb8ce3906b10fe60f4fe9a00",
+    "docs/evidence/tip65/m3w-data-completion.json": "beea06d510f1ac08d1721ba2813abe828df387b5ee879d9cdc15e593b850d386",
+    "scripts/assist_scene_m3w_controls.py": "2f24e3df36b0af099e4d09b53980d16bc81031d7911289f11bd517f029a43906",
+    "scripts/assist_scene_m3w_factor_audit.py": "2c5590ed56526bc34b84d4866318808778fe525e227c8705581e362c6f90bbe2",
+    "tests/test_assist_scene_m3w_controls.py": "bd16d26d34f10fb76dbaba9d3a2fc463fcb205455d9ff6f7f4b379b8ba2a8b01",
+    "tests/test_assist_scene_m3w_factor_audit.py": "94074445714c7f4910c7981b68ef330b5734ca4b498dd81e0825d4af008631dd",
+    "native/ios/.build-xcode/scene-qa/m3w-controls-r1/controls.json": "8444f49903373467339a9ab26227c138cc873417c908caad3b6f5b3f12fe24f5",
+    "native/ios/.build-xcode/scene-qa/m3w-controls-r1/rgb-only.json": "1c172b672072e08d2d301ce1f857f3319f7a34659ae73062ebf6c15e3c2d2283",
+    "docs/evidence/tip65/m3v-verification.json": "f3204a738a7ed478ada26388ad21ce77764614bbdbe95ef503337b79d7e8e49b",
+    "docs/evidence/tip65/m3v-cached-m3u-score.json": "843a3f46592af86a62d5415bb895986d1841a4a08723e1520ea6f8ca5b1b8734"
+  },
+  "approvals": {
+    "data": "Contractor + independent Reviewer code/plan GO; single prep complete2.910s/9493684B, no scores used to change data",
+    "method": "Independent Reviewer finalGO2c5590.../940744...,28/28 scoped authored tests; no actual flow run",
+    "fullMacQa": "Running on frozen source; not product acceptance"
+  },
+  "design": {
+    "authoredPairs": 12,
+    "analysisPairs": 6,
+    "holdoutPairs": 6,
+    "authoredImages": 24,
+    "uniqueAuthoredImageHashes": 12,
+    "independentExternalRealPairs": 2,
+    "externalReference": "Existing HPatches estimated H; not exact pose/time/occlusion, not new unseen video",
+    "geometryAuthority": "Authored ray-plane scene with independent projection oracle, not real traffic or calibrated physical sensor truth",
+    "sourceTextureAuthority": "Two existing licensed TUM RGB images as textures only; their sensor depth/pose not used as exact truth",
+    "observer": "Only RGB-onlymanifest+images; no geometry file opened; no GT mask or endpoint enters seeding/matching",
+    "seedPolicy": "Frozen original up-to256GFTT/LK/FB/NCC, no backfill",
+    "clockControlsUs": [
+      -40000,
+      -10000,
+      10000,
+      40000
+    ],
+    "fixedCalibrationControls": [
+      "fx*1.05",
+      "cx+8"
+    ],
+    "knownWrongControls": [
+      "8px epiline normal",
+      "8px epiline tangent"
+    ],
+    "noWinnerSelection": true,
+    "allUnobservableStrataRetained": true
+  },
+  "budgets": {
+    "observationRuns": 1,
+    "evaluationRuns": 1,
+    "justifiedExecutionRepairMaximum": 1,
+    "observeSeconds": 180,
+    "evaluateSeconds": 120,
+    "LkDirectionsMaximum": 32,
+    "expectedLkDirectionsIfAllPairsNonempty": 28,
+    "receiptBytesMaximum": 33554432,
+    "models": 0,
+    "downloads": 0,
+    "phone": false
+  },
+  "value": {
+    "scope": "More discriminating fault/component evidence, not a runtime repair or product-quality claim",
+    "cachedTraffic": {
+      "tp": 0,
+      "fn": 13,
+      "fp": 0,
+      "tn": 18,
+      "unknown": 2
+    },
+    "directLLMOrAgentSuperiority": "NOT MEASURED; deterministic geometry is the simplest baseline",
+    "humanPixelGroundtruth": "NOT AVAILABLE; authored exact geometry replaces wide AI rectangles only within controls"
+  },
+  "invariants": {
+    "thresholdsChanged": false,
+    "newObjectMetres": false,
+    "existingRuntimeEdited": false,
+    "commitOrDeployment": false,
+    "labelsRetunedAfterResults": false,
+    "existingUserTrackedEdits": "Preserved13files/288insertions/30deletions"
+  }
+}

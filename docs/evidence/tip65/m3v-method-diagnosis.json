@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "study": "M3V-read-only-posthoc-method-diagnosis",
+  "date": "2026-11-17",
+  "source": {
+    "receipt": "docs/evidence/tip65/m3v-pixel-diagnostic-r1.json",
+    "receiptSha256": "c34320d88587b54e9f4123e391643423e0b5f4b6329eb8060c2f83462ed61c58",
+    "inputSha256": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed",
+    "referenceSha256": "7526453f77534ad490e90f423a10ad44b1f311c65e52008a755432cc87b24d60",
+    "sourceSelectionSha256": "a949bec984aebb13ecff5ea9603cd29a89fab865d109f6647075cdfca276455f",
+    "provenance": "Arithmetic over the single completed diagnostic receipt. Builder-authored interpretation, not an independent re-review of annotations or physical sensor calibration. No flow, model or diagnostic rerun."
+  },
+  "execution": {
+    "completedDiagnosticWallMs": 7562.518208003894,
+    "completedDiagnosticLkDirections": 24,
+    "completedDiagnosticLearnedModelCalls": 0,
+    "additionalLkDirectionsForThisDiagnosis": 0,
+    "additionalLearnedModelCallsForThisDiagnosis": 0,
+    "productionCodeChanges": 0,
+    "annotationChanges": 0
+  },
+  "denominators": {
+    "fixedPairs": 6,
+    "originalSourceSlots": 72,
+    "crossReviewedStaticReferences": 12,
+    "unknownReferences": 60,
+    "acceptedAnalysisReferences": 8,
+    "acceptedHoldoutReferences": 4,
+    "nominalEntireRectangleEpiline": {"pass": 0, "fail": 1, "unknown": 11},
+    "nominalEntireRectangleCheirality": {"positive": 1, "negative": 0, "unknown": 11},
+    "holdoutEntireRectangleEpiline": {"pass": 0, "fail": 0, "unknown": 4},
+    "interpretation": "Unknown does not mean pass or definite error. Twelve source slots per pair do not certify the production camera's24-point/support/coverage gate."
+  },
+  "implementationAndCoordinateChecks": {
+    "allSixPairEndpointSdkInputPoseMaxAbs": 0.0,
+    "exifChunksInTwelveOpenedOriginalPngs": 0,
+    "nativeVersusConsistentPixelCenterConjugacyMaximumBoundDifferenceWorkingPx": 4.822531263215524e-13,
+    "supports": "Within the sampled source metadata, the importer agrees exactly with the SDK reconstruction. Native and consistently transformed working geometry agree numerically. An EXIF reorientation is not observed in these twelve PNGs.",
+    "doesNotProve": "These algebra/source checks do not establish real pose, calibration or synchronization accuracy. Conjugacy equality is expected and is not a quality improvement."
+  },
+  "strongestNominalReferenceDisagreement": {
+    "slotId": "pair4-cell00",
+    "clip": "boreas-m3u-city",
+    "sourceFrameIndex": 45,
+    "targetFrameIndex": 46,
+    "split": "analysis",
+    "capWorkingPx": 1.3,
+    "nominalSdkEntireRectangleResidualWorkingPx": [1.7250898326179172, 9.583066328745085],
+    "legacyKActualCenterPixelsResidualWorkingPx": [1.7316304707268917, 9.591620059706903],
+    "consistentPixelCenterResidualWorkingPx": [1.7250898326179969, 9.583066328745094],
+    "cheirality": "unknown",
+    "supports": "Conditional on this independently cross-reviewed static identity and its uncertainty rectangles, every allowed correspondence exceeds the nominal supplied-pose epiline cap. This disagreement is not created solely by the working-image resize or its half-pixel K convention.",
+    "doesNotIdentify": "One selected analysis reference cannot isolate physical pose error, calibration error, timestamp misalignment, residual rectification effects, annotation error or incorrect static-material identity. It is not a held-out repair or a proof of the13 traffic misses' cause."
+  },
+  "fixedObservedEndpointCalibrationSensitivity": {
+    "queriedPoints": 12,
+    "maximumAbsoluteAdKVersusAcKResidualChangeWorkingPx": 0.012997006527937671,
+    "medianAbsoluteAdKVersusAcKResidualChangeWorkingPx": 0.003149865727407164,
+    "epilineDecisionChangesAtFixedWorkingEndpoints": 0,
+    "strongFailurePoint": {
+      "slotId": "pair4-cell00",
+      "nativeObservedEndpointNominalResidualWorkingPx": 4.979016377499763,
+      "workingObservedEndpointLegacyResidualWorkingPx": 5.116656123008706,
+      "workingObservedEndpointCenterCorrectedResidualWorkingPx": 5.11039678313268
+    },
+    "disposition": "The half-pixel correction is not supported as a sufficient explanation or remedy for the observed strong disagreement. This does not deny the coordinate-convention discrepancy or establish that it is irrelevant on all inputs. No correction was selected or deployed."
+  },
+  "nativeVersusWorkingLk": {
+    "queriesPerDomain": 12,
+    "acceptedPerDomain": 11,
+    "nativeRejectedStage": {"slotId": "pair1-cell03", "reason": "LK status/cycle/bounds rejection"},
+    "workingRejectedStage": {"slotId": "pair1-cell03", "reason": "photometric rejection"},
+    "acceptedWrongConditionalReferencesProvenPerDomain": 0,
+    "acceptedEndpointsWithUncertainReferenceErrorPerDomain": 11,
+    "allQueryNativeVsWorkingEndpointDifferenceWorkingPx": {"median": 0.07938458081704614, "maximum": 1.9779035947810752},
+    "bothAcceptedNativeVsWorkingEndpointDifferenceWorkingPx": {"count": 11, "median": 0.07781158788115433, "maximum": 0.5307845074938674},
+    "nominalEpilineDecisionsAtFixedObservedEndpointsPerDomain": {"pass": 3, "fail": 9},
+    "nominalCheiralityAtFixedObservedEndpointsPerDomain": {"positive": 9, "negative": 3},
+    "supports": "The nominal epiline incompatibility is also present in native-image LK observations, so a working JPEG/resize-only explanation is not supported for this sample.",
+    "unknown": "The independent annotation rectangles are too broad to certify any of the11 accepted endpoints per domain as within the1.3px cap, or to prove them wrong beyond it. Zero proven wrong endpoints is not100% accuracy. High cycle/NCC acceptance does not establish physical correspondence or accurate camera metadata.",
+    "confound": "The same21px window, pyramid and7px patch cover different native footprints across domains. Native/working differences therefore do not isolate JPEG, area sampling or LK scale as a causal factor. The source annotation center is queried once, not swept over source uncertainty."
+  },
+  "clockAndFalsificationControls": {
+    "absolutePoseClockSkewUsAcrossShiftedVariants": [78912, 162255],
+    "allShiftedClockVariantsRuntimeEligible": false,
+    "nominalReferenceGeometryCounts": {"pass": 0, "fail": 1, "unknown": 11},
+    "clockMinusTwoFrames": {"pass": 0, "fail": 2, "unknown": 10},
+    "clockMinusOneFrame": {"pass": 0, "fail": 0, "unknown": 12},
+    "clockPlusOneFrame": {"pass": 0, "fail": 2, "unknown": 10},
+    "clockPlusTwoFrames": {"pass": 0, "fail": 0, "unknown": 12},
+    "nominalShiftedTargetRectangleControls": {"definitelyCompatible": 0, "rejected": 9, "unknown": 15},
+    "disposition": "Fewer definite rejections at minus1 or plus2 frames are conversions to unknown, not successful compatible references. They do not identify a valid offset. All true timestamps remain preserved and clock-ineligible. The synthetic rectangle/convention controls are mathematical falsifications, not natural traffic false-positive rates."
+  },
+  "scientificDisposition": {
+    "supported": [
+      "There is at least one conditional static-pixel reference inconsistent with the nominal supplied-pose epiline model beyond the unchanged cap.",
+      "The sampled SDK/input transforms and conjugate coordinate algebra agree; native observations retain the same broad nominal incompatibility.",
+      "The small tested half-pixel K correction does not rescue any fixed observed endpoint's epiline decision."
+    ],
+    "notSupportedAsSoleCause": ["Working JPEG/resize preprocessing", "Half-pixel principal-point correction"],
+    "unresolved": [
+      "Physical pose versus calibration versus synchronization/rectification error",
+      "Actual LK endpoint accuracy inside the broad AI-reviewed reference uncertainty",
+      "Reference material/static-identity correctness beyond the stated review",
+      "Any production camera correction or warning-recall gain"
+    ],
+    "cachedTrafficWarningOutcomeUnchanged": {"tp": 0, "fn": 13, "fp": 0, "tn": 18, "unknownTargets": 2},
+    "runtimePromotion": "NOT AUTHORIZED",
+    "nextEvidenceNeeded": "Resolve the strongest disagreement with independently more discriminating sensor/pixel evidence or known-pose calibration controls. Any proposed runtime change needs a new frozen A/B, not a threshold increase, relabeling, tracker addition or selection of the lowest-residual clock/K variant."
+  },
+  "technicalQaReportedByContractorNotRerunHere": {"python": 683, "swift": 121, "nodeAndTypeScript": 14, "status": "PASS", "meaning": "Technical regression only; not road, safety, commercial or phone acceptance."},
+  "noAdditionalFlowOrModelExecution": true,
+  "noMetresOrPhoneClaims": true
+}

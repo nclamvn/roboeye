@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "milestone": "TIP-65-M3U",
+  "date": "2026-11-17",
+  "role": "Contractor verification after separate camera/study Builder, data Builder and independent Reviewer",
+  "overallProductStatus": "NOT_READY",
+  "implementationAndExperimentStatus": "COMPLETED_WITH_NEGATIVE_PRODUCT_RESULT",
+  "disposition": "Do not promote B or claim useful warning improvement",
+  "bindings": {
+    "preflight": {
+      "path": "docs/evidence/tip65/m3u-preflight.json",
+      "sha256": "c7ec7f2df08262c4cb04b18b11218970ae21f6dbec12e4abdebc97e29127b8f8"
+    },
+    "dataPlan": {
+      "path": "docs/evidence/tip65/m3u-data-plan.json",
+      "sha256": "b3a63214c735e344d3f83ee099ed306e4b865b0dc621b7a937a45c06a18f2c72"
+    },
+    "dataCompletion": {
+      "path": "docs/evidence/tip65/m3u-data-completion.json",
+      "sha256": "d434340bb48ef8eb4ba92c9c5e184d781dd4bbfea98e4beb374462fc4517770f"
+    },
+    "receipt": {
+      "path": "native/ios/.build-xcode/scene-qa/m3u-boreas-receipt-r1.json",
+      "sha256": "a855152945d2679ad3b07258b6cb139fc81f91b259ffdf0268b6f61b49dd37ab"
+    },
+    "score": {
+      "path": "docs/evidence/tip65/m3u-boreas-score.json",
+      "sha256": "843a3f46592af86a62d5415bb895986d1841a4a08723e1520ea6f8ca5b1b8734"
+    },
+    "input": {
+      "path": "native/ios/.build-xcode/scene-qa/boreas-m3u/input.json",
+      "sha256": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed"
+    },
+    "truth": {
+      "path": "native/ios/.build-xcode/scene-qa/boreas-m3u/truth-reviewed.json",
+      "sha256": "56a8ffe4f398f21449335cdf9ff147d5b223aae0a4539895ad2376f3c792ac0b"
+    },
+    "coverage": {
+      "path": "native/ios/.build-xcode/scene-qa/boreas-m3u/truth-reviewed-coverage.json",
+      "sha256": "2d2159ed50497e75ae42ea5d80aff3e884cb01d84bf0fab5ff513e3239f75151"
+    },
+    "secondary": {
+      "path": "docs/evidence/tip65/m3u-secondary-visible-extent.json",
+      "sha256": "40094009395698a0a02290cc01990861bd690e210d32f82839738bc842f728ab"
+    },
+    "development": {
+      "path": "docs/evidence/tip65/m3u-development-m3t-camera.json",
+      "sha256": "e27ea85ca8f6858f66122cd0b530aa37fc25f993b72564d07c50b65d95dded3d"
+    },
+    "diagnosis": {
+      "path": "docs/evidence/tip65/m3u-post-trial-diagnosis.json",
+      "sha256": "7e792566d7bc51daceabec5597a901b5097ef7127e46784424a851621c1d2506"
+    },
+    "independentReview": {
+      "path": "docs/evidence/tip65/m3u-independent-verification.json",
+      "sha256": "6b937cd63cd92716a887f6979ffed6bcf0c5e8376a88afeb61c1af4aab1c49c6"
+    },
+    "qa": {
+      "path": "docs/evidence/tip65/mac-readiness/runs/2026-11-17T12-14-43-243Z-1f9106da/summary.json",
+      "sha256": "ad5d8c47a9bfa77525ed371e32104c307b1374924cdffbf4ddff662566d11077"
+    },
+    "oldM3R": {
+      "path": "docs/evidence/tip65/m3r-boreas-score.json",
+      "sha256": "5e6497dd183a48d4fddcd213f9da7c2b534dde4bb3a339010220183503dc481a"
+    }
+  },
+  "requirements": {
+    "cameraByPixelImpact": "IMPLEMENTED",
+    "freshRealTrafficAB": "COMPLETED:100 unseen exposures, same-recording continuation not cross-domain",
+    "falseAlarmsAndMisses": "MEASURED on reviewed target-checkpoints with unscored/unknown reports separate",
+    "qualityFloors": "No relaxed residual/growth/temporal/rival floors; new stricter camera contract is not equivalent to old acceptance",
+    "noUnsupportedWarnings": "VERIFIED; actual both lanes emit zero notices",
+    "noObjectMetres": "VERIFIED:range answers remain null, no inferred TTC",
+    "macOnly": "COMPLETED",
+    "usefulWarningImprovement": "FAILED;recall unchanged and city camera availability regressed"
+  },
+  "primaryResults": {
+    "unit": "reviewed target-keyframe",
+    "totals": {
+      "A": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 13,
+        "tn": 18,
+        "unmatchedReports": 0,
+        "ambiguousReports": 0,
+        "unknownTargetReports": 0,
+        "unknownTargets": 2,
+        "unscoredFrameReports": 0,
+        "scoredKeyframes": 10,
+        "framesAbstained": 100
+      },
+      "B": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 13,
+        "tn": 18,
+        "unmatchedReports": 0,
+        "ambiguousReports": 0,
+        "unknownTargetReports": 0,
+        "unknownTargets": 2,
+        "unscoredFrameReports": 0,
+        "scoredKeyframes": 10,
+        "framesAbstained": 100
+      }
+    },
+    "allFrameEvents": 0,
+    "selectedCandidates": 51,
+    "visibleTargets": 33,
+    "unscorableNotNegatives": 18,
+    "secondary": {
+      "rawRadialPositives": 14,
+      "concordant": 1,
+      "unknown": 13,
+      "concordantWarnings": 0
+    },
+    "opportunityStrata": {
+      "large-baseline": 13
+    },
+    "firstPositiveVeto": {
+      "A": {
+        "camera-veto:insufficient-background-agreement": 10,
+        "current-detector-or-handle-criterion-failure": 3
+      },
+      "B": {
+        "camera-veto:insufficient-pixel-camera-evidence": 10,
+        "current-detector-or-handle-criterion-failure": 3
+      }
+    }
+  },
+  "cameraAvailability": {
+    "A": {
+      "first-frame": 2,
+      "valid": 66,
+      "insufficient-background-agreement": 32
+    },
+    "B": {
+      "first-frame": 2,
+      "insufficient-pixel-camera-evidence": 48,
+      "valid": 50
+    }
+  },
+  "execution": {
+    "actualStudyRuns": 1,
+    "actualStudyWallMs": 91562.74287500128,
+    "modelStartupMs": 2232.602500000212,
+    "detectorCalls": 100,
+    "detectorBatches": 2,
+    "residentRaftModels": 1,
+    "actualDirections": {
+      "A": 214,
+      "B": 188
+    },
+    "actualDirectionsTotal": 402,
+    "receiptBytes": 42633538,
+    "requestedOpenCvThreads": 1,
+    "reportedOpenCvThreads": 10,
+    "controlledTiming": false,
+    "perLaneDiagnosticProductMs": {
+      "A": {
+        "p50": 603.54,
+        "p95": 769.69
+      },
+      "B": {
+        "p50": 359.9,
+        "p95": 705.37
+      }
+    },
+    "speedImprovementClaim": false,
+    "speedCaveat": "B skips all city RAFT due to veto; lower median is not faster successful processing. Actual duplicated fields remain counted."
+  },
+  "qa": {
+    "fullGateRuns": 1,
+    "technicalPass": true,
+    "stages": [
+      {
+        "name": "readiness-policy",
+        "status": "PASS",
+        "counts": {
+          "total": 14,
+          "failed": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "python-scene",
+        "status": "PASS",
+        "counts": {
+          "total": 667,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "swift-core",
+        "status": "PASS",
+        "counts": {
+          "total": 121,
+          "failed": 0
+        }
+      },
+      {
+        "name": "typescript",
+        "status": "PASS",
+        "counts": {
+          "typechecked": true
+        }
+      }
+    ],
+    "uniqueM3UTestsIncludedInPythonTotal": 26,
+    "sourceFingerprintBeforeAfterQAAndAfterActual": {
+      "sha256": "ee308f5e61a9d5c5ed65b710f86cf952987c8105a9a6f41c54c2c705e6450fb1",
+      "fileCount": 197
+    },
+    "actualCodeFingerprintsVerified": 38,
+    "oldCodeFingerprintsUnchanged": 35,
+    "sourceFilesHashed": 141,
+    "nativeGrayHashesVerified": 100,
+    "workingJpegGrayHashesVerified": 100,
+    "controlExposuresVerified": 98,
+    "photometricMaskChecksReproduced": 24783,
+    "proofContractsVerified": 100,
+    "scoreMethod": "Direct frozen legacy score_frame, not new M3U.score; radial labels mapped unchanged; .35IoU/.08margin; unreviewed/unknown separate.",
+    "humanReview": false,
+    "warning": "Independent numeric verification observed nonfatal NumPy invalid-value-in-det warning in frozen verifier; all100 contracts passed, not suppressed or repaired"
+  },
+  "limitsAndDisposition": [
+    "All13 primary positives may be outside the small-baseline opportunity stratum; do not generalize absence of recall gain to all pixel-impact geometry.",
+    "Camera availability on negative-only stopped clip is not positive recall evidence. Primary radial targets differ from optical expansion; single concordant checkpoint separately traced, not substitute benchmark.",
+    "B camera is stricter and conditional on static-background/calibration/pose assumptions, with no metadata covariance certification.",
+    "Frozen numeric verification emitted a nonfatal NumPy RuntimeWarning: invalid value encountered in det; all100 contracts passed. No source/receipt was repaired to suppress it.",
+    "No model rerun, threshold/label/source edits, object metres, iPhone, runtime deployment or safety certification.",
+    "No direct LLM/tool-enabled-agent baseline benchmark.",
+    "Posthoc union arithmetic is not an approved new model or rescued TP;36/49 city pairs still fail union floors.",
+    "Do not promote B, relax thresholds, modify labels or add tracker to hide failure. Next method needs independently checked per-ray projection and pose/calibration/timing evidence on fresh positive and negative target-stratum inputs."
+  ],
+  "diskHygiene": {
+    "freeGiBApprox": 55,
+    "preparationBytesApprox": 377701850,
+    "newDependenciesModelsVenvsProjectCopiesBuildDirectories": 0,
+    "temporaryFixtureAndStagingDirectoriesAutoRemoved": true,
+    "leftoverM3UTemporaryDirectoriesFound": 0,
+    "intentionalRetainedArtifacts": "Selected source slice, review crops, runtime inputs, actual receipt, QA logs and reports"
+  },
+  "humanEffortOrComputeCostInMoney": null,
+  "preexistingUserChangesPreserved": true,
+  "commitPushDeployPerformed": false
+}

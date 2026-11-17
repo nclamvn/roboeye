@@ -1,0 +1,1393 @@
+{
+  "schemaVersion": 1,
+  "study": "M3W-authored-controls-plan",
+  "datasetId": "m3w-fixed-v1",
+  "authority": "authored-rendered-not-real-traffic",
+  "K": [
+    [
+      520.0,
+      0.0,
+      319.5
+    ],
+    [
+      0.0,
+      515.0,
+      239.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "imageShape": [
+    480,
+    640
+  ],
+  "sourceTimestampUs": 1000000,
+  "targetTimestampUs": 1100000,
+  "clockOffsetsUs": [
+    -40000,
+    -10000,
+    10000,
+    40000
+  ],
+  "textureSources": [
+    {
+      "split": "analysis",
+      "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/tum-m3t-slice/structure_texture_far/rgb/1341839119.689899.png",
+      "sha256": "ce10e650f41ad546c7009e3ecdc7e2cb753521aaef269bef2c9e99657de78738",
+      "bytes": 492657,
+      "sourceFrameId": "structure_texture_far-00"
+    },
+    {
+      "split": "holdout",
+      "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/tum-m3t-slice/nostructure_texture_far/rgb/1341839848.278057.png",
+      "sha256": "a57475d1cac74608baed6dfca61f4140f9b19eedda1ecb1ca5541bde5d1881f1",
+      "bytes": 439971,
+      "sourceFrameId": "nostructure_texture_far-00"
+    }
+  ],
+  "pairs": [
+    {
+      "id": "m3w-00",
+      "split": "analysis",
+      "motionType": "stationary",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.5,
+          "boundsXY": [
+            -2,
+            -1.3,
+            -0.35,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.1,
+            0.07
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 7.0,
+          "boundsXY": [
+            0.1,
+            -1.6,
+            2.4,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.35,
+            0.13
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.5,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "far",
+          "z": 12.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "angles": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "m3w-01",
+      "split": "analysis",
+      "motionType": "lateral",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.5,
+          "boundsXY": [
+            -2,
+            -1.3,
+            -0.35,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.1,
+            0.07
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 7.0,
+          "boundsXY": [
+            0.1,
+            -1.6,
+            2.4,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.35,
+            0.13
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.5,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "far",
+          "z": 12.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0,
+            0.4
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "angles": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "m3w-02",
+      "split": "analysis",
+      "motionType": "constant-body-twist",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.5,
+          "boundsXY": [
+            -2,
+            -1.3,
+            -0.35,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.1,
+            0.07
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 7.0,
+          "boundsXY": [
+            0.1,
+            -1.6,
+            2.4,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.35,
+            0.13
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.5,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "far",
+          "z": 12.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "constant-body-twist",
+        "bodyLinear": [
+          0.4,
+          0.03,
+          0.08
+        ],
+        "bodyAngular": [
+          0.03,
+          0.45,
+          0.02
+        ]
+      }
+    },
+    {
+      "id": "m3w-03",
+      "split": "analysis",
+      "motionType": "accelerating",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.5,
+          "boundsXY": [
+            -2,
+            -1.3,
+            -0.35,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.1,
+            0.07
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 7.0,
+          "boundsXY": [
+            0.1,
+            -1.6,
+            2.4,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.35,
+            0.13
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.5,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "far",
+          "z": 12.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0,
+            0.15,
+            1
+          ],
+          [
+            0,
+            0.02,
+            0
+          ],
+          [
+            0,
+            0.05,
+            0.2
+          ]
+        ],
+        "angles": [
+          [
+            0,
+            0.15,
+            1.8
+          ],
+          [
+            0,
+            0.03,
+            0.4
+          ],
+          [
+            0,
+            0,
+            0.05
+          ]
+        ]
+      }
+    },
+    {
+      "id": "m3w-04",
+      "split": "analysis",
+      "motionType": "changing-direction",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.5,
+          "boundsXY": [
+            -2,
+            -1.3,
+            -0.35,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.1,
+            0.07
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 7.0,
+          "boundsXY": [
+            0.1,
+            -1.6,
+            2.4,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.35,
+            0.13
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.5,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "far",
+          "z": 12.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0,
+            0.9,
+            -3
+          ],
+          [
+            0,
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0.1,
+            0.8
+          ]
+        ],
+        "angles": [
+          [
+            0,
+            -0.25,
+            2
+          ],
+          [
+            0,
+            0.02,
+            -0.3
+          ],
+          [
+            0,
+            0.08,
+            -0.2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "m3w-05",
+      "split": "analysis",
+      "motionType": "fast-reveal",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.5,
+          "boundsXY": [
+            -2,
+            -1.3,
+            -0.35,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.1,
+            0.07
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 7.0,
+          "boundsXY": [
+            0.1,
+            -1.6,
+            2.4,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.35,
+            0.13
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.5,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "far",
+          "z": 12.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0,
+            1.2,
+            0.8
+          ],
+          [
+            0,
+            0.02,
+            0
+          ],
+          [
+            0,
+            0.15,
+            0.2
+          ]
+        ],
+        "angles": [
+          [
+            0,
+            1.4,
+            1
+          ],
+          [
+            0,
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0.05,
+            0.1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "m3w-06",
+      "split": "holdout",
+      "motionType": "stationary",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.2,
+          "boundsXY": [
+            0.35,
+            -1.3,
+            2,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.27,
+            0.18
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 6.8,
+          "boundsXY": [
+            -2.4,
+            -1.6,
+            -0.1,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.52,
+            0.24
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.8,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.67,
+            0.61
+          ]
+        },
+        {
+          "id": "far",
+          "z": 13.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.17,
+            0.11
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "angles": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "m3w-07",
+      "split": "holdout",
+      "motionType": "lateral",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.2,
+          "boundsXY": [
+            0.35,
+            -1.3,
+            2,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.27,
+            0.18
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 6.8,
+          "boundsXY": [
+            -2.4,
+            -1.6,
+            -0.1,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.52,
+            0.24
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.8,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.67,
+            0.61
+          ]
+        },
+        {
+          "id": "far",
+          "z": 13.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.17,
+            0.11
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0,
+            -0.4
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "angles": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "m3w-08",
+      "split": "holdout",
+      "motionType": "constant-body-twist",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.2,
+          "boundsXY": [
+            0.35,
+            -1.3,
+            2,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.27,
+            0.18
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 6.8,
+          "boundsXY": [
+            -2.4,
+            -1.6,
+            -0.1,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.52,
+            0.24
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.8,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.67,
+            0.61
+          ]
+        },
+        {
+          "id": "far",
+          "z": 13.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.17,
+            0.11
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "constant-body-twist",
+        "bodyLinear": [
+          -0.4,
+          0.03,
+          0.08
+        ],
+        "bodyAngular": [
+          0.03,
+          -0.45,
+          -0.02
+        ]
+      }
+    },
+    {
+      "id": "m3w-09",
+      "split": "holdout",
+      "motionType": "accelerating",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.2,
+          "boundsXY": [
+            0.35,
+            -1.3,
+            2,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.27,
+            0.18
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 6.8,
+          "boundsXY": [
+            -2.4,
+            -1.6,
+            -0.1,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.52,
+            0.24
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.8,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.67,
+            0.61
+          ]
+        },
+        {
+          "id": "far",
+          "z": 13.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.17,
+            0.11
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0,
+            -0.15,
+            -1
+          ],
+          [
+            0,
+            0.02,
+            0
+          ],
+          [
+            0,
+            0.05,
+            0.2
+          ]
+        ],
+        "angles": [
+          [
+            0,
+            -0.15,
+            -1.8
+          ],
+          [
+            0,
+            0.03,
+            0.4
+          ],
+          [
+            0,
+            0,
+            -0.05
+          ]
+        ]
+      }
+    },
+    {
+      "id": "m3w-10",
+      "split": "holdout",
+      "motionType": "changing-direction",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.2,
+          "boundsXY": [
+            0.35,
+            -1.3,
+            2,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.27,
+            0.18
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 6.8,
+          "boundsXY": [
+            -2.4,
+            -1.6,
+            -0.1,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.52,
+            0.24
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.8,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.67,
+            0.61
+          ]
+        },
+        {
+          "id": "far",
+          "z": 13.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.17,
+            0.11
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0,
+            -0.9,
+            3
+          ],
+          [
+            0,
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            0.1,
+            0.8
+          ]
+        ],
+        "angles": [
+          [
+            0,
+            0.25,
+            -2
+          ],
+          [
+            0,
+            0.02,
+            -0.3
+          ],
+          [
+            0,
+            -0.08,
+            0.2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "m3w-11",
+      "split": "holdout",
+      "motionType": "fast-reveal",
+      "planes": [
+        {
+          "id": "near-left",
+          "z": 4.2,
+          "boundsXY": [
+            0.35,
+            -1.3,
+            2,
+            1.5
+          ],
+          "uvScale": [
+            0.32,
+            0.32
+          ],
+          "uvOffset": [
+            0.27,
+            0.18
+          ]
+        },
+        {
+          "id": "mid-right",
+          "z": 6.8,
+          "boundsXY": [
+            -2.4,
+            -1.6,
+            -0.1,
+            1.5
+          ],
+          "uvScale": [
+            0.24,
+            0.24
+          ],
+          "uvOffset": [
+            0.52,
+            0.24
+          ]
+        },
+        {
+          "id": "center",
+          "z": 3.8,
+          "boundsXY": [
+            -0.38,
+            -0.4,
+            0.38,
+            0.35
+          ],
+          "uvScale": [
+            0.45,
+            0.45
+          ],
+          "uvOffset": [
+            0.67,
+            0.61
+          ]
+        },
+        {
+          "id": "far",
+          "z": 13.0,
+          "boundsXY": null,
+          "uvScale": [
+            0.15,
+            0.15
+          ],
+          "uvOffset": [
+            0.17,
+            0.11
+          ]
+        }
+      ],
+      "trajectory": {
+        "kind": "world-polynomial-euler",
+        "center": [
+          [
+            0,
+            -1.2,
+            -0.8
+          ],
+          [
+            0,
+            0.02,
+            0
+          ],
+          [
+            0,
+            0.15,
+            0.2
+          ]
+        ],
+        "angles": [
+          [
+            0,
+            -1.4,
+            -1
+          ],
+          [
+            0,
+            0.1,
+            0.2
+          ],
+          [
+            0,
+            -0.05,
+            -0.1
+          ]
+        ]
+      }
+    }
+  ],
+  "externalPairs": [
+    {
+      "id": "i_londonbridge",
+      "imageShape": [
+        979,
+        1478
+      ],
+      "H_1_2": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "authority": "real-images-estimated-planar-homography-not-3D-pose",
+      "old": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/i_londonbridge/1.ppm",
+        "sha256": "3446ea3f8df5e9a77d9631c26a6fc2c4214fc572e3871177d6b806170be49fed",
+        "bytes": 4340902
+      },
+      "new": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/i_londonbridge/2.ppm",
+        "sha256": "a714e00171cfc4ef8a2a0ec19cf3100933f2a6ebd75e8ac7820860e66d93e03d",
+        "bytes": 4340902
+      },
+      "homography": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/i_londonbridge/H_1_2",
+        "sha256": "bf284252c00be268976cb5f85fe21220797083556c200aa90e9f159123e71873",
+        "bytes": 18
+      }
+    },
+    {
+      "id": "v_abstract",
+      "imageShape": [
+        922,
+        1229
+      ],
+      "H_1_2": [
+        [
+          0.7088,
+          -0.010965,
+          -26.07
+        ],
+        [
+          -0.13602,
+          0.83489,
+          103.19
+        ],
+        [
+          -0.00023352,
+          -1.5615e-05,
+          1.0004
+        ]
+      ],
+      "authority": "real-images-estimated-planar-homography-not-3D-pose",
+      "old": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/v_abstract/1.ppm",
+        "sha256": "7bcb997ad6df0043efb92a20d815a9eaf24766515dc4409230ac96477217ee6c",
+        "bytes": 3399430
+      },
+      "new": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/v_abstract/2.ppm",
+        "sha256": "0278abd717b24d784d0f752db823418063c2a068ff56320dd0288fa4c37ba55e",
+        "bytes": 3399430
+      },
+      "homography": {
+        "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/hpatches-sequences-release/v_abstract/H_1_2",
+        "sha256": "18b7c4ad2dd77f8ebc0847cf18b6e7b2d15fa4e8fc975a8f3298dac845b5e57a",
+        "bytes": 79
+      }
+    }
+  ],
+  "sourceManifests": [
+    {
+      "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/tum-m3t/input.json",
+      "sha256": "671b2de2c6002715a78162181543d08156c774836a3e5f96dc4cf3fba5de2e9e"
+    },
+    {
+      "path": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3q-hpatches-reference/manifest.json",
+      "sha256": "049adf30ccfa019988fc1bcdaa3a9fcbf461459f3ebb5a52fa4f8198602d0d7f"
+    }
+  ],
+  "coordinateConvention": "Optical x-right/y-down/z-forward; cameraToWorld maps camera to world. Euler R=Ry(yaw)Rx(pitch)Rz(roll), ascending-power coefficients in u=(timestampUs-1000000)/1e6 seconds. Twist exp([omega,v]u), translation=V(omega*u)*(v*u).",
+  "sampling": "Pixel centers at integer coordinates; nearest positive ray/world-Z-plane hit; opaque finite panels and infinite far plane; material uv=(worldXY*uvScale+uvOffset) mod1; bilinear texture at uv*(width-1,height-1), round-to-nearest uint8. Single center sample, no antialiasing/blur/noise. Finite footprint visibility evaluated independently, never a seed mask.",
+  "limits": {
+    "maxAssetsBytes": 50331648,
+    "maxPreparationSeconds": 120,
+    "downloads": 0,
+    "learnedModelCalls": 0,
+    "noRuntimeMetres": true
+  },
+  "codeSha256": "cf85f48f8c890c91ad82e9eefb9c19fdb4939cfbf2b15b16190a4e4f3e67d74a"
+}

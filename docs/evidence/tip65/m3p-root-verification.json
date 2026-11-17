@@ -1,0 +1,42 @@
+{
+  "study": "M3P-root-verification",
+  "evidence": "Root direct serialized-proof recount, not new scorer; NOT independent physical flow labels",
+  "totals": {
+    "A": {
+      "sameSupported": 2,
+      "sameUnsupported": 9,
+      "differentSupported": 0,
+      "differentUnsupported": 3,
+      "unknownSupported": 0,
+      "unknownUnsupported": 2
+    },
+    "B": {
+      "sameSupported": 1,
+      "sameUnsupported": 10,
+      "differentSupported": 0,
+      "differentUnsupported": 3,
+      "unknownSupported": 0,
+      "unknownUnsupported": 2
+    },
+    "C": {
+      "sameSupported": 2,
+      "sameUnsupported": 9,
+      "differentSupported": 0,
+      "differentUnsupported": 3,
+      "unknownSupported": 0,
+      "unknownUnsupported": 2
+    }
+  },
+  "pairCount": 12,
+  "unitCount": 16,
+  "modelDirections": {
+    "A": 24,
+    "B": 24,
+    "C": 24
+  },
+  "realPairReceiptSha256": "9ff27849545381f2628d8a73499025bba179197f5216452308298a76ff3f7543",
+  "springReferenceComplete": false,
+  "springModelDirections": 0,
+  "springRejectsBeforeModelAllocation": true,
+  "limits": "Actual old-pair source identity is assistant-reviewed; no real object pixel EPE or new road warning validation. No metres, device or safety claim."
+}

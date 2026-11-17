@@ -1,0 +1,3679 @@
+{
+  "sourceSelectionSha256": "a949bec984aebb13ecff5ea9603cd29a89fab865d109f6647075cdfca276455f",
+  "targetProposalsSha256": "22a7486bf5fc14d6b31b2af4746765f9248011dc4fcf8f900dbad8126b93f298",
+  "authority": "QA display only; nearest enlargement of sealed fixed contexts/details; no new source pixels, predictors, matching, or annotations",
+  "plates": [
+    {
+      "slotId": "pair0-cell00",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell00.png",
+      "sha256": "6358a9035fba1345c16b852b7352efb8941c8cc3005f70cd465058e845200329",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell00-source-raw.png",
+          "rawSha256": "02020c6a88847908d07c2f63a7db2f8687b7886fa498d5526b4190d735b7f19c",
+          "contextNativeRect": [
+            301,
+            160,
+            542,
+            401
+          ],
+          "detailNativeRect": [
+            381,
+            240,
+            462,
+            321
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell00-target-raw.png",
+          "rawSha256": "67f01dd8f3c7e8e4e32aa2c6c485d025a60c2714ed67f0cd7ccc488ff0dd1a5e",
+          "contextNativeRect": [
+            301,
+            160,
+            542,
+            401
+          ],
+          "detailNativeRect": [
+            381,
+            240,
+            462,
+            321
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell01",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell01.png",
+      "sha256": "ad0ccf669bf0e92d03bd12d5371b6cc4589f6cb3bcdc6ea1b115777e35385d35",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell01-source-raw.png",
+          "rawSha256": "3ecc23e8abd8b55d97a277ca398b2bf80a7c90900d9c7fbcaa8dd0c74339042c",
+          "contextNativeRect": [
+            864,
+            142,
+            1105,
+            383
+          ],
+          "detailNativeRect": [
+            944,
+            222,
+            1025,
+            303
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell01-target-raw.png",
+          "rawSha256": "397a36e185485489d138de4b4098368b8aa60f1805516b4ea2875eebed1632d1",
+          "contextNativeRect": [
+            864,
+            142,
+            1105,
+            383
+          ],
+          "detailNativeRect": [
+            944,
+            222,
+            1025,
+            303
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell02",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell02.png",
+      "sha256": "ec59ab5f14ad10593ec3ba14626ed872ae34f170097545ec8d150ba9cece88db",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell02-source-raw.png",
+          "rawSha256": "e25e7846f2b61a684c7353c0c2c3f9461e1688380c8b492eb3a37bf76891ea16",
+          "contextNativeRect": [
+            1641,
+            367,
+            1882,
+            608
+          ],
+          "detailNativeRect": [
+            1721,
+            447,
+            1802,
+            528
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell02-target-raw.png",
+          "rawSha256": "c23d379d025cd64beb7ee3fb3426cef21426835bcf41ccfe94d72b00604747d7",
+          "contextNativeRect": [
+            1641,
+            367,
+            1882,
+            608
+          ],
+          "detailNativeRect": [
+            1721,
+            447,
+            1802,
+            528
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell03",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell03.png",
+      "sha256": "701a93723dcf5a59612460858ddb0963905a83b71ec0f4d2b29f5f4ecf990ce1",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell03-source-raw.png",
+          "rawSha256": "dc7dc1c6688dbdb0f445dfc7281fe45223373ffbdeca3cef467336de467dc6b5",
+          "contextNativeRect": [
+            1747,
+            424,
+            1988,
+            665
+          ],
+          "detailNativeRect": [
+            1827,
+            504,
+            1908,
+            585
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell03-target-raw.png",
+          "rawSha256": "3ea34a0ede1ed195e3d9495acd7016d33d9ca7c8913ae62687153cbd9b3683d5",
+          "contextNativeRect": [
+            1747,
+            424,
+            1988,
+            665
+          ],
+          "detailNativeRect": [
+            1827,
+            504,
+            1908,
+            585
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell04",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell04.png",
+      "sha256": "7930e724a2c2de169a22a7516eb9e6d0ed60aab8bcd8d98b6068ddc8618ad8f3",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell04-source-raw.png",
+          "rawSha256": "4b1d52ca2b9a32353e6d7a2e91f78155bb2b68f0850ee125b0e2a788175cc29c",
+          "contextNativeRect": [
+            -66,
+            1106,
+            175,
+            1347
+          ],
+          "detailNativeRect": [
+            14,
+            1186,
+            95,
+            1267
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell04-target-raw.png",
+          "rawSha256": "029c40b910de008594b238c23f975a4c05549a2f43399efa08db9a908a9c8cc4",
+          "contextNativeRect": [
+            -66,
+            1106,
+            175,
+            1347
+          ],
+          "detailNativeRect": [
+            14,
+            1186,
+            95,
+            1267
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell05",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell05.png",
+      "sha256": "8813d724dbe40a417b320280a9955329bee1927545066a262ced063f5f721e9f",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell05-source-raw.png",
+          "rawSha256": "e6537211bfd24bed432c64fa0f075688b6e146d95116c201ff7ff2986a4d53c2",
+          "contextNativeRect": [
+            516,
+            1047,
+            757,
+            1288
+          ],
+          "detailNativeRect": [
+            596,
+            1127,
+            677,
+            1208
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell05-target-raw.png",
+          "rawSha256": "24f744bfa2d6e5ce5494ec48e228f0b3e24ebb6d2820a0f9d9f0d5fb347d7d88",
+          "contextNativeRect": [
+            516,
+            1047,
+            757,
+            1288
+          ],
+          "detailNativeRect": [
+            596,
+            1127,
+            677,
+            1208
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell06",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell06.png",
+      "sha256": "622b4df024c32af2d73b5c03d7510254b846f85f243e986877a6af951169d80a",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell06-source-raw.png",
+          "rawSha256": "7830ad53641344272b4efefcbad94f87d1d985e14edfa23932fe31ddb807432f",
+          "contextNativeRect": [
+            1188,
+            838,
+            1429,
+            1079
+          ],
+          "detailNativeRect": [
+            1268,
+            918,
+            1349,
+            999
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell06-target-raw.png",
+          "rawSha256": "08d09c981bd13108e75341bede6151d200968b892fe1e714d3cc827710ec1e91",
+          "contextNativeRect": [
+            1188,
+            838,
+            1429,
+            1079
+          ],
+          "detailNativeRect": [
+            1268,
+            918,
+            1349,
+            999
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell07",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell07.png",
+      "sha256": "aaf9669ef0fcaa4384a3694b97af978319bbd08684ae1eea8b784c117e340c5c",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell07-source-raw.png",
+          "rawSha256": "49acd30bcaab1719bd4453e791805c629670e468e78cee23fb4c37213ac44a39",
+          "contextNativeRect": [
+            1975,
+            946,
+            2216,
+            1187
+          ],
+          "detailNativeRect": [
+            2055,
+            1026,
+            2136,
+            1107
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell07-target-raw.png",
+          "rawSha256": "6e6ce378826c8dc71cb919ba60be7fe4a01cba4d9a9eab5d3b6d1c92c41f8cec",
+          "contextNativeRect": [
+            1975,
+            946,
+            2216,
+            1187
+          ],
+          "detailNativeRect": [
+            2055,
+            1026,
+            2136,
+            1107
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell08",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell08.png",
+      "sha256": "15e271212bd63d22cc8022c007ac2af9e6053297a78bd431af6592b8160afc87",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell08-source-raw.png",
+          "rawSha256": "f7e09b33aa445ff99280f0a1515a76f5500f465bbba59eb018cbe8352ff27852",
+          "contextNativeRect": [
+            119,
+            1925,
+            360,
+            2166
+          ],
+          "detailNativeRect": [
+            199,
+            2005,
+            280,
+            2086
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell08-target-raw.png",
+          "rawSha256": "c1538030f3e7e618c877de447d3ac82e92f592122e9b326b4cc03b6b204a79e3",
+          "contextNativeRect": [
+            119,
+            1925,
+            360,
+            2166
+          ],
+          "detailNativeRect": [
+            199,
+            2005,
+            280,
+            2086
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell09",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell09.png",
+      "sha256": "b2e654a0d86dea6d7f2ef8f6784dc7bcade4900bfd1b4a36fcbd3d7b1a6d3801",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell09-source-raw.png",
+          "rawSha256": "1b0ffe928908ca0c14fdcd598b6925eae6ac84fbec768c2471fe1a5076032951",
+          "contextNativeRect": [
+            896,
+            1896,
+            1137,
+            2137
+          ],
+          "detailNativeRect": [
+            976,
+            1976,
+            1057,
+            2057
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell09-target-raw.png",
+          "rawSha256": "580fdb26efce16a538c0d2b4df17d91bcd792900e6d79ac2b2d68cb172b21b1c",
+          "contextNativeRect": [
+            896,
+            1896,
+            1137,
+            2137
+          ],
+          "detailNativeRect": [
+            976,
+            1976,
+            1057,
+            2057
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell10",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell10.png",
+      "sha256": "d3f6dc36d9593b04a85c433061e8e941536dddf14d6e392ff734a732e6820644",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell10-source-raw.png",
+          "rawSha256": "ab71f1e678cd1b0762be814fdb6968335e002a5feb608795d448747ba3e9c906",
+          "contextNativeRect": [
+            1695,
+            1383,
+            1936,
+            1624
+          ],
+          "detailNativeRect": [
+            1775,
+            1463,
+            1856,
+            1544
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell10-target-raw.png",
+          "rawSha256": "f03eec9b69bcb4c1268c69ba7e123cd901869635d16dd7cd48b9610afd8f8197",
+          "contextNativeRect": [
+            1695,
+            1383,
+            1936,
+            1624
+          ],
+          "detailNativeRect": [
+            1775,
+            1463,
+            1856,
+            1544
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair0-cell11",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair0-cell11.png",
+      "sha256": "b62f5c459df9a6771c6f8dab166ba4d0e36165fca258e1b2130f07d508fab65f",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair0-cell11-source-raw.png",
+          "rawSha256": "df102d9d2e694e3b7d866be5848f96a5822b0341baa676e990a26ce08caf0743",
+          "contextNativeRect": [
+            1857,
+            1476,
+            2098,
+            1717
+          ],
+          "detailNativeRect": [
+            1937,
+            1556,
+            2018,
+            1637
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair0-cell11-target-raw.png",
+          "rawSha256": "60decc3513058ec3c84cf8ba7d2ef77227244c5930f73d828c82760a3e107c11",
+          "contextNativeRect": [
+            1857,
+            1476,
+            2098,
+            1717
+          ],
+          "detailNativeRect": [
+            1937,
+            1556,
+            2018,
+            1637
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell00",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell00.png",
+      "sha256": "38629eb04c34fd2c51140c953e63ce83d7cfc3ef5784f087e2fc557667469beb",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell00-source-raw.png",
+          "rawSha256": "b08bd03d683845d69cb015ec32110f188593f6a7bf4898f56725b8d50fc31eb6",
+          "contextNativeRect": [
+            224,
+            53,
+            465,
+            294
+          ],
+          "detailNativeRect": [
+            304,
+            133,
+            385,
+            214
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell00-target-raw.png",
+          "rawSha256": "4dd0be135dbd73586c36ec8e4a0bdf37e95c641dfb87190224df99f0c826d68c",
+          "contextNativeRect": [
+            224,
+            53,
+            465,
+            294
+          ],
+          "detailNativeRect": [
+            304,
+            133,
+            385,
+            214
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell01",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell01.png",
+      "sha256": "bd6eb17c4c9c8c608427a88d09ff9c6dcf92ab50afb750ba1f5cf3b315d7e2cc",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell01-source-raw.png",
+          "rawSha256": "86d9d45febea90977ff3db3236c24747223c15fb846476f293b44998ead15268",
+          "contextNativeRect": [
+            901,
+            180,
+            1142,
+            421
+          ],
+          "detailNativeRect": [
+            981,
+            260,
+            1062,
+            341
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell01-target-raw.png",
+          "rawSha256": "3109d6fa23c9874bcbf9a710563bff0750195ae740910b651297474aa0e39b3f",
+          "contextNativeRect": [
+            901,
+            180,
+            1142,
+            421
+          ],
+          "detailNativeRect": [
+            981,
+            260,
+            1062,
+            341
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell02",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell02.png",
+      "sha256": "8ac05e7dd7bf1f3d9e1b50e8c5c42b30324aeda7fca56762cdf2893ff3cb7f33",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell02-source-raw.png",
+          "rawSha256": "d54f4c3e3c58c7c0211ea0171c98d43f114599d4e010245806141ce8a12cd0f2",
+          "contextNativeRect": [
+            1221,
+            524,
+            1462,
+            765
+          ],
+          "detailNativeRect": [
+            1301,
+            604,
+            1382,
+            685
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell02-target-raw.png",
+          "rawSha256": "9005c10bb6fbe0f1bed832747d4fd3ea29016e4dd8878d11e13c383c289bb921",
+          "contextNativeRect": [
+            1221,
+            524,
+            1462,
+            765
+          ],
+          "detailNativeRect": [
+            1301,
+            604,
+            1382,
+            685
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell03",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell03.png",
+      "sha256": "5e3dca90899adf482955bb2b7bdd2e006776a0223d7f548c3c0df2300e574755",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell03-source-raw.png",
+          "rawSha256": "362162ef4a963f841c116000691036460fef06ac6124fe615449e5b8df404f5e",
+          "contextNativeRect": [
+            1852,
+            354,
+            2093,
+            595
+          ],
+          "detailNativeRect": [
+            1932,
+            434,
+            2013,
+            515
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell03-target-raw.png",
+          "rawSha256": "24046edee74ec6f66ace7bb9e186a075916d9928c18e768b69de4673a2eadb07",
+          "contextNativeRect": [
+            1852,
+            354,
+            2093,
+            595
+          ],
+          "detailNativeRect": [
+            1932,
+            434,
+            2013,
+            515
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell04",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell04.png",
+      "sha256": "9db409a7ad8117d2e80c9f589c42aabd46bf088aefbbfe511255fe333300db48",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell04-source-raw.png",
+          "rawSha256": "b1215bc52231a675ba05841b8d87c379a0050bfa990cf4f878a1172704956d03",
+          "contextNativeRect": [
+            334,
+            988,
+            575,
+            1229
+          ],
+          "detailNativeRect": [
+            414,
+            1068,
+            495,
+            1149
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell04-target-raw.png",
+          "rawSha256": "db565cce581144a39264ce3b10d616b3c10a02b21e69167786f3fc6ebe92f6d9",
+          "contextNativeRect": [
+            334,
+            988,
+            575,
+            1229
+          ],
+          "detailNativeRect": [
+            414,
+            1068,
+            495,
+            1149
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell05",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell05.png",
+      "sha256": "fe7fcad3410c2052116cc53a58c23f988511a9d04a5a109c5802169908005fd5",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell05-source-raw.png",
+          "rawSha256": "0679b92891a30c4986d0fc663cfc221ab4547591f460267002a3a79eaab3cd89",
+          "contextNativeRect": [
+            520,
+            1010,
+            761,
+            1251
+          ],
+          "detailNativeRect": [
+            600,
+            1090,
+            681,
+            1171
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell05-target-raw.png",
+          "rawSha256": "57fd581d1c054176a3bfdc69acdd403815730731be4a7367b9505f9ebc828044",
+          "contextNativeRect": [
+            520,
+            1010,
+            761,
+            1251
+          ],
+          "detailNativeRect": [
+            600,
+            1090,
+            681,
+            1171
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell06",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell06.png",
+      "sha256": "e6714b0f29b60c6c3076304423d113ba31a72b91d846acd56210997071425333",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell06-source-raw.png",
+          "rawSha256": "730562d7d190125e20d4bba23fdd3dea4393cff481516f7596c90e3bc3578882",
+          "contextNativeRect": [
+            1240,
+            859,
+            1481,
+            1100
+          ],
+          "detailNativeRect": [
+            1320,
+            939,
+            1401,
+            1020
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell06-target-raw.png",
+          "rawSha256": "985f5f834f5eb3507ae6fdc7b3f59ccda4848bc9c78c71d29047b001e721845e",
+          "contextNativeRect": [
+            1240,
+            859,
+            1481,
+            1100
+          ],
+          "detailNativeRect": [
+            1320,
+            939,
+            1401,
+            1020
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell07",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell07.png",
+      "sha256": "02d9eb78b6e766bb25c9a861bd7a750bd5fa336c24d0afbc9e5b0df5433afa37",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell07-source-raw.png",
+          "rawSha256": "f5ef4321f0a35d65aad1a8aa342fdebff759aadb86f769ae5b3c47cf035f5bdb",
+          "contextNativeRect": [
+            2124,
+            838,
+            2365,
+            1079
+          ],
+          "detailNativeRect": [
+            2204,
+            918,
+            2285,
+            999
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell07-target-raw.png",
+          "rawSha256": "a4569a83cd6dc5d24e18790274c7a60ef6437831fcceb3002a46649c814e199d",
+          "contextNativeRect": [
+            2124,
+            838,
+            2365,
+            1079
+          ],
+          "detailNativeRect": [
+            2204,
+            918,
+            2285,
+            999
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell08",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell08.png",
+      "sha256": "1ed5e29e099646b4e0ee1a04e2006ccd2115dff52e5710b4b1723b221018c9c7",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell08-source-raw.png",
+          "rawSha256": "4b94d6167b80822c74ad74e85543b8fc9aff4d0f9046a76428aad37a2d68956e",
+          "contextNativeRect": [
+            119,
+            1919,
+            360,
+            2160
+          ],
+          "detailNativeRect": [
+            199,
+            1999,
+            280,
+            2080
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell08-target-raw.png",
+          "rawSha256": "c38bbd3e5a4bd28e90e87b6c49fda7c8e1e52d5167e795176036b7262c4d435f",
+          "contextNativeRect": [
+            119,
+            1919,
+            360,
+            2160
+          ],
+          "detailNativeRect": [
+            199,
+            1999,
+            280,
+            2080
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell09",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell09.png",
+      "sha256": "9ce1798b6c92eb20bb87aac8478d78a0b31f1d555eaf90cbbc145f81b84ceb73",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell09-source-raw.png",
+          "rawSha256": "ecf73f40a6f481e94cb3bf98b106277f9e1cbde71d702b0e3c4c316668c6ced6",
+          "contextNativeRect": [
+            895,
+            1893,
+            1136,
+            2134
+          ],
+          "detailNativeRect": [
+            975,
+            1973,
+            1056,
+            2054
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell09-target-raw.png",
+          "rawSha256": "5f80cdfd26ee6f4e8f380174ee7984c4c6a3c0db4c05d2ea10378bddfee4d2e8",
+          "contextNativeRect": [
+            895,
+            1893,
+            1136,
+            2134
+          ],
+          "detailNativeRect": [
+            975,
+            1973,
+            1056,
+            2054
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell10",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell10.png",
+      "sha256": "4ceb95c5a5bcbe32788fc0f7afb5d0bef04aa8638b5d38e18558750a983c25fc",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell10-source-raw.png",
+          "rawSha256": "b078cb0078fa584f2f3de40abf3e95ce1647d741fe4ea05d595669735d3fc5a5",
+          "contextNativeRect": [
+            1443,
+            1253,
+            1684,
+            1494
+          ],
+          "detailNativeRect": [
+            1523,
+            1333,
+            1604,
+            1414
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell10-target-raw.png",
+          "rawSha256": "83dd36878c04f8f6e4c161dafdbbbebf578a303a392eb8958c4f3c649bdd49ad",
+          "contextNativeRect": [
+            1443,
+            1253,
+            1684,
+            1494
+          ],
+          "detailNativeRect": [
+            1523,
+            1333,
+            1604,
+            1414
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair1-cell11",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair1-cell11.png",
+      "sha256": "82d0edb25790edbb73c49db3098cae91fbdd3f64986308aedb4b62a2b3f6ddf7",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair1-cell11-source-raw.png",
+          "rawSha256": "a019bc07a474f6497da6c90c3af0797fd91feb86a1796113fd20e66009cd1570",
+          "contextNativeRect": [
+            2221,
+            1922,
+            2462,
+            2163
+          ],
+          "detailNativeRect": [
+            2301,
+            2002,
+            2382,
+            2083
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair1-cell11-target-raw.png",
+          "rawSha256": "97058abe7039e666891ea841bf81ea7633c2a19fe4bc518471742b6aef22a6b4",
+          "contextNativeRect": [
+            2221,
+            1922,
+            2462,
+            2163
+          ],
+          "detailNativeRect": [
+            2301,
+            2002,
+            2382,
+            2083
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell00",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell00.png",
+      "sha256": "5b34752190a995d94a0c516ada76a11179865745650f9365154c9c54836971e4",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell00-source-raw.png",
+          "rawSha256": "e1eaff5504b764a3a668114aeda971203cd360e807a5490b5af89895807424d8",
+          "contextNativeRect": [
+            152,
+            294,
+            393,
+            535
+          ],
+          "detailNativeRect": [
+            232,
+            374,
+            313,
+            455
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell00-target-raw.png",
+          "rawSha256": "09a8af468d022e0b1d80c396d6af7a54c488ccbe39d3a934ae3b482e1d224af0",
+          "contextNativeRect": [
+            152,
+            294,
+            393,
+            535
+          ],
+          "detailNativeRect": [
+            232,
+            374,
+            313,
+            455
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell01",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell01.png",
+      "sha256": "ff2b0660e81346f107be21d31d7c8da587a4219110a48c8e0cd25ed0a01b1a13",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell01-source-raw.png",
+          "rawSha256": "ee830eb636344279318d6119b596cccc55aa3595fbe24c2739b97db1aa438c08",
+          "contextNativeRect": [
+            727,
+            26,
+            968,
+            267
+          ],
+          "detailNativeRect": [
+            807,
+            106,
+            888,
+            187
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell01-target-raw.png",
+          "rawSha256": "d7a19f314f19b7609481e2258bb632d4cc002a71154644984f5a2c6501c155ba",
+          "contextNativeRect": [
+            727,
+            26,
+            968,
+            267
+          ],
+          "detailNativeRect": [
+            807,
+            106,
+            888,
+            187
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell02",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell02.png",
+      "sha256": "04001ba1533174bf61bc2009b788c389aad501aefac40a78cf1995d4628a1a25",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell02-source-raw.png",
+          "rawSha256": "2aa508c56a475ea6998c09b16a052b19ecc8ad3d418328c820cb5044a77be9c4",
+          "contextNativeRect": [
+            1212,
+            534,
+            1453,
+            775
+          ],
+          "detailNativeRect": [
+            1292,
+            614,
+            1373,
+            695
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell02-target-raw.png",
+          "rawSha256": "192feeccf6a3460a3958a29ed9ed93e37a4fad48d8c713db9904751cc12b3af1",
+          "contextNativeRect": [
+            1212,
+            534,
+            1453,
+            775
+          ],
+          "detailNativeRect": [
+            1292,
+            614,
+            1373,
+            695
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell03",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell03.png",
+      "sha256": "8253cb71a9175429990062d2de16069bd8bca49e4fc912fb5a4a203360108180",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell03-source-raw.png",
+          "rawSha256": "04f942796bcb598ae2733872803175ef33d0d97db74a62d65f5dbe58df6dc110",
+          "contextNativeRect": [
+            1942,
+            257,
+            2183,
+            498
+          ],
+          "detailNativeRect": [
+            2022,
+            337,
+            2103,
+            418
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell03-target-raw.png",
+          "rawSha256": "7448ddbe9ce47340cf8897bef65e7e8d2344e8518707cbfae329174af59587ca",
+          "contextNativeRect": [
+            1942,
+            257,
+            2183,
+            498
+          ],
+          "detailNativeRect": [
+            2022,
+            337,
+            2103,
+            418
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell04",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell04.png",
+      "sha256": "5323bd3b89943a337cae597c051b5476d53dda4b2a059ff00635be266a20d821",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell04-source-raw.png",
+          "rawSha256": "e45c26deaf3c7c9e104f32b25e89d37816ac492c40e9826e54b9719151c1980c",
+          "contextNativeRect": [
+            390,
+            1041,
+            631,
+            1282
+          ],
+          "detailNativeRect": [
+            470,
+            1121,
+            551,
+            1202
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell04-target-raw.png",
+          "rawSha256": "fc7b5152ae4feb8727a4f172d161d3269645c91e793ba3353bc53fd52c69eda6",
+          "contextNativeRect": [
+            390,
+            1041,
+            631,
+            1282
+          ],
+          "detailNativeRect": [
+            470,
+            1121,
+            551,
+            1202
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell05",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell05.png",
+      "sha256": "18420b07400a3d5a741676e0222a75bf96326403f6f3f949a8eb195b6cb6e6f1",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell05-source-raw.png",
+          "rawSha256": "8a886a4ba8248e694fcaf627e930413f1e68ac2efc3cdcb652d2ae5fc9301060",
+          "contextNativeRect": [
+            728,
+            702,
+            969,
+            943
+          ],
+          "detailNativeRect": [
+            808,
+            782,
+            889,
+            863
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell05-target-raw.png",
+          "rawSha256": "3bd0f47bfbbe78207d4bda43c11c38a9d75644c76f8faab2569db5d5aa5d3074",
+          "contextNativeRect": [
+            728,
+            702,
+            969,
+            943
+          ],
+          "detailNativeRect": [
+            808,
+            782,
+            889,
+            863
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell06",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell06.png",
+      "sha256": "de3c476acfaf8ba7ba1fcc851e66d9344064c97ad092234c6107a440bd18dd41",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell06-source-raw.png",
+          "rawSha256": "b0381787ac7610c0ba966b0db30844d176df7411ec50cbfc71d0835f19cbcab6",
+          "contextNativeRect": [
+            1355,
+            872,
+            1596,
+            1113
+          ],
+          "detailNativeRect": [
+            1435,
+            952,
+            1516,
+            1033
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell06-target-raw.png",
+          "rawSha256": "0d7ddffe87ff9ff73218285bcae92b5959e34cd18aac6f3d6885845f3fad9fc8",
+          "contextNativeRect": [
+            1355,
+            872,
+            1596,
+            1113
+          ],
+          "detailNativeRect": [
+            1435,
+            952,
+            1516,
+            1033
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell07",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell07.png",
+      "sha256": "f22035135d49b27b78bcc5357df961d3c96165938359cfb483752bb1cec10b1c",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell07-source-raw.png",
+          "rawSha256": "d636a5cc0ef27197806bc161f0c7266468984be6318799d6e41879ed38d0e497",
+          "contextNativeRect": [
+            1962,
+            606,
+            2203,
+            847
+          ],
+          "detailNativeRect": [
+            2042,
+            686,
+            2123,
+            767
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell07-target-raw.png",
+          "rawSha256": "d7d7a43fd598f185e5093f777a2cf099783084b61118b9a620b5411a4ad39ea5",
+          "contextNativeRect": [
+            1962,
+            606,
+            2203,
+            847
+          ],
+          "detailNativeRect": [
+            2042,
+            686,
+            2123,
+            767
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell08",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell08.png",
+      "sha256": "e26128893cc2a91530a2f567d1401f005f190b0effc86f119e1f5c9818f52ef0",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell08-source-raw.png",
+          "rawSha256": "33eee203af441168bebd34fcd89537fdfb95f9ddec7a5c2e0d002c7a5b1373b2",
+          "contextNativeRect": [
+            119,
+            1922,
+            360,
+            2163
+          ],
+          "detailNativeRect": [
+            199,
+            2002,
+            280,
+            2083
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell08-target-raw.png",
+          "rawSha256": "73574a6a628068992dcc765af81b42aa7bd0ca298f74b6b7a3c2df701040009b",
+          "contextNativeRect": [
+            119,
+            1922,
+            360,
+            2163
+          ],
+          "detailNativeRect": [
+            199,
+            2002,
+            280,
+            2083
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell09",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell09.png",
+      "sha256": "b397400d612ae107062f33241487487c06d96ef2fe342b02c375c458a7c0ea4a",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell09-source-raw.png",
+          "rawSha256": "08903c9e2dd96860c8eb27b93a9efe03bfa4883eb879d9b191506e02ba82e2f2",
+          "contextNativeRect": [
+            806,
+            1619,
+            1047,
+            1860
+          ],
+          "detailNativeRect": [
+            886,
+            1699,
+            967,
+            1780
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell09-target-raw.png",
+          "rawSha256": "1d95f4b2756244d579759ac5d2fccdf2f32a12528ab97a05d9e3ea50ac66be28",
+          "contextNativeRect": [
+            806,
+            1619,
+            1047,
+            1860
+          ],
+          "detailNativeRect": [
+            886,
+            1699,
+            967,
+            1780
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell10",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell10.png",
+      "sha256": "3b1f4d0084f39c9acf3a877e110962928e82ee7a2f1af46cc12794746617ee46",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell10-source-raw.png",
+          "rawSha256": "e4cdf895bf96f2e60201ece771c9ce9346c51422856e68ebf00bc95bf0f342c7",
+          "contextNativeRect": [
+            1511,
+            1348,
+            1752,
+            1589
+          ],
+          "detailNativeRect": [
+            1591,
+            1428,
+            1672,
+            1509
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell10-target-raw.png",
+          "rawSha256": "8a13800eec990e7695d78dd5ebfe136d70a32f24e5cacf3c67335c42f8c60788",
+          "contextNativeRect": [
+            1511,
+            1348,
+            1752,
+            1589
+          ],
+          "detailNativeRect": [
+            1591,
+            1428,
+            1672,
+            1509
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair2-cell11",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair2-cell11.png",
+      "sha256": "73b7c4c4b4eb27c890ec85a31ed1c946bea9e5b7c714f3341c7e6a9218b8985c",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair2-cell11-source-raw.png",
+          "rawSha256": "edc16c3438b63f17b865b216a927f71fa08e95e2816c84e0c3bc58e79e9a30e2",
+          "contextNativeRect": [
+            2078,
+            1873,
+            2319,
+            2114
+          ],
+          "detailNativeRect": [
+            2158,
+            1953,
+            2239,
+            2034
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair2-cell11-target-raw.png",
+          "rawSha256": "e319d692f97c68f67da25aad09004184d344b47ac81b3c8984b560d5bb97a599",
+          "contextNativeRect": [
+            2078,
+            1873,
+            2319,
+            2114
+          ],
+          "detailNativeRect": [
+            2158,
+            1953,
+            2239,
+            2034
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell00",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell00.png",
+      "sha256": "32644761050f92e375adf156fb68e044392fb9db90ce3e1477aa21b021f9f5a5",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell00-source-raw.png",
+          "rawSha256": "56a4936a67f8eeeb5f0bc558728bbeddf2f0b3b31ea9786ce9c0f5bd431a6c3c",
+          "contextNativeRect": [
+            128,
+            304,
+            369,
+            545
+          ],
+          "detailNativeRect": [
+            208,
+            384,
+            289,
+            465
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell00-target-raw.png",
+          "rawSha256": "9b42cd37bff19a05b3891bab597d64031b686e9bd15017962d25e96420aa8d33",
+          "contextNativeRect": [
+            128,
+            304,
+            369,
+            545
+          ],
+          "detailNativeRect": [
+            208,
+            384,
+            289,
+            465
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell01",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell01.png",
+      "sha256": "8d22e2cefc45ffbca1f45ad82306ad2a0402aab293641bb95acfbebd050411b0",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell01-source-raw.png",
+          "rawSha256": "a433cb15be0d76c80019aa826cd7818d42881723eafd58699df0ed20d2695969",
+          "contextNativeRect": [
+            763,
+            82,
+            1004,
+            323
+          ],
+          "detailNativeRect": [
+            843,
+            162,
+            924,
+            243
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell01-target-raw.png",
+          "rawSha256": "f6fc68e00cbc3f63eb0138e893ff4b659ff8527aa5f85fb5364add452ed2af80",
+          "contextNativeRect": [
+            763,
+            82,
+            1004,
+            323
+          ],
+          "detailNativeRect": [
+            843,
+            162,
+            924,
+            243
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell02",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell02.png",
+      "sha256": "447307b3b4bad1e67ef168300bd74815f52c46133bce32002d6cbe60bb0db077",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell02-source-raw.png",
+          "rawSha256": "4e9373cc46e069430e4ae1be9288379ef49f4bb324314727f8c5d702aa37d541",
+          "contextNativeRect": [
+            1700,
+            378,
+            1941,
+            619
+          ],
+          "detailNativeRect": [
+            1780,
+            458,
+            1861,
+            539
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell02-target-raw.png",
+          "rawSha256": "81279ec12c0a1a38161ca96c8da3c9a3f5dea504a3f7a1912065826e585fd27e",
+          "contextNativeRect": [
+            1700,
+            378,
+            1941,
+            619
+          ],
+          "detailNativeRect": [
+            1780,
+            458,
+            1861,
+            539
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell03",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell03.png",
+      "sha256": "455e3b3333502b7a7aa8399855adc7bd17589dc969be290b97b851207edf1f52",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell03-source-raw.png",
+          "rawSha256": "ac7d5df4464520f064bffd23b03e5f932047a19bf86772bb65d6d19c60d3b166",
+          "contextNativeRect": [
+            2112,
+            212,
+            2353,
+            453
+          ],
+          "detailNativeRect": [
+            2192,
+            292,
+            2273,
+            373
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell03-target-raw.png",
+          "rawSha256": "7955a46faddc070655f5d788e57bac4a9a48ddc967515e1cfc24c3e7792ed395",
+          "contextNativeRect": [
+            2112,
+            212,
+            2353,
+            453
+          ],
+          "detailNativeRect": [
+            2192,
+            292,
+            2273,
+            373
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell04",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell04.png",
+      "sha256": "3057bbdfd81c60d291c02f6f9381b3b78d5c6252400a425c8c7b28b65d45cdd8",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell04-source-raw.png",
+          "rawSha256": "04ce7dba02b656ff42598832ee3c70e499ce4ed6fc572fb654e08bd559e1e2d7",
+          "contextNativeRect": [
+            321,
+            1090,
+            562,
+            1331
+          ],
+          "detailNativeRect": [
+            401,
+            1170,
+            482,
+            1251
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell04-target-raw.png",
+          "rawSha256": "ced6bbae223e810c192b6d3f02572fec9ffc39c5487f63e0233d332e724cbbed",
+          "contextNativeRect": [
+            321,
+            1090,
+            562,
+            1331
+          ],
+          "detailNativeRect": [
+            401,
+            1170,
+            482,
+            1251
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell05",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell05.png",
+      "sha256": "ad5e6207e0a34427f3f96caffd399f0d03e9496711a298c85ad27d37c6234451",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell05-source-raw.png",
+          "rawSha256": "62e7034aac05d1ca63ecbde92dd29aae9253a4483c7498d711f7b4184ad5cecb",
+          "contextNativeRect": [
+            953,
+            939,
+            1194,
+            1180
+          ],
+          "detailNativeRect": [
+            1033,
+            1019,
+            1114,
+            1100
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell05-target-raw.png",
+          "rawSha256": "1bfee2dd05b605020e07242f8840870b9a6f541c7206e8ee0550ce5878b58702",
+          "contextNativeRect": [
+            953,
+            939,
+            1194,
+            1180
+          ],
+          "detailNativeRect": [
+            1033,
+            1019,
+            1114,
+            1100
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell06",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell06.png",
+      "sha256": "1227e4894ae2756da7b5fe065137953d140bb9770f25907286c173db6d364362",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell06-source-raw.png",
+          "rawSha256": "83fef8eeb817aae84ac16dfe27fa1db4b610a0791deda7e3bf8b0954afe2a6cb",
+          "contextNativeRect": [
+            1136,
+            720,
+            1377,
+            961
+          ],
+          "detailNativeRect": [
+            1216,
+            800,
+            1297,
+            881
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell06-target-raw.png",
+          "rawSha256": "57d84c93c1d987c5ac5c4d18a42810d6f399d2f4aab5d1da44313d071a76c4d1",
+          "contextNativeRect": [
+            1136,
+            720,
+            1377,
+            961
+          ],
+          "detailNativeRect": [
+            1216,
+            800,
+            1297,
+            881
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell07",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell07.png",
+      "sha256": "054d3091e4d3efd926345b90fb9bb6e05e960bf6e8a555a5d1e0e680178cead4",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell07-source-raw.png",
+          "rawSha256": "fe8036178e0ff2825c7212f96e843b90b3917050e5231af21061758691f1ace4",
+          "contextNativeRect": [
+            1760,
+            1042,
+            2001,
+            1283
+          ],
+          "detailNativeRect": [
+            1840,
+            1122,
+            1921,
+            1203
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell07-target-raw.png",
+          "rawSha256": "ff37b7dd6588b9d0c46dcb2a5b4a80a009bbe265f0e0eddf0a794305a3ffe461",
+          "contextNativeRect": [
+            1760,
+            1042,
+            2001,
+            1283
+          ],
+          "detailNativeRect": [
+            1840,
+            1122,
+            1921,
+            1203
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell08",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell08.png",
+      "sha256": "17b4718715613f19773ce6fb5f5c9014ccbb449a264c36f724553c318a4945dc",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell08-source-raw.png",
+          "rawSha256": "a507197dda774be5539b1c95c92e94af6ea383d88df1dc5240875c6041b60ec8",
+          "contextNativeRect": [
+            73,
+            1912,
+            314,
+            2153
+          ],
+          "detailNativeRect": [
+            153,
+            1992,
+            234,
+            2073
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell08-target-raw.png",
+          "rawSha256": "d56707da410176e535147aa7a879c05addf417f975381ec02a067811247d4aa4",
+          "contextNativeRect": [
+            73,
+            1912,
+            314,
+            2153
+          ],
+          "detailNativeRect": [
+            153,
+            1992,
+            234,
+            2073
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell09",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell09.png",
+      "sha256": "c92733d05395e71103e81d3ae0d3f9b721856ebb9a701d327c13bf9dd4f64e1d",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell09-source-raw.png",
+          "rawSha256": "5687cb8a5ea42ebb3aa27817f3355603aa66f84c174ce8d5c3969996ba50eba6",
+          "contextNativeRect": [
+            896,
+            1898,
+            1137,
+            2139
+          ],
+          "detailNativeRect": [
+            976,
+            1978,
+            1057,
+            2059
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell09-target-raw.png",
+          "rawSha256": "08c969ef46336c8b5596b36d29f719738f93ce86571a9776ec5da626fc50b394",
+          "contextNativeRect": [
+            896,
+            1898,
+            1137,
+            2139
+          ],
+          "detailNativeRect": [
+            976,
+            1978,
+            1057,
+            2059
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell10",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell10.png",
+      "sha256": "74f88ffc5eb8e4f81df727979d136c9036b200d1898c1acf3764e8885147c8de",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell10-source-raw.png",
+          "rawSha256": "fb004c1ec86b83340fb67aa7d9d5789edc1766b41f7afb62409369d11e374fc8",
+          "contextNativeRect": [
+            1618,
+            1420,
+            1859,
+            1661
+          ],
+          "detailNativeRect": [
+            1698,
+            1500,
+            1779,
+            1581
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell10-target-raw.png",
+          "rawSha256": "1a4c177d739d35cc25b9e360e0300b5eecd211f79cc1c233cc719bd6e481c4a5",
+          "contextNativeRect": [
+            1618,
+            1420,
+            1859,
+            1661
+          ],
+          "detailNativeRect": [
+            1698,
+            1500,
+            1779,
+            1581
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair3-cell11",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair3-cell11.png",
+      "sha256": "4cd66321fbb876f4cbe1ff7afdf3511ddfe190dadf43c604c6aeaa7b108cf050",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair3-cell11-source-raw.png",
+          "rawSha256": "4ec2703d7ce3f20511922964a360ac7b88f62129bd36becd7d9cde09656b1779",
+          "contextNativeRect": [
+            2079,
+            1874,
+            2320,
+            2115
+          ],
+          "detailNativeRect": [
+            2159,
+            1954,
+            2240,
+            2035
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair3-cell11-target-raw.png",
+          "rawSha256": "b4594b4d9c2e6e9c6c0a3bf910d1ede8dd73ea91659f41e61fb9a06ceaecde11",
+          "contextNativeRect": [
+            2079,
+            1874,
+            2320,
+            2115
+          ],
+          "detailNativeRect": [
+            2159,
+            1954,
+            2240,
+            2035
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell00",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell00.png",
+      "sha256": "050abc8c6e990adb80504fca9af1f238f62ec0e1fa56d8279f06d93725de7592",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell00-source-raw.png",
+          "rawSha256": "1701a487a88e41d2a0db5727ddcad1908e26d5c05a76833d203d8c6edebc92cf",
+          "contextNativeRect": [
+            68,
+            234,
+            309,
+            475
+          ],
+          "detailNativeRect": [
+            148,
+            314,
+            229,
+            395
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell00-target-raw.png",
+          "rawSha256": "a5af12e072792fd6d82ed8c90a3d46ba5bdefaa27a256cf925d1095459354236",
+          "contextNativeRect": [
+            68,
+            234,
+            309,
+            475
+          ],
+          "detailNativeRect": [
+            148,
+            314,
+            229,
+            395
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell01",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell01.png",
+      "sha256": "53b95faa268b5cf6d0f4ff46740e55d7e64d90165e9188e1ef558cdd28fda393",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell01-source-raw.png",
+          "rawSha256": "40cb6811c7cc6e9be5145d4b3e1b9f8d2e325b4f22ecf652bb426a8f71812c7f",
+          "contextNativeRect": [
+            778,
+            26,
+            1019,
+            267
+          ],
+          "detailNativeRect": [
+            858,
+            106,
+            939,
+            187
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell01-target-raw.png",
+          "rawSha256": "7430a55827a290aa1fc0b7e621a51d4306f96b76089079b19a2da5ddfed13f1b",
+          "contextNativeRect": [
+            778,
+            26,
+            1019,
+            267
+          ],
+          "detailNativeRect": [
+            858,
+            106,
+            939,
+            187
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell02",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell02.png",
+      "sha256": "857871fcdb63f1c67f10fc3c44bd13ab1c43d2391c12c06c7bae7dfe17169162",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell02-source-raw.png",
+          "rawSha256": "bd51303b59a54259dd5d5964d723de201eafd76367ac4b8d9aaec489e3efd793",
+          "contextNativeRect": [
+            1514,
+            438,
+            1755,
+            679
+          ],
+          "detailNativeRect": [
+            1594,
+            518,
+            1675,
+            599
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell02-target-raw.png",
+          "rawSha256": "67f342470234466ae31c55a66306bd229becceafc61a91a801f7001a2f336b2c",
+          "contextNativeRect": [
+            1514,
+            438,
+            1755,
+            679
+          ],
+          "detailNativeRect": [
+            1594,
+            518,
+            1675,
+            599
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell03",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell03.png",
+      "sha256": "f0a05721b4ec2a747f78507036ca61fd56375959c21058b2d5cba430f86525ed",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell03-source-raw.png",
+          "rawSha256": "86d5b376971a92833e39c48385f8669a04ac6181b0d536c36dd148cb6b531334",
+          "contextNativeRect": [
+            2224,
+            121,
+            2465,
+            362
+          ],
+          "detailNativeRect": [
+            2304,
+            201,
+            2385,
+            282
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell03-target-raw.png",
+          "rawSha256": "2b354774623f659372a4b677ea87e747132a1571a423a96379224f4d2181c33e",
+          "contextNativeRect": [
+            2224,
+            121,
+            2465,
+            362
+          ],
+          "detailNativeRect": [
+            2304,
+            201,
+            2385,
+            282
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell04",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell04.png",
+      "sha256": "83fddae32ad2eab5f413e0ac951666b9027f5b28f6216334fb6905797346b849",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell04-source-raw.png",
+          "rawSha256": "0e4ad9d032c51128676f447ef453fc84fa2c6efd69f6c3d00a12634716e1f472",
+          "contextNativeRect": [
+            232,
+            902,
+            473,
+            1143
+          ],
+          "detailNativeRect": [
+            312,
+            982,
+            393,
+            1063
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell04-target-raw.png",
+          "rawSha256": "8a60f3565c1dc210a8bd60e172c2a1f0fc1a333509d39b68c641e9b47ec19d52",
+          "contextNativeRect": [
+            232,
+            902,
+            473,
+            1143
+          ],
+          "detailNativeRect": [
+            312,
+            982,
+            393,
+            1063
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell05",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell05.png",
+      "sha256": "e7ba1ad453f930051698061473cec429faf4d92f87d1af76b10904e290a46ad7",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell05-source-raw.png",
+          "rawSha256": "3b55fac9eb5bc2ec9beb64c45a76487dd2287e0d2a57955db6953cd98b4d61c0",
+          "contextNativeRect": [
+            877,
+            932,
+            1118,
+            1173
+          ],
+          "detailNativeRect": [
+            957,
+            1012,
+            1038,
+            1093
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell05-target-raw.png",
+          "rawSha256": "1492eede3a693b4bdc358c87a69fdac3545254defe11d041dec69ef314a36f22",
+          "contextNativeRect": [
+            877,
+            932,
+            1118,
+            1173
+          ],
+          "detailNativeRect": [
+            957,
+            1012,
+            1038,
+            1093
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell06",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell06.png",
+      "sha256": "f7453e76ee11ea9ede10c25a2d824ea300233b22f9bf9683f8b8b7f559d55737",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell06-source-raw.png",
+          "rawSha256": "e0a178caff8be6cf87c8380398754cf5797eef71ca24b360764d78fb148664c6",
+          "contextNativeRect": [
+            1224,
+            861,
+            1465,
+            1102
+          ],
+          "detailNativeRect": [
+            1304,
+            941,
+            1385,
+            1022
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell06-target-raw.png",
+          "rawSha256": "15b3c0db9439d8871baf64d88304e30ecfa2f9a894b310ea525fab5b49917a8c",
+          "contextNativeRect": [
+            1224,
+            861,
+            1465,
+            1102
+          ],
+          "detailNativeRect": [
+            1304,
+            941,
+            1385,
+            1022
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell07",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell07.png",
+      "sha256": "e68e0d33df6f3aa15a8bca8994b80f290c7f1e6963042e9a35864c444b822419",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell07-source-raw.png",
+          "rawSha256": "c0182a6147b64b3f06a30e77d88978b115b2e3b82cdd5e1b5cc8ffbd57e85a83",
+          "contextNativeRect": [
+            1990,
+            1026,
+            2231,
+            1267
+          ],
+          "detailNativeRect": [
+            2070,
+            1106,
+            2151,
+            1187
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell07-target-raw.png",
+          "rawSha256": "e118d3e096281d6533e73a4f8a584d48fb010b473a4d38a405885c99812f5064",
+          "contextNativeRect": [
+            1990,
+            1026,
+            2231,
+            1267
+          ],
+          "detailNativeRect": [
+            2070,
+            1106,
+            2151,
+            1187
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell08",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell08.png",
+      "sha256": "b8b5d42c94efd48f68293382c0a5e805d8aff4073097877786f441cd3cbc61fb",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell08-source-raw.png",
+          "rawSha256": "5b2eb46a3632af39b052c49c1e2782f63a201aaac658b169b93cf205d5f9aa7a",
+          "contextNativeRect": [
+            119,
+            1924,
+            360,
+            2165
+          ],
+          "detailNativeRect": [
+            199,
+            2004,
+            280,
+            2085
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell08-target-raw.png",
+          "rawSha256": "9009e119b98f7e0f15c24e2c697bf3d93d3553582f85b9d2ae892ba34e286c1a",
+          "contextNativeRect": [
+            119,
+            1924,
+            360,
+            2165
+          ],
+          "detailNativeRect": [
+            199,
+            2004,
+            280,
+            2085
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell09",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell09.png",
+      "sha256": "8893ff68d71aea960a1a73bc7cdff788186266d1de452acd6781c49a2db2c020",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell09-source-raw.png",
+          "rawSha256": "97ed7b39b1aaf40eae88974037c50a6a7cbc49e022c3a76b34647d0e8646d1b3",
+          "contextNativeRect": [
+            896,
+            1895,
+            1137,
+            2136
+          ],
+          "detailNativeRect": [
+            976,
+            1975,
+            1057,
+            2056
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell09-target-raw.png",
+          "rawSha256": "85c98fc4d0874a727dcb14ac3099294ae42a9469d88e8b6550d288b2d9459b92",
+          "contextNativeRect": [
+            896,
+            1895,
+            1137,
+            2136
+          ],
+          "detailNativeRect": [
+            976,
+            1975,
+            1057,
+            2056
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell10",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell10.png",
+      "sha256": "5d20418500c6431c38191b63cdc0e9c1070a6ddc584b04ad4feaa184643241e7",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell10-source-raw.png",
+          "rawSha256": "9bd126b266f114b166fe94601421d6747279a8d8f7eb4cfec43bfd5ea8b1ef5e",
+          "contextNativeRect": [
+            1692,
+            1312,
+            1933,
+            1553
+          ],
+          "detailNativeRect": [
+            1772,
+            1392,
+            1853,
+            1473
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell10-target-raw.png",
+          "rawSha256": "af2d011309ca14e629515a5fa0b8cda3067e23f42f7aed74d8e7dd0b566aee89",
+          "contextNativeRect": [
+            1692,
+            1312,
+            1933,
+            1553
+          ],
+          "detailNativeRect": [
+            1772,
+            1392,
+            1853,
+            1473
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair4-cell11",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair4-cell11.png",
+      "sha256": "1fc9981692f7dcb943ed16334e4c82c095b8b8dad40039e499437944bb6571fb",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair4-cell11-source-raw.png",
+          "rawSha256": "c57d29f4afe679019431e409229837e39f09780a5df71ad18b275d671818ad45",
+          "contextNativeRect": [
+            2083,
+            1874,
+            2324,
+            2115
+          ],
+          "detailNativeRect": [
+            2163,
+            1954,
+            2244,
+            2035
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair4-cell11-target-raw.png",
+          "rawSha256": "f01cb0a3360b908e8633bfa10e490d1e3e8b0063650c5fe8b9175fd894448ebd",
+          "contextNativeRect": [
+            2083,
+            1874,
+            2324,
+            2115
+          ],
+          "detailNativeRect": [
+            2163,
+            1954,
+            2244,
+            2035
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell00",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell00.png",
+      "sha256": "7ec822df27fe7887d9ba04d30177ed338ee41783b905df5f50f72db4572bfd6a",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell00-source-raw.png",
+          "rawSha256": "01e76dee2282aac16b8aaa8d739b680a493316bf52cf443eccb9fa022ae7d453",
+          "contextNativeRect": [
+            227,
+            -49,
+            468,
+            192
+          ],
+          "detailNativeRect": [
+            307,
+            31,
+            388,
+            112
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell00-target-raw.png",
+          "rawSha256": "0925ca944ede1439f6e2df1cc44df5cfb2fe701d54554b88e4a91e4ff8398eb3",
+          "contextNativeRect": [
+            227,
+            -49,
+            468,
+            192
+          ],
+          "detailNativeRect": [
+            307,
+            31,
+            388,
+            112
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell01",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell01.png",
+      "sha256": "d39eca5387c77bdbeaad73c425623fa3ebec66578abeb1b13ee2a9665712f9fa",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell01-source-raw.png",
+          "rawSha256": "10f32d65ebf64077dc6dfbed3597b375dcb242bdf8c8061093ff7942ce7af869",
+          "contextNativeRect": [
+            767,
+            486,
+            1008,
+            727
+          ],
+          "detailNativeRect": [
+            847,
+            566,
+            928,
+            647
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell01-target-raw.png",
+          "rawSha256": "91bea913be2b7f0eb34135366f3071a16673ef5c448fa43901f081a391ecf543",
+          "contextNativeRect": [
+            767,
+            486,
+            1008,
+            727
+          ],
+          "detailNativeRect": [
+            847,
+            566,
+            928,
+            647
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell02",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell02.png",
+      "sha256": "d3114aa9dbfa5edf4a2405fe120b39383451eab09e26c2bd6d33e66d489bc8b9",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell02-source-raw.png",
+          "rawSha256": "c12f10df756a71cb5e1aec40a09e14d90fe6d1fdd0759d651dd1dc6379e35b1b",
+          "contextNativeRect": [
+            1580,
+            549,
+            1821,
+            790
+          ],
+          "detailNativeRect": [
+            1660,
+            629,
+            1741,
+            710
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell02-target-raw.png",
+          "rawSha256": "de7d8fb65eef96f4b354cf6454f141e3762d10051142edc39a8c99f030169c2a",
+          "contextNativeRect": [
+            1580,
+            549,
+            1821,
+            790
+          ],
+          "detailNativeRect": [
+            1660,
+            629,
+            1741,
+            710
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell03",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell03.png",
+      "sha256": "caacd594210887a1eaa794d6f6caf62f2e4c3127764c6008798961b5516974b6",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell03-source-raw.png",
+          "rawSha256": "3a86ff35e4fe19430f31ee9d0ffff92ea7d393c1d24d7e4cc472fe475fa90e69",
+          "contextNativeRect": [
+            1930,
+            255,
+            2171,
+            496
+          ],
+          "detailNativeRect": [
+            2010,
+            335,
+            2091,
+            416
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell03-target-raw.png",
+          "rawSha256": "8c0fc744ea05343276003b0bbacbab7f941a6f3804866d323880e3b585345ff4",
+          "contextNativeRect": [
+            1930,
+            255,
+            2171,
+            496
+          ],
+          "detailNativeRect": [
+            2010,
+            335,
+            2091,
+            416
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell04",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell04.png",
+      "sha256": "dfd060c03231b35ddb1aeaf2cd3ccfdb5c800f8af22fe78ca32b0c5b0ecdd6da",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell04-source-raw.png",
+          "rawSha256": "206b89cf44701024a85233306382020bb6445a3a55c518fbfd985cc2063be86c",
+          "contextNativeRect": [
+            200,
+            1066,
+            441,
+            1307
+          ],
+          "detailNativeRect": [
+            280,
+            1146,
+            361,
+            1227
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell04-target-raw.png",
+          "rawSha256": "4b5dcd7064a805f2d0a24de53bd12a2475f59b78d7fb720be53fd34e3cc9763e",
+          "contextNativeRect": [
+            200,
+            1066,
+            441,
+            1307
+          ],
+          "detailNativeRect": [
+            280,
+            1146,
+            361,
+            1227
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell05",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell05.png",
+      "sha256": "406b9a6a632d0aa0636e79b9858282ac74d0e9b66112630600edb140fab32346",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell05-source-raw.png",
+          "rawSha256": "d804c9197a119cecc366867b23576db01ef064fa15ab191d2563b6fcb8c64cce",
+          "contextNativeRect": [
+            962,
+            927,
+            1203,
+            1168
+          ],
+          "detailNativeRect": [
+            1042,
+            1007,
+            1123,
+            1088
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell05-target-raw.png",
+          "rawSha256": "822e427f262c50e6dd144e2a45c2bef665090f12f0f95977b3b400fa8ac0ecfe",
+          "contextNativeRect": [
+            962,
+            927,
+            1203,
+            1168
+          ],
+          "detailNativeRect": [
+            1042,
+            1007,
+            1123,
+            1088
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell06",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell06.png",
+      "sha256": "2b0279e48efad4f0e43a615e7417570c3e9b1879caa22b435bd0299993accd4f",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell06-source-raw.png",
+          "rawSha256": "aa2c57a152b4b7222fde9187eeb1896f920768799549a7dec28474b1732a72bf",
+          "contextNativeRect": [
+            1461,
+            596,
+            1702,
+            837
+          ],
+          "detailNativeRect": [
+            1541,
+            676,
+            1622,
+            757
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell06-target-raw.png",
+          "rawSha256": "52c7f8c90d2322e7927abdbf661ea943113d2255567cfcbd73408ee2d9845101",
+          "contextNativeRect": [
+            1461,
+            596,
+            1702,
+            837
+          ],
+          "detailNativeRect": [
+            1541,
+            676,
+            1622,
+            757
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell07",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell07.png",
+      "sha256": "43e7fa15e28c3b407e5f3de9ebb5f8d30b5404627b4453a80b59cb263b3f0402",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell07-source-raw.png",
+          "rawSha256": "54c56b05b8328793d8fa6662514d6579493f11dc0c93ed6217de7525ad59575e",
+          "contextNativeRect": [
+            2322,
+            870,
+            2563,
+            1111
+          ],
+          "detailNativeRect": [
+            2402,
+            950,
+            2483,
+            1031
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell07-target-raw.png",
+          "rawSha256": "a6a6982508c08d526b7a5c7300451ab80a85b18bbc0ef2c6d24764477630b4ad",
+          "contextNativeRect": [
+            2322,
+            870,
+            2563,
+            1111
+          ],
+          "detailNativeRect": [
+            2402,
+            950,
+            2483,
+            1031
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell08",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell08.png",
+      "sha256": "c4595ea4006903da36bb2160264b6cb2337a753be847fe8011680e2966dd6459",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell08-source-raw.png",
+          "rawSha256": "810ae11d6d8ee5179d2bc895781945a9ef2d32b66547579700ec13481624871a",
+          "contextNativeRect": [
+            315,
+            1829,
+            556,
+            2070
+          ],
+          "detailNativeRect": [
+            395,
+            1909,
+            476,
+            1990
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell08-target-raw.png",
+          "rawSha256": "310b46520280ebe89008e5024c53154e4dd7b151651ae735dae14c1e7c461a5d",
+          "contextNativeRect": [
+            315,
+            1829,
+            556,
+            2070
+          ],
+          "detailNativeRect": [
+            395,
+            1909,
+            476,
+            1990
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell09",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell09.png",
+      "sha256": "0c16cf8e0af25dcfb06f6cf1c019eda158078832764bd9f693ee985450c06dc1",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell09-source-raw.png",
+          "rawSha256": "2a2c2208a5ff884a80052584e357c183313a5e5682288cc7e2623c147ed79c37",
+          "contextNativeRect": [
+            860,
+            1662,
+            1101,
+            1903
+          ],
+          "detailNativeRect": [
+            940,
+            1742,
+            1021,
+            1823
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell09-target-raw.png",
+          "rawSha256": "533ee1a88df0c4186ab10e0b42d7df95cff95801cf2b8f478d90a63b312aa93c",
+          "contextNativeRect": [
+            860,
+            1662,
+            1101,
+            1903
+          ],
+          "detailNativeRect": [
+            940,
+            1742,
+            1021,
+            1823
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell10",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell10.png",
+      "sha256": "90be384ec08a0e3efbe5aa39750fa05c025ecd8eeaa44c2eb2f7aeac672500ad",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell10-source-raw.png",
+          "rawSha256": "0132b92e408738a6bd1938597df99124932a03a4f1d4deff1638ed0f65b63889",
+          "contextNativeRect": [
+            1226,
+            1712,
+            1467,
+            1953
+          ],
+          "detailNativeRect": [
+            1306,
+            1792,
+            1387,
+            1873
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell10-target-raw.png",
+          "rawSha256": "4020558b217843c5847b6b72eedb1cae2e27594798e2b71fbb7dff20b196a626",
+          "contextNativeRect": [
+            1226,
+            1712,
+            1467,
+            1953
+          ],
+          "detailNativeRect": [
+            1306,
+            1792,
+            1387,
+            1873
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    },
+    {
+      "slotId": "pair5-cell11",
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3v-independent-review/pair5-cell11.png",
+      "sha256": "93f7b77e3a60f91d5ed93abd664d27167d5da73f48f500b19ab1d7a5cb55aa8d",
+      "inputs": [
+        {
+          "phase": "SOURCE",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-source/pair5-cell11-source-raw.png",
+          "rawSha256": "8433c5bef69205300ca2f9ad1a1258a25cfb872358cc4334a3164a4de2f4bcba",
+          "contextNativeRect": [
+            2081,
+            1873,
+            2322,
+            2114
+          ],
+          "detailNativeRect": [
+            2161,
+            1953,
+            2242,
+            2034
+          ],
+          "detailDisplayOffset": [
+            42,
+            356
+          ],
+          "detailDisplayScale": 6
+        },
+        {
+          "phase": "CURRENT",
+          "rawPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3v-reference-target/pair5-cell11-target-raw.png",
+          "rawSha256": "8c0b17636d5b3d6ecfe0a0c1255126a1fba562a279910054d985a4ba624a1641",
+          "contextNativeRect": [
+            2081,
+            1873,
+            2322,
+            2114
+          ],
+          "detailNativeRect": [
+            2161,
+            1953,
+            2242,
+            2034
+          ],
+          "detailDisplayOffset": [
+            588,
+            356
+          ],
+          "detailDisplayScale": 6
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,959 @@
+{
+  "schemaVersion": 1,
+  "study": "M3W-independent-verification",
+  "preFinalVerificationDraftSha256": "16706bdef97a8c9a4c1cc294eda37dd158b36435843bbf0abddc8494a1152a53",
+  "boundarySensitivityArtifact": {
+    "path": "docs/evidence/tip65/m3w-independent-boundary-sensitivity.json",
+    "sha256": "daa9be8065fa4685f2dff9992484c124840026009369d457de291f526b3ef57b",
+    "authority": "Post-run descriptive numerical sensitivity audit, not a preregistered replacement metric or a change to the sealed trial."
+  },
+  "observationSha256": "445b0b902d0aa28625602150f40c952623b2c7cab47a6824188d9c12720e99fb",
+  "evaluationSha256": "2aca43f19d7d5f8b8a377479f1d822b5e027d0214f60a432e63758d76d9360bb",
+  "goldSha256": "8444f49903373467339a9ab26227c138cc873417c908caad3b6f5b3f12fe24f5",
+  "rgbOnlySha256": "1c172b672072e08d2d301ce1f857f3319f7a34659ae73062ebf6c15e3c2d2283",
+  "planSha256": "234489b87115433d576666d46fcc7d11a0d86ab2880c209980becc416465777e",
+  "actualCodeHashesVerified": 7,
+  "oldM3UCodeHashesUnchanged": 38,
+  "oldM3RCodeHashesUnchanged": 35,
+  "originalSeeds": 3584,
+  "authoredSeeds": 3072,
+  "externalConditionalSeeds": 512,
+  "rawBackwardStatusCycleReproduced": 3584,
+  "photometricPatchPairsRecomputed": 3299,
+  "authoredOracleCentersAndVisibilityRecomputed": 3072,
+  "authoredPatch7And21SupportRecomputed": 3072,
+  "independentFloatingBoundarySensitivity": [
+    {
+      "pairId": "m3w-02",
+      "seedIndex": 59,
+      "source": [
+        318.0,
+        291.0
+      ],
+      "sourceWorld": [
+        -0.010096153846153847,
+        0.35,
+        3.5
+      ],
+      "sourceBoundaryMargin": 0.0,
+      "independentStatus": "visible",
+      "recordedStatus": "occluded",
+      "independentPatch7": false,
+      "recordedPatch7": false,
+      "independentPatch21": false,
+      "recordedPatch21": false,
+      "authority": "Independent-equivalent floating arithmetic differs near inclusive material boundaries; original trial labels/counts preserved, not relabeled."
+    },
+    {
+      "pairId": "m3w-03",
+      "seedIndex": 138,
+      "source": [
+        326.0,
+        291.0
+      ],
+      "sourceWorld": [
+        0.043750000000000004,
+        0.35,
+        3.5
+      ],
+      "sourceBoundaryMargin": 0.0,
+      "independentStatus": "occluded",
+      "recordedStatus": "visible",
+      "independentPatch7": false,
+      "recordedPatch7": false,
+      "independentPatch21": false,
+      "recordedPatch21": false,
+      "authority": "Independent-equivalent floating arithmetic differs near inclusive material boundaries; original trial labels/counts preserved, not relabeled."
+    },
+    {
+      "pairId": "m3w-04",
+      "seedIndex": 138,
+      "source": [
+        326.0,
+        291.0
+      ],
+      "sourceWorld": [
+        0.043750000000000004,
+        0.35,
+        3.5
+      ],
+      "sourceBoundaryMargin": 0.0,
+      "independentStatus": "visible",
+      "recordedStatus": "occluded",
+      "independentPatch7": false,
+      "recordedPatch7": false,
+      "independentPatch21": false,
+      "recordedPatch21": false,
+      "authority": "Independent-equivalent floating arithmetic differs near inclusive material boundaries; original trial labels/counts preserved, not relabeled."
+    },
+    {
+      "pairId": "m3w-05",
+      "seedIndex": 138,
+      "source": [
+        326.0,
+        291.0
+      ],
+      "sourceWorld": [
+        0.043750000000000004,
+        0.35,
+        3.5
+      ],
+      "sourceBoundaryMargin": 0.0,
+      "independentStatus": "occluded",
+      "recordedStatus": "visible",
+      "independentPatch7": false,
+      "recordedPatch7": false,
+      "independentPatch21": false,
+      "recordedPatch21": false,
+      "authority": "Independent-equivalent floating arithmetic differs near inclusive material boundaries; original trial labels/counts preserved, not relabeled."
+    }
+  ],
+  "independentlyRecomputedMetadataArmGateArrays": 120,
+  "independentlyRecomputedWrongEndpointGateArrays": 20,
+  "independentlyVerifiedEligibleWrongPointControls": 3180,
+  "allStoredGeometricGateEvaluationsVerified": 140,
+  "numericalBoundarySummary": {
+    "originalAuthoredDenominator": 3072,
+    "centerBoundaryTouchUnits": 12,
+    "patch7BoundaryTouchUnits": 42,
+    "patch21BoundaryTouchUnits": 48,
+    "actualAlternativeAlgebraCenterStatusDifferences": 4,
+    "actualAlternativeAlgebraPatch7VerdictDifferences": 0,
+    "actualAlternativeAlgebraPatch21VerdictDifferences": 0,
+    "nominalOrVariantOracleGateMaskChangesFromThose4StatusDifferences": 0,
+    "gateMaskReason": "All four differing center references already have patch7SingleMaterial false, so their oracle eligibility remains false; original gate masks and results remain unchanged.",
+    "originalConditionalTrial": {"tp": 2262, "fpTotalKnown": 138, "fn": 505, "tn": 239},
+    "descriptiveCenterClearViewWithinOriginalDenominator": {"tp": 2260, "fpTotalKnown": 130, "fn": 497, "tn": 239, "numericallyAmbiguousUnknown": 12},
+    "descriptiveSingleMaterial21AndCenterClearSubset": {"included": 1680, "tp": 1455, "fpVisible": 3, "missedValid": 222, "fn": 225},
+    "notCertifiedBound": true
+  },
+  "fastPanRobustnessView": {
+    "pairIds": ["m3w-05", "m3w-11"],
+    "original512Seeds": {"visible": 371, "tp": 32, "fp": 8, "fn": 339, "tn": 141},
+    "descriptiveCenterClearWithin512Seeds": {"visible": 369, "tp": 32, "fp": 8, "fn": 337, "tn": 141, "numericallyAmbiguousUnknown": 2},
+    "singleMaterial21AndNoNumericalEdgeTouchSubset": {"included": 226, "tp": 13, "missedValid": 210, "fpVisible": 3, "fn": 213},
+    "interpretation": "A large observed correspondence acceptance gap remains in authored fast-pan interior controls. This is not a new road-video score, sensor calibration conclusion, full-pyramid support certificate or product improvement."
+  },
+  "actualRecordedLkDirections": 28,
+  "newReviewerLkOrLearnedModelCalls": 0,
+  "perSplitRecount": {
+    "analysis": {
+      "counts": {
+        "accepted-right": 1131,
+        "missed-valid": 230,
+        "accepted-invisible": 22,
+        "accepted-wrong": 36,
+        "reference-unavailable": 117
+      },
+      "confusion": {
+        "tp": 1131,
+        "fn": 266,
+        "fpTotalKnown": 58,
+        "knownUnmatchableFP": 22,
+        "fpVisible": 36,
+        "knownUnmatchableTN": 117
+      }
+    },
+    "holdout": {
+      "counts": {
+        "accepted-right": 1131,
+        "missed-valid": 203,
+        "accepted-invisible": 44,
+        "accepted-wrong": 36,
+        "reference-unavailable": 122
+      },
+      "confusion": {
+        "tp": 1131,
+        "fn": 239,
+        "fpTotalKnown": 80,
+        "knownUnmatchableFP": 44,
+        "fpVisible": 36,
+        "knownUnmatchableTN": 122
+      }
+    }
+  },
+  "nominalOracleRejectionPartition": [
+    {
+      "pairId": "m3w-00",
+      "split": "analysis",
+      "motion": "stationary",
+      "sourceSeeds": 256,
+      "visible": 256,
+      "referenceStatus": {
+        "visible": 256
+      },
+      "patch7": 173,
+      "patch21": 153,
+      "eligibleOracle": 173,
+      "oracleQualified": false,
+      "measuredQualified": true,
+      "rotationPoints": 173,
+      "epipolarPoints": 0,
+      "maxOracleEpipolarResidualPx": null,
+      "eligibilityBelow70Percent": true,
+      "modePartitionLosesSupport": true,
+      "independentlyReplayedCoverage": {
+        "visible": 256,
+        "patch7": 173,
+        "patch21": 153
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-01",
+      "split": "analysis",
+      "motion": "lateral",
+      "sourceSeeds": 256,
+      "visible": 249,
+      "referenceStatus": {
+        "visible": 249,
+        "occluded": 7
+      },
+      "patch7": 171,
+      "patch21": 150,
+      "eligibleOracle": 171,
+      "oracleQualified": false,
+      "measuredQualified": true,
+      "rotationPoints": 0,
+      "epipolarPoints": 171,
+      "maxOracleEpipolarResidualPx": 4.288236432614667e-14,
+      "eligibilityBelow70Percent": true,
+      "modePartitionLosesSupport": true,
+      "independentlyReplayedCoverage": {
+        "visible": 249,
+        "patch7": 171,
+        "patch21": 150
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-02",
+      "split": "analysis",
+      "motion": "constant-body-twist",
+      "sourceSeeds": 256,
+      "visible": 226,
+      "referenceStatus": {
+        "visible": 226,
+        "target-out-of-view": 22,
+        "occluded": 8
+      },
+      "patch7": 152,
+      "patch21": 134,
+      "eligibleOracle": 152,
+      "oracleQualified": false,
+      "measuredQualified": true,
+      "rotationPoints": 0,
+      "epipolarPoints": 152,
+      "maxOracleEpipolarResidualPx": 1.7582315599003318e-13,
+      "eligibilityBelow70Percent": true,
+      "modePartitionLosesSupport": true,
+      "independentlyReplayedCoverage": {
+        "visible": 227,
+        "patch7": 152,
+        "patch21": 134
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-03",
+      "split": "analysis",
+      "motion": "accelerating",
+      "sourceSeeds": 256,
+      "visible": 234,
+      "referenceStatus": {
+        "visible": 234,
+        "target-out-of-view": 15,
+        "occluded": 7
+      },
+      "patch7": 158,
+      "patch21": 136,
+      "eligibleOracle": 158,
+      "oracleQualified": false,
+      "measuredQualified": false,
+      "rotationPoints": 114,
+      "epipolarPoints": 44,
+      "maxOracleEpipolarResidualPx": 1.156618453143705e-13,
+      "eligibilityBelow70Percent": true,
+      "modePartitionLosesSupport": true,
+      "independentlyReplayedCoverage": {
+        "visible": 233,
+        "patch7": 158,
+        "patch21": 136
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-04",
+      "split": "analysis",
+      "motion": "changing-direction",
+      "sourceSeeds": 256,
+      "visible": 243,
+      "referenceStatus": {
+        "visible": 243,
+        "occluded": 13
+      },
+      "patch7": 170,
+      "patch21": 147,
+      "eligibleOracle": 170,
+      "oracleQualified": false,
+      "measuredQualified": true,
+      "rotationPoints": 0,
+      "epipolarPoints": 170,
+      "maxOracleEpipolarResidualPx": 1.3629858021257248e-13,
+      "eligibilityBelow70Percent": true,
+      "modePartitionLosesSupport": true,
+      "independentlyReplayedCoverage": {
+        "visible": 244,
+        "patch7": 170,
+        "patch21": 147
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-05",
+      "split": "analysis",
+      "motion": "fast-reveal",
+      "sourceSeeds": 256,
+      "visible": 189,
+      "referenceStatus": {
+        "visible": 189,
+        "target-out-of-view": 67
+      },
+      "patch7": 125,
+      "patch21": 114,
+      "eligibleOracle": 125,
+      "oracleQualified": false,
+      "measuredQualified": false,
+      "rotationPoints": 0,
+      "epipolarPoints": 125,
+      "maxOracleEpipolarResidualPx": 1.6578520313118146e-13,
+      "eligibilityBelow70Percent": true,
+      "modePartitionLosesSupport": true,
+      "independentlyReplayedCoverage": {
+        "visible": 188,
+        "patch7": 125,
+        "patch21": 114
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-06",
+      "split": "holdout",
+      "motion": "stationary",
+      "sourceSeeds": 256,
+      "visible": 256,
+      "referenceStatus": {
+        "visible": 256
+      },
+      "patch7": 190,
+      "patch21": 158,
+      "eligibleOracle": 190,
+      "oracleQualified": true,
+      "measuredQualified": true,
+      "rotationPoints": 190,
+      "epipolarPoints": 0,
+      "maxOracleEpipolarResidualPx": null,
+      "eligibilityBelow70Percent": false,
+      "modePartitionLosesSupport": false,
+      "independentlyReplayedCoverage": {
+        "visible": 256,
+        "patch7": 190,
+        "patch21": 158
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-07",
+      "split": "holdout",
+      "motion": "lateral",
+      "sourceSeeds": 256,
+      "visible": 246,
+      "referenceStatus": {
+        "visible": 246,
+        "occluded": 10
+      },
+      "patch7": 184,
+      "patch21": 150,
+      "eligibleOracle": 184,
+      "oracleQualified": true,
+      "measuredQualified": true,
+      "rotationPoints": 0,
+      "epipolarPoints": 184,
+      "maxOracleEpipolarResidualPx": 5.717648576819556e-14,
+      "eligibilityBelow70Percent": false,
+      "modePartitionLosesSupport": false,
+      "independentlyReplayedCoverage": {
+        "visible": 246,
+        "patch7": 184,
+        "patch21": 150
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-08",
+      "split": "holdout",
+      "motion": "constant-body-twist",
+      "sourceSeeds": 256,
+      "visible": 223,
+      "referenceStatus": {
+        "visible": 223,
+        "occluded": 11,
+        "target-out-of-view": 22
+      },
+      "patch7": 162,
+      "patch21": 135,
+      "eligibleOracle": 162,
+      "oracleQualified": false,
+      "measuredQualified": true,
+      "rotationPoints": 0,
+      "epipolarPoints": 162,
+      "maxOracleEpipolarResidualPx": 1.3217152384747341e-13,
+      "eligibilityBelow70Percent": true,
+      "modePartitionLosesSupport": true,
+      "independentlyReplayedCoverage": {
+        "visible": 223,
+        "patch7": 162,
+        "patch21": 135
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-09",
+      "split": "holdout",
+      "motion": "accelerating",
+      "sourceSeeds": 256,
+      "visible": 227,
+      "referenceStatus": {
+        "visible": 227,
+        "occluded": 9,
+        "target-out-of-view": 20
+      },
+      "patch7": 169,
+      "patch21": 141,
+      "eligibleOracle": 169,
+      "oracleQualified": false,
+      "measuredQualified": false,
+      "rotationPoints": 60,
+      "epipolarPoints": 109,
+      "maxOracleEpipolarResidualPx": 1.6335070902902634e-13,
+      "eligibilityBelow70Percent": true,
+      "modePartitionLosesSupport": true,
+      "independentlyReplayedCoverage": {
+        "visible": 227,
+        "patch7": 169,
+        "patch21": 141
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-10",
+      "split": "holdout",
+      "motion": "changing-direction",
+      "sourceSeeds": 256,
+      "visible": 236,
+      "referenceStatus": {
+        "visible": 236,
+        "occluded": 19,
+        "target-out-of-view": 1
+      },
+      "patch7": 183,
+      "patch21": 150,
+      "eligibleOracle": 183,
+      "oracleQualified": true,
+      "measuredQualified": true,
+      "rotationPoints": 0,
+      "epipolarPoints": 183,
+      "maxOracleEpipolarResidualPx": 1.4246953097012258e-13,
+      "eligibilityBelow70Percent": false,
+      "modePartitionLosesSupport": false,
+      "independentlyReplayedCoverage": {
+        "visible": 236,
+        "patch7": 183,
+        "patch21": 150
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    },
+    {
+      "pairId": "m3w-11",
+      "split": "holdout",
+      "motion": "fast-reveal",
+      "sourceSeeds": 256,
+      "visible": 182,
+      "referenceStatus": {
+        "visible": 182,
+        "occluded": 3,
+        "target-out-of-view": 71
+      },
+      "patch7": 133,
+      "patch21": 112,
+      "eligibleOracle": 133,
+      "oracleQualified": false,
+      "measuredQualified": false,
+      "rotationPoints": 0,
+      "epipolarPoints": 133,
+      "maxOracleEpipolarResidualPx": 1.3279177468260122e-13,
+      "eligibilityBelow70Percent": true,
+      "modePartitionLosesSupport": true,
+      "independentlyReplayedCoverage": {
+        "visible": 182,
+        "patch7": 133,
+        "patch21": 112
+      },
+      "exactOracleInterpretation": "Oracle mask excludes mixed7px raster support; it is not an upper bound on measured-LK acceptance."
+    }
+  ],
+  "knownInvariantControls": [
+    {
+      "pairId": "m3w-00",
+      "motion": "stationary",
+      "variant": "fx-times1.05",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-00",
+      "motion": "stationary",
+      "variant": "cx-plus8",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-00",
+      "motion": "stationary",
+      "variant": "clock-40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-00",
+      "motion": "stationary",
+      "variant": "clock-10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-00",
+      "motion": "stationary",
+      "variant": "clock+10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-00",
+      "motion": "stationary",
+      "variant": "clock+40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-01",
+      "motion": "lateral",
+      "variant": "fx-times1.05",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-01",
+      "motion": "lateral",
+      "variant": "cx-plus8",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-01",
+      "motion": "lateral",
+      "variant": "clock-40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-01",
+      "motion": "lateral",
+      "variant": "clock-10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-01",
+      "motion": "lateral",
+      "variant": "clock+10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-01",
+      "motion": "lateral",
+      "variant": "clock+40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-02",
+      "motion": "constant-body-twist",
+      "variant": "clock-40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-02",
+      "motion": "constant-body-twist",
+      "variant": "clock-10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-02",
+      "motion": "constant-body-twist",
+      "variant": "clock+10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-02",
+      "motion": "constant-body-twist",
+      "variant": "clock+40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-06",
+      "motion": "stationary",
+      "variant": "fx-times1.05",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-06",
+      "motion": "stationary",
+      "variant": "cx-plus8",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-06",
+      "motion": "stationary",
+      "variant": "clock-40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-06",
+      "motion": "stationary",
+      "variant": "clock-10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-06",
+      "motion": "stationary",
+      "variant": "clock+10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-06",
+      "motion": "stationary",
+      "variant": "clock+40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-07",
+      "motion": "lateral",
+      "variant": "fx-times1.05",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-07",
+      "motion": "lateral",
+      "variant": "cx-plus8",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-07",
+      "motion": "lateral",
+      "variant": "clock-40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-07",
+      "motion": "lateral",
+      "variant": "clock-10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-07",
+      "motion": "lateral",
+      "variant": "clock+10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-07",
+      "motion": "lateral",
+      "variant": "clock+40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-08",
+      "motion": "constant-body-twist",
+      "variant": "clock-40000us",
+      "outcome": "hard-clock-contract-rejected"
+    },
+    {
+      "pairId": "m3w-08",
+      "motion": "constant-body-twist",
+      "variant": "clock-10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-08",
+      "motion": "constant-body-twist",
+      "variant": "clock+10000us",
+      "outcome": "not-identifiable-known-invariant-control"
+    },
+    {
+      "pairId": "m3w-08",
+      "motion": "constant-body-twist",
+      "variant": "clock+40000us",
+      "outcome": "hard-clock-contract-rejected"
+    }
+  ],
+  "wrongEndpointControls": [
+    {
+      "pairId": "m3w-00",
+      "direction": "perpendicular",
+      "status": "epipolar-unobservable",
+      "eligible": 0,
+      "qualified": null
+    },
+    {
+      "pairId": "m3w-00",
+      "direction": "along",
+      "status": "epipolar-unobservable",
+      "eligible": 0,
+      "qualified": null
+    },
+    {
+      "pairId": "m3w-01",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 171,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-01",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 168,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-02",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 152,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-02",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 149,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-03",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 158,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-03",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 154,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-04",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 170,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-04",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 169,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-05",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 125,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-05",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 125,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-06",
+      "direction": "perpendicular",
+      "status": "epipolar-unobservable",
+      "eligible": 0,
+      "qualified": null
+    },
+    {
+      "pairId": "m3w-06",
+      "direction": "along",
+      "status": "epipolar-unobservable",
+      "eligible": 0,
+      "qualified": null
+    },
+    {
+      "pairId": "m3w-07",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 181,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-07",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 179,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-08",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 160,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-08",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 161,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-09",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 169,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-09",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 167,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-10",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 181,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-10",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 178,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-11",
+      "direction": "perpendicular",
+      "status": "evaluated",
+      "eligible": 131,
+      "qualified": false
+    },
+    {
+      "pairId": "m3w-11",
+      "direction": "along",
+      "status": "evaluated",
+      "eligible": 132,
+      "qualified": false
+    }
+  ],
+  "externalConditional": [
+    {
+      "id": "i_londonbridge",
+      "counts": {
+        "accepted-wrong": 222,
+        "missed-valid": 34
+      },
+      "acceptedTransferErrorP50P95": [
+        3.852210248514958,
+        4.399982609732915
+      ],
+      "acceptedDisplacementMedian": [
+        0.61309814453125,
+        3.76336669921875
+      ],
+      "estimatedH": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "authority": "Conditional estimated H, not exact physical correspondence/occlusion truth."
+    },
+    {
+      "id": "v_abstract",
+      "counts": {
+        "accepted-right": 22,
+        "missed-valid": 215,
+        "accepted-wrong": 7,
+        "reference-unavailable": 12
+      },
+      "acceptedTransferErrorP50P95": [
+        0.8216871536754602,
+        2.488063577823031
+      ],
+      "acceptedDisplacementMedian": [
+        -71.1263427734375,
+        21.98919677734375
+      ],
+      "estimatedH": [
+        [
+          0.7088,
+          -0.010965,
+          -26.07
+        ],
+        [
+          -0.13602,
+          0.83489,
+          103.19
+        ],
+        [
+          -0.00023352,
+          -1.5615e-05,
+          1.0004
+        ]
+      ],
+      "authority": "Conditional estimated H, not exact physical correspondence/occlusion truth."
+    }
+  ],
+  "observationWallMs": 872.9724169970723,
+  "evaluationWallMs": 1712.4715839963756,
+  "opencvReportedThreads": 10,
+  "performanceControlled": false,
+  "scopedAuthoredTestsIndependentRerun": {
+    "passed": 28,
+    "failed": 0,
+    "seconds": 0.128,
+    "notAdditionalEmpiricalCases": true
+  },
+  "limits": [
+    "Authored exact-center renderer reference, not physical real-world pixel truth or sensor calibration. Inclusive boundary classification also has disclosed finite-precision sensitivity; original receipt labels preserved.",
+    "Oracle eligibility excludes mixed7px sampler support whereas measured LK may correctly match it; nominal oracle qualification is not a matching upper bound or standalone pose correctness test.",
+    "Both accelerating cases split otherwise correct geometric controls between low-impact rotation and epipolar branches; preserve fixed branch floors, do not pool masks after results.",
+    "Single-level7/21 support is not a full LKpyramid/continuousarea footprint certificate. Texture aliasing/periodicity remain possible.",
+    "HPatches estimated-H transfer outcomes are conditional, especially identity-H illumination pair with coherent nonzero observed displacement; no physical wrong-match or true occlusion claim.",
+    "Synthetic metadata/endpoint fault compatibility and authored matching FP/FN are not traffic warnings. Prior traffic0TP13FN0FP18TN2unknown unchanged.",
+    "No LK/model/renderer rerun, fit-based correction, threshold change, real-time/iPhone certification or runtime promotion."
+  ],
+  "disposition": "Diagnostic integrity verified within scope; useful controlled matching failures measured, but Boreas physical K/time/correspondence root cause and traffic recall improvement remain unproven."
+}

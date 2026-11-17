@@ -1,0 +1,2442 @@
+{
+  "schemaVersion": 1,
+  "study": "M3R-fresh-posthoc-first-veto",
+  "receiptSha256": "7d2922b2cfbd0819f342361b17108b3308cbba936a0a267785dcc4731abd7b52",
+  "inputSha256": "b608bf1ae8518c61aea3a037ac608f2ce48265f7374f0ed0c37c67e619d5c108",
+  "truthSha256": "7e9ddf11518d7365059e52b060889bf99616897a31e702f325f51a60f58cc284",
+  "reviewedPositiveTargetKeyframes": 12,
+  "positiveFirstVeto": {
+    "no-fresh-source-exposure": 3,
+    "fresh-missing-identity-source-exposure": 3,
+    "fresh-bidirectional-estimator-disagreement": 1,
+    "no-long-source-exposure": 2,
+    "fresh-forward-insufficient-grid-support": 2,
+    "current-detector-or-handle-criterion-failure": 1
+  },
+  "positiveFirstVetoStage": {
+    "source-exposure": 5,
+    "identity-chain": 3,
+    "chosen-measurement": 3,
+    "detector-or-current-handle": 1
+  },
+  "allBTrackReasons": {
+    "no-fresh-source-exposure": 395,
+    "no-long-source-exposure": 56,
+    "fresh-unverifiable-source-selection": 388,
+    "fresh-missing-identity-source-exposure": 229,
+    "fresh-forward-insufficient-grid-support": 168,
+    "fresh-reverse-insufficient-grid-support": 19,
+    "fresh-unverified-adjacent-identity": 36,
+    "no-long-global-expansion": 6,
+    "anchor-forward-insufficient-grid-support": 33,
+    "anchor-unverified-adjacent-identity": 28,
+    "anchor-missing-identity-source-exposure": 92,
+    "fresh-bidirectional-estimator-disagreement": 12,
+    "fresh-reverse-insufficient-robust-grid-support": 1,
+    "identity-chain-and-frozen-measurement-supported": 1,
+    "fresh-forward-localized-grid-support": 2,
+    "anchor-unverifiable-source-selection": 4,
+    "no-current-global-expansion": 31
+  },
+  "allBTrackCount": 1501,
+  "allBEvents": [
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 41,
+      "token": "boreas-boreas-m3r-city-1598989149339002",
+      "kind": "relative-optical-approach",
+      "trackId": 198,
+      "label": "car",
+      "epoch": 19,
+      "timeMs": 3278.714,
+      "method": "positive-adjacent-identity-chain-with-frozen-measurement",
+      "observationMs": 321.95199999999977,
+      "linearLogGrowth": 0.05874145225676439,
+      "linearLogGrowthLowerBound": 0.05874145225676439,
+      "logAreaGrowth": 0.11748290451352877,
+      "growthBound": "forward-reverse-estimator-envelope",
+      "points": 43,
+      "measurementPairSha256": "cd5099aab55eb3d044d961a87e820cde44b1d43d3317ee9de4febcfa14518302",
+      "identityChainSha256": "d30c875ff5cfeb6c04e28ec1bcf86200f58ee2fc0498dd58dc3d55e948b0b871"
+    }
+  ],
+  "cases": [
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 14,
+      "token": "boreas-boreas-m3r-city-1598989147178709",
+      "timestampUs": 1598989147178709,
+      "sourceSha256": "c7f2e2e7197d0ac47e02a66f8e6c21e3c377e0110582b3f23319fb7291d2e781",
+      "target": {
+        "instance": "960f9af8-de22-466f-854d-98d2ff695513",
+        "box": {
+          "x": 0.759375,
+          "y": 0.49937733499377335,
+          "width": 0.240625,
+          "height": 0.1643835616438356
+        },
+        "classFamily": "vehicle",
+        "motion": "unknown",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 0,
+        "iou": 0.8949908660563048,
+        "runnerUpMargin": 0.8949908660563048
+      },
+      "currentTrackMatch": {
+        "reportIndex": 0,
+        "iou": 0.8949908660563048,
+        "runnerUpMargin": 0.8949908660563048
+      },
+      "cameraStatus": "insufficient-background-agreement",
+      "currentHandle": 95,
+      "currentDetectionIndex": 0,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-city-1598989147178709",
+        "currentMs": 1118.421,
+        "identityId": 95,
+        "fresh": null,
+        "reason": "no-fresh-source-exposure"
+      },
+      "selectedPairDetails": {
+        "fresh": null,
+        "anchor": null
+      },
+      "firstVeto": "no-fresh-source-exposure",
+      "firstVetoStage": "source-exposure",
+      "observedSourceHistory": [
+        {
+          "index": 9,
+          "token": "boreas-boreas-m3r-city-1598989146777970",
+          "timeMs": 717.682,
+          "epoch": 6,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 2,
+            "maxAgeMs": 161.341,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989146616629",
+              "boreas-boreas-m3r-city-1598989146777970"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989146777970",
+              "timeMs": 717.682,
+              "sourceSha256": "fdf551926f594776dafbb5335a133b5e52b57586831a1a274c8a55f02c660c12"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989146696063",
+              "timeMs": 635.775,
+              "sourceSha256": "20e37eb232b37ef9e55c7fa8ba211a47b5a70cba9671ee421674479a68911a96"
+            },
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 10,
+          "token": "boreas-boreas-m3r-city-1598989146857495",
+          "timeMs": 797.207,
+          "epoch": 7,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 11,
+          "token": "boreas-boreas-m3r-city-1598989146938708",
+          "timeMs": 878.42,
+          "epoch": 8,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 12,
+          "token": "boreas-boreas-m3r-city-1598989147015911",
+          "timeMs": 955.623,
+          "epoch": 8,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 1,
+            "maxAgeMs": 0.0,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989147015911"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989147015911",
+              "timeMs": 955.623,
+              "sourceSha256": "7cc2a8bf7e9fec6c719c685f6c56de880c2435a2b730310643a63d1225e71ce6"
+            },
+            "fresh": null,
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 13,
+          "token": "boreas-boreas-m3r-city-1598989147096444",
+          "timeMs": 1036.156,
+          "epoch": 9,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 14,
+          "token": "boreas-boreas-m3r-city-1598989147178709",
+          "timeMs": 1118.421,
+          "epoch": 10,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        }
+      ]
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 14,
+      "token": "boreas-boreas-m3r-city-1598989147178709",
+      "timestampUs": 1598989147178709,
+      "sourceSha256": "c7f2e2e7197d0ac47e02a66f8e6c21e3c377e0110582b3f23319fb7291d2e781",
+      "target": {
+        "instance": "d0a6aa54-49e2-4e2b-a7a3-46893427dcc1",
+        "box": {
+          "x": 0.21979166666666666,
+          "y": 0.5330012453300125,
+          "width": 0.10416666666666667,
+          "height": 0.0647571606475716
+        },
+        "classFamily": "vehicle",
+        "motion": "stationary",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 2,
+        "iou": 0.7861429787812197,
+        "runnerUpMargin": 0.7861429787812197
+      },
+      "currentTrackMatch": {
+        "reportIndex": 2,
+        "iou": 0.7861429787812197,
+        "runnerUpMargin": 0.7861429787812197
+      },
+      "cameraStatus": "insufficient-background-agreement",
+      "currentHandle": 97,
+      "currentDetectionIndex": 2,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-city-1598989147178709",
+        "currentMs": 1118.421,
+        "identityId": 97,
+        "fresh": null,
+        "reason": "no-fresh-source-exposure"
+      },
+      "selectedPairDetails": {
+        "fresh": null,
+        "anchor": null
+      },
+      "firstVeto": "no-fresh-source-exposure",
+      "firstVetoStage": "source-exposure",
+      "observedSourceHistory": [
+        {
+          "index": 9,
+          "token": "boreas-boreas-m3r-city-1598989146777970",
+          "timeMs": 717.682,
+          "epoch": 6,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 2,
+            "maxAgeMs": 161.341,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989146616629",
+              "boreas-boreas-m3r-city-1598989146777970"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989146777970",
+              "timeMs": 717.682,
+              "sourceSha256": "fdf551926f594776dafbb5335a133b5e52b57586831a1a274c8a55f02c660c12"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989146696063",
+              "timeMs": 635.775,
+              "sourceSha256": "20e37eb232b37ef9e55c7fa8ba211a47b5a70cba9671ee421674479a68911a96"
+            },
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 10,
+          "token": "boreas-boreas-m3r-city-1598989146857495",
+          "timeMs": 797.207,
+          "epoch": 7,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 11,
+          "token": "boreas-boreas-m3r-city-1598989146938708",
+          "timeMs": 878.42,
+          "epoch": 8,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 12,
+          "token": "boreas-boreas-m3r-city-1598989147015911",
+          "timeMs": 955.623,
+          "epoch": 8,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 1,
+            "maxAgeMs": 0.0,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989147015911"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989147015911",
+              "timeMs": 955.623,
+              "sourceSha256": "7cc2a8bf7e9fec6c719c685f6c56de880c2435a2b730310643a63d1225e71ce6"
+            },
+            "fresh": null,
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 13,
+          "token": "boreas-boreas-m3r-city-1598989147096444",
+          "timeMs": 1036.156,
+          "epoch": 9,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 14,
+          "token": "boreas-boreas-m3r-city-1598989147178709",
+          "timeMs": 1118.421,
+          "epoch": 10,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        }
+      ]
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 22,
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "timestampUs": 1598989147816327,
+      "sourceSha256": "951b41d7ed73ef79c8aa44f8071e752e3134e324263236e4411b72c9201a1d11",
+      "target": {
+        "instance": "b4efe1a9-5690-43c8-92da-5adb578c82fd",
+        "box": {
+          "x": 0.6614583333333334,
+          "y": 0.42963885429638854,
+          "width": 0.22291666666666668,
+          "height": 0.18057285180572852
+        },
+        "classFamily": "vehicle",
+        "motion": "stationary",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 7,
+        "iou": 0.7764118761472271,
+        "runnerUpMargin": 0.7764118761472271
+      },
+      "currentTrackMatch": {
+        "reportIndex": 7,
+        "iou": 0.7764118761472271,
+        "runnerUpMargin": 0.7764118761472271
+      },
+      "cameraStatus": "valid",
+      "currentHandle": 134,
+      "currentDetectionIndex": 7,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-city-1598989147816327",
+        "currentMs": 1756.039,
+        "identityId": 134,
+        "fresh": {
+          "identityChain": {
+            "supported": false,
+            "reason": "missing-identity-source-exposure",
+            "identityId": 134,
+            "startToken": "boreas-boreas-m3r-city-1598989147738617",
+            "endToken": "boreas-boreas-m3r-city-1598989147816327",
+            "currentIndex": 7
+          },
+          "supported": false,
+          "measurementPair": null
+        },
+        "reason": "fresh-missing-identity-source-exposure"
+      },
+      "selectedPairDetails": {
+        "fresh": null,
+        "anchor": null
+      },
+      "firstFailingChainRole": "fresh",
+      "adjacentChainDiagnostics": [
+        {
+          "token": "boreas-boreas-m3r-city-1598989147816327",
+          "epoch": 12,
+          "status": "valid",
+          "handlePresent": true,
+          "transitionReason": "measured-identity-transition",
+          "link": {
+            "currentIndex": 7,
+            "currentId": 134,
+            "supported": false,
+            "reason": "no-reciprocal-box-source",
+            "eligibleSourceIndices": []
+          }
+        }
+      ],
+      "firstVeto": "fresh-missing-identity-source-exposure",
+      "firstVetoStage": "identity-chain",
+      "observedSourceHistory": [
+        {
+          "index": 17,
+          "token": "boreas-boreas-m3r-city-1598989147416451",
+          "timeMs": 1356.163,
+          "epoch": 12,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 1,
+            "maxAgeMs": 0.0,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989147416451"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989147416451",
+              "timeMs": 1356.163,
+              "sourceSha256": "c968675d62987cedf9f50841eee1f4f34fdd7791d86d7e405a966ccc7d3b92e3"
+            },
+            "fresh": null,
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 18,
+          "token": "boreas-boreas-m3r-city-1598989147496694",
+          "timeMs": 1436.406,
+          "epoch": 12,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 2,
+            "maxAgeMs": 80.24299999999994,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989147416451",
+              "boreas-boreas-m3r-city-1598989147496694"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989147496694",
+              "timeMs": 1436.406,
+              "sourceSha256": "013514a09174d1a8bef2546e9a8f07f30ac2ee11cee9eae56861fe974e2a92c3"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989147416451",
+              "timeMs": 1356.163,
+              "sourceSha256": "c968675d62987cedf9f50841eee1f4f34fdd7791d86d7e405a966ccc7d3b92e3"
+            },
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 19,
+          "token": "boreas-boreas-m3r-city-1598989147576725",
+          "timeMs": 1516.437,
+          "epoch": 12,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 2,
+            "maxAgeMs": 160.2739999999999,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989147416451",
+              "boreas-boreas-m3r-city-1598989147576725"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989147576725",
+              "timeMs": 1516.437,
+              "sourceSha256": "44be25efa7f0c88c1f29a48016e0d65203d789fcba6547e49e49df5a5cffa661"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989147496694",
+              "timeMs": 1436.406,
+              "sourceSha256": "013514a09174d1a8bef2546e9a8f07f30ac2ee11cee9eae56861fe974e2a92c3"
+            },
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 20,
+          "token": "boreas-boreas-m3r-city-1598989147656132",
+          "timeMs": 1595.844,
+          "epoch": 12,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 3,
+            "maxAgeMs": 239.68100000000004,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989147416451",
+              "boreas-boreas-m3r-city-1598989147576725",
+              "boreas-boreas-m3r-city-1598989147656132"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989147656132",
+              "timeMs": 1595.844,
+              "sourceSha256": "a99a8d10dd261801a5c554dfea51d998d872004a390587bea57ada86e52b6ac4"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989147576725",
+              "timeMs": 1516.437,
+              "sourceSha256": "44be25efa7f0c88c1f29a48016e0d65203d789fcba6547e49e49df5a5cffa661"
+            },
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 21,
+          "token": "boreas-boreas-m3r-city-1598989147738617",
+          "timeMs": 1678.329,
+          "epoch": 12,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 3,
+            "maxAgeMs": 322.16599999999994,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989147416451",
+              "boreas-boreas-m3r-city-1598989147576725",
+              "boreas-boreas-m3r-city-1598989147738617"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989147738617",
+              "timeMs": 1678.329,
+              "sourceSha256": "95b84a9011869993558ef01e89cccb7de8d16a0a41ec67020db21a678d8b6723"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989147656132",
+              "timeMs": 1595.844,
+              "sourceSha256": "a99a8d10dd261801a5c554dfea51d998d872004a390587bea57ada86e52b6ac4"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-city-1598989147416451",
+              "timeMs": 1356.163,
+              "sourceSha256": "c968675d62987cedf9f50841eee1f4f34fdd7791d86d7e405a966ccc7d3b92e3"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 22,
+          "token": "boreas-boreas-m3r-city-1598989147816327",
+          "timeMs": 1756.039,
+          "epoch": 12,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 4,
+            "maxAgeMs": 399.876,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989147416451",
+              "boreas-boreas-m3r-city-1598989147576725",
+              "boreas-boreas-m3r-city-1598989147738617",
+              "boreas-boreas-m3r-city-1598989147816327"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989147816327",
+              "timeMs": 1756.039,
+              "sourceSha256": "951b41d7ed73ef79c8aa44f8071e752e3134e324263236e4411b72c9201a1d11"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989147738617",
+              "timeMs": 1678.329,
+              "sourceSha256": "95b84a9011869993558ef01e89cccb7de8d16a0a41ec67020db21a678d8b6723"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-city-1598989147416451",
+              "timeMs": 1356.163,
+              "sourceSha256": "c968675d62987cedf9f50841eee1f4f34fdd7791d86d7e405a966ccc7d3b92e3"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        }
+      ],
+      "observedIdentitySource": {
+        "sourceToken": "boreas-boreas-m3r-city-1598989147738617",
+        "sourceSha256": "95b84a9011869993558ef01e89cccb7de8d16a0a41ec67020db21a678d8b6723",
+        "sourceEpoch": 12,
+        "currentEpoch": 12,
+        "sourceTrackIds": [
+          116,
+          117,
+          119,
+          127,
+          120,
+          122,
+          121,
+          130,
+          131,
+          132
+        ],
+        "currentTrackId": 134,
+        "currentIdentityDecision": {
+          "kept": false,
+          "appearanceCorrelation": null,
+          "reason": "new-or-appearance-unverified",
+          "freshPair": {
+            "attempted": false
+          },
+          "ageMs": 0.0
+        },
+        "interpretation": "The current handle is absent from the actual selected source exposure. The receipt does not establish that a physical object was absent or different."
+      }
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 30,
+      "token": "boreas-boreas-m3r-city-1598989148456682",
+      "timestampUs": 1598989148456682,
+      "sourceSha256": "a52cef6f5aa291ebd98bfde8f9377d25f05036b945535f9c8a4fcd12da8f3d88",
+      "target": {
+        "instance": "b4efe1a9-5690-43c8-92da-5adb578c82fd",
+        "box": {
+          "x": 0.6770833333333334,
+          "y": 0.41843088418430885,
+          "width": 0.290625,
+          "height": 0.23163138231631383
+        },
+        "classFamily": "vehicle",
+        "motion": "unknown",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 7,
+        "iou": 0.7162684866009026,
+        "runnerUpMargin": 0.7162684866009026
+      },
+      "currentTrackMatch": {
+        "reportIndex": 7,
+        "iou": 0.7162684866009026,
+        "runnerUpMargin": 0.7162684866009026
+      },
+      "cameraStatus": "valid",
+      "currentHandle": 162,
+      "currentDetectionIndex": 7,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-city-1598989148456682",
+        "currentMs": 2396.394,
+        "identityId": 162,
+        "fresh": {
+          "identityChain": {
+            "supported": true,
+            "reason": "uninterrupted-measured-positive-identity-chain",
+            "identityId": 162,
+            "startToken": "boreas-boreas-m3r-city-1598989148377268",
+            "endToken": "boreas-boreas-m3r-city-1598989148456682",
+            "currentIndex": 7,
+            "sourceIndex": 7,
+            "startMs": 2316.98,
+            "endMs": 2396.394,
+            "observationSha256s": [
+              "a974855914f245bb334c515880070847ad5891f5182aceced27e8153ff785c8a",
+              "16e8584cc4da7a594b3ad064b55cd1cb78542f16228f09d5e205e59a79c92a1f"
+            ],
+            "exposureTokens": [
+              "boreas-boreas-m3r-city-1598989148377268",
+              "boreas-boreas-m3r-city-1598989148456682"
+            ],
+            "links": [
+              {
+                "startToken": "boreas-boreas-m3r-city-1598989148377268",
+                "endToken": "boreas-boreas-m3r-city-1598989148456682",
+                "transitionSha256": "7bace38c2d7a74cfb8c7362ac46981d0fadd13f083b435b2333413fd9577f9d7",
+                "previousIndex": 7,
+                "currentIndex": 7,
+                "linkSha256": "f0085a67e5d17672a557fbbd2e1ad3ef21bcfb1c573320eced9294807ca633f6"
+              }
+            ]
+          },
+          "supported": false,
+          "measurementPair": {
+            "fieldId": "boreas-boreas-m3r-city-1598989148377268->boreas-boreas-m3r-city-1598989148456682",
+            "startToken": "boreas-boreas-m3r-city-1598989148377268",
+            "endToken": "boreas-boreas-m3r-city-1598989148456682",
+            "startDetectionIndex": 7,
+            "endDetectionIndex": 7,
+            "pairSha256": "211cac03886cfdb2e5d6378f8a81acbc96cf5db69876ff1e8f733e6c8a860c22"
+          }
+        },
+        "reason": "fresh-bidirectional-estimator-disagreement"
+      },
+      "selectedPairDetails": {
+        "fresh": {
+          "fieldId": "boreas-boreas-m3r-city-1598989148377268->boreas-boreas-m3r-city-1598989148456682",
+          "startToken": "boreas-boreas-m3r-city-1598989148377268",
+          "endToken": "boreas-boreas-m3r-city-1598989148456682",
+          "startDetectionIndex": 7,
+          "endDetectionIndex": 7,
+          "pairSha256": "211cac03886cfdb2e5d6378f8a81acbc96cf5db69876ff1e8f733e6c8a860c22",
+          "reason": "bidirectional-estimator-disagreement",
+          "supported": false,
+          "unverifiable": false,
+          "observationMs": 79.41399999999976,
+          "linearLogGrowthLowerBound": 0.027763708434770364,
+          "linearLogGrowthUpperBound": 0.0330068036352345,
+          "directions": {
+            "forward": {
+              "reason": "verified-global-grid",
+              "seedPoints": 43,
+              "verifiedPoints": 43,
+              "assignedPoints": 43,
+              "points": 42,
+              "supported": true
+            },
+            "reverse": {
+              "reason": "verified-global-grid",
+              "seedPoints": 43,
+              "verifiedPoints": 43,
+              "assignedPoints": 43,
+              "points": 43,
+              "supported": true
+            }
+          }
+        },
+        "anchor": null
+      },
+      "firstVeto": "fresh-bidirectional-estimator-disagreement",
+      "firstVetoStage": "chosen-measurement"
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 30,
+      "token": "boreas-boreas-m3r-city-1598989148456682",
+      "timestampUs": 1598989148456682,
+      "sourceSha256": "a52cef6f5aa291ebd98bfde8f9377d25f05036b945535f9c8a4fcd12da8f3d88",
+      "target": {
+        "instance": "915bf105-20a3-44bb-8b07-67e429afc80b",
+        "box": {
+          "x": 0.275,
+          "y": 0.5118306351183064,
+          "width": 0.07604166666666666,
+          "height": 0.0647571606475716
+        },
+        "classFamily": "vehicle",
+        "motion": "stationary",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 1,
+        "iou": 0.8313191618309854,
+        "runnerUpMargin": 0.8313191618309854
+      },
+      "currentTrackMatch": {
+        "reportIndex": 1,
+        "iou": 0.8313191618309854,
+        "runnerUpMargin": 0.8313191618309854
+      },
+      "cameraStatus": "valid",
+      "currentHandle": 156,
+      "currentDetectionIndex": 1,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-city-1598989148456682",
+        "currentMs": 2396.394,
+        "identityId": 156,
+        "fresh": {
+          "identityChain": {
+            "supported": true,
+            "reason": "uninterrupted-measured-positive-identity-chain",
+            "identityId": 156,
+            "startToken": "boreas-boreas-m3r-city-1598989148377268",
+            "endToken": "boreas-boreas-m3r-city-1598989148456682",
+            "currentIndex": 1,
+            "sourceIndex": 0,
+            "startMs": 2316.98,
+            "endMs": 2396.394,
+            "observationSha256s": [
+              "a974855914f245bb334c515880070847ad5891f5182aceced27e8153ff785c8a",
+              "16e8584cc4da7a594b3ad064b55cd1cb78542f16228f09d5e205e59a79c92a1f"
+            ],
+            "exposureTokens": [
+              "boreas-boreas-m3r-city-1598989148377268",
+              "boreas-boreas-m3r-city-1598989148456682"
+            ],
+            "links": [
+              {
+                "startToken": "boreas-boreas-m3r-city-1598989148377268",
+                "endToken": "boreas-boreas-m3r-city-1598989148456682",
+                "transitionSha256": "7bace38c2d7a74cfb8c7362ac46981d0fadd13f083b435b2333413fd9577f9d7",
+                "previousIndex": 0,
+                "currentIndex": 1,
+                "linkSha256": "f9b9143a3945a2545130a965bd570a685ee6692607f0838645eb02bfe73db0c2"
+              }
+            ]
+          },
+          "supported": true,
+          "measurementPair": {
+            "fieldId": "boreas-boreas-m3r-city-1598989148377268->boreas-boreas-m3r-city-1598989148456682",
+            "startToken": "boreas-boreas-m3r-city-1598989148377268",
+            "endToken": "boreas-boreas-m3r-city-1598989148456682",
+            "startDetectionIndex": 0,
+            "endDetectionIndex": 1,
+            "pairSha256": "5c9be4b9ce94e1aa9d6e2ca6cf8cd25e93da4135eeb1e0cb24d1f7f0e208ab2c"
+          },
+          "linearLogGrowthLowerBound": 0.010236189905440339,
+          "linearLogGrowthUpperBound": 0.01226844664325925,
+          "startMs": 2316.98,
+          "observationMs": 79.41399999999976
+        },
+        "anchor": null,
+        "reason": "no-long-source-exposure"
+      },
+      "selectedPairDetails": {
+        "fresh": {
+          "fieldId": "boreas-boreas-m3r-city-1598989148377268->boreas-boreas-m3r-city-1598989148456682",
+          "startToken": "boreas-boreas-m3r-city-1598989148377268",
+          "endToken": "boreas-boreas-m3r-city-1598989148456682",
+          "startDetectionIndex": 0,
+          "endDetectionIndex": 1,
+          "pairSha256": "5c9be4b9ce94e1aa9d6e2ca6cf8cd25e93da4135eeb1e0cb24d1f7f0e208ab2c",
+          "reason": "bidirectional-textured-global-supported",
+          "supported": true,
+          "unverifiable": false,
+          "observationMs": 79.41399999999976,
+          "linearLogGrowthLowerBound": 0.010236189905440339,
+          "linearLogGrowthUpperBound": 0.01226844664325925,
+          "directions": {
+            "forward": {
+              "reason": "verified-global-grid",
+              "seedPoints": 38,
+              "verifiedPoints": 38,
+              "assignedPoints": 38,
+              "points": 38,
+              "supported": true
+            },
+            "reverse": {
+              "reason": "verified-global-grid",
+              "seedPoints": 40,
+              "verifiedPoints": 40,
+              "assignedPoints": 40,
+              "points": 40,
+              "supported": true
+            }
+          }
+        },
+        "anchor": null
+      },
+      "firstVeto": "no-long-source-exposure",
+      "firstVetoStage": "source-exposure",
+      "observedSourceHistory": [
+        {
+          "index": 25,
+          "token": "boreas-boreas-m3r-city-1598989148056724",
+          "timeMs": 1996.436,
+          "epoch": 12,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 5,
+            "maxAgeMs": 640.2729999999999,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989147416451",
+              "boreas-boreas-m3r-city-1598989147576725",
+              "boreas-boreas-m3r-city-1598989147738617",
+              "boreas-boreas-m3r-city-1598989147977856",
+              "boreas-boreas-m3r-city-1598989148056724"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989148056724",
+              "timeMs": 1996.436,
+              "sourceSha256": "01e9442e702dbc9e6c2eb45cad27e28bb1f0ed0d42acd384483b21cbc20dfadb"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989147977856",
+              "timeMs": 1917.568,
+              "sourceSha256": "23250a471778d54f97223ca2f9c3bf1771af580d3b1b76c6cc109e9017f84fda"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-city-1598989147416451",
+              "timeMs": 1356.163,
+              "sourceSha256": "c968675d62987cedf9f50841eee1f4f34fdd7791d86d7e405a966ccc7d3b92e3"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 26,
+          "token": "boreas-boreas-m3r-city-1598989148136162",
+          "timeMs": 2075.874,
+          "epoch": 13,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 27,
+          "token": "boreas-boreas-m3r-city-1598989148218713",
+          "timeMs": 2158.425,
+          "epoch": 14,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 28,
+          "token": "boreas-boreas-m3r-city-1598989148296944",
+          "timeMs": 2236.656,
+          "epoch": 15,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 29,
+          "token": "boreas-boreas-m3r-city-1598989148377268",
+          "timeMs": 2316.98,
+          "epoch": 15,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 1,
+            "maxAgeMs": 0.0,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989148377268"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989148377268",
+              "timeMs": 2316.98,
+              "sourceSha256": "eb1c72f700a39b49173e4ea6835ec4b452815e51a640362970e753afd5637ea8"
+            },
+            "fresh": null,
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 30,
+          "token": "boreas-boreas-m3r-city-1598989148456682",
+          "timeMs": 2396.394,
+          "epoch": 15,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 2,
+            "maxAgeMs": 79.41399999999976,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989148377268",
+              "boreas-boreas-m3r-city-1598989148456682"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989148456682",
+              "timeMs": 2396.394,
+              "sourceSha256": "a52cef6f5aa291ebd98bfde8f9377d25f05036b945535f9c8a4fcd12da8f3d88"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989148377268",
+              "timeMs": 2316.98,
+              "sourceSha256": "eb1c72f700a39b49173e4ea6835ec4b452815e51a640362970e753afd5637ea8"
+            },
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        }
+      ]
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 38,
+      "token": "boreas-boreas-m3r-city-1598989149098115",
+      "timestampUs": 1598989149098115,
+      "sourceSha256": "8ee5c1c5f88beab210bf6b442178055cf8a4b3ad6c7c44f3e29908f2f255d2c1",
+      "target": {
+        "instance": "d0a6aa54-49e2-4e2b-a7a3-46893427dcc1",
+        "box": {
+          "x": 0.046875,
+          "y": 0.5193026151930261,
+          "width": 0.19583333333333333,
+          "height": 0.10087173100871731
+        },
+        "classFamily": "vehicle",
+        "motion": "unknown",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 3,
+        "iou": 0.957546683090515,
+        "runnerUpMargin": 0.957546683090515
+      },
+      "currentTrackMatch": {
+        "reportIndex": 3,
+        "iou": 0.957546683090515,
+        "runnerUpMargin": 0.957546683090515
+      },
+      "cameraStatus": "valid",
+      "currentHandle": 199,
+      "currentDetectionIndex": 3,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-city-1598989149098115",
+        "currentMs": 3037.827,
+        "identityId": 199,
+        "fresh": {
+          "identityChain": {
+            "supported": true,
+            "reason": "uninterrupted-measured-positive-identity-chain",
+            "identityId": 199,
+            "startToken": "boreas-boreas-m3r-city-1598989149017050",
+            "endToken": "boreas-boreas-m3r-city-1598989149098115",
+            "currentIndex": 3,
+            "sourceIndex": 4,
+            "startMs": 2956.762,
+            "endMs": 3037.827,
+            "observationSha256s": [
+              "f30e14d3e8cea5bad400675ccf145a32bab85f56ef991fba40c40ab811b8c02b",
+              "85373a8fcbc48928cf9f37b1f54057cd62e5d7810bddb42216082b50ae1b5a6a"
+            ],
+            "exposureTokens": [
+              "boreas-boreas-m3r-city-1598989149017050",
+              "boreas-boreas-m3r-city-1598989149098115"
+            ],
+            "links": [
+              {
+                "startToken": "boreas-boreas-m3r-city-1598989149017050",
+                "endToken": "boreas-boreas-m3r-city-1598989149098115",
+                "transitionSha256": "45120dccbbbe129809f4dca38f1faf24520a6b80fa90379462ab6e9898cecb7d",
+                "previousIndex": 4,
+                "currentIndex": 3,
+                "linkSha256": "31bf36a20e640fcb2f9238b227b5a57311f1eec8ae04f85001485322995bbebc"
+              }
+            ]
+          },
+          "supported": true,
+          "measurementPair": {
+            "fieldId": "boreas-boreas-m3r-city-1598989149017050->boreas-boreas-m3r-city-1598989149098115",
+            "startToken": "boreas-boreas-m3r-city-1598989149017050",
+            "endToken": "boreas-boreas-m3r-city-1598989149098115",
+            "startDetectionIndex": 4,
+            "endDetectionIndex": 3,
+            "pairSha256": "a565f000f1e975b1fee76ee1be641bf5bc388c624f9d0a46de6423f3cc12769f"
+          },
+          "linearLogGrowthLowerBound": 0.017514931825554747,
+          "linearLogGrowthUpperBound": 0.017820843720678572,
+          "startMs": 2956.762,
+          "observationMs": 81.06500000000005
+        },
+        "anchor": null,
+        "reason": "no-long-source-exposure"
+      },
+      "selectedPairDetails": {
+        "fresh": {
+          "fieldId": "boreas-boreas-m3r-city-1598989149017050->boreas-boreas-m3r-city-1598989149098115",
+          "startToken": "boreas-boreas-m3r-city-1598989149017050",
+          "endToken": "boreas-boreas-m3r-city-1598989149098115",
+          "startDetectionIndex": 4,
+          "endDetectionIndex": 3,
+          "pairSha256": "a565f000f1e975b1fee76ee1be641bf5bc388c624f9d0a46de6423f3cc12769f",
+          "reason": "bidirectional-textured-global-supported",
+          "supported": true,
+          "unverifiable": false,
+          "observationMs": 81.06500000000005,
+          "linearLogGrowthLowerBound": 0.017514931825554747,
+          "linearLogGrowthUpperBound": 0.017820843720678572,
+          "directions": {
+            "forward": {
+              "reason": "verified-global-grid",
+              "seedPoints": 52,
+              "verifiedPoints": 44,
+              "assignedPoints": 44,
+              "points": 41,
+              "supported": true
+            },
+            "reverse": {
+              "reason": "verified-global-grid",
+              "seedPoints": 50,
+              "verifiedPoints": 40,
+              "assignedPoints": 40,
+              "points": 40,
+              "supported": true
+            }
+          }
+        },
+        "anchor": null
+      },
+      "firstVeto": "no-long-source-exposure",
+      "firstVetoStage": "source-exposure",
+      "observedSourceHistory": [
+        {
+          "index": 33,
+          "token": "boreas-boreas-m3r-city-1598989148697934",
+          "timeMs": 2637.646,
+          "epoch": 16,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 2,
+            "maxAgeMs": 81.0640000000003,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989148616870",
+              "boreas-boreas-m3r-city-1598989148697934"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989148697934",
+              "timeMs": 2637.646,
+              "sourceSha256": "c3cc741d1437ddcd055b3ed5629f747f1c532970a29ca239da7015bc10248897"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989148616870",
+              "timeMs": 2556.582,
+              "sourceSha256": "bdbb7531e96512b085db8330cd8b71c9d86dd81adc3a08d5e43fdb2137f9c8b6"
+            },
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 34,
+          "token": "boreas-boreas-m3r-city-1598989148775822",
+          "timeMs": 2715.534,
+          "epoch": 17,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 35,
+          "token": "boreas-boreas-m3r-city-1598989148858193",
+          "timeMs": 2797.905,
+          "epoch": 18,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 36,
+          "token": "boreas-boreas-m3r-city-1598989148937741",
+          "timeMs": 2877.453,
+          "epoch": 19,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 37,
+          "token": "boreas-boreas-m3r-city-1598989149017050",
+          "timeMs": 2956.762,
+          "epoch": 19,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 1,
+            "maxAgeMs": 0.0,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989149017050"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989149017050",
+              "timeMs": 2956.762,
+              "sourceSha256": "e91318880d2f7587942cd88f83d510e1cedcf17db18f8a69248619fb227e79be"
+            },
+            "fresh": null,
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 38,
+          "token": "boreas-boreas-m3r-city-1598989149098115",
+          "timeMs": 3037.827,
+          "epoch": 19,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 2,
+            "maxAgeMs": 81.06500000000005,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989149017050",
+              "boreas-boreas-m3r-city-1598989149098115"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989149098115",
+              "timeMs": 3037.827,
+              "sourceSha256": "8ee5c1c5f88beab210bf6b442178055cf8a4b3ad6c7c44f3e29908f2f255d2c1"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989149017050",
+              "timeMs": 2956.762,
+              "sourceSha256": "e91318880d2f7587942cd88f83d510e1cedcf17db18f8a69248619fb227e79be"
+            },
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        }
+      ]
+    },
+    {
+      "clipId": "boreas-m3r-city",
+      "frameIndex": 45,
+      "token": "boreas-boreas-m3r-city-1598989149656821",
+      "timestampUs": 1598989149656821,
+      "sourceSha256": "3f3bace153048e55659772c7c718a150bc88c87143408e8c8dd3faf798bc2aa1",
+      "target": {
+        "instance": "915bf105-20a3-44bb-8b07-67e429afc80b",
+        "box": {
+          "x": 0.1875,
+          "y": 0.5105853051058531,
+          "width": 0.128125,
+          "height": 0.08343711083437111
+        },
+        "classFamily": "vehicle",
+        "motion": "unknown",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 2,
+        "iou": 0.8343638303174962,
+        "runnerUpMargin": 0.8343638303174962
+      },
+      "currentTrackMatch": {
+        "reportIndex": 2,
+        "iou": 0.8343638303174962,
+        "runnerUpMargin": 0.8343638303174962
+      },
+      "cameraStatus": "valid",
+      "currentHandle": 240,
+      "currentDetectionIndex": 2,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-city-1598989149656821",
+        "currentMs": 3596.533,
+        "identityId": 240,
+        "fresh": null,
+        "reason": "no-fresh-source-exposure"
+      },
+      "selectedPairDetails": {
+        "fresh": null,
+        "anchor": null
+      },
+      "firstVeto": "no-fresh-source-exposure",
+      "firstVetoStage": "source-exposure",
+      "observedSourceHistory": [
+        {
+          "index": 40,
+          "token": "boreas-boreas-m3r-city-1598989149257229",
+          "timeMs": 3196.941,
+          "epoch": 19,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 3,
+            "maxAgeMs": 240.17899999999963,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989149017050",
+              "boreas-boreas-m3r-city-1598989149177552",
+              "boreas-boreas-m3r-city-1598989149257229"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989149257229",
+              "timeMs": 3196.941,
+              "sourceSha256": "6355ecf8bb583e62ea55fb384416b2fad98be47927c820cfc46a7138db7cae9e"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989149177552",
+              "timeMs": 3117.264,
+              "sourceSha256": "f1ea9e319bdc66ff5db74d9b0de78fc5f4a0a8d1718f487d5fa1fac4b1ffec8c"
+            },
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 41,
+          "token": "boreas-boreas-m3r-city-1598989149339002",
+          "timeMs": 3278.714,
+          "epoch": 19,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 3,
+            "maxAgeMs": 321.95199999999977,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989149017050",
+              "boreas-boreas-m3r-city-1598989149177552",
+              "boreas-boreas-m3r-city-1598989149339002"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989149339002",
+              "timeMs": 3278.714,
+              "sourceSha256": "b4c925750e6ca84274d25062b56070145b87af149b89df71713cf14b285cbfb8"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-city-1598989149257229",
+              "timeMs": 3196.941,
+              "sourceSha256": "6355ecf8bb583e62ea55fb384416b2fad98be47927c820cfc46a7138db7cae9e"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-city-1598989149017050",
+              "timeMs": 2956.762,
+              "sourceSha256": "e91318880d2f7587942cd88f83d510e1cedcf17db18f8a69248619fb227e79be"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 42,
+          "token": "boreas-boreas-m3r-city-1598989149416778",
+          "timeMs": 3356.49,
+          "epoch": 20,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 43,
+          "token": "boreas-boreas-m3r-city-1598989149496193",
+          "timeMs": 3435.905,
+          "epoch": 21,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 44,
+          "token": "boreas-boreas-m3r-city-1598989149577615",
+          "timeMs": 3517.327,
+          "epoch": 22,
+          "cameraStatus": "insufficient-background-agreement",
+          "measurementStatus": "insufficient-background-agreement",
+          "measurementBank": {
+            "count": 0,
+            "maxAgeMs": null,
+            "tokens": []
+          },
+          "snapshotSelection": {}
+        },
+        {
+          "index": 45,
+          "token": "boreas-boreas-m3r-city-1598989149656821",
+          "timeMs": 3596.533,
+          "epoch": 22,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 1,
+            "maxAgeMs": 0.0,
+            "tokens": [
+              "boreas-boreas-m3r-city-1598989149656821"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-city-1598989149656821",
+              "timeMs": 3596.533,
+              "sourceSha256": "3f3bace153048e55659772c7c718a150bc88c87143408e8c8dd3faf798bc2aa1"
+            },
+            "fresh": null,
+            "anchor": null,
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        }
+      ]
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 13,
+      "token": "boreas-boreas-m3r-low-speed-1598991325115172",
+      "timestampUs": 1598991325115172,
+      "sourceSha256": "a5025c320022d0f0af3bd67448243ddaeddd69e8df6578b9c0c917f77431a51c",
+      "target": {
+        "instance": "cb7da3b6-7f6a-459a-836f-047195fce41c",
+        "box": {
+          "x": 0.16145833333333334,
+          "y": 0.48318804483188044,
+          "width": 0.16145833333333334,
+          "height": 0.0684931506849315
+        },
+        "classFamily": "vehicle",
+        "motion": "moving",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 10,
+        "iou": 0.7179953687284475,
+        "runnerUpMargin": 0.7179953687284475
+      },
+      "currentTrackMatch": {
+        "reportIndex": 10,
+        "iou": 0.7179953687284475,
+        "runnerUpMargin": 0.7179953687284475
+      },
+      "cameraStatus": "valid",
+      "currentHandle": 44,
+      "currentDetectionIndex": 10,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-low-speed-1598991325115172",
+        "currentMs": 1038.977,
+        "identityId": 44,
+        "fresh": {
+          "identityChain": {
+            "supported": true,
+            "reason": "uninterrupted-measured-positive-identity-chain",
+            "identityId": 44,
+            "startToken": "boreas-boreas-m3r-low-speed-1598991325035074",
+            "endToken": "boreas-boreas-m3r-low-speed-1598991325115172",
+            "currentIndex": 10,
+            "sourceIndex": 7,
+            "startMs": 958.879,
+            "endMs": 1038.977,
+            "observationSha256s": [
+              "2af5f1da488a90e9502cd538d3132d0c08f8e29ea3d237d024854e0eee2f20d5",
+              "16cf9a114565ba41833eb6b3c2d3c1b72842442b3623bf7fb961ce11d4224b71"
+            ],
+            "exposureTokens": [
+              "boreas-boreas-m3r-low-speed-1598991325035074",
+              "boreas-boreas-m3r-low-speed-1598991325115172"
+            ],
+            "links": [
+              {
+                "startToken": "boreas-boreas-m3r-low-speed-1598991325035074",
+                "endToken": "boreas-boreas-m3r-low-speed-1598991325115172",
+                "transitionSha256": "f792cf3cafa3aca695395f0e00670b80c635138509a96b725bc3dc5f45daf8b4",
+                "previousIndex": 7,
+                "currentIndex": 10,
+                "linkSha256": "53f4d07294c545d43c6c58d8178605c6371c6f5b8e69aba6a7d3080daa62d58f"
+              }
+            ]
+          },
+          "supported": false,
+          "measurementPair": {
+            "fieldId": "boreas-boreas-m3r-low-speed-1598991325035074->boreas-boreas-m3r-low-speed-1598991325115172",
+            "startToken": "boreas-boreas-m3r-low-speed-1598991325035074",
+            "endToken": "boreas-boreas-m3r-low-speed-1598991325115172",
+            "startDetectionIndex": 7,
+            "endDetectionIndex": 10,
+            "pairSha256": "d9ba172cd88a8a22b5a9fd557a2ece6237909e205ecb2dcb1624d3bcfdd19dcb"
+          }
+        },
+        "reason": "fresh-forward-insufficient-grid-support"
+      },
+      "selectedPairDetails": {
+        "fresh": {
+          "fieldId": "boreas-boreas-m3r-low-speed-1598991325035074->boreas-boreas-m3r-low-speed-1598991325115172",
+          "startToken": "boreas-boreas-m3r-low-speed-1598991325035074",
+          "endToken": "boreas-boreas-m3r-low-speed-1598991325115172",
+          "startDetectionIndex": 7,
+          "endDetectionIndex": 10,
+          "pairSha256": "d9ba172cd88a8a22b5a9fd557a2ece6237909e205ecb2dcb1624d3bcfdd19dcb",
+          "reason": "forward-insufficient-grid-support",
+          "supported": false,
+          "unverifiable": false,
+          "observationMs": 80.09800000000007,
+          "linearLogGrowthLowerBound": null,
+          "linearLogGrowthUpperBound": null,
+          "directions": {
+            "forward": {
+              "reason": "insufficient-grid-support",
+              "seedPoints": 63,
+              "verifiedPoints": 5,
+              "assignedPoints": 5,
+              "points": 0,
+              "supported": false
+            },
+            "reverse": {
+              "reason": "insufficient-grid-support",
+              "seedPoints": 61,
+              "verifiedPoints": 3,
+              "assignedPoints": 3,
+              "points": 0,
+              "supported": false
+            }
+          }
+        },
+        "anchor": null
+      },
+      "firstVeto": "fresh-forward-insufficient-grid-support",
+      "firstVetoStage": "chosen-measurement"
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 20,
+      "token": "boreas-boreas-m3r-low-speed-1598991325675557",
+      "timestampUs": 1598991325675557,
+      "sourceSha256": "75d4d837b452f9ff396dd0d78c5e4371fdc8e9e96351b8bdb4b8aa455606c995",
+      "target": {
+        "instance": "cb7da3b6-7f6a-459a-836f-047195fce41c",
+        "box": {
+          "x": 0.290625,
+          "y": 0.48941469489414696,
+          "width": 0.1625,
+          "height": 0.0684931506849315
+        },
+        "classFamily": "vehicle",
+        "motion": "moving",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": null,
+      "currentTrackMatch": null,
+      "cameraStatus": "valid",
+      "sameFamilyMaxRawIoU": 0.009031014500080798,
+      "firstVeto": "current-detector-or-handle-criterion-failure",
+      "firstVetoStage": "detector-or-current-handle"
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 28,
+      "token": "boreas-boreas-m3r-low-speed-1598991326316062",
+      "timestampUs": 1598991326316062,
+      "sourceSha256": "460eb38f217cc2962bc1be9b0510c7bbb6f1e7cf16533f368633ded239f73d7b",
+      "target": {
+        "instance": "cb7da3b6-7f6a-459a-836f-047195fce41c",
+        "box": {
+          "x": 0.434375,
+          "y": 0.49564134495641343,
+          "width": 0.159375,
+          "height": 0.0647571606475716
+        },
+        "classFamily": "vehicle",
+        "motion": "moving",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 4,
+        "iou": 0.8447398399991736,
+        "runnerUpMargin": 0.7258417819369947
+      },
+      "currentTrackMatch": {
+        "reportIndex": 4,
+        "iou": 0.8447398399991736,
+        "runnerUpMargin": 0.7258417819369947
+      },
+      "cameraStatus": "valid",
+      "currentHandle": 105,
+      "currentDetectionIndex": 4,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-low-speed-1598991326316062",
+        "currentMs": 2239.867,
+        "identityId": 105,
+        "fresh": {
+          "identityChain": {
+            "supported": false,
+            "reason": "missing-identity-source-exposure",
+            "identityId": 105,
+            "startToken": "boreas-boreas-m3r-low-speed-1598991326237522",
+            "endToken": "boreas-boreas-m3r-low-speed-1598991326316062",
+            "currentIndex": 4
+          },
+          "supported": false,
+          "measurementPair": null
+        },
+        "reason": "fresh-missing-identity-source-exposure"
+      },
+      "selectedPairDetails": {
+        "fresh": null,
+        "anchor": null
+      },
+      "firstFailingChainRole": "fresh",
+      "adjacentChainDiagnostics": [
+        {
+          "token": "boreas-boreas-m3r-low-speed-1598991326316062",
+          "epoch": 0,
+          "status": "valid",
+          "handlePresent": true,
+          "transitionReason": "measured-identity-transition",
+          "link": {
+            "currentIndex": 4,
+            "currentId": 105,
+            "supported": false,
+            "reason": "identity-handle-not-continued",
+            "eligibleSourceIndices": [
+              5
+            ],
+            "previousIndex": 5,
+            "previousId": 100,
+            "iou": 0.8723464596334575,
+            "rowRunnerIou": null,
+            "rowMargin": null,
+            "columnRunnerIou": null,
+            "columnMargin": null,
+            "reciprocalCurrentIndex": 4,
+            "eligibleCurrentIndices": [
+              4
+            ]
+          }
+        }
+      ],
+      "firstVeto": "fresh-missing-identity-source-exposure",
+      "firstVetoStage": "identity-chain",
+      "observedSourceHistory": [
+        {
+          "index": 23,
+          "token": "boreas-boreas-m3r-low-speed-1598991325914982",
+          "timeMs": 1838.787,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 5,
+            "maxAgeMs": 718.683,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991325196299",
+              "boreas-boreas-m3r-low-speed-1598991325434572",
+              "boreas-boreas-m3r-low-speed-1598991325595222",
+              "boreas-boreas-m3r-low-speed-1598991325756780",
+              "boreas-boreas-m3r-low-speed-1598991325914982"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325914982",
+              "timeMs": 1838.787,
+              "sourceSha256": "e5fedadbbe27576fcb84ba073b2518c047b4e94bc8b94d40e4b094e0c27ffa42"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325835473",
+              "timeMs": 1759.278,
+              "sourceSha256": "bdce942653b75983a49e85fe74ecfc14f4ea1f6fb2e690eba6411244bcce9f0c"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325196299",
+              "timeMs": 1120.104,
+              "sourceSha256": "9796346e85a9bff8c81e40ee4c2f9976745c2075ae0a0953ecd937e8b076fec3"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 24,
+          "token": "boreas-boreas-m3r-low-speed-1598991325995535",
+          "timeMs": 1919.34,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 5,
+            "maxAgeMs": 799.2359999999999,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991325196299",
+              "boreas-boreas-m3r-low-speed-1598991325434572",
+              "boreas-boreas-m3r-low-speed-1598991325595222",
+              "boreas-boreas-m3r-low-speed-1598991325756780",
+              "boreas-boreas-m3r-low-speed-1598991325995535"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325995535",
+              "timeMs": 1919.34,
+              "sourceSha256": "eb587f3d4b01ec602b15e5195c97a647e57ee8728c17b23a2227a7331292b49b"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325914982",
+              "timeMs": 1838.787,
+              "sourceSha256": "e5fedadbbe27576fcb84ba073b2518c047b4e94bc8b94d40e4b094e0c27ffa42"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325196299",
+              "timeMs": 1120.104,
+              "sourceSha256": "9796346e85a9bff8c81e40ee4c2f9976745c2075ae0a0953ecd937e8b076fec3"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 25,
+          "token": "boreas-boreas-m3r-low-speed-1598991326079480",
+          "timeMs": 2003.285,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 5,
+            "maxAgeMs": 644.9080000000001,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991325434572",
+              "boreas-boreas-m3r-low-speed-1598991325595222",
+              "boreas-boreas-m3r-low-speed-1598991325756780",
+              "boreas-boreas-m3r-low-speed-1598991325995535",
+              "boreas-boreas-m3r-low-speed-1598991326079480"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326079480",
+              "timeMs": 2003.285,
+              "sourceSha256": "185e8d593d71b62493a3567d04f91769b5663811f164e94433a2a9d2d38510b4"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325995535",
+              "timeMs": 1919.34,
+              "sourceSha256": "eb587f3d4b01ec602b15e5195c97a647e57ee8728c17b23a2227a7331292b49b"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325434572",
+              "timeMs": 1358.377,
+              "sourceSha256": "1bd39f7b49d838300e6090698fb98c59c59fa2221b19c1fccaf7a44a22a9339f"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 26,
+          "token": "boreas-boreas-m3r-low-speed-1598991326154794",
+          "timeMs": 2078.599,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 5,
+            "maxAgeMs": 720.2220000000002,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991325434572",
+              "boreas-boreas-m3r-low-speed-1598991325595222",
+              "boreas-boreas-m3r-low-speed-1598991325756780",
+              "boreas-boreas-m3r-low-speed-1598991325995535",
+              "boreas-boreas-m3r-low-speed-1598991326154794"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326154794",
+              "timeMs": 2078.599,
+              "sourceSha256": "8a3e9f34a141d343e7d341a1312812c43521d4c8a4d191676fec4009054df389"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326079480",
+              "timeMs": 2003.285,
+              "sourceSha256": "185e8d593d71b62493a3567d04f91769b5663811f164e94433a2a9d2d38510b4"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325434572",
+              "timeMs": 1358.377,
+              "sourceSha256": "1bd39f7b49d838300e6090698fb98c59c59fa2221b19c1fccaf7a44a22a9339f"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 27,
+          "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+          "timeMs": 2161.327,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 4,
+            "maxAgeMs": 642.3000000000002,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991325595222",
+              "boreas-boreas-m3r-low-speed-1598991325756780",
+              "boreas-boreas-m3r-low-speed-1598991325995535",
+              "boreas-boreas-m3r-low-speed-1598991326237522"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+              "timeMs": 2161.327,
+              "sourceSha256": "1a95ce2db658ca279e734d22f71a9aaa926a573d7e2534757fe278e4190f3b81"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326154794",
+              "timeMs": 2078.599,
+              "sourceSha256": "8a3e9f34a141d343e7d341a1312812c43521d4c8a4d191676fec4009054df389"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325595222",
+              "timeMs": 1519.027,
+              "sourceSha256": "1360a4d7d5dc21ccc68eb29453313a645e91a84033f756f0601df0e0020a7bca"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 28,
+          "token": "boreas-boreas-m3r-low-speed-1598991326316062",
+          "timeMs": 2239.867,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 5,
+            "maxAgeMs": 720.8400000000001,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991325595222",
+              "boreas-boreas-m3r-low-speed-1598991325756780",
+              "boreas-boreas-m3r-low-speed-1598991325995535",
+              "boreas-boreas-m3r-low-speed-1598991326237522",
+              "boreas-boreas-m3r-low-speed-1598991326316062"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326316062",
+              "timeMs": 2239.867,
+              "sourceSha256": "460eb38f217cc2962bc1be9b0510c7bbb6f1e7cf16533f368633ded239f73d7b"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+              "timeMs": 2161.327,
+              "sourceSha256": "1a95ce2db658ca279e734d22f71a9aaa926a573d7e2534757fe278e4190f3b81"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325595222",
+              "timeMs": 1519.027,
+              "sourceSha256": "1360a4d7d5dc21ccc68eb29453313a645e91a84033f756f0601df0e0020a7bca"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        }
+      ],
+      "observedIdentitySource": {
+        "sourceToken": "boreas-boreas-m3r-low-speed-1598991326237522",
+        "sourceSha256": "1a95ce2db658ca279e734d22f71a9aaa926a573d7e2534757fe278e4190f3b81",
+        "sourceEpoch": 0,
+        "currentEpoch": 0,
+        "sourceTrackIds": [
+          1,
+          4,
+          87,
+          6,
+          57,
+          100,
+          101,
+          70,
+          99,
+          102,
+          103,
+          104
+        ],
+        "currentTrackId": 105,
+        "currentIdentityDecision": {
+          "kept": false,
+          "appearanceCorrelation": 0.6263474822044373,
+          "reason": "new-or-appearance-unverified",
+          "freshPair": {
+            "attempted": true,
+            "previousMs": 2161.327,
+            "currentMs": 2239.867,
+            "seedPoints": 61,
+            "supportedPoints": 0,
+            "reason": "insufficient-object-flow"
+          },
+          "ageMs": 0.0
+        },
+        "interpretation": "The current handle is absent from the actual selected source exposure. The receipt does not establish that a physical object was absent or different."
+      }
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 36,
+      "token": "boreas-boreas-m3r-low-speed-1598991326957882",
+      "timestampUs": 1598991326957882,
+      "sourceSha256": "e3d3044f2a6498889ae92417268cdc1c2553249205ef481c84d5bfe6d41ff907",
+      "target": {
+        "instance": "fe02c1ed-9fdd-473f-a933-e46d93652746",
+        "box": {
+          "x": 0.18541666666666667,
+          "y": 0.5080946450809465,
+          "width": 0.04895833333333333,
+          "height": 0.074719800747198
+        },
+        "classFamily": "vehicle",
+        "motion": "moving",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 4,
+        "iou": 0.4776827444768033,
+        "runnerUpMargin": 0.2745919701332835
+      },
+      "currentTrackMatch": {
+        "reportIndex": 4,
+        "iou": 0.4776827444768033,
+        "runnerUpMargin": 0.2745919701332835
+      },
+      "cameraStatus": "valid",
+      "currentHandle": 135,
+      "currentDetectionIndex": 4,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-low-speed-1598991326957882",
+        "currentMs": 2881.687,
+        "identityId": 135,
+        "fresh": {
+          "identityChain": {
+            "supported": false,
+            "reason": "missing-identity-source-exposure",
+            "identityId": 135,
+            "startToken": "boreas-boreas-m3r-low-speed-1598991326875470",
+            "endToken": "boreas-boreas-m3r-low-speed-1598991326957882",
+            "currentIndex": 4
+          },
+          "supported": false,
+          "measurementPair": null
+        },
+        "reason": "fresh-missing-identity-source-exposure"
+      },
+      "selectedPairDetails": {
+        "fresh": null,
+        "anchor": null
+      },
+      "firstFailingChainRole": "fresh",
+      "adjacentChainDiagnostics": [
+        {
+          "token": "boreas-boreas-m3r-low-speed-1598991326957882",
+          "epoch": 0,
+          "status": "valid",
+          "handlePresent": true,
+          "transitionReason": "measured-identity-transition",
+          "link": {
+            "currentIndex": 4,
+            "currentId": 135,
+            "supported": false,
+            "reason": "identity-handle-not-continued",
+            "eligibleSourceIndices": [
+              3
+            ],
+            "previousIndex": 3,
+            "previousId": 129,
+            "iou": 0.5371043006510853,
+            "rowRunnerIou": null,
+            "rowMargin": null,
+            "columnRunnerIou": null,
+            "columnMargin": null,
+            "reciprocalCurrentIndex": 4,
+            "eligibleCurrentIndices": [
+              4
+            ]
+          }
+        }
+      ],
+      "firstVeto": "fresh-missing-identity-source-exposure",
+      "firstVetoStage": "identity-chain",
+      "observedSourceHistory": [
+        {
+          "index": 31,
+          "token": "boreas-boreas-m3r-low-speed-1598991326554916",
+          "timeMs": 2478.721,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 5,
+            "maxAgeMs": 798.136,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991325756780",
+              "boreas-boreas-m3r-low-speed-1598991325995535",
+              "boreas-boreas-m3r-low-speed-1598991326237522",
+              "boreas-boreas-m3r-low-speed-1598991326476022",
+              "boreas-boreas-m3r-low-speed-1598991326554916"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326554916",
+              "timeMs": 2478.721,
+              "sourceSha256": "17d3aeb4c3161e6242e7934513f7226efe8709a86db465f5981851ce1b4eb5d0"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326476022",
+              "timeMs": 2399.827,
+              "sourceSha256": "47f00698ada3f8d46b573c0624c51c4ba0d37a861ccf93731173310b2893666b"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325756780",
+              "timeMs": 1680.585,
+              "sourceSha256": "35664752ae9411f93790bf39e99fff436a11097c94d8382aa110b11341b24f2b"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 32,
+          "token": "boreas-boreas-m3r-low-speed-1598991326636145",
+          "timeMs": 2559.95,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 4,
+            "maxAgeMs": 640.6099999999999,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991325995535",
+              "boreas-boreas-m3r-low-speed-1598991326237522",
+              "boreas-boreas-m3r-low-speed-1598991326476022",
+              "boreas-boreas-m3r-low-speed-1598991326636145"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326636145",
+              "timeMs": 2559.95,
+              "sourceSha256": "ad1a1994c8e95da349ed56b6813532b24431de5e66e028da2afa9c3f32c8de0d"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326554916",
+              "timeMs": 2478.721,
+              "sourceSha256": "17d3aeb4c3161e6242e7934513f7226efe8709a86db465f5981851ce1b4eb5d0"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325995535",
+              "timeMs": 1919.34,
+              "sourceSha256": "eb587f3d4b01ec602b15e5195c97a647e57ee8728c17b23a2227a7331292b49b"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 33,
+          "token": "boreas-boreas-m3r-low-speed-1598991326715055",
+          "timeMs": 2638.86,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 5,
+            "maxAgeMs": 719.5200000000002,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991325995535",
+              "boreas-boreas-m3r-low-speed-1598991326237522",
+              "boreas-boreas-m3r-low-speed-1598991326476022",
+              "boreas-boreas-m3r-low-speed-1598991326636145",
+              "boreas-boreas-m3r-low-speed-1598991326715055"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326715055",
+              "timeMs": 2638.86,
+              "sourceSha256": "0db774ef721db998ba728a12e8f8b6689b60f54626574be4abde3fcf999a32e6"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326636145",
+              "timeMs": 2559.95,
+              "sourceSha256": "ad1a1994c8e95da349ed56b6813532b24431de5e66e028da2afa9c3f32c8de0d"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991325995535",
+              "timeMs": 1919.34,
+              "sourceSha256": "eb587f3d4b01ec602b15e5195c97a647e57ee8728c17b23a2227a7331292b49b"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 34,
+          "token": "boreas-boreas-m3r-low-speed-1598991326795685",
+          "timeMs": 2719.49,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 4,
+            "maxAgeMs": 558.1629999999996,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991326237522",
+              "boreas-boreas-m3r-low-speed-1598991326476022",
+              "boreas-boreas-m3r-low-speed-1598991326636145",
+              "boreas-boreas-m3r-low-speed-1598991326795685"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326795685",
+              "timeMs": 2719.49,
+              "sourceSha256": "c3da347734f3f3fc8fefb41558aa64034a898a2671ab4248f59501ff4d71a1bf"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326715055",
+              "timeMs": 2638.86,
+              "sourceSha256": "0db774ef721db998ba728a12e8f8b6689b60f54626574be4abde3fcf999a32e6"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+              "timeMs": 2161.327,
+              "sourceSha256": "1a95ce2db658ca279e734d22f71a9aaa926a573d7e2534757fe278e4190f3b81"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 35,
+          "token": "boreas-boreas-m3r-low-speed-1598991326875470",
+          "timeMs": 2799.275,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 4,
+            "maxAgeMs": 637.9479999999999,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991326237522",
+              "boreas-boreas-m3r-low-speed-1598991326476022",
+              "boreas-boreas-m3r-low-speed-1598991326636145",
+              "boreas-boreas-m3r-low-speed-1598991326875470"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326875470",
+              "timeMs": 2799.275,
+              "sourceSha256": "8aaf34f449922230dfeeff39749f3dc561e7626cd238e186ccf099ded05926db"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326795685",
+              "timeMs": 2719.49,
+              "sourceSha256": "c3da347734f3f3fc8fefb41558aa64034a898a2671ab4248f59501ff4d71a1bf"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+              "timeMs": 2161.327,
+              "sourceSha256": "1a95ce2db658ca279e734d22f71a9aaa926a573d7e2534757fe278e4190f3b81"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        },
+        {
+          "index": 36,
+          "token": "boreas-boreas-m3r-low-speed-1598991326957882",
+          "timeMs": 2881.687,
+          "epoch": 0,
+          "cameraStatus": "valid",
+          "measurementStatus": "valid",
+          "measurementBank": {
+            "count": 5,
+            "maxAgeMs": 720.3599999999997,
+            "tokens": [
+              "boreas-boreas-m3r-low-speed-1598991326237522",
+              "boreas-boreas-m3r-low-speed-1598991326476022",
+              "boreas-boreas-m3r-low-speed-1598991326636145",
+              "boreas-boreas-m3r-low-speed-1598991326875470",
+              "boreas-boreas-m3r-low-speed-1598991326957882"
+            ]
+          },
+          "snapshotSelection": {
+            "current": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326957882",
+              "timeMs": 2881.687,
+              "sourceSha256": "e3d3044f2a6498889ae92417268cdc1c2553249205ef481c84d5bfe6d41ff907"
+            },
+            "fresh": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326875470",
+              "timeMs": 2799.275,
+              "sourceSha256": "8aaf34f449922230dfeeff39749f3dc561e7626cd238e186ccf099ded05926db"
+            },
+            "anchor": {
+              "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+              "timeMs": 2161.327,
+              "sourceSha256": "1a95ce2db658ca279e734d22f71a9aaa926a573d7e2534757fe278e4190f3b81"
+            },
+            "rule": "oldest-eligible-cadence-origin-plus-immediately-previous-actual-exposure"
+          }
+        }
+      ],
+      "observedIdentitySource": {
+        "sourceToken": "boreas-boreas-m3r-low-speed-1598991326875470",
+        "sourceSha256": "8aaf34f449922230dfeeff39749f3dc561e7626cd238e186ccf099ded05926db",
+        "sourceEpoch": 0,
+        "currentEpoch": 0,
+        "sourceTrackIds": [
+          1,
+          4,
+          115,
+          129,
+          127,
+          57,
+          70,
+          130,
+          131,
+          132,
+          133,
+          6
+        ],
+        "currentTrackId": 135,
+        "currentIdentityDecision": {
+          "kept": false,
+          "appearanceCorrelation": 0.5184439420700073,
+          "reason": "new-or-appearance-unverified",
+          "freshPair": {
+            "attempted": true,
+            "previousMs": 2799.275,
+            "currentMs": 2881.687,
+            "seedPoints": 23,
+            "supportedPoints": 0,
+            "reason": "insufficient-object-flow"
+          },
+          "ageMs": 0.0
+        },
+        "interpretation": "The current handle is absent from the actual selected source exposure. The receipt does not establish that a physical object was absent or different."
+      }
+    },
+    {
+      "clipId": "boreas-m3r-low-speed",
+      "frameIndex": 44,
+      "token": "boreas-boreas-m3r-low-speed-1598991327601738",
+      "timestampUs": 1598991327601738,
+      "sourceSha256": "46ed05a86452f65edcab6c49a83c3a9b937e2b3ee7d028bee7492e7349128a34",
+      "target": {
+        "instance": "09cf400a-d0b2-4716-975e-55a13bcd1237",
+        "box": {
+          "x": 0.14791666666666667,
+          "y": 0.5093399750933998,
+          "width": 0.14375,
+          "height": 0.057285180572851806
+        },
+        "classFamily": "vehicle",
+        "motion": "moving",
+        "approach": "approaching"
+      },
+      "rawDetectionMatch": {
+        "reportIndex": 1,
+        "iou": 0.8215056558114392,
+        "runnerUpMargin": 0.8215056558114392
+      },
+      "currentTrackMatch": {
+        "reportIndex": 1,
+        "iou": 0.8215056558114392,
+        "runnerUpMargin": 0.8215056558114392
+      },
+      "cameraStatus": "valid",
+      "currentHandle": 140,
+      "currentDetectionIndex": 1,
+      "windowEvidence": {
+        "confirmed": false,
+        "currentToken": "boreas-boreas-m3r-low-speed-1598991327601738",
+        "currentMs": 3525.543,
+        "identityId": 140,
+        "fresh": {
+          "identityChain": {
+            "supported": true,
+            "reason": "uninterrupted-measured-positive-identity-chain",
+            "identityId": 140,
+            "startToken": "boreas-boreas-m3r-low-speed-1598991327518010",
+            "endToken": "boreas-boreas-m3r-low-speed-1598991327601738",
+            "currentIndex": 1,
+            "sourceIndex": 1,
+            "startMs": 3441.815,
+            "endMs": 3525.543,
+            "observationSha256s": [
+              "43f0c1ab02df0094fef89eac439860934c9757ac3e6c53fd88ed090d68800065",
+              "493b60e4a015e6344be1f047da4cac5ad6f67d3a34312583029425496ea65161"
+            ],
+            "exposureTokens": [
+              "boreas-boreas-m3r-low-speed-1598991327518010",
+              "boreas-boreas-m3r-low-speed-1598991327601738"
+            ],
+            "links": [
+              {
+                "startToken": "boreas-boreas-m3r-low-speed-1598991327518010",
+                "endToken": "boreas-boreas-m3r-low-speed-1598991327601738",
+                "transitionSha256": "2bfb116503eec7fd61a2526fdd074a7044a018fafff1d77ea785886d8548ec94",
+                "previousIndex": 1,
+                "currentIndex": 1,
+                "linkSha256": "57db3c72934f63f2e27d4c5502abe230262abe532905bcdcba50b735e9fb6eb3"
+              }
+            ]
+          },
+          "supported": false,
+          "measurementPair": {
+            "fieldId": "boreas-boreas-m3r-low-speed-1598991327518010->boreas-boreas-m3r-low-speed-1598991327601738",
+            "startToken": "boreas-boreas-m3r-low-speed-1598991327518010",
+            "endToken": "boreas-boreas-m3r-low-speed-1598991327601738",
+            "startDetectionIndex": 1,
+            "endDetectionIndex": 1,
+            "pairSha256": "52ad3c77d43073280b5797e15afbb1852aa61443d152aca9a26c1b1b4fb182b1"
+          }
+        },
+        "reason": "fresh-forward-insufficient-grid-support"
+      },
+      "selectedPairDetails": {
+        "fresh": {
+          "fieldId": "boreas-boreas-m3r-low-speed-1598991327518010->boreas-boreas-m3r-low-speed-1598991327601738",
+          "startToken": "boreas-boreas-m3r-low-speed-1598991327518010",
+          "endToken": "boreas-boreas-m3r-low-speed-1598991327601738",
+          "startDetectionIndex": 1,
+          "endDetectionIndex": 1,
+          "pairSha256": "52ad3c77d43073280b5797e15afbb1852aa61443d152aca9a26c1b1b4fb182b1",
+          "reason": "forward-insufficient-grid-support",
+          "supported": false,
+          "unverifiable": false,
+          "observationMs": 83.72800000000007,
+          "linearLogGrowthLowerBound": null,
+          "linearLogGrowthUpperBound": null,
+          "directions": {
+            "forward": {
+              "reason": "insufficient-grid-support",
+              "seedPoints": 35,
+              "verifiedPoints": 8,
+              "assignedPoints": 8,
+              "points": 0,
+              "supported": false
+            },
+            "reverse": {
+              "reason": "insufficient-grid-support",
+              "seedPoints": 34,
+              "verifiedPoints": 5,
+              "assignedPoints": 5,
+              "points": 0,
+              "supported": false
+            }
+          }
+        },
+        "anchor": null
+      },
+      "firstVeto": "fresh-forward-insufficient-grid-support",
+      "firstVetoStage": "chosen-measurement"
+    }
+  ],
+  "actualNewModelCalls": 0,
+  "limits": [
+    "First observed veto partitions each positive once; downstream missing checks are not independent failures.",
+    "Identity chain rejection is not proof that objects differ physically.",
+    "Current detection assignment uses full same-family graph and frozen IoU/margin; missed detection is a criterion failure, not proof pixels contain no detector proposal.",
+    "Approach is source 3D/pose-derived radial motion, while emitted event is verified relative optical expansion.",
+    "No new inference, model calls, threshold edits or retuning in diagnosis."
+  ],
+  "missingSourceObservedSummary": {
+    "twoCity14Positives": "Camera/measurement insufficient-background-agreement, epoch10, empty source selection and measurement bank0. Preceded by invalid epochs; no selected exposure exists.",
+    "city30": "Camera valid epoch15, after invalid epochs13/14/15 at frames26/27/28. Frame29 begins valid bank, frame30 bank2 age79.414ms, fresh exists and long source absent.",
+    "city38": "Camera valid epoch19, after invalid epochs17/18/19 at frames34/35/36. Frame37 begins valid bank, frame38 bank2 age81.065ms, fresh exists and long source absent.",
+    "city45": "Camera valid epoch22, after invalid epochs20/21/22 at frames42/43/44. First valid retained exposure has bank1 age0 and no selected fresh or long source.",
+    "threeMissingIdentitySources": "City22, low-speed28 and36 all keep the same camera epoch as the selected fresh source, but their current T handles134/105/135 are new (age0) and absent from that source. Low-speed NCC is .62634748/.51844394, below frozen .70, with pixel fallback reporting0 supported points; city22 NCC is unavailable."
+  },
+  "architecturalLimit": "An association-only overlay can choose among actual validated A measurements but cannot manufacture a missing prior/long exposure or replace rejected chosen-pair measurement. It deliberately does not borrow old identity age or convert unknown pairs into physical negatives."
+}

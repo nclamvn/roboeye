@@ -10,6 +10,9 @@ import {fileURLToPath} from 'node:url';
 const ROOT=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const LOG_LIMIT=2*1024*1024, OUTPUT_LIMIT=16*1024*1024;
 export const MIN_FREE_KIB=10*1024*1024;
+const M3R_REQUIRED_FILES=['scripts/assist_scene_m3r_association.py','scripts/assist_scene_m3r_study.py',
+  'scripts/fetch_assist_scene_m3r_boreas.py','tests/test_assist_scene_m3r_association.py',
+  'tests/test_assist_scene_m3r_study.py','tests/test_assist_scene_m3r_data.py','docs/TIP-65-M3R-MAC.md'];
 
 export function parseDiskFree(text) {
   const row=text.trim().split('\n').at(-1)?.trim().split(/\s+/);
@@ -121,7 +124,7 @@ async function walk(root,folder,files) {
 export function sceneFingerprintSource(folder,name) {
   if(folder==='scripts')return name.endsWith('.py') && (name.startsWith('assist_scene_') || name.includes('assist-scene-')
     || name.startsWith('diagnose_assist_scene_') || name.startsWith('audit_assist_scene_')
-    || name.startsWith('reconstruct_assist_scene_'));
+    || name.startsWith('reconstruct_assist_scene_') || name.startsWith('fetch_assist_scene_'));
   return folder==='tests' && (/^test_assist_scene_.*\.py$/.test(name) || name==='test-qa-assist-scene-mac.mjs');
 }
 
@@ -146,7 +149,10 @@ async function semantics(root) {
     'm3l-development-score.json','m3l-boreas-score.json','m3l-controls-score.json',
     'm3m-development-score.json','m3m-boreas-score.json','m3m-controls-score.json',
     'm3n-development-score.json','m3n-boreas-score.json','m3n-controls-score.json',
-    'm3o-m3n-diagnosis.json','m3o-boreas-score.json','m3o-controls-score.json']) {
+    'm3o-m3n-diagnosis.json','m3o-boreas-score.json','m3o-controls-score.json',
+    'm3p-identity-reviewed.json','m3p-real-pair-score.json','m3p-spring-fetch-incomplete.json',
+    'm3q-boreas-score.json','m3q-verification.json',
+    'm3r-development-association.json','m3r-boreas-score.json','m3r-verification.json']) {
     const rel='docs/evidence/tip65/'+name;
     try {
       const raw=await readFile(join(root,rel));const data=JSON.parse(raw);
@@ -154,7 +160,7 @@ async function semantics(root) {
         unit:data.unit??null,totals:data.totals??null,review:data.review??null});
     } catch(error){entries.push({path:rel,status:'UNAVAILABLE',reason:error.code??error.message});}
   }
-  return {status:'NOT_READY',basis:'Recorded M3D/M3E/M3F/M3G/M3H/M3I/M3J/M3K/M3L/M3M/M3N/M3O trials are references, not product acceptance or evidence of universal approach recall. No semantic trial is rerun or recertified by this structural gate; recorded evidence is not current inference.',
+  return {status:'NOT_READY',basis:'Recorded M3D/M3E/M3F/M3G/M3H/M3I/M3J/M3K/M3L/M3M/M3N/M3O/M3P/M3Q/M3R trials are references, not product acceptance or evidence of universal approach recall. No semantic trial is rerun or recertified by this structural gate; recorded evidence is not current inference. M3P selected-pair identity/component results are not warning recall, and incomplete Spring retrieval is not completed ground-truth evaluation. M3Q point-transfer component results are not warning recall. Disputed M3Q reference geometry is not trusted optical-flow ground truth. M3R numeric identity-chain certificates are not independently established physical identity or phone acceptance.',
     evidence:entries};
 }
 
@@ -188,6 +194,8 @@ export async function runGate({root=ROOT,typecheck=false,nativeBuild=false,out,s
     const probe=spawnSync(python,['-c','import cv2,numpy,PIL; print(cv2.__version__)'],{encoding:'utf8',timeout:30_000});
     if(probe.status!==0)throw Error('Existing Python runtime lacks OpenCV, NumPy or Pillow; this gate installs nothing.');
     receipt.opencvVersion=probe.stdout.trim();
+    for(const file of M3R_REQUIRED_FILES)await access(join(root,file),constants.R_OK)
+      .catch(()=>{throw Error('Required M3R source, test or TIP missing: '+file);});
     if(typecheck)await access(join(root,'node_modules/typescript/bin/tsc')).catch(()=>{throw Error('Existing TypeScript install missing; no npm install performed.');});
     receipt.semantics=await semantics(root);
     before=await sourceFingerprint(root);receipt.sourceBefore=before;

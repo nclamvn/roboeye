@@ -1,0 +1,3728 @@
+{
+  "study": "M3R",
+  "receiptSha256": "7d2922b2cfbd0819f342361b17108b3308cbba936a0a267785dcc4731abd7b52",
+  "inputSha256": "b608bf1ae8518c61aea3a037ac608f2ce48265f7374f0ed0c37c67e619d5c108",
+  "warningsRoles": 2,
+  "nonwarningEligibleRoles": 287,
+  "nonwarningReviewedRoles": 50,
+  "nonwarningUnreviewedRoles": 237,
+  "selectionRule": "First50 lexical (clipId,frameToken,identityId as string,role), supported fresh/anchor measurement association roles excluding emitted warning identities",
+  "inventory": [
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "54",
+      "role": "fresh",
+      "index": 8
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "55",
+      "role": "fresh",
+      "index": 8
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "56",
+      "role": "fresh",
+      "index": 8
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "58",
+      "role": "fresh",
+      "index": 8
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "59",
+      "role": "fresh",
+      "index": 8
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "54",
+      "role": "fresh",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "55",
+      "role": "fresh",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "56",
+      "role": "fresh",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "58",
+      "role": "fresh",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "59",
+      "role": "fresh",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "65",
+      "role": "fresh",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "116",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "117",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "120",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "121",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "122",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "123",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147576725",
+      "identity": "116",
+      "role": "fresh",
+      "index": 19
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147576725",
+      "identity": "121",
+      "role": "fresh",
+      "index": 19
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147576725",
+      "identity": "122",
+      "role": "fresh",
+      "index": 19
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147576725",
+      "identity": "123",
+      "role": "fresh",
+      "index": 19
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147656132",
+      "identity": "116",
+      "role": "fresh",
+      "index": 20
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147656132",
+      "identity": "120",
+      "role": "fresh",
+      "index": 20
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147656132",
+      "identity": "121",
+      "role": "fresh",
+      "index": 20
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147656132",
+      "identity": "123",
+      "role": "fresh",
+      "index": 20
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147738617",
+      "identity": "116",
+      "role": "anchor",
+      "index": 21
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147738617",
+      "identity": "116",
+      "role": "fresh",
+      "index": 21
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147738617",
+      "identity": "120",
+      "role": "fresh",
+      "index": 21
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "116",
+      "role": "anchor",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "116",
+      "role": "fresh",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "117",
+      "role": "fresh",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "120",
+      "role": "fresh",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "122",
+      "role": "fresh",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "116",
+      "role": "anchor",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "116",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "117",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "120",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "122",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "134",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "116",
+      "role": "anchor",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "116",
+      "role": "fresh",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "120",
+      "role": "fresh",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "122",
+      "role": "fresh",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "133",
+      "role": "fresh",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "134",
+      "role": "fresh",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "116",
+      "role": "anchor",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "116",
+      "role": "fresh",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "117",
+      "role": "fresh",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "120",
+      "role": "fresh",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "122",
+      "role": "fresh",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "133",
+      "role": "fresh",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "134",
+      "role": "fresh",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148456682",
+      "identity": "155",
+      "role": "fresh",
+      "index": 30
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148456682",
+      "identity": "156",
+      "role": "fresh",
+      "index": 30
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148456682",
+      "identity": "158",
+      "role": "fresh",
+      "index": 30
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148456682",
+      "identity": "159",
+      "role": "fresh",
+      "index": 30
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148456682",
+      "identity": "161",
+      "role": "fresh",
+      "index": 30
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148697934",
+      "identity": "166",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148697934",
+      "identity": "167",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148697934",
+      "identity": "168",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148697934",
+      "identity": "172",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149098115",
+      "identity": "196",
+      "role": "fresh",
+      "index": 38
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149098115",
+      "identity": "197",
+      "role": "fresh",
+      "index": 38
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149098115",
+      "identity": "198",
+      "role": "fresh",
+      "index": 38
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149098115",
+      "identity": "199",
+      "role": "fresh",
+      "index": 38
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149177552",
+      "identity": "196",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149177552",
+      "identity": "197",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149177552",
+      "identity": "198",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149177552",
+      "identity": "199",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149257229",
+      "identity": "196",
+      "role": "fresh",
+      "index": 40
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149257229",
+      "identity": "197",
+      "role": "fresh",
+      "index": 40
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149257229",
+      "identity": "198",
+      "role": "fresh",
+      "index": 40
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149339002",
+      "identity": "196",
+      "role": "fresh",
+      "index": 41
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149339002",
+      "identity": "197",
+      "role": "anchor",
+      "index": 41
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149339002",
+      "identity": "197",
+      "role": "fresh",
+      "index": 41
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324158245",
+      "identity": "1",
+      "role": "fresh",
+      "index": 1
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324158245",
+      "identity": "12",
+      "role": "fresh",
+      "index": 1
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324235299",
+      "identity": "1",
+      "role": "fresh",
+      "index": 2
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324235299",
+      "identity": "12",
+      "role": "fresh",
+      "index": 2
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324235299",
+      "identity": "3",
+      "role": "fresh",
+      "index": 2
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324315964",
+      "identity": "1",
+      "role": "fresh",
+      "index": 3
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324315964",
+      "identity": "12",
+      "role": "fresh",
+      "index": 3
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324315964",
+      "identity": "3",
+      "role": "fresh",
+      "index": 3
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324396671",
+      "identity": "1",
+      "role": "anchor",
+      "index": 4
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324396671",
+      "identity": "1",
+      "role": "fresh",
+      "index": 4
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324396671",
+      "identity": "12",
+      "role": "anchor",
+      "index": 4
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324396671",
+      "identity": "12",
+      "role": "fresh",
+      "index": 4
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324396671",
+      "identity": "3",
+      "role": "fresh",
+      "index": 4
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324474866",
+      "identity": "1",
+      "role": "anchor",
+      "index": 5
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324474866",
+      "identity": "1",
+      "role": "fresh",
+      "index": 5
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324474866",
+      "identity": "12",
+      "role": "anchor",
+      "index": 5
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324474866",
+      "identity": "12",
+      "role": "fresh",
+      "index": 5
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324474866",
+      "identity": "3",
+      "role": "fresh",
+      "index": 5
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324555086",
+      "identity": "1",
+      "role": "anchor",
+      "index": 6
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324555086",
+      "identity": "1",
+      "role": "fresh",
+      "index": 6
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324555086",
+      "identity": "12",
+      "role": "anchor",
+      "index": 6
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324555086",
+      "identity": "12",
+      "role": "fresh",
+      "index": 6
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324555086",
+      "identity": "3",
+      "role": "fresh",
+      "index": 6
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324636703",
+      "identity": "1",
+      "role": "anchor",
+      "index": 7
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324636703",
+      "identity": "1",
+      "role": "fresh",
+      "index": 7
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324636703",
+      "identity": "12",
+      "role": "anchor",
+      "index": 7
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324636703",
+      "identity": "12",
+      "role": "fresh",
+      "index": 7
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324715073",
+      "identity": "1",
+      "role": "anchor",
+      "index": 8
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324715073",
+      "identity": "1",
+      "role": "fresh",
+      "index": 8
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324715073",
+      "identity": "3",
+      "role": "fresh",
+      "index": 8
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324794778",
+      "identity": "1",
+      "role": "anchor",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324794778",
+      "identity": "1",
+      "role": "fresh",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324794778",
+      "identity": "30",
+      "role": "fresh",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324875974",
+      "identity": "1",
+      "role": "anchor",
+      "index": 10
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324875974",
+      "identity": "1",
+      "role": "fresh",
+      "index": 10
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324961252",
+      "identity": "1",
+      "role": "anchor",
+      "index": 11
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324961252",
+      "identity": "1",
+      "role": "fresh",
+      "index": 11
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991324961252",
+      "identity": "38",
+      "role": "fresh",
+      "index": 11
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325035074",
+      "identity": "1",
+      "role": "anchor",
+      "index": 12
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325035074",
+      "identity": "1",
+      "role": "fresh",
+      "index": 12
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325115172",
+      "identity": "1",
+      "role": "anchor",
+      "index": 13
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325115172",
+      "identity": "1",
+      "role": "fresh",
+      "index": 13
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325196299",
+      "identity": "1",
+      "role": "anchor",
+      "index": 14
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325196299",
+      "identity": "1",
+      "role": "fresh",
+      "index": 14
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325276414",
+      "identity": "1",
+      "role": "anchor",
+      "index": 15
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325276414",
+      "identity": "1",
+      "role": "fresh",
+      "index": 15
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325354638",
+      "identity": "1",
+      "role": "anchor",
+      "index": 16
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325354638",
+      "identity": "1",
+      "role": "fresh",
+      "index": 16
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325354638",
+      "identity": "61",
+      "role": "fresh",
+      "index": 16
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325434572",
+      "identity": "1",
+      "role": "anchor",
+      "index": 17
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325434572",
+      "identity": "1",
+      "role": "fresh",
+      "index": 17
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325514887",
+      "identity": "1",
+      "role": "anchor",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325514887",
+      "identity": "1",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325514887",
+      "identity": "70",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325595222",
+      "identity": "1",
+      "role": "anchor",
+      "index": 19
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325595222",
+      "identity": "1",
+      "role": "fresh",
+      "index": 19
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325595222",
+      "identity": "70",
+      "role": "fresh",
+      "index": 19
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325675557",
+      "identity": "1",
+      "role": "anchor",
+      "index": 20
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325675557",
+      "identity": "1",
+      "role": "fresh",
+      "index": 20
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325675557",
+      "identity": "70",
+      "role": "fresh",
+      "index": 20
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325675557",
+      "identity": "79",
+      "role": "fresh",
+      "index": 20
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325756780",
+      "identity": "1",
+      "role": "anchor",
+      "index": 21
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325756780",
+      "identity": "1",
+      "role": "fresh",
+      "index": 21
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325756780",
+      "identity": "70",
+      "role": "fresh",
+      "index": 21
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325756780",
+      "identity": "79",
+      "role": "fresh",
+      "index": 21
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325835473",
+      "identity": "1",
+      "role": "anchor",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325835473",
+      "identity": "1",
+      "role": "fresh",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325835473",
+      "identity": "70",
+      "role": "fresh",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325835473",
+      "identity": "79",
+      "role": "fresh",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325914982",
+      "identity": "1",
+      "role": "anchor",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325914982",
+      "identity": "1",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325914982",
+      "identity": "70",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325914982",
+      "identity": "90",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325995535",
+      "identity": "1",
+      "role": "anchor",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325995535",
+      "identity": "1",
+      "role": "fresh",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991325995535",
+      "identity": "90",
+      "role": "fresh",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326079480",
+      "identity": "1",
+      "role": "anchor",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326079480",
+      "identity": "1",
+      "role": "fresh",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326154794",
+      "identity": "1",
+      "role": "anchor",
+      "index": 26
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326154794",
+      "identity": "1",
+      "role": "fresh",
+      "index": 26
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+      "identity": "1",
+      "role": "anchor",
+      "index": 27
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+      "identity": "1",
+      "role": "fresh",
+      "index": 27
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+      "identity": "70",
+      "role": "anchor",
+      "index": 27
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+      "identity": "70",
+      "role": "fresh",
+      "index": 27
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326237522",
+      "identity": "99",
+      "role": "fresh",
+      "index": 27
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326316062",
+      "identity": "103",
+      "role": "fresh",
+      "index": 28
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326316062",
+      "identity": "70",
+      "role": "anchor",
+      "index": 28
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326316062",
+      "identity": "70",
+      "role": "fresh",
+      "index": 28
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326395899",
+      "identity": "1",
+      "role": "fresh",
+      "index": 29
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326395899",
+      "identity": "103",
+      "role": "fresh",
+      "index": 29
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326395899",
+      "identity": "70",
+      "role": "anchor",
+      "index": 29
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326395899",
+      "identity": "70",
+      "role": "fresh",
+      "index": 29
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326476022",
+      "identity": "1",
+      "role": "fresh",
+      "index": 30
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326476022",
+      "identity": "103",
+      "role": "fresh",
+      "index": 30
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326554916",
+      "identity": "1",
+      "role": "fresh",
+      "index": 31
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326636145",
+      "identity": "1",
+      "role": "fresh",
+      "index": 32
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326636145",
+      "identity": "115",
+      "role": "fresh",
+      "index": 32
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326715055",
+      "identity": "1",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326715055",
+      "identity": "115",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326715055",
+      "identity": "120",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326795685",
+      "identity": "1",
+      "role": "fresh",
+      "index": 34
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326795685",
+      "identity": "115",
+      "role": "fresh",
+      "index": 34
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326875470",
+      "identity": "1",
+      "role": "fresh",
+      "index": 35
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326875470",
+      "identity": "115",
+      "role": "fresh",
+      "index": 35
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326875470",
+      "identity": "127",
+      "role": "fresh",
+      "index": 35
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326957882",
+      "identity": "1",
+      "role": "fresh",
+      "index": 36
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326957882",
+      "identity": "115",
+      "role": "fresh",
+      "index": 36
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991326957882",
+      "identity": "127",
+      "role": "fresh",
+      "index": 36
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327035425",
+      "identity": "1",
+      "role": "fresh",
+      "index": 37
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327035425",
+      "identity": "115",
+      "role": "fresh",
+      "index": 37
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327035425",
+      "identity": "127",
+      "role": "fresh",
+      "index": 37
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327035425",
+      "identity": "137",
+      "role": "fresh",
+      "index": 37
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327115695",
+      "identity": "115",
+      "role": "fresh",
+      "index": 38
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327115695",
+      "identity": "127",
+      "role": "fresh",
+      "index": 38
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327115695",
+      "identity": "142",
+      "role": "fresh",
+      "index": 38
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327195745",
+      "identity": "1",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327195745",
+      "identity": "115",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327195745",
+      "identity": "142",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327195745",
+      "identity": "143",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327275061",
+      "identity": "1",
+      "role": "fresh",
+      "index": 40
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327275061",
+      "identity": "115",
+      "role": "fresh",
+      "index": 40
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327275061",
+      "identity": "142",
+      "role": "fresh",
+      "index": 40
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327275061",
+      "identity": "143",
+      "role": "fresh",
+      "index": 40
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327355226",
+      "identity": "1",
+      "role": "fresh",
+      "index": 41
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327355226",
+      "identity": "142",
+      "role": "fresh",
+      "index": 41
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327355226",
+      "identity": "143",
+      "role": "fresh",
+      "index": 41
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327435452",
+      "identity": "1",
+      "role": "fresh",
+      "index": 42
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327435452",
+      "identity": "142",
+      "role": "fresh",
+      "index": 42
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327435452",
+      "identity": "143",
+      "role": "fresh",
+      "index": 42
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327518010",
+      "identity": "1",
+      "role": "fresh",
+      "index": 43
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327518010",
+      "identity": "142",
+      "role": "fresh",
+      "index": 43
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327518010",
+      "identity": "143",
+      "role": "fresh",
+      "index": 43
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327518010",
+      "identity": "155",
+      "role": "fresh",
+      "index": 43
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327601738",
+      "identity": "1",
+      "role": "fresh",
+      "index": 44
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327601738",
+      "identity": "142",
+      "role": "fresh",
+      "index": 44
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327601738",
+      "identity": "143",
+      "role": "fresh",
+      "index": 44
+    },
+    {
+      "clip": "boreas-m3r-low-speed",
+      "token": "boreas-boreas-m3r-low-speed-1598991327601738",
+      "identity": "155",
+      "role": "fresh",
+      "index": 44
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808208188",
+      "identity": "1",
+      "role": "fresh",
+      "index": 1
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808368301",
+      "identity": "2",
+      "role": "fresh",
+      "index": 3
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808448202",
+      "identity": "2",
+      "role": "fresh",
+      "index": 4
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808527774",
+      "identity": "12",
+      "role": "fresh",
+      "index": 5
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808527774",
+      "identity": "2",
+      "role": "fresh",
+      "index": 5
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808608598",
+      "identity": "12",
+      "role": "fresh",
+      "index": 6
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808608598",
+      "identity": "19",
+      "role": "fresh",
+      "index": 6
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808608598",
+      "identity": "2",
+      "role": "fresh",
+      "index": 6
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808691733",
+      "identity": "19",
+      "role": "fresh",
+      "index": 7
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808691733",
+      "identity": "2",
+      "role": "fresh",
+      "index": 7
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808850165",
+      "identity": "2",
+      "role": "fresh",
+      "index": 9
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808928271",
+      "identity": "2",
+      "role": "fresh",
+      "index": 10
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987808928271",
+      "identity": "22",
+      "role": "fresh",
+      "index": 10
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809008890",
+      "identity": "2",
+      "role": "fresh",
+      "index": 11
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809008890",
+      "identity": "22",
+      "role": "fresh",
+      "index": 11
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809089671",
+      "identity": "2",
+      "role": "fresh",
+      "index": 12
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809089671",
+      "identity": "22",
+      "role": "fresh",
+      "index": 12
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809168632",
+      "identity": "22",
+      "role": "fresh",
+      "index": 13
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809247663",
+      "identity": "22",
+      "role": "fresh",
+      "index": 14
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809328048",
+      "identity": "22",
+      "role": "fresh",
+      "index": 15
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809568238",
+      "identity": "35",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809568238",
+      "identity": "37",
+      "role": "fresh",
+      "index": 18
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809648221",
+      "identity": "33",
+      "role": "fresh",
+      "index": 19
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809648221",
+      "identity": "35",
+      "role": "fresh",
+      "index": 19
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809734019",
+      "identity": "33",
+      "role": "fresh",
+      "index": 20
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809808696",
+      "identity": "33",
+      "role": "fresh",
+      "index": 21
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809889495",
+      "identity": "38",
+      "role": "fresh",
+      "index": 22
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809968715",
+      "identity": "39",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987809968715",
+      "identity": "40",
+      "role": "fresh",
+      "index": 23
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810048495",
+      "identity": "40",
+      "role": "fresh",
+      "index": 24
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810129367",
+      "identity": "40",
+      "role": "fresh",
+      "index": 25
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810209446",
+      "identity": "40",
+      "role": "fresh",
+      "index": 26
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810289341",
+      "identity": "38",
+      "role": "fresh",
+      "index": 27
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810289341",
+      "identity": "43",
+      "role": "fresh",
+      "index": 27
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810368738",
+      "identity": "38",
+      "role": "fresh",
+      "index": 28
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810368738",
+      "identity": "39",
+      "role": "fresh",
+      "index": 28
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810368738",
+      "identity": "43",
+      "role": "fresh",
+      "index": 28
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810449221",
+      "identity": "38",
+      "role": "fresh",
+      "index": 29
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810449221",
+      "identity": "43",
+      "role": "fresh",
+      "index": 29
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810529018",
+      "identity": "38",
+      "role": "fresh",
+      "index": 30
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810529018",
+      "identity": "46",
+      "role": "fresh",
+      "index": 30
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810613516",
+      "identity": "38",
+      "role": "fresh",
+      "index": 31
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810613516",
+      "identity": "43",
+      "role": "fresh",
+      "index": 31
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810690128",
+      "identity": "43",
+      "role": "fresh",
+      "index": 32
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810690128",
+      "identity": "48",
+      "role": "fresh",
+      "index": 32
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810770741",
+      "identity": "43",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810770741",
+      "identity": "47",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810770741",
+      "identity": "48",
+      "role": "fresh",
+      "index": 33
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810849043",
+      "identity": "20",
+      "role": "fresh",
+      "index": 34
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810849043",
+      "identity": "43",
+      "role": "fresh",
+      "index": 34
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810849043",
+      "identity": "48",
+      "role": "fresh",
+      "index": 34
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987810928484",
+      "identity": "43",
+      "role": "fresh",
+      "index": 35
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811010289",
+      "identity": "43",
+      "role": "fresh",
+      "index": 36
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811089228",
+      "identity": "43",
+      "role": "fresh",
+      "index": 37
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811089228",
+      "identity": "48",
+      "role": "fresh",
+      "index": 37
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811171477",
+      "identity": "38",
+      "role": "fresh",
+      "index": 38
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811171477",
+      "identity": "43",
+      "role": "fresh",
+      "index": 38
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811248350",
+      "identity": "38",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811248350",
+      "identity": "43",
+      "role": "fresh",
+      "index": 39
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811329543",
+      "identity": "38",
+      "role": "fresh",
+      "index": 40
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811329543",
+      "identity": "43",
+      "role": "fresh",
+      "index": 40
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811408901",
+      "identity": "38",
+      "role": "fresh",
+      "index": 41
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811408901",
+      "identity": "43",
+      "role": "fresh",
+      "index": 41
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811490406",
+      "identity": "38",
+      "role": "fresh",
+      "index": 42
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811490406",
+      "identity": "43",
+      "role": "fresh",
+      "index": 42
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811569019",
+      "identity": "38",
+      "role": "fresh",
+      "index": 43
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811569019",
+      "identity": "43",
+      "role": "fresh",
+      "index": 43
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811729120",
+      "identity": "51",
+      "role": "fresh",
+      "index": 45
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811809030",
+      "identity": "43",
+      "role": "fresh",
+      "index": 46
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811809030",
+      "identity": "51",
+      "role": "fresh",
+      "index": 46
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811809030",
+      "identity": "55",
+      "role": "fresh",
+      "index": 46
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811891116",
+      "identity": "47",
+      "role": "fresh",
+      "index": 47
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811891116",
+      "identity": "51",
+      "role": "fresh",
+      "index": 47
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987811971055",
+      "identity": "43",
+      "role": "fresh",
+      "index": 48
+    },
+    {
+      "clip": "boreas-m3r-turn",
+      "token": "boreas-boreas-m3r-turn-1598987812049741",
+      "identity": "43",
+      "role": "fresh",
+      "index": 49
+    }
+  ],
+  "checkedSources": {
+    "boreas-boreas-m3r-city-1598989149017050": "e91318880d2f7587942cd88f83d510e1cedcf17db18f8a69248619fb227e79be",
+    "boreas-boreas-m3r-city-1598989149098115": "8ee5c1c5f88beab210bf6b442178055cf8a4b3ad6c7c44f3e29908f2f255d2c1",
+    "boreas-boreas-m3r-city-1598989149177552": "f1ea9e319bdc66ff5db74d9b0de78fc5f4a0a8d1718f487d5fa1fac4b1ffec8c",
+    "boreas-boreas-m3r-city-1598989149257229": "6355ecf8bb583e62ea55fb384416b2fad98be47927c820cfc46a7138db7cae9e",
+    "boreas-boreas-m3r-city-1598989149339002": "b4c925750e6ca84274d25062b56070145b87af149b89df71713cf14b285cbfb8",
+    "boreas-boreas-m3r-city-1598989146616629": "019d3c56ab54c203dadcb9ad7d3396420744ac3b1dff6ced7542ee771e2e39a4",
+    "boreas-boreas-m3r-city-1598989146696063": "20e37eb232b37ef9e55c7fa8ba211a47b5a70cba9671ee421674479a68911a96",
+    "boreas-boreas-m3r-city-1598989146777970": "fdf551926f594776dafbb5335a133b5e52b57586831a1a274c8a55f02c660c12",
+    "boreas-boreas-m3r-city-1598989147416451": "c968675d62987cedf9f50841eee1f4f34fdd7791d86d7e405a966ccc7d3b92e3",
+    "boreas-boreas-m3r-city-1598989147496694": "013514a09174d1a8bef2546e9a8f07f30ac2ee11cee9eae56861fe974e2a92c3",
+    "boreas-boreas-m3r-city-1598989147576725": "44be25efa7f0c88c1f29a48016e0d65203d789fcba6547e49e49df5a5cffa661",
+    "boreas-boreas-m3r-city-1598989147656132": "a99a8d10dd261801a5c554dfea51d998d872004a390587bea57ada86e52b6ac4",
+    "boreas-boreas-m3r-city-1598989147738617": "95b84a9011869993558ef01e89cccb7de8d16a0a41ec67020db21a678d8b6723",
+    "boreas-boreas-m3r-city-1598989147816327": "951b41d7ed73ef79c8aa44f8071e752e3134e324263236e4411b72c9201a1d11",
+    "boreas-boreas-m3r-city-1598989147897081": "6dd9003a2930cdec38d6ed8c0e4a4a7ea5771619c67f32f62013b3f2deaa9649",
+    "boreas-boreas-m3r-city-1598989147977856": "23250a471778d54f97223ca2f9c3bf1771af580d3b1b76c6cc109e9017f84fda",
+    "boreas-boreas-m3r-city-1598989148056724": "01e9442e702dbc9e6c2eb45cad27e28bb1f0ed0d42acd384483b21cbc20dfadb"
+  },
+  "checkedPatches": 68,
+  "cases": [
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149339002",
+      "identity": "198",
+      "role": "anchor",
+      "index": 41,
+      "warning": true,
+      "sourceIndices": [
+        2,
+        2,
+        2,
+        3,
+        3
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989149017050",
+          "end": "boreas-boreas-m3r-city-1598989149098115",
+          "startIndex": 2,
+          "endIndex": 2,
+          "ncc": 0.8978784680366516,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989149098115",
+          "end": "boreas-boreas-m3r-city-1598989149177552",
+          "startIndex": 2,
+          "endIndex": 2,
+          "ncc": 0.9016779065132141,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989149177552",
+          "end": "boreas-boreas-m3r-city-1598989149257229",
+          "startIndex": 2,
+          "endIndex": 3,
+          "ncc": 0.963733971118927,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989149257229",
+          "end": "boreas-boreas-m3r-city-1598989149339002",
+          "startIndex": 3,
+          "endIndex": 3,
+          "ncc": 0.9576127529144287,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "00-boreas-m3r-city-41-id198-anchor.jpg",
+      "sheetSha256": "a0ca0fe601f452cbd2ff80ab8503046709d60dd239c206e4ec51bdf3fac7fe78",
+      "measurementPairSha256": "cd5099aab55eb3d044d961a87e820cde44b1d43d3317ee9de4febcfa14518302",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989149339002",
+      "identity": "198",
+      "role": "fresh",
+      "index": 41,
+      "warning": true,
+      "sourceIndices": [
+        3,
+        3
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989149257229",
+          "end": "boreas-boreas-m3r-city-1598989149339002",
+          "startIndex": 3,
+          "endIndex": 3,
+          "ncc": 0.9576127529144287,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "01-boreas-m3r-city-41-id198-fresh.jpg",
+      "sheetSha256": "cf7bafc6f6e76cf8e7aab88bdf2d18b0ab1739cceb391334e5d008a8c9d9ecd6",
+      "measurementPairSha256": "3c413c0c2419b222b29d77f5bebb1dc8fea06dd135f8d527ab878f40c7d43f4f",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "54",
+      "role": "fresh",
+      "index": 8,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        1
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146616629",
+          "end": "boreas-boreas-m3r-city-1598989146696063",
+          "startIndex": 0,
+          "endIndex": 1,
+          "ncc": 0.9554736614227295,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "02-boreas-m3r-city-08-id54-fresh.jpg",
+      "sheetSha256": "b78245b3a856bafbcfe47d866b6969f5062039f6c6a27281f66c95768da1d590",
+      "measurementPairSha256": "ac42b0588c9bf0cbb40b4161f495534ef7450f3b592c8ef5155ca706cc04da7f",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "55",
+      "role": "fresh",
+      "index": 8,
+      "warning": false,
+      "sourceIndices": [
+        1,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146616629",
+          "end": "boreas-boreas-m3r-city-1598989146696063",
+          "startIndex": 1,
+          "endIndex": 0,
+          "ncc": 0.982753574848175,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "03-boreas-m3r-city-08-id55-fresh.jpg",
+      "sheetSha256": "5096e6f7c297f02530e1741f77595dc3adfbed7063ba03d248e3ac8575bb6257",
+      "measurementPairSha256": "cbd135e2e5ecc4f5119cb7bffd611d29dbadb852b3dd722e1ef90d7c7f620247",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "56",
+      "role": "fresh",
+      "index": 8,
+      "warning": false,
+      "sourceIndices": [
+        2,
+        5
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146616629",
+          "end": "boreas-boreas-m3r-city-1598989146696063",
+          "startIndex": 2,
+          "endIndex": 5,
+          "ncc": 0.820223331451416,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "04-boreas-m3r-city-08-id56-fresh.jpg",
+      "sheetSha256": "05d29661de073984ba221a185a20998fa346ad6f7ffda5f2dab3ec9155f589a0",
+      "measurementPairSha256": "15fc3bb44e9af28f98be82a6b2966aef7e661ff7a287301fa7e70a74ac612321",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "58",
+      "role": "fresh",
+      "index": 8,
+      "warning": false,
+      "sourceIndices": [
+        4,
+        4
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146616629",
+          "end": "boreas-boreas-m3r-city-1598989146696063",
+          "startIndex": 4,
+          "endIndex": 4,
+          "ncc": 0.8155173659324646,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "05-boreas-m3r-city-08-id58-fresh.jpg",
+      "sheetSha256": "021277eccb3344e2ef2ba93f22d57da508926e2246ec2b84e0a8846cdc509367",
+      "measurementPairSha256": "9f6efb3058a87791dea72c24ad9755304ce7ef8dc5f28b68094d25047597397f",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146696063",
+      "identity": "59",
+      "role": "fresh",
+      "index": 8,
+      "warning": false,
+      "sourceIndices": [
+        5,
+        6
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146616629",
+          "end": "boreas-boreas-m3r-city-1598989146696063",
+          "startIndex": 5,
+          "endIndex": 6,
+          "ncc": 0.8831035494804382,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "06-boreas-m3r-city-08-id59-fresh.jpg",
+      "sheetSha256": "4a236b658c1678eacfd027a92f5312500966e033df8653b11bc889caa45dbe4b",
+      "measurementPairSha256": "1b2df2a8621826f4fb16e09f00a67d72408a3841e1807cf9ad95bf1c26b1af4c",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "54",
+      "role": "fresh",
+      "index": 9,
+      "warning": false,
+      "sourceIndices": [
+        1,
+        3
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146696063",
+          "end": "boreas-boreas-m3r-city-1598989146777970",
+          "startIndex": 1,
+          "endIndex": 3,
+          "ncc": 0.8220213651657104,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "07-boreas-m3r-city-09-id54-fresh.jpg",
+      "sheetSha256": "a3daad7828d7b1277552f1690878248ce920349987f7c6dff8374aa367ac9f4f",
+      "measurementPairSha256": "c08b90969dcc4425ceec2577c494d0638f15f2ed8713e12fb695e3ac2c9f6044",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "55",
+      "role": "fresh",
+      "index": 9,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146696063",
+          "end": "boreas-boreas-m3r-city-1598989146777970",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.987881600856781,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "08-boreas-m3r-city-09-id55-fresh.jpg",
+      "sheetSha256": "e787066162aa9acd40d6070a355ad378db2e321e042a914a650bb7a7b042c975",
+      "measurementPairSha256": "00d0f81bddf12d9158e58b6abf814d53fb33dec462bb8c2ff58edf5bfb6df5ff",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "56",
+      "role": "fresh",
+      "index": 9,
+      "warning": false,
+      "sourceIndices": [
+        5,
+        4
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146696063",
+          "end": "boreas-boreas-m3r-city-1598989146777970",
+          "startIndex": 5,
+          "endIndex": 4,
+          "ncc": 0.8596933484077454,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "09-boreas-m3r-city-09-id56-fresh.jpg",
+      "sheetSha256": "125fdbb3ebdf79a9479f275603f6d1f92b47538b066a7cdce9d9f14cbe52b8c5",
+      "measurementPairSha256": "96e4e53a6468c3afc560cce82d1a0d97fbbf9618626d73b75907055444b210df",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "58",
+      "role": "fresh",
+      "index": 9,
+      "warning": false,
+      "sourceIndices": [
+        4,
+        2
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146696063",
+          "end": "boreas-boreas-m3r-city-1598989146777970",
+          "startIndex": 4,
+          "endIndex": 2,
+          "ncc": 0.9946338534355164,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "10-boreas-m3r-city-09-id58-fresh.jpg",
+      "sheetSha256": "4dcab58381a3f841cc4be9c817579b8eee524c5a9e8dcc7cd420e5adabf22383",
+      "measurementPairSha256": "11c56ef4d672e9845ebb538a894156ea42b3ea59656f4a5e578e0713d7a3e149",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "59",
+      "role": "fresh",
+      "index": 9,
+      "warning": false,
+      "sourceIndices": [
+        6,
+        6
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146696063",
+          "end": "boreas-boreas-m3r-city-1598989146777970",
+          "startIndex": 6,
+          "endIndex": 6,
+          "ncc": 0.879972517490387,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "11-boreas-m3r-city-09-id59-fresh.jpg",
+      "sheetSha256": "a68d98c5d16bc19e3d19ac1651677979076f5d79c791ad3547cca53b12dc5296",
+      "measurementPairSha256": "37b8bbf38acd1c52de443ece62aeb3c3f72df830605e8e4c624f8a7cd8118038",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989146777970",
+      "identity": "65",
+      "role": "fresh",
+      "index": 9,
+      "warning": false,
+      "sourceIndices": [
+        8,
+        8
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989146696063",
+          "end": "boreas-boreas-m3r-city-1598989146777970",
+          "startIndex": 8,
+          "endIndex": 8,
+          "ncc": 0.9875680208206177,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "12-boreas-m3r-city-09-id65-fresh.jpg",
+      "sheetSha256": "4434cc64b8c7aff48ac5d15ec2b934ee2cb7072c7245fd65db579ca390007012",
+      "measurementPairSha256": "5f254b5aaa725dd36139b553036a178e82396ce7c068bc8e368f12bce13ed37c",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "116",
+      "role": "fresh",
+      "index": 18,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        1
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 0,
+          "endIndex": 1,
+          "ncc": 0.9760940074920654,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "13-boreas-m3r-city-18-id116-fresh.jpg",
+      "sheetSha256": "c734a7a69f37acf17a9a828a3289c3b1b421c330e3ff3456835a936c18406e2c",
+      "measurementPairSha256": "087922b0888982479023312bb64da11e4a8eca1a7e6a44f6cabeb746582bbf0e",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "117",
+      "role": "fresh",
+      "index": 18,
+      "warning": false,
+      "sourceIndices": [
+        3,
+        3
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 3,
+          "endIndex": 3,
+          "ncc": 0.9185360670089722,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "14-boreas-m3r-city-18-id117-fresh.jpg",
+      "sheetSha256": "c1686aab6369a5aff66691e933421f8a007e3ec3d451a8fe38c7f2755bbb1dce",
+      "measurementPairSha256": "b0eb23aab0fcafdb2e16a115e9a0ab852d0b122cda6c151276a911a433727e80",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "120",
+      "role": "fresh",
+      "index": 18,
+      "warning": false,
+      "sourceIndices": [
+        4,
+        4
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 4,
+          "endIndex": 4,
+          "ncc": 0.9474067687988281,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "15-boreas-m3r-city-18-id120-fresh.jpg",
+      "sheetSha256": "d7ba31509b0fbe96f611c8032b713e0cf8fb6b4729bcf3b3809a3f655665d5f9",
+      "measurementPairSha256": "09859d94e342c6f2971cc69aaecde535c06ccd187e6747a6af74fbb8f7710019",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "121",
+      "role": "fresh",
+      "index": 18,
+      "warning": false,
+      "sourceIndices": [
+        5,
+        5
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 5,
+          "endIndex": 5,
+          "ncc": 0.7875124216079712,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "16-boreas-m3r-city-18-id121-fresh.jpg",
+      "sheetSha256": "17da607f0302adc03e51f615db5f3ff83be5ce0a4e2913feb7a22d1c2c78b2ee",
+      "measurementPairSha256": "1a994fe8cabf24b806d7b4bd978d38759117085dc093d0a618919e8cb7c6d7f9",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "122",
+      "role": "fresh",
+      "index": 18,
+      "warning": false,
+      "sourceIndices": [
+        6,
+        6
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 6,
+          "endIndex": 6,
+          "ncc": 0.9064339399337769,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "17-boreas-m3r-city-18-id122-fresh.jpg",
+      "sheetSha256": "0d8776f44bd6677d67a6dcff39eefcb7ce9c6b6e807eb7e30bb2dcd1c90bf539",
+      "measurementPairSha256": "19a8a5cf1bc572e4e86a7b9acfcf9ff9f74fee443efea3458b180ca498f552ea",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147496694",
+      "identity": "123",
+      "role": "fresh",
+      "index": 18,
+      "warning": false,
+      "sourceIndices": [
+        7,
+        7
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 7,
+          "endIndex": 7,
+          "ncc": 0.9960271716117859,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "18-boreas-m3r-city-18-id123-fresh.jpg",
+      "sheetSha256": "09bcfb16a5af817322fc63ab71f70906fedb728d6d66a81596cb666269ef835c",
+      "measurementPairSha256": "29b626c22124ae4b6ea948327d4c4c845a3c77dcb399970e6778ac46d8c8464c",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147576725",
+      "identity": "116",
+      "role": "fresh",
+      "index": 19,
+      "warning": false,
+      "sourceIndices": [
+        1,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147496694",
+          "end": "boreas-boreas-m3r-city-1598989147576725",
+          "startIndex": 1,
+          "endIndex": 0,
+          "ncc": 0.9721168279647827,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "19-boreas-m3r-city-19-id116-fresh.jpg",
+      "sheetSha256": "f6e8058dd8b5fbc7840fcad7c2e2057d11053c27cbebefc351a05d09487377b4",
+      "measurementPairSha256": "7eae30859de809e3779a0aacc7776ed9134932972b7ca6aaa839eec789b0c602",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147576725",
+      "identity": "121",
+      "role": "fresh",
+      "index": 19,
+      "warning": false,
+      "sourceIndices": [
+        5,
+        5
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147496694",
+          "end": "boreas-boreas-m3r-city-1598989147576725",
+          "startIndex": 5,
+          "endIndex": 5,
+          "ncc": 0.8421367406845093,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "20-boreas-m3r-city-19-id121-fresh.jpg",
+      "sheetSha256": "8658dea1be4b528fc054cec20766efba20009a39612ff8a8d9edb9eef243f03c",
+      "measurementPairSha256": "65a717db661060998efc59e933c7708384c240a34f8522cf341501170c5c7398",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147576725",
+      "identity": "122",
+      "role": "fresh",
+      "index": 19,
+      "warning": false,
+      "sourceIndices": [
+        6,
+        7
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147496694",
+          "end": "boreas-boreas-m3r-city-1598989147576725",
+          "startIndex": 6,
+          "endIndex": 7,
+          "ncc": 0.9720456600189209,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "21-boreas-m3r-city-19-id122-fresh.jpg",
+      "sheetSha256": "c8d1514d7d8db8e0e4ada7e48eb249be9eb84da9bd4e1c80b6314c10eaea76b2",
+      "measurementPairSha256": "8657082f5c14c2cacea812b34a83fd0d6dfe4e45657521d6d36fc1f744d8ebbd",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147576725",
+      "identity": "123",
+      "role": "fresh",
+      "index": 19,
+      "warning": false,
+      "sourceIndices": [
+        7,
+        6
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147496694",
+          "end": "boreas-boreas-m3r-city-1598989147576725",
+          "startIndex": 7,
+          "endIndex": 6,
+          "ncc": 0.9856752157211304,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "22-boreas-m3r-city-19-id123-fresh.jpg",
+      "sheetSha256": "fd21a0562bffe4a3bc94edf11289a11ed933a5e8728165132379a8c6174b8cd7",
+      "measurementPairSha256": "8938942faacba2574f69e7d7ad0cdb92fd7e478bcd247b03a7bed8f374389ae6",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147656132",
+      "identity": "116",
+      "role": "fresh",
+      "index": 20,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147576725",
+          "end": "boreas-boreas-m3r-city-1598989147656132",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9757957458496094,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "23-boreas-m3r-city-20-id116-fresh.jpg",
+      "sheetSha256": "b33f09c4f69773d84c61c85126433dce63fd796cbca65c8ff216b8ceca968ca7",
+      "measurementPairSha256": "6b1aaabb6a4ada8c749f240b6f769251ef9964589cf2481c1df38ff08872ac96",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147656132",
+      "identity": "120",
+      "role": "fresh",
+      "index": 20,
+      "warning": false,
+      "sourceIndices": [
+        4,
+        4
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147576725",
+          "end": "boreas-boreas-m3r-city-1598989147656132",
+          "startIndex": 4,
+          "endIndex": 4,
+          "ncc": 0.8640077710151672,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "24-boreas-m3r-city-20-id120-fresh.jpg",
+      "sheetSha256": "7c1ea0e3455ea4ee7ae0715689fef54810141003694ea0d32737b888e4f1f8e3",
+      "measurementPairSha256": "0ea7d2cdf1f0d4b1cf708c165b87de15ea5ea9ab3476cca7d897034ff5056ceb",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147656132",
+      "identity": "121",
+      "role": "fresh",
+      "index": 20,
+      "warning": false,
+      "sourceIndices": [
+        5,
+        5
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147576725",
+          "end": "boreas-boreas-m3r-city-1598989147656132",
+          "startIndex": 5,
+          "endIndex": 5,
+          "ncc": 0.8232537508010864,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "25-boreas-m3r-city-20-id121-fresh.jpg",
+      "sheetSha256": "c108d36bd41e9f35190c47197a1d7de9a050b7cfdc6071126d8f583e0faf3832",
+      "measurementPairSha256": "6a9ee056cffd77dc59b1366388fa84a75590db92267d4a01c0f2fab782c6604e",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147656132",
+      "identity": "123",
+      "role": "fresh",
+      "index": 20,
+      "warning": false,
+      "sourceIndices": [
+        6,
+        8
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147576725",
+          "end": "boreas-boreas-m3r-city-1598989147656132",
+          "startIndex": 6,
+          "endIndex": 8,
+          "ncc": 0.8081495761871338,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "26-boreas-m3r-city-20-id123-fresh.jpg",
+      "sheetSha256": "5efca6e9ebc511bbcc29f3c7398777e6554ee67dea977972605dc326ff9a509a",
+      "measurementPairSha256": "b5ac69aface0d455f2c7abd53a0ff1b0abfd767c448eae97680ae656384d386c",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147738617",
+      "identity": "116",
+      "role": "anchor",
+      "index": 21,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 0,
+          "endIndex": 1,
+          "ncc": 0.9760940074920654,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147496694",
+          "end": "boreas-boreas-m3r-city-1598989147576725",
+          "startIndex": 1,
+          "endIndex": 0,
+          "ncc": 0.9721168279647827,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147576725",
+          "end": "boreas-boreas-m3r-city-1598989147656132",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9757957458496094,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147656132",
+          "end": "boreas-boreas-m3r-city-1598989147738617",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9981364607810974,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "27-boreas-m3r-city-21-id116-anchor.jpg",
+      "sheetSha256": "b2536f952a15d569fe9641b0059a7270eb864de47c2abbb49b40339ee23c984b",
+      "measurementPairSha256": "39c7a1117b92fb60730f0c00a2c87d3da54a9de8e33c707cabaa2b3738dd98d0",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147738617",
+      "identity": "116",
+      "role": "fresh",
+      "index": 21,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147656132",
+          "end": "boreas-boreas-m3r-city-1598989147738617",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9981364607810974,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "28-boreas-m3r-city-21-id116-fresh.jpg",
+      "sheetSha256": "3fc281065219a92dcf2278e1b88015f7b442d705e9ce843409e6141099e0dc08",
+      "measurementPairSha256": "0337988e4a056d38a1e5ed219adc3b331009481520e3705e74761a1f3ab62b89",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147738617",
+      "identity": "120",
+      "role": "fresh",
+      "index": 21,
+      "warning": false,
+      "sourceIndices": [
+        4,
+        4
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147656132",
+          "end": "boreas-boreas-m3r-city-1598989147738617",
+          "startIndex": 4,
+          "endIndex": 4,
+          "ncc": 0.9121944904327393,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "29-boreas-m3r-city-21-id120-fresh.jpg",
+      "sheetSha256": "124f34b75c6022fb56101fef97837d228152ad288f1b5ca0cb5f93bc4b1be026",
+      "measurementPairSha256": "4e723e39dff92a599f09651b3f5d04ab8b50fd30fdd1cafa825c1e234a409557",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "116",
+      "role": "anchor",
+      "index": 22,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 0,
+          "endIndex": 1,
+          "ncc": 0.9760940074920654,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147496694",
+          "end": "boreas-boreas-m3r-city-1598989147576725",
+          "startIndex": 1,
+          "endIndex": 0,
+          "ncc": 0.9721168279647827,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147576725",
+          "end": "boreas-boreas-m3r-city-1598989147656132",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9757957458496094,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147656132",
+          "end": "boreas-boreas-m3r-city-1598989147738617",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9981364607810974,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147738617",
+          "end": "boreas-boreas-m3r-city-1598989147816327",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9715094566345215,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "30-boreas-m3r-city-22-id116-anchor.jpg",
+      "sheetSha256": "6becffbbb556c71eeb2fac7d68c71bbf3c8fc2c56fdd0a8cc5519a367d0ce76a",
+      "measurementPairSha256": "ceddadb911dded2569f45d6ebf924990b367b09b4ba4ca1de1a58c18ff9b8b27",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "116",
+      "role": "fresh",
+      "index": 22,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147738617",
+          "end": "boreas-boreas-m3r-city-1598989147816327",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9715094566345215,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "31-boreas-m3r-city-22-id116-fresh.jpg",
+      "sheetSha256": "0d87bda52cd90d012446ff43214ba437ab7b33d5566ed1fa5d43909f761201df",
+      "measurementPairSha256": "ae91881b58f499e9023e1ff736fcad049ac04f301d1a066d9250327337ff1838",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "117",
+      "role": "fresh",
+      "index": 22,
+      "warning": false,
+      "sourceIndices": [
+        1,
+        3
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147738617",
+          "end": "boreas-boreas-m3r-city-1598989147816327",
+          "startIndex": 1,
+          "endIndex": 3,
+          "ncc": 0.9199929237365723,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "32-boreas-m3r-city-22-id117-fresh.jpg",
+      "sheetSha256": "40b71258e852670c8bc4290c749f778a74e768aff4e0e5f7d205994ca836295a",
+      "measurementPairSha256": "f118fb193a1e74f6008039f2299951246a208821f6325708e7c297bfcba39886",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "120",
+      "role": "fresh",
+      "index": 22,
+      "warning": false,
+      "sourceIndices": [
+        4,
+        4
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147738617",
+          "end": "boreas-boreas-m3r-city-1598989147816327",
+          "startIndex": 4,
+          "endIndex": 4,
+          "ncc": 0.9427602291107178,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "33-boreas-m3r-city-22-id120-fresh.jpg",
+      "sheetSha256": "c64d2af47fc096cc81383132f9f91d1d7b5ee0b9dabf0225c84ffb44ebfdc02e",
+      "measurementPairSha256": "e4df72d99cb618240d2cbda650ecc6aa7d8b6cc0423dd20985438a3d784f6593",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147816327",
+      "identity": "122",
+      "role": "fresh",
+      "index": 22,
+      "warning": false,
+      "sourceIndices": [
+        5,
+        5
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147738617",
+          "end": "boreas-boreas-m3r-city-1598989147816327",
+          "startIndex": 5,
+          "endIndex": 5,
+          "ncc": 0.9264148473739624,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "34-boreas-m3r-city-22-id122-fresh.jpg",
+      "sheetSha256": "d497bb32845532970d1bbe0cc960aba21b15b2fd2eecc57f3e00113cd90eda70",
+      "measurementPairSha256": "f07450598c403b20500ea8b409ca517e0f4175ff603865e318e53c99a9ca2fe6",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "116",
+      "role": "anchor",
+      "index": 23,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 0,
+          "endIndex": 1,
+          "ncc": 0.9760940074920654,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147496694",
+          "end": "boreas-boreas-m3r-city-1598989147576725",
+          "startIndex": 1,
+          "endIndex": 0,
+          "ncc": 0.9721168279647827,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147576725",
+          "end": "boreas-boreas-m3r-city-1598989147656132",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9757957458496094,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147656132",
+          "end": "boreas-boreas-m3r-city-1598989147738617",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9981364607810974,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147738617",
+          "end": "boreas-boreas-m3r-city-1598989147816327",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9715094566345215,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147816327",
+          "end": "boreas-boreas-m3r-city-1598989147897081",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9713588356971741,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "35-boreas-m3r-city-23-id116-anchor.jpg",
+      "sheetSha256": "27325435bc32706f2f58ea6b002a131031ffc9e7592701ad097e302762ef2615",
+      "measurementPairSha256": "b854de84523107eeb89b8f606cf4ed9c14808fc7278661c53bbb2420ba1a42e9",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "116",
+      "role": "fresh",
+      "index": 23,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147816327",
+          "end": "boreas-boreas-m3r-city-1598989147897081",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9713588356971741,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "36-boreas-m3r-city-23-id116-fresh.jpg",
+      "sheetSha256": "21568c90d11ebe0b8098718fbb5e2b3994dc97da6cbcef6a5201f01e11229ba8",
+      "measurementPairSha256": "c07b92ecbfc548d119c063b3f808f88e5a09a4fd7014e901c6b15c09efdcd9ea",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "117",
+      "role": "fresh",
+      "index": 23,
+      "warning": false,
+      "sourceIndices": [
+        3,
+        5
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147816327",
+          "end": "boreas-boreas-m3r-city-1598989147897081",
+          "startIndex": 3,
+          "endIndex": 5,
+          "ncc": 0.8317657113075256,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "37-boreas-m3r-city-23-id117-fresh.jpg",
+      "sheetSha256": "848cb0f6d797304dd140876e93ad1d59074c63e2f1749cf426e3267b6cf09571",
+      "measurementPairSha256": "70435c0602dc4c029b7655271f25bcb16ea25577d012a91b16e3ed5441f86854",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "120",
+      "role": "fresh",
+      "index": 23,
+      "warning": false,
+      "sourceIndices": [
+        4,
+        3
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147816327",
+          "end": "boreas-boreas-m3r-city-1598989147897081",
+          "startIndex": 4,
+          "endIndex": 3,
+          "ncc": 0.932357668876648,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "38-boreas-m3r-city-23-id120-fresh.jpg",
+      "sheetSha256": "37b39c3cb7c5465c0193048f0134c1033e11994635ddf792ab3fe0d9b5ec07f2",
+      "measurementPairSha256": "09e3d25cffd79185eb97182041a11324475d5d08be5c14a3a5f90665d88467fd",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "122",
+      "role": "fresh",
+      "index": 23,
+      "warning": false,
+      "sourceIndices": [
+        5,
+        4
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147816327",
+          "end": "boreas-boreas-m3r-city-1598989147897081",
+          "startIndex": 5,
+          "endIndex": 4,
+          "ncc": 0.9492615461349487,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "39-boreas-m3r-city-23-id122-fresh.jpg",
+      "sheetSha256": "e6c2cf6d96bd2b1430b26d1b59b63a35522c51b449a0ca19e76ed7c16891fc36",
+      "measurementPairSha256": "9d1332c600888b1f477ee6d7e63de5284ebca4789d3a6dca9aa0c01acdca5ba8",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147897081",
+      "identity": "134",
+      "role": "fresh",
+      "index": 23,
+      "warning": false,
+      "sourceIndices": [
+        7,
+        6
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147816327",
+          "end": "boreas-boreas-m3r-city-1598989147897081",
+          "startIndex": 7,
+          "endIndex": 6,
+          "ncc": 0.8829505443572998,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "40-boreas-m3r-city-23-id134-fresh.jpg",
+      "sheetSha256": "4ae1f5a3b0edc430026e8d7816e04a216878d930694a861ca6789ffa520b0187",
+      "measurementPairSha256": "ced98705f1036cbda2fcd0477985da2480763b606ccb4d5c2cff810024bfd7c4",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "116",
+      "role": "anchor",
+      "index": 24,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 0,
+          "endIndex": 1,
+          "ncc": 0.9760940074920654,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147496694",
+          "end": "boreas-boreas-m3r-city-1598989147576725",
+          "startIndex": 1,
+          "endIndex": 0,
+          "ncc": 0.9721168279647827,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147576725",
+          "end": "boreas-boreas-m3r-city-1598989147656132",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9757957458496094,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147656132",
+          "end": "boreas-boreas-m3r-city-1598989147738617",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9981364607810974,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147738617",
+          "end": "boreas-boreas-m3r-city-1598989147816327",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9715094566345215,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147816327",
+          "end": "boreas-boreas-m3r-city-1598989147897081",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9713588356971741,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147897081",
+          "end": "boreas-boreas-m3r-city-1598989147977856",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9970356225967407,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "41-boreas-m3r-city-24-id116-anchor.jpg",
+      "sheetSha256": "fa6925a98aed761812c6283dd6bc928240a55cca75b7594ab0fafb1406b1395f",
+      "measurementPairSha256": "8bb7d8ffb8b3c8e4cc7aed0924706d3896a55f8fd1168bc98960cbfe4f3df910",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "116",
+      "role": "fresh",
+      "index": 24,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147897081",
+          "end": "boreas-boreas-m3r-city-1598989147977856",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9970356225967407,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "42-boreas-m3r-city-24-id116-fresh.jpg",
+      "sheetSha256": "12ed57444b1d621f2fc28c4852f1d786e6c58bc6a317f86dd861d92f1855f70f",
+      "measurementPairSha256": "228f67d8bc021a740b2ec54989906be0c6bff07d470592dcd4dc8d9c99163854",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "120",
+      "role": "fresh",
+      "index": 24,
+      "warning": false,
+      "sourceIndices": [
+        3,
+        1
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147897081",
+          "end": "boreas-boreas-m3r-city-1598989147977856",
+          "startIndex": 3,
+          "endIndex": 1,
+          "ncc": 0.7165617942810059,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "43-boreas-m3r-city-24-id120-fresh.jpg",
+      "sheetSha256": "4357045476cacfb0713745c4bec20cc394fd032965c374275bdf972259eeeb22",
+      "measurementPairSha256": "5bea909d84b4572e5428c686f6de90bb226dfe21bb92e1e4e91ff18268e12a75",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "122",
+      "role": "fresh",
+      "index": 24,
+      "warning": false,
+      "sourceIndices": [
+        4,
+        4
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147897081",
+          "end": "boreas-boreas-m3r-city-1598989147977856",
+          "startIndex": 4,
+          "endIndex": 4,
+          "ncc": 0.9183545112609863,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "44-boreas-m3r-city-24-id122-fresh.jpg",
+      "sheetSha256": "97224e629cee1b57675357d231fc9e5d8c4854de7485d4e2f6eb951882dc4a81",
+      "measurementPairSha256": "724b11e2f4472a08966e96bb0ea207031e07205929eba7564fc2bf7258ebfb29",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "133",
+      "role": "fresh",
+      "index": 24,
+      "warning": false,
+      "sourceIndices": [
+        8,
+        7
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147897081",
+          "end": "boreas-boreas-m3r-city-1598989147977856",
+          "startIndex": 8,
+          "endIndex": 7,
+          "ncc": 0.964299201965332,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "45-boreas-m3r-city-24-id133-fresh.jpg",
+      "sheetSha256": "eec885db99d03602ca950329ec6bf2b57788b48a3747bdf9ba4d76e17110b186",
+      "measurementPairSha256": "85483d391b5f597686be33d2c60624a6804001f622099033c0f6ab6295645ce3",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989147977856",
+      "identity": "134",
+      "role": "fresh",
+      "index": 24,
+      "warning": false,
+      "sourceIndices": [
+        6,
+        6
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147897081",
+          "end": "boreas-boreas-m3r-city-1598989147977856",
+          "startIndex": 6,
+          "endIndex": 6,
+          "ncc": 0.9335700869560242,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "46-boreas-m3r-city-24-id134-fresh.jpg",
+      "sheetSha256": "5be213133f21fb517c767e8a09e6b7a6725e802a2a414750c19e431a67fe5a6f",
+      "measurementPairSha256": "9b56f80a928bc24df71f08de4126374f3e8c988571967dc44e3d2b6f67771dd1",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "116",
+      "role": "anchor",
+      "index": 25,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147416451",
+          "end": "boreas-boreas-m3r-city-1598989147496694",
+          "startIndex": 0,
+          "endIndex": 1,
+          "ncc": 0.9760940074920654,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147496694",
+          "end": "boreas-boreas-m3r-city-1598989147576725",
+          "startIndex": 1,
+          "endIndex": 0,
+          "ncc": 0.9721168279647827,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147576725",
+          "end": "boreas-boreas-m3r-city-1598989147656132",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9757957458496094,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147656132",
+          "end": "boreas-boreas-m3r-city-1598989147738617",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9981364607810974,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147738617",
+          "end": "boreas-boreas-m3r-city-1598989147816327",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9715094566345215,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147816327",
+          "end": "boreas-boreas-m3r-city-1598989147897081",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9713588356971741,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147897081",
+          "end": "boreas-boreas-m3r-city-1598989147977856",
+          "startIndex": 0,
+          "endIndex": 0,
+          "ncc": 0.9970356225967407,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        },
+        {
+          "start": "boreas-boreas-m3r-city-1598989147977856",
+          "end": "boreas-boreas-m3r-city-1598989148056724",
+          "startIndex": 0,
+          "endIndex": 2,
+          "ncc": 0.993500828742981,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "47-boreas-m3r-city-25-id116-anchor.jpg",
+      "sheetSha256": "a09a3b4954bc1455967f940a6f21d45969e02cd4724064525219ff09584b4d9f",
+      "measurementPairSha256": "7b514f04f80c272eb90b6b70695b12dba9393ebe2753b19b8be47ed7a00f3991",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "116",
+      "role": "fresh",
+      "index": 25,
+      "warning": false,
+      "sourceIndices": [
+        0,
+        2
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147977856",
+          "end": "boreas-boreas-m3r-city-1598989148056724",
+          "startIndex": 0,
+          "endIndex": 2,
+          "ncc": 0.993500828742981,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "48-boreas-m3r-city-25-id116-fresh.jpg",
+      "sheetSha256": "4eb3a26a9ccf7c12e0fd3c0be6469e4d891eb0bb4978c951ceb98ce290860fdf",
+      "measurementPairSha256": "0aa4d6cb72723bc470f907a8883478148f570baf3f152b8c63095bb63972673a",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "117",
+      "role": "fresh",
+      "index": 25,
+      "warning": false,
+      "sourceIndices": [
+        5,
+        5
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147977856",
+          "end": "boreas-boreas-m3r-city-1598989148056724",
+          "startIndex": 5,
+          "endIndex": 5,
+          "ncc": 0.9282827973365784,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "49-boreas-m3r-city-25-id117-fresh.jpg",
+      "sheetSha256": "50b952746d0c549ea84fb36922a9bcac2d9d9b1a952680920828801c79bcc034",
+      "measurementPairSha256": "bd36c032244fa00c807f8c47bd42ad5cb23f9e244e9244cefcd96106b827b1b5",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "120",
+      "role": "fresh",
+      "index": 25,
+      "warning": false,
+      "sourceIndices": [
+        1,
+        0
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147977856",
+          "end": "boreas-boreas-m3r-city-1598989148056724",
+          "startIndex": 1,
+          "endIndex": 0,
+          "ncc": 0.882430374622345,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "50-boreas-m3r-city-25-id120-fresh.jpg",
+      "sheetSha256": "20417316ad54aeee75c985f785ec0206e87ac35d3037f13294c67e2251fa3d73",
+      "measurementPairSha256": "e4b8eef4f273a8a5cd7464e2d6f9e2a4b1cdd38624ee80f4d76378a213537546",
+      "physicalIdentityReview": "PENDING"
+    },
+    {
+      "clip": "boreas-m3r-city",
+      "token": "boreas-boreas-m3r-city-1598989148056724",
+      "identity": "122",
+      "role": "fresh",
+      "index": 25,
+      "warning": false,
+      "sourceIndices": [
+        4,
+        4
+      ],
+      "edges": [
+        {
+          "start": "boreas-boreas-m3r-city-1598989147977856",
+          "end": "boreas-boreas-m3r-city-1598989148056724",
+          "startIndex": 4,
+          "endIndex": 4,
+          "ncc": 0.9464666843414307,
+          "sourcePixelsVerified": true,
+          "fullGeometryMatrixVerified": true
+        }
+      ],
+      "sheet": "51-boreas-m3r-city-25-id122-fresh.jpg",
+      "sheetSha256": "a8dd394fa83349d4ff411c161be871a6576e6ed17f1d8dac654b367a6786794f",
+      "measurementPairSha256": "0f92566c9bec323051eadbf6c2e510a8c715d969ecec925edb654ae2f34056ab",
+      "physicalIdentityReview": "PENDING"
+    }
+  ],
+  "limits": "Independent source PNG/nativeGray hashes, exact32patch values/NCC and full camera-rotated same-label matrix reconstructed. Physical-ID visual review pending; no physical motion inferred from stills; no models, no scoring/GT/source changes."
+}

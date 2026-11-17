@@ -1,0 +1,2458 @@
+{
+  "schemaVersion": 1,
+  "study": "M3T-independent-verification",
+  "reviewRole": "Independent code, source-byte and numerical QA; not author of fetch/import/study",
+  "receiptPath": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/m3t-static-controls-r1.json",
+  "receiptSha256": "d01b2ed2193212501e84d9dc6bc1c987da358fb5961bcb49c18cb5e539d7e934",
+  "manifestSha256": "671b2de2c6002715a78162181543d08156c774836a3e5f96dc4cf3fba5de2e9e",
+  "sliceSha256": "1f175b6835933fb31af828f5f7aabea028660d733b9d4cdfea4c482d338adca9",
+  "sourceFilesVerified": 114,
+  "verifiedFiles": {
+    "structure_texture_far/groundtruth.txt": "9012614c9fcc6ac8b1e6908cd771893443d8da23740f73a620f29f88e479b17f",
+    "structure_texture_far/depth/1341839119.689921.png": "1f4ea48e077987dc30abf5124df4d99e02b517eca982599688026b5745a4fe6c",
+    "structure_texture_far/depth/1341839119.793779.png": "336852ffc7f000fe8a8b656aceb025ff9210ee8b179d4238b8784147646f8230",
+    "structure_texture_far/depth/1341839119.893763.png": "bdb696e6567d4945731fecadb6b1b7e68c8aa8849112a736d4e5a56d5395b5a7",
+    "structure_texture_far/depth/1341839119.993686.png": "d13c55690679de2d52cb95bb919a87a90ee9114eabe1e3016b96974e7276bbe1",
+    "structure_texture_far/depth/1341839120.062082.png": "b407dbb28f3f6de61a24544532e5248e64146218619de13f270ea4bf05b09dbf",
+    "structure_texture_far/depth/1341839120.162177.png": "03ec0a80ba4b2115baefbd987dcb04c8f968c1864129f302467b62d6edfb6e0b",
+    "structure_texture_far/depth/1341839120.261531.png": "53dc1c9d585ae4be007ee8f4b7b14439fcc512be20f6848a211b76c557cf9c5b",
+    "structure_texture_far/depth/1341839120.361652.png": "a8cf901bcc035a827cfb0ebfe70d77aa2cac2d35e4f5fbb15581ec980407adb7",
+    "structure_texture_far/depth/1341839120.561638.png": "d9c5a6be601f9ffa66b651aa0eae4c40af358bb8830512eca2d564169c7a544e",
+    "structure_texture_far/depth/1341839129.077558.png": "a240cf2bccb6a86bbf7b4dc2c046a62ccaa459f9f80e3af97f3530e7c051199a",
+    "structure_texture_far/depth/1341839129.177582.png": "b197703ef28ec820cfd9f666145970494c5eae07d61c4fa37ef8d24e51c09e6d",
+    "structure_texture_far/depth/1341839129.277553.png": "ebc13dd28d082808b61a7e3c55dcfbfa9e59b4e4f25255c71b7042f5f582a157",
+    "structure_texture_far/depth/1341839129.377530.png": "767fde9828f97bf02ce02a941672dcd876a6a7f11270e3496170e93915ee289d",
+    "structure_texture_far/depth/1341839129.477534.png": "974b763e6b6aa02fb2e56f86fddec1d7674218d6ac78bdf9772d3190f67338c2",
+    "structure_texture_far/depth/1341839129.577559.png": "027a33a53f865b976d2ba5e33ea91c42087584d57508a6a9c7452fec0a2d59ab",
+    "structure_texture_far/depth/1341839129.677690.png": "bd2ad3a402b62ab034b5380923b78dc40f2056d686c14cc2f7efccd753e61398",
+    "structure_texture_far/depth/1341839129.777564.png": "a15feae8cf1a155917a5b9552b42536a5decbd6d5cfb076ccc07bd00131ca098",
+    "structure_texture_far/depth/1341839129.981601.png": "e42374f0dbfd25a752188df7ff93e5bb440086cb122e3cd6d327ac6f64d7ef48",
+    "structure_texture_far/depth/1341839138.568539.png": "4caff094db435001dfe64c2ec4223b89655aeee9d687e34e81bea8930ca50c58",
+    "structure_texture_far/depth/1341839138.668589.png": "c670fadec5565dc616f6ea1b82d0a2a7b7123bdd50d9a063560b9c94299be224",
+    "structure_texture_far/depth/1341839138.768589.png": "5644339f6128360f62cd3bc7b88023b227887c0799c8089fe0a24a573a23634d",
+    "structure_texture_far/depth/1341839138.868645.png": "7accd92e9409e949c00331a198edbcac4fd8b3ca4173f615eac25603db1f9ec7",
+    "structure_texture_far/depth/1341839138.968948.png": "1c0bd3a8bb7c3bafdac8ae09f1da8c6f2a60325b23145f24b7d25793e1ec5726",
+    "structure_texture_far/depth/1341839139.070300.png": "4adc4b797e4621bcea5ddb1c83a49b7e3c4d411f1a10cfcf764f9f2cb30a02c0",
+    "structure_texture_far/depth/1341839139.169907.png": "594baf549b55bfcbb3c6edf22dd00100fab1521037718f364b2ddeaadc854a95",
+    "structure_texture_far/depth/1341839139.271376.png": "b63c87a87c06ccaefcfe0da1ceeeb1c80bdaacd4fb11661baac8f518906e17d8",
+    "structure_texture_far/depth/1341839139.480479.png": "914829412cb03a33467974e07297fcef70c13ff12015d2f4332a429ed550e906",
+    "structure_texture_far/rgb/1341839119.689899.png": "ce10e650f41ad546c7009e3ecdc7e2cb753521aaef269bef2c9e99657de78738",
+    "structure_texture_far/rgb/1341839119.793744.png": "ca17da76e8f3a9cce0b1f29c0873211daf5b440e42296802deb20608349e349b",
+    "structure_texture_far/rgb/1341839119.893748.png": "e4af0eba097222ba14b7cc8471fadc0f9309e43025ac0fd011f60d95e43c6cf0",
+    "structure_texture_far/rgb/1341839119.993679.png": "1119a3bc22e73936b5b47f9df6daadfc504b3bf41b8fba015aa9bbbc67359f55",
+    "structure_texture_far/rgb/1341839120.061576.png": "43e3de05418e9abad0a87e56cab7accd43a03bd516e301510be007355bbc9f3d",
+    "structure_texture_far/rgb/1341839120.161703.png": "a0021784f9c96d93e8b4d89802e5d16e7757f8fddeef6375031fc09d4f4b5269",
+    "structure_texture_far/rgb/1341839120.261506.png": "8b1bebbcaf5a8e1321f9076440ac4c3307b4eda2d64cae3ea6bc2892fc10681d",
+    "structure_texture_far/rgb/1341839120.361629.png": "d01dd93d864f864e1caa379cd740b847d19e24e6e16336644067d5e0d948aaea",
+    "structure_texture_far/rgb/1341839120.561630.png": "00ea64fb915c52f3622444bd0b3b2baaaa2052d389aacbc9d4b883cb09a4d6e2",
+    "structure_texture_far/rgb/1341839129.077533.png": "7f72d84f8fb4ae6452895cd2bba1766a96083f7f617b1f9cbc6e08f294fff0a8",
+    "structure_texture_far/rgb/1341839129.177574.png": "4e59438f66716549b2e38648ab362224e55291c68e5566dd93063b642fe2c77d",
+    "structure_texture_far/rgb/1341839129.277541.png": "5fd88e23b266d7d4910b2f0728cb6dc62c11f24b8d2cbb8e81df1fdbc0cf7b47",
+    "structure_texture_far/rgb/1341839129.377515.png": "29062dc6f1b11d4636d27e18ef38a49f32f34c7243fc99e1591c1c149f37b953",
+    "structure_texture_far/rgb/1341839129.477523.png": "0dfecd04f3b154c783c68ca121b9da348738b33187d04e16603d80a959e941ce",
+    "structure_texture_far/rgb/1341839129.577541.png": "9bd82e948e9ff2aa44a8ef077cb377e764824488f37972c266a4648ea842fe57",
+    "structure_texture_far/rgb/1341839129.677529.png": "a8dbada440845858d6536f9c403f5a2e0bed3e05233f77161a548b15ff39f7d6",
+    "structure_texture_far/rgb/1341839129.777553.png": "5a0e441cf228356abc04471f5b6fb2ee946716bd1ea761521fcf72ba83954367",
+    "structure_texture_far/rgb/1341839129.981581.png": "329a20bf778a323e674e171dd266d46e2229976f833682b17888a635965d5d24",
+    "structure_texture_far/rgb/1341839138.568521.png": "80268099dfc72fa80349b111a6d660ef3b20b025a5da5f7d434cf01f37bccffd",
+    "structure_texture_far/rgb/1341839138.668579.png": "9bf0020f1fef13f53e7cccc4b4b0e4e9774e8087031faf825e134e8b14c4d5a7",
+    "structure_texture_far/rgb/1341839138.768580.png": "ee412a2dcfa214f01cb0e42e8b76db8051e52cb640e7c6ec24380a60768a9a74",
+    "structure_texture_far/rgb/1341839138.868631.png": "c10be4db4fa280ecb46e725fb91ccd8ae8bdecf85e77a6c5b3bc2513023735da",
+    "structure_texture_far/rgb/1341839138.968925.png": "856c57622cd3c26d73db038b80147c101145d7c0b845976b023c0f9873afb93b",
+    "structure_texture_far/rgb/1341839139.069010.png": "37d2475b6016642a35a1a81cb5b41ff6079e410b00b61d2fbb1ba8672f2e063b",
+    "structure_texture_far/rgb/1341839139.168993.png": "3604fe2b0b3a3f95ad733b26efe92f5b3182374b1e9c6943fed0384203fe1d3c",
+    "structure_texture_far/rgb/1341839139.269740.png": "7d98602bf208b23fae7fb7d96f9478f656129d5490f66f1776012ac4bbdda139",
+    "structure_texture_far/rgb/1341839139.479384.png": "66683de7feae8ffcf10dfeed508d4c173931d025baa354e19430cddf1a788b0a",
+    "structure_texture_far/rgb.txt": "1c52ed688b685eb65c6057a1e85ba51571f82b3993cbd310221e4d4168736e80",
+    "structure_texture_far/depth.txt": "ae5ac63207a0d04e0bd70dda128db154b049521ebb2aed10420c80b54f7a3c63",
+    "nostructure_texture_far/groundtruth.txt": "29ea902ab62866c77f510b672c32dc1d71c94541836528cde48aae8845904d7e",
+    "nostructure_texture_far/depth/1341839848.278111.png": "75002c4ecfc10fe8db0f866a56d392132e805770386fb04c9cbd82ca00bf10f0",
+    "nostructure_texture_far/depth/1341839848.378118.png": "d09777de6a8f4a049c30cf12224f5b0b103d80a9c2265f946e1b84af3d4c5bbb",
+    "nostructure_texture_far/depth/1341839848.478001.png": "7cf420bf87d118f5d1bc7b33617a599b9793213e2eae79e5d8a727bf81dba61f",
+    "nostructure_texture_far/depth/1341839848.581855.png": "276529ee4aa6e6cd7a2859eba71f0fbb3c1c2f2f56f0a589760264df258a114c",
+    "nostructure_texture_far/depth/1341839848.681993.png": "32725e73c1d8b4da2fad63ffa22740895dc203c433c01fa71819b08907f04d22",
+    "nostructure_texture_far/depth/1341839848.782066.png": "b1ecf4bfb3e726b077fb46db25992c662b83c790433af0f59eb011926b8b5759",
+    "nostructure_texture_far/depth/1341839848.881984.png": "e51a73bee902a128434eb0a742e909d6328e36d993fd8ddb82b0dfe96e245a56",
+    "nostructure_texture_far/depth/1341839848.981928.png": "1922e8ae6ce6a545cc1588b70e944efdbe9b7a666bdc7759c2f4c944f8e9f12b",
+    "nostructure_texture_far/depth/1341839849.181865.png": "3896f1c87afcb646aea6f60029ea4aad8cd67d1dd9237bf2bd60ca8e22939524",
+    "nostructure_texture_far/depth/1341839852.869971.png": "a8fe23a5be287799b6ba4b664f98816d87ed19ac393491cadbf96f30adb0ba7c",
+    "nostructure_texture_far/depth/1341839852.969856.png": "cb5c27ac7febde97289160895d3bc3fa13bbc6b3f435d75680983fa0d1b4ce1f",
+    "nostructure_texture_far/depth/1341839853.070249.png": "a77746d2c956c448eb4b4b25eeb16f59c07bc819fd31e1102b5be5b62f657ee8",
+    "nostructure_texture_far/depth/1341839853.170118.png": "ba64867f127ebe3d3f4fa244c350bb6b956872bb251ffe73442a414b5e64e7f4",
+    "nostructure_texture_far/depth/1341839853.274390.png": "f942ce4b3d399e4c81befb4c558c3159b30c1769623452a17ea5835fe0470931",
+    "nostructure_texture_far/depth/1341839853.373961.png": "37c44a34a49d2b82bb2d77b3362d137b33b98f226c317627c098df74d313c88d",
+    "nostructure_texture_far/depth/1341839853.442082.png": "0d5269c4dd67db9fa5729d6ba98d06f3432b17bdb0a99b2f3fde2ee3660f4713",
+    "nostructure_texture_far/depth/1341839853.573971.png": "024de578ff3e402e23a674a183d5ba55cfd8b5254351dda1c9249149b006d9b9",
+    "nostructure_texture_far/depth/1341839853.774216.png": "9bf40bdaa6c0953dad097c655a221639ddc575797fecf2a5a3e5ec1b7259bdf5",
+    "nostructure_texture_far/depth/1341839857.594073.png": "ba46949e1c23d47fafc0cca738b024c6b58a7d0ff1504581217aead053e1d6a8",
+    "nostructure_texture_far/depth/1341839857.698020.png": "b5f221cb2c11c776cb7a11d27d630d5adc4653d8b1c39895f1f4777568163cf3",
+    "nostructure_texture_far/depth/1341839857.799287.png": "7499a03561ac1a2231eb17d77dffa3dc2395bfc6a90507b55847f63404ddb533",
+    "nostructure_texture_far/depth/1341839857.865841.png": "1b30826e1faa20c50aa32682667e1f62717b4fe1440f03cdb2f254bd5c631fa9",
+    "nostructure_texture_far/depth/1341839857.966577.png": "ae1b09f8a369fd30c836d80b4d28bf3d4c55a2ae3da3818fd38cb8c1c401550c",
+    "nostructure_texture_far/depth/1341839858.065836.png": "7d98497fd35a19c28274aa4d0c18eb68926cca0ec0d1bfe2fc8e2ed8ef597c2d",
+    "nostructure_texture_far/depth/1341839858.134053.png": "0296cfce18dd7b8c6f451316c73b8a468f564debf47a4cb1b0ae7c013f2b16ef",
+    "nostructure_texture_far/depth/1341839858.265879.png": "a9f8b50240bf64fab6c4a3cf2edc051c4c5714369a0c9a5b3d86141a7c91cec4",
+    "nostructure_texture_far/depth/1341839858.465992.png": "033d2f243ec82062870dedea84c34a332a9532144a5c609ee1caa4be93bdd915",
+    "nostructure_texture_far/rgb/1341839848.278057.png": "a57475d1cac74608baed6dfca61f4140f9b19eedda1ecb1ca5541bde5d1881f1",
+    "nostructure_texture_far/rgb/1341839848.378083.png": "5e9a76e12a33c53a1131305d9fd7d84b37d7f33b47cf89001b91fff5504a989a",
+    "nostructure_texture_far/rgb/1341839848.477990.png": "cfee2f3d4e720ba807f2d0b62a15a15ce2854b4a2ac9fb833be8be55ffb50c0e",
+    "nostructure_texture_far/rgb/1341839848.581848.png": "1ef10b02407ec51376955f3b01a55cfa2a363c6ca0bb8d327adbd3e07d6879ee",
+    "nostructure_texture_far/rgb/1341839848.681939.png": "bf64f7b0ae07548def2415bbb78488a30c10552ff619dcad9f49253e3e91fdce",
+    "nostructure_texture_far/rgb/1341839848.782038.png": "7ea56cc7cfde447912a5794d389cb15614ccafd24a8ad3de5ce90c01a3a578aa",
+    "nostructure_texture_far/rgb/1341839848.881968.png": "9baf3f375cc2f50069fb6cab97bd2f25603886893e544aaab7bfabce847e9c1d",
+    "nostructure_texture_far/rgb/1341839848.981903.png": "2c13795ffa8c5a85ac5eb53843b7c8d96dfcc2084855d8ca5b2ce2af621e3fca",
+    "nostructure_texture_far/rgb/1341839849.181857.png": "ba3e58b4c9495f38a633cf466dc4a4a63025ce694e4e4f7087040d86bd6bd63e",
+    "nostructure_texture_far/rgb/1341839852.869909.png": "9494964cc12319e3c18f6376635bffce27f7adc933e9b211ce9257815d8abb86",
+    "nostructure_texture_far/rgb/1341839852.969844.png": "d5192ee660eb6f27c60106b11ce4e0a1b77637556d461ceeddceabcc9d78906b",
+    "nostructure_texture_far/rgb/1341839853.069999.png": "5c058950c214f599b8163ce0632f5cee71437b5b4da32b1d167a172575abd44e",
+    "nostructure_texture_far/rgb/1341839853.170078.png": "31dfd081898e654c339cdc61c29862b35ab89be9073994e8baa0097d7e8bfe8e",
+    "nostructure_texture_far/rgb/1341839853.273915.png": "342751c7a6fd5983a00846f9d452156e4f80b9c7071e4e9929b2de6ddd2814ee",
+    "nostructure_texture_far/rgb/1341839853.373951.png": "9a9f91eb71823e3092219f5ef048a85c0f8c2eccfac1fcb009e5f4caac303fc4",
+    "nostructure_texture_far/rgb/1341839853.473841.png": "f4d7a5f347534bb21e94774a75054e5aec06010a6bebb8fb349b352f7ad98033",
+    "nostructure_texture_far/rgb/1341839853.573956.png": "888c9c8c7db991241a954d1763ba05104ab2b17d56a90f80d550f55199e846d6",
+    "nostructure_texture_far/rgb/1341839853.774203.png": "777691d9e0a8129bc1009d55d341aa57e9dd1261ff133cd1019cee8bfb6478f4",
+    "nostructure_texture_far/rgb/1341839857.594054.png": "5c18451afb30e7fbed90dd4a93c31a05319d0ecd450b261d5fd24674682db501",
+    "nostructure_texture_far/rgb/1341839857.697990.png": "10ce58835c0d075d1a6be97c4b68a15be6a6389dd93337ccc53a7806d828e629",
+    "nostructure_texture_far/rgb/1341839857.798680.png": "b28c2f5ddee1bab2b452b81246bc6d3e2105bc57994b1900b2350ef14e9a8056",
+    "nostructure_texture_far/rgb/1341839857.865820.png": "f954c1b47f995a970df5e30ff03870a7a827969181cdc81ea6cb6de390e6854e",
+    "nostructure_texture_far/rgb/1341839857.965946.png": "923e8b8a90aefc5d94418b2ec8eaf23249424309f2467a4cd28c999ed7a68242",
+    "nostructure_texture_far/rgb/1341839858.065790.png": "81aa443cfe5c2eb29a5c12ebc21546afb129a204ffe8016aa51875f4129b060f",
+    "nostructure_texture_far/rgb/1341839858.165977.png": "cb29f97fdac89156eef62f2d15ec0bb06a25f8d716c5cc188d894e96a95de4b8",
+    "nostructure_texture_far/rgb/1341839858.265831.png": "a6ac27ecf2f5ec9041edaa84dad86af49ec9ce587b459d065620623c88928d85",
+    "nostructure_texture_far/rgb/1341839858.465923.png": "ccd43d0f72209d8e9e749505623bb9e29f7982b2afd4f7b9285cde75a6ee1488",
+    "nostructure_texture_far/rgb.txt": "bd3c6d04cf44ba8caa4fd2a61e696f15aa6550fc71ffaa884005643aeae77e5c",
+    "nostructure_texture_far/depth.txt": "c1c529b40d5b911bb066724bd7f5f946a7ef442c734baf4bd74886378e0d5e9a"
+  },
+  "codeHashesMatchFrozenAndCurrent": true,
+  "sourceRgbPixelHashesVerified": 54,
+  "sourcePairRgbSealsVerified": 48,
+  "pairCount": 48,
+  "tests": {
+    "passed": 21,
+    "failed": 0,
+    "seconds": 1.92,
+    "scope": "Independent rerun of same21 authored tests, not21 additional scenarios or empirical quality cases"
+  },
+  "requestedOpenCvThreads": 1,
+  "observedOpenCvThreads": 10,
+  "timingControlled": false,
+  "actualWallMs": 10288.668332999805,
+  "actualCalls": {
+    "standalone": 96,
+    "guard": 92,
+    "rgbFunctions": 48,
+    "guardFunctions": 46
+  },
+  "summaries": [
+    {
+      "profile": "primary-fr3",
+      "stratum": [
+        "all"
+      ],
+      "pairs": 48,
+      "originalSeeds": 12225,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 9303,
+        "source-depth-unavailable": 1531,
+        "depth-edge-or-hole-visibility-unknown": 157,
+        "source-depth-edge-or-hole-reference-unknown": 210,
+        "current-depth-unavailable": 341,
+        "rgb-pose-unavailable": 512,
+        "source-depth-outside-evaluation-range": 1,
+        "occluded-by-nearer-depth": 2,
+        "outside-current-image": 168
+      },
+      "visible": 9303,
+      "visibleAccepted": 9052,
+      "visibleLkNotAccepted": 251,
+      "visibleNoAcceptedFiniteCorrespondence": 251,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 9052,
+        "p50": 2.1926316174808482,
+        "p95": 4.393094937419989,
+        "gt1": 7189,
+        "gt2": 4911,
+        "gt5": 207
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 9052,
+        "p50": 14.418485393620099,
+        "p95": 16.985005654283253,
+        "gt1": 9052,
+        "gt2": 9052,
+        "gt5": 9052
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 9303,
+        "p50": 2.225418652161151,
+        "p95": 4.727072930139089,
+        "gt1": 7420,
+        "gt2": 5120,
+        "gt5": 363
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 9052,
+        "p50": 35.76563828435844,
+        "p95": 44.78607704046568,
+        "gt1": 9052,
+        "gt2": 9052,
+        "gt5": 9052
+      },
+      "outsideSensitivity": 2,
+      "shiftedEndpointsOutsideSameSensitivity": 3,
+      "unchangedCompatibleWithHeuristic": 9050,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 9049,
+      "guardStatuses": {
+        "insufficient-background-agreement": 33,
+        "rgb-pose-unavailable": 2,
+        "valid": 13
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:epipolar-baseline-too-small": 10,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 48,
+        "fxTimes105:epipolar-baseline-too-small": 10,
+        "yawPlus1Deg:valid": 36,
+        "fxTimes105:valid": 36,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 2,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 2
+      },
+      "poseAbsSkewUs": {
+        "n": 192,
+        "p50": 2783.0,
+        "p95": 4837.75,
+        "gt1": 192,
+        "gt2": 192,
+        "gt5": 192
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "stratum": [
+        "structure_texture_far"
+      ],
+      "pairs": 24,
+      "originalSeeds": 6144,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 5091,
+        "source-depth-unavailable": 527,
+        "depth-edge-or-hole-visibility-unknown": 79,
+        "source-depth-edge-or-hole-reference-unknown": 107,
+        "current-depth-unavailable": 81,
+        "rgb-pose-unavailable": 256,
+        "source-depth-outside-evaluation-range": 1,
+        "occluded-by-nearer-depth": 2
+      },
+      "visible": 5091,
+      "visibleAccepted": 5083,
+      "visibleLkNotAccepted": 8,
+      "visibleNoAcceptedFiniteCorrespondence": 8,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 5083,
+        "p50": 2.2746880331459667,
+        "p95": 3.8682415121200484,
+        "gt1": 4085,
+        "gt2": 2910,
+        "gt5": 18
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 5083,
+        "p50": 14.847503115841667,
+        "p95": 16.59098999137298,
+        "gt1": 5083,
+        "gt2": 5083,
+        "gt5": 5083
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 5091,
+        "p50": 2.277303826066122,
+        "p95": 3.88502647810341,
+        "gt1": 4093,
+        "gt2": 2918,
+        "gt5": 26
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 5083,
+        "p50": 34.785875141811644,
+        "p95": 47.02657830083487,
+        "gt1": 5083,
+        "gt2": 5083,
+        "gt5": 5083
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 5083,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 5083,
+      "guardStatuses": {
+        "insufficient-background-agreement": 21,
+        "rgb-pose-unavailable": 1,
+        "valid": 2
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:epipolar-baseline-too-small": 10,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 24,
+        "fxTimes105:epipolar-baseline-too-small": 10,
+        "yawPlus1Deg:valid": 13,
+        "fxTimes105:valid": 13,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 1,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 1
+      },
+      "poseAbsSkewUs": {
+        "n": 96,
+        "p50": 2066.0,
+        "p95": 4801.5,
+        "gt1": 96,
+        "gt2": 96,
+        "gt5": 96
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "stratum": [
+        "100ms"
+      ],
+      "pairs": 24,
+      "originalSeeds": 6144,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 4362,
+        "source-depth-unavailable": 961,
+        "depth-edge-or-hole-visibility-unknown": 77,
+        "source-depth-edge-or-hole-reference-unknown": 102,
+        "current-depth-unavailable": 123,
+        "rgb-pose-unavailable": 512,
+        "outside-current-image": 7
+      },
+      "visible": 4362,
+      "visibleAccepted": 4281,
+      "visibleLkNotAccepted": 81,
+      "visibleNoAcceptedFiniteCorrespondence": 81,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 4281,
+        "p50": 2.3205366345690925,
+        "p95": 4.53182833286213,
+        "gt1": 3453,
+        "gt2": 2424,
+        "gt5": 122
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 4281,
+        "p50": 14.462665167115889,
+        "p95": 16.98361175947264,
+        "gt1": 4281,
+        "gt2": 4281,
+        "gt5": 4281
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 4362,
+        "p50": 2.3537980062442396,
+        "p95": 4.7562616131772115,
+        "gt1": 3529,
+        "gt2": 2488,
+        "gt5": 175
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 4281,
+        "p50": 35.6204012375585,
+        "p95": 44.52847263310602,
+        "gt1": 4281,
+        "gt2": 4281,
+        "gt5": 4281
+      },
+      "outsideSensitivity": 2,
+      "shiftedEndpointsOutsideSameSensitivity": 3,
+      "unchangedCompatibleWithHeuristic": 4279,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 4278,
+      "guardStatuses": {
+        "insufficient-background-agreement": 16,
+        "rgb-pose-unavailable": 2,
+        "valid": 6
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:epipolar-baseline-too-small": 10,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 24,
+        "fxTimes105:epipolar-baseline-too-small": 10,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 2,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 2,
+        "yawPlus1Deg:valid": 12,
+        "fxTimes105:valid": 12
+      },
+      "poseAbsSkewUs": {
+        "n": 96,
+        "p50": 2139.0,
+        "p95": 4903.5,
+        "gt1": 96,
+        "gt2": 96,
+        "gt5": 96
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "stratum": [
+        "structure_texture_far",
+        "100ms"
+      ],
+      "pairs": 12,
+      "originalSeeds": 3072,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 2459,
+        "source-depth-unavailable": 243,
+        "depth-edge-or-hole-visibility-unknown": 39,
+        "source-depth-edge-or-hole-reference-unknown": 48,
+        "current-depth-unavailable": 27,
+        "rgb-pose-unavailable": 256
+      },
+      "visible": 2459,
+      "visibleAccepted": 2458,
+      "visibleLkNotAccepted": 1,
+      "visibleNoAcceptedFiniteCorrespondence": 1,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 2458,
+        "p50": 2.4859752394829644,
+        "p95": 3.9462019307792806,
+        "gt1": 1950,
+        "gt2": 1431,
+        "gt5": 2
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 2458,
+        "p50": 14.778923776899667,
+        "p95": 17.026061583888232,
+        "gt1": 2458,
+        "gt2": 2458,
+        "gt5": 2458
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 2459,
+        "p50": 2.4864743437384202,
+        "p95": 3.962243704553172,
+        "gt1": 1951,
+        "gt2": 1432,
+        "gt5": 3
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 2458,
+        "p50": 35.19927246609335,
+        "p95": 46.737844121342455,
+        "gt1": 2458,
+        "gt2": 2458,
+        "gt5": 2458
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 2458,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 2458,
+      "guardStatuses": {
+        "insufficient-background-agreement": 11,
+        "rgb-pose-unavailable": 1
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:epipolar-baseline-too-small": 10,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 12,
+        "fxTimes105:epipolar-baseline-too-small": 10,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 1,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 1,
+        "yawPlus1Deg:valid": 1,
+        "fxTimes105:valid": 1
+      },
+      "poseAbsSkewUs": {
+        "n": 48,
+        "p50": 1284.0,
+        "p95": 4775.0,
+        "gt1": 48,
+        "gt2": 48,
+        "gt5": 48
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "stratum": [
+        "all"
+      ],
+      "pairs": 48,
+      "originalSeeds": 12225,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 9299,
+        "source-depth-unavailable": 1531,
+        "depth-edge-or-hole-visibility-unknown": 166,
+        "source-depth-edge-or-hole-reference-unknown": 212,
+        "current-depth-unavailable": 340,
+        "rgb-pose-unavailable": 512,
+        "source-depth-outside-evaluation-range": 1,
+        "occluded-by-nearer-depth": 1,
+        "outside-current-image": 163
+      },
+      "visible": 9299,
+      "visibleAccepted": 9046,
+      "visibleLkNotAccepted": 253,
+      "visibleNoAcceptedFiniteCorrespondence": 253,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 9046,
+        "p50": 2.1197608395732725,
+        "p95": 4.294723028646192,
+        "gt1": 7157,
+        "gt2": 4730,
+        "gt5": 185
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 9046,
+        "p50": 14.430884431467014,
+        "p95": 16.82663668299667,
+        "gt1": 9046,
+        "gt2": 9046,
+        "gt5": 9046
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 9299,
+        "p50": 2.1582900738241935,
+        "p95": 4.613050956010318,
+        "gt1": 7389,
+        "gt2": 4943,
+        "gt5": 335
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 9046,
+        "p50": 35.06188826306747,
+        "p95": 43.97050208617219,
+        "gt1": 9046,
+        "gt2": 9046,
+        "gt5": 9046
+      },
+      "outsideSensitivity": 2,
+      "shiftedEndpointsOutsideSameSensitivity": 3,
+      "unchangedCompatibleWithHeuristic": 9044,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 9043,
+      "guardStatuses": {
+        "insufficient-background-agreement": 33,
+        "rgb-pose-unavailable": 2,
+        "valid": 13
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:epipolar-baseline-too-small": 10,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 48,
+        "fxTimes105:epipolar-baseline-too-small": 10,
+        "yawPlus1Deg:valid": 36,
+        "fxTimes105:valid": 36,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 2,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 2
+      },
+      "poseAbsSkewUs": {
+        "n": 192,
+        "p50": 2783.0,
+        "p95": 4837.75,
+        "gt1": 192,
+        "gt2": 192,
+        "gt5": 192
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "stratum": [
+        "structure_texture_far"
+      ],
+      "pairs": 24,
+      "originalSeeds": 6144,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 5083,
+        "source-depth-unavailable": 527,
+        "depth-edge-or-hole-visibility-unknown": 87,
+        "source-depth-edge-or-hole-reference-unknown": 110,
+        "current-depth-unavailable": 79,
+        "rgb-pose-unavailable": 256,
+        "source-depth-outside-evaluation-range": 1,
+        "occluded-by-nearer-depth": 1
+      },
+      "visible": 5083,
+      "visibleAccepted": 5075,
+      "visibleLkNotAccepted": 8,
+      "visibleNoAcceptedFiniteCorrespondence": 8,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 5075,
+        "p50": 2.1735169524818936,
+        "p95": 3.770337283438793,
+        "gt1": 4072,
+        "gt2": 2758,
+        "gt5": 15
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 5075,
+        "p50": 14.778861340452577,
+        "p95": 16.47822783986235,
+        "gt1": 5075,
+        "gt2": 5075,
+        "gt5": 5075
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 5083,
+        "p50": 2.176501710548656,
+        "p95": 3.777843842071801,
+        "gt1": 4080,
+        "gt2": 2766,
+        "gt5": 23
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 5075,
+        "p50": 34.131227661125315,
+        "p95": 46.26403919271797,
+        "gt1": 5075,
+        "gt2": 5075,
+        "gt5": 5075
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 5075,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 5075,
+      "guardStatuses": {
+        "insufficient-background-agreement": 21,
+        "rgb-pose-unavailable": 1,
+        "valid": 2
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:epipolar-baseline-too-small": 10,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 24,
+        "fxTimes105:epipolar-baseline-too-small": 10,
+        "yawPlus1Deg:valid": 13,
+        "fxTimes105:valid": 13,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 1,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 1
+      },
+      "poseAbsSkewUs": {
+        "n": 96,
+        "p50": 2066.0,
+        "p95": 4801.5,
+        "gt1": 96,
+        "gt2": 96,
+        "gt5": 96
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "stratum": [
+        "100ms"
+      ],
+      "pairs": 24,
+      "originalSeeds": 6144,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 4359,
+        "source-depth-unavailable": 960,
+        "depth-edge-or-hole-visibility-unknown": 82,
+        "source-depth-edge-or-hole-reference-unknown": 103,
+        "current-depth-unavailable": 122,
+        "rgb-pose-unavailable": 512,
+        "outside-current-image": 6
+      },
+      "visible": 4359,
+      "visibleAccepted": 4278,
+      "visibleLkNotAccepted": 81,
+      "visibleNoAcceptedFiniteCorrespondence": 81,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 4278,
+        "p50": 2.2604908748783936,
+        "p95": 4.4230827385575235,
+        "gt1": 3364,
+        "gt2": 2314,
+        "gt5": 121
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 4278,
+        "p50": 14.439581142865418,
+        "p95": 16.87086275857355,
+        "gt1": 4278,
+        "gt2": 4278,
+        "gt5": 4278
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 4359,
+        "p50": 2.2891390097983453,
+        "p95": 4.665079228325407,
+        "gt1": 3433,
+        "gt2": 2378,
+        "gt5": 174
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 4278,
+        "p50": 34.94006642810808,
+        "p95": 43.81377791870149,
+        "gt1": 4278,
+        "gt2": 4278,
+        "gt5": 4278
+      },
+      "outsideSensitivity": 2,
+      "shiftedEndpointsOutsideSameSensitivity": 3,
+      "unchangedCompatibleWithHeuristic": 4276,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 4275,
+      "guardStatuses": {
+        "insufficient-background-agreement": 16,
+        "rgb-pose-unavailable": 2,
+        "valid": 6
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:epipolar-baseline-too-small": 10,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 24,
+        "fxTimes105:epipolar-baseline-too-small": 10,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 2,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 2,
+        "yawPlus1Deg:valid": 12,
+        "fxTimes105:valid": 12
+      },
+      "poseAbsSkewUs": {
+        "n": 96,
+        "p50": 2139.0,
+        "p95": 4903.5,
+        "gt1": 96,
+        "gt2": 96,
+        "gt5": 96
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "stratum": [
+        "structure_texture_far",
+        "100ms"
+      ],
+      "pairs": 12,
+      "originalSeeds": 3072,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 2456,
+        "source-depth-unavailable": 242,
+        "depth-edge-or-hole-visibility-unknown": 42,
+        "source-depth-edge-or-hole-reference-unknown": 50,
+        "current-depth-unavailable": 26,
+        "rgb-pose-unavailable": 256
+      },
+      "visible": 2456,
+      "visibleAccepted": 2455,
+      "visibleLkNotAccepted": 1,
+      "visibleNoAcceptedFiniteCorrespondence": 1,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 2455,
+        "p50": 2.4364117416126856,
+        "p95": 3.785051382465674,
+        "gt1": 1956,
+        "gt2": 1354,
+        "gt5": 2
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 2455,
+        "p50": 14.751299104467048,
+        "p95": 16.829878385601837,
+        "gt1": 2455,
+        "gt2": 2455,
+        "gt5": 2455
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 2456,
+        "p50": 2.4382018658353095,
+        "p95": 3.7919412145120415,
+        "gt1": 1957,
+        "gt2": 1355,
+        "gt5": 3
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 2455,
+        "p50": 34.44563015805666,
+        "p95": 46.037416602423505,
+        "gt1": 2455,
+        "gt2": 2455,
+        "gt5": 2455
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 2455,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 2455,
+      "guardStatuses": {
+        "insufficient-background-agreement": 11,
+        "rgb-pose-unavailable": 1
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:epipolar-baseline-too-small": 10,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 12,
+        "fxTimes105:epipolar-baseline-too-small": 10,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 1,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 1,
+        "yawPlus1Deg:valid": 1,
+        "fxTimes105:valid": 1
+      },
+      "poseAbsSkewUs": {
+        "n": 48,
+        "p50": 1284.0,
+        "p95": 4775.0,
+        "gt1": 48,
+        "gt2": 48,
+        "gt5": 48
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "stratum": [
+        "200ms"
+      ],
+      "pairs": 24,
+      "originalSeeds": 6081,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 4941,
+        "source-depth-unavailable": 570,
+        "depth-edge-or-hole-visibility-unknown": 80,
+        "source-depth-edge-or-hole-reference-unknown": 108,
+        "current-depth-unavailable": 218,
+        "source-depth-outside-evaluation-range": 1,
+        "occluded-by-nearer-depth": 2,
+        "outside-current-image": 161
+      },
+      "visible": 4941,
+      "visibleAccepted": 4771,
+      "visibleLkNotAccepted": 170,
+      "visibleNoAcceptedFiniteCorrespondence": 170,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 4771,
+        "p50": 2.0898736606913326,
+        "p95": 4.2974293203912985,
+        "gt1": 3736,
+        "gt2": 2487,
+        "gt5": 85
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 4771,
+        "p50": 14.3661178543869,
+        "p95": 16.99709460781225,
+        "gt1": 4771,
+        "gt2": 4771,
+        "gt5": 4771
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 4941,
+        "p50": 2.143068123699902,
+        "p95": 4.6627193606359745,
+        "gt1": 3891,
+        "gt2": 2632,
+        "gt5": 188
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 4771,
+        "p50": 35.90786700151539,
+        "p95": 44.86531645009721,
+        "gt1": 4771,
+        "gt2": 4771,
+        "gt5": 4771
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 4771,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 4771,
+      "guardStatuses": {
+        "insufficient-background-agreement": 17,
+        "valid": 7
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 24,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 24,
+        "fxTimes105:valid": 24
+      },
+      "poseAbsSkewUs": {
+        "n": 96,
+        "p50": 2861.0,
+        "p95": 4825.0,
+        "gt1": 96,
+        "gt2": 96,
+        "gt5": 96
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "stratum": [
+        "structure_texture_far",
+        "200ms"
+      ],
+      "pairs": 12,
+      "originalSeeds": 3072,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 2632,
+        "source-depth-unavailable": 284,
+        "depth-edge-or-hole-visibility-unknown": 40,
+        "source-depth-edge-or-hole-reference-unknown": 59,
+        "current-depth-unavailable": 54,
+        "source-depth-outside-evaluation-range": 1,
+        "occluded-by-nearer-depth": 2
+      },
+      "visible": 2632,
+      "visibleAccepted": 2625,
+      "visibleLkNotAccepted": 7,
+      "visibleNoAcceptedFiniteCorrespondence": 7,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 2625,
+        "p50": 2.193474225746189,
+        "p95": 3.8198625321294584,
+        "gt1": 2135,
+        "gt2": 1479,
+        "gt5": 16
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 2625,
+        "p50": 14.901844235753417,
+        "p95": 16.321771712273513,
+        "gt1": 2625,
+        "gt2": 2625,
+        "gt5": 2625
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 2632,
+        "p50": 2.1985759182118687,
+        "p95": 3.8498943604192446,
+        "gt1": 2142,
+        "gt2": 1486,
+        "gt5": 23
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 2625,
+        "p50": 34.528966662942565,
+        "p95": 47.12442254145334,
+        "gt1": 2625,
+        "gt2": 2625,
+        "gt5": 2625
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 2625,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 2625,
+      "guardStatuses": {
+        "insufficient-background-agreement": 10,
+        "valid": 2
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 12,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 12,
+        "fxTimes105:valid": 12
+      },
+      "poseAbsSkewUs": {
+        "n": 48,
+        "p50": 2940.0,
+        "p95": 4794.0,
+        "gt1": 48,
+        "gt2": 48,
+        "gt5": 48
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "stratum": [
+        "200ms"
+      ],
+      "pairs": 24,
+      "originalSeeds": 6081,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 4940,
+        "source-depth-unavailable": 571,
+        "depth-edge-or-hole-visibility-unknown": 84,
+        "source-depth-edge-or-hole-reference-unknown": 109,
+        "current-depth-unavailable": 218,
+        "source-depth-outside-evaluation-range": 1,
+        "occluded-by-nearer-depth": 1,
+        "outside-current-image": 157
+      },
+      "visible": 4940,
+      "visibleAccepted": 4768,
+      "visibleLkNotAccepted": 172,
+      "visibleNoAcceptedFiniteCorrespondence": 172,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 4768,
+        "p50": 2.028603443495264,
+        "p95": 4.221022034771393,
+        "gt1": 3793,
+        "gt2": 2416,
+        "gt5": 64
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 4768,
+        "p50": 14.41943425845865,
+        "p95": 16.78436959814005,
+        "gt1": 4768,
+        "gt2": 4768,
+        "gt5": 4768
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 4940,
+        "p50": 2.080247766072136,
+        "p95": 4.581488907340856,
+        "gt1": 3956,
+        "gt2": 2565,
+        "gt5": 161
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 4768,
+        "p50": 35.23406259828778,
+        "p95": 44.12385487811058,
+        "gt1": 4768,
+        "gt2": 4768,
+        "gt5": 4768
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 4768,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 4768,
+      "guardStatuses": {
+        "insufficient-background-agreement": 17,
+        "valid": 7
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 24,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 24,
+        "fxTimes105:valid": 24
+      },
+      "poseAbsSkewUs": {
+        "n": 96,
+        "p50": 2861.0,
+        "p95": 4825.0,
+        "gt1": 96,
+        "gt2": 96,
+        "gt5": 96
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "stratum": [
+        "structure_texture_far",
+        "200ms"
+      ],
+      "pairs": 12,
+      "originalSeeds": 3072,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 2627,
+        "source-depth-unavailable": 285,
+        "depth-edge-or-hole-visibility-unknown": 45,
+        "source-depth-edge-or-hole-reference-unknown": 60,
+        "current-depth-unavailable": 53,
+        "source-depth-outside-evaluation-range": 1,
+        "occluded-by-nearer-depth": 1
+      },
+      "visible": 2627,
+      "visibleAccepted": 2620,
+      "visibleLkNotAccepted": 7,
+      "visibleNoAcceptedFiniteCorrespondence": 7,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 2620,
+        "p50": 2.0980634373694764,
+        "p95": 3.748093345064886,
+        "gt1": 2116,
+        "gt2": 1404,
+        "gt5": 13
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 2620,
+        "p50": 14.803450977366456,
+        "p95": 16.13970572265339,
+        "gt1": 2620,
+        "gt2": 2620,
+        "gt5": 2620
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 2627,
+        "p50": 2.10254296896771,
+        "p95": 3.766590094375984,
+        "gt1": 2123,
+        "gt2": 1411,
+        "gt5": 20
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 2620,
+        "p50": 33.82309128439525,
+        "p95": 46.39194895512276,
+        "gt1": 2620,
+        "gt2": 2620,
+        "gt5": 2620
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 2620,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 2620,
+      "guardStatuses": {
+        "insufficient-background-agreement": 10,
+        "valid": 2
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 12,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 12,
+        "fxTimes105:valid": 12
+      },
+      "poseAbsSkewUs": {
+        "n": 48,
+        "p50": 2940.0,
+        "p95": 4794.0,
+        "gt1": 48,
+        "gt2": 48,
+        "gt5": 48
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "stratum": [
+        "nostructure_texture_far"
+      ],
+      "pairs": 24,
+      "originalSeeds": 6081,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 4212,
+        "source-depth-unavailable": 1004,
+        "source-depth-edge-or-hole-reference-unknown": 103,
+        "current-depth-unavailable": 260,
+        "depth-edge-or-hole-visibility-unknown": 78,
+        "outside-current-image": 168,
+        "rgb-pose-unavailable": 256
+      },
+      "visible": 4212,
+      "visibleAccepted": 3969,
+      "visibleLkNotAccepted": 243,
+      "visibleNoAcceptedFiniteCorrespondence": 243,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 3969,
+        "p50": 2.0252045700140577,
+        "p95": 4.935768827672761,
+        "gt1": 3104,
+        "gt2": 2001,
+        "gt5": 189
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 3969,
+        "p50": 13.95218427408498,
+        "p95": 17.532419366520518,
+        "gt1": 3969,
+        "gt2": 3969,
+        "gt5": 3969
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 4212,
+        "p50": 2.141596632649567,
+        "p95": 5.7291107265288055,
+        "gt1": 3327,
+        "gt2": 2202,
+        "gt5": 337
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 3969,
+        "p50": 36.133470614887166,
+        "p95": 40.485333952667084,
+        "gt1": 3969,
+        "gt2": 3969,
+        "gt5": 3969
+      },
+      "outsideSensitivity": 2,
+      "shiftedEndpointsOutsideSameSensitivity": 3,
+      "unchangedCompatibleWithHeuristic": 3967,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 3966,
+      "guardStatuses": {
+        "valid": 11,
+        "insufficient-background-agreement": 12,
+        "rgb-pose-unavailable": 1
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 23,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 24,
+        "fxTimes105:valid": 23,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 1,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 1
+      },
+      "poseAbsSkewUs": {
+        "n": 96,
+        "p50": 2858.5,
+        "p95": 4879.0,
+        "gt1": 96,
+        "gt2": 96,
+        "gt5": 96
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "stratum": [
+        "nostructure_texture_far",
+        "100ms"
+      ],
+      "pairs": 12,
+      "originalSeeds": 3072,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 1903,
+        "source-depth-unavailable": 718,
+        "source-depth-edge-or-hole-reference-unknown": 54,
+        "current-depth-unavailable": 96,
+        "depth-edge-or-hole-visibility-unknown": 38,
+        "rgb-pose-unavailable": 256,
+        "outside-current-image": 7
+      },
+      "visible": 1903,
+      "visibleAccepted": 1823,
+      "visibleLkNotAccepted": 80,
+      "visibleNoAcceptedFiniteCorrespondence": 80,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 1823,
+        "p50": 2.1834806224875667,
+        "p95": 5.368931102248925,
+        "gt1": 1503,
+        "gt2": 993,
+        "gt5": 120
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 1823,
+        "p50": 13.920312455576061,
+        "p95": 16.93897852116979,
+        "gt1": 1823,
+        "gt2": 1823,
+        "gt5": 1823
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 1903,
+        "p50": 2.2196453564424674,
+        "p95": 5.843708399987753,
+        "gt1": 1578,
+        "gt2": 1056,
+        "gt5": 172
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 1823,
+        "p50": 35.84830244302262,
+        "p95": 40.43807768840893,
+        "gt1": 1823,
+        "gt2": 1823,
+        "gt5": 1823
+      },
+      "outsideSensitivity": 2,
+      "shiftedEndpointsOutsideSameSensitivity": 3,
+      "unchangedCompatibleWithHeuristic": 1821,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 1820,
+      "guardStatuses": {
+        "valid": 6,
+        "insufficient-background-agreement": 5,
+        "rgb-pose-unavailable": 1
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 11,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 12,
+        "fxTimes105:valid": 11,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 1,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 1
+      },
+      "poseAbsSkewUs": {
+        "n": 48,
+        "p50": 2858.5,
+        "p95": 4942.7,
+        "gt1": 48,
+        "gt2": 48,
+        "gt5": 48
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "stratum": [
+        "nostructure_texture_far"
+      ],
+      "pairs": 24,
+      "originalSeeds": 6081,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 4216,
+        "source-depth-unavailable": 1004,
+        "source-depth-edge-or-hole-reference-unknown": 102,
+        "current-depth-unavailable": 261,
+        "depth-edge-or-hole-visibility-unknown": 79,
+        "outside-current-image": 163,
+        "rgb-pose-unavailable": 256
+      },
+      "visible": 4216,
+      "visibleAccepted": 3971,
+      "visibleLkNotAccepted": 245,
+      "visibleNoAcceptedFiniteCorrespondence": 245,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 3971,
+        "p50": 1.9787261543322594,
+        "p95": 4.8550091504984945,
+        "gt1": 3085,
+        "gt2": 1972,
+        "gt5": 170
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 3971,
+        "p50": 14.132467199824813,
+        "p95": 17.422938749554213,
+        "gt1": 3971,
+        "gt2": 3971,
+        "gt5": 3971
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 4216,
+        "p50": 2.1159009633665233,
+        "p95": 5.6696071584286925,
+        "gt1": 3309,
+        "gt2": 2177,
+        "gt5": 312
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 3971,
+        "p50": 35.43605274615411,
+        "p95": 39.791539226212166,
+        "gt1": 3971,
+        "gt2": 3971,
+        "gt5": 3971
+      },
+      "outsideSensitivity": 2,
+      "shiftedEndpointsOutsideSameSensitivity": 3,
+      "unchangedCompatibleWithHeuristic": 3969,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 3968,
+      "guardStatuses": {
+        "valid": 11,
+        "insufficient-background-agreement": 12,
+        "rgb-pose-unavailable": 1
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 23,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 24,
+        "fxTimes105:valid": 23,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 1,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 1
+      },
+      "poseAbsSkewUs": {
+        "n": 96,
+        "p50": 2858.5,
+        "p95": 4879.0,
+        "gt1": 96,
+        "gt2": 96,
+        "gt5": 96
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "stratum": [
+        "nostructure_texture_far",
+        "100ms"
+      ],
+      "pairs": 12,
+      "originalSeeds": 3072,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 1903,
+        "source-depth-unavailable": 718,
+        "source-depth-edge-or-hole-reference-unknown": 53,
+        "current-depth-unavailable": 96,
+        "depth-edge-or-hole-visibility-unknown": 40,
+        "rgb-pose-unavailable": 256,
+        "outside-current-image": 6
+      },
+      "visible": 1903,
+      "visibleAccepted": 1823,
+      "visibleLkNotAccepted": 80,
+      "visibleNoAcceptedFiniteCorrespondence": 80,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 1823,
+        "p50": 2.125315203364424,
+        "p95": 5.320610729101731,
+        "gt1": 1408,
+        "gt2": 960,
+        "gt5": 119
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 1823,
+        "p50": 13.920897048089506,
+        "p95": 16.943867784512786,
+        "gt1": 1823,
+        "gt2": 1823,
+        "gt5": 1823
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 1903,
+        "p50": 2.1595510080993288,
+        "p95": 5.761317044048311,
+        "gt1": 1476,
+        "gt2": 1023,
+        "gt5": 171
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 1823,
+        "p50": 35.13400451849387,
+        "p95": 39.74014094647816,
+        "gt1": 1823,
+        "gt2": 1823,
+        "gt5": 1823
+      },
+      "outsideSensitivity": 2,
+      "shiftedEndpointsOutsideSameSensitivity": 3,
+      "unchangedCompatibleWithHeuristic": 1821,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 1820,
+      "guardStatuses": {
+        "valid": 6,
+        "insufficient-background-agreement": 5,
+        "rgb-pose-unavailable": 1
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 11,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 12,
+        "fxTimes105:valid": 11,
+        "yawPlus1Deg:reference-pose-skew-exceeds5ms": 1,
+        "fxTimes105:reference-pose-skew-exceeds5ms": 1
+      },
+      "poseAbsSkewUs": {
+        "n": 48,
+        "p50": 2858.5,
+        "p95": 4942.7,
+        "gt1": 48,
+        "gt2": 48,
+        "gt5": 48
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "stratum": [
+        "nostructure_texture_far",
+        "200ms"
+      ],
+      "pairs": 12,
+      "originalSeeds": 3009,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 2309,
+        "source-depth-unavailable": 286,
+        "source-depth-edge-or-hole-reference-unknown": 49,
+        "depth-edge-or-hole-visibility-unknown": 40,
+        "current-depth-unavailable": 164,
+        "outside-current-image": 161
+      },
+      "visible": 2309,
+      "visibleAccepted": 2146,
+      "visibleLkNotAccepted": 163,
+      "visibleNoAcceptedFiniteCorrespondence": 163,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 2146,
+        "p50": 1.7425429075455312,
+        "p95": 4.730371645007216,
+        "gt1": 1601,
+        "gt2": 1008,
+        "gt5": 69
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 2146,
+        "p50": 13.966618363715863,
+        "p95": 17.84720066533881,
+        "gt1": 2146,
+        "gt2": 2146,
+        "gt5": 2146
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 2309,
+        "p50": 1.983819940784893,
+        "p95": 5.380202175375333,
+        "gt1": 1749,
+        "gt2": 1146,
+        "gt5": 165
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 2146,
+        "p50": 36.46343107891677,
+        "p95": 40.512176870773345,
+        "gt1": 2146,
+        "gt2": 2146,
+        "gt5": 2146
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 2146,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 2146,
+      "guardStatuses": {
+        "valid": 5,
+        "insufficient-background-agreement": 7
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 12,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 12,
+        "fxTimes105:valid": 12
+      },
+      "poseAbsSkewUs": {
+        "n": 48,
+        "p50": 2858.5,
+        "p95": 4862.2,
+        "gt1": 48,
+        "gt2": 48,
+        "gt5": 48
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "stratum": [
+        "nostructure_texture_far",
+        "200ms"
+      ],
+      "pairs": 12,
+      "originalSeeds": 3009,
+      "referenceStatuses": {
+        "approximately-visible-static-reference": 2313,
+        "source-depth-unavailable": 286,
+        "depth-edge-or-hole-visibility-unknown": 39,
+        "source-depth-edge-or-hole-reference-unknown": 49,
+        "current-depth-unavailable": 165,
+        "outside-current-image": 157
+      },
+      "visible": 2313,
+      "visibleAccepted": 2148,
+      "visibleLkNotAccepted": 165,
+      "visibleNoAcceptedFiniteCorrespondence": 165,
+      "pooledVisibleAcceptedEpePx": {
+        "n": 2148,
+        "p50": 1.73873667568725,
+        "p95": 4.598493469315363,
+        "gt1": 1677,
+        "gt2": 1012,
+        "gt5": 51
+      },
+      "pooledSameVisibleAcceptedShiftedEpePx": {
+        "n": 2148,
+        "p50": 14.203028175728997,
+        "p95": 17.761984933237553,
+        "gt1": 2148,
+        "gt2": 2148,
+        "gt5": 2148
+      },
+      "pooledVisibleAllForwardEpePx": {
+        "n": 2313,
+        "p50": 1.993214105936863,
+        "p95": 5.298583133000707,
+        "gt1": 1833,
+        "gt2": 1154,
+        "gt5": 141
+      },
+      "pooledAcceptedSensitivityRadiusPx": {
+        "n": 2148,
+        "p50": 35.76358321723305,
+        "p95": 39.81680770422775,
+        "gt1": 2148,
+        "gt2": 2148,
+        "gt5": 2148
+      },
+      "outsideSensitivity": 0,
+      "shiftedEndpointsOutsideSameSensitivity": 0,
+      "unchangedCompatibleWithHeuristic": 2148,
+      "shiftedEndpointsCompatibleWithSameHeuristic": 2148,
+      "guardStatuses": {
+        "valid": 5,
+        "insufficient-background-agreement": 7
+      },
+      "negativeControlPairStatuses": {
+        "yawPlus1Deg:valid": 12,
+        "poseClockPlus40Ms:reference-pose-skew-exceeds5ms": 12,
+        "fxTimes105:valid": 12
+      },
+      "poseAbsSkewUs": {
+        "n": 48,
+        "p50": 2858.5,
+        "p95": 4862.2,
+        "gt1": 48,
+        "gt2": 48,
+        "gt5": 48
+      }
+    }
+  ],
+  "calibrationMaskComparison": {
+    "visibleMaskDisagreements": 28,
+    "acceptedMaskDisagreements": 26
+  },
+  "nearRotationFallback": [
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w0-p0",
+      "baseline": 0.016542672093709673,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 239,
+      "referenceRotationResidual": {
+        "n": 239,
+        "p50": 4.12237468345763,
+        "p95": 5.638487777896228,
+        "gt1": 239,
+        "gt2": 239,
+        "gt5": 53
+      },
+      "lkRotationResidual": {
+        "n": 239,
+        "p50": 3.7635814697384857,
+        "p95": 5.283010933128044,
+        "gt1": 239,
+        "gt2": 239,
+        "gt5": 23
+      },
+      "epe": {
+        "n": 239,
+        "p50": 2.891584830192338,
+        "p95": 3.2892865441113646,
+        "gt1": 239,
+        "gt2": 238,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w0-p0",
+      "baseline": 0.016542672093709673,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 239,
+      "referenceRotationResidual": {
+        "n": 239,
+        "p50": 4.049500564034056,
+        "p95": 5.536674675421821,
+        "gt1": 239,
+        "gt2": 239,
+        "gt5": 42
+      },
+      "lkRotationResidual": {
+        "n": 239,
+        "p50": 3.8034642348597414,
+        "p95": 5.314907698388167,
+        "gt1": 239,
+        "gt2": 239,
+        "gt5": 31
+      },
+      "epe": {
+        "n": 239,
+        "p50": 2.7752882291621863,
+        "p95": 3.160494631831623,
+        "gt1": 239,
+        "gt2": 237,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w0-p4",
+      "baseline": 0.023598728779321954,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 231,
+      "referenceRotationResidual": {
+        "n": 231,
+        "p50": 5.640714865793516,
+        "p95": 7.679832841142709,
+        "gt1": 231,
+        "gt2": 231,
+        "gt5": 183
+      },
+      "lkRotationResidual": {
+        "n": 231,
+        "p50": 5.2117130155129505,
+        "p95": 7.466031604573606,
+        "gt1": 231,
+        "gt2": 231,
+        "gt5": 131
+      },
+      "epe": {
+        "n": 231,
+        "p50": 1.0412232553052003,
+        "p95": 1.6588204347756919,
+        "gt1": 119,
+        "gt2": 5,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w0-p4",
+      "baseline": 0.023598728779321954,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 229,
+      "referenceRotationResidual": {
+        "n": 229,
+        "p50": 5.50573597703855,
+        "p95": 7.536615922221909,
+        "gt1": 229,
+        "gt2": 229,
+        "gt5": 168
+      },
+      "lkRotationResidual": {
+        "n": 229,
+        "p50": 4.9858837838159396,
+        "p95": 7.27183902260958,
+        "gt1": 229,
+        "gt2": 229,
+        "gt5": 114
+      },
+      "epe": {
+        "n": 229,
+        "p50": 1.07220295900023,
+        "p95": 1.6876716528170717,
+        "gt1": 127,
+        "gt2": 5,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w1-p0",
+      "baseline": 0.02410062239860206,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 228,
+      "referenceRotationResidual": {
+        "n": 228,
+        "p50": 5.432217869946395,
+        "p95": 7.622141111330618,
+        "gt1": 228,
+        "gt2": 228,
+        "gt5": 160
+      },
+      "lkRotationResidual": {
+        "n": 228,
+        "p50": 5.824609830739577,
+        "p95": 7.017298340436515,
+        "gt1": 228,
+        "gt2": 228,
+        "gt5": 218
+      },
+      "epe": {
+        "n": 228,
+        "p50": 0.8494740576720405,
+        "p95": 1.4717546998677027,
+        "gt1": 72,
+        "gt2": 0,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w1-p0",
+      "baseline": 0.02410062239860206,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 227,
+      "referenceRotationResidual": {
+        "n": 227,
+        "p50": 5.32487921546946,
+        "p95": 7.488875628334706,
+        "gt1": 227,
+        "gt2": 227,
+        "gt5": 146
+      },
+      "lkRotationResidual": {
+        "n": 227,
+        "p50": 5.729412290754933,
+        "p95": 6.932058165994378,
+        "gt1": 227,
+        "gt2": 227,
+        "gt5": 211
+      },
+      "epe": {
+        "n": 227,
+        "p50": 0.8688442725002973,
+        "p95": 1.5821218337042948,
+        "gt1": 81,
+        "gt2": 1,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w1-p2",
+      "baseline": 0.02449653036656417,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 225,
+      "referenceRotationResidual": {
+        "n": 225,
+        "p50": 5.055057575921001,
+        "p95": 7.702430812719966,
+        "gt1": 225,
+        "gt2": 225,
+        "gt5": 117
+      },
+      "lkRotationResidual": {
+        "n": 225,
+        "p50": 4.100502891034482,
+        "p95": 7.461221006616244,
+        "gt1": 225,
+        "gt2": 225,
+        "gt5": 58
+      },
+      "epe": {
+        "n": 225,
+        "p50": 1.6617503601446857,
+        "p95": 3.7602171282894856,
+        "gt1": 162,
+        "gt2": 77,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w1-p2",
+      "baseline": 0.02449653036656417,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 225,
+      "referenceRotationResidual": {
+        "n": 225,
+        "p50": 4.96500659644264,
+        "p95": 7.588337341849348,
+        "gt1": 225,
+        "gt2": 225,
+        "gt5": 110
+      },
+      "lkRotationResidual": {
+        "n": 225,
+        "p50": 4.064057699577341,
+        "p95": 7.435832518749318,
+        "gt1": 225,
+        "gt2": 225,
+        "gt5": 58
+      },
+      "epe": {
+        "n": 225,
+        "p50": 1.6047145220933248,
+        "p95": 3.6979455664966276,
+        "gt1": 161,
+        "gt2": 77,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w1-p4",
+      "baseline": 0.021381534089021752,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 231,
+      "referenceRotationResidual": {
+        "n": 231,
+        "p50": 4.535427270541683,
+        "p95": 6.624811536810932,
+        "gt1": 231,
+        "gt2": 231,
+        "gt5": 88
+      },
+      "lkRotationResidual": {
+        "n": 231,
+        "p50": 6.088691974785762,
+        "p95": 8.266255347435202,
+        "gt1": 231,
+        "gt2": 231,
+        "gt5": 231
+      },
+      "epe": {
+        "n": 231,
+        "p50": 3.616746525485531,
+        "p95": 4.58446157855475,
+        "gt1": 231,
+        "gt2": 231,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w1-p4",
+      "baseline": 0.021381534089021752,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 231,
+      "referenceRotationResidual": {
+        "n": 231,
+        "p50": 4.456931608783867,
+        "p95": 6.5295263484878,
+        "gt1": 231,
+        "gt2": 231,
+        "gt5": 83
+      },
+      "lkRotationResidual": {
+        "n": 231,
+        "p50": 5.869663205465268,
+        "p95": 8.131839873298777,
+        "gt1": 231,
+        "gt2": 231,
+        "gt5": 221
+      },
+      "epe": {
+        "n": 231,
+        "p50": 3.4380476754704308,
+        "p95": 4.371307965899171,
+        "gt1": 231,
+        "gt2": 231,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w1-p6",
+      "baseline": 0.018999210509913263,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 211,
+      "referenceRotationResidual": {
+        "n": 211,
+        "p50": 4.044656151403643,
+        "p95": 6.258085035208008,
+        "gt1": 211,
+        "gt2": 211,
+        "gt5": 62
+      },
+      "lkRotationResidual": {
+        "n": 211,
+        "p50": 5.173500452184339,
+        "p95": 6.177900397854678,
+        "gt1": 211,
+        "gt2": 211,
+        "gt5": 130
+      },
+      "epe": {
+        "n": 211,
+        "p50": 2.4378652358187636,
+        "p95": 3.90655212771038,
+        "gt1": 211,
+        "gt2": 124,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w1-p6",
+      "baseline": 0.018999210509913263,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 210,
+      "referenceRotationResidual": {
+        "n": 210,
+        "p50": 3.984463481065709,
+        "p95": 6.169332008342216,
+        "gt1": 210,
+        "gt2": 210,
+        "gt5": 60
+      },
+      "lkRotationResidual": {
+        "n": 210,
+        "p50": 5.040548361569046,
+        "p95": 6.039616336921629,
+        "gt1": 210,
+        "gt2": 210,
+        "gt5": 110
+      },
+      "epe": {
+        "n": 210,
+        "p50": 2.3257191295521604,
+        "p95": 3.7904084367994795,
+        "gt1": 210,
+        "gt2": 119,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w2-p0",
+      "baseline": 0.012166757990524909,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 210,
+      "referenceRotationResidual": {
+        "n": 210,
+        "p50": 2.9537758250897244,
+        "p95": 3.837993563156661,
+        "gt1": 210,
+        "gt2": 209,
+        "gt5": 0
+      },
+      "lkRotationResidual": {
+        "n": 210,
+        "p50": 2.5488266982419723,
+        "p95": 3.1702987593586225,
+        "gt1": 209,
+        "gt2": 208,
+        "gt5": 0
+      },
+      "epe": {
+        "n": 210,
+        "p50": 0.6351658165558971,
+        "p95": 1.2261574263171053,
+        "gt1": 33,
+        "gt2": 0,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w2-p0",
+      "baseline": 0.012166757990524909,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 211,
+      "referenceRotationResidual": {
+        "n": 211,
+        "p50": 2.8844447079488758,
+        "p95": 3.7728960180176476,
+        "gt1": 211,
+        "gt2": 210,
+        "gt5": 0
+      },
+      "lkRotationResidual": {
+        "n": 211,
+        "p50": 2.507976952517169,
+        "p95": 3.1370714649786904,
+        "gt1": 210,
+        "gt2": 208,
+        "gt5": 0
+      },
+      "epe": {
+        "n": 211,
+        "p50": 0.6195761200855575,
+        "p95": 1.1696377721769875,
+        "gt1": 25,
+        "gt2": 0,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w2-p2",
+      "baseline": 0.013878760751594476,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 208,
+      "referenceRotationResidual": {
+        "n": 208,
+        "p50": 2.6155133657400365,
+        "p95": 3.608821087881898,
+        "gt1": 208,
+        "gt2": 202,
+        "gt5": 0
+      },
+      "lkRotationResidual": {
+        "n": 208,
+        "p50": 4.255394252122876,
+        "p95": 5.437503973787202,
+        "gt1": 208,
+        "gt2": 208,
+        "gt5": 22
+      },
+      "epe": {
+        "n": 208,
+        "p50": 2.7450151196250223,
+        "p95": 3.1297204439199473,
+        "gt1": 208,
+        "gt2": 208,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w2-p2",
+      "baseline": 0.013878760751594476,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 208,
+      "referenceRotationResidual": {
+        "n": 208,
+        "p50": 2.5685441991119093,
+        "p95": 3.555008869492864,
+        "gt1": 208,
+        "gt2": 199,
+        "gt5": 0
+      },
+      "lkRotationResidual": {
+        "n": 208,
+        "p50": 4.2073692182658355,
+        "p95": 5.381647574012403,
+        "gt1": 208,
+        "gt2": 208,
+        "gt5": 22
+      },
+      "epe": {
+        "n": 208,
+        "p50": 2.818676160761095,
+        "p95": 3.233967654686374,
+        "gt1": 208,
+        "gt2": 208,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w2-p4",
+      "baseline": 0.011760952342391384,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 218,
+      "referenceRotationResidual": {
+        "n": 218,
+        "p50": 2.85658897294514,
+        "p95": 3.604066064503523,
+        "gt1": 218,
+        "gt2": 216,
+        "gt5": 0
+      },
+      "lkRotationResidual": {
+        "n": 218,
+        "p50": 4.186593461034795,
+        "p95": 4.874257788529945,
+        "gt1": 218,
+        "gt2": 218,
+        "gt5": 2
+      },
+      "epe": {
+        "n": 218,
+        "p50": 1.9296970917455372,
+        "p95": 2.2808824123608717,
+        "gt1": 218,
+        "gt2": 91,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w2-p4",
+      "baseline": 0.011760952342391384,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 218,
+      "referenceRotationResidual": {
+        "n": 218,
+        "p50": 2.7909169148712207,
+        "p95": 3.5345722830053274,
+        "gt1": 218,
+        "gt2": 216,
+        "gt5": 0
+      },
+      "lkRotationResidual": {
+        "n": 218,
+        "p50": 3.9339919628678732,
+        "p95": 4.648238593257964,
+        "gt1": 218,
+        "gt2": 218,
+        "gt5": 1
+      },
+      "epe": {
+        "n": 218,
+        "p50": 1.6759375041536388,
+        "p95": 2.1213283072911033,
+        "gt1": 217,
+        "gt2": 19,
+        "gt5": 0
+      }
+    },
+    {
+      "profile": "primary-fr3",
+      "pair": "structure_texture_far-w2-p6",
+      "baseline": 0.014078707327024159,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 219,
+      "referenceRotationResidual": {
+        "n": 219,
+        "p50": 3.9307796588750747,
+        "p95": 4.740358392912538,
+        "gt1": 219,
+        "gt2": 219,
+        "gt5": 1
+      },
+      "lkRotationResidual": {
+        "n": 219,
+        "p50": 4.110831469021686,
+        "p95": 5.226142816197494,
+        "gt1": 219,
+        "gt2": 219,
+        "gt5": 19
+      },
+      "epe": {
+        "n": 219,
+        "p50": 3.1601967865038945,
+        "p95": 4.273832847038784,
+        "gt1": 219,
+        "gt2": 219,
+        "gt5": 2
+      }
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "pair": "structure_texture_far-w2-p6",
+      "baseline": 0.014078707327024159,
+      "criterion": 1.3,
+      "guardStatus": "insufficient-background-agreement",
+      "visibleAccepted": 219,
+      "referenceRotationResidual": {
+        "n": 219,
+        "p50": 3.8533446887347838,
+        "p95": 4.651085772020826,
+        "gt1": 219,
+        "gt2": 219,
+        "gt5": 1
+      },
+      "lkRotationResidual": {
+        "n": 219,
+        "p50": 4.03659259742971,
+        "p95": 5.130984267733989,
+        "gt1": 219,
+        "gt2": 219,
+        "gt5": 17
+      },
+      "epe": {
+        "n": 219,
+        "p50": 3.1602504804054616,
+        "p95": 4.25250774615983,
+        "gt1": 219,
+        "gt2": 219,
+        "gt5": 2
+      }
+    }
+  ],
+  "eligibleNegativeControls": [
+    {
+      "profile": "primary-fr3",
+      "control": "yawPlus1Deg",
+      "baselineEligiblePairs": 36,
+      "controlStatuses": {
+        "valid": 36
+      },
+      "sameMaskBaselineResidualPx": {
+        "n": 6832,
+        "p50": 8.459332602030198e-14,
+        "p95": 2.364445719831567e-13,
+        "gt1": 0,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "sameMaskChangedResidualPx": {
+        "n": 6832,
+        "p50": 8.97069681131219,
+        "p95": 10.239678508541084,
+        "gt1": 5949,
+        "gt2": 4781,
+        "gt5": 4001
+      },
+      "interpretation": "Only baseline epipolar-valid pairs. Reference projection residual is self-consistency by construction, not physical camera validation."
+    },
+    {
+      "profile": "primary-fr3",
+      "control": "poseClockPlus40Ms",
+      "baselineEligiblePairs": 36,
+      "controlStatuses": {
+        "reference-pose-skew-exceeds5ms": 36
+      },
+      "sameMaskBaselineResidualPx": {
+        "n": 0,
+        "p50": null,
+        "p95": null,
+        "gt1": 0,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "sameMaskChangedResidualPx": {
+        "n": 0,
+        "p50": null,
+        "p95": null,
+        "gt1": 0,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "interpretation": "Only baseline epipolar-valid pairs. Reference projection residual is self-consistency by construction, not physical camera validation."
+    },
+    {
+      "profile": "primary-fr3",
+      "control": "fxTimes105",
+      "baselineEligiblePairs": 36,
+      "controlStatuses": {
+        "valid": 36
+      },
+      "sameMaskBaselineResidualPx": {
+        "n": 6832,
+        "p50": 8.459332602030198e-14,
+        "p95": 2.364445719831567e-13,
+        "gt1": 0,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "sameMaskChangedResidualPx": {
+        "n": 6832,
+        "p50": 0.10381323462559283,
+        "p95": 0.7173959105537832,
+        "gt1": 14,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "interpretation": "Only baseline epipolar-valid pairs. Reference projection residual is self-consistency by construction, not physical camera validation."
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "control": "yawPlus1Deg",
+      "baselineEligiblePairs": 36,
+      "controlStatuses": {
+        "valid": 36
+      },
+      "sameMaskBaselineResidualPx": {
+        "n": 6829,
+        "p50": 8.986952146098625e-14,
+        "p95": 2.3114598304671705e-13,
+        "gt1": 0,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "sameMaskChangedResidualPx": {
+        "n": 6829,
+        "p50": 8.79789468965423,
+        "p95": 10.072220437949932,
+        "gt1": 5947,
+        "gt2": 4785,
+        "gt5": 4002
+      },
+      "interpretation": "Only baseline epipolar-valid pairs. Reference projection residual is self-consistency by construction, not physical camera validation."
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "control": "poseClockPlus40Ms",
+      "baselineEligiblePairs": 36,
+      "controlStatuses": {
+        "reference-pose-skew-exceeds5ms": 36
+      },
+      "sameMaskBaselineResidualPx": {
+        "n": 0,
+        "p50": null,
+        "p95": null,
+        "gt1": 0,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "sameMaskChangedResidualPx": {
+        "n": 0,
+        "p50": null,
+        "p95": null,
+        "gt1": 0,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "interpretation": "Only baseline epipolar-valid pairs. Reference projection residual is self-consistency by construction, not physical camera validation."
+    },
+    {
+      "profile": "documented-ros-default-sensitivity",
+      "control": "fxTimes105",
+      "baselineEligiblePairs": 36,
+      "controlStatuses": {
+        "valid": 36
+      },
+      "sameMaskBaselineResidualPx": {
+        "n": 6829,
+        "p50": 8.986952146098625e-14,
+        "p95": 2.3114598304671705e-13,
+        "gt1": 0,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "sameMaskChangedResidualPx": {
+        "n": 6829,
+        "p50": 0.1040554211403175,
+        "p95": 0.7013724375172844,
+        "gt1": 4,
+        "gt2": 0,
+        "gt5": 0
+      },
+      "interpretation": "Only baseline epipolar-valid pairs. Reference projection residual is self-consistency by construction, not physical camera validation."
+    }
+  ],
+  "nearRotationPooled": {
+    "primary-fr3": {
+      "pairs": 10,
+      "visibleAcceptedPoints": 2220,
+      "referenceToRotationOnlyResidualPx": {
+        "n": 2220,
+        "p50": 4.112652663869188,
+        "p95": 7.036769698388109,
+        "gt1": 2220,
+        "gt2": 2211,
+        "gt5": 664
+      },
+      "lkToRotationOnlyResidualPx": {
+        "n": 2220,
+        "p50": 4.473290390611696,
+        "p95": 7.261683003917143,
+        "gt1": 2219,
+        "gt2": 2218,
+        "gt5": 834
+      },
+      "epe": {
+        "n": 2220,
+        "p50": 2.1799465231425956,
+        "p95": 3.997517541905672,
+        "gt1": 1712,
+        "gt2": 1193,
+        "gt5": 2
+      },
+      "referenceResidualAboveFrozen1_3Px": 2219,
+      "lkResidualAboveFrozen1_3Px": 2219
+    },
+    "documented-ros-default-sensitivity": {
+      "pairs": 10,
+      "visibleAcceptedPoints": 2217,
+      "referenceToRotationOnlyResidualPx": {
+        "n": 2217,
+        "p50": 4.035445917193939,
+        "p95": 6.91147715398016,
+        "gt1": 2217,
+        "gt2": 2205,
+        "gt5": 610
+      },
+      "lkToRotationOnlyResidualPx": {
+        "n": 2217,
+        "p50": 4.362024011964081,
+        "p95": 7.153517670790586,
+        "gt1": 2216,
+        "gt2": 2214,
+        "gt5": 785
+      },
+      "epe": {
+        "n": 2217,
+        "p50": 2.0449698848432893,
+        "p95": 3.809830827303329,
+        "gt1": 1718,
+        "gt2": 1116,
+        "gt5": 2
+      },
+      "referenceResidualAboveFrozen1_3Px": 2216,
+      "lkResidualAboveFrozen1_3Px": 2216
+    }
+  },
+  "outlierContextPlates": [
+    {
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3t-independent-audit/outlier-0-context.jpg",
+      "sha256": "4b11e4e9ee0b08a9e0061cb2511d2075db6fb2e23e92736cf62d96a47c4e3e16",
+      "pair": "nostructure_texture_far-w2-p2",
+      "seedIndex": 176,
+      "epe": 40.27548014657554,
+      "heuristicRadius": 38.57929779769475,
+      "cycle": 0.460449301678194,
+      "photometricNcc": 0.9882336238720889
+    },
+    {
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3t-independent-audit/outlier-0-zoom.jpg",
+      "sha256": "60cb83eb06038b7467ef7840a2a3105539e953af8d753c1d6d06aa3f1d8dc107",
+      "pair": "nostructure_texture_far-w2-p2",
+      "seedIndex": 176,
+      "epe": 40.27548014657554,
+      "heuristicRadius": 38.57929779769475,
+      "cycle": 0.460449301678194,
+      "photometricNcc": 0.9882336238720889
+    },
+    {
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3t-independent-audit/outlier-1-context.jpg",
+      "sha256": "f1917a7307671f078e4affce789efa56a8de92d39ee8badb9c6d521fd35ce4b6",
+      "pair": "nostructure_texture_far-w2-p2",
+      "seedIndex": 199,
+      "epe": 40.12707250793606,
+      "heuristicRadius": 38.370482552505464,
+      "cycle": 0.7187504897945228,
+      "photometricNcc": 0.9916744640992013
+    },
+    {
+      "path": "/Users/os/Documents/Codex/roboeye/qa/m3t-independent-audit/outlier-1-zoom.jpg",
+      "sha256": "4e87c8c48ac84ea79fa6f2005d33d780c6fc679c1e66023343e73c6a9c27967b",
+      "pair": "nostructure_texture_far-w2-p2",
+      "seedIndex": 199,
+      "epe": 40.12707250793606,
+      "heuristicRadius": 38.370482552505464,
+      "cycle": 0.7187504897945228,
+      "photometricNcc": 0.9916744640992013
+    }
+  ],
+  "visualReview": "All four hash-bound outlier context/zoom plates actually viewed by this independent reviewer. Both seeds lie on a slanted poster border; along-edge LK displacement relative to sensor reference makes aperture ambiguity a plausible explanation, not new material-point GT. Full-sequence visual certification NOT PERFORMED. Official static-scene description remains scope assumption, not proof every pixel is static.",
+  "negativeControlComparison": "Shifted endpoints recomputed from RECEIPT on EXACT SAME visible & accepted & finite mask as unshifted EPE. Derived arithmetic, no new trial or inference; stored original shifted aggregate used a wider all-finite mask.",
+  "limits": [
+    "Depth/mocap sensor-derived approximation; fixed-K projection self-consistency is by construction, not independent physical camera validation.",
+    "Heuristic radius includes overlapping pose sensitivity terms and conditions on selected surface; not a certified CI or a bound on registration winner/disocclusion effects.",
+    "Injected endpoint+(10,10) control remains compatible with the wide heuristic on9049/9052 primary visible accepted points. This falsifies treating sensitivity compatibility as correspondence verification; two outside on unshifted points does not mean only two wrong matches.",
+    "Every seed remains in original denominator, missing/occluded/ambiguous reference stays separate. No traffic approach FP/FN, runtime distances, mobile or safety certification.",
+    "OpenCV requested1 but observed10 threads; actual elapsed time is uncontrolled diagnostic timing. No repair or rerun for better timing."
+  ],
+  "motionAuthorized": false,
+  "learnedModelCalls": 0,
+  "productionChangedByThisAudit": false,
+  "oldM3RScoreChanged": false,
+  "oldM3RScoreSha256": "5e6497dd183a48d4fddcd213f9da7c2b534dde4bb3a339010220183503dc481a"
+}

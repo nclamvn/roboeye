@@ -1,0 +1,477 @@
+{
+  "schemaVersion": 1,
+  "study": "M3P-real-pair-component-score",
+  "manifestSha256": "934c2d886b2bcc23c5e1411479869db4e050a62f7e1d58a248f19735d57610e2",
+  "totals": {
+    "A": {
+      "sameUnits": 11,
+      "sameUnsupported": 9,
+      "differentUnits": 3,
+      "differentUnsupported": 3,
+      "sameSupported": 2,
+      "unknownUnits": 2,
+      "unknownUnsupported": 2
+    },
+    "B": {
+      "sameUnits": 11,
+      "sameUnsupported": 10,
+      "differentUnits": 3,
+      "differentUnsupported": 3,
+      "sameSupported": 1,
+      "unknownUnits": 2,
+      "unknownUnsupported": 2
+    },
+    "C": {
+      "sameUnits": 11,
+      "sameUnsupported": 9,
+      "differentUnits": 3,
+      "differentUnsupported": 3,
+      "sameSupported": 2,
+      "unknownUnits": 2,
+      "unknownUnsupported": 2
+    }
+  },
+  "units": [
+    {
+      "pairId": "boreas-boreas-m3o-traffic-1598991456095255->boreas-boreas-m3o-traffic-1598991456176205",
+      "lane": "A",
+      "unitId": "boreas-m3o-traffic-13-239b9cf1|fresh|boreas-boreas-m3o-traffic-1598991456095255|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-traffic-1598991456095255->boreas-boreas-m3o-traffic-1598991456176205",
+      "lane": "B",
+      "unitId": "boreas-m3o-traffic-13-239b9cf1|fresh|boreas-boreas-m3o-traffic-1598991456095255|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-traffic-1598991456095255->boreas-boreas-m3o-traffic-1598991456176205",
+      "lane": "C",
+      "unitId": "boreas-m3o-traffic-13-239b9cf1|fresh|boreas-boreas-m3o-traffic-1598991456095255|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-traffic-1598991455775125->boreas-boreas-m3o-traffic-1598991456176205",
+      "lane": "A",
+      "unitId": "boreas-m3o-traffic-13-239b9cf1|anchor|boreas-boreas-m3o-traffic-1598991455775125|0",
+      "identity": "different",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-traffic-1598991455775125->boreas-boreas-m3o-traffic-1598991456176205",
+      "lane": "B",
+      "unitId": "boreas-m3o-traffic-13-239b9cf1|anchor|boreas-boreas-m3o-traffic-1598991455775125|0",
+      "identity": "different",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-traffic-1598991455775125->boreas-boreas-m3o-traffic-1598991456176205",
+      "lane": "C",
+      "unitId": "boreas-m3o-traffic-13-239b9cf1|anchor|boreas-boreas-m3o-traffic-1598991455775125|0",
+      "identity": "different",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797086589->boreas-boreas-m3o-turn-1598987797166966",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-13-753c1912|fresh|boreas-boreas-m3o-turn-1598987797086589|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797086589->boreas-boreas-m3o-turn-1598987797166966",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-13-753c1912|fresh|boreas-boreas-m3o-turn-1598987797086589|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797086589->boreas-boreas-m3o-turn-1598987797166966",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-13-753c1912|fresh|boreas-boreas-m3o-turn-1598987797086589|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987796367168->boreas-boreas-m3o-turn-1598987797166966",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-13-753c1912|anchor|boreas-boreas-m3o-turn-1598987796367168|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987796367168->boreas-boreas-m3o-turn-1598987797166966",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-13-753c1912|anchor|boreas-boreas-m3o-turn-1598987796367168|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987796367168->boreas-boreas-m3o-turn-1598987797166966",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-13-753c1912|anchor|boreas-boreas-m3o-turn-1598987796367168|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-21-753c1912|fresh|boreas-boreas-m3o-turn-1598987797727237|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-21-0db9e151|fresh|boreas-boreas-m3o-turn-1598987797727237|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-21-753c1912|fresh|boreas-boreas-m3o-turn-1598987797727237|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-21-0db9e151|fresh|boreas-boreas-m3o-turn-1598987797727237|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-21-753c1912|fresh|boreas-boreas-m3o-turn-1598987797727237|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-21-0db9e151|fresh|boreas-boreas-m3o-turn-1598987797727237|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797166966->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-21-753c1912|anchor|boreas-boreas-m3o-turn-1598987797166966|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797166966->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-21-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797166966|2",
+      "identity": "different",
+      "supported": false,
+      "reason": "forward-unverifiable-object-geometry"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797166966->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-21-753c1912|anchor|boreas-boreas-m3o-turn-1598987797166966|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797166966->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-21-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797166966|2",
+      "identity": "different",
+      "supported": false,
+      "reason": "forward-unverifiable-object-geometry"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797166966->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-21-753c1912|anchor|boreas-boreas-m3o-turn-1598987797166966|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797166966->boreas-boreas-m3o-turn-1598987797807350",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-21-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797166966|2",
+      "identity": "different",
+      "supported": false,
+      "reason": "forward-unverifiable-object-geometry"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987798366778->boreas-boreas-m3o-turn-1598987798446838",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-29-0db9e151|fresh|boreas-boreas-m3o-turn-1598987798366778|0",
+      "identity": "same",
+      "supported": true,
+      "reason": "bidirectional-pair-supported-not-warning"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987798366778->boreas-boreas-m3o-turn-1598987798446838",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-29-0db9e151|fresh|boreas-boreas-m3o-turn-1598987798366778|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "bidirectional-estimator-disagreement"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987798366778->boreas-boreas-m3o-turn-1598987798446838",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-29-0db9e151|fresh|boreas-boreas-m3o-turn-1598987798366778|0",
+      "identity": "same",
+      "supported": true,
+      "reason": "bidirectional-pair-supported-not-warning"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987798446838",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-29-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797727237|0",
+      "identity": "different",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987798446838",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-29-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797727237|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987798446838",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-29-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797727237|0",
+      "identity": "different",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987798446838",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-29-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797727237|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987798446838",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-29-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797727237|0",
+      "identity": "different",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987797727237->boreas-boreas-m3o-turn-1598987798446838",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-29-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797727237|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987798927180->boreas-boreas-m3o-turn-1598987799007050",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-36-0db9e151|fresh|boreas-boreas-m3o-turn-1598987798927180|1",
+      "identity": "same",
+      "supported": true,
+      "reason": "bidirectional-pair-supported-not-warning"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987798927180->boreas-boreas-m3o-turn-1598987799007050",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-36-0db9e151|fresh|boreas-boreas-m3o-turn-1598987798927180|1",
+      "identity": "same",
+      "supported": true,
+      "reason": "bidirectional-pair-supported-not-warning"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987798927180->boreas-boreas-m3o-turn-1598987799007050",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-36-0db9e151|fresh|boreas-boreas-m3o-turn-1598987798927180|1",
+      "identity": "same",
+      "supported": true,
+      "reason": "bidirectional-pair-supported-not-warning"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987798366778->boreas-boreas-m3o-turn-1598987799007050",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-36-0db9e151|anchor|boreas-boreas-m3o-turn-1598987798366778|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987798366778->boreas-boreas-m3o-turn-1598987799007050",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-36-0db9e151|anchor|boreas-boreas-m3o-turn-1598987798366778|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987798366778->boreas-boreas-m3o-turn-1598987799007050",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-36-0db9e151|anchor|boreas-boreas-m3o-turn-1598987798366778|0",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987799567183->boreas-boreas-m3o-turn-1598987799648022",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-44-01dec7b5|fresh|boreas-boreas-m3o-turn-1598987799567183|4",
+      "identity": "unknown",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987799567183->boreas-boreas-m3o-turn-1598987799648022",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-44-1ee4b6e6|fresh|boreas-boreas-m3o-turn-1598987799567183|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-unverifiable-object-geometry"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987799567183->boreas-boreas-m3o-turn-1598987799648022",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-44-01dec7b5|fresh|boreas-boreas-m3o-turn-1598987799567183|4",
+      "identity": "unknown",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987799567183->boreas-boreas-m3o-turn-1598987799648022",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-44-1ee4b6e6|fresh|boreas-boreas-m3o-turn-1598987799567183|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-unverifiable-object-geometry"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987799567183->boreas-boreas-m3o-turn-1598987799648022",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-44-01dec7b5|fresh|boreas-boreas-m3o-turn-1598987799567183|4",
+      "identity": "unknown",
+      "supported": false,
+      "reason": "forward-insufficient-grid-support"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987799567183->boreas-boreas-m3o-turn-1598987799648022",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-44-1ee4b6e6|fresh|boreas-boreas-m3o-turn-1598987799567183|3",
+      "identity": "same",
+      "supported": false,
+      "reason": "forward-unverifiable-object-geometry"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987799167109->boreas-boreas-m3o-turn-1598987799648022",
+      "lane": "A",
+      "unitId": "boreas-m3o-turn-44-01dec7b5|anchor|boreas-boreas-m3o-turn-1598987799167109|2",
+      "identity": "unknown",
+      "supported": false,
+      "reason": "forward-unverifiable-object-geometry"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987799167109->boreas-boreas-m3o-turn-1598987799648022",
+      "lane": "B",
+      "unitId": "boreas-m3o-turn-44-01dec7b5|anchor|boreas-boreas-m3o-turn-1598987799167109|2",
+      "identity": "unknown",
+      "supported": false,
+      "reason": "forward-unverifiable-object-geometry"
+    },
+    {
+      "pairId": "boreas-boreas-m3o-turn-1598987799167109->boreas-boreas-m3o-turn-1598987799648022",
+      "lane": "C",
+      "unitId": "boreas-m3o-turn-44-01dec7b5|anchor|boreas-boreas-m3o-turn-1598987799167109|2",
+      "identity": "unknown",
+      "supported": false,
+      "reason": "forward-unverifiable-object-geometry"
+    }
+  ],
+  "pairedComponentTiming": {
+    "A": {
+      "pairMs": [
+        3800.2282080051373,
+        467.6435409928672,
+        468.65112500381656,
+        537.8321660100482,
+        537.1566260000691,
+        546.0284580040025,
+        459.2706250041374,
+        789.1776250035036,
+        516.344959003618,
+        700.5184180015931,
+        514.0047919921926,
+        527.4299160009832
+      ],
+      "scope": "Source staging/sealing plus actual own arm field and all unit verification; excludes other arms, archive encoding, startup. Paired component latency, not deployed frame/warning latency."
+    },
+    "B": {
+      "pairMs": [
+        499.53474999347236,
+        473.6638329923153,
+        457.4233329985873,
+        480.8680420028395,
+        536.979042000894,
+        532.6649159978842,
+        468.7800000101561,
+        808.8325000062468,
+        596.4672500049346,
+        679.2131679976592,
+        553.9764169952832,
+        534.583125001518
+      ],
+      "scope": "Source staging/sealing plus actual own arm field and all unit verification; excludes other arms, archive encoding, startup. Paired component latency, not deployed frame/warning latency."
+    },
+    "C": {
+      "pairMs": [
+        1941.5494999993825,
+        498.68083199544344,
+        497.95570699643577,
+        513.4457079984713,
+        560.0257920013973,
+        580.4429570052889,
+        502.0208339992678,
+        826.8545000028098,
+        481.3560420006979,
+        642.4339589939336,
+        558.8768339948729,
+        549.0090410021367
+      ],
+      "scope": "Source staging/sealing plus actual own arm field and all unit verification; excludes other arms, archive encoding, startup. Paired component latency, not deployed frame/warning latency."
+    }
+  },
+  "unit": "selected source/current box hypothesis, not independent objects or warning recall",
+  "limits": "Same identity does not guarantee measurable projected expansion. Different-identity unsupported is not detector true-negative. Unknown remains separate. No end-to-end approach, metres, real-time or safety claim.",
+  "receiptSha256": "9ff27849545381f2628d8a73499025bba179197f5216452308298a76ff3f7543",
+  "decisionsSha256": "1c10c0586e235adff5fc4da713c750bc81ce1ff98a6f0397bac8c28db2eeb73c"
+}

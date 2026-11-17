@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "milestone": "TIP-65-M3V",
+  "date": "2026-11-17",
+  "stage": "SEALED_BEFORE_ONE_ACTUAL_PIXEL_DIAGNOSTIC",
+  "bindings": {
+    "docs/TIP-65-M3V-MAC.md": "860ed1dfb5089f0b31b9a3ad16e6eedb37886f5329cea30db18148c050f995ae",
+    "scripts/assist_scene_m3v_pixel_audit.py": "4562799496e4dcce7be3aa8b6b161693ef9bde8a66622e36a39b000448ef9da4",
+    "scripts/assist_scene_m3v_pixel_reference.py": "7223eb85a12f21458b433ed7ecd4130c818bc978d0cf3e4e0f74b4e5a8c71092",
+    "tests/test_assist_scene_m3v_pixel_audit.py": "1b5e75c16e036cb8e98de2271192760f9a33228da62d81231d63748d6b02b595",
+    "tests/test_assist_scene_m3v_pixel_reference.py": "4b6ea67cb2dd913a311a0d61fea0c2e78bd6d8db62e5083796a41c4fb4ab321c",
+    "docs/evidence/tip65/m3v-pixel-reference.json": "7526453f77534ad490e90f423a10ad44b1f311c65e52008a755432cc87b24d60",
+    "docs/evidence/tip65/m3v-pixel-annotations.json": "e4291e17bd109d0097b4e3bfc311fa8d6b50f3bc52507b59a111349ccf5de760",
+    "docs/evidence/tip65/m3v-independent-pixel-crosscomparison.json": "fdd7b3529954cc42bcf01c09d1e2418a704fba076a631449a4a88c9349aa1cf6",
+    "docs/evidence/tip65/m3v-cached-m3u-score.json": "843a3f46592af86a62d5415bb895986d1841a4a08723e1520ea6f8ca5b1b8734",
+    "native/ios/.build-xcode/scene-qa/boreas-m3u/input.json": "85fc87833776e2a39205c228c7306f51e6d2820dda62072c4e5fcbdf6e7322ed",
+    "native/ios/.build-xcode/scene-qa/m3u-boreas-receipt-r1.json": "a855152945d2679ad3b07258b6cb139fc81f91b259ffdf0268b6f61b49dd37ab",
+    "native/ios/.build-xcode/scene-qa/m3v-reference-source/source-selection.json": "a949bec984aebb13ecff5ea9603cd29a89fab865d109f6647075cdfca276455f",
+    "native/ios/.build-xcode/scene-qa/m3v-reference-target/target-proposals.json": "22a7486bf5fc14d6b31b2af4746765f9248011dc4fcf8f900dbad8126b93f298"
+  },
+  "approval": {
+    "code": "Independent Reviewer CODE GO at frozen456279...; Contractor full source review",
+    "reference": "Independent crosscomparison fdd7... GOLD GO plus Contractor approval before geometry/flow output",
+    "qa": "16 authored scoped tests passed independently; full regression running, not release authority"
+  },
+  "scope": {
+    "pairs": 6,
+    "sourceOnlySlots": 72,
+    "conditionalStaticReferences": 12,
+    "unknownReferences": 60,
+    "sourceSelectionBeforeTargetRead": true,
+    "metres": false,
+    "runtimeEdits": false,
+    "newLearnedModelRuns": 0,
+    "cachedTrafficRescore": "Byte-identical to M3U: 0TP/13FN/0FP/18TN/2unknown in both lanes; not new inference"
+  },
+  "bounds": {
+    "actualRuns": 1,
+    "justifiedExecutionRepairMaximum": 1,
+    "seconds": 120,
+    "outputBytes": 33554432,
+    "LkDirections": 24,
+    "noThresholdRelaxation": true,
+    "noVariantSelection": true
+  },
+  "limitations": [
+    "AI-authored cross-reviewed native rectangles, not exact physical/human truth",
+    "Six posthoc failure pairs, not unseen clips or new traffic quality evidence",
+    "Four limited pre-draft annotation hints disclosed, not all fully blind",
+    "12 per-pair selected slots never certify production24/.70/5cell/.40span; actual agreed static coverage is lower"
+  ],
+  "hardware": {
+    "machine": "MacBookPro18,2",
+    "processor": "Apple M1 Max",
+    "ramGiB": 32,
+    "existingRuntime": "Python3.12.16/OpenCV5.0.0/NumPy2.5.4",
+    "phoneUsed": false
+  }
+}

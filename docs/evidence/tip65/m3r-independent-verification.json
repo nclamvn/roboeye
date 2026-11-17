@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "study": "M3R",
+  "reviewRole": "Independent QA agent, not author of association or actual replay runner",
+  "receiptPath": "native/ios/.build-xcode/scene-qa/m3r-boreas-receipt-r1.json",
+  "receiptSha256": "7d2922b2cfbd0819f342361b17108b3308cbba936a0a267785dcc4731abd7b52",
+  "inputSha256": "b608bf1ae8518c61aea3a037ac608f2ce48265f7374f0ed0c37c67e619d5c108",
+  "frozenAssociationSha256": "03123315ebf5172437da548782348d8aa5ea876d8954d051798bec79f8a4900f",
+  "codeReview": {
+    "result": "GO for one bounded experiment; not product READY",
+    "positiveIdentityEvidence": "Every consumed adjacent exposure requires full camera-rotated same-label reciprocal IoU competition and actual coarse appearance; same handles are proposals, not certificates.",
+    "unchangedIdentityFloors": {"iou": 0.25, "reciprocalMargin": 0.12, "ncc": 0.70, "unblurred32PatchStd": 3.0},
+    "measurementAuthority": "Runner validates frozen A source-only textured warped RAFT measurement populations, original point denominator and unchanged bidirectional geometric/temporal floors before B selects a pair.",
+    "forbiddenShortcutsAbsent": ["RootSIFT optimization", "additional learned model", "different ID as negative physical evidence", "unverifiable point upper bound changed to zero", "forced Hungarian assignment", "identity age as optical expansion", "T one-pair pixel fallback in identity chain", "metres inference"],
+    "sharedCost": "Actual required A flow directions are counted once; B additional zero is not presented as zero required inference. Standalone B includes A measurement plus overlay.",
+    "limitation": "Standalone compose assumes a validated A caller. Actual study runner enforces this. A source hash is a binding, not self-authenticating physical identity truth; independent source-pixel and visual review remain necessary."
+  },
+  "structuralTests": {
+    "command": "native/ios/.build-xcode/scene-qa/venv/bin/python -m unittest discover -s tests -p 'test_assist_scene_m3r_*.py' -v",
+    "passed": 20,
+    "failed": 0,
+    "seconds": 7.744,
+    "provenance": "Independent rerun of the same20 authored analytic/structural tests, not20 additional scenarios; no model inference. Initial system Python could not import cv2; existing project venv succeeded without installation."
+  },
+  "blindReferenceReview": {
+    "artifact": "docs/evidence/tip65/m3r-independent-blind-review.json",
+    "artifactSha256": "5bc6dcbc44980e1e371002997e3220e62e0f87ff5e5859c3cadc2c8bf0919b93",
+    "selectedCandidatesReviewedBeforeInference": 59,
+    "sheetsViewedBeforeInference": 15,
+    "independentVisibleCandidates": 46,
+    "independentUnscorableCandidates": 13,
+    "finalConservativeReference": "Root additionally omitted uncertain partial people turn08:3 and low-speed17:3 BEFORE inference. Final reference retains44 targets and omits15; these omissions are not true negatives. No GT changed after model outcomes."
+  },
+  "actualPixelAndIdentityAudit": {
+    "numericArtifact": "qa/m3r-independent-audit/numeric-and-contact-sheet-audit.json",
+    "numericArtifactSha256": "e0517580d9c7ce8f7c0bf29cf722867a3c4fe61aa884465b1e4df297f8384b09",
+    "qaScript": "qa/m3r-independent-audit/review.py",
+    "contactSheetsDirectory": "qa/m3r-independent-audit",
+    "selectionRule": "All emitted B warning roles, plus first50 lexical (clipId, frameToken, identityId as string, role) supported fresh/anchor measurement-association roles excluding emitted warning identities. Rule frozen before viewing these outputs.",
+    "emittedWarnings": 1,
+    "emittedWarningRolesReviewed": 2,
+    "acceptedNonwarningRolesTotal": 287,
+    "acceptedNonwarningRolesReviewed": 50,
+    "acceptedNonwarningRolesUnreviewed": 237,
+    "nonwarningSampleClips": {"city": 50, "turn": 0, "low-speed": 0},
+    "sourcePngAndNativeGrayHashesVerified": 17,
+    "unique32PatchesRecomputedFromOriginalPixels": 68,
+    "caseEdgeOccurrences": 80,
+    "uniqueAdjacentEdges": 49,
+    "numericChecks": "Exact native crop ROI, preblur std, full32x32 normalized values and patch hashes, actual NCC, complete same-label camera-rotated IoU matrices, both reciprocal rivals and .25/.12 floors agree. Selected measurement-pair canonical hashes agree with immutable actual A comparison catalog.",
+    "contactSheetManifest": [
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/00-boreas-m3r-city-41-id198-anchor.jpg",
+        "sha256": "a0ca0fe601f452cbd2ff80ab8503046709d60dd239c206e4ec51bdf3fac7fe78"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/01-boreas-m3r-city-41-id198-fresh.jpg",
+        "sha256": "cf7bafc6f6e76cf8e7aab88bdf2d18b0ab1739cceb391334e5d008a8c9d9ecd6"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/02-boreas-m3r-city-08-id54-fresh.jpg",
+        "sha256": "b78245b3a856bafbcfe47d866b6969f5062039f6c6a27281f66c95768da1d590"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/03-boreas-m3r-city-08-id55-fresh.jpg",
+        "sha256": "5096e6f7c297f02530e1741f77595dc3adfbed7063ba03d248e3ac8575bb6257"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/04-boreas-m3r-city-08-id56-fresh.jpg",
+        "sha256": "05d29661de073984ba221a185a20998fa346ad6f7ffda5f2dab3ec9155f589a0"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/05-boreas-m3r-city-08-id58-fresh.jpg",
+        "sha256": "021277eccb3344e2ef2ba93f22d57da508926e2246ec2b84e0a8846cdc509367"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/06-boreas-m3r-city-08-id59-fresh.jpg",
+        "sha256": "4a236b658c1678eacfd027a92f5312500966e033df8653b11bc889caa45dbe4b"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/07-boreas-m3r-city-09-id54-fresh.jpg",
+        "sha256": "a3daad7828d7b1277552f1690878248ce920349987f7c6dff8374aa367ac9f4f"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/08-boreas-m3r-city-09-id55-fresh.jpg",
+        "sha256": "e787066162aa9acd40d6070a355ad378db2e321e042a914a650bb7a7b042c975"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/09-boreas-m3r-city-09-id56-fresh.jpg",
+        "sha256": "125fdbb3ebdf79a9479f275603f6d1f92b47538b066a7cdce9d9f14cbe52b8c5"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/10-boreas-m3r-city-09-id58-fresh.jpg",
+        "sha256": "4dcab58381a3f841cc4be9c817579b8eee524c5a9e8dcc7cd420e5adabf22383"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/11-boreas-m3r-city-09-id59-fresh.jpg",
+        "sha256": "a68d98c5d16bc19e3d19ac1651677979076f5d79c791ad3547cca53b12dc5296"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/12-boreas-m3r-city-09-id65-fresh.jpg",
+        "sha256": "4434cc64b8c7aff48ac5d15ec2b934ee2cb7072c7245fd65db579ca390007012"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/13-boreas-m3r-city-18-id116-fresh.jpg",
+        "sha256": "c734a7a69f37acf17a9a828a3289c3b1b421c330e3ff3456835a936c18406e2c"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/14-boreas-m3r-city-18-id117-fresh.jpg",
+        "sha256": "c1686aab6369a5aff66691e933421f8a007e3ec3d451a8fe38c7f2755bbb1dce"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/15-boreas-m3r-city-18-id120-fresh.jpg",
+        "sha256": "d7ba31509b0fbe96f611c8032b713e0cf8fb6b4729bcf3b3809a3f655665d5f9"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/16-boreas-m3r-city-18-id121-fresh.jpg",
+        "sha256": "17da607f0302adc03e51f615db5f3ff83be5ce0a4e2913feb7a22d1c2c78b2ee"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/17-boreas-m3r-city-18-id122-fresh.jpg",
+        "sha256": "0d8776f44bd6677d67a6dcff39eefcb7ce9c6b6e807eb7e30bb2dcd1c90bf539"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/18-boreas-m3r-city-18-id123-fresh.jpg",
+        "sha256": "09bcfb16a5af817322fc63ab71f70906fedb728d6d66a81596cb666269ef835c"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/19-boreas-m3r-city-19-id116-fresh.jpg",
+        "sha256": "f6e8058dd8b5fbc7840fcad7c2e2057d11053c27cbebefc351a05d09487377b4"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/20-boreas-m3r-city-19-id121-fresh.jpg",
+        "sha256": "8658dea1be4b528fc054cec20766efba20009a39612ff8a8d9edb9eef243f03c"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/21-boreas-m3r-city-19-id122-fresh.jpg",
+        "sha256": "c8d1514d7d8db8e0e4ada7e48eb249be9eb84da9bd4e1c80b6314c10eaea76b2"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/22-boreas-m3r-city-19-id123-fresh.jpg",
+        "sha256": "fd21a0562bffe4a3bc94edf11289a11ed933a5e8728165132379a8c6174b8cd7"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/23-boreas-m3r-city-20-id116-fresh.jpg",
+        "sha256": "b33f09c4f69773d84c61c85126433dce63fd796cbca65c8ff216b8ceca968ca7"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/24-boreas-m3r-city-20-id120-fresh.jpg",
+        "sha256": "7c1ea0e3455ea4ee7ae0715689fef54810141003694ea0d32737b888e4f1f8e3"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/25-boreas-m3r-city-20-id121-fresh.jpg",
+        "sha256": "c108d36bd41e9f35190c47197a1d7de9a050b7cfdc6071126d8f583e0faf3832"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/26-boreas-m3r-city-20-id123-fresh.jpg",
+        "sha256": "5efca6e9ebc511bbcc29f3c7398777e6554ee67dea977972605dc326ff9a509a"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/27-boreas-m3r-city-21-id116-anchor.jpg",
+        "sha256": "b2536f952a15d569fe9641b0059a7270eb864de47c2abbb49b40339ee23c984b"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/28-boreas-m3r-city-21-id116-fresh.jpg",
+        "sha256": "3fc281065219a92dcf2278e1b88015f7b442d705e9ce843409e6141099e0dc08"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/29-boreas-m3r-city-21-id120-fresh.jpg",
+        "sha256": "124f34b75c6022fb56101fef97837d228152ad288f1b5ca0cb5f93bc4b1be026"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/30-boreas-m3r-city-22-id116-anchor.jpg",
+        "sha256": "6becffbbb556c71eeb2fac7d68c71bbf3c8fc2c56fdd0a8cc5519a367d0ce76a"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/31-boreas-m3r-city-22-id116-fresh.jpg",
+        "sha256": "0d87bda52cd90d012446ff43214ba437ab7b33d5566ed1fa5d43909f761201df"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/32-boreas-m3r-city-22-id117-fresh.jpg",
+        "sha256": "40b71258e852670c8bc4290c749f778a74e768aff4e0e5f7d205994ca836295a"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/33-boreas-m3r-city-22-id120-fresh.jpg",
+        "sha256": "c64d2af47fc096cc81383132f9f91d1d7b5ee0b9dabf0225c84ffb44ebfdc02e"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/34-boreas-m3r-city-22-id122-fresh.jpg",
+        "sha256": "d497bb32845532970d1bbe0cc960aba21b15b2fd2eecc57f3e00113cd90eda70"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/35-boreas-m3r-city-23-id116-anchor.jpg",
+        "sha256": "27325435bc32706f2f58ea6b002a131031ffc9e7592701ad097e302762ef2615"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/36-boreas-m3r-city-23-id116-fresh.jpg",
+        "sha256": "21568c90d11ebe0b8098718fbb5e2b3994dc97da6cbcef6a5201f01e11229ba8"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/37-boreas-m3r-city-23-id117-fresh.jpg",
+        "sha256": "848cb0f6d797304dd140876e93ad1d59074c63e2f1749cf426e3267b6cf09571"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/38-boreas-m3r-city-23-id120-fresh.jpg",
+        "sha256": "37b39c3cb7c5465c0193048f0134c1033e11994635ddf792ab3fe0d9b5ec07f2"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/39-boreas-m3r-city-23-id122-fresh.jpg",
+        "sha256": "e6c2cf6d96bd2b1430b26d1b59b63a35522c51b449a0ca19e76ed7c16891fc36"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/40-boreas-m3r-city-23-id134-fresh.jpg",
+        "sha256": "4ae1f5a3b0edc430026e8d7816e04a216878d930694a861ca6789ffa520b0187"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/41-boreas-m3r-city-24-id116-anchor.jpg",
+        "sha256": "fa6925a98aed761812c6283dd6bc928240a55cca75b7594ab0fafb1406b1395f"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/42-boreas-m3r-city-24-id116-fresh.jpg",
+        "sha256": "12ed57444b1d621f2fc28c4852f1d786e6c58bc6a317f86dd861d92f1855f70f"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/43-boreas-m3r-city-24-id120-fresh.jpg",
+        "sha256": "4357045476cacfb0713745c4bec20cc394fd032965c374275bdf972259eeeb22"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/44-boreas-m3r-city-24-id122-fresh.jpg",
+        "sha256": "97224e629cee1b57675357d231fc9e5d8c4854de7485d4e2f6eb951882dc4a81"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/45-boreas-m3r-city-24-id133-fresh.jpg",
+        "sha256": "eec885db99d03602ca950329ec6bf2b57788b48a3747bdf9ba4d76e17110b186"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/46-boreas-m3r-city-24-id134-fresh.jpg",
+        "sha256": "5be213133f21fb517c767e8a09e6b7a6725e802a2a414750c19e431a67fe5a6f"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/47-boreas-m3r-city-25-id116-anchor.jpg",
+        "sha256": "a09a3b4954bc1455967f940a6f21d45969e02cd4724064525219ff09584b4d9f"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/48-boreas-m3r-city-25-id116-fresh.jpg",
+        "sha256": "4eb3a26a9ccf7c12e0fd3c0be6469e4d891eb0bb4978c951ceb98ce290860fdf"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/49-boreas-m3r-city-25-id117-fresh.jpg",
+        "sha256": "50b952746d0c549ea84fb36922a9bcac2d9d9b1a952680920828801c79bcc034"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/50-boreas-m3r-city-25-id120-fresh.jpg",
+        "sha256": "20417316ad54aeee75c985f785ec0206e87ac35d3037f13294c67e2251fa3d73"
+      },
+      {
+        "path": "/Users/os/Documents/Codex/roboeye/qa/m3r-independent-audit/51-boreas-m3r-city-25-id122-fresh.jpg",
+        "sha256": "a8dd394fa83349d4ff411c161be871a6576e6ed17f1d8dac654b367a6786794f"
+      }
+    ],
+    "contactSheetsActuallyViewed": 52,
+    "visualReview": "Same visible physical object across every reviewed chain. No observed identity swap within these selected chains. The single emitted warning is the same white SUV throughout frames37-41, partially occluded by the nearer dark car; fresh chain40-41. Food-truck chains identify the truck body, not neighboring blue SUV. No motion truth inferred from still images.",
+    "warning": {"clip": "boreas-m3r-city", "frameIndex": 41, "identityId": 198, "anchorFrames": [37,38,39,40,41], "freshFrames": [40,41], "anchorMinActualNcc": 0.8978784680366516, "freshMinActualNcc": 0.9576127529144287, "motionQualityStatus": "UNSCORED: frame41 was not a frozen reviewed checkpoint; identity verification does not promote this event to TP"},
+    "limits": "Repeated roles/edges are not independent physical events. Lexical first50 is city-only and not a random or representative sample.237 accepted roles remain physically unreviewed. No universal wrong-ID, precision, recall, realtime, mobile, safety or metres claim is supported."
+  },
+  "outcome": {
+    "scoreArtifact": "docs/evidence/tip65/m3r-boreas-score.json",
+    "scoreArtifactSha256": "5e6497dd183a48d4fddcd213f9da7c2b534dde4bb3a339010220183503dc481a",
+    "freshReviewedKeyframes": 15,
+    "freshReviewedTargets": 44,
+    "reportedA": {"tp": 0, "fn": 12, "fp": 0, "tn": 28, "unknown": 4, "unscoredReports": 0},
+    "reportedB": {"tp": 0, "fn": 12, "fp": 0, "tn": 28, "unknown": 4, "unscoredReports": 1},
+    "numericScoreIndependentRecomputation": "Performed separately by data/runner Builder in m3r-execution-verification.json; this QA agent reviewed the score and independently audited source pixels/physical identity, not a third full scoring replay.",
+    "disposition": "NOT READY for promotion: technically valid new identity authority, but no measured reviewed-target recall improvement. Preserve unscored warning and false negatives; do not relabel after seeing outcomes or lower quality floors."
+  },
+  "mutations": "QA-only script, contact-sheet and evidence artifacts. No production/application/model/GT edits, no new inference, installation, downloads, phone changes or external writes. No temporary project copy was made."
+}

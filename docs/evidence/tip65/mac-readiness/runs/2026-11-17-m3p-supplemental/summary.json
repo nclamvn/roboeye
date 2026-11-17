@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "scope": "M3P targeted and remaining structural checks only; does not replace failed complete discovery",
+  "priorFullGate": "docs/evidence/tip65/mac-readiness/runs/2026-11-17T04-13-04-316Z-b90e14d2/summary.json",
+  "startedUtc": "2026-11-17T04:20:39.481Z",
+  "before": {
+    "sha256": "e6b37160e158129a89afcb73f040fadd3b657deedf3653a9b7abdbcca19b49ac",
+    "fileCount": 160
+  },
+  "stages": [
+    {
+      "step": {
+        "name": "readiness-policy",
+        "parser": "node-test",
+        "command": "/usr/local/bin/node",
+        "args": [
+          "--test",
+          "tests/test-qa-assist-scene-mac.mjs"
+        ],
+        "timeoutMs": 60000
+      },
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "error": null,
+      "outputBytes": 1375,
+      "retainedBytes": 1375,
+      "elapsedMs": 479,
+      "counts": {
+        "total": 12,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "step": {
+        "name": "python-m3p",
+        "parser": "python",
+        "command": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/venv/bin/python",
+        "args": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_assist_scene_m3p_*.py"
+        ],
+        "timeoutMs": 60000
+      },
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "error": null,
+      "outputBytes": 145,
+      "retainedBytes": 145,
+      "elapsedMs": 7891,
+      "counts": {
+        "total": 46,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "step": {
+        "name": "python-flow-reference",
+        "parser": "python",
+        "command": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/venv/bin/python",
+        "args": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_assist_scene_flow_reference.py"
+        ],
+        "timeoutMs": 60000
+      },
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "error": null,
+      "outputBytes": 106,
+      "retainedBytes": 106,
+      "elapsedMs": 211,
+      "counts": {
+        "total": 8,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "step": {
+        "name": "swift-core",
+        "parser": "swift",
+        "command": "swift",
+        "args": [
+          "test",
+          "--package-path",
+          "native/ios",
+          "--scratch-path",
+          "native/ios/.build",
+          "--disable-automatic-resolution"
+        ],
+        "timeoutMs": 600000
+      },
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "error": null,
+      "outputBytes": 32523,
+      "retainedBytes": 32523,
+      "elapsedMs": 39192,
+      "counts": {
+        "total": 121,
+        "failed": 0
+      }
+    },
+    {
+      "step": {
+        "name": "typescript",
+        "parser": "typecheck",
+        "command": "/usr/local/bin/node",
+        "args": [
+          "node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "timeoutMs": 180000
+      },
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "cancelled": false,
+      "outputExceeded": false,
+      "error": null,
+      "outputBytes": 0,
+      "retainedBytes": 0,
+      "elapsedMs": 6079,
+      "counts": {
+        "typechecked": true
+      }
+    }
+  ],
+  "fullDiscoveryPassed": false,
+  "semanticAcceptance": false,
+  "releaseApproved": false,
+  "after": {
+    "sha256": "e6b37160e158129a89afcb73f040fadd3b657deedf3653a9b7abdbcca19b49ac",
+    "fileCount": 160
+  },
+  "sourcesUnchanged": true,
+  "targetedTechnicalPass": true,
+  "finishedUtc": "2026-11-17T04:21:33.619Z"
+}

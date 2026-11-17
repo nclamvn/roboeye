@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "milestone": "TIP-65-M3V",
+  "date": "2026-11-17",
+  "role": "Contractor closeout after separate method Builder, reference Builder and independent Reviewer",
+  "implementationStatus": "COMPLETED_DIAGNOSTIC_ONLY",
+  "productStatus": "NOT_READY",
+  "rootCauseStatus": "NOT_UNIQUELY_IDENTIFIED",
+  "runtimePromotion": false,
+  "bindings": {
+    "docs/TIP-65-M3V-MAC.md": "268f70db9e686e3f89e998c5be565045a17bdb7634a6edd85cdac0067afe1cdb",
+    "docs/evidence/tip65/m3v-plan-frozen.md": "860ed1dfb5089f0b31b9a3ad16e6eedb37886f5329cea30db18148c050f995ae",
+    "docs/evidence/tip65/m3v-preflight.json": "22956dce801861dfddb87f1d564c376e19003d45a85562b2577cfb7d7265f601",
+    "docs/evidence/tip65/m3v-pixel-reference.json": "7526453f77534ad490e90f423a10ad44b1f311c65e52008a755432cc87b24d60",
+    "docs/evidence/tip65/m3v-pixel-annotations.json": "e4291e17bd109d0097b4e3bfc311fa8d6b50f3bc52507b59a111349ccf5de760",
+    "docs/evidence/tip65/m3v-independent-pixel-crosscomparison.json": "fdd7b3529954cc42bcf01c09d1e2418a704fba076a631449a4a88c9349aa1cf6",
+    "docs/evidence/tip65/m3v-pixel-diagnostic-r1.json": "c34320d88587b54e9f4123e391643423e0b5f4b6329eb8060c2f83462ed61c58",
+    "docs/evidence/tip65/m3v-independent-verification.json": "8609f2dcba10ba497cc493a58f450def405d1371a253e4e1ea4f16be846c2b87",
+    "docs/evidence/tip65/m3v-method-diagnosis.json": "a75e82d794d937925e17fdd1eaab06516e6986e2a9ecebf6c75002712334d0f6",
+    "docs/evidence/tip65/m3v-cached-m3u-score.json": "843a3f46592af86a62d5415bb895986d1841a4a08723e1520ea6f8ca5b1b8734",
+    "docs/evidence/tip65/mac-readiness/runs/2026-11-17T12-48-05-937Z-ebc15f01/summary.json": "b9d4013992e0b1879ab92d7454d7ff7c637883336a53a93e803bb3a6c7637a3f",
+    "scripts/assist_scene_m3v_pixel_audit.py": "4562799496e4dcce7be3aa8b6b161693ef9bde8a66622e36a39b000448ef9da4",
+    "scripts/assist_scene_m3v_pixel_reference.py": "7223eb85a12f21458b433ed7ecd4130c818bc978d0cf3e4e0f74b4e5a8c71092",
+    "tests/test_assist_scene_m3v_pixel_audit.py": "1b5e75c16e036cb8e98de2271192760f9a33228da62d81231d63748d6b02b595",
+    "tests/test_assist_scene_m3v_pixel_reference.py": "4b6ea67cb2dd913a311a0d61fea0c2e78bd6d8db62e5083796a41c4fb4ab321c"
+  },
+  "scope": {
+    "macOnly": true,
+    "phoneRequired": false,
+    "existingRealPairs": 6,
+    "newClips": 0,
+    "newRuntimeModelTrials": 0,
+    "newRuntimeCodeChanges": 0,
+    "actualDiagnosticRuns": 1,
+    "executionRepairs": 0,
+    "actualLkDirections": 24,
+    "actualLearnedModelCalls": 0,
+    "objectMetresInferred": false,
+    "thresholdsRelaxed": false,
+    "clockOrKWinnerSelected": false,
+    "labelsChangedAfterMeasurement": false
+  },
+  "reference": {
+    "originalSourceSlots": 72,
+    "conditionalStaticReferences": 12,
+    "unscorableReferences": 60,
+    "analysisAccepted": 8,
+    "holdoutAccepted": 4,
+    "fullyBlind": false,
+    "reviewerLimitedLeakage": "Four coordination hints before independent annotation seal disclosed. Pixel labels are AI-authored/cross-reviewed, not physical/exact human groundtruth.",
+    "subcornerDisagreementsKeptUnknown": 4
+  },
+  "pixelComponent": {
+    "nominalGeometry": {
+      "definitePass": 0,
+      "conditionalDefiniteFailure": 1,
+      "unknown": 11
+    },
+    "strongestFailure": {
+      "slot": "pair4-cell00",
+      "lowerWorkingPx": 1.7250898326179172,
+      "upperWorkingPx": 9.583066328745085,
+      "capWorkingPx": 1.3,
+      "split": "analysis",
+      "meaning": "Conditional disagreement with supplied pose/K model, not isolation of pose vs calibration vs clock or explanation of13misses"
+    },
+    "halfPixelAtFixedWorkingEndpoints": {
+      "maximumResidualChangePx": 0.012997006527937671,
+      "decisionChanges": 0,
+      "notAProvenRepair": true
+    },
+    "sdkVsInputPoseMaximumDifference": 0,
+    "naturalPixelCorrespondenceFalseMatchRate": "UNKNOWN:11 accepted endpoints per domain have uncertain reference error",
+    "oracleSourceLkPerDomain": {
+      "queries": 12,
+      "acceptedButUncertain": 11,
+      "missed": 1
+    },
+    "syntheticWrongTargetControls": {
+      "attempts": 24,
+      "eligibleKnownWrong": 20,
+      "rejected": 9,
+      "unknownEligible": 11,
+      "definitelyCompatible": 0,
+      "ineligibleOverlapping": 4,
+      "notTrafficFP": true
+    }
+  },
+  "traffic": {
+    "provenance": "Cached re-score with unchanged M3U code/input/truth/receipt; byte-identical scoreSHA843a3f..., not a new inference A/B",
+    "bothLanes": {
+      "tp": 0,
+      "fn": 13,
+      "fp": 0,
+      "tn": 18,
+      "unknownTargets": 2
+    },
+    "priorFailureDecomposition": {
+      "detectorMatchedButCameraVeto": 10,
+      "detectorOrHandleFailure": 3
+    },
+    "warningImprovementMeasured": false
+  },
+  "verification": {
+    "independentIntervalsRecomputed": 384,
+    "ineligibleControlStatusesChecked": 48,
+    "rawPatchPairsRecomputed": 23,
+    "rawBackwardFlowRetained": false,
+    "actualFlowCyclesIndependentReconstruction": false,
+    "sourceFilesVerified": 141,
+    "newCodeFingerprintFilesVerified": 7,
+    "oldM3UCodeHashesUnchanged": 38,
+    "oldM3RCodeHashesUnchanged": 35,
+    "structuralQa": {
+      "python": 683,
+      "swift": 121,
+      "node": 14,
+      "typeScript": "PASS",
+      "sourceBeforeAndAfter": {
+        "sha256": "bd34388aa043aa09bc22e750e86bc292797a68bac9584556d03fda542c183527",
+        "fileCount": 201
+      },
+      "notProductAcceptance": true
+    },
+    "gitDiffCheck": "PASS",
+    "preexistingTrackedChanges": "Preserved 13files/288insertions/30deletions; no changes in this task",
+    "learnedModelOrLLMBaselineSuperiority": "NOT MEASURED; no superiority claim"
+  },
+  "execution": {
+    "wallMs": 7562.518208003894,
+    "receiptBytes": 275256,
+    "opencvThreadsRequested": 1,
+    "opencvThreadsReported": 10,
+    "controlledPerformance": false,
+    "noNewDependenciesOrDownloads": true,
+    "noOutsideScratchOrExtraBuildDirs": true,
+    "newDockerImages": false,
+    "temporaryArtifactsRemoved": [],
+    "diskFreeGiBAtCloseout": 28
+  },
+  "decisions": {
+    "supported": [
+      "Software importer matches sampled SDK pose reconstruction and source/image/preprocessing hashes.",
+      "At least one conditional static-pixel reference disagrees with supplied geometry beyond the unchanged1.3workingpxcap.",
+      "Half-pixel convention change is not sufficient to resolve the sampled disagreement."
+    ],
+    "unresolved": [
+      "Physical pose versus calibration versus timestamp/rectification accuracy.",
+      "Precise material point correspondence inside wide annotation uncertainty.",
+      "Any useful runtime warning repair; all13trafficmisses remain."
+    ],
+    "stopRule": "No retuning, relabeling, offset-selection or new model run to improve this diagnostic score.",
+    "nextMacWork": "Obtain more discriminating independently grounded static-pixel/known-pose controls and improve raw measurement auditability before proposing a frozen new runtime A/B. No threshold increase, new tracker, inferred metres or iPhone required."
+  }
+}

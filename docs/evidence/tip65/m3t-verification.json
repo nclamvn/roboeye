@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "milestone": "TIP-65-M3T",
+  "date": "2026-11-17",
+  "role": "Contractor verification after separate data/study Builders and independent Reviewer",
+  "scope": "Mac static indoor correspondence and camera-model diagnostics, not traffic or product acceptance",
+  "status": "IMPLEMENTED_AND_VERIFIED_WITH_REFERENCE_LIMITATIONS",
+  "bindings": {
+    "dataPlan": {"path": "docs/evidence/tip65/m3t-data-plan.json", "sha256": "cdf35cbc8c310bc99f5dfb9d2dba3fe5b44064533f01a4ee72b633f7040da02a"},
+    "preflight": {"path": "docs/evidence/tip65/m3t-preflight.json", "sha256": "f09a69ca0e1becb6c7c86783a16fa26b19bb75e77fa1e9398a1df7b3d456494f"},
+    "dataCompletion": {"path": "docs/evidence/tip65/m3t-data-completion.json", "sha256": "f49a01dd1037b9badc69c1fff6af0e98dae1f0338fe42f9aaaf513c5792930aa"},
+    "slice": {"path": "native/ios/.build-xcode/scene-qa/tum-m3t-slice/slice.json", "sha256": "1f175b6835933fb31af828f5f7aabea028660d733b9d4cdfea4c482d338adca9"},
+    "manifest": {"path": "native/ios/.build-xcode/scene-qa/tum-m3t/input.json", "sha256": "671b2de2c6002715a78162181543d08156c774836a3e5f96dc4cf3fba5de2e9e"},
+    "actualReceipt": {"path": "native/ios/.build-xcode/scene-qa/m3t-static-controls-r1.json", "sha256": "d01b2ed2193212501e84d9dc6bc1c987da358fb5961bcb49c18cb5e539d7e934"},
+    "independentReview": {"path": "docs/evidence/tip65/m3t-independent-verification.json", "sha256": "dc198c90188f04e36aac2204c19c6bba8733de87277d01e92d8893382383e60a"},
+    "failedGate": {"path": "docs/evidence/tip65/mac-readiness/runs/2026-11-17T10-24-58-232Z-bfc7e88f/summary.json", "sha256": "788eeb5f2228b75a47ed1b25ba90d5d929bbf01aeeab47d505f15259f4b8a0ee"},
+    "passedGate": {"path": "docs/evidence/tip65/mac-readiness/runs/2026-11-17T10-28-10-967Z-7e52dde6/summary.json", "sha256": "6dcddb39366ccb19593b807e546c9353b23fcf349a9460f6236d71dbe41cf3ab"},
+    "unchangedM3RScore": {"path": "docs/evidence/tip65/m3r-boreas-score.json", "sha256": "5e6497dd183a48d4fddcd213f9da7c2b534dde4bb3a339010220183503dc481a"}
+  },
+  "finalSourceSha256": {
+    "scripts/fetch_assist_scene_m3t_tum.py": "e8fdb46d29b243761866247011bc4175da0eb15ab1a7e329c56753b4ba290ad0",
+    "scripts/assist_scene_m3t_tum_import.py": "33113d183ede20967285173b4cd14620a5f65dc1262d712187d137ff21e1b956",
+    "scripts/assist_scene_m3t_static_controls.py": "6d656d9eae18847daa6f3bbd3feb3a1caffa5316ea84035b48cdbfea43df20ee",
+    "tests/test_assist_scene_m3t_data.py": "f3c3e01c49c5d5665db4965235bd47d654f2277946a70cbfd04c8671e401bb02",
+    "tests/test_assist_scene_m3t_static_controls.py": "85c91b7ce970f651d4b8baadd83c184077e54a55a0a153613f8cd2b208332b06"
+  },
+  "execution": {
+    "actualStudyRuns": 1,
+    "actualStudyWallMs": 10288.668333,
+    "pairs": 48,
+    "sceneCount": 2,
+    "retainedFiles": 114,
+    "rgbExposures": 54,
+    "depthExposures": 54,
+    "retainedBytes": 30260243,
+    "networkBytesIncludingMetadataPreflight": 732459023,
+    "fetchWallSeconds": 73.708,
+    "archiveRetained": false,
+    "fetchRetries": 0,
+    "standaloneCorrespondencePasses": 48,
+    "frozenGuardCorrespondencePasses": 46,
+    "lkDirectionCalls": 188,
+    "referenceProfileEvaluations": 96,
+    "depthReprojections": 180,
+    "learnedModelCalls": 0,
+    "requestedOpenCvThreads": 1,
+    "reportedOpenCvThreads": 10,
+    "actualWorkerCount": null,
+    "controlledTimingBenchmark": false
+  },
+  "primaryResults": {
+    "originalSeeds": 12225,
+    "approximatelyVisibleReferencePoints": 9303,
+    "acceptedFiniteLkPointsOnVisibleReference": 9052,
+    "visibleReferenceLkMisses": 251,
+    "otherReferenceStatuses": 2922,
+    "pooledEpePx": {"p50": 2.1926316174808482, "p95": 4.393094937419989},
+    "guardPairs": {"valid": 13, "insufficientBackgroundAgreement": 33, "rgbPoseUnavailable": 2},
+    "nearRotationFallback": {
+      "pairs": 10,
+      "vetoedPairs": 10,
+      "visibleAcceptedPoints": 2220,
+      "referenceParallaxAboveFrozen1_3Px": 2219,
+      "referenceRotationResidualPx": {"p50": 4.112652663869188, "p95": 7.036769698388109}
+    },
+    "sensitivityHeuristicFalsification": {
+      "sameVisibleAcceptedMaskPoints": 9052,
+      "radiusPx": {"p50": 35.76563828435844, "p95": 44.78607704046568},
+      "unshiftedOutsideRadius": 2,
+      "deliberateEndpointShiftPx": [10, 10],
+      "shiftedOutsideRadius": 3,
+      "shiftedStillCompatible": 9049,
+      "usableAsMatchValidator": false
+    }
+  },
+  "qa": {
+    "uniqueM3TTests": 21,
+    "includedInPythonTotalNotAdditional": true,
+    "firstGate": "FAIL: 641 Python tests OK but buffered fixture JSON followed final OK; strict collector correctly rejected result",
+    "repair": "Tests only: capture importer stdout, assert JSON, date TemporaryDirectory prefix; production and parser unchanged",
+    "fullGateRuns": 2,
+    "finalTechnicalPass": true,
+    "pythonTests": 641,
+    "swiftTests": 121,
+    "nodeTests": 14,
+    "typescriptPass": true,
+    "finalGateSourceFiles": 189,
+    "finalGateSourceBeforeAndAfterSha256": "2af2859143fd3c5b62e84a1241b754c45acd588d5fdf14affbc29bdb0cabb66e",
+    "sourceUnchangedDuringFinalGate": true,
+    "contractorVisualReview": "Six source images plus both outlier zoom plates; plausible along-edge ambiguity, not new exact material-point ground truth",
+    "independentReviewer": "Authored neither M3T data nor study component; recomputed metrics and source bindings"
+  },
+  "productDecision": {
+    "runtimeChangedByM3T": false,
+    "qualityThresholdsRelaxed": false,
+    "newTrafficAB": false,
+    "oldM3RFalseNegatives": 12,
+    "oldM3RFalseNegativesFixed": false,
+    "userRangeInferred": false,
+    "newWarningsAuthorized": false,
+    "phoneTested": false,
+    "directLlmOrAgentBaselineMeasured": false,
+    "releaseApproved": false,
+    "next": "Test camera-motion representation selected by pixel impact and observability, not metric-baseline-only rotation fallback, on fresh independent static controls then traffic A/B; retain abstention and quality floors"
+  },
+  "limits": [
+    "Depth/mocap is approximate sensor reference with calibration, synchronization and visibility uncertainty, not certified pixel ground truth",
+    "Sensitivity radius fails deliberate shifted-endpoint control and cannot certify correctness or be converted to accuracy",
+    "Static indoor component diagnostics are not traffic warning FP/FN, end-to-end realtime evidence or mobile acceptance",
+    "Two fixed calibration profiles remain separate, no best-profile selection",
+    "No runtime model, threshold, detector, warning or UI changed; no claim of reducing prior traffic misses"
+  ],
+  "diskHygiene": {
+    "freeGiBApprox": 56,
+    "newVenvs": 0,
+    "projectCopies": 0,
+    "newBuildDirectories": 0,
+    "temporaryFixtureDirectoriesAutoRemoved": true,
+    "leftoverCodexTmpM3TTestDirectoriesFound": 0,
+    "intentionalRetainedArtifacts": "30.26 MB selected sensor slice, receipts, logs and four QA plates"
+  },
+  "commitPushDeployPerformed": false
+}

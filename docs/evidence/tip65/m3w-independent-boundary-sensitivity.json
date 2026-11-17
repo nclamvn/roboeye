@@ -1,0 +1,922 @@
+{
+  "schemaVersion": 1,
+  "study": "M3W-numerical-boundary-sensitivity",
+  "authority": "QA sensitivity strata only; original actual receipts and3072denominator unchanged.",
+  "rule": "128 machine-epsilon scaled coordinate envelope about finite-panel inclusive perimeter, positive ray and no farther than nominal nearest material. Not a new matching/measurement threshold or certified floating interval.",
+  "actualModelOrFlowCalls": 0,
+  "originalAuthoredSeeds": 3072,
+  "pairs": [
+    {
+      "pairId": "m3w-00",
+      "centerBoundarySensitive": 2,
+      "patch7BoundaryTouch": 7,
+      "patch21BoundaryTouch": 8,
+      "centerIndices": [
+        59,
+        138
+      ],
+      "patch7Indices": [
+        33,
+        53,
+        59,
+        99,
+        109,
+        126,
+        138
+      ],
+      "patch21Indices": [
+        33,
+        53,
+        59,
+        81,
+        99,
+        109,
+        126,
+        138
+      ],
+      "primaryOriginalCounts": {
+        "accepted-right": 253,
+        "accepted-wrong": 0,
+        "missed-valid": 3,
+        "accepted-invisible": 0,
+        "reference-unavailable": 0
+      },
+      "centerClearSubset": {
+        "included": 254,
+        "accepted-right": 251,
+        "tp": 251,
+        "missed-valid": 3,
+        "fn": 3,
+        "fpTotalKnown": 0
+      },
+      "geometricInterior21Subset": {
+        "included": 153,
+        "accepted-right": 153,
+        "tp": 153,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "included": 2,
+        "accepted-right": 2,
+        "tp": 2,
+        "fpTotalKnown": 0
+      }
+    },
+    {
+      "pairId": "m3w-01",
+      "centerBoundarySensitive": 2,
+      "patch7BoundaryTouch": 7,
+      "patch21BoundaryTouch": 8,
+      "centerIndices": [
+        59,
+        138
+      ],
+      "patch7Indices": [
+        33,
+        53,
+        59,
+        99,
+        109,
+        126,
+        138
+      ],
+      "patch21Indices": [
+        33,
+        53,
+        59,
+        81,
+        99,
+        109,
+        126,
+        138
+      ],
+      "primaryOriginalCounts": {
+        "accepted-right": 233,
+        "accepted-wrong": 10,
+        "missed-valid": 6,
+        "accepted-invisible": 5,
+        "reference-unavailable": 2
+      },
+      "centerClearSubset": {
+        "included": 254,
+        "accepted-right": 233,
+        "tp": 233,
+        "missed-valid": 6,
+        "fn": 14,
+        "accepted-invisible": 5,
+        "knownUnmatchableFP": 5,
+        "accepted-wrong": 8,
+        "fpVisible": 8,
+        "reference-unavailable": 2,
+        "knownUnmatchableTN": 2,
+        "fpTotalKnown": 13
+      },
+      "geometricInterior21Subset": {
+        "included": 150,
+        "accepted-right": 150,
+        "tp": 150,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "included": 2,
+        "accepted-wrong": 2,
+        "fpVisible": 2,
+        "fn": 2,
+        "fpTotalKnown": 2
+      }
+    },
+    {
+      "pairId": "m3w-02",
+      "centerBoundarySensitive": 2,
+      "patch7BoundaryTouch": 7,
+      "patch21BoundaryTouch": 8,
+      "centerIndices": [
+        59,
+        138
+      ],
+      "patch7Indices": [
+        33,
+        53,
+        59,
+        99,
+        109,
+        126,
+        138
+      ],
+      "patch21Indices": [
+        33,
+        53,
+        59,
+        81,
+        99,
+        109,
+        126,
+        138
+      ],
+      "primaryOriginalCounts": {
+        "accepted-right": 199,
+        "accepted-wrong": 7,
+        "missed-valid": 20,
+        "accepted-invisible": 3,
+        "reference-unavailable": 27
+      },
+      "centerClearSubset": {
+        "included": 254,
+        "accepted-right": 199,
+        "tp": 199,
+        "missed-valid": 20,
+        "fn": 26,
+        "reference-unavailable": 27,
+        "knownUnmatchableTN": 27,
+        "accepted-wrong": 6,
+        "fpVisible": 6,
+        "accepted-invisible": 2,
+        "knownUnmatchableFP": 2,
+        "fpTotalKnown": 8
+      },
+      "geometricInterior21Subset": {
+        "included": 134,
+        "accepted-right": 125,
+        "tp": 125,
+        "missed-valid": 9,
+        "fn": 9,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "included": 2,
+        "accepted-invisible": 1,
+        "knownUnmatchableFP": 1,
+        "accepted-wrong": 1,
+        "fpVisible": 1,
+        "fn": 1,
+        "fpTotalKnown": 2
+      }
+    },
+    {
+      "pairId": "m3w-03",
+      "centerBoundarySensitive": 2,
+      "patch7BoundaryTouch": 7,
+      "patch21BoundaryTouch": 8,
+      "centerIndices": [
+        59,
+        138
+      ],
+      "patch7Indices": [
+        33,
+        53,
+        59,
+        99,
+        109,
+        126,
+        138
+      ],
+      "patch21Indices": [
+        33,
+        53,
+        59,
+        81,
+        99,
+        109,
+        126,
+        138
+      ],
+      "primaryOriginalCounts": {
+        "accepted-right": 220,
+        "accepted-wrong": 7,
+        "missed-valid": 7,
+        "accepted-invisible": 6,
+        "reference-unavailable": 16
+      },
+      "centerClearSubset": {
+        "included": 254,
+        "accepted-right": 220,
+        "tp": 220,
+        "reference-unavailable": 16,
+        "knownUnmatchableTN": 16,
+        "accepted-invisible": 6,
+        "knownUnmatchableFP": 6,
+        "accepted-wrong": 5,
+        "fpVisible": 5,
+        "fn": 12,
+        "missed-valid": 7,
+        "fpTotalKnown": 11
+      },
+      "geometricInterior21Subset": {
+        "included": 136,
+        "accepted-right": 136,
+        "tp": 136,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "included": 2,
+        "accepted-wrong": 2,
+        "fpVisible": 2,
+        "fn": 2,
+        "fpTotalKnown": 2
+      }
+    },
+    {
+      "pairId": "m3w-04",
+      "centerBoundarySensitive": 2,
+      "patch7BoundaryTouch": 7,
+      "patch21BoundaryTouch": 8,
+      "centerIndices": [
+        59,
+        138
+      ],
+      "patch7Indices": [
+        33,
+        53,
+        59,
+        99,
+        109,
+        126,
+        138
+      ],
+      "patch21Indices": [
+        33,
+        53,
+        59,
+        81,
+        99,
+        109,
+        126,
+        138
+      ],
+      "primaryOriginalCounts": {
+        "accepted-right": 216,
+        "accepted-wrong": 9,
+        "missed-valid": 18,
+        "accepted-invisible": 8,
+        "reference-unavailable": 5
+      },
+      "centerClearSubset": {
+        "included": 254,
+        "accepted-right": 216,
+        "tp": 216,
+        "accepted-invisible": 7,
+        "knownUnmatchableFP": 7,
+        "missed-valid": 18,
+        "fn": 26,
+        "accepted-wrong": 8,
+        "fpVisible": 8,
+        "reference-unavailable": 5,
+        "knownUnmatchableTN": 5,
+        "fpTotalKnown": 15
+      },
+      "geometricInterior21Subset": {
+        "included": 147,
+        "accepted-right": 144,
+        "tp": 144,
+        "missed-valid": 3,
+        "fn": 3,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "included": 2,
+        "accepted-wrong": 1,
+        "fpVisible": 1,
+        "fn": 1,
+        "accepted-invisible": 1,
+        "knownUnmatchableFP": 1,
+        "fpTotalKnown": 2
+      }
+    },
+    {
+      "pairId": "m3w-05",
+      "centerBoundarySensitive": 2,
+      "patch7BoundaryTouch": 7,
+      "patch21BoundaryTouch": 8,
+      "centerIndices": [
+        59,
+        138
+      ],
+      "patch7Indices": [
+        33,
+        53,
+        59,
+        99,
+        109,
+        126,
+        138
+      ],
+      "patch21Indices": [
+        33,
+        53,
+        59,
+        81,
+        99,
+        109,
+        126,
+        138
+      ],
+      "primaryOriginalCounts": {
+        "accepted-right": 10,
+        "accepted-wrong": 3,
+        "missed-valid": 176,
+        "accepted-invisible": 0,
+        "reference-unavailable": 67
+      },
+      "centerClearSubset": {
+        "included": 254,
+        "missed-valid": 174,
+        "fn": 177,
+        "reference-unavailable": 67,
+        "knownUnmatchableTN": 67,
+        "accepted-wrong": 3,
+        "fpVisible": 3,
+        "accepted-right": 10,
+        "tp": 10,
+        "fpTotalKnown": 3
+      },
+      "geometricInterior21Subset": {
+        "included": 114,
+        "missed-valid": 105,
+        "fn": 106,
+        "accepted-right": 8,
+        "tp": 8,
+        "accepted-wrong": 1,
+        "fpVisible": 1,
+        "fpTotalKnown": 1
+      },
+      "centerAmbiguousExcluded": {
+        "included": 2,
+        "missed-valid": 2,
+        "fn": 2,
+        "fpTotalKnown": 0
+      }
+    },
+    {
+      "pairId": "m3w-06",
+      "centerBoundarySensitive": 0,
+      "patch7BoundaryTouch": 0,
+      "patch21BoundaryTouch": 0,
+      "centerIndices": [],
+      "patch7Indices": [],
+      "patch21Indices": [],
+      "primaryOriginalCounts": {
+        "accepted-right": 252,
+        "accepted-wrong": 0,
+        "missed-valid": 4,
+        "accepted-invisible": 0,
+        "reference-unavailable": 0
+      },
+      "centerClearSubset": {
+        "included": 256,
+        "accepted-right": 252,
+        "tp": 252,
+        "missed-valid": 4,
+        "fn": 4,
+        "fpTotalKnown": 0
+      },
+      "geometricInterior21Subset": {
+        "included": 158,
+        "accepted-right": 158,
+        "tp": 158,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "fpTotalKnown": 0
+      }
+    },
+    {
+      "pairId": "m3w-07",
+      "centerBoundarySensitive": 0,
+      "patch7BoundaryTouch": 0,
+      "patch21BoundaryTouch": 0,
+      "centerIndices": [],
+      "patch7Indices": [],
+      "patch21Indices": [],
+      "primaryOriginalCounts": {
+        "accepted-right": 224,
+        "accepted-wrong": 9,
+        "missed-valid": 13,
+        "accepted-invisible": 10,
+        "reference-unavailable": 0
+      },
+      "centerClearSubset": {
+        "included": 256,
+        "accepted-right": 224,
+        "tp": 224,
+        "accepted-invisible": 10,
+        "knownUnmatchableFP": 10,
+        "accepted-wrong": 9,
+        "fpVisible": 9,
+        "fn": 22,
+        "missed-valid": 13,
+        "fpTotalKnown": 19
+      },
+      "geometricInterior21Subset": {
+        "included": 150,
+        "accepted-right": 150,
+        "tp": 150,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "fpTotalKnown": 0
+      }
+    },
+    {
+      "pairId": "m3w-08",
+      "centerBoundarySensitive": 0,
+      "patch7BoundaryTouch": 0,
+      "patch21BoundaryTouch": 0,
+      "centerIndices": [],
+      "patch7Indices": [],
+      "patch21Indices": [],
+      "primaryOriginalCounts": {
+        "accepted-right": 203,
+        "accepted-wrong": 8,
+        "missed-valid": 12,
+        "accepted-invisible": 11,
+        "reference-unavailable": 22
+      },
+      "centerClearSubset": {
+        "included": 256,
+        "accepted-right": 203,
+        "tp": 203,
+        "accepted-invisible": 11,
+        "knownUnmatchableFP": 11,
+        "accepted-wrong": 8,
+        "fpVisible": 8,
+        "fn": 20,
+        "missed-valid": 12,
+        "reference-unavailable": 22,
+        "knownUnmatchableTN": 22,
+        "fpTotalKnown": 19
+      },
+      "geometricInterior21Subset": {
+        "included": 135,
+        "accepted-right": 135,
+        "tp": 135,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "fpTotalKnown": 0
+      }
+    },
+    {
+      "pairId": "m3w-09",
+      "centerBoundarySensitive": 0,
+      "patch7BoundaryTouch": 0,
+      "patch21BoundaryTouch": 0,
+      "centerIndices": [],
+      "patch7Indices": [],
+      "patch21Indices": [],
+      "primaryOriginalCounts": {
+        "accepted-right": 213,
+        "accepted-wrong": 9,
+        "missed-valid": 5,
+        "accepted-invisible": 9,
+        "reference-unavailable": 20
+      },
+      "centerClearSubset": {
+        "included": 256,
+        "accepted-right": 213,
+        "tp": 213,
+        "accepted-invisible": 9,
+        "knownUnmatchableFP": 9,
+        "accepted-wrong": 9,
+        "fpVisible": 9,
+        "fn": 14,
+        "reference-unavailable": 20,
+        "knownUnmatchableTN": 20,
+        "missed-valid": 5,
+        "fpTotalKnown": 18
+      },
+      "geometricInterior21Subset": {
+        "included": 141,
+        "accepted-right": 141,
+        "tp": 141,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "fpTotalKnown": 0
+      }
+    },
+    {
+      "pairId": "m3w-10",
+      "centerBoundarySensitive": 0,
+      "patch7BoundaryTouch": 0,
+      "patch21BoundaryTouch": 0,
+      "centerIndices": [],
+      "patch7Indices": [],
+      "patch21Indices": [],
+      "primaryOriginalCounts": {
+        "accepted-right": 217,
+        "accepted-wrong": 5,
+        "missed-valid": 14,
+        "accepted-invisible": 14,
+        "reference-unavailable": 6
+      },
+      "centerClearSubset": {
+        "included": 256,
+        "accepted-right": 217,
+        "tp": 217,
+        "accepted-invisible": 14,
+        "knownUnmatchableFP": 14,
+        "missed-valid": 14,
+        "fn": 19,
+        "reference-unavailable": 6,
+        "knownUnmatchableTN": 6,
+        "accepted-wrong": 5,
+        "fpVisible": 5,
+        "fpTotalKnown": 19
+      },
+      "geometricInterior21Subset": {
+        "included": 150,
+        "accepted-right": 150,
+        "tp": 150,
+        "fpTotalKnown": 0
+      },
+      "centerAmbiguousExcluded": {
+        "fpTotalKnown": 0
+      }
+    },
+    {
+      "pairId": "m3w-11",
+      "centerBoundarySensitive": 0,
+      "patch7BoundaryTouch": 0,
+      "patch21BoundaryTouch": 0,
+      "centerIndices": [],
+      "patch7Indices": [],
+      "patch21Indices": [],
+      "primaryOriginalCounts": {
+        "accepted-right": 22,
+        "accepted-wrong": 5,
+        "missed-valid": 155,
+        "accepted-invisible": 0,
+        "reference-unavailable": 74
+      },
+      "centerClearSubset": {
+        "included": 256,
+        "accepted-right": 22,
+        "tp": 22,
+        "reference-unavailable": 74,
+        "knownUnmatchableTN": 74,
+        "missed-valid": 155,
+        "fn": 160,
+        "accepted-wrong": 5,
+        "fpVisible": 5,
+        "fpTotalKnown": 5
+      },
+      "geometricInterior21Subset": {
+        "included": 112,
+        "missed-valid": 105,
+        "fn": 107,
+        "accepted-right": 5,
+        "tp": 5,
+        "accepted-wrong": 2,
+        "fpVisible": 2,
+        "fpTotalKnown": 2
+      },
+      "centerAmbiguousExcluded": {
+        "fpTotalKnown": 0
+      }
+    }
+  ],
+  "centerBoundarySensitiveUnits": [
+    {
+      "pairId": "m3w-00",
+      "seedIndex": 59,
+      "source": [
+        318.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 59,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": 0.0,
+        "classification": "accepted-right"
+      }
+    },
+    {
+      "pairId": "m3w-00",
+      "seedIndex": 138,
+      "source": [
+        326.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 138,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": 0.0,
+        "classification": "accepted-right"
+      }
+    },
+    {
+      "pairId": "m3w-01",
+      "seedIndex": 59,
+      "source": [
+        318.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 59,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": 3.9416843774524843,
+        "classification": "accepted-wrong"
+      }
+    },
+    {
+      "pairId": "m3w-01",
+      "seedIndex": 138,
+      "source": [
+        326.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 138,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": 3.92847236491378,
+        "classification": "accepted-wrong"
+      }
+    },
+    {
+      "pairId": "m3w-02",
+      "seedIndex": 59,
+      "source": [
+        318.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 59,
+        "status": "occluded",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": null,
+        "classification": "accepted-invisible"
+      }
+    },
+    {
+      "pairId": "m3w-02",
+      "seedIndex": 138,
+      "source": [
+        326.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 138,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": 4.324385223027629,
+        "classification": "accepted-wrong"
+      }
+    },
+    {
+      "pairId": "m3w-03",
+      "seedIndex": 59,
+      "source": [
+        318.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 59,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": 2.905047143356148,
+        "classification": "accepted-wrong"
+      }
+    },
+    {
+      "pairId": "m3w-03",
+      "seedIndex": 138,
+      "source": [
+        326.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 138,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": 2.8899251950839924,
+        "classification": "accepted-wrong"
+      }
+    },
+    {
+      "pairId": "m3w-04",
+      "seedIndex": 59,
+      "source": [
+        318.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 59,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": 6.071655925894763,
+        "classification": "accepted-wrong"
+      }
+    },
+    {
+      "pairId": "m3w-04",
+      "seedIndex": 138,
+      "source": [
+        326.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 138,
+        "status": "occluded",
+        "patch7SingleMaterial": false,
+        "lkAccepted": true,
+        "epePx": null,
+        "classification": "accepted-invisible"
+      }
+    },
+    {
+      "pairId": "m3w-05",
+      "seedIndex": 59,
+      "source": [
+        318.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 59,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": false,
+        "epePx": 152.34763415047036,
+        "classification": "missed-valid"
+      }
+    },
+    {
+      "pairId": "m3w-05",
+      "seedIndex": 138,
+      "source": [
+        326.0,
+        291.0
+      ],
+      "recordedPoint": {
+        "index": 138,
+        "status": "visible",
+        "patch7SingleMaterial": false,
+        "lkAccepted": false,
+        "epePx": 13.778712224869444,
+        "classification": "missed-valid"
+      }
+    }
+  ],
+  "centerClearSubset": {
+    "included": 3060,
+    "accepted-right": 2260,
+    "tp": 2260,
+    "missed-valid": 431,
+    "fn": 497,
+    "fpTotalKnown": 130,
+    "accepted-invisible": 64,
+    "knownUnmatchableFP": 64,
+    "accepted-wrong": 66,
+    "fpVisible": 66,
+    "reference-unavailable": 239,
+    "knownUnmatchableTN": 239
+  },
+  "geometricInterior21Subset": {
+    "included": 1680,
+    "accepted-right": 1455,
+    "tp": 1455,
+    "fpTotalKnown": 3,
+    "missed-valid": 222,
+    "fn": 225,
+    "accepted-wrong": 3,
+    "fpVisible": 3
+  },
+  "centerAmbiguousExcluded": {
+    "included": 12,
+    "accepted-right": 2,
+    "tp": 2,
+    "fpTotalKnown": 8,
+    "accepted-wrong": 6,
+    "fpVisible": 6,
+    "fn": 8,
+    "accepted-invisible": 2,
+    "knownUnmatchableFP": 2,
+    "missed-valid": 2
+  },
+  "perSplit": {
+    "analysis": {
+      "clear": {
+        "included": 1524,
+        "accepted-right": 1129,
+        "tp": 1129,
+        "missed-valid": 228,
+        "fn": 258,
+        "fpTotalKnown": 50,
+        "accepted-invisible": 20,
+        "knownUnmatchableFP": 20,
+        "accepted-wrong": 30,
+        "fpVisible": 30,
+        "reference-unavailable": 117,
+        "knownUnmatchableTN": 117
+      },
+      "interior21": {
+        "included": 834,
+        "accepted-right": 716,
+        "tp": 716,
+        "fpTotalKnown": 1,
+        "missed-valid": 117,
+        "fn": 118,
+        "accepted-wrong": 1,
+        "fpVisible": 1
+      },
+      "excluded": {
+        "included": 12,
+        "accepted-right": 2,
+        "tp": 2,
+        "fpTotalKnown": 8,
+        "accepted-wrong": 6,
+        "fpVisible": 6,
+        "fn": 8,
+        "accepted-invisible": 2,
+        "knownUnmatchableFP": 2,
+        "missed-valid": 2
+      }
+    },
+    "holdout": {
+      "clear": {
+        "included": 1536,
+        "accepted-right": 1131,
+        "tp": 1131,
+        "missed-valid": 203,
+        "fn": 239,
+        "fpTotalKnown": 80,
+        "accepted-invisible": 44,
+        "knownUnmatchableFP": 44,
+        "accepted-wrong": 36,
+        "fpVisible": 36,
+        "reference-unavailable": 122,
+        "knownUnmatchableTN": 122
+      },
+      "interior21": {
+        "included": 846,
+        "accepted-right": 739,
+        "tp": 739,
+        "fpTotalKnown": 2,
+        "missed-valid": 105,
+        "fn": 107,
+        "accepted-wrong": 2,
+        "fpVisible": 2
+      },
+      "excluded": {
+        "fpTotalKnown": 0
+      }
+    }
+  },
+  "limits": [
+    "Boundary-touching patch does not necessarily change patch verdict; exact alternative-algebra replay showed4centerstatus differences and0patch7/21verdict differences.",
+    "Center-clear is numerically screened, not physical exactness or proof of all FP labels. Interior21 remains single-level, not LKpyramid/continuousarea support.",
+    "Subsets are descriptive robustness strata with ALL exclusions enumerated; not relabeled trial scores, new heldout trials or selected higher-score data."
+  ]
+}

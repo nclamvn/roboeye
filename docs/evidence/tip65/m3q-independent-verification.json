@@ -1,0 +1,1429 @@
+{
+  "schemaVersion": 1,
+  "study": "M3Q-independent-verification",
+  "scope": "Independent inline event matcher/recount and source lineage review; not new model inference, scorer approval, human semantic review or product acceptance",
+  "receiptSha256": "0c4198fd153cb9acddee1dd18d7911f5be60dcd35153f73a63c98c8a07e863d0",
+  "receiptBytes": 202664796,
+  "inputSha256": "7c377d6a6a344a64d34cbbb1fe4b3319e2fe9856e051a889c3148bcd0b2f9986",
+  "truthSha256": "3e0668037090c65ea93964b843df1e083e759f0f7e6c86f0b2bb5df1c7e6fa20",
+  "coverageSha256": "7134e3eb86b85cd5a453cd47f85190ea7b295e57ae3350d5edb90c9383d43204",
+  "componentLineageSha256": "198e12cc8ed9f34b083708b2d8e545eb8b93980ddc98564591a07be00eee9979",
+  "codeSha256Verified": {
+    "assist_scene_m3g_study.py": "af27a473fc03d47543ac21c7d45a8c69d4e22c74ca0b0ad4df518d2758b72ca1",
+    "assist_scene_window_loom.py": "4981561eed510a7be889744bd20c23e4ed9d6d91704cb3d22dddcea24c873217",
+    "assist_scene_dense_window.py": "98c5a0f021ae3faa9abeee634690d43b21447dec8b0525709d37680e163374d0",
+    "assist_scene_scale_approach_m3e.py": "3bfaac464710becaffa3590ffcf59ea8195f5e7ba2f57c874bd8138988fb3f2b",
+    "assist_scene_scale_approach.py": "563561fbcb681d83a194cbeea62ad25f175eaf9f6e37744fa844c4c20c710c4d",
+    "assist_scene_m3d_study.py": "db37a3b6fdbb81cb5c1bddee820838a0b82f44571ae30ad658be33e84a71b225",
+    "assist_scene_m3e_study.py": "6801000ec0dbd4026067727a7aecf4250cbdbd0d435bd7aba1b29f6368914617",
+    "assist_scene_m3f_study.py": "5d97ce10027b4303ae665597b5148705facc2ffe8fa7d427a46ba79a0c8c4133",
+    "assist_scene_motion_m3b.py": "036305b33a4d09c224035bee407e4cf670802f8e17284079c06337c894ea73f9",
+    "assist_scene_motion_m3c.py": "119471b4544367431dd62b051ed557e8fe092ea8230fdee47b73fb99a671592e",
+    "assist_scene_pose_motion.py": "df6b22ae9da80a8a75dae2049de3b848c839527a7aebcb95954cc6fbbd0b0df9",
+    "assist_scene_motion.py": "330340ea5469d4f6f2a559dbe9b4090529a1da0d313e68a1b7fe82ef889d50bb",
+    "score-assist-scene-motion-m3c.py": "90875862ef6774832164776b27a54981d4253dfd9341c8d1e8fb18aeadd05f16",
+    "assist_scene_m3h_study.py": "a0fdb7a3f436c131a61d0fd66bf47614b345b2778d13608d6143eda41ca6810a",
+    "assist_scene_cohort_loom.py": "b7915e194867e09a218742f8b779631fb00ec631ddfdd39b784eaa5e1bb4bea4",
+    "assist_scene_m3k_study.py": "bbe5892b9c69ab9d249543ecaac0a322ff3fea9427da66e371bc04f876f3b894",
+    "assist_scene_learned_detector.py": "4258c1c7164b5c16ac0e48173dc932a8a2577709a19822adc42e9b564300bb9a",
+    "assist_scene_learned_region.py": "594c9c52cdc4e79db0fad19432fae99b23b0a064321f6b4b44607fbaadf7092a",
+    "audit_assist_scene_m3k.py": "eadbda5e716b053723fa18dd40bc39720c1fcd441e704cca5b0389f157b5f6ba",
+    "assist_scene_m3l_study.py": "14de9667f42fed6194c8f33e5a7ef97604dede03ba57ee6f3fb1b32b899670c0",
+    "assist_scene_direct_window.py": "5c0854542e03e70959ac012a483596e10a1259b57ca7d0a1ccecbf207e98f1bf",
+    "assist_scene_m3m_study.py": "5eb13066fd92019ca7567d7e43c64ba3672e02155ac567a9945850027d4b7427",
+    "assist_scene_global_field.py": "32f03ec4fbdd754be555d8849d63b8fd3412d404f159ad97005df0a82d2f5848",
+    "assist_scene_global_window.py": "8163edb853089f9e87a16ed2c7cd506aa5a0f8c8da32d63870a02585d73fa86b",
+    "assist_scene_m3n_study.py": "2f4cff0d60d5f8f37911f675641ba9a963388da33d35e31178a95477e2c9e2ec",
+    "assist_scene_texture_patches.py": "a2034129b5131414869aed78b16b9649e7901f4fa7ea80e52b7aee21ff737459",
+    "assist_scene_textured_window.py": "57e2fc804a9215bc214c0381e1a629144641e0ad78cde77e80988c9e27d30fc4",
+    "assist_scene_m3o_study.py": "6e6ee416b6e7ceafd6b5ecfc7bac549fe14acf7bf797933e40ac34f33bd44ab5",
+    "assist_scene_m3o_correspondence_audit.py": "16e561579aba269d80a934075c2a7c1c6cab0c7fc1686812ca31f4b88defc9cf",
+    "diagnose_assist_scene_m3k_misses.py": "fd9092bd0807caf740da96e780e6b33ecc454fc3c568e53112c041c8187ec89e",
+    "fetch-assist-scene-boreas-slice.py": "43c15dd8d0bbefb15ce57ae12545459aa9f2594351169c8676d1de06831adcd4",
+    "assist_scene_m3q_correspondence.py": "d4bad07de81cd754d6fcd9f9da78c0a2342c665e5c3644983d6bf203c97b84ce",
+    "assist_scene_m3q_study.py": "a11eaf9c1b261b99a69c74c4cc19ebf3361166d9f8fb6040810782aa3b9340ce"
+  },
+  "completeFrames": 150,
+  "detectorCalls": 150,
+  "detectorBatches": 3,
+  "actualDirectionsByLane": {
+    "A": 370,
+    "B": 370
+  },
+  "actualR1ModelDirections": 740,
+  "fieldPairsByLane": {
+    "A": 185,
+    "B": 185
+  },
+  "interruptedR0FinalDirections": "UNKNOWN; not added to740",
+  "noRangeSurfaceChecks": 600,
+  "retainedReferenceCounts": {
+    "approaching": 31,
+    "unknown": 5,
+    "not-approaching": 8
+  },
+  "selected73Retained44Omitted29": true,
+  "allExplicitOmissionsRetained": true,
+  "combinedTruthVerbatimToSealedComponents": true,
+  "runtimeFrameKeysContainNoObjectTruth": true,
+  "scoreMatching": {
+    "sameFamilyIoU": 0.35,
+    "competingTargetMargin": 0.08,
+    "duplicates": "all ambiguous; no true-negative conversion"
+  },
+  "totals": {
+    "A": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 31,
+      "tn": 8,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 15,
+      "framesAbstained": 150
+    },
+    "B": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 31,
+      "tn": 8,
+      "unmatchedReports": 0,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 0,
+      "scoredKeyframes": 15,
+      "framesAbstained": 150
+    },
+    "S": {
+      "tp": 11,
+      "fp": 0,
+      "fn": 20,
+      "tn": 8,
+      "unmatchedReports": 15,
+      "ambiguousReports": 0,
+      "unknownTargetReports": 0,
+      "unknownTargets": 5,
+      "unscoredFrameReports": 188,
+      "scoredKeyframes": 15,
+      "framesAbstained": 57
+    }
+  },
+  "clips": [
+    {
+      "id": "boreas-m3q-city",
+      "totals": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 15,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 1,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 15,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 1,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "S": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 8,
+          "tn": 0,
+          "unmatchedReports": 12,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 1,
+          "unscoredFrameReports": 133,
+          "scoredKeyframes": 5,
+          "framesAbstained": 4
+        }
+      }
+    },
+    {
+      "id": "boreas-m3q-turn",
+      "totals": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 11,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 1,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 11,
+          "tn": 0,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 1,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "S": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 7,
+          "tn": 0,
+          "unmatchedReports": 2,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 1,
+          "unscoredFrameReports": 45,
+          "scoredKeyframes": 5,
+          "framesAbstained": 13
+        }
+      }
+    },
+    {
+      "id": "boreas-m3q-low-speed",
+      "totals": {
+        "A": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 8,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "B": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 8,
+          "unmatchedReports": 0,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 0,
+          "scoredKeyframes": 5,
+          "framesAbstained": 50
+        },
+        "S": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 5,
+          "tn": 8,
+          "unmatchedReports": 1,
+          "ambiguousReports": 0,
+          "unknownTargetReports": 0,
+          "unknownTargets": 3,
+          "unscoredFrameReports": 10,
+          "scoredKeyframes": 5,
+          "framesAbstained": 40
+        }
+      }
+    }
+  ],
+  "allEventCounts": {
+    "T": 42,
+    "A": 0,
+    "B": 0,
+    "S": 214
+  },
+  "positiveDiagnosisSummary": {
+    "positiveTargetKeyframes": 31,
+    "currentRawCriterionMatch": 27,
+    "currentTrackCriterionMatch": 27,
+    "currentRawCriterionFailure": 4,
+    "currentTrackCriterionFailure": 4
+  },
+  "cameraStatusOnPositiveTargets": {
+    "insufficient-background-agreement": 2,
+    "valid": 29
+  },
+  "firstVetoByLane": {
+    "A": {
+      "surface-insufficient-background-agreement": 2,
+      "no-fresh-source-exposure": 7,
+      "fresh-ambiguous-or-unverifiable-rival": 18,
+      "current-detector-or-handle-criterion-failure": 4
+    },
+    "B": {
+      "surface-insufficient-background-agreement": 2,
+      "no-fresh-source-exposure": 7,
+      "fresh-ambiguous-or-unverifiable-rival": 18,
+      "current-detector-or-handle-criterion-failure": 4
+    }
+  },
+  "currentSiftSourcePopulationCounts": {
+    "currentMatchedTargets": 27,
+    "currentSourceNBelow9": 14,
+    "currentSourceNAtLeast9": 13
+  },
+  "positiveLinkedPointReasons": {
+    "A": {},
+    "B": {
+      "source-descriptor-leaves-object": 668,
+      "verified-independent-descriptor-pixel": 221,
+      "unmatched-or-ambiguous-descriptor": 246,
+      "independent-raft-endpoint-or-return": 55,
+      "source-low-variance": 106,
+      "patch-cycle": 12
+    }
+  },
+  "positiveCases": [
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989141175212",
+      "index": 14,
+      "instance": "362ef57d-de1b-48e1-844b-66ddf42553b9",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "insufficient-background-agreement",
+      "lanes": {
+        "A": {
+          "firstVeto": "surface-insufficient-background-agreement",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {}
+        },
+        "B": {
+          "firstVeto": "surface-insufficient-background-agreement",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {},
+          "currentSourceSeedPoints": 5,
+          "linkedUniquePopulations": 0,
+          "originalSeedsInLinkedUniquePopulations": 0,
+          "pointReasons": {},
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 0
+        }
+      },
+      "currentTrackId": 122
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989141175212",
+      "index": 14,
+      "instance": "bbbc934d-4bdc-4c1d-9cbe-6266ee636c6b",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "insufficient-background-agreement",
+      "lanes": {
+        "A": {
+          "firstVeto": "surface-insufficient-background-agreement",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {}
+        },
+        "B": {
+          "firstVeto": "surface-insufficient-background-agreement",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {},
+          "currentSourceSeedPoints": 14,
+          "linkedUniquePopulations": 0,
+          "originalSeedsInLinkedUniquePopulations": 0,
+          "pointReasons": {},
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 0
+        }
+      },
+      "currentTrackId": 121
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989141815568",
+      "index": 22,
+      "instance": "362ef57d-de1b-48e1-844b-66ddf42553b9",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {}
+        },
+        "B": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {},
+          "currentSourceSeedPoints": 4,
+          "linkedUniquePopulations": 0,
+          "originalSeedsInLinkedUniquePopulations": 0,
+          "pointReasons": {},
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 0
+        }
+      },
+      "currentTrackId": 193
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989141815568",
+      "index": 22,
+      "instance": "f539c36e-2e19-4c36-a897-d552dc18dd64",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {}
+        },
+        "B": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {},
+          "currentSourceSeedPoints": 20,
+          "linkedUniquePopulations": 0,
+          "originalSeedsInLinkedUniquePopulations": 0,
+          "pointReasons": {},
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 0
+        }
+      },
+      "currentTrackId": 196
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989141815568",
+      "index": 22,
+      "instance": "bbbc934d-4bdc-4c1d-9cbe-6266ee636c6b",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {}
+        },
+        "B": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {},
+          "currentSourceSeedPoints": 13,
+          "linkedUniquePopulations": 0,
+          "originalSeedsInLinkedUniquePopulations": 0,
+          "pointReasons": {},
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 0
+        }
+      },
+      "currentTrackId": 192
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989141815568",
+      "index": 22,
+      "instance": "28f6c99f-c3ef-4ffa-bc80-532eeb32ec48",
+      "classFamily": "person",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {}
+        },
+        "B": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {},
+          "currentSourceSeedPoints": 7,
+          "linkedUniquePopulations": 0,
+          "originalSeedsInLinkedUniquePopulations": 0,
+          "pointReasons": {},
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 0
+        }
+      },
+      "currentTrackId": 205
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989142456457",
+      "index": 30,
+      "instance": "362ef57d-de1b-48e1-844b-66ddf42553b9",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {}
+        },
+        "B": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {},
+          "currentSourceSeedPoints": 7,
+          "linkedUniquePopulations": 0,
+          "originalSeedsInLinkedUniquePopulations": 0,
+          "pointReasons": {},
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 0
+        }
+      },
+      "currentTrackId": 260
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989142456457",
+      "index": 30,
+      "instance": "bbbc934d-4bdc-4c1d-9cbe-6266ee636c6b",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {}
+        },
+        "B": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {},
+          "currentSourceSeedPoints": 13,
+          "linkedUniquePopulations": 0,
+          "originalSeedsInLinkedUniquePopulations": 0,
+          "pointReasons": {},
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 0
+        }
+      },
+      "currentTrackId": 248
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989142456457",
+      "index": 30,
+      "instance": "28f6c99f-c3ef-4ffa-bc80-532eeb32ec48",
+      "classFamily": "person",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {}
+        },
+        "B": {
+          "firstVeto": "no-fresh-source-exposure",
+          "eligiblePairs": 0,
+          "supportedPairs": 0,
+          "pairReasons": {},
+          "currentSourceSeedPoints": 11,
+          "linkedUniquePopulations": 0,
+          "originalSeedsInLinkedUniquePopulations": 0,
+          "pointReasons": {},
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 0
+        }
+      },
+      "currentTrackId": 254
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989143015838",
+      "index": 37,
+      "instance": "f539c36e-2e19-4c36-a897-d552dc18dd64",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 5,
+          "supportedPairs": 1,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 2,
+            "bidirectional-textured-global-supported": 1,
+            "unverifiable-source-selection": 2
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 5,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 2,
+            "unverifiable-source-selection": 3
+          },
+          "currentSourceSeedPoints": 30,
+          "linkedUniquePopulations": 6,
+          "originalSeedsInLinkedUniquePopulations": 105,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 48,
+            "verified-independent-descriptor-pixel": 29,
+            "unmatched-or-ambiguous-descriptor": 24,
+            "independent-raft-endpoint-or-return": 4
+          },
+          "targetDescriptorSupportUnknownRelationCount": 3,
+          "unverifiablePairCount": 3
+        }
+      },
+      "currentTrackId": 282
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989143015838",
+      "index": 37,
+      "instance": "bbbc934d-4bdc-4c1d-9cbe-6266ee636c6b",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 6,
+          "supportedPairs": 1,
+          "pairReasons": {
+            "bidirectional-textured-global-supported": 1,
+            "forward-insufficient-grid-support": 3,
+            "unverifiable-source-selection": 2
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 6,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 2,
+            "unverifiable-source-selection": 4
+          },
+          "currentSourceSeedPoints": 9,
+          "linkedUniquePopulations": 7,
+          "originalSeedsInLinkedUniquePopulations": 69,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 39,
+            "verified-independent-descriptor-pixel": 14,
+            "unmatched-or-ambiguous-descriptor": 12,
+            "independent-raft-endpoint-or-return": 4
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 4
+        }
+      },
+      "currentTrackId": 285
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989143015838",
+      "index": 37,
+      "instance": "960f9af8-de22-466f-854d-98d2ff695513",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 6,
+          "supportedPairs": 1,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 3,
+            "unverifiable-source-selection": 2,
+            "bidirectional-textured-global-supported": 1
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 6,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 6
+          },
+          "currentSourceSeedPoints": 2,
+          "linkedUniquePopulations": 7,
+          "originalSeedsInLinkedUniquePopulations": 89,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 43,
+            "verified-independent-descriptor-pixel": 25,
+            "unmatched-or-ambiguous-descriptor": 17,
+            "independent-raft-endpoint-or-return": 4
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 6
+        }
+      },
+      "currentTrackId": 291
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989143015838",
+      "index": 37,
+      "instance": "28f6c99f-c3ef-4ffa-bc80-532eeb32ec48",
+      "classFamily": "person",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 2,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 1,
+            "unverifiable-source-selection": 1
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 2,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 1,
+            "unverifiable-source-selection": 1
+          },
+          "currentSourceSeedPoints": 12,
+          "linkedUniquePopulations": 3,
+          "originalSeedsInLinkedUniquePopulations": 23,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 19,
+            "source-low-variance": 3,
+            "unmatched-or-ambiguous-descriptor": 1
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 1
+        }
+      },
+      "currentTrackId": 295
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989143656612",
+      "index": 45,
+      "instance": "f539c36e-2e19-4c36-a897-d552dc18dd64",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 13,
+          "supportedPairs": 1,
+          "pairReasons": {
+            "bidirectional-textured-global-supported": 1,
+            "forward-insufficient-grid-support": 7,
+            "unverifiable-source-selection": 5
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 13,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 6,
+            "unverifiable-source-selection": 7
+          },
+          "currentSourceSeedPoints": 29,
+          "linkedUniquePopulations": 15,
+          "originalSeedsInLinkedUniquePopulations": 254,
+          "pointReasons": {
+            "unmatched-or-ambiguous-descriptor": 81,
+            "source-descriptor-leaves-object": 90,
+            "verified-independent-descriptor-pixel": 40,
+            "source-low-variance": 22,
+            "independent-raft-endpoint-or-return": 16,
+            "patch-cycle": 5
+          },
+          "targetDescriptorSupportUnknownRelationCount": 3,
+          "unverifiablePairCount": 7
+        }
+      },
+      "currentTrackId": 303
+    },
+    {
+      "clipId": "boreas-m3q-city",
+      "token": "boreas-boreas-m3q-city-1598989143656612",
+      "index": 45,
+      "instance": "28f6c99f-c3ef-4ffa-bc80-532eeb32ec48",
+      "classFamily": "person",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 3,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 2,
+            "unverifiable-source-selection": 1
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 3,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 2,
+            "unverifiable-source-selection": 1
+          },
+          "currentSourceSeedPoints": 17,
+          "linkedUniquePopulations": 5,
+          "originalSeedsInLinkedUniquePopulations": 73,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 55,
+            "source-low-variance": 2,
+            "verified-independent-descriptor-pixel": 1,
+            "patch-cycle": 1,
+            "unmatched-or-ambiguous-descriptor": 12,
+            "independent-raft-endpoint-or-return": 2
+          },
+          "targetDescriptorSupportUnknownRelationCount": 1,
+          "unverifiablePairCount": 1
+        }
+      },
+      "currentTrackId": 316
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987803167658",
+      "index": 13,
+      "instance": "2941736e-3959-42dd-a117-886eee161a0d",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 3,
+          "supportedPairs": 1,
+          "pairReasons": {
+            "bidirectional-textured-global-supported": 1,
+            "unverifiable-source-selection": 1,
+            "forward-insufficient-grid-support": 1
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 3,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 2,
+            "unverifiable-source-selection": 1
+          },
+          "currentSourceSeedPoints": 10,
+          "linkedUniquePopulations": 4,
+          "originalSeedsInLinkedUniquePopulations": 36,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 25,
+            "verified-independent-descriptor-pixel": 4,
+            "source-low-variance": 3,
+            "independent-raft-endpoint-or-return": 2,
+            "unmatched-or-ambiguous-descriptor": 2
+          },
+          "targetDescriptorSupportUnknownRelationCount": 1,
+          "unverifiablePairCount": 1
+        }
+      },
+      "currentTrackId": 29
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987803167658",
+      "index": 13,
+      "instance": "000ccfa9-a66a-41e7-9779-ee612409a363",
+      "classFamily": "person",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 2,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 1,
+            "unverifiable-source-selection": 1
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 2,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 1,
+            "unverifiable-source-selection": 1
+          },
+          "currentSourceSeedPoints": 10,
+          "linkedUniquePopulations": 3,
+          "originalSeedsInLinkedUniquePopulations": 26,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 25,
+            "source-low-variance": 1
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 1
+        }
+      },
+      "currentTrackId": 39
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987803167658",
+      "index": 13,
+      "instance": "5076a552-314d-4e5f-b673-3713583e27b4",
+      "classFamily": "person",
+      "rawCriterionMatch": false,
+      "currentTrackCriterionMatch": false,
+      "cameraStatus": "valid",
+      "lanes": {}
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987803807672",
+      "index": 21,
+      "instance": "2941736e-3959-42dd-a117-886eee161a0d",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 6,
+          "supportedPairs": 2,
+          "pairReasons": {
+            "bidirectional-textured-global-supported": 2,
+            "forward-insufficient-grid-support": 2,
+            "unverifiable-source-selection": 2
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 6,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 6
+          },
+          "currentSourceSeedPoints": 7,
+          "linkedUniquePopulations": 8,
+          "originalSeedsInLinkedUniquePopulations": 62,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 34,
+            "verified-independent-descriptor-pixel": 9,
+            "source-low-variance": 10,
+            "independent-raft-endpoint-or-return": 4,
+            "unmatched-or-ambiguous-descriptor": 5
+          },
+          "targetDescriptorSupportUnknownRelationCount": 1,
+          "unverifiablePairCount": 6
+        }
+      },
+      "currentTrackId": 52
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987803807672",
+      "index": 21,
+      "instance": "2473a79f-e3f4-45bd-bb8e-d780f9f0d99c",
+      "classFamily": "person",
+      "rawCriterionMatch": false,
+      "currentTrackCriterionMatch": false,
+      "cameraStatus": "valid",
+      "lanes": {}
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987803807672",
+      "index": 21,
+      "instance": "06ccb7cd-3046-40ad-a4ab-6cd72e80e1cf",
+      "classFamily": "person",
+      "rawCriterionMatch": false,
+      "currentTrackCriterionMatch": false,
+      "cameraStatus": "valid",
+      "lanes": {}
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987804447863",
+      "index": 29,
+      "instance": "2941736e-3959-42dd-a117-886eee161a0d",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 8,
+          "supportedPairs": 1,
+          "pairReasons": {
+            "bidirectional-textured-global-supported": 1,
+            "unverifiable-source-selection": 5,
+            "forward-insufficient-grid-support": 2
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 8,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 8
+          },
+          "currentSourceSeedPoints": 8,
+          "linkedUniquePopulations": 10,
+          "originalSeedsInLinkedUniquePopulations": 68,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 33,
+            "verified-independent-descriptor-pixel": 7,
+            "source-low-variance": 13,
+            "unmatched-or-ambiguous-descriptor": 9,
+            "independent-raft-endpoint-or-return": 3,
+            "patch-cycle": 3
+          },
+          "targetDescriptorSupportUnknownRelationCount": 2,
+          "unverifiablePairCount": 8
+        }
+      },
+      "currentTrackId": 52
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987804447863",
+      "index": 29,
+      "instance": "00d0c12b-72c5-48b9-91cd-3f0627fbd1bf",
+      "classFamily": "person",
+      "rawCriterionMatch": false,
+      "currentTrackCriterionMatch": false,
+      "cameraStatus": "valid",
+      "lanes": {}
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987805088600",
+      "index": 37,
+      "instance": "2941736e-3959-42dd-a117-886eee161a0d",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 10,
+          "supportedPairs": 1,
+          "pairReasons": {
+            "bidirectional-textured-global-supported": 1,
+            "unverifiable-source-selection": 7,
+            "forward-insufficient-grid-support": 2
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 10,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 10
+          },
+          "currentSourceSeedPoints": 7,
+          "linkedUniquePopulations": 12,
+          "originalSeedsInLinkedUniquePopulations": 79,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 36,
+            "unmatched-or-ambiguous-descriptor": 16,
+            "source-low-variance": 15,
+            "independent-raft-endpoint-or-return": 3,
+            "patch-cycle": 1,
+            "verified-independent-descriptor-pixel": 8
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 10
+        }
+      },
+      "currentTrackId": 52
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987805647795",
+      "index": 44,
+      "instance": "2941736e-3959-42dd-a117-886eee161a0d",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 10,
+          "supportedPairs": 1,
+          "pairReasons": {
+            "bidirectional-textured-global-supported": 1,
+            "unverifiable-source-selection": 7,
+            "forward-insufficient-grid-support": 2
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 10,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 10
+          },
+          "currentSourceSeedPoints": 8,
+          "linkedUniquePopulations": 12,
+          "originalSeedsInLinkedUniquePopulations": 74,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 31,
+            "verified-independent-descriptor-pixel": 10,
+            "source-low-variance": 18,
+            "independent-raft-endpoint-or-return": 2,
+            "patch-cycle": 2,
+            "unmatched-or-ambiguous-descriptor": 11
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 10
+        }
+      },
+      "currentTrackId": 52
+    },
+    {
+      "clipId": "boreas-m3q-turn",
+      "token": "boreas-boreas-m3q-turn-1598987805647795",
+      "index": 44,
+      "instance": "3cba8109-8f56-48c7-ab48-5bf1aaca8928",
+      "classFamily": "person",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 2,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 1,
+            "unverifiable-source-selection": 1
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 2,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 2
+          },
+          "currentSourceSeedPoints": 7,
+          "linkedUniquePopulations": 3,
+          "originalSeedsInLinkedUniquePopulations": 21,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 19,
+            "source-low-variance": 1,
+            "unmatched-or-ambiguous-descriptor": 1
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 2
+        }
+      },
+      "currentTrackId": 118
+    },
+    {
+      "clipId": "boreas-m3q-low-speed",
+      "token": "boreas-boreas-m3q-low-speed-1598991319034997",
+      "index": 12,
+      "instance": "bcb4229e-3bdb-400d-a441-814a149b3531",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 13,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 8,
+            "unverifiable-source-selection": 5
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 13,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 13
+          },
+          "currentSourceSeedPoints": 2,
+          "linkedUniquePopulations": 15,
+          "originalSeedsInLinkedUniquePopulations": 72,
+          "pointReasons": {
+            "source-low-variance": 3,
+            "verified-independent-descriptor-pixel": 10,
+            "source-descriptor-leaves-object": 41,
+            "independent-raft-endpoint-or-return": 2,
+            "unmatched-or-ambiguous-descriptor": 16
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 13
+        }
+      },
+      "currentTrackId": 13
+    },
+    {
+      "clipId": "boreas-m3q-low-speed",
+      "token": "boreas-boreas-m3q-low-speed-1598991319674216",
+      "index": 20,
+      "instance": "bcb4229e-3bdb-400d-a441-814a149b3531",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 10,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 4,
+            "forward-insufficient-grid-support": 6
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 10,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 10
+          },
+          "currentSourceSeedPoints": 5,
+          "linkedUniquePopulations": 12,
+          "originalSeedsInLinkedUniquePopulations": 63,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 33,
+            "unmatched-or-ambiguous-descriptor": 11,
+            "verified-independent-descriptor-pixel": 14,
+            "independent-raft-endpoint-or-return": 1,
+            "source-low-variance": 4
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 10
+        }
+      },
+      "currentTrackId": 79
+    },
+    {
+      "clipId": "boreas-m3q-low-speed",
+      "token": "boreas-boreas-m3q-low-speed-1598991320314978",
+      "index": 28,
+      "instance": "e7ac25f9-baad-4996-9cc3-c9a740e86cbd",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 11,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 6,
+            "unverifiable-source-selection": 5
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 11,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 11
+          },
+          "currentSourceSeedPoints": 4,
+          "linkedUniquePopulations": 13,
+          "originalSeedsInLinkedUniquePopulations": 57,
+          "pointReasons": {
+            "source-low-variance": 4,
+            "verified-independent-descriptor-pixel": 20,
+            "source-descriptor-leaves-object": 29,
+            "unmatched-or-ambiguous-descriptor": 4
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 11
+        }
+      },
+      "currentTrackId": 71
+    },
+    {
+      "clipId": "boreas-m3q-low-speed",
+      "token": "boreas-boreas-m3q-low-speed-1598991320954898",
+      "index": 36,
+      "instance": "09cf400a-d0b2-4716-975e-55a13bcd1237",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 5,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 3,
+            "forward-insufficient-grid-support": 2
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 5,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "unverifiable-source-selection": 5
+          },
+          "currentSourceSeedPoints": 6,
+          "linkedUniquePopulations": 7,
+          "originalSeedsInLinkedUniquePopulations": 61,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 29,
+            "verified-independent-descriptor-pixel": 16,
+            "unmatched-or-ambiguous-descriptor": 12,
+            "source-low-variance": 2,
+            "independent-raft-endpoint-or-return": 2
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 5
+        }
+      },
+      "currentTrackId": 118
+    },
+    {
+      "clipId": "boreas-m3q-low-speed",
+      "token": "boreas-boreas-m3q-low-speed-1598991321594570",
+      "index": 44,
+      "instance": "09cf400a-d0b2-4716-975e-55a13bcd1237",
+      "classFamily": "vehicle",
+      "rawCriterionMatch": true,
+      "currentTrackCriterionMatch": true,
+      "cameraStatus": "valid",
+      "lanes": {
+        "A": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 6,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 4,
+            "unverifiable-source-selection": 2
+          }
+        },
+        "B": {
+          "firstVeto": "fresh-ambiguous-or-unverifiable-rival",
+          "eligiblePairs": 6,
+          "supportedPairs": 0,
+          "pairReasons": {
+            "forward-insufficient-grid-support": 1,
+            "unverifiable-source-selection": 5
+          },
+          "currentSourceSeedPoints": 12,
+          "linkedUniquePopulations": 8,
+          "originalSeedsInLinkedUniquePopulations": 76,
+          "pointReasons": {
+            "source-descriptor-leaves-object": 39,
+            "unmatched-or-ambiguous-descriptor": 12,
+            "independent-raft-endpoint-or-return": 6,
+            "source-low-variance": 5,
+            "verified-independent-descriptor-pixel": 14
+          },
+          "targetDescriptorSupportUnknownRelationCount": 0,
+          "unverifiablePairCount": 5
+        }
+      },
+      "currentTrackId": 145
+    }
+  ],
+  "oldComponentSourceVariancePosthoc": [
+    {
+      "pairId": "i_londonbridge",
+      "direction": "forward",
+      "oldAcceptedCount": 26,
+      "belowRestored16VarianceFloor": 0,
+      "minimumVariance": 446.2732194918784
+    },
+    {
+      "pairId": "i_londonbridge",
+      "direction": "reverse",
+      "oldAcceptedCount": 22,
+      "belowRestored16VarianceFloor": 0,
+      "minimumVariance": 340.0049979175344
+    },
+    {
+      "pairId": "v_abstract",
+      "direction": "forward",
+      "oldAcceptedCount": 22,
+      "belowRestored16VarianceFloor": 0,
+      "minimumVariance": 35.33361099541858
+    },
+    {
+      "pairId": "v_abstract",
+      "direction": "reverse",
+      "oldAcceptedCount": 21,
+      "belowRestored16VarianceFloor": 0,
+      "minimumVariance": 16.506455643481882
+    }
+  ],
+  "varianceAuditLimits": "Saved OLD cb245 component, actual source bytes and old accepted points; no matcher/flow rerun, no recertification of current d4bad candidate. London identity-H reference remains disputed; no H refit.",
+  "limits": [
+    "Posthoc physical approach reference is not independent object affine-expansion truth.",
+    "Point-reason totals are unique populations within each positive target; populations can recur across distinct target cases.",
+    "Raw PNG hashes verified by root preflight; independent QA here verifies their runtime/lineage bindings, not a second read of all500MiB.",
+    "No iPhone, metres, threshold change or production promotion."
+  ],
+  "newModelDirections": 0,
+  "sourceFilesEdited": [],
+  "elapsedSeconds": 2.9334757089964114,
+  "overall": "NOT_READY"
+}

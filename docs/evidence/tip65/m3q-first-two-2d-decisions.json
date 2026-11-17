@@ -1,0 +1,43 @@
+{
+  "inputSha256": "d9fe44cf4f90e0fe036844beab801511c090ea9c67057a4f56425014c4fc6726",
+  "candidatesSha256": "9cd1947ecab52be197dcefbef01979571995a6e4022615db98cd926e42d72548",
+  "selectionAccountingSha256": "428ef9325df8abd6b8d491f8c4025675d50cde864dac1982b206ffddb4cbd095",
+  "review": {
+    "reviewer": "Contractor assistant visual review of all ten source-bound 960x803 RGB sheets, before any M3Q model inference",
+    "evidence": "AI-authored visible 2D bounds and source-identity assessment; not human certification or dense correspondence ground truth",
+    "scope": "All 50 preselected candidates receive a box or explicit unscorable decision. Approach labels are retained from official 3D/pose reference, not judged from a single image.",
+    "omissions": {
+      "boreas-m3q-city-05:3": "Far vehicle ce9c is largely behind the foreground sedan; its visible extent and physical identity cannot be separated reliably.",
+      "boreas-m3q-city-08:5": "Far vehicle ce9c overlaps foreground sedan; no reliable separate visible 2D extent.",
+      "boreas-m3q-city-11:3": "Projected parked-vehicle region b4ef covers parking furniture and heavily occluded vehicle; cannot confidently isolate actual vehicle bounds.",
+      "boreas-m3q-city-11:5": "Far vehicle ce9c is mostly behind the foreground sedan; ambiguous visible identity.",
+      "boreas-m3q-city-14:5": "Small projected vehicle 92eb is mostly occluded among foreground/far traffic; cannot separate identity confidently.",
+      "boreas-m3q-city-14:6": "Negative-reference far vehicle ce9c is mostly behind the foreground sedan; do not score an ambiguous projection as a true negative.",
+      "boreas-m3q-city-17:4": "Projected parked-vehicle b4ef overlaps parking furniture and occluded vehicle; no confident separate visible bounds.",
+      "boreas-m3q-city-17:5": "Negative-reference far vehicle ce9c overlaps foreground sedan; physical identity is not visually separable.",
+      "boreas-m3q-turn-05:3": "Vehicle 2f96 projects over the foreground black SUV but appears behind it; no separate confidently visible object extent.",
+      "boreas-m3q-turn-08:2": "Vehicle 2f96 remains occluded behind foreground black SUV; projected box is not a visible-object label.",
+      "boreas-m3q-turn-11:2": "Vehicle 2f96 remains behind black SUV; ambiguous projection overlap cannot serve as separate visible ground truth.",
+      "boreas-m3q-turn-11:4": "Vehicle e183 projects onto upper foreground SUV and far traffic; cannot identify separate visible extent.",
+      "boreas-m3q-turn-11:5": "Far small person 8a81 cannot be confidently separated from street fixtures at this sheet resolution.",
+      "boreas-m3q-turn-14:4": "Tiny vehicle dd6f among far cross-street traffic lacks confidently separable physical identity.",
+      "boreas-m3q-turn-14:5": "Far person 8a81 not confidently separable from fixtures/shadow at this resolution.",
+      "boreas-m3q-turn-14:6": "Tiny distant vehicle 0c0a lacks confident visual extent/identity among far traffic.",
+      "boreas-m3q-turn-17:2": "Vehicle 2f96 remains behind foreground SUV; cannot use the overlapping amodal projection as separate visible bounds.",
+      "boreas-m3q-turn-17:5": "Far person 8a81 cannot be confidently separated from fixtures in shadow.",
+      "boreas-m3q-turn-17:6": "Tiny distant vehicle 0c0a cannot be reliably separated from adjacent far traffic."
+    }
+  },
+  "frames": {
+    "boreas-m3q-city-05": {"1":[650,400,743,470],"2":[444,407,510,462],"3":null},
+    "boreas-m3q-city-08": {"1":[705,406,835,494],"2":[644,402,735,470],"3":[446,412,519,474],"4":[273,411,298,462],"5":null},
+    "boreas-m3q-city-11": {"1":[744,406,960,529],"2":[442,408,518,474],"3":null,"4":[235,410,264,470],"5":null},
+    "boreas-m3q-city-14": {"1":[682,402,834,493],"2":[431,415,510,482],"3":[605,404,657,448],"4":[192,416,218,490],"5":null,"6":null},
+    "boreas-m3q-city-17": {"1":[718,403,949,517],"2":[99,419,148,520],"3":[425,414,505,477],"4":null,"5":null,"6":[231,419,247,445]},
+    "boreas-m3q-turn-05": {"1":[423,411,508,491],"2":[20,414,43,468],"3":null,"4":[756,412,777,462]},
+    "boreas-m3q-turn-08": {"1":[417,412,514,507],"2":null,"3":[940,416,959,475],"4":[824,410,849,472]},
+    "boreas-m3q-turn-11": {"1":[409,410,521,521],"2":null,"3":[801,414,830,483],"4":null,"5":null},
+    "boreas-m3q-turn-14": {"1":[397,414,534,550],"2":[873,417,904,508],"3":[914,416,939,495],"4":null,"5":null,"6":null},
+    "boreas-m3q-turn-17": {"1":[390,418,531,575],"2":null,"3":[816,416,848,478],"4":[81,410,106,460],"5":null,"6":null}
+  }
+}

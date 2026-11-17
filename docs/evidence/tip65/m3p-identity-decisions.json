@@ -1,0 +1,27 @@
+{
+  "manifestSha256": "934c2d886b2bcc23c5e1411479869db4e050a62f7e1d58a248f19735d57610e2",
+  "review": {
+    "kind": "root-assistant-visual-review-of-all12-bound-source-current-sheets",
+    "scope": "16 distinct selected source hypotheses, not all candidates, not human identity certification; no labels enter inference.",
+    "uncertainty": "Dark sidewalk person identity retained unknown, not forced same/different. Current GT identifies the intended object, source boxes remain hypotheses.",
+    "provenance": "Boreas CC BY4.0, ASRL/UTIAS/University of Toronto and coauthors; derived posthoc visual annotations."
+  },
+  "units": {
+    "boreas-m3o-traffic-13-239b9cf1|fresh|boreas-boreas-m3o-traffic-1598991456095255|3": {"identity": "same", "note": "Both crops show the dark Audi SUV front with the same distinctive lit headlight pattern, grille and lane context across adjacent exposures."},
+    "boreas-m3o-traffic-13-239b9cf1|anchor|boreas-boreas-m3o-traffic-1598991455775125|0": {"identity": "different", "note": "Anchor encloses the silver Honda-style SUV passing in front; current target is the dark Audi behind it."},
+    "boreas-m3o-turn-13-753c1912|fresh|boreas-boreas-m3o-turn-1598987797086589|0": {"identity": "same", "note": "Adjacent exposures show the same approaching dark Volkswagen sedan front and headlights in the oncoming lane."},
+    "boreas-m3o-turn-13-753c1912|anchor|boreas-boreas-m3o-turn-1598987796367168|0": {"identity": "same", "note": "The smaller dark Volkswagen sedan occupies the same oncoming trajectory and retains front grille/headlight layout before approaching."},
+    "boreas-m3o-turn-21-753c1912|fresh|boreas-boreas-m3o-turn-1598987797727237|0": {"identity": "same", "note": "Same dark Volkswagen sedan, wheel design and front profile in adjacent frames."},
+    "boreas-m3o-turn-21-753c1912|anchor|boreas-boreas-m3o-turn-1598987797166966|0": {"identity": "same", "note": "Earlier crop shows the same Volkswagen front, in the same approaching trajectory before passing camera."},
+    "boreas-m3o-turn-21-0db9e151|fresh|boreas-boreas-m3o-turn-1598987797727237|3": {"identity": "same", "note": "The long dark pickup on the left cross street, behind the nearer Volkswagen, retains cabin/bed silhouette and position across adjacent exposures."},
+    "boreas-m3o-turn-21-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797166966|2": {"identity": "different", "note": "Anchor box spans the recording vehicle's hood at the bottom, not the dark pickup at the cross street."},
+    "boreas-m3o-turn-29-0db9e151|fresh|boreas-boreas-m3o-turn-1598987798366778|0": {"identity": "same", "note": "Same side-on dark pickup by the left cross street with matching cabin, bed and nearby pole context."},
+    "boreas-m3o-turn-29-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797727237|0": {"identity": "different", "note": "A/B anchor selects the near Volkswagen sedan driving toward camera, not the side-on dark pickup target."},
+    "boreas-m3o-turn-29-0db9e151|anchor|boreas-boreas-m3o-turn-1598987797727237|3": {"identity": "same", "note": "C anchor selects the side-on dark pickup behind the passing sedan, matching current cabin/bed profile and cross-street context."},
+    "boreas-m3o-turn-36-0db9e151|fresh|boreas-boreas-m3o-turn-1598987798927180|1": {"identity": "same", "note": "Adjacent frames retain the same dark side-on pickup at the left edge and pole/road context."},
+    "boreas-m3o-turn-36-0db9e151|anchor|boreas-boreas-m3o-turn-1598987798366778|0": {"identity": "same", "note": "Earlier anchor shows the same dark pickup side profile at the cross street; current frame cuts more of it at image edge."},
+    "boreas-m3o-turn-44-01dec7b5|fresh|boreas-boreas-m3o-turn-1598987799567183|4": {"identity": "unknown", "note": "Both tiny regions are on the dark right sidewalk, but the crop lacks sufficient visible details to establish individual identity reliably."},
+    "boreas-m3o-turn-44-01dec7b5|anchor|boreas-boreas-m3o-turn-1598987799167109|2": {"identity": "unknown", "note": "Deep shadow and few pixels prevent an independent same-person judgement across this longer interval."},
+    "boreas-m3o-turn-44-1ee4b6e6|fresh|boreas-boreas-m3o-turn-1598987799567183|3": {"identity": "same", "note": "Adjacent left sidewalk crops show matching dark clothing, light footwear and bicycle/object beside the same pedestrian in consistent context."}
+  }
+}

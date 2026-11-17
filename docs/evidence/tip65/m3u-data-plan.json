@@ -1,0 +1,725 @@
+{
+  "schemaVersion": 1,
+  "study": "M3U",
+  "status": "METADATA-HEAD-ONLY-BEFORE-RGB",
+  "source": "https://boreas.s3.us-west-2.amazonaws.com/boreas-objects-v1/",
+  "license": "https://github.com/utiasASRL/pyboreas/blob/master/DATA_LICENSE.md",
+  "selection": "Fixed +6seconds after M3R anchors; source timestamps only, same recording not cross-domain",
+  "metadataSource": "/Users/os/Documents/Codex/roboeye/native/ios/.build-xcode/scene-qa/boreas-m3r-slice",
+  "metadata": {
+    "applanix/camera_poses.csv": {
+      "bytes": 4384553,
+      "sha256": "1a4a066acd7a008d3dccfff4c7656519d66c6eb81a040d41a3a9266cbe54bac6"
+    },
+    "applanix/lidar_poses.csv": {
+      "bytes": 3260101,
+      "sha256": "19889049c68d5c93d66ca659e8319eeb889cf00e999b860d371afb77c79b7ccc"
+    },
+    "calib/P_camera.txt": {
+      "bytes": 55,
+      "sha256": "ad1a358314afc2ef040a1dd2f4ee07adf0ce5cd1ca0fd0caa3561eb3bd96d2f1"
+    }
+  },
+  "clips": [
+    {
+      "id": "boreas-m3u-city",
+      "cameraTimestampsUs": [
+        1598989152056413,
+        1598989152138020,
+        1598989152216775,
+        1598989152297198,
+        1598989152377586,
+        1598989152457846,
+        1598989152539445,
+        1598989152617235,
+        1598989152697844,
+        1598989152777708,
+        1598989152857366,
+        1598989152938324,
+        1598989153017831,
+        1598989153097358,
+        1598989153177664,
+        1598989153257388,
+        1598989153337679,
+        1598989153418153,
+        1598989153497929,
+        1598989153577709,
+        1598989153657674,
+        1598989153738269,
+        1598989153817533,
+        1598989153897761,
+        1598989153977708,
+        1598989154057537,
+        1598989154137194,
+        1598989154218105,
+        1598989154298890,
+        1598989154377802,
+        1598989154457886,
+        1598989154537783,
+        1598989154617436,
+        1598989154697548,
+        1598989154779516,
+        1598989154858243,
+        1598989154937810,
+        1598989155017896,
+        1598989155097558,
+        1598989155177799,
+        1598989155259813,
+        1598989155337750,
+        1598989155417897,
+        1598989155497853,
+        1598989155577933,
+        1598989155657607,
+        1598989155737789,
+        1598989155817303,
+        1598989155898018,
+        1598989155979205
+      ],
+      "labelTimestampsUs": [
+        1598989152172269,
+        1598989152379785,
+        1598989152587231,
+        1598989152794679,
+        1598989153001977,
+        1598989153209243,
+        1598989153416529,
+        1598989153623789,
+        1598989153831243,
+        1598989154038682,
+        1598989154246129,
+        1598989154453548,
+        1598989154661003,
+        1598989154868446,
+        1598989155075891,
+        1598989155283253,
+        1598989155490711,
+        1598989155698174,
+        1598989155905635
+      ]
+    },
+    {
+      "id": "boreas-m3u-turn",
+      "cameraTimestampsUs": [
+        1598987814129989,
+        1598987814210650,
+        1598987814291842,
+        1598987814370060,
+        1598987814449678,
+        1598987814528980,
+        1598987814609937,
+        1598987814689268,
+        1598987814770882,
+        1598987814849736,
+        1598987814930593,
+        1598987815012596,
+        1598987815088821,
+        1598987815169384,
+        1598987815249513,
+        1598987815329536,
+        1598987815410498,
+        1598987815491311,
+        1598987815569620,
+        1598987815649702,
+        1598987815729461,
+        1598987815809399,
+        1598987815889738,
+        1598987815969789,
+        1598987816050769,
+        1598987816130135,
+        1598987816208973,
+        1598987816288774,
+        1598987816370336,
+        1598987816450641,
+        1598987816528458,
+        1598987816609099,
+        1598987816688673,
+        1598987816769742,
+        1598987816848888,
+        1598987816931139,
+        1598987817015389,
+        1598987817090233,
+        1598987817169478,
+        1598987817248848,
+        1598987817329822,
+        1598987817409432,
+        1598987817492308,
+        1598987817576476,
+        1598987817649743,
+        1598987817729669,
+        1598987817814251,
+        1598987817890480,
+        1598987817974798,
+        1598987818048959
+      ],
+      "labelTimestampsUs": [
+        1598987814182693,
+        1598987814390120,
+        1598987814597567,
+        1598987814804943,
+        1598987815012422,
+        1598987815219767,
+        1598987815427186,
+        1598987815634534,
+        1598987815841921,
+        1598987816049277,
+        1598987816256643,
+        1598987816464008,
+        1598987816671444,
+        1598987816878987,
+        1598987817086462,
+        1598987817293871,
+        1598987817501292,
+        1598987817708687,
+        1598987817916154
+      ]
+    }
+  ],
+  "imageHeads": [
+    {
+      "path": "camera/1598989152056413.png",
+      "bytes": 4644193,
+      "etag": "\"1443ceae9ca1b3a855473cbe6ed8ce60\""
+    },
+    {
+      "path": "camera/1598989152138020.png",
+      "bytes": 4642066,
+      "etag": "\"f9d30d466c4d3331ecfc37fdab7c19c2\""
+    },
+    {
+      "path": "camera/1598989152216775.png",
+      "bytes": 4634319,
+      "etag": "\"863dec2b430baa3d15bcf9e6f7631294\""
+    },
+    {
+      "path": "camera/1598989152297198.png",
+      "bytes": 4599899,
+      "etag": "\"8f48c92c29393e4c07dbc442e7d15292\""
+    },
+    {
+      "path": "camera/1598989152377586.png",
+      "bytes": 4603567,
+      "etag": "\"df4f2de121c07040ee9216026a08dec4\""
+    },
+    {
+      "path": "camera/1598989152457846.png",
+      "bytes": 4597021,
+      "etag": "\"fa58f8ed7a23f611fcdcc47dc890df70\""
+    },
+    {
+      "path": "camera/1598989152539445.png",
+      "bytes": 4609450,
+      "etag": "\"6b02f8456715202d699de963b0640a44\""
+    },
+    {
+      "path": "camera/1598989152617235.png",
+      "bytes": 4635725,
+      "etag": "\"927aa3fc58d07f6aab8200d07c0c7364\""
+    },
+    {
+      "path": "camera/1598989152697844.png",
+      "bytes": 4655469,
+      "etag": "\"e7a843c3ece0f78f9b2d18b6b3391673\""
+    },
+    {
+      "path": "camera/1598989152777708.png",
+      "bytes": 4672867,
+      "etag": "\"fc24ab59a28ec3d05f1fe9cc9ee12b0a\""
+    },
+    {
+      "path": "camera/1598989152857366.png",
+      "bytes": 4652756,
+      "etag": "\"3ecae329898a9f5e8ac610ac210050e8\""
+    },
+    {
+      "path": "camera/1598989152938324.png",
+      "bytes": 4636400,
+      "etag": "\"0fc393c4d0f66fc85228902aeda65dcf\""
+    },
+    {
+      "path": "camera/1598989153017831.png",
+      "bytes": 4618870,
+      "etag": "\"f8c5d9eeaf5882ecf6e87dd5b139371f\""
+    },
+    {
+      "path": "camera/1598989153097358.png",
+      "bytes": 4617490,
+      "etag": "\"dd43c5c4d39f4c2bca49f202470a7fcb\""
+    },
+    {
+      "path": "camera/1598989153177664.png",
+      "bytes": 4602946,
+      "etag": "\"4fc84747aa4ecd2c8ef91e030878580c\""
+    },
+    {
+      "path": "camera/1598989153257388.png",
+      "bytes": 4649503,
+      "etag": "\"cb78d3356d17e75dea2e4589c4e5ad97\""
+    },
+    {
+      "path": "camera/1598989153337679.png",
+      "bytes": 4580433,
+      "etag": "\"c28dd6a24f8068e936d41b6a82a4f5ab\""
+    },
+    {
+      "path": "camera/1598989153418153.png",
+      "bytes": 4692004,
+      "etag": "\"e69a75d2098020bbc57beb6b07dc448d\""
+    },
+    {
+      "path": "camera/1598989153497929.png",
+      "bytes": 4643092,
+      "etag": "\"fe3669d3316f0f45f611cad04ff51f17\""
+    },
+    {
+      "path": "camera/1598989153577709.png",
+      "bytes": 4686007,
+      "etag": "\"0b9b10095a5554a14ba241640351fffd\""
+    },
+    {
+      "path": "camera/1598989153657674.png",
+      "bytes": 4613453,
+      "etag": "\"3b89c125859b7b4718eff348c3bb0f3e\""
+    },
+    {
+      "path": "camera/1598989153738269.png",
+      "bytes": 4642321,
+      "etag": "\"d0af9f8b307eefe8ed64636107444131\""
+    },
+    {
+      "path": "camera/1598989153817533.png",
+      "bytes": 4655651,
+      "etag": "\"355fcdd7dc8bef0ff35d6de4fdff01c8\""
+    },
+    {
+      "path": "camera/1598989153897761.png",
+      "bytes": 4651874,
+      "etag": "\"672d37fed63caeea627974bd97a91acf\""
+    },
+    {
+      "path": "camera/1598989153977708.png",
+      "bytes": 4638005,
+      "etag": "\"fc32c97c13b53356c185a3f8a5773fa0\""
+    },
+    {
+      "path": "camera/1598989154057537.png",
+      "bytes": 4610872,
+      "etag": "\"042fc6a4c9e0f1a7ea79d7dca28cc340\""
+    },
+    {
+      "path": "camera/1598989154137194.png",
+      "bytes": 4575238,
+      "etag": "\"f4139264f0e807c66b66d03763589577\""
+    },
+    {
+      "path": "camera/1598989154218105.png",
+      "bytes": 4584641,
+      "etag": "\"371f0705e485dcde65b277b2ac83f984\""
+    },
+    {
+      "path": "camera/1598989154298890.png",
+      "bytes": 4567022,
+      "etag": "\"fc077fef6ecfb87d219f3eea01c6f7ea\""
+    },
+    {
+      "path": "camera/1598989154377802.png",
+      "bytes": 4559212,
+      "etag": "\"56f776c023661a0423d58f8d19ba11a8\""
+    },
+    {
+      "path": "camera/1598989154457886.png",
+      "bytes": 4531080,
+      "etag": "\"3a29ce9dc1cbe3fb1b81e332dcab93e8\""
+    },
+    {
+      "path": "camera/1598989154537783.png",
+      "bytes": 4457305,
+      "etag": "\"a0d74962e5218f22adfebeb786cdda7d\""
+    },
+    {
+      "path": "camera/1598989154617436.png",
+      "bytes": 4441129,
+      "etag": "\"528277975d8fec44b8187b22b91ee556\""
+    },
+    {
+      "path": "camera/1598989154697548.png",
+      "bytes": 4381357,
+      "etag": "\"e8f3b66b71b207ca226ae3e84eae1f83\""
+    },
+    {
+      "path": "camera/1598989154779516.png",
+      "bytes": 4356900,
+      "etag": "\"f89c4f0fb7b449bbe715188bcb093625\""
+    },
+    {
+      "path": "camera/1598989154858243.png",
+      "bytes": 4358987,
+      "etag": "\"26085172809d47cbe974627dde823824\""
+    },
+    {
+      "path": "camera/1598989154937810.png",
+      "bytes": 4311743,
+      "etag": "\"dd9c5454479ef90b8223326ec442435d\""
+    },
+    {
+      "path": "camera/1598989155017896.png",
+      "bytes": 4283777,
+      "etag": "\"e75262d00614bbe7d0c6659908b0a3ce\""
+    },
+    {
+      "path": "camera/1598989155097558.png",
+      "bytes": 4225638,
+      "etag": "\"93a1e3aa34fd468fb3758555d7272be8\""
+    },
+    {
+      "path": "camera/1598989155177799.png",
+      "bytes": 4208320,
+      "etag": "\"5d122e02f2d45a75c6aa182ae96955b5\""
+    },
+    {
+      "path": "camera/1598989155259813.png",
+      "bytes": 4183421,
+      "etag": "\"a7a0bb89963d160abea6cd5e0c77bed6\""
+    },
+    {
+      "path": "camera/1598989155337750.png",
+      "bytes": 4211814,
+      "etag": "\"6eb3a440ac7148b1191ac7b980b18784\""
+    },
+    {
+      "path": "camera/1598989155417897.png",
+      "bytes": 4253151,
+      "etag": "\"82b83e421e19454dbaf56ea380a3a122\""
+    },
+    {
+      "path": "camera/1598989155497853.png",
+      "bytes": 4312422,
+      "etag": "\"d388afe759c5f6b1dcb5454ea82974e1\""
+    },
+    {
+      "path": "camera/1598989155577933.png",
+      "bytes": 4355414,
+      "etag": "\"1487aae425aeee42c389aa0898b3b73d\""
+    },
+    {
+      "path": "camera/1598989155657607.png",
+      "bytes": 4358546,
+      "etag": "\"9589452f89e91da1754d4c94cb6c5ebb\""
+    },
+    {
+      "path": "camera/1598989155737789.png",
+      "bytes": 4401686,
+      "etag": "\"c64956fc8f3cab2154bac7ff09cbb4d3\""
+    },
+    {
+      "path": "camera/1598989155817303.png",
+      "bytes": 4425521,
+      "etag": "\"2017c064e76267e703f618d0483f0c57\""
+    },
+    {
+      "path": "camera/1598989155898018.png",
+      "bytes": 4418340,
+      "etag": "\"c478340c9a828657feca250d4c8f4ef5\""
+    },
+    {
+      "path": "camera/1598989155979205.png",
+      "bytes": 4454347,
+      "etag": "\"547c8b330d4d1bdad16f584bae75608f\""
+    },
+    {
+      "path": "camera/1598987814129989.png",
+      "bytes": 2822696,
+      "etag": "\"569691ab947df32ce2afe2d68ed767c7\""
+    },
+    {
+      "path": "camera/1598987814210650.png",
+      "bytes": 2817086,
+      "etag": "\"c8b18e2627df7c7613f0169fdfe629c0\""
+    },
+    {
+      "path": "camera/1598987814291842.png",
+      "bytes": 2816671,
+      "etag": "\"01f46f3b5c403564475bc3b544c34135\""
+    },
+    {
+      "path": "camera/1598987814370060.png",
+      "bytes": 2815478,
+      "etag": "\"f25f4a3a90c3234817265ac28385cf71\""
+    },
+    {
+      "path": "camera/1598987814449678.png",
+      "bytes": 2816056,
+      "etag": "\"78b111e1ae966a29ece3d09ee8dd1f1c\""
+    },
+    {
+      "path": "camera/1598987814528980.png",
+      "bytes": 2819048,
+      "etag": "\"64b8a2adc2acc26e4b0ffa8f1b8b2b91\""
+    },
+    {
+      "path": "camera/1598987814609937.png",
+      "bytes": 2817153,
+      "etag": "\"ad31618da07ff2a2474e1b5998bdbb24\""
+    },
+    {
+      "path": "camera/1598987814689268.png",
+      "bytes": 2816251,
+      "etag": "\"0fb9053e73e4f820f2d7c21add7bc44e\""
+    },
+    {
+      "path": "camera/1598987814770882.png",
+      "bytes": 2814096,
+      "etag": "\"f2d27cfb3f58e2998fea441a7d6ecdf2\""
+    },
+    {
+      "path": "camera/1598987814849736.png",
+      "bytes": 2817521,
+      "etag": "\"0176dd8f635b99d060e6aeea84cb0a2f\""
+    },
+    {
+      "path": "camera/1598987814930593.png",
+      "bytes": 2814384,
+      "etag": "\"4503fe4271d51fe2bc6596814e2bb913\""
+    },
+    {
+      "path": "camera/1598987815012596.png",
+      "bytes": 2817745,
+      "etag": "\"ec425dd43d89b58b32e1f246e5600bfa\""
+    },
+    {
+      "path": "camera/1598987815088821.png",
+      "bytes": 2815276,
+      "etag": "\"f9a4c6eacb1d5526d48af4986a35c25c\""
+    },
+    {
+      "path": "camera/1598987815169384.png",
+      "bytes": 2814072,
+      "etag": "\"2788c1408fe581768647b2babc959d2e\""
+    },
+    {
+      "path": "camera/1598987815249513.png",
+      "bytes": 2817277,
+      "etag": "\"db159b0d314780772d7287815aaa409b\""
+    },
+    {
+      "path": "camera/1598987815329536.png",
+      "bytes": 2816147,
+      "etag": "\"a244273d845449c66fee64f081267b97\""
+    },
+    {
+      "path": "camera/1598987815410498.png",
+      "bytes": 2813826,
+      "etag": "\"a515e2a396c53831b3c08bf2dc8d7d13\""
+    },
+    {
+      "path": "camera/1598987815491311.png",
+      "bytes": 2816801,
+      "etag": "\"fc5c93d4aea9d31f994c9a03f5e4d971\""
+    },
+    {
+      "path": "camera/1598987815569620.png",
+      "bytes": 2815758,
+      "etag": "\"246b2b2dc6fe9ce68b5a7ec911749207\""
+    },
+    {
+      "path": "camera/1598987815649702.png",
+      "bytes": 2815143,
+      "etag": "\"d2e2f6fbb841aba6a9f5278f4e114345\""
+    },
+    {
+      "path": "camera/1598987815729461.png",
+      "bytes": 2814409,
+      "etag": "\"a04903eed707b4e51025f36d889819fd\""
+    },
+    {
+      "path": "camera/1598987815809399.png",
+      "bytes": 2821620,
+      "etag": "\"a808a52572d5d63eacb4384f75b0b704\""
+    },
+    {
+      "path": "camera/1598987815889738.png",
+      "bytes": 2820431,
+      "etag": "\"9c7b922760f9993b3411e7368e6c4d9d\""
+    },
+    {
+      "path": "camera/1598987815969789.png",
+      "bytes": 2821263,
+      "etag": "\"d8ac989615fa0bfd0b230a529a343559\""
+    },
+    {
+      "path": "camera/1598987816050769.png",
+      "bytes": 2817973,
+      "etag": "\"ea32bedda38ce9eeee789c4dacd2fcb7\""
+    },
+    {
+      "path": "camera/1598987816130135.png",
+      "bytes": 2821316,
+      "etag": "\"d360580ddec7879851ece63174b5a0cd\""
+    },
+    {
+      "path": "camera/1598987816208973.png",
+      "bytes": 2818911,
+      "etag": "\"0a9fdcd8a627a56ab3d1ffcdadda19a3\""
+    },
+    {
+      "path": "camera/1598987816288774.png",
+      "bytes": 2814756,
+      "etag": "\"e2cd17e30ba713406aa85b04230873c6\""
+    },
+    {
+      "path": "camera/1598987816370336.png",
+      "bytes": 2815366,
+      "etag": "\"7e80039c2f53d0b0987281ee0d8e8764\""
+    },
+    {
+      "path": "camera/1598987816450641.png",
+      "bytes": 2818517,
+      "etag": "\"e2f9bae6a9a8d181c950ed0dbd6112e0\""
+    },
+    {
+      "path": "camera/1598987816528458.png",
+      "bytes": 2819343,
+      "etag": "\"c711e71cd5f5bda47eaa9fe7f96a80e5\""
+    },
+    {
+      "path": "camera/1598987816609099.png",
+      "bytes": 2818163,
+      "etag": "\"dbbfe73fb59e088064a6fe6690c9bc1e\""
+    },
+    {
+      "path": "camera/1598987816688673.png",
+      "bytes": 2815348,
+      "etag": "\"e393da66556282758858b68d1b619b2e\""
+    },
+    {
+      "path": "camera/1598987816769742.png",
+      "bytes": 2816405,
+      "etag": "\"20225c7698a09ee378aa11d90e378d61\""
+    },
+    {
+      "path": "camera/1598987816848888.png",
+      "bytes": 2818472,
+      "etag": "\"08d47b756265955bbf68ea80ba4b42a5\""
+    },
+    {
+      "path": "camera/1598987816931139.png",
+      "bytes": 2812088,
+      "etag": "\"f9ebdb3a4f1b32d6a7f7076db3665641\""
+    },
+    {
+      "path": "camera/1598987817015389.png",
+      "bytes": 2809364,
+      "etag": "\"bf0190a92f7663db9534b17a6c0fddb2\""
+    },
+    {
+      "path": "camera/1598987817090233.png",
+      "bytes": 2812788,
+      "etag": "\"d8916e093b424c650ad67d3a7e3b3e35\""
+    },
+    {
+      "path": "camera/1598987817169478.png",
+      "bytes": 2811107,
+      "etag": "\"0ee4ff7e5f11223571b660fd2777d4eb\""
+    },
+    {
+      "path": "camera/1598987817248848.png",
+      "bytes": 2810516,
+      "etag": "\"9bed080148a3e36adf1a0983249d76dd\""
+    },
+    {
+      "path": "camera/1598987817329822.png",
+      "bytes": 2808429,
+      "etag": "\"d6ceb9c5bee1c6f2e82d92389fc9a1b5\""
+    },
+    {
+      "path": "camera/1598987817409432.png",
+      "bytes": 2813310,
+      "etag": "\"fa39bf7693ec937232699da1226330a1\""
+    },
+    {
+      "path": "camera/1598987817492308.png",
+      "bytes": 2812131,
+      "etag": "\"45cfd8cd4f572b7377f248754ae85145\""
+    },
+    {
+      "path": "camera/1598987817576476.png",
+      "bytes": 2807125,
+      "etag": "\"3e84c9b31533404034813662c7440ec8\""
+    },
+    {
+      "path": "camera/1598987817649743.png",
+      "bytes": 2807028,
+      "etag": "\"df8ffa9deb1b3cc0a68e4b036e62251c\""
+    },
+    {
+      "path": "camera/1598987817729669.png",
+      "bytes": 2810312,
+      "etag": "\"ef00da0ef9adfccde63b507f9d50cbca\""
+    },
+    {
+      "path": "camera/1598987817814251.png",
+      "bytes": 2809433,
+      "etag": "\"d2513c43770a8a9aad61ffa485775ff3\""
+    },
+    {
+      "path": "camera/1598987817890480.png",
+      "bytes": 2806233,
+      "etag": "\"b47980204e7846c04ba1f8c9aa116506\""
+    },
+    {
+      "path": "camera/1598987817974798.png",
+      "bytes": 2804160,
+      "etag": "\"08ac794146e3a2914c08185e080c3eb0\""
+    },
+    {
+      "path": "camera/1598987818048959.png",
+      "bytes": 2806392,
+      "etag": "\"69fe36cab58e04d59343c67942fe068a\""
+    }
+  ],
+  "headImageBytes": 366444458,
+  "reusedMetadataBytes": 7644709,
+  "officialLabelListings": [
+    {
+      "url": "https://boreas.s3.us-west-2.amazonaws.com/?list-type=2&prefix=boreas-objects-v1%2Flabels_detection%2F&start-after=boreas-objects-v1%2Flabels_detection%2F1598989151956413.txt&max-keys=60",
+      "bytes": 15554,
+      "sha256": "03ed79c37cb5d3b9e20d536652351dfaf1d4d4e646fff72bb163c92521592f2b"
+    },
+    {
+      "url": "https://boreas.s3.us-west-2.amazonaws.com/?list-type=2&prefix=boreas-objects-v1%2Flabels_detection%2F&start-after=boreas-objects-v1%2Flabels_detection%2F1598987814029989.txt&max-keys=60",
+      "bytes": 15554,
+      "sha256": "9cf3ae15a094178b18994e3c771ec0cb22c0d26b8d263708ede4ed740a4fe233"
+    }
+  ],
+  "planMetadataNetworkBytes": 31108,
+  "priorInputFingerprints": {
+    "native/ios/.build-xcode/scene-qa/boreas-m3c-01/input.json": "46ef03a86b6f52cd104383cb7856036ab4e0594f698e1e45a84dd58c7025d8ec",
+    "native/ios/.build-xcode/scene-qa/boreas-m3d/input.json": "bb6ae7284c7ed86a57b25f80382dfbd19735e1e95820033271091ddb3ed38fe1",
+    "native/ios/.build-xcode/scene-qa/boreas-m3d-preview/input.json": "5e37597525660f29c125d3c25a5185c28cc67cec3307c29098c1ec596325c6e4",
+    "native/ios/.build-xcode/scene-qa/boreas-m3d-urban-preview/input.json": "2ac208d10cfcb1e1ae34eca0bb961748e99d56a2b4b7fa0e7d7492c4a351b791",
+    "native/ios/.build-xcode/scene-qa/boreas-m3e/input.json": "b26871bf543042b143572f3fc46bc3fd8eb677ab7a48f87f24a0badb377f43cb",
+    "native/ios/.build-xcode/scene-qa/boreas-m3f/input.json": "3d27e148f26a7f33178a871b174e1172450095afda9552a77c312aa22f587234",
+    "native/ios/.build-xcode/scene-qa/boreas-m3g/input.json": "797580e2a324dd70f6b4902153b56528a97d20c7d36f3cf69226c77b46354f0e",
+    "native/ios/.build-xcode/scene-qa/boreas-m3h/input.json": "9bce2cb8eec27f4b029e8b747e09fa541efe719e535227e71aacb0e0ad919c4a",
+    "native/ios/.build-xcode/scene-qa/boreas-m3i/input.json": "67d0b9841623f3f177f8a2bb6e8ee95d701f7d81b7b19e2353643073d39397dd",
+    "native/ios/.build-xcode/scene-qa/boreas-m3j/input.json": "c16b667ee8fd61ffa30ae2e15effe613235c1c6741b3954bf5d8959d29e6d151",
+    "native/ios/.build-xcode/scene-qa/boreas-m3k/input.json": "7b6508c348920c1105438994e30779e087c777fcd599885e1c518e8a7be3bbe7",
+    "native/ios/.build-xcode/scene-qa/boreas-m3l/input.json": "c08ee5c9b42dd9bb1befc1325987e615107577635447c74045302d2823afecd4",
+    "native/ios/.build-xcode/scene-qa/boreas-m3m/input.json": "be77119bb740204ccc5d2e020deae1b3409b577155cfd749452775e83c352b05",
+    "native/ios/.build-xcode/scene-qa/boreas-m3n/input.json": "2c359c6296bcd191277a881280aa105044ff937cf189d2fe4ec61252bb75c8d5",
+    "native/ios/.build-xcode/scene-qa/boreas-m3o/input.json": "c52fcbe8c886ac9bbb07bf4c27ef30d594fbb3d1f07e49a336322a9205ca8b0e",
+    "native/ios/.build-xcode/scene-qa/boreas-m3q/input.json": "d9fe44cf4f90e0fe036844beab801511c090ea9c67057a4f56425014c4fc6726",
+    "native/ios/.build-xcode/scene-qa/boreas-m3q-combined/input.json": "7c377d6a6a344a64d34cbbb1fe4b3319e2fe9856e051a889c3148bcd0b2f9986",
+    "native/ios/.build-xcode/scene-qa/boreas-m3q-low-speed/input.json": "963d58b94c43fd78cc44739103b1986ef7ec875c628b10db81545ab4a7fd017e",
+    "native/ios/.build-xcode/scene-qa/boreas-m3r/input.json": "b608bf1ae8518c61aea3a037ac608f2ce48265f7374f0ed0c37c67e619d5c108"
+  },
+  "priorUniqueExposures": 1699,
+  "priorExposureOverlap": 0,
+  "imageBudgetBytes": 629145600,
+  "metadataBudgetBytes": 5242880,
+  "retainedBudgetBytes": 440401920,
+  "maxSeconds": 600,
+  "networkRetries": 0,
+  "rgbTransfers": 0,
+  "modelCalls": 0,
+  "sourceCodeSha256": "12cd98752c228ffe8c5576a7f2ded06f8edf8642e549a40634b23f512951ce9e"
+}
