@@ -1,0 +1,130 @@
+{
+  "downloadedBytes": 12710961,
+  "sources": [
+    {
+      "id": "tennist-01",
+      "name": "OCT01.mp4",
+      "fileId": "402dde2c-76f6-4cfd-8700-dd960923faf8",
+      "bytes": 3823824,
+      "sha256": "82337e2c228455da4e431c8dd07672c3452018ab781603d9e0fe5d1b8c8e403b",
+      "view": "outdoor top-view cross-court",
+      "url": "https://data.mendeley.com/public-files/datasets/75m8vz7jr2/files/402dde2c-76f6-4cfd-8700-dd960923faf8/file_downloaded",
+      "localFile": "videos/OCT01.mp4"
+    },
+    {
+      "id": "tennist-02",
+      "name": "OST01.mp4",
+      "fileId": "76012c73-6ec3-44b9-bcd2-01e74b27296e",
+      "bytes": 3835890,
+      "sha256": "5654c81889eb979495112d52cb50cb064934d35c250196cbb4b7a3f80919f42d",
+      "view": "outdoor top-view straight",
+      "url": "https://data.mendeley.com/public-files/datasets/75m8vz7jr2/files/76012c73-6ec3-44b9-bcd2-01e74b27296e/file_downloaded",
+      "localFile": "videos/OST01.mp4"
+    },
+    {
+      "id": "tennist-03",
+      "name": "ICS01.mp4",
+      "fileId": "656a30e3-84f2-4287-8603-ff553a799810",
+      "bytes": 5051247,
+      "sha256": "109c2a048f61d85f707255413efac3728cbff228e783bef825bac1c0d41799ff",
+      "view": "indoor side-view cross-court",
+      "url": "https://data.mendeley.com/public-files/datasets/75m8vz7jr2/files/656a30e3-84f2-4287-8603-ff553a799810/file_downloaded",
+      "localFile": "videos/ICS01.mp4"
+    }
+  ],
+  "license": {
+    "id": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "sourceUrl": "https://data.mendeley.com/datasets/75m8vz7jr2/2",
+    "attribution": "Lai, Kalin Guanlun; Huang, Hsu-Chun; Lin, Shang-Yi; Lin, Wei-Ting; Lin, Kawuu Weicheng (2024), Tennis Shot Side-View and Top-View Data Set for Player Analysis in Tennis, Mendeley Data, V2, doi:10.17632/75m8vz7jr2.2.",
+    "receiptFile": "rights/mendeley-snapshot-v2.json",
+    "receiptSha256": "d9fe5ce7d291a27b3056335448eecf407e3b9e9b01be36926e4858db8280f55c",
+    "limits": "Tennis, not pickleball. Dataset landing coordinates are not per-frame ball pixels. Further permission may be needed for identified third-party material."
+  },
+  "rgbManifestSha256": "f6aa09a613846e7361951dd5d4df376d3ef74b7cb8bf3219c9ffe7774ca85507",
+  "goldTemplateSha256": "2081c788556cdbeaa31aae50b333339f5fbe27faa57c751d09b300af3371ab4b",
+  "preparedMs": 14863.922292002826,
+  "clips": [
+    {
+      "id": "tennist-01",
+      "videoFile": "videos/OCT01.mp4",
+      "videoSha256": "82337e2c228455da4e431c8dd07672c3452018ab781603d9e0fe5d1b8c8e403b",
+      "width": 1920,
+      "height": 1080,
+      "fps": 59.94005994005994,
+      "frameCount": 82,
+      "durationSeconds": 1.3680333333333334,
+      "timestampBasis": "container-nominal-fps",
+      "sourceDataset": "TenniST-v2",
+      "sport": "tennis",
+      "annotationIndices": [
+        0,
+        7,
+        14,
+        22,
+        29,
+        36,
+        44,
+        51,
+        58,
+        66,
+        73,
+        81
+      ]
+    },
+    {
+      "id": "tennist-02",
+      "videoFile": "videos/OST01.mp4",
+      "videoSha256": "5654c81889eb979495112d52cb50cb064934d35c250196cbb4b7a3f80919f42d",
+      "width": 1920,
+      "height": 1080,
+      "fps": 59.94005994005994,
+      "frameCount": 85,
+      "durationSeconds": 1.4180833333333334,
+      "timestampBasis": "container-nominal-fps",
+      "sourceDataset": "TenniST-v2",
+      "sport": "tennis",
+      "annotationIndices": [
+        0,
+        7,
+        15,
+        22,
+        30,
+        38,
+        45,
+        53,
+        61,
+        68,
+        76,
+        84
+      ]
+    },
+    {
+      "id": "tennist-03",
+      "videoFile": "videos/ICS01.mp4",
+      "videoSha256": "109c2a048f61d85f707255413efac3728cbff228e783bef825bac1c0d41799ff",
+      "width": 1920,
+      "height": 1080,
+      "fps": 59.94005994005994,
+      "frameCount": 102,
+      "durationSeconds": 1.7017,
+      "timestampBasis": "container-nominal-fps",
+      "sourceDataset": "TenniST-v2",
+      "sport": "tennis",
+      "annotationIndices": [
+        0,
+        9,
+        18,
+        27,
+        36,
+        45,
+        55,
+        64,
+        73,
+        82,
+        91,
+        101
+      ]
+    }
+  ]
+}

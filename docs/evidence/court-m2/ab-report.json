@@ -1,0 +1,1420 @@
+{
+  "schemaVersion": "roboeye-court-ab-report-v1",
+  "rgbManifestSha256": "f6aa09a613846e7361951dd5d4df376d3ef74b7cb8bf3219c9ffe7774ca85507",
+  "goldSha256": "6b332e632c20fa39af785043e4070aa47ee9a56a173d2c23ca09abeb97bcf0b7",
+  "matchingRadiusNativePixels": 8.0,
+  "predictionFilesReadBeforeGoldOpened": true,
+  "scorerSha256": "ec1e5c7ffbf6192017c53b673f9f8555149777b172c9632845be28dc73ba34ad",
+  "labelProvenance": {
+    "kind": "assistant-visual-annotation",
+    "annotator": "Data/Evaluation Builder, assistant visual review of raw native PNGs and manually positioned zoom crops",
+    "sealed": true,
+    "independentHumanReview": false,
+    "derivedFromPublishedLandingPoints": false,
+    "modelOutputsSeenDuringAnnotation": false,
+    "manualAnnotationsSha256": "a9a8a266d0cde09c3bdf3c51b3b3165439d818866d3ea0767142b80143264f64",
+    "pixelDefinition": "Manual centre of the visible ball image, or approximate midpoint of its visible motion streak. Not the instantaneous physical ball centre or ground-contact point.",
+    "method": "Raw source frames and coordinate-grid crops only. No HSV detector, model predictions, landing CSV, automatic centroid or trajectory interpolation used for labels. Five pre-seal coordinate refinements use grayscale-contrast weighted moments ONLY inside visually hand-selected ball ROIs, not automatic component detection.",
+    "preSealCorrectionLogSha256": "a9a8a266d0cde09c3bdf3c51b3b3165439d818866d3ea0767142b80143264f64",
+    "sealedAtUtc": "2026-11-17T14:10:59.874088+00:00",
+    "sealedBeforeInference": true,
+    "contractorCrosscheck": {
+      "kind": "assistant-visual-crosscheck",
+      "reviewerAndScope": "Root Contractor assistant: all35 point-centred raw RGB crops;3 native fullframes including tennist01f29 and tennist03f36; five pre-seal coordinate refinements raw-grid image. Accepted R2 before inference; not human review."
+    },
+    "draftSha256": "8805c0ff88debe92417f7ff4724a3766914fa6ee43d05ee6dba739e8f201e8de"
+  },
+  "predictionReceipts": {
+    "A": {
+      "tennist-01": {
+        "file": ".court-cache/m2/arms/A/tennist-01.json",
+        "sha256": "28d3916a565e17ddbeeeb3c2f683e224a8d08a3fe1d7c260b35f8c61cb8920e1"
+      },
+      "tennist-02": {
+        "file": ".court-cache/m2/arms/A/tennist-02.json",
+        "sha256": "424c8db77f4c1de7dad5996cdd5df2044fc718e690ae14a9eeb3bdf52d655e98"
+      },
+      "tennist-03": {
+        "file": ".court-cache/m2/arms/A/tennist-03.json",
+        "sha256": "3f30019a545b00e2efce8f8d7760e746f76e6037b55cc3a0f79a101b47166478"
+      }
+    },
+    "B": {
+      "tennist-01": {
+        "file": ".court-cache/m2/arms/B/tennist-01.json",
+        "sha256": "821ff5a635ba3f4d3d46f78b90dfdc88a2fd31b9325885bc818dde28acf04f26"
+      },
+      "tennist-02": {
+        "file": ".court-cache/m2/arms/B/tennist-02.json",
+        "sha256": "1ba11b23993489f27cc6bc84b19602587eeda7e82b5bfa30f0362cb64caf4e27"
+      },
+      "tennist-03": {
+        "file": ".court-cache/m2/arms/B/tennist-03.json",
+        "sha256": "ab98f09109d1a8cd61843db62539aa38543f0b553076e1039701ff7a6e99b80f"
+      }
+    }
+  },
+  "arms": {
+    "A": {
+      "counts": {
+        "correctVisible": 19,
+        "wrongVisible": 0,
+        "missedVisible": 16,
+        "falseOnAbsent": 0,
+        "correctAbsent": 0,
+        "unknown": 234,
+        "unknownPredicted": 116,
+        "TP": 19,
+        "FP": 0,
+        "FN": 16,
+        "TN": 0,
+        "precision": 1.0,
+        "recall": 0.5428571428571428,
+        "falseAlarmRateOnAbsentFrames": null,
+        "scoredFrames": 35
+      },
+      "clips": {
+        "tennist-01": {
+          "counts": {
+            "correctVisible": 7,
+            "wrongVisible": 0,
+            "missedVisible": 5,
+            "falseOnAbsent": 0,
+            "correctAbsent": 0,
+            "unknown": 70,
+            "unknownPredicted": 47,
+            "TP": 7,
+            "FP": 0,
+            "FN": 5,
+            "TN": 0,
+            "precision": 1.0,
+            "recall": 0.5833333333333334,
+            "falseAlarmRateOnAbsentFrames": null,
+            "scoredFrames": 12
+          },
+          "scoredRows": [
+            {
+              "index": 0,
+              "truth": "visible",
+              "point": [
+                1096,
+                125
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 7,
+              "truth": "visible",
+              "point": [
+                1129,
+                217
+              ],
+              "predictionStatus": "ambiguous",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 14,
+              "truth": "visible",
+              "point": [
+                1165,
+                328
+              ],
+              "predictionStatus": "ambiguous",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 22,
+              "truth": "visible",
+              "point": [
+                1205,
+                479
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1206.395,
+                479.289
+              ],
+              "distancePixels": 1.4246213532022962,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 29,
+              "truth": "visible",
+              "point": [
+                1241,
+                632
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1243.125,
+                631.188
+              ],
+              "distancePixels": 2.2748558196070405,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 36,
+              "truth": "visible",
+              "point": [
+                1277,
+                664
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1278.0,
+                664.219
+              ],
+              "distancePixels": 1.0236996629871586,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 44,
+              "truth": "visible",
+              "point": [
+                1319,
+                705
+              ],
+              "predictionStatus": "ambiguous",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 51,
+              "truth": "visible",
+              "point": [
+                1359,
+                760
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1358.487,
+                759.197
+              ],
+              "distancePixels": 0.9528787960700529,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 58,
+              "truth": "visible",
+              "point": [
+                1365,
+                770
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1367.487,
+                770.329
+              ],
+              "distancePixels": 2.5086669767030387,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 66,
+              "truth": "visible",
+              "point": [
+                1190,
+                438
+              ],
+              "predictionStatus": "ambiguous",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 73,
+              "truth": "visible",
+              "point": [
+                1084,
+                254
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1086.167,
+                254.833
+              ],
+              "distancePixels": 2.3215895416717474,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 81,
+              "truth": "visible",
+              "point": [
+                999,
+                120
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1000.833,
+                120.167
+              ],
+              "distancePixels": 1.8405917526708335,
+              "outcome": "correctVisible"
+            }
+          ],
+          "method": {
+            "id": "court-colour-motion-context-v2",
+            "kind": "classical-cv",
+            "version": "1.1.0",
+            "description": "Baseline OpenCV: thành phần vàng/lục có thay đổi pixel, loại mảnh màu thuộc vùng lớn và nhiễu thiếu hỗ trợ không gian; gợi ý vạch trắng Hough.",
+            "limitations": [
+              "Không phải model AI đã huấn luyện cho pickleball; màu áo/đồ vật khác có thể bị nhận nhầm.",
+              "Bóng bị che, nhòe hoặc thiếu màu có thể bị bỏ sót; không lấp khoảng mất dấu.",
+              "Điểm bám là tâm ứng viên trên ảnh, không phải điểm tiếp xúc mặt sân.",
+              "Vạch Hough là gợi ý chưa xác nhận, có thể là lưới hoặc vật khác; chưa hiệu chuẩn sân.",
+              "Thời gian khung dùng FPS danh định; không phải timestamp phơi sáng cảm biến.",
+              "Ảnh lớn được giảm cạnh dài về tối đa 1280 px khi phân tích; tọa độ trả về theo ảnh gốc.",
+              "Chưa đo độ chính xác trên tập video có nhãn độc lập; không dùng để phân xử In/Out."
+            ]
+          },
+          "summary": {
+            "observedFrames": 54,
+            "ambiguousFrames": 27,
+            "missingFrames": 1,
+            "analysisMs": 3812.4
+          }
+        },
+        "tennist-02": {
+          "counts": {
+            "correctVisible": 8,
+            "wrongVisible": 0,
+            "missedVisible": 4,
+            "falseOnAbsent": 0,
+            "correctAbsent": 0,
+            "unknown": 73,
+            "unknownPredicted": 50,
+            "TP": 8,
+            "FP": 0,
+            "FN": 4,
+            "TN": 0,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "falseAlarmRateOnAbsentFrames": null,
+            "scoredFrames": 12
+          },
+          "scoredRows": [
+            {
+              "index": 0,
+              "truth": "visible",
+              "point": [
+                1140,
+                173
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 7,
+              "truth": "visible",
+              "point": [
+                1185,
+                275
+              ],
+              "predictionStatus": "ambiguous",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 15,
+              "truth": "visible",
+              "point": [
+                1236,
+                416
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1236.675,
+                415.725
+              ],
+              "distancePixels": 0.7288689868556119,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 22,
+              "truth": "visible",
+              "point": [
+                1280,
+                528
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1281.375,
+                528.469
+              ],
+              "distancePixels": 1.4527856001489166,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 30,
+              "truth": "visible",
+              "point": [
+                1328,
+                559
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1329.391,
+                559.174
+              ],
+              "distancePixels": 1.4018405758145984,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 38,
+              "truth": "visible",
+              "point": [
+                1378,
+                610
+              ],
+              "predictionStatus": "ambiguous",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 45,
+              "truth": "visible",
+              "point": [
+                1421,
+                674
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1422.519,
+                674.596
+              ],
+              "distancePixels": 1.6317404818168915,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 53,
+              "truth": "visible",
+              "point": [
+                1471,
+                768
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1472.027,
+                769.216
+              ],
+              "distancePixels": 1.59166108201467,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 61,
+              "truth": "visible",
+              "point": [
+                1458,
+                654
+              ],
+              "predictionStatus": "ambiguous",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 68,
+              "truth": "visible",
+              "point": [
+                1391,
+                395
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1391.423,
+                394.385
+              ],
+              "distancePixels": 0.7464274914551398,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 76,
+              "truth": "visible",
+              "point": [
+                1328,
+                197
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1329.614,
+                197.523
+              ],
+              "distancePixels": 1.6966216431485548,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 84,
+              "truth": "visible",
+              "point": [
+                1279,
+                71
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1280.375,
+                71.875
+              ],
+              "distancePixels": 1.6298006013006623,
+              "outcome": "correctVisible"
+            }
+          ],
+          "method": {
+            "id": "court-colour-motion-context-v2",
+            "kind": "classical-cv",
+            "version": "1.1.0",
+            "description": "Baseline OpenCV: thành phần vàng/lục có thay đổi pixel, loại mảnh màu thuộc vùng lớn và nhiễu thiếu hỗ trợ không gian; gợi ý vạch trắng Hough.",
+            "limitations": [
+              "Không phải model AI đã huấn luyện cho pickleball; màu áo/đồ vật khác có thể bị nhận nhầm.",
+              "Bóng bị che, nhòe hoặc thiếu màu có thể bị bỏ sót; không lấp khoảng mất dấu.",
+              "Điểm bám là tâm ứng viên trên ảnh, không phải điểm tiếp xúc mặt sân.",
+              "Vạch Hough là gợi ý chưa xác nhận, có thể là lưới hoặc vật khác; chưa hiệu chuẩn sân.",
+              "Thời gian khung dùng FPS danh định; không phải timestamp phơi sáng cảm biến.",
+              "Ảnh lớn được giảm cạnh dài về tối đa 1280 px khi phân tích; tọa độ trả về theo ảnh gốc.",
+              "Chưa đo độ chính xác trên tập video có nhãn độc lập; không dùng để phân xử In/Out."
+            ]
+          },
+          "summary": {
+            "observedFrames": 58,
+            "ambiguousFrames": 26,
+            "missingFrames": 1,
+            "analysisMs": 3592.81
+          }
+        },
+        "tennist-03": {
+          "counts": {
+            "correctVisible": 4,
+            "wrongVisible": 0,
+            "missedVisible": 7,
+            "falseOnAbsent": 0,
+            "correctAbsent": 0,
+            "unknown": 91,
+            "unknownPredicted": 19,
+            "TP": 4,
+            "FP": 0,
+            "FN": 7,
+            "TN": 0,
+            "precision": 1.0,
+            "recall": 0.36363636363636365,
+            "falseAlarmRateOnAbsentFrames": null,
+            "scoredFrames": 11
+          },
+          "scoredRows": [
+            {
+              "index": 9,
+              "truth": "visible",
+              "point": [
+                1669,
+                407
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 18,
+              "truth": "visible",
+              "point": [
+                1432,
+                514
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1433.52,
+                514.92
+              ],
+              "distancePixels": 1.776738585160988,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 27,
+              "truth": "visible",
+              "point": [
+                1198,
+                663
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 36,
+              "truth": "visible",
+              "point": [
+                1033,
+                636
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 45,
+              "truth": "visible",
+              "point": [
+                897,
+                547
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                897.6,
+                551.486
+              ],
+              "distancePixels": 4.525946972733987,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 55,
+              "truth": "visible",
+              "point": [
+                745,
+                499
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                744.981,
+                500.769
+              ],
+              "distancePixels": 1.7691020321055593,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 64,
+              "truth": "visible",
+              "point": [
+                749,
+                446
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                748.8,
+                443.486
+              ],
+              "distancePixels": 2.5219429018120274,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 73,
+              "truth": "visible",
+              "point": [
+                1136,
+                288
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 82,
+              "truth": "visible",
+              "point": [
+                1440,
+                212
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 91,
+              "truth": "visible",
+              "point": [
+                1684,
+                178
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 101,
+              "truth": "visible",
+              "point": [
+                1905,
+                184
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            }
+          ],
+          "method": {
+            "id": "court-colour-motion-context-v2",
+            "kind": "classical-cv",
+            "version": "1.1.0",
+            "description": "Baseline OpenCV: thành phần vàng/lục có thay đổi pixel, loại mảnh màu thuộc vùng lớn và nhiễu thiếu hỗ trợ không gian; gợi ý vạch trắng Hough.",
+            "limitations": [
+              "Không phải model AI đã huấn luyện cho pickleball; màu áo/đồ vật khác có thể bị nhận nhầm.",
+              "Bóng bị che, nhòe hoặc thiếu màu có thể bị bỏ sót; không lấp khoảng mất dấu.",
+              "Điểm bám là tâm ứng viên trên ảnh, không phải điểm tiếp xúc mặt sân.",
+              "Vạch Hough là gợi ý chưa xác nhận, có thể là lưới hoặc vật khác; chưa hiệu chuẩn sân.",
+              "Thời gian khung dùng FPS danh định; không phải timestamp phơi sáng cảm biến.",
+              "Ảnh lớn được giảm cạnh dài về tối đa 1280 px khi phân tích; tọa độ trả về theo ảnh gốc.",
+              "Chưa đo độ chính xác trên tập video có nhãn độc lập; không dùng để phân xử In/Out."
+            ]
+          },
+          "summary": {
+            "observedFrames": 23,
+            "ambiguousFrames": 1,
+            "missingFrames": 78,
+            "analysisMs": 4647.146
+          }
+        }
+      }
+    },
+    "B": {
+      "counts": {
+        "correctVisible": 28,
+        "wrongVisible": 0,
+        "missedVisible": 7,
+        "falseOnAbsent": 0,
+        "correctAbsent": 0,
+        "unknown": 234,
+        "unknownPredicted": 210,
+        "TP": 28,
+        "FP": 0,
+        "FN": 7,
+        "TN": 0,
+        "precision": 1.0,
+        "recall": 0.8,
+        "falseAlarmRateOnAbsentFrames": null,
+        "scoredFrames": 35
+      },
+      "clips": {
+        "tennist-01": {
+          "counts": {
+            "correctVisible": 11,
+            "wrongVisible": 0,
+            "missedVisible": 1,
+            "falseOnAbsent": 0,
+            "correctAbsent": 0,
+            "unknown": 70,
+            "unknownPredicted": 70,
+            "TP": 11,
+            "FP": 0,
+            "FN": 1,
+            "TN": 0,
+            "precision": 1.0,
+            "recall": 0.9166666666666666,
+            "falseAlarmRateOnAbsentFrames": null,
+            "scoredFrames": 12
+          },
+          "scoredRows": [
+            {
+              "index": 0,
+              "truth": "visible",
+              "point": [
+                1096,
+                125
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1096.561,
+                126.414
+              ],
+              "distancePixels": 1.5212222059909317,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 7,
+              "truth": "visible",
+              "point": [
+                1129,
+                217
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1131.476,
+                216.984
+              ],
+              "distancePixels": 2.4760516957447716,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 14,
+              "truth": "visible",
+              "point": [
+                1165,
+                328
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1164.485,
+                328.718
+              ],
+              "distancePixels": 0.8836000226347488,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 22,
+              "truth": "visible",
+              "point": [
+                1205,
+                479
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1207.332,
+                480.133
+              ],
+              "distancePixels": 2.592665230993091,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 29,
+              "truth": "visible",
+              "point": [
+                1241,
+                632
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1241.417,
+                633.53
+              ],
+              "distancePixels": 1.5858086265372144,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 36,
+              "truth": "visible",
+              "point": [
+                1277,
+                664
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1277.384,
+                662.989
+              ],
+              "distancePixels": 1.0814698331437382,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 44,
+              "truth": "visible",
+              "point": [
+                1319,
+                705
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1319.899,
+                704.97
+              ],
+              "distancePixels": 0.8995004168980666,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 51,
+              "truth": "visible",
+              "point": [
+                1359,
+                760
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1358.243,
+                760.592
+              ],
+              "distancePixels": 0.9609958376601198,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 58,
+              "truth": "visible",
+              "point": [
+                1365,
+                770
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1364.901,
+                769.29
+              ],
+              "distancePixels": 0.7168688861988909,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 66,
+              "truth": "visible",
+              "point": [
+                1190,
+                438
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1190.067,
+                436.432
+              ],
+              "distancePixels": 1.5694307885344767,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 73,
+              "truth": "visible",
+              "point": [
+                1084,
+                254
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1084.812,
+                252.42
+              ],
+              "distancePixels": 1.776441386592835,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 81,
+              "truth": "visible",
+              "point": [
+                999,
+                120
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            }
+          ],
+          "method": {
+            "id": "court-wasb-tennis-v1",
+            "kind": "learned-ball",
+            "version": "2.0.0",
+            "description": "WASB HRNet tennis: ba khung RGB, heatmap riêng từng khung, ngưỡng công bố 0,5; phân tích offline.",
+            "model": {
+              "id": "wasb-hrnet-tennis",
+              "artifactSha256": "9d391239ab10c733f8e5bfadf16ab72838e7a8ebc88e8ae2038501c03d42b4bb",
+              "sourceUrl": "https://drive.usercontent.google.com/download?id=14AeyIOCQ2UaQmbZLNQJa1H_eSwxUXk7z&export=download",
+              "license": "MIT (WASB repository; no separate weight override stated)",
+              "revision": "923462cacdeb3353b84ddebdedb3f4b7a8553b0f",
+              "configSha256": "9364210d5a7f804a04655a1b9a1b439cded0b2c3f38b014e27405666e26eaeb7",
+              "preprocessId": "wasb-rgb-centre-affine-imagenet-three-in-three-out-v1"
+            },
+            "runtime": {
+              "device": "mps",
+              "torchVersion": "2.14.0",
+              "modelLoadMs": 2788.939,
+              "modelCalls": 27,
+              "inferenceMs": 6383.867,
+              "preprocessMs": 946.518,
+              "postprocessMs": 171.806,
+              "wallMs": 10680.861,
+              "dtype": "float32",
+              "lookAhead": "offline three-frame blocks, at most two source frames",
+              "padding": "none",
+              "gapFilling": "none"
+            },
+            "limitations": [
+              "Weights huấn luyện tennis, chưa được chứng minh chuyển sang pickleball hoặc camera sân anh.",
+              "Heatmap là dự đoán model, không chứng minh bóng thật, tiếp xúc sân hoặc In/Out.",
+              "Nguồn được warp affine trung tâm 512×288 theo upstream; ảnh khác tỷ lệ có thể bị cắt phần trên/dưới.",
+              "Dùng ba khung có look-ahead offline, không phải cam realtime. Không điền quỹ đạo qua mất dấu.",
+              "Bán kính/box mô tả vùng heatmap, không phải biên vật lý quả bóng hay vùng tiếp xúc sân.",
+              "Vạch Hough vẫn là gợi ý chưa xác nhận; không hiệu chuẩn hay suy ra số mét.",
+              "FPS danh định không phải thời điểm phơi sáng; không có phép đo chuyển động vật lý."
+            ]
+          },
+          "summary": {
+            "observedFrames": 81,
+            "ambiguousFrames": 0,
+            "missingFrames": 1,
+            "analysisMs": 10680.861
+          }
+        },
+        "tennist-02": {
+          "counts": {
+            "correctVisible": 11,
+            "wrongVisible": 0,
+            "missedVisible": 1,
+            "falseOnAbsent": 0,
+            "correctAbsent": 0,
+            "unknown": 73,
+            "unknownPredicted": 73,
+            "TP": 11,
+            "FP": 0,
+            "FN": 1,
+            "TN": 0,
+            "precision": 1.0,
+            "recall": 0.9166666666666666,
+            "falseAlarmRateOnAbsentFrames": null,
+            "scoredFrames": 12
+          },
+          "scoredRows": [
+            {
+              "index": 0,
+              "truth": "visible",
+              "point": [
+                1140,
+                173
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1141.894,
+                174.835
+              ],
+              "distancePixels": 2.6371312064438603,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 7,
+              "truth": "visible",
+              "point": [
+                1185,
+                275
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1185.357,
+                276.876
+              ],
+              "distancePixels": 1.9096662011984948,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 15,
+              "truth": "visible",
+              "point": [
+                1236,
+                416
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1237.605,
+                417.164
+              ],
+              "distancePixels": 1.9826550380739532,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 22,
+              "truth": "visible",
+              "point": [
+                1280,
+                528
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1281.438,
+                528.007
+              ],
+              "distancePixels": 1.4380170374513273,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 30,
+              "truth": "visible",
+              "point": [
+                1328,
+                559
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1328.233,
+                558.702
+              ],
+              "distancePixels": 0.37827635400587295,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 38,
+              "truth": "visible",
+              "point": [
+                1378,
+                610
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1379.026,
+                609.4
+              ],
+              "distancePixels": 1.1885604738506852,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 45,
+              "truth": "visible",
+              "point": [
+                1421,
+                674
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1422.888,
+                674.377
+              ],
+              "distancePixels": 1.9252721885488457,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 53,
+              "truth": "visible",
+              "point": [
+                1471,
+                768
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1471.954,
+                770.615
+              ],
+              "distancePixels": 2.7835842002712896,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 61,
+              "truth": "visible",
+              "point": [
+                1458,
+                654
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1457.067,
+                653.528
+              ],
+              "distancePixels": 1.0455969586795706,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 68,
+              "truth": "visible",
+              "point": [
+                1391,
+                395
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1389.386,
+                394.564
+              ],
+              "distancePixels": 1.671852864339469,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 76,
+              "truth": "visible",
+              "point": [
+                1328,
+                197
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1328.122,
+                195.848
+              ],
+              "distancePixels": 1.158442057247572,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 84,
+              "truth": "visible",
+              "point": [
+                1279,
+                71
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            }
+          ],
+          "method": {
+            "id": "court-wasb-tennis-v1",
+            "kind": "learned-ball",
+            "version": "2.0.0",
+            "description": "WASB HRNet tennis: ba khung RGB, heatmap riêng từng khung, ngưỡng công bố 0,5; phân tích offline.",
+            "model": {
+              "id": "wasb-hrnet-tennis",
+              "artifactSha256": "9d391239ab10c733f8e5bfadf16ab72838e7a8ebc88e8ae2038501c03d42b4bb",
+              "sourceUrl": "https://drive.usercontent.google.com/download?id=14AeyIOCQ2UaQmbZLNQJa1H_eSwxUXk7z&export=download",
+              "license": "MIT (WASB repository; no separate weight override stated)",
+              "revision": "923462cacdeb3353b84ddebdedb3f4b7a8553b0f",
+              "configSha256": "9364210d5a7f804a04655a1b9a1b439cded0b2c3f38b014e27405666e26eaeb7",
+              "preprocessId": "wasb-rgb-centre-affine-imagenet-three-in-three-out-v1"
+            },
+            "runtime": {
+              "device": "mps",
+              "torchVersion": "2.14.0",
+              "modelLoadMs": 442.762,
+              "modelCalls": 28,
+              "inferenceMs": 5342.597,
+              "preprocessMs": 554.489,
+              "postprocessMs": 104.018,
+              "wallMs": 6703.235,
+              "dtype": "float32",
+              "lookAhead": "offline three-frame blocks, at most two source frames",
+              "padding": "none",
+              "gapFilling": "none"
+            },
+            "limitations": [
+              "Weights huấn luyện tennis, chưa được chứng minh chuyển sang pickleball hoặc camera sân anh.",
+              "Heatmap là dự đoán model, không chứng minh bóng thật, tiếp xúc sân hoặc In/Out.",
+              "Nguồn được warp affine trung tâm 512×288 theo upstream; ảnh khác tỷ lệ có thể bị cắt phần trên/dưới.",
+              "Dùng ba khung có look-ahead offline, không phải cam realtime. Không điền quỹ đạo qua mất dấu.",
+              "Bán kính/box mô tả vùng heatmap, không phải biên vật lý quả bóng hay vùng tiếp xúc sân.",
+              "Vạch Hough vẫn là gợi ý chưa xác nhận; không hiệu chuẩn hay suy ra số mét.",
+              "FPS danh định không phải thời điểm phơi sáng; không có phép đo chuyển động vật lý."
+            ]
+          },
+          "summary": {
+            "observedFrames": 84,
+            "ambiguousFrames": 0,
+            "missingFrames": 1,
+            "analysisMs": 6703.235
+          }
+        },
+        "tennist-03": {
+          "counts": {
+            "correctVisible": 6,
+            "wrongVisible": 0,
+            "missedVisible": 5,
+            "falseOnAbsent": 0,
+            "correctAbsent": 0,
+            "unknown": 91,
+            "unknownPredicted": 67,
+            "TP": 6,
+            "FP": 0,
+            "FN": 5,
+            "TN": 0,
+            "precision": 1.0,
+            "recall": 0.5454545454545454,
+            "falseAlarmRateOnAbsentFrames": null,
+            "scoredFrames": 11
+          },
+          "scoredRows": [
+            {
+              "index": 9,
+              "truth": "visible",
+              "point": [
+                1669,
+                407
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 18,
+              "truth": "visible",
+              "point": [
+                1432,
+                514
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1429.187,
+                516.22
+              ],
+              "distancePixels": 3.5834855936644554,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 27,
+              "truth": "visible",
+              "point": [
+                1198,
+                663
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 36,
+              "truth": "visible",
+              "point": [
+                1033,
+                636
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 45,
+              "truth": "visible",
+              "point": [
+                897,
+                547
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                897.571,
+                546.149
+              ],
+              "distancePixels": 1.0248131537017022,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 55,
+              "truth": "visible",
+              "point": [
+                745,
+                499
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                745.061,
+                498.335
+              ],
+              "distancePixels": 0.6677918837482465,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 64,
+              "truth": "visible",
+              "point": [
+                749,
+                446
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            },
+            {
+              "index": 73,
+              "truth": "visible",
+              "point": [
+                1136,
+                288
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1140.025,
+                290.639
+              ],
+              "distancePixels": 4.812997610637344,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 82,
+              "truth": "visible",
+              "point": [
+                1440,
+                212
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1445.393,
+                210.489
+              ],
+              "distancePixels": 5.600675852073596,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 91,
+              "truth": "visible",
+              "point": [
+                1684,
+                178
+              ],
+              "predictionStatus": "observed",
+              "prediction": [
+                1687.432,
+                174.918
+              ],
+              "distancePixels": 4.61273758195717,
+              "outcome": "correctVisible"
+            },
+            {
+              "index": 101,
+              "truth": "visible",
+              "point": [
+                1905,
+                184
+              ],
+              "predictionStatus": "missing",
+              "prediction": null,
+              "distancePixels": null,
+              "outcome": "missedVisible"
+            }
+          ],
+          "method": {
+            "id": "court-wasb-tennis-v1",
+            "kind": "learned-ball",
+            "version": "2.0.0",
+            "description": "WASB HRNet tennis: ba khung RGB, heatmap riêng từng khung, ngưỡng công bố 0,5; phân tích offline.",
+            "model": {
+              "id": "wasb-hrnet-tennis",
+              "artifactSha256": "9d391239ab10c733f8e5bfadf16ab72838e7a8ebc88e8ae2038501c03d42b4bb",
+              "sourceUrl": "https://drive.usercontent.google.com/download?id=14AeyIOCQ2UaQmbZLNQJa1H_eSwxUXk7z&export=download",
+              "license": "MIT (WASB repository; no separate weight override stated)",
+              "revision": "923462cacdeb3353b84ddebdedb3f4b7a8553b0f",
+              "configSha256": "9364210d5a7f804a04655a1b9a1b439cded0b2c3f38b014e27405666e26eaeb7",
+              "preprocessId": "wasb-rgb-centre-affine-imagenet-three-in-three-out-v1"
+            },
+            "runtime": {
+              "device": "mps",
+              "torchVersion": "2.14.0",
+              "modelLoadMs": 2528.99,
+              "modelCalls": 34,
+              "inferenceMs": 5187.031,
+              "preprocessMs": 751.768,
+              "postprocessMs": 79.773,
+              "wallMs": 8720.633,
+              "dtype": "float32",
+              "lookAhead": "offline three-frame blocks, at most two source frames",
+              "padding": "none",
+              "gapFilling": "none"
+            },
+            "limitations": [
+              "Weights huấn luyện tennis, chưa được chứng minh chuyển sang pickleball hoặc camera sân anh.",
+              "Heatmap là dự đoán model, không chứng minh bóng thật, tiếp xúc sân hoặc In/Out.",
+              "Nguồn được warp affine trung tâm 512×288 theo upstream; ảnh khác tỷ lệ có thể bị cắt phần trên/dưới.",
+              "Dùng ba khung có look-ahead offline, không phải cam realtime. Không điền quỹ đạo qua mất dấu.",
+              "Bán kính/box mô tả vùng heatmap, không phải biên vật lý quả bóng hay vùng tiếp xúc sân.",
+              "Vạch Hough vẫn là gợi ý chưa xác nhận; không hiệu chuẩn hay suy ra số mét.",
+              "FPS danh định không phải thời điểm phơi sáng; không có phép đo chuyển động vật lý."
+            ]
+          },
+          "summary": {
+            "observedFrames": 73,
+            "ambiguousFrames": 0,
+            "missingFrames": 29,
+            "analysisMs": 8720.633
+          }
+        }
+      }
+    }
+  },
+  "limits": [
+    "Sparse assistant visual labels on tennis, not independent human per-frame dataset ground truth.",
+    "Wrong visible accepted locations count as both FP and FN; confusion counts are not a disjoint frame partition.",
+    "Unreviewed/ambiguous gold frames are unknown and excluded, never counted as TN.",
+    "This does not measure bounce/contact, In/Out accuracy, physical metres or pickleball generalization.",
+    "No selected frame has a verified absent label. False-alarm rate on no-ball frames is UNMEASURED, not zero; precision here is conditional on the reviewed visible-frame pool."
+  ],
+  "goldCoverage": {
+    "totalVideoFrames": 269,
+    "predeclaredSelectedFrames": 36,
+    "visibleFrames": 35,
+    "absentFrames": 0,
+    "selectedUnknownFrames": 1,
+    "unselectedUnknownFrames": 233
+  },
+  "preSealCorrectionNote": "R1 manual labels retained. Five raw-pixel coordinate corrections were reviewed BEFORE the immutable R2 gold seal and BEFORE inference; no labels or matching thresholds changed after outcomes.",
+  "evaluationMs": 65.84750000911299
+}

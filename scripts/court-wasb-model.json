@@ -1,0 +1,32 @@
+{
+  "id": "wasb-hrnet-tennis",
+  "filename": "wasb_tennis_best.pth.tar",
+  "weightFilename": "wasb_tennis_best.pth.tar",
+  "bytes": 6102633,
+  "sha256": "9d391239ab10c733f8e5bfadf16ab72838e7a8ebc88e8ae2038501c03d42b4bb",
+  "sourceUrl": "https://drive.usercontent.google.com/download?id=14AeyIOCQ2UaQmbZLNQJa1H_eSwxUXk7z&export=download",
+  "publicationUrl": "https://github.com/nttcom/WASB-SBDT/blob/923462cacdeb3353b84ddebdedb3f4b7a8553b0f/MODEL_ZOO.md",
+  "license": "MIT (WASB repository; no separate weight override stated)",
+  "revision": "923462cacdeb3353b84ddebdedb3f4b7a8553b0f",
+  "upstreamCodeSha256": "862ce90279a44ad19dd0590e073a8089c1cf4bd79eca0930189dda9106fa83f5",
+  "preprocessId": "wasb-rgb-centre-affine-imagenet-three-in-three-out-v1",
+  "configSha256": "9364210d5a7f804a04655a1b9a1b439cded0b2c3f38b014e27405666e26eaeb7",
+  "artifactPinProvenance": "SHA-256 computed from first official Model Zoo download; not a publisher-signed checksum",
+  "config": {
+    "frames_in": 3,
+    "frames_out": 3,
+    "input_width": 512,
+    "input_height": 288,
+    "output_scales": [0],
+    "block_step": 3,
+    "heatmap_threshold": 0.5,
+    "blob_method": "concomp",
+    "use_heatmap_weight": true,
+    "winner_rule": "maximum-component-heatmap-mass",
+    "colour": "RGB",
+    "mean": [0.485, 0.456, 0.406],
+    "std": [0.229, 0.224, 0.225],
+    "edge_policy": "incomplete-block-missing-no-padding",
+    "fill_policy": "none"
+  }
+}

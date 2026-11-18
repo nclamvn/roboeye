@@ -1,0 +1,282 @@
+{
+  "schemaVersion": "roboeye-court-event-evidence-v1",
+  "source": {
+    "sha256": "767842eec2a34d478f8d4a5f3680c18f6eac889147f81fa332f7a02730542474",
+    "width": 854,
+    "height": 480,
+    "fps": 25,
+    "frameCount": 337,
+    "durationSeconds": 13.48
+  },
+  "sessionHashBinding": "inputCachedSessionSha256",
+  "sessionSha256": {
+    "classical": "a1803cbbfa30e5f5180739a8819c5fe5cad4c941186aaefb2ff72cbfb182090f",
+    "specialist": "f49a19b09088d82a2b1ac2ea956f956cef059dce38d25455377a614ed2e9b07e"
+  },
+  "policyVersion": "court-image-edge-loss-review-v1",
+  "generator": {
+    "scriptSha256": "f2939162874a06129f4987003d585573de97206a4d17ce4c55a6af23479951a7",
+    "mediaHelperSha256": "8e9dc6fd1925301881080ca9f2471df03a586839e511402c12b79cfca9800ab7",
+    "proposalModuleSha256": "13ef3e4e535ce50efffcf7a69f840dad5d4a8ff98e1193e050cfad3a2ffbc53e"
+  },
+  "events": [
+    {
+      "id": "contact-101-specialist",
+      "index": 101,
+      "kind": "suspected-contact",
+      "timeSeconds": 4.04,
+      "reviewInterval": {
+        "startFrame": 99,
+        "endFrame": 103
+      },
+      "clipWindow": {
+        "startFrame": 74,
+        "endFrame": 128
+      },
+      "anchorPoint": [
+        140.861,
+        363.181
+      ],
+      "contact": null,
+      "decision": "insufficient-evidence",
+      "still": {
+        "path": "stills/frame-000101.png",
+        "sha256": "055e7eecd1c251d42dac0e6679f7352ba7d8a5da29d2a84cd3ae5179e8bd2e9c",
+        "bytes": 693309,
+        "contentType": "image/png",
+        "sourceFrame": 101,
+        "sourcePtsSeconds": 4.04,
+        "width": 854,
+        "height": 480
+      },
+      "context": [
+        {
+          "offset": -2,
+          "sourceFrame": 99,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000099.png",
+            "sha256": "97c841c858e17809cf376984472e90adef90302eef142e940070dda53473a7c0",
+            "bytes": 701863,
+            "contentType": "image/png",
+            "sourceFrame": 99,
+            "sourcePtsSeconds": 3.9600000000000004,
+            "width": 854,
+            "height": 480
+          }
+        },
+        {
+          "offset": -1,
+          "sourceFrame": 100,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000100.png",
+            "sha256": "85e4b974a0181f568c22b9163e797f82a0c984e50ffcc510ad922c6c793a651d",
+            "bytes": 693887,
+            "contentType": "image/png",
+            "sourceFrame": 100,
+            "sourcePtsSeconds": 4,
+            "width": 854,
+            "height": 480
+          }
+        },
+        {
+          "offset": 0,
+          "sourceFrame": 101,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000101.png",
+            "sha256": "055e7eecd1c251d42dac0e6679f7352ba7d8a5da29d2a84cd3ae5179e8bd2e9c",
+            "bytes": 693309,
+            "contentType": "image/png",
+            "sourceFrame": 101,
+            "sourcePtsSeconds": 4.04,
+            "width": 854,
+            "height": 480
+          }
+        },
+        {
+          "offset": 1,
+          "sourceFrame": 102,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000102.png",
+            "sha256": "5d3a70e5e676a1fe4f578a292f1bc3556dc98afdb02bcc040727205c0040503c",
+            "bytes": 694691,
+            "contentType": "image/png",
+            "sourceFrame": 102,
+            "sourcePtsSeconds": 4.08,
+            "width": 854,
+            "height": 480
+          }
+        },
+        {
+          "offset": 2,
+          "sourceFrame": 103,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000103.png",
+            "sha256": "7d12732cf4c60c0840e88deb56a8494eb1bcb9fe0fb1cbe7b1a8c946914c8bde",
+            "bytes": 694834,
+            "contentType": "image/png",
+            "sourceFrame": 103,
+            "sourcePtsSeconds": 4.12,
+            "width": 854,
+            "height": 480
+          }
+        }
+      ],
+      "clip": {
+        "path": "clips/frames-000074-000128.mp4",
+        "sha256": "ea4d9459ba411c0b85e82329f3920f31b37827b07acfd15174cd7be0a7ecc65a",
+        "bytes": 406691,
+        "contentType": "video/mp4",
+        "sourceStartFrame": 74,
+        "sourceEndFrame": 128,
+        "sourceStartTimeSeconds": 2.96,
+        "sourceEndExclusiveTimeSeconds": 5.16,
+        "frameCount": 55,
+        "fps": 25,
+        "durationSeconds": 2.2,
+        "width": 854,
+        "height": 480,
+        "audio": "source-trimmed-aac-reencoded",
+        "pixels": "Actual source frames re-encoded H264; no invented/interpolated/model-filled pixels",
+        "audioTiming": "Trimmed on same original source interval; codec priming/capture AV offset not calibrated"
+      }
+    },
+    {
+      "id": "edge-loss-232-specialist",
+      "index": 232,
+      "kind": "edge-loss-review",
+      "timeSeconds": 9.28,
+      "reviewInterval": {
+        "startFrame": 228,
+        "endFrame": 239
+      },
+      "clipWindow": {
+        "startFrame": 203,
+        "endFrame": 264
+      },
+      "anchorPoint": [
+        97.066,
+        449.514
+      ],
+      "contact": null,
+      "decision": "insufficient-evidence",
+      "still": {
+        "path": "stills/frame-000232.png",
+        "sha256": "2bcd85bd7882a247de01f58df88371e167c0a0b41ece8fb9a46b739b6c743b98",
+        "bytes": 683405,
+        "contentType": "image/png",
+        "sourceFrame": 232,
+        "sourcePtsSeconds": 9.280000000000001,
+        "width": 854,
+        "height": 480
+      },
+      "context": [
+        {
+          "offset": -2,
+          "sourceFrame": 230,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000230.png",
+            "sha256": "1185e2337957308d66c3ee91c9436c0335c16e479da933424bda4752a58c1763",
+            "bytes": 684108,
+            "contentType": "image/png",
+            "sourceFrame": 230,
+            "sourcePtsSeconds": 9.200000000000001,
+            "width": 854,
+            "height": 480
+          }
+        },
+        {
+          "offset": -1,
+          "sourceFrame": 231,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000231.png",
+            "sha256": "de83b974af9386fce4c3787b037a3127b45c7f11ed48881e3a1c5ad477ef019d",
+            "bytes": 684622,
+            "contentType": "image/png",
+            "sourceFrame": 231,
+            "sourcePtsSeconds": 9.24,
+            "width": 854,
+            "height": 480
+          }
+        },
+        {
+          "offset": 0,
+          "sourceFrame": 232,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000232.png",
+            "sha256": "2bcd85bd7882a247de01f58df88371e167c0a0b41ece8fb9a46b739b6c743b98",
+            "bytes": 683405,
+            "contentType": "image/png",
+            "sourceFrame": 232,
+            "sourcePtsSeconds": 9.280000000000001,
+            "width": 854,
+            "height": 480
+          }
+        },
+        {
+          "offset": 1,
+          "sourceFrame": 233,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000233.png",
+            "sha256": "eb3ac685242c7b21d6353ccb59b75be29c3f8237e22b74c2f7ca76d8755f834b",
+            "bytes": 683793,
+            "contentType": "image/png",
+            "sourceFrame": 233,
+            "sourcePtsSeconds": 9.32,
+            "width": 854,
+            "height": 480
+          }
+        },
+        {
+          "offset": 2,
+          "sourceFrame": 234,
+          "status": "available",
+          "asset": {
+            "path": "stills/frame-000234.png",
+            "sha256": "dc0e431f5ba6dc345c2d2317e4b0ab3d5aed3c0bcd44e2f9479994245b172e95",
+            "bytes": 683237,
+            "contentType": "image/png",
+            "sourceFrame": 234,
+            "sourcePtsSeconds": 9.360000000000001,
+            "width": 854,
+            "height": 480
+          }
+        }
+      ],
+      "clip": {
+        "path": "clips/frames-000203-000264.mp4",
+        "sha256": "2eaa47525fdddda65bed70e3eb96fc7db82302145b761ad7e68d5c2e01b69f57",
+        "bytes": 414845,
+        "contentType": "video/mp4",
+        "sourceStartFrame": 203,
+        "sourceEndFrame": 264,
+        "sourceStartTimeSeconds": 8.12,
+        "sourceEndExclusiveTimeSeconds": 10.6,
+        "frameCount": 62,
+        "fps": 25,
+        "durationSeconds": 2.48,
+        "width": 854,
+        "height": 480,
+        "audio": "source-trimmed-aac-reencoded",
+        "pixels": "Actual source frames re-encoded H264; no invented/interpolated/model-filled pixels",
+        "audioTiming": "Trimmed on same original source interval; codec priming/capture AV offset not calibrated"
+      }
+    }
+  ],
+  "extraction": {
+    "sourceAudioPresent": true,
+    "sourceDecodedFrames": 337,
+    "sourceMaximumPtsResidualSeconds": 3.552713678800501e-15,
+    "decoder": "OpenCV POS_MSEC actual decoded timeline, verified against declared zero-origin CFR",
+    "ffmpegVersion": "7.1"
+  },
+  "limitation": "Actual source stills/clips for uncertain event review. Anchor timestamp is an observed image, not a certified floor-contact time or position. No labels, AI-filled pixels, invented frames, In/Out or metric-distance inference."
+}

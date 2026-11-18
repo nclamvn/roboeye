@@ -1,0 +1,35 @@
+WASB-SBDT HRNet source vendored from:
+https://github.com/nttcom/WASB-SBDT/blob/923462cacdeb3353b84ddebdedb3f4b7a8553b0f/src/models/hrnet.py
+SHA-256: 862ce90279a44ad19dd0590e073a8089c1cf4bd79eca0930189dda9106fa83f5
+
+Original file retains its Microsoft MIT copyright header (Bin Xiao; modified by
+Bowen Cheng). WASB repository license:
+
+MIT License
+
+Copyright (c) 2023 NTT Communications Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Reference: Tarashima, Haq, Wang and Tagawa, "Widely Applicable Strong Baseline
+for Sports Ball Detection and Tracking", BMVC 2023.
+
+Model weights are linked by the same repository's MODEL_ZOO.md (tennis column).
+No additional weight license/override is stated there. Model data/domain rights
+must not be inferred for any evaluation footage from this source-code license.

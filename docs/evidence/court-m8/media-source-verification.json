@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "roboeye-court-m8-independent-media-qa-v1",
+  "pass": true,
+  "sourceSha256": "767842eec2a34d478f8d4a5f3680c18f6eac889147f81fa332f7a02730542474",
+  "manifestSha256": "f973c0692dc9b44fda54a9351366003170735c75eb1cf0f2f5a94600a35d752b",
+  "events": [
+    {
+      "id": "contact-101-specialist",
+      "kind": "suspected-contact",
+      "anchorIndex": 101,
+      "reviewInterval": {
+        "startFrame": 99,
+        "endFrame": 103
+      },
+      "clipWindow": {
+        "startFrame": 74,
+        "endFrame": 128
+      },
+      "stillPixelChecks": [
+        {
+          "sourceFrame": 101,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 99,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 100,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 101,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 102,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 103,
+          "differentChannels": 0
+        }
+      ],
+      "clipFrameCount": 55,
+      "fps": 25,
+      "durationSeconds": 2.2,
+      "maximumClipPtsResidualSeconds": 4.440892098500626e-16,
+      "wholeClipMeanAbsoluteDifferenceBySourceOffset": {
+        "-2": 2.067250750281594,
+        "-1": 1.8126911510120738,
+        "0": 1.3423752307891845,
+        "1": 1.844638874314048,
+        "2": 2.1407014218243687
+      },
+      "bestContentAlignmentOffsetFrames": 0,
+      "sampledSourceFrames": [
+        {
+          "clipFrame": 0,
+          "sourceFrame": 74,
+          "psnrDb": 42.93813155990782
+        },
+        {
+          "clipFrame": 27,
+          "sourceFrame": 101,
+          "psnrDb": 41.750598130336805
+        },
+        {
+          "clipFrame": 54,
+          "sourceFrame": 128,
+          "psnrDb": 36.93902062780573
+        }
+      ],
+      "actualClipAudioPresent": true
+    },
+    {
+      "id": "edge-loss-232-specialist",
+      "kind": "edge-loss-review",
+      "anchorIndex": 232,
+      "reviewInterval": {
+        "startFrame": 228,
+        "endFrame": 239
+      },
+      "clipWindow": {
+        "startFrame": 203,
+        "endFrame": 264
+      },
+      "stillPixelChecks": [
+        {
+          "sourceFrame": 232,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 230,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 231,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 232,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 233,
+          "differentChannels": 0
+        },
+        {
+          "sourceFrame": 234,
+          "differentChannels": 0
+        }
+      ],
+      "clipFrameCount": 62,
+      "fps": 25,
+      "durationSeconds": 2.48,
+      "maximumClipPtsResidualSeconds": 4.440892098500626e-16,
+      "wholeClipMeanAbsoluteDifferenceBySourceOffset": {
+        "-2": 1.9489204672075087,
+        "-1": 1.6892015376398641,
+        "0": 1.2567682150871522,
+        "1": 1.7150826877163303,
+        "2": 1.9908441689706617
+      },
+      "bestContentAlignmentOffsetFrames": 0,
+      "sampledSourceFrames": [
+        {
+          "clipFrame": 0,
+          "sourceFrame": 203,
+          "psnrDb": 43.18679670322606
+        },
+        {
+          "clipFrame": 31,
+          "sourceFrame": 234,
+          "psnrDb": 41.99627984099653
+        },
+        {
+          "clipFrame": 61,
+          "sourceFrame": 264,
+          "psnrDb": 39.99401772728424
+        }
+      ],
+      "actualClipAudioPresent": true
+    }
+  ],
+  "sourceAudioPresent": true,
+  "scope": "Decoded PNG pixels exact; H264 clips are real source reencoding with verified CFR/index sequence, not pixel-identical MP4",
+  "contactOrInOutAccuracyMeasured": false,
+  "testSourceSha256": "d1c04d51188d7db6589167fa5b17127956ce1a5dc84d8f15b57d663c14127145"
+}

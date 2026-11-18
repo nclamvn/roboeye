@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "roboeye-court-benchmark-rgb-v1",
+  "datasetId": "roboeye-court-tennist-m2-r1",
+  "license": {
+    "id": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "sourceUrl": "https://data.mendeley.com/datasets/75m8vz7jr2/2",
+    "attribution": "Lai, Kalin Guanlun; Huang, Hsu-Chun; Lin, Shang-Yi; Lin, Wei-Ting; Lin, Kawuu Weicheng (2024), Tennis Shot Side-View and Top-View Data Set for Player Analysis in Tennis, Mendeley Data, V2, doi:10.17632/75m8vz7jr2.2.",
+    "receiptFile": "rights/mendeley-snapshot-v2.json",
+    "receiptSha256": "d9fe5ce7d291a27b3056335448eecf407e3b9e9b01be36926e4858db8280f55c",
+    "limits": "Tennis, not pickleball. Dataset landing coordinates are not per-frame ball pixels. Further permission may be needed for identified third-party material."
+  },
+  "clips": [
+    {
+      "id": "tennist-01",
+      "videoFile": "videos/OCT01.mp4",
+      "videoSha256": "82337e2c228455da4e431c8dd07672c3452018ab781603d9e0fe5d1b8c8e403b",
+      "width": 1920,
+      "height": 1080,
+      "fps": 59.94005994005994,
+      "frameCount": 82,
+      "durationSeconds": 1.3680333333333334,
+      "timestampBasis": "container-nominal-fps",
+      "sourceDataset": "TenniST-v2",
+      "sport": "tennis"
+    },
+    {
+      "id": "tennist-02",
+      "videoFile": "videos/OST01.mp4",
+      "videoSha256": "5654c81889eb979495112d52cb50cb064934d35c250196cbb4b7a3f80919f42d",
+      "width": 1920,
+      "height": 1080,
+      "fps": 59.94005994005994,
+      "frameCount": 85,
+      "durationSeconds": 1.4180833333333334,
+      "timestampBasis": "container-nominal-fps",
+      "sourceDataset": "TenniST-v2",
+      "sport": "tennis"
+    },
+    {
+      "id": "tennist-03",
+      "videoFile": "videos/ICS01.mp4",
+      "videoSha256": "109c2a048f61d85f707255413efac3728cbff228e783bef825bac1c0d41799ff",
+      "width": 1920,
+      "height": 1080,
+      "fps": 59.94005994005994,
+      "frameCount": 102,
+      "durationSeconds": 1.7017,
+      "timestampBasis": "container-nominal-fps",
+      "sourceDataset": "TenniST-v2",
+      "sport": "tennis"
+    }
+  ],
+  "noGoldRead": "This manifest contains RGB source metadata only; no label file or outcomes are supplied to inference."
+}

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>RoboEye Court · Bàn xem lại</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="./" aria-label="RoboEye Court"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M5 5h24v24H5zM5 17h24M17 5v8m0 8v8M5 13h24M5 21h24"/></svg><span>RoboEye <strong>Court</strong></span></a>
+    <span class="workspace-label">Bàn xem lại</span>
+    <span class="local-badge"><span></span>Video ở trên máy anh</span>
+    <button id="open-settings" class="settings-button" aria-haspopup="dialog" aria-controls="court-settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M8 4v6m8 4v6"/></svg><span>Tùy chọn</span></button>
+  </header>
+
+  <main>
+    <div class="workspace-heading"><div><h1>Xem rõ pha bóng.</h1><p>Đối chiếu từng khung, không đoán qua điểm mù.</p></div><span class="phase-badge">M1 · Thử nghiệm local</span></div>
+    <div class="source-tools" id="source-tools" hidden><label for="clip-select">Chọn video</label><select id="clip-select" aria-label="Chọn video chính hoặc clip đối chứng"></select><span>Tennis · replay kết quả chạy trên Mac</span><label class="loop-control"><input type="checkbox" id="loop-playback" checked>Lặp clip</label><span class="offline-note">Không chạy AI trên trình duyệt</span></div>
+    <div class="workspace">
+      <section class="video-workspace" aria-label="Video và các công cụ xem lại">
+        <div class="stage" id="stage" data-ready="false">
+          <video id="court-video" preload="auto" playsinline muted aria-label="Video sân pickleball"></video>
+          <canvas id="court-overlay" aria-label="Lớp quan sát bóng và vạch sân"></canvas>
+          <div class="stage-top"><span id="source-chip">Đang mở video</span><span id="tracking-status" class="tracking-status">Đang mở video</span><span class="evidence-badge" id="evidence-status">Chưa đủ bằng chứng</span></div>
+          <div id="stage-message" class="stage-message"><div class="loading-court" aria-hidden="true"><span></span></div><p>Đang đọc video và quan sát cục bộ…</p></div>
+          <div id="draw-guide" class="draw-guide" hidden>Chọn hai điểm trên một mép vạch. Esc để huỷ.</div>
+          <div class="stage-bottom"><div class="layer-controls" aria-label="Lớp hiển thị">
+            <label><input type="checkbox" id="show-ball" checked><span class="dot ball-dot"></span>Ứng viên bóng</label>
+            <label><input type="checkbox" id="show-trail" checked>Dấu ứng viên</label>
+            <label><input type="checkbox" id="show-lines" checked><span class="line-swatch"></span>Vạch</label>
+            <label id="reference-control" hidden><input type="checkbox" id="show-reference" checked><span class="reference-swatch"></span>Tham chiếu</label>
+          </div><button id="fullscreen" class="stage-icon" title="Toàn màn hình" aria-label="Toàn màn hình"><svg viewBox="0 0 24 24"><path d="M8 4H4v4m12-4h4v4M4 16v4h4m8 0h4v-4"/></svg></button></div>
+        </div>
+
+        <div class="transport">
+          <div class="scrubber"><input type="range" id="seek" min="0" max="1" step="0.001" value="0" aria-label="Tua video"><div id="timeline-marks" aria-hidden="true"></div></div>
+          <div class="transport-row"><div class="playback-buttons">
+            <button id="play" class="play-button" title="Phát hoặc dừng (Space)" aria-label="Phát video" disabled><svg id="play-icon" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></svg></button>
+            <button id="step-back" title="Lùi một khung (←)" aria-label="Lùi một khung" disabled><svg viewBox="0 0 24 24"><path d="M6 5v14m12-14L8 12l10 7z"/></svg></button>
+            <button id="step-forward" title="Tiến một khung (→)" aria-label="Tiến một khung" disabled><svg viewBox="0 0 24 24"><path d="M18 5v14M6 5l10 7-10 7z"/></svg></button>
+            <label class="speed-label"><span class="sr-only">Tốc độ phát</span><select id="speed" aria-label="Tốc độ phát"><option value="0.25">0,25×</option><option value="0.5">0,5×</option><option value="1" selected>1×</option></select></label>
+            <span id="timecode" class="timecode">0:00.00 / 0:00.00</span>
+          </div><button id="bookmark" class="bookmark-button" disabled><svg viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4z"/></svg><span>Đánh dấu pha</span></button></div>
+        </div>
+
+        <section id="contact-workspace" class="contact-workspace" aria-label="Ảnh pha nghi chạm sân" hidden>
+          <div class="contact-heading"><div><h2>Mốc cần xem</h2><p>Demo ghi sẵn · không phân xử</p></div><button id="featured-review" hidden>Xem pha</button><button id="capture-current" disabled>Chụp pha</button></div>
+          <div id="contact-timeline" class="contact-timeline" aria-label="Mốc nghi điểm rơi trên video"></div>
+          <div id="contact-filmstrip" class="contact-filmstrip" aria-label="Gợi ý tự động và khung anh chụp"></div>
+          <p id="contact-status" class="contact-status" role="status">Đang chuẩn bị ảnh từ nguồn đã kiểm SHA…</p>
+          <section id="contact-review" class="contact-review" aria-label="Đối chiếu ảnh gốc và các khung kề" hidden>
+            <div class="contact-review-heading"><div><h3 id="contact-frame-title">Khung ảnh gốc</h3><p id="contact-frame-meta"></p></div><span id="contact-decision" class="contact-inconclusive">Chưa đủ bằng chứng</span><button id="close-contact" aria-label="Đóng ảnh đối chiếu">Đóng</button></div>
+            <div class="contact-clip-actions"><button id="play-contact-clip" disabled>Xem clip pha</button><button id="download-contact-clip" disabled hidden>Tải clip</button><span id="contact-clip-state" role="status"></span></div>
+            <p id="contact-reason" class="contact-reason"></p>
+            <div class="contact-inspector-grid"><div class="contact-native-stage"><canvas id="contact-inspector" width="854" height="480" aria-label="Ảnh gốc không có lớp model; nhấp để chọn vùng soi"></canvas><div id="contact-roi-marker" class="contact-roi-marker" hidden aria-hidden="true"></div></div>
+              <div class="contact-crop-panel"><h4>Soi bóng hoặc vạch</h4><canvas id="contact-crop" width="360" height="240" aria-label="Phóng pixel ảnh gốc, không bổ sung chi tiết"></canvas><p id="contact-crop-note">Nhấp ảnh để chọn vùng soi.</p><div class="contact-downloads"><button id="download-raw" disabled>Tải ảnh gốc PNG</button><button id="download-sheet" disabled>Tải bản đối chiếu PNG</button></div></div></div>
+            <div id="contact-context" class="contact-context" aria-label="Năm khung theo thứ tự trước và sau mốc"></div>
+            <p class="contact-footnote">Ảnh tĩnh giữ nguyên khung đã chọn. Điểm soi là vùng kiểm tra ảnh, không phải bóng hay vạch đã được xác nhận.</p>
+          </section>
+        </section>
+
+        <div class="observation-strip"><span id="frame-label">Chưa có khung hình</span><span id="observation-label">Đang đọc phân tích…</span></div>
+        <p class="baseline-warning">Bám tự động chưa đạt kiểm chứng. Điểm màu vàng có thể không phải bóng.</p>
+        <div class="method-toolbar"><label for="detector">Đối chiếu A/B</label><select id="detector" aria-label="Phương pháp bám bóng" disabled><option value="classical">Baseline màu / chuyển động</option></select><span id="detector-note">Phân tích sẵn trên Mac</span></div>
+        <div class="line-toolbar"><span><i class="line-swatch"></i>Vạch trên ảnh <small>không phải hiệu chuẩn mét</small></span><div>
+          <button id="draw-line" disabled>Vẽ vạch</button><button id="confirm-lines" disabled>Xác nhận vạch gợi ý</button><button id="reset-lines" class="quiet" disabled>Đặt lại</button>
+        </div></div>
+        <div id="line-list" class="line-list" aria-label="Các vạch trên ảnh"></div>
+        <p id="status" class="status" role="status">Đang tải phiên phân tích…</p>
+      </section>
+
+      <aside class="review-rail" aria-label="Xem lại pha bóng">
+        <section id="original-scope" class="original-scope" hidden><h2>Video Pickleball gốc</h2><p id="original-unknown">Chưa có nhãn đối chứng.</p><p id="original-coverage"></p><p>Số khung có ứng viên không phải độ chính xác. Model B huấn luyện tennis, chưa được kiểm chứng trên video này.</p></section>
+        <section id="public-evidence" class="public-evidence" hidden>
+          <div class="score-strip" id="score-strip"><span>Định vị đúng trên <strong id="labelled-count">35</strong> khung có tham chiếu</span><div><span><small>A · Màu / chuyển động</small><b id="score-a">19</b></span><i aria-hidden="true">→</i><span><small>B · Model tennis</small><b id="score-b">28</b></span></div><p id="score-scope">Chưa đo báo nhầm khi không có bóng.</p></div>
+          <div class="case-heading"><h2>Đối chiếu từng ca</h2><select id="case-filter" aria-label="Lọc ca đối chứng"><option value="all">Tất cả 35 ca</option><option value="regressed">3 ca đi lùi</option><option value="recovered">12 ca khôi phục</option><option value="both-miss">4 ca cùng bỏ sót</option><option value="both-correct">16 ca cùng đúng</option></select></div>
+          <p class="case-note">Giữ cả ca đi lùi. Nhấp một ca để dừng đúng khung và soi hai kết quả.</p>
+          <div id="evidence-cases" class="evidence-cases"></div>
+          <p id="reference-status" class="reference-status">Tham chiếu chỉ hiện ở đúng khung được gán nhãn.</p>
+        </section>
+        <div class="rail-heading"><h2>Pha cần xem lại</h2><span id="review-count">0</span></div>
+        <p class="rail-explanation">Ứng viên gần vạch <strong>trên ảnh</strong>, chưa xác nhận bóng hay điểm chạm sân.</p>
+        <div id="review-list" class="review-list"><p class="empty-review">Các gợi ý và pha anh đánh dấu sẽ xuất hiện ở đây.</p></div>
+        <section class="detail-view" aria-label="Chi tiết vùng ảnh">
+          <div class="detail-heading"><h3>Chi tiết ảnh</h3><span>Ảnh gốc</span></div>
+          <canvas id="magnifier" width="600" height="360" aria-label="Phóng vùng ảnh gốc, không tạo thêm chi tiết"></canvas>
+          <div id="paired-proof" class="paired-proof" hidden><div><span>A · Màu / chuyển động</span><canvas id="proof-a" width="360" height="240" aria-label="Ảnh gốc và dự đoán A ở cùng khung"></canvas><small id="proof-a-status">Chưa có dấu</small></div><div><span>B · Model tennis</span><canvas id="proof-b" width="360" height="240" aria-label="Ảnh gốc và dự đoán B ở cùng khung"></canvas><small id="proof-b-status">Chưa có dấu</small></div></div>
+          <p>Nhấp vào video để phóng vùng cần xem. Chỉ dùng ảnh gốc.</p>
+        </section>
+        <details class="evidence-details"><summary>Bằng chứng & giới hạn</summary><div>
+          <p id="method-label">Baseline thị giác máy tính, phân tích trước khi phát lại.</p>
+          <p id="demo-provenance" hidden></p>
+          <dl><div><dt>Nguồn</dt><dd id="source-label">—</dd></div><div><dt>Phương pháp</dt><dd id="model-label">—</dd></div><div><dt>Quan sát</dt><dd id="coverage-label">—</dd></div><div><dt>Xử lý local</dt><dd id="analysis-label">—</dd></div></dl>
+          <p>Bám được một điểm không chứng minh đó là bóng. Vạch gợi ý có thể nhầm lưới hoặc nền. Chưa có phép xác minh điểm chạm để gọi In/Out.</p>
+          <ul id="method-limits"></ul>
+          <div class="review-files"><button id="export-review" disabled>Xuất bản xem lại</button><label class="file-button">Nhập bản xem lại<input id="import-review" type="file" accept="application/json,.json" disabled></label></div>
+        </div></details>
+      </aside>
+    </div>
+    <footer><span>Không phải trọng tài tự động. Pha không rõ được giữ nguyên để đối chiếu.</span><a id="demo-attribution" hidden>Dữ liệu & giấy phép</a><span id="save-state">Chỉnh sửa chỉ lưu trên trình duyệt này</span></footer>
+  </main>
+  <dialog id="court-settings" class="settings-dialog" aria-labelledby="settings-title"><div class="settings-heading"><h2 id="settings-title">Tùy chọn xem lại</h2><button id="close-settings" aria-label="Đóng tùy chọn">Đóng</button></div><div id="settings-content" class="settings-content"></div></dialog>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>

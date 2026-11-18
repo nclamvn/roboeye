@@ -1,0 +1,1958 @@
+{
+  "schemaVersion": "roboeye-court-benchmark-gold-v1",
+  "rgbManifestSha256": "f6aa09a613846e7361951dd5d4df376d3ef74b7cb8bf3219c9ffe7774ca85507",
+  "matching": {
+    "metric": "native-pixel-center-distance",
+    "radiusPixels": 8
+  },
+  "labelProvenance": {
+    "kind": "assistant-visual-annotation",
+    "annotator": "Data/Evaluation Builder, assistant visual review of raw native PNGs and manually positioned zoom crops",
+    "sealed": true,
+    "independentHumanReview": false,
+    "derivedFromPublishedLandingPoints": false,
+    "modelOutputsSeenDuringAnnotation": false,
+    "manualAnnotationsSha256": "a9a8a266d0cde09c3bdf3c51b3b3165439d818866d3ea0767142b80143264f64",
+    "pixelDefinition": "Manual centre of the visible ball image, or approximate midpoint of its visible motion streak. Not the instantaneous physical ball centre or ground-contact point.",
+    "method": "Raw source frames and coordinate-grid crops only. No HSV detector, model predictions, landing CSV, automatic centroid or trajectory interpolation used for labels. Five pre-seal coordinate refinements use grayscale-contrast weighted moments ONLY inside visually hand-selected ball ROIs, not automatic component detection.",
+    "preSealCorrectionLogSha256": "a9a8a266d0cde09c3bdf3c51b3b3165439d818866d3ea0767142b80143264f64",
+    "sealedAtUtc": "2026-11-17T14:10:59.874088+00:00",
+    "sealedBeforeInference": true,
+    "contractorCrosscheck": {
+      "kind": "assistant-visual-crosscheck",
+      "reviewerAndScope": "Root Contractor assistant: all35 point-centred raw RGB crops;3 native fullframes including tennist01f29 and tennist03f36; five pre-seal coordinate refinements raw-grid image. Accepted R2 before inference; not human review."
+    },
+    "draftSha256": "8805c0ff88debe92417f7ff4724a3766914fa6ee43d05ee6dba739e8f201e8de"
+  },
+  "clips": [
+    {
+      "id": "tennist-01",
+      "sampling": {
+        "strategy": "uniform-twelve-before-inference",
+        "selectedIndices": [
+          0,
+          7,
+          14,
+          22,
+          29,
+          36,
+          44,
+          51,
+          58,
+          66,
+          73,
+          81
+        ]
+      },
+      "labels": [
+        {
+          "index": 0,
+          "status": "visible",
+          "point": [
+            1096,
+            125
+          ],
+          "reason": "Isolated visible ball in front of net",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00000.png",
+            "sha256": "d25e491f2f98d684c1185dd5500bb5bf0b64e5151ea278d43822330c88b8acc8"
+          }
+        },
+        {
+          "index": 1,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 2,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 3,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 4,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 5,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 6,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 7,
+          "status": "visible",
+          "point": [
+            1129,
+            217
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00007.png",
+            "sha256": "47d73147ca255beb16acc7192b3f61370c9a4c9a90e0afe8f0ab3f15e48522c0"
+          }
+        },
+        {
+          "index": 8,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 9,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 10,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 11,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 12,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 13,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 14,
+          "status": "visible",
+          "point": [
+            1165,
+            328
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00014.png",
+            "sha256": "0b0a6a53dc366d6d1ab5e623d00c973aa6da3d450d08f719f6310995733b25ef"
+          }
+        },
+        {
+          "index": 15,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 16,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 17,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 18,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 19,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 20,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 21,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 22,
+          "status": "visible",
+          "point": [
+            1205,
+            479
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00022.png",
+            "sha256": "70c7c73d3ec113ebb6e8f4ffd00f4bad49daf0acbc83d915f28ab3d739d849a7"
+          }
+        },
+        {
+          "index": 23,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 24,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 25,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 26,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 27,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 28,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 29,
+          "status": "visible",
+          "point": [
+            1241,
+            632
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00029.png",
+            "sha256": "a760ce228e4e1ad4b65abf0b0851ebd3dd7eebe6596eac55569cba7cdcbb9c9f"
+          }
+        },
+        {
+          "index": 30,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 31,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 32,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 33,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 34,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 35,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 36,
+          "status": "visible",
+          "point": [
+            1277,
+            664
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00036.png",
+            "sha256": "9990297e44f9734c0b153509da7892a848fa090a8b9a304599be77d06c3ab572"
+          }
+        },
+        {
+          "index": 37,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 38,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 39,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 40,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 41,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 42,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 43,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 44,
+          "status": "visible",
+          "point": [
+            1319,
+            705
+          ],
+          "reason": "Visible ball above player, separate from racket",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00044.png",
+            "sha256": "25ad5396a09144529dbb378404d42c2ebf8f5cde16b4404b59b11ffe4ad7c835"
+          }
+        },
+        {
+          "index": 45,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 46,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 47,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 48,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 49,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 50,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 51,
+          "status": "visible",
+          "point": [
+            1359,
+            760
+          ],
+          "reason": "Visible ball above player, separate from hand",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00051.png",
+            "sha256": "e967dcfecc4edf2a0a428238e1a94fb3a5c93416b6dbc078126c8d14845057d8"
+          }
+        },
+        {
+          "index": 52,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 53,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 54,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 55,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 56,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 57,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 58,
+          "status": "visible",
+          "point": [
+            1365,
+            770
+          ],
+          "reason": "Visible round ball above racket, not the yellow racket face",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00058.png",
+            "sha256": "78e522c72ded4914a08c61d0a6533558377173d98a5b5c1e390e623d8f7fe173"
+          }
+        },
+        {
+          "index": 59,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 60,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 61,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 62,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 63,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 64,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 65,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 66,
+          "status": "visible",
+          "point": [
+            1190,
+            438
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00066.png",
+            "sha256": "2c0ff9a0e76b99e0bae0a5f8d77d89033dbbfa99455d9e4af164d76fd34b18c3"
+          }
+        },
+        {
+          "index": 67,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 68,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 69,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 70,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 71,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 72,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 73,
+          "status": "visible",
+          "point": [
+            1084,
+            254
+          ],
+          "reason": "Isolated visible ball against clay; pre-seal manual ROI measurement refinement, see retained correction log",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00073.png",
+            "sha256": "e0e0e6d60e5ec0407dd7de9e543e3991ae9531d68f80bc5a1020f15b17d71601"
+          }
+        },
+        {
+          "index": 74,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 75,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 76,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 77,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 78,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 79,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 80,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 81,
+          "status": "visible",
+          "point": [
+            999,
+            120
+          ],
+          "reason": "Visible ball on net background; pre-seal manual ROI measurement refinement, see retained correction log",
+          "annotationImage": {
+            "file": "annotation-images/tennist-01/frame-00081.png",
+            "sha256": "7e9b468092950b0af4c53e83c1be81d5b7eab3d360b25cbb383238e41dbf7e05"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tennist-02",
+      "sampling": {
+        "strategy": "uniform-twelve-before-inference",
+        "selectedIndices": [
+          0,
+          7,
+          15,
+          22,
+          30,
+          38,
+          45,
+          53,
+          61,
+          68,
+          76,
+          84
+        ]
+      },
+      "labels": [
+        {
+          "index": 0,
+          "status": "visible",
+          "point": [
+            1140,
+            173
+          ],
+          "reason": "Isolated visible ball just below net",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00000.png",
+            "sha256": "3eaad4e2e48bb250d5fa11bbfff7ba5edd3cf290f46f5cf3f70ac05a31129304"
+          }
+        },
+        {
+          "index": 1,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 2,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 3,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 4,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 5,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 6,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 7,
+          "status": "visible",
+          "point": [
+            1185,
+            275
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00007.png",
+            "sha256": "218384ff4ba4a290b9623efbd7488e4a6192997629adfa29f1ee20caf7b9e953"
+          }
+        },
+        {
+          "index": 8,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 9,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 10,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 11,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 12,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 13,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 14,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 15,
+          "status": "visible",
+          "point": [
+            1236,
+            416
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00015.png",
+            "sha256": "54bf284d414bee0b71de7f584b8d8bc96eba3cee9f5fc5736c32e8db82d3876e"
+          }
+        },
+        {
+          "index": 16,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 17,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 18,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 19,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 20,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 21,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 22,
+          "status": "visible",
+          "point": [
+            1280,
+            528
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00022.png",
+            "sha256": "c053a9000942ae70bc9a3dae22c27da515199538a4bdba8574b2e7da2a3e2a41"
+          }
+        },
+        {
+          "index": 23,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 24,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 25,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 26,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 27,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 28,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 29,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 30,
+          "status": "visible",
+          "point": [
+            1328,
+            559
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00030.png",
+            "sha256": "d1eceb3e4161066643433d9e334385c52a728bb640a229a674b7722e7d3baa80"
+          }
+        },
+        {
+          "index": 31,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 32,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 33,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 34,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 35,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 36,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 37,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 38,
+          "status": "visible",
+          "point": [
+            1378,
+            610
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00038.png",
+            "sha256": "c910f84652583030663c511d5d34f0d9d665bc8027879c9fb53aa4c9e82b0311"
+          }
+        },
+        {
+          "index": 39,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 40,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 41,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 42,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 43,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 44,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 45,
+          "status": "visible",
+          "point": [
+            1421,
+            674
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00045.png",
+            "sha256": "bf5d6ca0df426d046e3f635c5ab2d605200f809171ae98222a3bb894d863145d"
+          }
+        },
+        {
+          "index": 46,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 47,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 48,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 49,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 50,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 51,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 52,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 53,
+          "status": "visible",
+          "point": [
+            1471,
+            768
+          ],
+          "reason": "Visible ball above/right of player before racket; pre-seal manual ROI measurement refinement, see retained correction log",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00053.png",
+            "sha256": "f8659aba1d385608cce6cbdb398b9d82be58aae47fe03b9c673c8feef091a16b"
+          }
+        },
+        {
+          "index": 54,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 55,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 56,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 57,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 58,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 59,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 60,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 61,
+          "status": "visible",
+          "point": [
+            1458,
+            654
+          ],
+          "reason": "Visible ball separated above racket",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00061.png",
+            "sha256": "10665b0834296c458bd280d2869c181124265f90a3f32b8c772ea6e0a990f5c5"
+          }
+        },
+        {
+          "index": 62,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 63,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 64,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 65,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 66,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 67,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 68,
+          "status": "visible",
+          "point": [
+            1391,
+            395
+          ],
+          "reason": "Isolated visible ball against clay",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00068.png",
+            "sha256": "268bfe65a4323cbc638b533e4a293162d11f7c881a598deeaa854929c236887e"
+          }
+        },
+        {
+          "index": 69,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 70,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 71,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 72,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 73,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 74,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 75,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 76,
+          "status": "visible",
+          "point": [
+            1328,
+            197
+          ],
+          "reason": "Visible ball below net; pre-seal manual ROI measurement refinement, see retained correction log",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00076.png",
+            "sha256": "0069c9921f085a88c69f543b2935b0b7819450530caf38a00dc5dc32d76f76b7"
+          }
+        },
+        {
+          "index": 77,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 78,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 79,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 80,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 81,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 82,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 83,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 84,
+          "status": "visible",
+          "point": [
+            1279,
+            71
+          ],
+          "reason": "Visible ball above net against clay; pre-seal manual ROI measurement refinement, see retained correction log",
+          "annotationImage": {
+            "file": "annotation-images/tennist-02/frame-00084.png",
+            "sha256": "9a911b4eeda5c3e2f4a40729911727bfe61f9177d17431ce8769dc7e3564bbb4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tennist-03",
+      "sampling": {
+        "strategy": "uniform-twelve-before-inference",
+        "selectedIndices": [
+          0,
+          9,
+          18,
+          27,
+          36,
+          45,
+          55,
+          64,
+          73,
+          82,
+          91,
+          101
+        ]
+      },
+      "labels": [
+        {
+          "index": 0,
+          "status": "unknown",
+          "point": null,
+          "reason": "Ball image is clipped at right edge; cannot establish centre reliably within fixed 8px tolerance",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00000.png",
+            "sha256": "7642d50ea9fe2059835478ddf6eb8f73a68e2358082e769ba72dd509cc4c34e8"
+          }
+        },
+        {
+          "index": 1,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 2,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 3,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 4,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 5,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 6,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 7,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 8,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 9,
+          "status": "visible",
+          "point": [
+            1669,
+            407
+          ],
+          "reason": "Visible elongated ball streak; manual midpoint, not inferred instantaneous position",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00009.png",
+            "sha256": "4aa2502eb0d87152b5841a26f1d9a97e14817dbc64ce7077c263aa407f27a6c2"
+          }
+        },
+        {
+          "index": 10,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 11,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 12,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 13,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 14,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 15,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 16,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 17,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 18,
+          "status": "visible",
+          "point": [
+            1432,
+            514
+          ],
+          "reason": "Visible elongated ball streak; manual midpoint",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00018.png",
+            "sha256": "1fd452220851ec1e8b90367d14a6649bc32596e9731c3d7d600a524047d83e94"
+          }
+        },
+        {
+          "index": 19,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 20,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 21,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 22,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 23,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 24,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 25,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 26,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 27,
+          "status": "visible",
+          "point": [
+            1198,
+            663
+          ],
+          "reason": "Visible ball streak at edge of floor reflection; manual midpoint",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00027.png",
+            "sha256": "43292f91b10d1135b52755560d7f4a2626e37d34aa2053c4df087430e094cf68"
+          }
+        },
+        {
+          "index": 28,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 29,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 30,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 31,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 32,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 33,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 34,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 35,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 36,
+          "status": "visible",
+          "point": [
+            1033,
+            636
+          ],
+          "reason": "Visible ball image above floor, separate from reflection",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00036.png",
+            "sha256": "2920c5789769e98ea7d7700d9ea12c6df9f6a937b18827387d0b02ac5112993d"
+          }
+        },
+        {
+          "index": 37,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 38,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 39,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 40,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 41,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 42,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 43,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 44,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 45,
+          "status": "visible",
+          "point": [
+            897,
+            547
+          ],
+          "reason": "Visible ball streak in front of far wall/floor junction",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00045.png",
+            "sha256": "4354847d733c864d5a6cabe8873ce6b18719a412a532c6ff8beae1ffed4edad3"
+          }
+        },
+        {
+          "index": 46,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 47,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 48,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 49,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 50,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 51,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 52,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 53,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 54,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 55,
+          "status": "visible",
+          "point": [
+            745,
+            499
+          ],
+          "reason": "Visible ball below extended arm",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00055.png",
+            "sha256": "f0b7486ee09d6125cf9c1ad3ac6db366603da4cefe9157f35c08387e948ffc0a"
+          }
+        },
+        {
+          "index": 56,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 57,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 58,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 59,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 60,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 61,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 62,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 63,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 64,
+          "status": "visible",
+          "point": [
+            749,
+            446
+          ],
+          "reason": "Visible elongated ball streak right of player's hands; manual midpoint",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00064.png",
+            "sha256": "d7becc8a215c89214b1f9dc50962fc01ab9f425ec695a3921d88888f23b0a79d"
+          }
+        },
+        {
+          "index": 65,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 66,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 67,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 68,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 69,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 70,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 71,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 72,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 73,
+          "status": "visible",
+          "point": [
+            1136,
+            288
+          ],
+          "reason": "Visible elongated ball streak against far upper wall; manual midpoint",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00073.png",
+            "sha256": "76f51462f0ae94c99c49e7b2eac7e89913674ada83df430478de1064bdba9184"
+          }
+        },
+        {
+          "index": 74,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 75,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 76,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 77,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 78,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 79,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 80,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 81,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 82,
+          "status": "visible",
+          "point": [
+            1440,
+            212
+          ],
+          "reason": "Visible elongated ball streak against roof beam; manual midpoint",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00082.png",
+            "sha256": "4d6508ccb6dd7b8cb41c28c931871655e0605f810397d01159a8162c22c3e773"
+          }
+        },
+        {
+          "index": 83,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 84,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 85,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 86,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 87,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 88,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 89,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 90,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 91,
+          "status": "visible",
+          "point": [
+            1684,
+            178
+          ],
+          "reason": "Visible elongated ball streak against roof; manual midpoint",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00091.png",
+            "sha256": "c3e872c9d2aad0e3194cba404223c8aa4e507262364fc7d5d703850b39df6a1e"
+          }
+        },
+        {
+          "index": 92,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 93,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 94,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 95,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 96,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 97,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 98,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 99,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 100,
+          "status": "unknown",
+          "point": null,
+          "reason": "Not visually annotated; excluded from accuracy denominator"
+        },
+        {
+          "index": 101,
+          "status": "visible",
+          "point": [
+            1905,
+            184
+          ],
+          "reason": "Visible ball near but not clipped by right image edge",
+          "annotationImage": {
+            "file": "annotation-images/tennist-03/frame-00101.png",
+            "sha256": "bbf3e45a64d9f669ee391739728c0ec8d4f513c4fc136f734b451e8f8d778d56"
+          }
+        }
+      ]
+    }
+  ]
+}
